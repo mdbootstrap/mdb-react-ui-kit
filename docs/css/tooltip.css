@@ -1,0 +1,101 @@
+/*
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+select {
+  margin-bottom: 3rem;
+}
+
+.popper {
+  background: #222;
+  color: white;
+  width: 150px;
+  border-radius: 2px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  padding: 5px;
+}
+
+.popper .popper__arrow, .popover .popover__arrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  position: absolute;
+  margin: 5px;
+}
+
+.popper[data-placement^="top"], .popover[data-placement^="top"] {
+  margin-bottom: 5px;
+}
+
+.popper[data-placement^="top"] .popper__arrow, .popover[data-placement^="top"] .popover__arrow {
+  border-width: 5px 5px 0 5px;
+  border-color: #222 transparent transparent transparent;
+  bottom: -5px;
+  left: calc(50% - 5px);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.popover[data-placement^="top"] .popover__arrow {
+  border-color: #fff transparent transparent transparent;
+}
+
+.popper[data-placement^="bottom"], .popover[data-placement^="bottom"] {
+  margin-top: 5px;
+}
+
+.popper[data-placement^="bottom"] .popper__arrow, .popover[data-placement^="bottom"] .popover__arrow {
+  border-width: 0 5px 5px 5px;
+  border-color: transparent transparent #222 transparent;
+  top: -5px;
+  left: calc(50% - 5px);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.popover[data-placement^="bottom"] .popover__arrow {
+  border-color: transparent transparent #fff transparent;
+}
+
+.popper[data-placement^="right"], .popover[data-placement^="right"] {
+  margin-left: 5px;
+}
+
+.popper[data-placement^="right"] .popper__arrow, .popover[data-placement^="right"] .popover__arrow {
+  border-width: 5px 5px 5px 0;
+  border-color: transparent #222 transparent transparent;
+  left: -5px;
+  top: calc(50% - 5px);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.popover[data-placement^="right"] .popover__arrow {
+  border-color: transparent #fff transparent transparent;
+}
+
+.popper[data-placement^="left"], .popover[data-placement^="left"] {
+  margin-right: 5px;
+}
+
+.popper[data-placement^="left"] .popper__arrow, .popover[data-placement^="left"] .popover__arrow {
+  border-width: 5px 0 5px 5px;
+  border-color: transparent transparent transparent #222;
+  right: -5px;
+  top: calc(50% - 5px);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.popover[data-placement^="left"] .popover__arrow {
+  border-color: transparent transparent transparent #fff;
+}
+*/

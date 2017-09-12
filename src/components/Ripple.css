@@ -1,0 +1,27 @@
+.Ripple {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    opacity: 1;
+    transform: scale(0);
+}
+
+.Ripple-outline {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.Ripple.is-reppling {
+    animation: ripple 0.5s linear;
+}
+
+.Ripple-parent {
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes ripple {
+    100% {
+        opacity: 0;
+        transform: scale(3);
+    }
+}

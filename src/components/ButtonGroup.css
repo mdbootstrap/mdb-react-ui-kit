@@ -1,0 +1,13 @@
+.btn-group-vertical > .btn, .btn-group-vertical > .btn + .btn-group, .btn-group-vertical > .btn-group + .btn, .btn-group-vertical > .btn-group + .btn-group {
+  margin-left: 0px;
+}
+
+.btn-group-lg > .btn {
+  font-size: 0.9rem;
+  padding: 1rem 2.4rem;
+}
+
+.btn-group-sm > .btn {
+  font-size: 0.6rem;
+  padding: 0.5rem 1.6rem;
+}

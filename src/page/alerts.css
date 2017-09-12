@@ -1,0 +1,128 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'Notification';
+  src: url("./fonts/notification.eot?s3g3t9");
+  src: url("./fonts/notification.eot?#iefixs3g3t9") format("embedded-opentype"), url("./fonts/notification.woff?s3g3t9") format("woff"), url("./fonts/notification.ttf?s3g3t9") format("truetype"), url("./fonts/notification.svg?s3g3t9#notification") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.notification-container {
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 999999;
+  width: 320px;
+  padding: 20px 15px;
+  max-height: calc(100% - 30px);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.notification {
+  box-sizing: border-box;
+  padding: 15px 15px 15px 58px;
+  border-radius: 2px;
+  color: #fff;
+  background-color: #ccc;
+  /*box-shadow: 0 0 12px #999;*/
+  cursor: pointer;
+  font-size: 1em;
+  line-height: 1.2em;
+  position: relative;
+  opacity: 0.8;
+  margin-top: 15px;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+}
+
+.notification .title {
+  font-size: 1em;
+  line-height: 1.2em;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+}
+
+.notification:hover, .notification:focus {
+  opacity: 1;
+  transition: .45s;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  filter: alpha(opacity=100);
+  cursor: pointer;
+}
+
+.notification-enter {
+/*  visibility: hidden;
+  transform: translate3d(100%, 0, 0);*/
+  opacity: 0.01;
+}
+
+.notification-enter.notification-enter-active {
+/*  visibility: visible;
+  transform: translate3d(0%, 0, 0);
+  transition: all 0.4s;*/
+    opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.notification-leave {
+/*  visibility: visible;
+  transform: translate3d(0, 0, 0);*/
+  opacity: 1;
+}
+
+.notification-leave.notification-leave-active {
+/*  visibility: hidden;
+  transform: translate3d(100%, 0, 0);
+  transition: all 0.4s;*/
+  opacity: 0.01;
+  transition: opacity 1000ms ease-in;
+}
+
+.notification:before {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  margin-top: -14px;
+  display: block;
+  font-family: 'Notification';
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
+  text-align: center;
+  line-height: 28px;
+}
+
+.notification-info {
+  background-color: #33b5e5;
+}
+
+.notification-info:before {
+  content: "";
+}
+
+.notification-success {
+  background-color: #00c851;
+}
+
+.notification-success:before {
+  content: "";
+}
+
+.notification-warning {
+  background-color: #ffbb33;
+}
+
+.notification-warning:before {
+  content: "";
+}
+
+.notification-error {
+  background-color: #FF0000;
+}
+
+.notification-error:before {
+  content: "";
+}
