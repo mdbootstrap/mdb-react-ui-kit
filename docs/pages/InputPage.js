@@ -8,22 +8,32 @@ class InputPage extends React.Component {
     return (
     <div className="container-fluid" style={{textAlign: "initial"}}>
       <div>
-        <Input />
-        <Input label="test" />
-        <Input hint="placeholder" label="text with placeholder" />
-        <Input defaultValue="defaultValue" label="text with defaultValue" />
-        <Input label="text with placeholder" size="sm" />
-        <Input label="text with placeholder" icon="envelope"/>
-        <Input label="Disabled input" disabled/>
-        <Input hint="placeholder" label="text with placeholder" icon="envelope"/>
-        <Input type="textarea"  label="textarea" icon="pencil"/>
-        <Input type="textarea" hint="placeholder" label="text with placeholder"/>
+        <Input label="Example label" />
+
+        <Input label="Example label" size="sm" />
+        <Input label="Example label" size="sm" icon="envelope"/>
+
+        <Input label="Example label" icon="envelope"/>
+        <Input label="Example label" icon="user"/>
+
+        <Input hint="placeholder" label="Example label" />
+
+        <Input defaultValue="John Doe" label="Example label" />
+
+        <Input label="Type your email" icon="envelope" group type="email" validate error="wrong" success="right"/>
+        <Input label="Type your password" icon="lock" group type="password" validate/>
+
+        <Input label="Example label" disabled/>
 
         <FormInline>
           <Input label="Type your email" icon="envelope" group type="email" validate error="wrong" success="right"/>
           <Input label="Type your password" icon="lock" group type="password" validate/>
           <Button>Login</Button>
         </FormInline>
+
+        <Input type="textarea" label="Icon Prefix" icon="pencil"/>
+        <Input type="textarea" label="Basic textarea"/>
+
       </div>
     </div>
   )

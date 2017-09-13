@@ -150,13 +150,17 @@ class TextField extends React.Component {
       attributes.type = type;
     }
 
+    if (disabled) {
+      attributes.disabled = true;
+    }
+
     return (
       <div className={containerClassFix}>
 
         {icon ? <i className={iconClassFix}></i> : false}
         <Tag 
           {...attributes} 
-          id={id} 
+          id={id}
           className={classes} 
           ref={el => { this.inputElRef = el }}
           placeholder={hint}
