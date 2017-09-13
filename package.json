@@ -1,7 +1,9 @@
 {
   "name": "mdbreact",
   "version": "0.1.0",
-  "private": true,
+  "author": "MDBootstrap",
+  "license": "MIT",
+  "repository": "https://github.com/mdbootstrap/React-Bootstrap-with-Material-Design",
   "dependencies": {
     "bootstrap": "4.0.0-beta",
     "classnames": "^2.2.5",
