@@ -6,6 +6,10 @@ const ProgressPage = (props) => {
   return(
     <div className="container-fluid text-center">
       <div className="">
+        <Progress value={100}></Progress>
+        <Progress value={0}></Progress>
+        <Progress value={25}></Progress>
+        <Progress value={75}></Progress>
         <Progress animated  color="warning" value={75}></Progress>
         <Progress value="25">25%</Progress>
         <Progress striped value={50}></Progress>

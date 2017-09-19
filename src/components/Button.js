@@ -90,7 +90,7 @@ class Button extends React.Component {
 }
 
 Button.defaultProps = {
-  color: 'primary',
+  color: 'default',
   tag: 'button',
 };
 
