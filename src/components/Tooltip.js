@@ -69,11 +69,16 @@ class Tooltip extends React.Component {
       tooltipClass,
       arrowClass,
       componentTooltip,
+      componentClass,
       tag,
      } = this.props;
 
      const classes = classNames(
             className
+        );
+
+     const componentClasses = classNames(
+            componentClass
         );
 
      const tooltipClasses = classNames(
@@ -88,8 +93,8 @@ class Tooltip extends React.Component {
             arrowClass
         );
     return (
-        <Manager tag={tag}>
-          <Target component={component} style={componentStyle} className={classes}
+        <Manager tag={tag} className={classes}>
+          <Target component={component} style={componentStyle} className={componentClasses}
               onMouseEnter={this.show}
               onMouseLeave={this.hide}
               onTouchStart={this.handleTouch}
