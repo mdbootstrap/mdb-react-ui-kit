@@ -36,9 +36,12 @@ class ComponentsPage extends React.Component {
 					<li>
 						<a href="/components/progress">Progress</a>
 					</li>
-          <li>
-            <a href="/components/tooltips">Tooltips</a>
-          </li>
+			        <li>
+			            <a href="/components/tooltips">Tooltips</a>
+			        </li>
+			        <li>
+			            <a href="/components/footer">Footer</a>
+			        </li>
 				</ul>
             </Jumbotron>
         );
