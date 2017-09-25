@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card, CardBody, CardImage, CardTitle, CardText, TabPane, TabContent } from 'mdbreact';
+import { Button, Card, CardBody, CardImage, CardTitle, CardText, TabPane, TabContent, Nav, NavItem, NavLink } from 'mdbreact';
 import classnames from 'classnames';
 
 
@@ -23,23 +23,30 @@ class TabsPage extends React.Component {
   render() {
     return (
       <div>
-        <Button
-          className={classnames({ active: this.state.activeItem === '1' })}
-          onClick={() => { this.toggle('1'); }}
-        >
-          Tab1
-        </Button>
-        <Button
-          className={classnames({ active: this.state.activeItem === '2' })}
-          onClick={() => { this.toggle('2'); }}
-        >
-          Moar Tabs
-        </Button>
+        <Nav className="nav-tabs nav-justified">
+                <NavItem>
+                  <NavLink 
+                    className={classnames({ active: this.state.activeItem === '1' })}
+                    onClick={() => { this.toggle('1'); }}
+                  >
+                    Tab 1
+                  </NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink 
+                    className={classnames({ active: this.state.activeItem === '2' })}
+                    onClick={() => { this.toggle('2'); }}
+                  >
+                    Tab 2
+                  </NavLink>
+                </NavItem>
+              </Nav>
         <TabContent activeItem={this.state.activeItem}>
           <TabPane tabId="1">
             <div className="row">
               <div className="col-sm-12">
                 <h4>Tab 1 Contents</h4>
+                <Button>Go somewhere</Button>
               </div>
             </div>
           </TabPane>

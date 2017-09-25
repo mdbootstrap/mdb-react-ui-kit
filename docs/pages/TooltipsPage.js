@@ -1,10 +1,5 @@
 import React from 'react';
-import { Button, Tooltip } from 'mdbreact';
-
-
-import '../css/tooltip.css'
-
-
+import { Tooltip } from 'mdbreact';
 
  
 class TooltipsPage extends React.Component {
@@ -12,31 +7,39 @@ class TooltipsPage extends React.Component {
 
   render() {
     return (
-      <div>
-        tutaj jest <Tooltip 
+      <div style={{display: "flex"}}>
+        <Tooltip 
           placement="top" 
-          tag="span" 
-          component="a" 
-          componentStyle={{ color: 'red' }} 
-          tooltipContent="jedziemy" 
-          className="mirek" 
-          arrowClass="strzala">
-           Tooltip
+          componentClass="btn btn-primary"
+          tag="div" 
+          component="button" 
+          tooltipContent="Tooltip on top"> 
+            Tooltip on top
         </Tooltip>
-
-        <p>
-          Div Tooltip 
-          <Tooltip 
-            placement="right"  
-            component="div" 
-            componentStyle={{ width: 120, height: 120, background: 'red' }} 
-            tooltipContent="Div z wysrodkownym tekstem" 
-            className="mirek" 
-            tooltipClass="klasa text-center" 
-            >
-              Tooltip
-          </Tooltip>
-        </p>
+        <Tooltip 
+          placement="right" 
+          componentClass="btn btn-primary"
+          tag="div" 
+          component="button" 
+          tooltipContent="Tooltip on right"> 
+            Tooltip on right
+        </Tooltip>
+        <Tooltip 
+          placement="bottom" 
+          componentClass="btn btn-primary"
+          tag="div" 
+          component="button" 
+          tooltipContent="Tooltip on bottom"> 
+            Tooltip on bottom
+        </Tooltip>
+        <Tooltip 
+          placement="left" 
+          componentClass="btn btn-primary"
+          tag="div" 
+          component="button" 
+          tooltipContent="Tooltip on left"> 
+            Tooltip on left
+        </Tooltip>
       </div>
     )
   }

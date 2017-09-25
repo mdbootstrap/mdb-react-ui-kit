@@ -1,52 +1,45 @@
 import React from 'react';
 import { Button, Popover, PopoverBody, PopoverHeader } from 'mdbreact';
-
-
-import '../css/tooltip.css'
-
-
-const CustomPopper = ({ innerRef, style, ...props }) =>
-  <div
-    ref={innerRef}
-    style={{
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontSize: 16,
-      color: 'rgba(255, 255, 255, 0.8)',
-      ...style,
-    }}
-    {...props}
-  /> 
-
  
 class PopoverPage extends React.Component {
 
 
   render() {
     return (
-      <div>
+      <div style={{display: "flex"}}>
         <Popover 
-          component="div"
-          placement="bottom" 
-          popoverBody="jedziemy" 
-          className="btn btn-info" 
-          // componentPopover={CustomPopper}
+          component="button"
+          placement="top" 
+          popoverBody="popover on top" 
+          className="btn btn-default" 
           arrowClass="strzala">
-          <PopoverHeader>Popover Title</PopoverHeader>
+          <PopoverHeader>popover on top</PopoverHeader>
           <PopoverBody>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</PopoverBody>
         </Popover>
         <Popover 
-          component="div"
+          component="button"
           placement="right" 
-          popoverBody="Tutaj mamy przycisk" 
-          className="btn btn-default" 
-          // componentPopover={CustomPopper}
-          arrowClass="strzala">
-          <PopoverHeader>Popover Title</PopoverHeader>
-          <PopoverBody>Content.</PopoverBody>
+          popoverBody="popover on right" 
+          className="btn btn-default">
+          <PopoverHeader>popover on right</PopoverHeader>
+          <PopoverBody>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</PopoverBody>
         </Popover>
-
+        <Popover 
+          component="button"
+          placement="bottom" 
+          popoverBody="popover on bottom" 
+          className="btn btn-default">
+          <PopoverHeader>popover on bottom</PopoverHeader>
+          <PopoverBody>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</PopoverBody>
+        </Popover>
+        <Popover 
+          component="button"
+          placement="left" 
+          popoverBody="popover on left" 
+          className="btn btn-default">
+          <PopoverHeader>popover on left</PopoverHeader>
+          <PopoverBody>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</PopoverBody>
+        </Popover>
       </div>
     )
   }
