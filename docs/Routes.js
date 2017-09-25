@@ -22,6 +22,7 @@ import ListGroupPage from './pages/ListGroupPage';
 import CarouselPage from './pages/CarouselPage';
 import TabsPage from './pages/TabsPage';
 import TooltipsPage from './pages/TooltipsPage';
+import FooterPage from './pages/FooterPage';
 
 class Routes extends React.Component {
     render() {
@@ -47,6 +48,7 @@ class Routes extends React.Component {
                     <Route path='/components/list-group' component={ListGroupPage} />
                     <Route path='/components/tabs' component={TabsPage} />
                     <Route path='/components/tooltips' component={TooltipsPage} />
+                    <Route path='/components/footer' component={FooterPage} />
                     <Route exact path='/javascript' component={JavaScriptPage} />
                     <Route path='/javascript/modal' component={ModalPage} />
                     <Route path='/javascript/carousel' component={CarouselPage} />

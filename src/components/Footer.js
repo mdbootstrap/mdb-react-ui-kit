@@ -1,25 +1,39 @@
-import React from 'react';
-import Container from '../components/Container';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-import Fa from '../components/Fa';
+class Footer extends Component {
 
-const NavLink = require('react-router-dom').NavLink;
+	render() {
+ 
+    const {
+      children,
+      className,
+      tag: Tag,
+      ...attributes
+    } = this.props;
 
-class Header extends React.Component {
-    render(){
-        return(
-			<footer className="page-footer center-on-small-only pt-0 mt-5">
+    const classes = classNames(
+      'page-footer',
+      className,
+    );
 
-		        <div className="footer-copyright">
-		            <Container fluid>
-		                &copy; {(new Date().getFullYear())} Copyright: <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
-
-		            </Container>
-		        </div>
-
-		    </footer>
-        );
-    }
+		return (
+      <Tag {...attributes} className={classes}>
+        {children}
+      </Tag>
+		);
+	}
 }
 
-export default Header;
+Footer.propTypes = {
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  className: PropTypes.string,
+  children: PropTypes.node
+};
+
+Footer.defaultProps = {
+  tag: 'footer'
+};
+
+export default Footer;
