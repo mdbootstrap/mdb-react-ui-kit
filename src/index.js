@@ -14,7 +14,9 @@ import CarouselCaption from './components/CarouselCaption';
 import CarouselControl from './components/CarouselControl';
 import CarouselInner from './components/CarouselInner';
 import CarouselItem from './components/CarouselItem';
+import Col from './components/Col';
 import Collapse from './components/Collapse';
+import Container from './components/Container';
 import Dropdown from './components/Dropdown';
 import Fa from './components/Fa';
 import Fade from './components/Fade';
@@ -43,6 +45,7 @@ import PopoverBody from './components/PopoverBody';
 import PopoverHeader from './components/PopoverHeader';
 import Progress from './components/Progress';
 import Ripple from './components/Ripple';
+import Row from './components/Row';
 import Table from './components/Table';
 import TabPane from './components/TabPane';
 import TabContent from './components/TabContent';
@@ -66,7 +69,9 @@ export {
   CarouselControl,
   CarouselInner,
   CarouselItem,
+  Col,
   Collapse,
+  Container,
 	Dropdown,
 	Fa,
 	Fade,
@@ -95,6 +100,7 @@ export {
   PopoverHeader,
   Progress,
   Ripple,
+  Row,
   Table,
   TabPane,
   TabContent,
