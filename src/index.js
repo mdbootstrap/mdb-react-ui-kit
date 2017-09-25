@@ -21,6 +21,7 @@ import Dropdown from './components/Dropdown';
 import Fa from './components/Fa';
 import Fade from './components/Fade';
 import FormInline from './components/FormInline';
+import Footer from './components/Footer';
 import Input from './components/Input';
 import Jumbotron from './components/Jumbotron';
 import ListGroup from './components/ListGroup';
@@ -76,6 +77,7 @@ export {
 	Fa,
 	Fade,
   FormInline,
+  Footer,
   Input,
   Jumbotron,
   ListGroup,
