@@ -24,7 +24,6 @@ class Navbar extends Component {
   }
 
   handleScroll() {
-    console.log('scroll');
     if(window.pageYOffset > scrollingNavbarOffset) {
       this.setState({isCollapsed: true})
     } else {
@@ -33,7 +32,6 @@ class Navbar extends Component {
   }
 
   componentDidMount() {
-    console.log('Component did mount');
     window.addEventListener('scroll', this.handleScroll.bind(this));
   }
 
