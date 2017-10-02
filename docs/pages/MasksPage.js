@@ -59,6 +59,7 @@ class MasksPage extends React.Component {
           </View>
         </Col>
       </Row>
+      <div style={{height: '100vh'}} />
     </Container>
   )
   }

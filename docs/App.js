@@ -6,7 +6,7 @@ class App extends Component {
   render() {
     return (
       <div className="flyout">
-        <Navbar color="indigo" dark expand="md">
+        <Navbar color="indigo" dark expand="md" fixed="top" scrolling>
           <NavbarBrand href="/">MDB React</NavbarBrand>
           <NavbarToggler />
             <div className="collapse navbar-collapse" id="reactNavbar">
