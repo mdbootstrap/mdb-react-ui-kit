@@ -1,39 +1,32 @@
 import React, { Component } from 'react';
-  import { ToastContainer, toast } from 'react-toastify';
-  // import 'react-toastify/dist/ReactToastify.min.css';
+import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.min.css';
 import './alerts.css';
+// import '../docs/pages/alerts.css';
 
 import { Button } from 'mdbreact';
 
 
   class AlertPage extends Component {
-    notify() {
-      toast("Wow so easy !");
-    }
 
     notify(type){
     return () => {
       switch (type) {
         case 'info':
           toast.info('Info message', {
-            className: 'dark-toast',
             autoClose: 3000
           });
           break;
         case 'success':
           toast.success('Success message', {
-            position: toast.POSITION.BOTTOM_RIGHT,
-            className: 'dark-toast',
-            progressClassName: 'transparent-progress'
+            position: toast.POSITION.TOP_RIGHT,
           });
           break;
         case 'warning':
-          toast.warn('Warning message', 'Close after 3000ms');
+          toast.warn('Warning message');
           break;
         case 'error':
-          toast.error('Error message', 'Click me!', 5000, () => {
-            alert('callback');
-          });
+          toast.error('Error message');
           break;
       }
     };
@@ -57,14 +50,11 @@ import { Button } from 'mdbreact';
         <button className='btn btn-danger'
           onClick={this.notify('error')}>Error
         </button>
-        {/* One container to rule them all! */}
         <ToastContainer 
           hideProgressBar={true}
           newestOnTop={true}
-          closeOnClick
           autoClose={5000}
         />
-        {/*Can be written <ToastContainer />. Props defined are the same as the default one. */}
         </div>
       );
     }
