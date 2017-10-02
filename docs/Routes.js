@@ -23,6 +23,7 @@ import CarouselPage from './pages/CarouselPage';
 import TabsPage from './pages/TabsPage';
 import TooltipsPage from './pages/TooltipsPage';
 import FooterPage from './pages/FooterPage';
+import MasksPage from './pages/MasksPage';
 
 class Routes extends React.Component {
     render() {
@@ -52,6 +53,7 @@ class Routes extends React.Component {
                     <Route exact path='/javascript' component={JavaScriptPage} />
                     <Route path='/javascript/modal' component={ModalPage} />
                     <Route path='/javascript/carousel' component={CarouselPage} />
+                    <Route path='/css/masks' component={MasksPage} />
                     <Route render = { function() {
                         return <h1>Not Found</h1>
                     }} />
