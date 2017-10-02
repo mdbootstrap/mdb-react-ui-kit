@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Ripple from './Ripple';
-
+import Waves from './Waves';
 
 
 class Button extends React.Component {
@@ -79,11 +78,12 @@ class Button extends React.Component {
         className={classes}
         ref={getRef}
         onClick={this.onClick}
-        onMouseUp={ this.handleClick.bind(this) }
+        onMouseDown={ this.handleClick.bind(this) }
+        onTouchStart={ this.handleClick.bind(this) }
         {...attributes}
       >
         {this.props.children}
-        {this.props.disabled ? false : <Ripple cursorPos={ this.state.cursorPos } outline={outline} flat={flat} />}
+        {this.props.disabled ? false : <Waves cursorPos={ this.state.cursorPos } outline={outline} flat={flat} />}
       </Tag>
     );
   }

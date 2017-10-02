@@ -1,8 +1,8 @@
 import React from 'react';
 
-require('./Ripple.css')
+require('./Waves.css');
 
-class Ripple extends React.Component {
+class Waves extends React.Component {
 
   constructor() {
     super();
@@ -72,4 +72,4 @@ class Ripple extends React.Component {
 
 }
 
-export default Ripple;
+export default Waves;

@@ -45,7 +45,7 @@ import Popover from './components/Popover';
 import PopoverBody from './components/PopoverBody';
 import PopoverHeader from './components/PopoverHeader';
 import Progress from './components/Progress';
-import Ripple from './components/Ripple';
+import Waves from './components/Waves';
 import Row from './components/Row';
 import Table from './components/Table';
 import TabPane from './components/TabPane';
@@ -101,7 +101,7 @@ export {
   PopoverBody,
   PopoverHeader,
   Progress,
-  Ripple,
+  Waves,
   Row,
   Table,
   TabPane,
