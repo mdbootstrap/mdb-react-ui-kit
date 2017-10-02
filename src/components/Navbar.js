@@ -32,8 +32,8 @@ class Navbar extends Component {
       'navbar',
       light ? 'navbar-light' : '',
       dark ? 'navbar-dark' : '',
-      sticky ? 'sticky-${sticky}' : '',
-      fixed ? 'fixed-${fixed}' : '',
+      sticky ? 'sticky-' + sticky : '',
+      fixed ? 'fixed-' + fixed : '',
       getExpandClass(expand),
       color ? color : '',
       className
