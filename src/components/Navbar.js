@@ -32,7 +32,15 @@ class Navbar extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll.bind(this));
+    if(this.props.scrolling) {
+      window.addEventListener('scroll', this.handleScroll.bind(this));
+    }
+  }
+
+  componentDidUnmount() {
+    if(this.props.scrolling) {
+      window.removeEventListener('scroll', this.handleScroll.bind(this));
+    }
   }
 
 	render() {
