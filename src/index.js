@@ -26,6 +26,7 @@ import Input from './components/Input';
 import Jumbotron from './components/Jumbotron';
 import ListGroup from './components/ListGroup';
 import ListGroupItem from './components/ListGroupItem';
+import Mask from './components/Mask';
 import Media from './components/Media';
 import Modal from './components/Modal';
 import ModalBody from './components/ModalBody';
@@ -52,6 +53,7 @@ import TabPane from './components/TabPane';
 import TabContent from './components/TabContent';
 import TextField from './components/TextField';
 import Tooltip from './components/Tooltip';
+import View from './components/View';
 
 export {
 	Badge,
@@ -82,6 +84,7 @@ export {
   Jumbotron,
   ListGroup,
   ListGroupItem,
+  Mask,
   Media,
 	Modal,
 	ModalBody,
@@ -108,4 +111,5 @@ export {
   TabContent,
   TextField,
   Tooltip,
+  View,
 }
