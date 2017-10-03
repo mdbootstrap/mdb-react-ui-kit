@@ -7,6 +7,7 @@ class Footer extends Component {
 	render() {
  
     const {
+      color,
       children,
       className,
       tag: Tag,
@@ -15,6 +16,7 @@ class Footer extends Component {
 
     const classes = classNames(
       'page-footer',
+      color ? color : '',
       className,
     );
 
@@ -27,6 +29,7 @@ class Footer extends Component {
 }
 
 Footer.propTypes = {
+  color: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
   children: PropTypes.node
