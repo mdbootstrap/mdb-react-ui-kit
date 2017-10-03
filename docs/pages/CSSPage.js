@@ -20,6 +20,9 @@ class CSSPage extends React.Component {
 								<li>
 									<NavLink to="/css/jumbotron">Jumbotron <Fa icon="angle-right" /></NavLink>
 								</li>
+								<li>
+									<NavLink to="/css/masks">Masks <Fa icon="angle-right" /></NavLink>
+								</li>
 							</ul>
 						</Jumbotron>
 					</Col>
