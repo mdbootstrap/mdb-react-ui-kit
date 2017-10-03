@@ -1,37 +1,60 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'mdbreact';
 
-import { Dropdown } from 'mdbreact';
-import { Manager, Target, Popper, Arrow } from 'react-popper';
-
-class DropdownPage extends Component {
-
+ class DropdownPage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      dropdownOpen: false
-    };
-
     this.toggle = this.toggle.bind(this);
-    // alert('asd');
+    this.toggle1 = this.toggle1.bind(this);
+    this.state = {
+      dropdownOpen: false,
+      dropdownOpen1: false
+    };
   }
 
-  toggle(e) {
-    e.preventDefault();
-
-    console.log('kurwaaaa');
-
+  toggle() {
     this.setState({
       dropdownOpen: !this.state.dropdownOpen
     });
-
   }
 
-  render () {
-    const { placement } = this.state
+  toggle1() {
+    this.setState({
+      dropdownOpen1: !this.state.dropdownOpen1
+    });
+  }
+
+  render() {
     return (
-      <Dropdown isOpen={this.state.dropdownOpen} onClick={this.myClick} tag="a" />
-    )
+      <div style={{marginTop: '100px'}}>
+        <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle} >
+          <DropdownToggle caret>
+            Dropdown
+          </DropdownToggle>
+          <DropdownMenu>
+            <DropdownItem header>Header</DropdownItem>
+            <DropdownItem disabled>Action</DropdownItem>
+            <DropdownItem>Another Action</DropdownItem>
+            <DropdownItem divider />
+            <DropdownItem>Another Action</DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+        <br />
+        <Dropdown isOpen={this.state.dropdownOpen1} toggle={this.toggle1}>
+          <DropdownToggle caret>
+            This dropdown's menu is right-aligned
+          </DropdownToggle>
+          <DropdownMenu right>
+            <DropdownItem header>Header</DropdownItem>
+            <DropdownItem disabled>Action</DropdownItem>
+            <DropdownItem>Another Action</DropdownItem>
+            <DropdownItem divider/>
+            <DropdownItem>Another Action</DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+      </div>
+    );
   }
 }
 
