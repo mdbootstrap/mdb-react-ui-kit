@@ -51,7 +51,7 @@ class Button extends React.Component {
       role,
       type,
       tag: Tag,
-      getRef,
+      innerRef,
       ...attributes
     } = this.props;
 
@@ -76,7 +76,7 @@ class Button extends React.Component {
         type={(Tag === 'button' && !type) ? 'button' : type}
         role={(Tag === 'a' && !role) ? 'button' : role}
         className={classes}
-        ref={getRef}
+        ref={innerRef}
         onClick={this.onClick}
         onMouseDown={ this.handleClick.bind(this) }
         onTouchStart={ this.handleClick.bind(this) }
@@ -106,7 +106,7 @@ Button.propTypes = {
   rounded: PropTypes.bool,
   floating: PropTypes.bool,
   flat: PropTypes.bool,
-  getRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   onClick: PropTypes.func,
   size: PropTypes.string,
   children: PropTypes.node,
