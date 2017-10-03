@@ -24,6 +24,7 @@ import TabsPage from './pages/TabsPage';
 import TooltipsPage from './pages/TooltipsPage';
 import FooterPage from './pages/FooterPage';
 import MasksPage from './pages/MasksPage';
+import DropdownPage from './pages/DropdownPage';
 
 class Routes extends React.Component {
     render() {
@@ -39,6 +40,7 @@ class Routes extends React.Component {
                     <Route path='/components/media' component={MediaPage} />
                     <Route path='/components/input' component={InputPage} />
                     <Route path='/components/alert' component={AlertPage} />
+                    <Route path='/components/dropdown' component={DropdownPage} />
                     <Route path='/css/icons' component={FaPage} />
                     <Route path='/css/jumbotron' component={JumbotronPage} />
                     <Route path='/components/cards' component={CardsPage} />

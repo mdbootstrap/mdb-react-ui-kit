@@ -18,6 +18,9 @@ import Col from './components/Col';
 import Collapse from './components/Collapse';
 import Container from './components/Container';
 import Dropdown from './components/Dropdown';
+import DropdownItem from './components/DropdownItem';
+import DropdownMenu from './components/DropdownMenu';
+import DropdownToggle from './components/DropdownToggle';
 import Fa from './components/Fa';
 import Fade from './components/Fade';
 import FormInline from './components/FormInline';
@@ -76,6 +79,9 @@ export {
   Collapse,
   Container,
 	Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
 	Fa,
 	Fade,
   FormInline,

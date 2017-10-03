@@ -21,6 +21,9 @@ class ComponentsPage extends React.Component {
 					<li>
 						<a href="/components/cards">Cards</a>
 					</li>
+          <li>
+            <a href="/components/dropdown">Dropdown</a>
+          </li>
 					<li>
 						<a href="/components/input">Input</a>
 					</li>
