@@ -18,10 +18,12 @@ import Col from './components/Col';
 import Collapse from './components/Collapse';
 import Container from './components/Container';
 import Dropdown from './components/Dropdown';
+import EdgeHeader from './components/EdgeHeader';
 import Fa from './components/Fa';
 import Fade from './components/Fade';
 import FormInline from './components/FormInline';
 import Footer from './components/Footer';
+import FreeBird from './components/FreeBird';
 import Input from './components/Input';
 import Jumbotron from './components/Jumbotron';
 import ListGroup from './components/ListGroup';
@@ -76,10 +78,12 @@ export {
   Collapse,
   Container,
 	Dropdown,
+  EdgeHeader,
 	Fa,
 	Fade,
   FormInline,
   Footer,
+  FreeBird,
   Input,
   Jumbotron,
   ListGroup,
