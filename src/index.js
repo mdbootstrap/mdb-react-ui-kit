@@ -21,10 +21,12 @@ import Dropdown from './components/Dropdown';
 import DropdownItem from './components/DropdownItem';
 import DropdownMenu from './components/DropdownMenu';
 import DropdownToggle from './components/DropdownToggle';
+import EdgeHeader from './components/EdgeHeader';
 import Fa from './components/Fa';
 import Fade from './components/Fade';
 import FormInline from './components/FormInline';
 import Footer from './components/Footer';
+import FreeBird from './components/FreeBird';
 import Input from './components/Input';
 import Jumbotron from './components/Jumbotron';
 import ListGroup from './components/ListGroup';
@@ -82,10 +84,12 @@ export {
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
+  EdgeHeader,
 	Fa,
 	Fade,
   FormInline,
   Footer,
+  FreeBird,
   Input,
   Jumbotron,
   ListGroup,

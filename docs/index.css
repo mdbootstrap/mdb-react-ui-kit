@@ -1,3 +1,33 @@
-.primary-color {
-	background: #4285F4;
+.flyout {
+	display:flex;
+	flex-direction: column;
+	min-height:100vh;
+	justify-content: space-between;
+}
+
+.home-feature-box .fa {
+	font-size:6rem;
+}
+
+.home-feature-box span {
+	display: block;
+	color:#111;
+	font-weight:bold;
+	margin-top:1.5rem;
+}
+
+.example-components-list li > a {
+	display:block;
+	border-bottom:1px solid rgba(0,0,0,.15);
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+
+.example-components-list li:last-child > a {
+	border-bottom:0;
+}
+
+.example-components-list li > a .fa {
+	color:rgba(0,0,0,.35);
+	float:right;
 }
