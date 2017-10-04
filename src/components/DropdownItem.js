@@ -66,14 +66,14 @@ class DropdownItem extends React.Component {
       ...props } = omit(this.props, ['toggle']);
 
     const classes = classNames(
-      className,
       {
         disabled: props.disabled,
         'dropdown-item': !divider && !header,
         active: active,
         'dropdown-header': header,
         'dropdown-divider': divider
-      }
+      },
+      className
     );
 
     if (Tag === 'button') {
