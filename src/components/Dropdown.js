@@ -6,30 +6,6 @@ import { Manager } from 'react-popper';
 import classNames from 'classnames';
 import { omit, keyCodes } from './utils';
 
-const propTypes = {
-  disabled: PropTypes.bool,
-  dropup: PropTypes.bool,
-  group: PropTypes.bool,
-  isOpen: PropTypes.bool,
-  size: PropTypes.string,
-  tag: PropTypes.string,
-  toggle: PropTypes.func,
-  children: PropTypes.node,
-  className: PropTypes.string,
-};
-
-const defaultProps = {
-  isOpen: false,
-  dropup: false,
-  tag: 'div',
-};
-
-const childContextTypes = {
-  toggle: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  dropup: PropTypes.bool.isRequired,
-};
-
 class Dropdown extends React.Component {
   constructor(props) {
     super(props);
@@ -170,21 +146,39 @@ class Dropdown extends React.Component {
     } = omit(this.props, ['toggle', 'disabled']);
 
     const classes = classNames(
-      className,
       {
         'btn-group': group,
         [`btn-group-${size}`]: !!size,
         dropdown: !group,
         show: isOpen,
         dropup: dropup
-      }
+      },
+      className
     );
     return <Manager {...attrs} className={classes} onKeyDown={this.handleKeyDown} />;
   }
 }
 
-Dropdown.propTypes = propTypes;
-Dropdown.defaultProps = defaultProps;
-Dropdown.childContextTypes = childContextTypes;
+Dropdown.propTypes = {
+  disabled: PropTypes.bool,
+  dropup: PropTypes.bool,
+  group: PropTypes.bool,
+  isOpen: PropTypes.bool,
+  size: PropTypes.string,
+  tag: PropTypes.string,
+  toggle: PropTypes.func,
+  children: PropTypes.node,
+  className: PropTypes.string,
+};
+Dropdown.defaultProps = {
+  isOpen: false,
+  dropup: false,
+  tag: 'div',
+};
+Dropdown.childContextTypes = {
+  toggle: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  dropup: PropTypes.bool.isRequired,
+};
 
 export default Dropdown;
