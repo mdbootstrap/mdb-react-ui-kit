@@ -108,21 +108,21 @@ class Collapse extends Component {
     const { collapse, height } = this.state;
     let collapseClass;
     switch (collapse) {
-      case SHOW:
-        collapseClass = 'collapsing';
-        break;
-      case SHOWN:
-        collapseClass = 'collapse show';
-        break;
-      case HIDE:
-        collapseClass = 'collapsing';
-        break;
-      case HIDDEN:
-        collapseClass = 'collapse';
-        break;
-      default:
+    case SHOW:
+      collapseClass = 'collapsing';
+      break;
+    case SHOWN:
+      collapseClass = 'collapse show';
+      break;
+    case HIDE:
+      collapseClass = 'collapsing';
+      break;
+    case HIDDEN:
+      collapseClass = 'collapse';
+      break;
+    default:
       // HIDDEN
-        collapseClass = 'collapse';
+      collapseClass = 'collapse';
     }
 
     const classes = classNames(
@@ -137,8 +137,9 @@ class Collapse extends Component {
         style={{ ...attributes.style, ...style }}
         className={classes}
         ref={(c) => { this.element = c; }}
-        children={children}
-      />
+      >
+        {children}
+      </div>
     );
   }
 }
@@ -146,19 +147,20 @@ class Collapse extends Component {
 Collapse.propTypes = {
   isOpen: PropTypes.bool,
   className: PropTypes.node,
+  children: PropTypes.node,
   navbar: PropTypes.bool,
   delay: PropTypes.oneOfType([
     PropTypes.shape({ show: PropTypes.number, hide: PropTypes.number }),
-    PropTypes.number,
+    PropTypes.number
   ]),
   onOpened: PropTypes.func,
-  onClosed: PropTypes.func,
+  onClosed: PropTypes.func
 };
 
 Collapse.defaultProps = {
   isOpen: false,
   delay: DEFAULT_DELAYS,
   onOpened: () => {},
-  onClosed: () => {},
+  onClosed: () => {}
 };
 export default Collapse;

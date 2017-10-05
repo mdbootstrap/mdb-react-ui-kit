@@ -42,7 +42,7 @@ const PaginationPage = (props) => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default PaginationPage;

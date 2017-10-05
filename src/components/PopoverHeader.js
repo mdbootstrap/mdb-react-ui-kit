@@ -21,7 +21,7 @@ const PopoverHeader = (props) => {
 
 PopoverHeader.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 PopoverHeader.defaultProps = {
   tag: 'h3'

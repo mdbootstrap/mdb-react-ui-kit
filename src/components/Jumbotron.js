@@ -23,12 +23,13 @@ class Jumbotron extends React.Component {
         {children}
       </div>
     );
-  };
-};
+  }
+}
 
 Jumbotron.propTypes = {
   fluid: PropTypes.bool,
-  className: PropTypes.string,
+  children: PropTypes.node,
+  className: PropTypes.string
 };
 
 export default Jumbotron;

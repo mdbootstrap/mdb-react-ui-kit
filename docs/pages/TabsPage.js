@@ -24,23 +24,23 @@ class TabsPage extends React.Component {
     return (
       <div>
         <Nav className="nav-tabs nav-justified">
-                <NavItem>
-                  <NavLink 
-                    className={classnames({ active: this.state.activeItem === '1' })}
-                    onClick={() => { this.toggle('1'); }}
-                  >
+          <NavItem>
+            <NavLink 
+              className={classnames({ active: this.state.activeItem === '1' })}
+              onClick={() => { this.toggle('1'); }}
+            >
                     Tab 1
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink 
-                    className={classnames({ active: this.state.activeItem === '2' })}
-                    onClick={() => { this.toggle('2'); }}
-                  >
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink 
+              className={classnames({ active: this.state.activeItem === '2' })}
+              onClick={() => { this.toggle('2'); }}
+            >
                     Tab 2
-                  </NavLink>
-                </NavItem>
-              </Nav>
+            </NavLink>
+          </NavItem>
+        </Nav>
         <TabContent activeItem={this.state.activeItem}>
           <TabPane tabId="1">
             <div className="row">

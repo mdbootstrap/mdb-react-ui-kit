@@ -18,7 +18,7 @@ const ProgressPage = (props) => {
         <Progress  color="info" value="25">Cool</Progress>
       </div>
     </div>
-  )
+  );
 };
 
 export default ProgressPage;

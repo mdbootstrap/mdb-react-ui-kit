@@ -18,16 +18,16 @@ class Control extends Component {
     const classes = classNames(
       'carousel-control-' + direction,
       className
-    )
+    );
 
     const caretClasses = classNames(
       'carousel-control-' + direction + '-icon'
-    )
+    );
 
-    if(direction === "prev") {
-      text = "Previous";
-    } else if(direction === "next") {
-      text = "Next";
+    if(direction === 'prev') {
+      text = 'Previous';
+    } else if(direction === 'next') {
+      text = 'Next';
     }
 
     return (
@@ -42,8 +42,9 @@ class Control extends Component {
 Control.propTypes = {
   onClick: PropTypes.any,
   text: PropTypes.string,
+  direction: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 Control.defaultProps = {

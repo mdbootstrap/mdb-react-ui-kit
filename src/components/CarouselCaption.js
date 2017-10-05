@@ -16,7 +16,7 @@ class CarouselCaption extends Component {
     const classes = classNames(
       'carousel-caption',
       className
-    )
+    );
 
     return (
       <Tag {...attributes} className={classes}>

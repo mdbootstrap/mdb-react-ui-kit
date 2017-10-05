@@ -22,12 +22,12 @@ class ModalFooter extends React.Component {
         {children}
       </div>
     );
-  };
-};
+  }
+}
 
 ModalFooter.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.node,
+  children: PropTypes.node
 };
 
 export default ModalFooter;

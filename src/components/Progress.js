@@ -33,7 +33,7 @@ class Progress extends React.Component {
       striped || animated ? 'progress-bar-striped' : null
     );
 
-    const height = children ? "1rem" : ""
+    const height = children ? '1rem' : '';
 
     return (
       <div {...attributes} className={progressClasses} style={{height: height}}>
@@ -44,11 +44,11 @@ class Progress extends React.Component {
           aria-valuenow={value}
           aria-valuemin="0"
           aria-valuemax={max}
-          children={children}
         >
+          {children}
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -56,22 +56,22 @@ Progress.propTypes = {
   children: PropTypes.node,
   value: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.number,
+    PropTypes.number
   ]),
   max: PropTypes.oneOfType([
     PropTypes.string,
-    PropTypes.number,
+    PropTypes.number
   ]),
   animated: PropTypes.bool,
   striped: PropTypes.bool,
   color: PropTypes.string,
   className: PropTypes.string,
-  barClassName: PropTypes.string,
+  barClassName: PropTypes.string
 };
 
 Progress.defaultProps = {
   value: 0,
-  max: 100,
+  max: 100
 };
 
 export default Progress;

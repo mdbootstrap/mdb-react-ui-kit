@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 class NavLink extends Component {
 
-	render() {
+  render() {
  
     const {
       children,
@@ -21,18 +21,19 @@ class NavLink extends Component {
       className
     );
 
-		return (
+    return (
       <Tag {...attributes} className={classes}>
         {children}
       </Tag>
-		);
-	}
+    );
+  }
 }
 
 NavLink.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
   active: PropTypes.bool,
+  children: PropTypes.node,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 

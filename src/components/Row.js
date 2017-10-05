@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 class Row extends Component {
 
-	render() {
+  render() {
  
     const {
       className,
@@ -17,19 +17,19 @@ class Row extends Component {
       className
     );
 
-		return (
+    return (
       <Tag {...attributes} className={classes} />
-		);
-	}
+    );
+  }
 }
 
 Row.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 Row.defaultProps = {
-  tag: 'div',
+  tag: 'div'
 };
 
 export default Row;

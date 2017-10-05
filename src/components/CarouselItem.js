@@ -21,7 +21,7 @@ class CarouselItem extends Component {
       'carousel-item',
       itemId === this.context.activeItem ? 'active' : '',
       className
-    )
+    );
 
     return (
       <Tag {...attributes} className={classes}>

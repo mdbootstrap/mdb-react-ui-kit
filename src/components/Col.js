@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 class Col extends Component {
 
-	render() {
+  render() {
  
     const {
       xs,
@@ -27,10 +27,10 @@ class Col extends Component {
       className
     );
 
-		return (
+    return (
       <Tag {...attributes} className={classes} />
-		);
-	}
+    );
+  }
 }
 
 Col.propTypes = {
@@ -40,7 +40,7 @@ Col.propTypes = {
   lg: PropTypes.string,
   xl: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 Col.defaultProps = {
@@ -49,7 +49,7 @@ Col.defaultProps = {
   sm: null,
   md: null,
   lg: null,
-  xl: null,
+  xl: null
 };
 
 export default Col;

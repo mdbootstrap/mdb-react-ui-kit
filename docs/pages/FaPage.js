@@ -25,7 +25,7 @@ const FaPage = (props) => {
         <p><Fa icon="camera-retro" size="5x" flip="vertical"/></p>
       </div>
     </div>
-  )
+  );
 };
 
 export default FaPage;

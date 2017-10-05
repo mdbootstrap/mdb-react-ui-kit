@@ -16,7 +16,7 @@ const propTypes = {
   transitionEnter: PropTypes.bool,
   transitionLeave: PropTypes.bool,
   onLeave: PropTypes.func,
-  onEnter: PropTypes.func,
+  onEnter: PropTypes.func
 };
 
 const defaultProps = {
@@ -36,7 +36,7 @@ class Fade extends React.Component {
     super(props);
 
     this.state = {
-      mounted: !props.transitionAppear,
+      mounted: !props.transitionAppear
     };
 
     this.onLeave = this.onLeave.bind(this);

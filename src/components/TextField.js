@@ -22,7 +22,7 @@ class TextField extends React.Component {
     if (value !== undefined && !props.onChange) {
       console.log('You provided a `value` prop to a form field ' +
         'without an `OnChange` handler. Please see React documentation on ' +
-        'controlled components')
+        'controlled components');
     }
 
     this.onBlur = this.onBlur.bind(this);
@@ -85,7 +85,6 @@ class TextField extends React.Component {
       group,
       className,
       type,
-      state,
       el, 
       tag,
       id,
@@ -98,7 +97,6 @@ class TextField extends React.Component {
       disabled,
       labelClass,
       icon,
-      dataError,
       iconClass,
       ...attributes
     } = this.props;
@@ -162,7 +160,7 @@ class TextField extends React.Component {
           {...attributes} 
           id={id}
           className={classes} 
-          ref={el => { this.inputElRef = el }}
+          ref={el => { this.inputElRef = el; }}
           placeholder={hint}
           onBlur={this.onBlur}
           onChange={this.onChange}
@@ -181,9 +179,13 @@ TextField.propTypes = {
   group: PropTypes.bool,
   validate: PropTypes.bool,
   size: PropTypes.string,
+  onBlur: PropTypes.func,
+  onChange: PropTypes.func,
+  onFocus: PropTypes.func,
   id: PropTypes.string,
   hint: PropTypes.string,
   value: PropTypes.string,
+  defaultValue: PropTypes.string,
   error: PropTypes.string,
   success: PropTypes.string,
   label: PropTypes.string,
@@ -193,12 +195,12 @@ TextField.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   el: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
-  containerClass: PropTypes.string,
+  containerClass: PropTypes.string
 };
 TextField.defaultProps = {
   tag: 'input',
   type: 'text',
-  hint: null,
+  hint: null
 };
 
 export default TextField;

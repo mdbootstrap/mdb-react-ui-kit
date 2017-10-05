@@ -21,12 +21,13 @@ class Breadcrumb extends React.Component {
       <ol {...attributes} className={classes}>
         {this.props.children}
       </ol>
-    )
+    );
   }
 }
 
 Breadcrumb.propTypes = {
-  className: PropTypes.string,
+  children: PropTypes.node,
+  className: PropTypes.string
 };
 
 export default Breadcrumb ;

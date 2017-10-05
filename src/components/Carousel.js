@@ -27,14 +27,13 @@ class Carousel extends Component {
   componentWillReceiveProps(nextProps) {
     this.state = {
       activeItem: nextProps.activeItem
-    }
+    };
   }
 
   render() {
-     let {
+    let {
       active,
       activeItem,
-      fade,
       next,
       children,
       className,
@@ -48,7 +47,7 @@ class Carousel extends Component {
       'carousel',
       'carousel-fade',
       className
-    )
+    );
 
     return (
       <Tag {...attributes} className={classes} aria-label={ariaLabel}>
@@ -62,14 +61,13 @@ Carousel.propTypes = {
   active: PropTypes.string,
   activeItem: PropTypes.any,
   next: PropTypes.func.isRequired,
-  // fade: PropTypes.oneOfType([PropTypes.boolean, PropTypes.string]),  
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
   children: PropTypes.node
 };
 
 Carousel.defaultProps = {
-  tag: 'div',
+  tag: 'div'
 };
 
 Carousel.childContextTypes = {

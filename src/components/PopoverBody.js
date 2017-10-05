@@ -22,7 +22,7 @@ const PopoverBody = (props) => {
 
 PopoverBody.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 PopoverBody.defaultProps = {
   tag: 'div'

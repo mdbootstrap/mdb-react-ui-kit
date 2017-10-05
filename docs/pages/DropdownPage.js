@@ -1,7 +1,7 @@
 import React from 'react';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'mdbreact';
 
- class DropdownPage extends React.Component {
+class DropdownPage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -25,7 +25,7 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'mdbreact';
       dropdownOpen6: false,
       dropdownOpen7: false,
       dropdownOpen8: false,
-      dropdownOpen9: false,
+      dropdownOpen9: false
     };
   }
 
@@ -164,7 +164,7 @@ import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'mdbreact';
         <h2>Alignment</h2>
         <Dropdown isOpen={this.state.dropdownOpen6} toggle={this.toggle6}>
           <DropdownToggle caret color="primary">
-            This dropdown's menu is right-aligned
+            This dropdown&apos;s menu is right-aligned
           </DropdownToggle>
           <DropdownMenu right>
             <DropdownItem>Action</DropdownItem>

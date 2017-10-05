@@ -14,7 +14,7 @@ const BadgePage = (props) => {
         <h6>Heading <Badge color="danger">danger</Badge></h6>
       </div>
     </div>
-  )
+  );
 };
 
 export default BadgePage;

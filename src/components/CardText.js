@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 class CardText extends Component {
 
-	render() {
+  render() {
  
     const {
       className,
@@ -17,10 +17,10 @@ class CardText extends Component {
       className
     );
 
-		return (
+    return (
       <Tag {...attributes} className={classes} />
-		);
-	}
+    );
+  }
 }
 
 CardText.propTypes = {

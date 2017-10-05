@@ -56,64 +56,64 @@ const MediaPage = (props) => {
       </div>
 
       <Media list className="mt-3">
-      <Media tag="li">
-        <Media left href="#">
-          <Media object src="http://via.placeholder.com/64x64" alt="Generic placeholder image" />
-        </Media>
-        <Media body>
-          <Media heading>
+        <Media tag="li">
+          <Media left href="#">
+            <Media object src="http://via.placeholder.com/64x64" alt="Generic placeholder image" />
+          </Media>
+          <Media body>
+            <Media heading>
             Media heading
-          </Media>
-          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-          <Media>
-            <Media left href="#">
-              <Media object src="http://via.placeholder.com/64x64" alt="Generic placeholder image" />
             </Media>
-            <Media body>
-              <Media heading>
-                Nested media heading
+          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            <Media>
+              <Media left href="#">
+                <Media object src="http://via.placeholder.com/64x64" alt="Generic placeholder image" />
               </Media>
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              <Media>
-                <Media left href="#">
-                  <Media object src="http://via.placeholder.com/64x64" alt="Generic placeholder image" />
+              <Media body>
+                <Media heading>
+                Nested media heading
                 </Media>
-                <Media body>
-                  <Media heading>
-                    Nested media heading
+              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                <Media>
+                  <Media left href="#">
+                    <Media object src="http://via.placeholder.com/64x64" alt="Generic placeholder image" />
                   </Media>
+                  <Media body>
+                    <Media heading>
+                    Nested media heading
+                    </Media>
                   Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                  </Media>
                 </Media>
               </Media>
             </Media>
-          </Media>
-          <Media>
-            <Media left href="#">
-              <Media object src="http://via.placeholder.com/64x64" alt="Generic placeholder image" />
-            </Media>
-            <Media body>
-              <Media heading>
-                Nested media heading
+            <Media>
+              <Media left href="#">
+                <Media object src="http://via.placeholder.com/64x64" alt="Generic placeholder image" />
               </Media>
+              <Media body>
+                <Media heading>
+                Nested media heading
+                </Media>
               Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+              </Media>
             </Media>
           </Media>
         </Media>
-      </Media>
-      <Media tag="li">
-        <Media body>
-          <Media heading>
+        <Media tag="li">
+          <Media body>
+            <Media heading>
             Media heading right
-          </Media>
+            </Media>
           Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-        </Media>
-        <Media right href="#">
-          <Media object src="http://via.placeholder.com/64x64" alt="Generic placeholder image" />
+          </Media>
+          <Media right href="#">
+            <Media object src="http://via.placeholder.com/64x64" alt="Generic placeholder image" />
+          </Media>
         </Media>
       </Media>
-    </Media>
     </div>
-  )
+  );
 };
 
 export default MediaPage;

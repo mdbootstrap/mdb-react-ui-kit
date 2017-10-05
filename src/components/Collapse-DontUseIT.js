@@ -85,7 +85,7 @@ class Collapse2 extends React.PureComponent {
 
 
   componentWillReceiveProps(nextProps) {
-      console.log("COLLAPSE ReceiveProps nextProps", nextProps);
+    console.log('COLLAPSE ReceiveProps nextProps', nextProps);
     if (nextProps.hasNestedCollapse) {
       // For nested collapses we do not need to change to waiting state
       // and should keep `height:auto`

@@ -38,7 +38,7 @@ const propTypes = {
   cssModule: PropTypes.object,
   zIndex: PropTypes.oneOfType([
     PropTypes.number,
-    PropTypes.string,
+    PropTypes.string
   ]),
   backdropTransitionTimeout: PropTypes.number,
   backdropTransitionAppearTimeout: PropTypes.number,
@@ -47,7 +47,7 @@ const propTypes = {
   modalTransitionTimeout: PropTypes.number,
   modalTransitionAppearTimeout: PropTypes.number,
   modalTransitionEnterTimeout: PropTypes.number,
-  modalTransitionLeaveTimeout: PropTypes.number,
+  modalTransitionLeaveTimeout: PropTypes.number
 };
 
 const propsToOmit = Object.keys(propTypes);
@@ -61,7 +61,7 @@ const defaultProps = {
   zIndex: 1050,
   fade: true,
   modalTransitionTimeout: 300,
-  backdropTransitionTimeout: 150,
+  backdropTransitionTimeout: 150
 };
 
 class Modal extends React.Component {

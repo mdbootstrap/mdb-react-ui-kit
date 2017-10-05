@@ -6,7 +6,7 @@ class PopoverPage extends React.Component {
 
   render() {
     return (
-      <div style={{display: "flex"}}>
+      <div style={{display: 'flex'}}>
         <Popover 
           component="button"
           placement="top" 
@@ -41,7 +41,7 @@ class PopoverPage extends React.Component {
           <PopoverBody>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</PopoverBody>
         </Popover>
       </div>
-    )
+    );
   }
 }
 export default PopoverPage;

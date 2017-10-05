@@ -62,7 +62,7 @@ Fa.propTypes = {
   flip: PropTypes.string,
   inverse: PropTypes.string,
   stack: PropTypes.string,
-  icon: PropTypes.string,
+  icon: PropTypes.string
 };
 
 

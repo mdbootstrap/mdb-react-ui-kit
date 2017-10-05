@@ -47,10 +47,8 @@ Table.propTypes = {
   bordered: PropTypes.bool,
   striped: PropTypes.bool,
   hover: PropTypes.bool,
-  responsive: PropTypes.bool,
+  children: PropTypes.node,
+  responsive: PropTypes.bool
 };
 
-
-export default Table ;
-
-
+export default Table;

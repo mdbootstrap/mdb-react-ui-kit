@@ -1,31 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import './ButtonGroup.css'
+import './ButtonGroup.css';
 
 
 class ButtonGroup extends React.Component {
 
-    render() {
-      const {
-        className,
-        size,
-        vertical,
-        ...attributes
-      } = this.props;
+  render() {
+    const {
+      className,
+      size,
+      vertical,
+      ...attributes
+    } = this.props;
 
-      const classes = classNames(
-        className,
-        size ? 'btn-group-' + size : false,
-        vertical ? 'btn-group-vertical' : 'btn-group'
-      );
+    const classes = classNames(
+      className,
+      size ? 'btn-group-' + size : false,
+      vertical ? 'btn-group-vertical' : 'btn-group'
+    );
 
-        return (
-            <div {...attributes} className={classes} >
-              {this.props.children}
-            </div>
-        )
-    }
+    return (
+      <div {...attributes} className={classes} >
+        {this.props.children}
+      </div>
+    );
+  }
 }
 
 ButtonGroup.propTypes = {
@@ -33,11 +33,12 @@ ButtonGroup.propTypes = {
   className: PropTypes.string,
   role: PropTypes.string,
   size: PropTypes.string,
-  vertical: PropTypes.bool,
+  children: PropTypes.node,
+  vertical: PropTypes.bool
 };
 
 ButtonGroup.defaultProps = {
-  role: 'group',
+  role: 'group'
 };
 
 export default ButtonGroup;

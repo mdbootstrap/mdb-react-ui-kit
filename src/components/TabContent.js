@@ -5,7 +5,8 @@ import { omit } from './utils';
 
 const propTypes = {
   activeItem: PropTypes.any,
-  className: PropTypes.string,
+  tabId: PropTypes.any,
+  className: PropTypes.string
 };
 
 class TabContent extends React.Component {
@@ -31,21 +32,21 @@ class TabContent extends React.Component {
   }
 
   render() {
-      const {
-          className,
-          tabId,
-      } = this.props;
+    const {
+      className,
+      tabId
+    } = this.props;
 
-      const attributes = omit(this.props, Object.keys(propTypes));
+    const attributes = omit(this.props, Object.keys(propTypes));
 
-      const classes = classNames(
-          'tab-content',
-          className
-      );
-      return (
-          <div {...attributes} className={classes} />
+    const classes = classNames(
+      'tab-content',
+      className
+    );
+    return (
+      <div {...attributes} className={classes} />
 
-      )
+    );
   }
 }
 

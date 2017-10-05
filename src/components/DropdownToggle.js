@@ -60,8 +60,9 @@ class DropdownToggle extends React.Component {
         component={Tag}
         onClick={this.onClick}
         aria-expanded={this.context.isOpen}
-        children={children}
-      />
+      >
+        {children}
+      </Target>
     );
   }
 }
@@ -76,17 +77,17 @@ DropdownToggle.propTypes = {
   'aria-haspopup': PropTypes.bool,
   split: PropTypes.bool,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  nav: PropTypes.bool,
+  nav: PropTypes.bool
 };
 
 DropdownToggle.defaultProps = {
   'aria-haspopup': true,
-  color: 'secondary',
+  color: 'secondary'
 };
 
 DropdownToggle.contextTypes = {
   isOpen: PropTypes.bool.isRequired,
-  toggle: PropTypes.func.isRequired,
+  toggle: PropTypes.func.isRequired
 };
 
 export default DropdownToggle;

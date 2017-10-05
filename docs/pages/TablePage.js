@@ -78,7 +78,7 @@ const TablePage = (props) => {
                     <td>@twitter</td>
                   </tr>
                 </tbody>
-               </Table>
+              </Table>
             </CardBody>
           </Card>
         </Col>
@@ -162,7 +162,7 @@ const TablePage = (props) => {
         </Col>
       </Row>
     </Container>
-  )
+  );
 };
 
 export default TablePage;

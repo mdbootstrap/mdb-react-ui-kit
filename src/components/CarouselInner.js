@@ -8,7 +8,7 @@ class CarouselInner extends Component {
     super(props);
     this.state = {
       childrenCount: React.Children.count(this.props.children)
-    }
+    };
   }
 
   render() {
@@ -26,7 +26,7 @@ class CarouselInner extends Component {
       'carouse-inner',
       active ? 'active' : '',
       className
-    )
+    );
 
     childrenCount = React.Children.count(this.props.children);
 
@@ -42,6 +42,7 @@ CarouselInner.propTypes = {
   childrenCount: PropTypes.any,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
+  active: PropTypes.bool,
   children: PropTypes.node
 };
 

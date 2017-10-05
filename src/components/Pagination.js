@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 class Pagination extends Component {
 
-	render() {
+  render() {
  
     const {
       children,
@@ -18,12 +18,12 @@ class Pagination extends Component {
       className,
     );
 
-		return (
+    return (
       <Tag {...attributes} className={classes}>
         {children}
       </Tag>
-		);
-	}
+    );
+  }
 }
 
 Pagination.propTypes = {

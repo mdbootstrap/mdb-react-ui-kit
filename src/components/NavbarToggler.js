@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 class NavbarToggler extends Component {
 
-	render() {
+  render() {
  
     const {
       right,
@@ -22,12 +22,12 @@ class NavbarToggler extends Component {
       className,
     );
 
-		return (
+    return (
       <Tag {...attributes} className={classes}>
         {children || <span className='navbar-toggler-icon' />}
       </Tag>
-		);
-	}
+    );
+  }
 }
 
 NavbarToggler.propTypes = {
@@ -36,7 +36,7 @@ NavbarToggler.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   right: PropTypes.bool,
-  left: PropTypes.bool,
+  left: PropTypes.bool
 };
 
 NavbarToggler.defaultProps = {

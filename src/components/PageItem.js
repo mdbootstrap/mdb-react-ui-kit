@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 class PageItem extends Component {
 
-	render() {
+  render() {
  
     const {
       disabled,
@@ -22,12 +22,12 @@ class PageItem extends Component {
       className,
     );
 
-		return (
+    return (
       <Tag {...attributes} className={classes}>
         {children}
       </Tag>
-		);
-	}
+    );
+  }
 }
 
 PageItem.propTypes = {

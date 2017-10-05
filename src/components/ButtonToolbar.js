@@ -5,33 +5,34 @@ import classNames from 'classnames';
 
 class ButtonToolbar extends React.Component {
 
-    render() {
-      const {
-        className,
-        ...attributes
-      } = this.props;
+  render() {
+    const {
+      className,
+      ...attributes
+    } = this.props;
 
-      const classes = classNames(
-        className,
-        'btn-toolbar'
-      );
+    const classes = classNames(
+      className,
+      'btn-toolbar'
+    );
 
-        return (
-            <div {...attributes} className={classes} >
-              {this.props.children}
-            </div>
-        )
-    }
+    return (
+      <div {...attributes} className={classes} >
+        {this.props.children}
+      </div>
+    );
+  }
 }
 
 ButtonToolbar.propTypes = {
   'aria-label': PropTypes.string,
   className: PropTypes.string,
-  role: PropTypes.string,
+  children: PropTypes.node,
+  role: PropTypes.string
 };
 
 ButtonToolbar.defaultProps = {
-  role: 'toolbar',
+  role: 'toolbar'
 };
 
 export default ButtonToolbar;

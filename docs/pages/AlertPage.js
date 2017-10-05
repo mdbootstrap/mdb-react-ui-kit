@@ -7,34 +7,34 @@ import './alerts.css';
 import { Button } from 'mdbreact';
 
 
-  class AlertPage extends Component {
+class AlertPage extends Component {
 
-    notify(type){
+  notify(type){
     return () => {
       switch (type) {
-        case 'info':
-          toast.info('Info message', {
-            autoClose: 3000
-          });
-          break;
-        case 'success':
-          toast.success('Success message', {
-            position: toast.POSITION.TOP_RIGHT,
-          });
-          break;
-        case 'warning':
-          toast.warn('Warning message');
-          break;
-        case 'error':
-          toast.error('Error message');
-          break;
+      case 'info':
+        toast.info('Info message', {
+          autoClose: 3000
+        });
+        break;
+      case 'success':
+        toast.success('Success message', {
+          position: toast.POSITION.TOP_RIGHT
+        });
+        break;
+      case 'warning':
+        toast.warn('Warning message');
+        break;
+      case 'error':
+        toast.error('Error message');
+        break;
       }
     };
-  };
+  }
 
-    render(){
-      return (
-        <div>
+  render(){
+    return (
+      <div>
         <button className='btn btn-info'
           onClick={this.notify('info')}>Info
         </button>
@@ -55,10 +55,10 @@ import { Button } from 'mdbreact';
           newestOnTop={true}
           autoClose={5000}
         />
-        </div>
-      );
-    }
+      </div>
+    );
   }
+}
 
 
 export default AlertPage;

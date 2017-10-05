@@ -9,7 +9,7 @@ class CardImage extends Component {
     super(props);
     this.state = {
       cursorPos: {}
-    }
+    };
   }
 
   handleClick(e){
@@ -18,11 +18,11 @@ class CardImage extends Component {
       top: e.clientY,
       left: e.clientX,
       time: Date.now()
-    }
-    this.setState({ cursorPos: cursorPos })
+    };
+    this.setState({ cursorPos: cursorPos });
   }
 
-	render() {
+  render() {
  
     const {
       className,
@@ -30,7 +30,7 @@ class CardImage extends Component {
       ...attributes
     } = this.props;
 
-		return (
+    return (
       <div className="Ripple-parent">
         <Tag 
           {...attributes} 
@@ -41,8 +41,8 @@ class CardImage extends Component {
         </Tag>
         <Waves cursorPos={ this.state.cursorPos } />
       </div>
-		);
-	}
+    );
+  }
 }
 
 CardImage.propTypes = {

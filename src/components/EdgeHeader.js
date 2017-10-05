@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 class EdgeHeader extends Component {
 
-	render() {
+  render() {
  
     const {
       color,
@@ -19,10 +19,10 @@ class EdgeHeader extends Component {
       className
     );
 
-		return (
+    return (
       <Tag {...attributes} className={classes} />
-		);
-	}
+    );
+  }
 }
 
 EdgeHeader.propTypes = {

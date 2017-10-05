@@ -4,11 +4,9 @@ import classNames from 'classnames';
 
 class PageLink extends Component {
 
-	render() {
+  render() {
  
     const {
-      disabled,
-      active,
       children,
       className,
       tag: Tag,
@@ -20,12 +18,12 @@ class PageLink extends Component {
       className,
     );
 
-		return (
+    return (
       <Tag {...attributes} className={classes}>
         {children}
       </Tag>
-		);
-	}
+    );
+  }
 }
 
 PageLink.propTypes = {

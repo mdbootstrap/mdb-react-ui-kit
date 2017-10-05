@@ -20,7 +20,7 @@ const BreadcrumbPage = (props) => {
         </Breadcrumb>
       </div>
     </div>
-  )
+  );
 };
 
 export default BreadcrumbPage;

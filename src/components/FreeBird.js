@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 class FreeBird extends Component {
 
-	render() {
+  render() {
  
     const {
       className,
@@ -17,10 +17,10 @@ class FreeBird extends Component {
       className
     );
 
-		return (
+    return (
       <Tag {...attributes} className={classes} />
-		);
-	}
+    );
+  }
 }
 
 FreeBird.propTypes = {

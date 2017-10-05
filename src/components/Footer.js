@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 class Footer extends Component {
 
-	render() {
+  render() {
  
     const {
       color,
@@ -20,12 +20,12 @@ class Footer extends Component {
       className,
     );
 
-		return (
+    return (
       <Tag {...attributes} className={classes}>
         {children}
       </Tag>
-		);
-	}
+    );
+  }
 }
 
 Footer.propTypes = {

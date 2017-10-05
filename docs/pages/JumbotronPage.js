@@ -14,7 +14,7 @@ const JumbotronPage = (props) => {
         </p>
       </Jumbotron>
     </div>
-  )
+  );
 };
 
 export default JumbotronPage;

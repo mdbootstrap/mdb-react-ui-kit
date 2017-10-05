@@ -9,7 +9,7 @@ class Button extends React.Component {
     super(props);
     this.state = {
       cursorPos: {}
-    }
+    };
     this.onClick = this.onClick.bind(this);
   }
 
@@ -19,8 +19,8 @@ class Button extends React.Component {
       top: e.clientY,
       left: e.clientX,
       time: Date.now()
-    }
-    this.setState({ cursorPos: cursorPos })
+    };
+    this.setState({ cursorPos: cursorPos });
   }
 
   onClick(e) {
@@ -91,7 +91,7 @@ class Button extends React.Component {
 
 Button.defaultProps = {
   color: 'default',
-  tag: 'button',
+  tag: 'button'
 };
 
 Button.propTypes = {
@@ -110,7 +110,8 @@ Button.propTypes = {
   onClick: PropTypes.func,
   size: PropTypes.string,
   children: PropTypes.node,
-  className: PropTypes.string,
+  tag: PropTypes.string,
+  className: PropTypes.string
 };
 
 export default Button;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Manager, Target, Popper, Arrow } from 'react-popper';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 
@@ -14,8 +15,8 @@ class Tooltip extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      visible: false,
-    }
+      visible: false
+    };
 
     this.show = this.show.bind(this);
     this.hide = this.hide.bind(this);
@@ -34,7 +35,7 @@ class Tooltip extends React.Component {
 
   setVisibility(visible) {
     this.setState(Object.assign({}, this.state, {
-      visible,
+      visible
     }));
   }
 
@@ -54,7 +55,7 @@ class Tooltip extends React.Component {
       if (currentNode !== document) return;
       this.hide();
       document.removeEventListener('touchstart', handler);
-    }
+    };
     document.addEventListener('touchstart', handler);
   }
 
@@ -70,51 +71,65 @@ class Tooltip extends React.Component {
       arrowClass,
       componentTooltip,
       componentClass,
-      tag,
-     } = this.props;
+      tag
+    } = this.props;
 
-     const classes = classNames(
-            className
-        );
+    const classes = classNames(
+      className
+    );
 
-     const componentClasses = classNames(
-            componentClass
-        );
+    const componentClasses = classNames(
+      componentClass
+    );
 
-     const tooltipClasses = classNames(
-            'tooltip fade',
-            placement ? 'bs-tooltip-'+placement : '',
-            this.state.visible ? 'show' : '',
-            tooltipClass
-        );
+    const tooltipClasses = classNames(
+      'tooltip fade',
+      placement ? 'bs-tooltip-'+placement : '',
+      this.state.visible ? 'show' : '',
+      tooltipClass
+    );
 
-     const arrowClasses = classNames(
-            'arrow',
-            arrowClass
-        );
+    const arrowClasses = classNames(
+      'arrow',
+      arrowClass
+    );
     return (
-        <Manager tag={tag} className={classes}>
-          <Target component={component} style={componentStyle} className={componentClasses}
-              onMouseEnter={this.show}
-              onMouseLeave={this.hide}
-              onTouchStart={this.handleTouch}
-          >
-            {children}
-          </Target>
-          {this.state.visible ? <Popper placement={placement} component={componentTooltip}>
-            {({ popperProps }) =>
-              <div {...popperProps} className={tooltipClasses}>
-                <div className="tooltip-inner">{tooltipContent}</div>
-                <Arrow>
-                  {({ arrowProps }) =>
-                    <span {...arrowProps} className={arrowClasses}  />}
-                </Arrow>
-              </div>}
-          </Popper> : false}
+      <Manager tag={tag} className={classes}>
+        <Target component={component} style={componentStyle} className={componentClasses}
+          onMouseEnter={this.show}
+          onMouseLeave={this.hide}
+          onTouchStart={this.handleTouch}
+        >
+          {children}
+        </Target>
+        {this.state.visible ? <Popper placement={placement} component={componentTooltip}>
+          {({ popperProps }) =>
+            <div {...popperProps} className={tooltipClasses}>
+              <div className="tooltip-inner">{tooltipContent}</div>
+              <Arrow>
+                {({ arrowProps }) =>
+                  <span {...arrowProps} className={arrowClasses}  />}
+              </Arrow>
+            </div>}
+        </Popper> : false}
           
 
-        </Manager>
-    )
+      </Manager>
+    );
   }
 }
+
+Tooltip.propTypes = {
+  placement: PropTypes.string,
+  component: PropTypes.string,
+  componentStyle: PropTypes.string,
+  tooltipContent: PropTypes.string,
+  tooltipClass: PropTypes.string,
+  arrowClass: PropTypes.string,
+  componentTooltip: PropTypes.string,
+  componentClass: PropTypes.string,
+  children: PropTypes.node,
+  tag: PropTypes.string,
+  className: PropTypes.string
+};
 export default Tooltip;

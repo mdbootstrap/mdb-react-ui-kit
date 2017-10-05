@@ -11,7 +11,7 @@ const DropdownMenu = (props, context) => {
     'dropdown-menu',
     {
       'dropdown-menu-right': right,
-      show: context.isOpen,
+      show: context.isOpen
     },
     className
   );
@@ -43,17 +43,17 @@ DropdownMenu.propTypes = {
   children: PropTypes.node.isRequired,
   right: PropTypes.bool,
   flip: PropTypes.bool,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 DropdownMenu.defaultProps = {
   tag: 'div',
-  flip: true,
+  flip: true
 };
 
 DropdownMenu.contextTypes = {
   isOpen: PropTypes.bool.isRequired,
-  dropup: PropTypes.bool.isRequired,
+  dropup: PropTypes.bool.isRequired
 };
 
 export default DropdownMenu;

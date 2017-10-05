@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 class Container extends Component {
 
-	render() {
+  render() {
  
     const {
       fluid,
@@ -18,21 +18,21 @@ class Container extends Component {
       className
     );
 
-		return (
+    return (
       <Tag {...attributes} className={classes} />
-		);
-	}
+    );
+  }
 }
 
 Container.propTypes = {
   fluid: PropTypes.bool,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 Container.defaultProps = {
   tag: 'div',
-  fluid: false,
+  fluid: false
 };
 
 export default Container;

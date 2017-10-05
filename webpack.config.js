@@ -32,7 +32,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: 'public/index.html'
     })
-  ],
+  ]
 };
 
 module.exports = config;

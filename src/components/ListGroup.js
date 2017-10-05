@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 class ListGroup extends Component {
 
-	render() {
+  render() {
  
     const {
       children,
@@ -18,12 +18,12 @@ class ListGroup extends Component {
       className,
     );
 
-		return (
+    return (
       <Tag {...attributes} className={classes}>
         {children}
       </Tag>
-		);
-	}
+    );
+  }
 }
 
 ListGroup.propTypes = {

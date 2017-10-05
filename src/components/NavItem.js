@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 class NavItem extends Component {
 
-	render() {
+  render() {
  
     const {
       children,
@@ -18,12 +18,12 @@ class NavItem extends Component {
       className,
     );
 
-		return (
+    return (
       <Tag {...attributes} className={classes}>
         {children}
       </Tag>
-		);
-	}
+    );
+  }
 }
 
 NavItem.propTypes = {

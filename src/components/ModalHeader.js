@@ -36,20 +36,20 @@ class ModalHeader extends React.Component {
         {closeButton}
       </div>
     );
-  };
-};
+  }
+}
 
 ModalHeader.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   toggle: PropTypes.func,
   className: PropTypes.string,
   children: PropTypes.node,
-  closeAriaLabel: PropTypes.string,
+  closeAriaLabel: PropTypes.string
 };
 
 ModalHeader.defaultProps = {
   tag: 'h4',
-  closeAriaLabel: 'Close',
+  closeAriaLabel: 'Close'
 };
 
 export default ModalHeader;

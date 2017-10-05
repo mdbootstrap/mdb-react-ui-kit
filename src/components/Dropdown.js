@@ -1,4 +1,3 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
@@ -21,7 +20,7 @@ class Dropdown extends React.Component {
     return {
       toggle: this.props.toggle,
       isOpen: this.props.isOpen,
-      dropup: this.props.dropup,
+      dropup: this.props.dropup
     };
   }
 
@@ -168,17 +167,17 @@ Dropdown.propTypes = {
   tag: PropTypes.string,
   toggle: PropTypes.func,
   children: PropTypes.node,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 Dropdown.defaultProps = {
   isOpen: false,
   dropup: false,
-  tag: 'div',
+  tag: 'div'
 };
 Dropdown.childContextTypes = {
   toggle: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
-  dropup: PropTypes.bool.isRequired,
+  dropup: PropTypes.bool.isRequired
 };
 
 export default Dropdown;

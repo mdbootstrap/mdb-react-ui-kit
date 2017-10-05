@@ -6,77 +6,77 @@ const ButtonPage = (props) => {
     <div className="container-fluid text-center">
       <div className="">
 
-<Button disabled color="primary">Primary disabled</Button>
-<Button disabled href="#" color="primary">Primary href</Button>
-<Button active href="#" color="primary">Primary haref</Button>
-<Button active color="primary">Primary active</Button>
-<Button color="primary">Primary</Button>
+        <Button disabled color="primary">Primary disabled</Button>
+        <Button disabled href="#" color="primary">Primary href</Button>
+        <Button active href="#" color="primary">Primary haref</Button>
+        <Button active color="primary">Primary active</Button>
+        <Button color="primary">Primary</Button>
 
-<Button>Default</Button>
+        <Button>Default</Button>
 
-<Button color="secondary">Secondary</Button>
+        <Button color="secondary">Secondary</Button>
 
-<Button color="success">Success</Button>
+        <Button color="success">Success</Button>
 
-<Button color="info">Info</Button>
+        <Button color="info">Info</Button>
 
-<Button color="warning">Warning</Button>
+        <Button color="warning">Warning</Button>
 
-<Button color="danger">Danger</Button>
-<br/>
+        <Button color="danger">Danger</Button>
+        <br/>
 
-<Button color="elegant">Elegant</Button>
+        <Button color="elegant">Elegant</Button>
 
-<Button color="unique">Unique</Button>
+        <Button color="unique">Unique</Button>
 
-<Button color="pink">Pink</Button>
+        <Button color="pink">Pink</Button>
 
-<Button color="purple">Purple</Button>
+        <Button color="purple">Purple</Button>
 
-<Button color="deep-purple">Deep-purple</Button>
+        <Button color="deep-purple">Deep-purple</Button>
 
-<Button color="indigo">Indigo</Button>
+        <Button color="indigo">Indigo</Button>
 
-<Button color="light-blue">Light blue</Button>
+        <Button color="light-blue">Light blue</Button>
 
-<Button color="cyan">Cyan</Button>
+        <Button color="cyan">Cyan</Button>
 
-<Button color="dark-green">Dark-green</Button>
+        <Button color="dark-green">Dark-green</Button>
 
-<Button color="light-green">Light-green</Button>
+        <Button color="light-green">Light-green</Button>
 
-<Button color="yellow">Yellow</Button>
+        <Button color="yellow">Yellow</Button>
 
-<Button color="amber">Amber</Button>
+        <Button color="amber">Amber</Button>
 
-<Button color="deep-orange">Deep-orange</Button>
+        <Button color="deep-orange">Deep-orange</Button>
 
-<Button color="brown">Brown</Button>
+        <Button color="brown">Brown</Button>
 
-<Button color="blue-grey">Blue-grey</Button>
+        <Button color="blue-grey">Blue-grey</Button>
 
-<Button color="mdb-color">MDB</Button>
-<br/>
+        <Button color="mdb-color">MDB</Button>
+        <br/>
 
-<Button outline color="primary">Primary</Button>
-<Button outline >Default</Button>
-<Button outline color="secondary">Secondary</Button>
-<Button outline color="success">Success</Button>
-<Button outline color="info">Info</Button>
-<Button outline color="warning">Warning</Button>
-<Button outline color="danger">Danger</Button>
-<br/>
-<Button color="primary"><Fa icon="magic" className="mr-1"/> Left</Button>
-<Button color="default">Right <Fa icon="magic" className="ml-1"/></Button>
-<br/>
-<Button color="primary" href="#">Link</Button>
-<Button color="primary" type="submit">Button</Button>
+        <Button outline color="primary">Primary</Button>
+        <Button outline >Default</Button>
+        <Button outline color="secondary">Secondary</Button>
+        <Button outline color="success">Success</Button>
+        <Button outline color="info">Info</Button>
+        <Button outline color="warning">Warning</Button>
+        <Button outline color="danger">Danger</Button>
+        <br/>
+        <Button color="primary"><Fa icon="magic" className="mr-1"/> Left</Button>
+        <Button color="default">Right <Fa icon="magic" className="ml-1"/></Button>
+        <br/>
+        <Button color="primary" href="#">Link</Button>
+        <Button color="primary" type="submit">Button</Button>
 
-<br/>
+        <br/>
 
-<Button block >Block level button</Button>
-<Button block color="primary">Block level button</Button>
-<br/>
+        <Button block >Block level button</Button>
+        <Button block color="primary">Block level button</Button>
+        <br/>
         <Button color="light-green">
           light-green
         </Button>
@@ -143,7 +143,7 @@ const ButtonPage = (props) => {
         </ButtonGroup>
       </div>
     </div>
-  )
+  );
 };
 
 export default ButtonPage;

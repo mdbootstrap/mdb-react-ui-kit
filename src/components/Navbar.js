@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -25,9 +25,9 @@ class Navbar extends Component {
 
   handleScroll() {
     if(window.pageYOffset > scrollingNavbarOffset) {
-      this.setState({isCollapsed: true})
+      this.setState({isCollapsed: true});
     } else {
-      this.setState({isCollapsed: false})
+      this.setState({isCollapsed: false});
     }
   }
 
@@ -43,7 +43,7 @@ class Navbar extends Component {
     }
   }
 
-	render() {
+  render() {
 
     const {
       expand,
@@ -71,10 +71,10 @@ class Navbar extends Component {
       className
     );
 
-		return (
+    return (
       <Tag {...attributes} className={classes} ref="navbar" />
-		);
-	}
+    );
+  }
 }
 
 Navbar.propTypes = {
@@ -86,13 +86,13 @@ Navbar.propTypes = {
   color: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
-  expand: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  expand: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
 };
 
 Navbar.defaultProps = {
   tag: 'nav',
   expand: false,
-  scrolling: false,
+  scrolling: false
 };
 
 export default Navbar;

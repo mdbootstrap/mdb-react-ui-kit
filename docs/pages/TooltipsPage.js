@@ -7,7 +7,7 @@ class TooltipsPage extends React.Component {
 
   render() {
     return (
-      <div style={{display: "flex"}}>
+      <div style={{display: 'flex'}}>
         <Tooltip 
           placement="top" 
           componentClass="btn btn-primary"
@@ -41,7 +41,7 @@ class TooltipsPage extends React.Component {
             Tooltip on left
         </Tooltip>
       </div>
-    )
+    );
   }
 }
 export default TooltipsPage;
