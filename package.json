@@ -21,7 +21,8 @@
   "scripts": {
     "start": "webpack-dev-server --open",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    // "test": "react-scripts test --env=jsdom",
+    "test": "./node_modules/jshint/bin/jshint ./docs/index.js",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
@@ -33,6 +34,7 @@
     "babel-preset-react-app": "^0.2.1",
     "css-loader": "^0.28.4",
     "html-webpack-plugin": "^2.30.1",
+    "jshint": "^2.9.5",
     "mdbootstrap": "^4.4.1",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
