@@ -21,8 +21,7 @@
   "scripts": {
     "start": "webpack-dev-server --open",
     "build": "react-scripts build",
-    // "test": "react-scripts test --env=jsdom",
-    "test": "./node_modules/jshint/bin/jshint ./docs/index.js",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
