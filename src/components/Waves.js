@@ -77,6 +77,7 @@ Waves.propTypes = {
   outline: PropTypes.bool,
   flat: PropTypes.bool,
   animate: PropTypes.bool,
+  cursorPos: PropTypes.object,
   children: PropTypes.node
 };
 

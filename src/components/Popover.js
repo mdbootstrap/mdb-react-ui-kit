@@ -1,6 +1,6 @@
 import React from 'react';
 import { Manager, Target, Popper, Arrow } from 'react-popper';
-import ReactDOM, { findDOMNode } from 'react-dom';
+import { findDOMNode } from 'react-dom';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Transition from 'react-motion-ui-pack';
@@ -86,8 +86,6 @@ class Popover extends React.Component {
       placement ? 'bs-popover-'+placement : '',
       popoverClass
     );
-
-    console.log(placement);
 
     const arrowClasses = classNames(
       'arrow',
