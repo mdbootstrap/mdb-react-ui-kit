@@ -25,6 +25,7 @@
       "no-unused-vars": 0,
       "no-console": 0,
       "react/no-find-dom-node": 0,
+      "react/no-string-refs": 0,
       "comma-dangle": [
         "warn",
         "never"
