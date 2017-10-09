@@ -25,9 +25,9 @@ class Carousel extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.state = {
+    this.setState({
       activeItem: nextProps.activeItem
-    };
+    });
   }
 
   render() {
