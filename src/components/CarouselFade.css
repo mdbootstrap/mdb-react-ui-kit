@@ -1,39 +1,25 @@
-.carousel-fade .carousel-item {
-  opacity: 0;
-  -webkit-transition-duration: .6s;
-  transition-duration: .6s;
-  -webkit-transition-property: opacity;
-  transition-property: opacity;
+.carousel {
+  overflow: hidden;
 }
 
-.carousel-fade .carousel-item.active,
-.carousel-fade .carousel-item-next.carousel-item-left,
-.carousel-fade .carousel-item-prev.carousel-item-right {
+.carousel-inner {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-item {
+  display: block !important;
+  visibility: hidden;
+  height: 0;
+  opacity: 0;
+  transition: transform 0ms ease-in-out, opacity .6s ease-in;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+.carousel-item.active {
   opacity: 1;
-}
-
-.carousel-fade .active.carousel-item-left,
-.carousel-fade .active.carousel-item-right {
-  opacity: 0;
-}
-
-.carousel-fade .carousel-item-next,
-.carousel-fade .carousel-item-prev,
-.carousel-fade .carousel-item.active,
-.carousel-fade .active.carousel-item-left,
-.carousel-fade .active.carousel-item-prev {
-  -webkit-transform: translateX(0);
-  -ms-transform: translateX(0);
-  transform: translateX(0);
-}
-
-@supports (transform-style: preserve-3d) {
-  .carousel-fade .carousel-item-next,
-  .carousel-fade .carousel-item-prev,
-  .carousel-fade .carousel-item.active,
-  .carousel-fade .active.carousel-item-left,
-  .carousel-fade .active.carousel-item-prev {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
+  left: auto;
+  height: auto;
+  visibility: visible;
+  transform: translate3d(0, 0, 0) !important;
 }

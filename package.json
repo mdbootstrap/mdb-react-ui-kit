@@ -16,7 +16,6 @@
     "react-router-dom": "^4.2.0",
     "react-scripts": "1.0.11",
     "react-toastify": "^2.0.0-rc.3",
-    "react-transition-group": "^1.2.0"
   },
   "scripts": {
     "start": "webpack-dev-server --open",
