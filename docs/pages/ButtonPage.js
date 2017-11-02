@@ -83,35 +83,23 @@ const ButtonPage = (props) => {
         <Button color="mdb">
           MDB
         </Button>
-        <Button gradient="peach" rounded>
-          peach
-        </Button>
-        <Button gradient="aqua">
-          aqua
-        </Button>
         <Button color="success" outline>
-          aqua
+          Success
         </Button> 
         <Button color="danger" outline>
-          aqua
+          Danger
         </Button>
         <Button color="warning" outline>
-          aqua
+          Warning
         </Button>
-        <Button rounded outline>
-          aqua
+        <Button rounded outline color="info">
+          Rounded Outline
         </Button>
-        <Button gradient="purple" floating size="lg">
-          aqua
-        </Button>
-        <Button gradient="blue" floating size="sm">
-          aqua
-        </Button>
-        <Button color="" flat size="lg">
-          aqua
+        <Button flat size="lg">
+          Flat
         </Button>
         <Button color="default" block size="lg">
-          aqua
+          Default
         </Button>
       </div>
       <div className="">
