@@ -15,7 +15,7 @@
     "react-popper": "^0.7.2",
     "react-router-dom": "^4.2.0",
     "react-scripts": "1.0.11",
-    "react-toastify": "^2.0.0-rc.3"
+    "react-toastify": "^3.1.0"
   },
   "scripts": {
     "start": "webpack-dev-server --open",
@@ -34,7 +34,7 @@
     "eslint": "^4.8.0",
     "html-webpack-plugin": "^2.30.1",
     "jshint": "^2.9.5",
-    "mdbootstrap": "^4.4.3",
+    "mdbootstrap": "4.4.3",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
     "webpack": "^3.5.5",
