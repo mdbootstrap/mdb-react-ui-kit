@@ -65,7 +65,7 @@ class CarouselPage extends Component {
                 </CarouselItem>
                 <CarouselItem itemId="2">
                   <div className="view hm-black-strong">
-                    <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(99).jpg" alt="First slide" />
+                    <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(99).jpg" alt="Second slide" />
                     <div className="mask"></div>
                   </div>
                   <CarouselCaption>
@@ -75,7 +75,7 @@ class CarouselPage extends Component {
                 </CarouselItem>
                 <CarouselItem itemId="3">
                   <div className="view hm-black-slight">
-                    <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(17).jpg" alt="First slide" />
+                    <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(17).jpg" alt="Third slide" />
                     <div className="mask"></div>
                   </div>
                   <CarouselCaption>
