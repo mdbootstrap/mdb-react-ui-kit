@@ -59,7 +59,7 @@ const defaultProps = {
   backdrop: true,
   keyboard: true,
   zIndex: 1050,
-  fade: true,
+  fade: false,
   modalTransitionTimeout: 300,
   backdropTransitionTimeout: 150
 };
@@ -258,7 +258,7 @@ class Modal extends React.Component {
 
     if (this.hasTransition()) {
       return (
-        <TransitionGroup component="div" className={mapToCssModules(wrapClassName)}>
+        <TransitionGroup component={null} className={mapToCssModules(wrapClassName)}>
           {isOpen && (
             <Fade
               key="modal-dialog"
