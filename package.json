@@ -34,7 +34,7 @@
     "eslint": "^4.8.0",
     "html-webpack-plugin": "^2.30.1",
     "jshint": "^2.9.5",
-    "mdbootstrap": "^4.4.3",
+    "mdbootstrap": "4.4.3",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
     "webpack": "^3.5.5",

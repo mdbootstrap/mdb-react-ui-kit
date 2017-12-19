@@ -26,6 +26,7 @@ import TooltipsPage from './pages/TooltipsPage';
 import FooterPage from './pages/FooterPage';
 import MasksPage from './pages/MasksPage';
 import DropdownPage from './pages/DropdownPage';
+import VideoCarouselPage from './pages/VideoCarouselPage';
 
 class Routes extends React.Component {
   render() {
@@ -56,6 +57,7 @@ class Routes extends React.Component {
         <Route path='/javascript/modal' component={ModalPage} />
         <Route path='/javascript/carousel' component={CarouselPage} />
         <Route path='/javascript/collapse' component={CollapsePage} />
+        <Route path='/javascript/videocarousel' component={VideoCarouselPage} />        
         <Route path='/css/masks' component={MasksPage} />
         <Route render = { function() {
           return <h1>Not Found</h1>;
