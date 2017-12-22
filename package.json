@@ -1,13 +1,15 @@
 {
   "name": "mdbreact",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "author": "MDBootstrap",
   "license": "MIT",
   "repository": "https://github.com/mdbootstrap/React-Bootstrap-with-Material-Design",
+  "main": "dist/mdbreact.js",
   "dependencies": {
-    "bootstrap": "4.0.0-beta",
+    "bootstrap": "4.0.0-beta.2",
     "classnames": "^2.2.5",
     "font-awesome": "^4.7.0",
+    "glamor": "^2.20.40",
     "outy": "^0.1.2",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -15,13 +17,12 @@
     "react-popper": "^0.7.2",
     "react-router-dom": "^4.2.0",
     "react-scripts": "1.0.11",
-    "react-toastify": "^2.0.0-rc.3"
+    "react-toastify": "^3.1.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --open",
-    "build": "react-scripts build",
-    "test": "eslint **/*.js",
-    "eject": "react-scripts eject"
+    "build": "webpack",
+    "start": "webpack-dev-server --config ./webpack.dev.config.js --watch --open",
+    "test": "eslint **/*.js"
   },
   "devDependencies": {
     "babel-cli": "^6.14.0",
@@ -32,9 +33,10 @@
     "babel-preset-react-app": "^0.2.1",
     "css-loader": "^0.28.4",
     "eslint": "^4.8.0",
+    "eslint-plugin-react": "^7.5.1",
     "html-webpack-plugin": "^2.30.1",
     "jshint": "^2.9.5",
-    "mdbootstrap": "^4.4.1",
+    "mdbootstrap": "^4.4.3",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
     "webpack": "^3.5.5",
