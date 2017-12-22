@@ -10598,7 +10598,7 @@ var defaultProps = {
   backdrop: true,
   keyboard: true,
   zIndex: 1050,
-  fade: true,
+  fade: false,
   modalTransitionTimeout: 300,
   backdropTransitionTimeout: 150
 };
@@ -10812,7 +10812,7 @@ var Modal = function (_React$Component) {
       if (this.hasTransition()) {
         return _react2.default.createElement(
           _reactTransitionGroup.TransitionGroup,
-          { component: 'div', className: (0, _utils.mapToCssModules)(wrapClassName) },
+          { component: null, className: (0, _utils.mapToCssModules)(wrapClassName) },
           isOpen && _react2.default.createElement(
             _Fade2.default,
             _extends({
