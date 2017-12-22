@@ -21,8 +21,7 @@
     "react-toastify": "^3.1.0"
   },
   "scripts": {
-    "build": "rollup -c",
-    "prebuild": "webpack",
+    "build": "webpack",
     "start": "webpack-dev-server --config ./webpack.dev.config.js --watch --open",
     "test": "eslint **/*.js"
   },
