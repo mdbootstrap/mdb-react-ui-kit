@@ -38,7 +38,7 @@ class TextField extends React.Component {
   componentWillReceiveProps(nextProps) {
     // update innerValue when new value is received to handle programmatic
     // changes to input box
-    if ('value' in nextProps) this.setState({ innerValue: nextProps.value });
+    if ('value' in nextProps && nextProps.value !== this.state.value) this.setState({ innerValue: nextProps.value });
   }
 
   onBlur(ev) {
@@ -159,6 +159,7 @@ class TextField extends React.Component {
         <Tag 
           {...attributes} 
           id={id}
+          value={this.state.innerValue}
           className={classes} 
           ref={el => { this.inputElRef = el; }}
           placeholder={hint}
