@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM, { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
 
 require('./Waves.css');
@@ -18,7 +19,7 @@ class Waves extends React.Component {
 
   render () {
     return (
-      <div className={'Ripple ' + (this.props.outline || this.props.flat ? 'Ripple-outline ' : '') + (this.state.animate ? 'is-reppling' : '')} ref="ripple" style={{
+      <div className={'Ripple ' + (this.props.outline || this.props.flat ? 'Ripple-outline ' : '') + (this.state.animate ? 'is-reppling' : '')} style={{
         top: this.state.top+'px',
         left: this.state.left+'px',
         width: this.state.width+'px',
@@ -31,8 +32,8 @@ class Waves extends React.Component {
   reppling(cursorPos){
 
     // Get the element
-    let $ripple = this.refs.ripple;
-    let $button = $ripple.parentElement;
+    let $ripple = ReactDOM.findDOMNode(this);
+    let $button = $ripple.parentNode;
 
     let buttonStyle = window.getComputedStyle($button);
     let buttonPos = $button.getBoundingClientRect();
