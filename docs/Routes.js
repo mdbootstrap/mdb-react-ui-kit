@@ -15,6 +15,7 @@ import InputPage from './pages/InputPage';
 import MediaPage from './pages/MediaPage';
 import JumbotronPage from './pages/JumbotronPage';
 import AlertPage from './pages/AlertPage';
+import FormsPage from './pages/FormsPage';
 import CardsPage from './pages/CardsPage';
 import PaginationPage from './pages/PaginationPage';
 import PopoverPage from './pages/PopoverPage';
@@ -27,6 +28,7 @@ import FooterPage from './pages/FooterPage';
 import MasksPage from './pages/MasksPage';
 import DropdownPage from './pages/DropdownPage';
 import VideoCarouselPage from './pages/VideoCarouselPage';
+import HoverPage from './pages/HoverPage';
 
 class Routes extends React.Component {
   render() {
@@ -36,14 +38,16 @@ class Routes extends React.Component {
         <Route exact path='/css' component={CSSPage} />
         <Route exact path='/css/table' component={TablePage} />
         <Route exact path='/components' component={ComponentsPage} />
+        <Route path='/css/hover' component={HoverPage} />
+        <Route path='/css/icons' component={FaPage} />
+        <Route path='/css/jumbotron' component={JumbotronPage} />
+        <Route path='/css/masks' component={MasksPage} />
         <Route path='/components/badge' component={BadgePage} />
         <Route path='/components/breadcrumb' component={BreadcrumbPage} />
         <Route path='/components/media' component={MediaPage} />
         <Route path='/components/input' component={InputPage} />
         <Route path='/components/alert' component={AlertPage} />
         <Route path='/components/dropdown' component={DropdownPage} />
-        <Route path='/css/icons' component={FaPage} />
-        <Route path='/css/jumbotron' component={JumbotronPage} />
         <Route path='/components/cards' component={CardsPage} />
         <Route path='/components/buttons' component={ButtonPage} />
         <Route path='/components/progress' component={ProgressPage} />
@@ -53,12 +57,12 @@ class Routes extends React.Component {
         <Route path='/components/tabs' component={TabsPage} />
         <Route path='/components/tooltips' component={TooltipsPage} />
         <Route path='/components/footer' component={FooterPage} />
+        <Route path='/components/forms' component={FormsPage} />
         <Route exact path='/javascript' component={JavaScriptPage} />
         <Route path='/javascript/modal' component={ModalPage} />
         <Route path='/javascript/carousel' component={CarouselPage} />
         <Route path='/javascript/collapse' component={CollapsePage} />
-        <Route path='/javascript/videocarousel' component={VideoCarouselPage} />        
-        <Route path='/css/masks' component={MasksPage} />
+        <Route path='/javascript/videocarousel' component={VideoCarouselPage} />
         <Route render = { function() {
           return <h1>Not Found</h1>;
         }} />
