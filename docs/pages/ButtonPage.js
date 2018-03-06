@@ -8,7 +8,7 @@ const ButtonPage = (props) => {
 
         <Button disabled color="primary">Primary disabled</Button>
         <Button disabled href="#" color="primary">Primary href</Button>
-        <Button active href="#" color="primary">Primary haref</Button>
+        <Button active href="#" color="primary">Primary href</Button>
         <Button active color="primary">Primary active</Button>
         <Button color="primary">Primary</Button>
 
@@ -85,18 +85,12 @@ const ButtonPage = (props) => {
         </Button>
         <Button color="success" outline>
           Success
-        </Button> 
+        </Button>
         <Button color="danger" outline>
           Danger
         </Button>
         <Button color="warning" outline>
           Warning
-        </Button>
-        <Button rounded outline color="info">
-          Rounded Outline
-        </Button>
-        <Button flat size="lg">
-          Flat
         </Button>
         <Button color="default" block size="lg">
           Default

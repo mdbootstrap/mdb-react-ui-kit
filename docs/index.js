@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'mdbootstrap/css/mdb.min.css';
+import '../dist/css/mdb.css';
 import './index.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import App from './App';

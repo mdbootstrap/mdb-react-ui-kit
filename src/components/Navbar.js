@@ -19,7 +19,10 @@ class Navbar extends Component {
 
   constructor(props, refs) {
     super(props, refs);
-    this.state = {isCollapsed: false};
+    this.state = {
+      isCollapsed: false,
+      navbar: 'navbar'
+    };
     this.refs = {};
   }
 
@@ -55,6 +58,7 @@ class Navbar extends Component {
       color,
       className,
       tag: Tag,
+      double,
       ...attributes
     } = this.props;
 
@@ -68,11 +72,12 @@ class Navbar extends Component {
       scrolling ? 'scrolling-navbar' : '',
       this.state.isCollapsed ? 'top-nav-collapse' : '',
       color ? color : '',
+      double ? 'double-nav': '',
       className
     );
 
     return (
-      <Tag {...attributes} className={classes} ref="navbar" />
+      <Tag {...attributes} className={classes} role="navigation" ref={this.state.navbar} />
     );
   }
 }

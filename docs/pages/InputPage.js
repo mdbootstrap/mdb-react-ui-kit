@@ -31,8 +31,8 @@ class InputPage extends React.Component {
             <Button>Login</Button>
           </FormInline>
 
-          <Input type="textarea" label="Icon Prefix" icon="pencil"/>
-          <Input type="textarea" label="Basic textarea"/>
+          <Input type="textarea" label="Icon Prefix" rows="2" icon="pencil"/>
+          <Input type="textarea" label="Basic textarea" rows="2"/>
 
         </div>
       </div>

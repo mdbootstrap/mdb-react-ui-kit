@@ -36,7 +36,7 @@ class Table extends React.Component {
     // }
 
     return (
-      <table {...attributes} className={classes}> {this.props.children}</table>
+      <table {...attributes} className={classes}>{this.props.children}</table>
     );
   }
 }

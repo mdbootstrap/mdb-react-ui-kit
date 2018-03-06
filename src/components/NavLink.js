@@ -1,29 +1,66 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import Waves from './Waves';
 
 class NavLink extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cursorPos: {}
+    };
+    this.onClick = this.onClick.bind(this);
+  }
+
+  handleClick(e){
+    // Get Cursor Position
+    e.preventDefault();
+    let cursorPos = {
+      top: e.clientY,
+      left: e.clientX,
+      time: Date.now()
+    };
+    this.setState({ cursorPos: cursorPos });
+  }
+
+  onClick(e) {
+    if (this.props.disabled) {
+      e.preventDefault();
+      return;
+    }
+    if (this.props.onClick) {
+      this.props.onClick(e);
+    }
+  }
 
   render() {
- 
+
     const {
       children,
       className,
-      active,
       tag: Tag,
+      href,
+      disabled,
+      innerRef,
       ...attributes
     } = this.props;
 
     const classes = classNames(
       'nav-link',
-      attributes.disabled ? 'disabled' : '',
-      active ? 'active' : '',
+      disabled ? 'disabled' : 'Ripple-parent',
       className
     );
 
     return (
-      <Tag {...attributes} className={classes}>
+      <Tag className={classes} href={href}
+      onClick={this.onClick}
+      onMouseDown={ this.handleClick.bind(this) }
+      onTouchStart={ this.handleClick.bind(this) }
+      ref={innerRef}
+      {...attributes}
+      >
         {children}
+        {this.props.disabled ? false : <Waves cursorPos={ this.state.cursorPos } />}
       </Tag>
     );
   }
@@ -32,13 +69,15 @@ class NavLink extends Component {
 NavLink.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
-  active: PropTypes.bool,
   children: PropTypes.node,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  tag: PropTypes.string,
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  href: PropTypes.string
 };
 
 NavLink.defaultProps = {
-  tag: 'a'
+  tag: 'a',
+  href: '#'
 };
 
 export default NavLink;
