@@ -31,6 +31,9 @@ class ComponentsPage extends React.Component {
                   <NavLink to="/components/dropdown">Dropdown <Fa icon="angle-right" /></NavLink>
                 </li>
                 <li>
+                  <NavLink to="/components/footer">Footer <Fa icon="angle-right" /></NavLink>
+                </li>
+                <li>
                   <NavLink to="/components/forms">Forms <Fa icon="angle-right" /><Badge pill color="danger">NEW</Badge></NavLink>
                 </li>
                 <li>
@@ -56,9 +59,6 @@ class ComponentsPage extends React.Component {
                 </li>
                 <li>
                   <NavLink to="/components/tooltips">Tooltips <Fa icon="angle-right" /></NavLink>
-                </li>
-                <li>
-                  <NavLink to="/components/footer">Footer <Fa icon="angle-right" /></NavLink>
                 </li>
               </ul>
             </Jumbotron>
