@@ -9,7 +9,7 @@ import BreadcrumbPage from './pages/BreadcrumbPage';
 import FaPage from './pages/FaPage';
 import ComponentsPage from './pages/ComponentsPage';
 import ModalPage from './pages/ModalPage';
-import JavaScriptPage from './pages/JavaScriptPage';
+import AdvancedPage from './pages/AdvancedPage';
 import ProgressPage from './pages/ProgressPage';
 import InputPage from './pages/InputPage';
 import MediaPage from './pages/MediaPage';
@@ -56,11 +56,11 @@ class Routes extends React.Component {
         <Route path='/components/tooltips' component={TooltipsPage} />
         <Route path='/components/footer' component={FooterPage} />
         <Route path='/components/forms' component={FormsPage} />
-        <Route exact path='/javascript' component={JavaScriptPage} />
-        <Route path='/javascript/modal' component={ModalPage} />
-        <Route path='/javascript/carousel' component={CarouselPage} />
-        <Route path='/javascript/collapse' component={CollapsePage} />
-        <Route path='/javascript/videocarousel' component={VideoCarouselPage} />
+        <Route exact path='/advanced' component={AdvancedPage} />
+        <Route path='/advanced/modal' component={ModalPage} />
+        <Route path='/advanced/carousel' component={CarouselPage} />
+        <Route path='/advanced/collapse' component={CollapsePage} />
+        <Route path='/advanced/videocarousel' component={VideoCarouselPage} />
         <Route render = { function() {
           return <h1>Not Found</h1>;
         }} />
