@@ -22,7 +22,6 @@ import PopoverPage from './pages/PopoverPage';
 import ListGroupPage from './pages/ListGroupPage';
 import CarouselPage from './pages/CarouselPage';
 import CollapsePage from './pages/CollapsePage';
-import TabsPage from './pages/TabsPage';
 import TooltipsPage from './pages/TooltipsPage';
 import FooterPage from './pages/FooterPage';
 import MasksPage from './pages/MasksPage';
@@ -54,7 +53,6 @@ class Routes extends React.Component {
         <Route path='/components/popover' component={PopoverPage} />
         <Route path='/components/pagination' component={PaginationPage} />
         <Route path='/components/list-group' component={ListGroupPage} />
-        <Route path='/components/tabs' component={TabsPage} />
         <Route path='/components/tooltips' component={TooltipsPage} />
         <Route path='/components/footer' component={FooterPage} />
         <Route path='/components/forms' component={FormsPage} />

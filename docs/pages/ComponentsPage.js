@@ -60,9 +60,6 @@ class ComponentsPage extends React.Component {
                 <li>
                   <NavLink to="/components/tooltips">Tooltip <Fa icon="angle-right" /></NavLink>
                 </li>
-                <li>
-                  <NavLink to="/components/tabs">Tabs <Fa icon="angle-right" /></NavLink>
-                </li>
               </ul>
             </Jumbotron>
           </Col>
