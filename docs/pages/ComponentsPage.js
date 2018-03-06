@@ -46,6 +46,9 @@ class ComponentsPage extends React.Component {
                   <NavLink to="/components/pagination">Pagination <Fa icon="angle-right" /></NavLink>
                 </li>
                 <li>
+                  <NavLink to="/components/popover">Popover <Fa icon="angle-right" /></NavLink>
+                </li>
+                <li>
                   <NavLink to="/components/progress">Progress <Fa icon="angle-right" /></NavLink>
                 </li>
                 <li>
@@ -56,9 +59,6 @@ class ComponentsPage extends React.Component {
                 </li>
                 <li>
                   <NavLink to="/components/footer">Footer <Fa icon="angle-right" /></NavLink>
-                </li>
-                <li>
-                  <NavLink to="/components/popover">Popover <Fa icon="angle-right" /></NavLink>
                 </li>
               </ul>
             </Jumbotron>
