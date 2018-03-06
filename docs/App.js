@@ -30,7 +30,7 @@ class App extends Component {
 
   render() {
     const collapsed = this.state.collapsed;
-    const overlay = <div id="sidenav-overlay" style={{backgroundColor: 'transparent'}} onClick={this.handleNavbarClick}/>
+    const overlay = <div id="navbar-overlay" style={{backgroundColor: 'transparent'}} onClick={this.handleNavbarClick}/>
     return (
       <Router>
         <div className="flyout">
