@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Waves from './Waves';
 
+const Link = require('react-router-dom').NavLink;
+
+
 class NavLink extends Component {
   constructor(props) {
     super(props);
@@ -38,10 +41,8 @@ class NavLink extends Component {
     const {
       children,
       className,
-      tag: Tag,
-      href,
       disabled,
-      innerRef,
+      to,
       ...attributes
     } = this.props;
 
@@ -52,16 +53,16 @@ class NavLink extends Component {
     );
 
     return (
-      <Tag className={classes} href={href}
-      onClick={this.onClick}
-      onMouseDown={ this.handleClick.bind(this) }
-      onTouchStart={ this.handleClick.bind(this) }
-      ref={innerRef}
-      {...attributes}
+      <Link className={classes}
+            onClick={this.onClick}
+            onMouseDown={ this.handleClick.bind(this) }
+            onTouchStart={ this.handleClick.bind(this) }
+            to={this.props.to}
+            {...attributes}
       >
         {children}
         {this.props.disabled ? false : <Waves cursorPos={ this.state.cursorPos } />}
-      </Tag>
+      </Link>
     );
   }
 }
@@ -70,14 +71,8 @@ NavLink.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
   children: PropTypes.node,
-  tag: PropTypes.string,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  href: PropTypes.string
+  to: PropTypes.string
 };
 
-NavLink.defaultProps = {
-  tag: 'a',
-  href: '#'
-};
 
 export default NavLink;
