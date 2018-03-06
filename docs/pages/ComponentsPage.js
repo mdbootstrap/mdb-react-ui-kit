@@ -49,6 +49,9 @@ class ComponentsPage extends React.Component {
                   <NavLink to="/components/progress">Progress <Fa icon="angle-right" /></NavLink>
                 </li>
                 <li>
+                  <NavLink to="/components/tabs">Tabs <Fa icon="angle-right" /></NavLink>
+                </li>
+                <li>
                   <NavLink to="/components/tooltips">Tooltips <Fa icon="angle-right" /></NavLink>
                 </li>
                 <li>
@@ -56,12 +59,6 @@ class ComponentsPage extends React.Component {
                 </li>
                 <li>
                   <NavLink to="/components/popover">Popover <Fa icon="angle-right" /></NavLink>
-                </li>
-                <li>
-                  <NavLink to="/components/tooltips">Tooltip <Fa icon="angle-right" /></NavLink>
-                </li>
-                <li>
-                  <NavLink to="/components/tabs">Tabs <Fa icon="angle-right" /></NavLink>
                 </li>
               </ul>
             </Jumbotron>
