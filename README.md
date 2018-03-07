@@ -91,6 +91,7 @@ Use HTML-based syntax for raw JavaScript.
 We are web developers, we really know which issues are the most annoying in our daily work. Helpers included in MDB will solve lot of them and make your life easiers. 
 
 **Reactstrap**
+
 In our project we included Reactstrap - React Bootstrap 4 library that favors composition and control. 
 
 **Detailed documentation:**  
