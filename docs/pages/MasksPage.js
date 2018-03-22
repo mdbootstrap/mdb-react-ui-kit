@@ -7,59 +7,58 @@ class MasksPage extends React.Component {
   render () {
     return (
       <Container>
-        <Row>
+        <Row className="mt-4">
           <Col md="4">
             <View>
               <img src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" className="img-fluid" alt="" />
-              <Mask className="pattern-1 flex-center">
-                <p className="white-text">.pattern-1</p>
+              <Mask pattern={1} className="flex-center">
+                <p className="white-text">pattern = &#123;1&#125;</p>
               </Mask>
             </View>
           </Col>
           <Col md="4">
             <View>
               <img src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" className="img-fluid" alt="" />
-              <Mask className="pattern-2 flex-center">
-                <p className="white-text">.pattern-2</p>
+              <Mask pattern={2} className="flex-center">
+                <p className="white-text">pattern = &#123;2&#125;</p>
               </Mask>
             </View>
           </Col>
           <Col md="4">
             <View>
               <img src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" className="img-fluid" alt="" />
-              <Mask className="pattern-3 flex-center">
-                <p className="white-text">.pattern-3</p>
+              <Mask pattern={3} className="flex-center">
+                <p className="white-text">pattern = &#123;3&#125;</p>
               </Mask>
             </View>
           </Col>
         </Row>
         <Row className="mt-4">
           <Col md="4">
-            <View className="hm-blue-light">
+            <View>
               <img src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" className="img-fluid" alt="" />
-              <Mask className="flex-center">
-                <p className="white-text">.pattern-1</p>
+              <Mask className="flex-center" overlay="blue-light">
+                <p className="white-text">overlay = "blue-light"</p>
               </Mask>
             </View>
           </Col>
           <Col md="4">
-            <View className="hm-blue-strong">
+            <View>
               <img src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" className="img-fluid" alt="" />
-              <Mask className="flex-center">
-                <p className="white-text">.pattern-2</p>
+              <Mask className="flex-center" overlay="blue-strong">
+                <p className="white-text">overlay = "blue-strong"</p>
               </Mask>
             </View>
           </Col>
           <Col md="4">
-            <View className="hm-blue-slight">
+            <View>
               <img src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" className="img-fluid" alt="" />
-              <Mask className="flex-center">
-                <p className="white-text">.pattern-3</p>
+              <Mask className="flex-center" overlay="blue-slight">
+                <p className="white-text">overlay = "blue-slight"</p>
               </Mask>
             </View>
           </Col>
         </Row>
-        <div style={{height: '100vh'}} />
       </Container>
     );
   }

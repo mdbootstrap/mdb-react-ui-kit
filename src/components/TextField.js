@@ -62,10 +62,12 @@ class TextField extends React.Component {
   }
 
   onChange(ev) {
-    this.setState({
-      innerValue: ev.target.value,
-      isPristine: false
-    });
+    if(this.props.type !== 'checkbox' && this.props.type !== 'radio') {
+      this.setState({
+        innerValue: ev.target.value,
+        isPristine: false
+      });
+    }
 
     // execute callback
     let fn = this.props.onChange;
@@ -85,10 +87,10 @@ class TextField extends React.Component {
       group,
       className,
       type,
-      el, 
+      el,
       tag,
       id,
-      hint, 
+      hint,
       validate,
       value,
       label,
@@ -98,6 +100,8 @@ class TextField extends React.Component {
       labelClass,
       icon,
       iconClass,
+      filled,
+      gap,
       ...attributes
     } = this.props;
 
@@ -112,22 +116,34 @@ class TextField extends React.Component {
     let formControlClass = 'form-control';
 
     if (textareaInput) {
-      formControlClass = 'md-textarea';
+      formControlClass = 'md-textarea form-control';
     } else if (inputType) {
       formControlClass = 'form-control';
+    }
+
+    if (Tag === 'input') {
+      attributes.type = type;
+    }
+
+    if (disabled) {
+      attributes.disabled = true;
     }
 
     const classes = classNames(
       formControlClass,
       validate ? 'validate' : false,
-      className,
+      filled ? 'filled-in' : false,
+      gap ? 'with-gap' : false,
+      type === 'checkbox' ? gap ? false : 'form-check-input' : false,
+      type === 'radio' ? 'form-check-input' : false,
+      className
     );
 
     const containerClassFix = classNames(
-      'md-form',
+      type === 'checkbox' || type === 'radio' ? 'form-check my-3' : 'md-form',
       group ? 'form-group' : false,
       size ? `form-${size}` : false,
-      containerClass,
+      containerClass
     );
 
     const iconClassFix = classNames(
@@ -141,25 +157,19 @@ class TextField extends React.Component {
     const labelClassFix = classNames(
       isNotEmpty ? 'active' : false,
       disabled ? 'disabled' : false,
-      labelClass,
+      type === 'checkbox' ? 'form-check-label mr-5' : false,
+      type === 'radio' ? 'form-check-label mr-5' : false,
+      labelClass
     );
-
-    if (Tag === 'input') {
-      attributes.type = type;
-    }
-
-    if (disabled) {
-      attributes.disabled = true;
-    }
 
     return (
       <div className={containerClassFix}>
 
         {icon ? <i className={iconClassFix}></i> : false}
-        <Tag 
-          {...attributes} 
+        <Tag
+          {...attributes}
           id={id}
-          className={classes} 
+          className={classes}
           ref={el => { this.inputElRef = el; }}
           placeholder={hint}
           onBlur={this.onBlur}
@@ -195,7 +205,9 @@ TextField.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   el: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
-  containerClass: PropTypes.string
+  containerClass: PropTypes.string,
+  filled: PropTypes.bool,
+  gap: PropTypes.bool
 };
 TextField.defaultProps = {
   tag: 'input',

@@ -1,6 +1,6 @@
 import React from 'react';
 const NavLink = require('react-router-dom').NavLink;
-import { Container, Row, Col, Jumbotron, Fa } from 'mdbreact';
+import { Container, Row, Col, Jumbotron, Fa, Badge } from 'mdbreact';
 
 
 class ComponentsPage extends React.Component {
@@ -31,6 +31,12 @@ class ComponentsPage extends React.Component {
                   <NavLink to="/components/dropdown">Dropdown <Fa icon="angle-right" /></NavLink>
                 </li>
                 <li>
+                  <NavLink to="/components/footer">Footer <Fa icon="angle-right" /></NavLink>
+                </li>
+                <li>
+                  <NavLink to="/components/forms">Forms <Fa icon="angle-right" /><Badge pill color="danger">NEW</Badge></NavLink>
+                </li>
+                <li>
                   <NavLink to="/components/input">Input <Fa icon="angle-right" /></NavLink>
                 </li>
                 <li>
@@ -43,22 +49,16 @@ class ComponentsPage extends React.Component {
                   <NavLink to="/components/pagination">Pagination <Fa icon="angle-right" /></NavLink>
                 </li>
                 <li>
-                  <NavLink to="/components/progress">Progress <Fa icon="angle-right" /></NavLink>
-                </li>
-                <li>
-                  <NavLink to="/components/tooltips">Tooltips <Fa icon="angle-right" /></NavLink>
-                </li>
-                <li>
-                  <NavLink to="/components/footer">Footer <Fa icon="angle-right" /></NavLink>
-                </li>
-                <li>
                   <NavLink to="/components/popover">Popover <Fa icon="angle-right" /></NavLink>
                 </li>
                 <li>
-                  <NavLink to="/components/tooltips">Tooltip <Fa icon="angle-right" /></NavLink>
+                  <NavLink to="/components/progress">Progress <Fa icon="angle-right" /></NavLink>
                 </li>
                 <li>
                   <NavLink to="/components/tabs">Tabs <Fa icon="angle-right" /></NavLink>
+                </li>
+                <li>
+                  <NavLink to="/components/tooltips">Tooltips <Fa icon="angle-right" /></NavLink>
                 </li>
               </ul>
             </Jumbotron>

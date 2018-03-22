@@ -5,7 +5,7 @@ import classNames from 'classnames';
 class ListGroupItem extends Component {
 
   render() {
- 
+
     let {
       active,
       children,
@@ -33,7 +33,7 @@ class ListGroupItem extends Component {
 }
 
 ListGroupItem.propTypes = {
-  active: PropTypes.string,
+  active: PropTypes.bool,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
   children: PropTypes.node

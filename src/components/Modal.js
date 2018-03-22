@@ -256,7 +256,7 @@ class Modal extends React.Component {
 
     if (this.hasTransition()) {
       return (
-        <TransitionGroup component={null} className={mapToCssModules(wrapClassName)}>
+        <TransitionGroup className={mapToCssModules(wrapClassName)}>
           {isOpen && (
             <Fade
               key="modal-dialog"

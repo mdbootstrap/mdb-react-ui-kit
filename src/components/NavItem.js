@@ -5,16 +5,18 @@ import classNames from 'classnames';
 class NavItem extends Component {
 
   render() {
- 
+
     const {
       children,
       className,
+      active,
       tag: Tag,
       ...attributes
     } = this.props;
 
     const classes = classNames(
       'nav-item',
+      active ? 'active': '',
       className,
     );
 
@@ -29,7 +31,8 @@ class NavItem extends Component {
 NavItem.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
+  active: PropTypes.bool
 };
 
 NavItem.defaultProps = {

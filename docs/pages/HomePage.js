@@ -1,9 +1,6 @@
 import React from 'react';
-const NavLink = require('react-router-dom').NavLink;
-
+import { EdgeHeader, FreeBird, Container, Col, Row, CardBody, Fa, NavLink } from 'mdbreact';
 import './HomePage.css';
-
-import { EdgeHeader, FreeBird, Container, Col, Row, CardBody, Fa } from 'mdbreact';
 
 class HomePage extends React.Component {
   render(){
@@ -42,9 +39,9 @@ class HomePage extends React.Component {
                   </NavLink>
                 </Col>
                 <Col md="4" className="text-center home-feature-box">
-                  <NavLink to="/javascript">
+                  <NavLink to="/advanced">
                     <Fa icon="code" className="green-text" />
-                    <span>JavaScript</span>
+                    <span>Advanced</span>
                   </NavLink>
                 </Col>
               </Row>

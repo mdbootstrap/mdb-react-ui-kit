@@ -9,8 +9,8 @@ class CollapsePage extends Component {
     this.onClick2 = this.onClick2.bind(this);
     this.onClick3 = this.onClick3.bind(this);
 
-    this.state = { 
-      collapse: false, 
+    this.state = {
+      collapse: false,
       accordion: false
     };
   }
@@ -22,7 +22,7 @@ class CollapsePage extends Component {
   onClick1() {
     let state = '';
 
-    if(this.state.accordion !== 1) {
+    if (this.state.accordion !== 1) {
       state = 1;
     } else {
       state = false;
@@ -34,8 +34,8 @@ class CollapsePage extends Component {
 
   onClick2() {
     let state = '';
-    
-    if(this.state.accordion !== 2) {
+
+    if (this.state.accordion !== 2) {
       state = 2;
     } else {
       state = false;
@@ -47,8 +47,8 @@ class CollapsePage extends Component {
 
   onClick3() {
     let state = '';
-    
-    if(this.state.accordion !== 3) {
+
+    if (this.state.accordion !== 3) {
       state = 3;
     } else {
       state = false;

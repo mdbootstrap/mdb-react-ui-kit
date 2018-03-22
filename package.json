@@ -21,7 +21,9 @@
   },
   "scripts": {
     "build": "webpack",
-    "start": "webpack-dev-server --config ./webpack.dev.config.js --watch --open",
+    "sass-compile": "node-sass dist/scss -o dist/css",
+    "webpack": "webpack-dev-server --config ./webpack.dev.config.js --watch --open",
+    "start": "yarn run sass-compile && concurrently --kill-others \"yarn run sass-compile --watch\" \"yarn run webpack\"",
     "test": "eslint **/*.js"
   },
   "devDependencies": {
@@ -31,12 +33,15 @@
     "babel-preset-es2015-rollup": "^3.0.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-react-app": "^0.2.1",
+    "concurrently": "^3.5.1",
     "css-loader": "^0.28.4",
     "eslint": "^4.8.0",
     "eslint-plugin-react": "^7.5.1",
     "html-webpack-plugin": "^2.30.1",
     "jshint": "^2.9.5",
     "mdbootstrap": "^4.4.3",
+    "node-sass": "^4.7.2",
+    "sass-loader": "^6.0.7",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
     "webpack": "^3.5.5",

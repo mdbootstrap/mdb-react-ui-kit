@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Waves from './Waves';
 
-
 class Button extends React.Component {
   constructor(props) {
     super(props);
@@ -15,6 +14,7 @@ class Button extends React.Component {
 
   handleClick(e){
     // Get Cursor Position
+    e.preventDefault();
     let cursorPos = {
       top: e.clientY,
       left: e.clientX,
@@ -28,13 +28,10 @@ class Button extends React.Component {
       e.preventDefault();
       return;
     }
-
     if (this.props.onClick) {
       this.props.onClick(e);
     }
   }
-
-
 
   render() {
     let {
@@ -57,8 +54,7 @@ class Button extends React.Component {
 
     const classes = classNames(
       floating ? 'btn-floating' : 'btn',
-      flat ? 'btn-flat' : false,
-      gradient ? `${gradient}-gradient` : `btn${outline ? '-outline' : ''}-${color}`,
+      flat ? 'btn-flat' : gradient ? `${gradient}-gradient` : `btn${outline ? '-outline' : ''}-${color}`,
       size ? `btn-${size}` : false,
       rounded ? 'btn-rounded' : false,
       block ? 'btn-block' : false,

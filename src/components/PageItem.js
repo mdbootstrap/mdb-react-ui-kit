@@ -5,7 +5,7 @@ import classNames from 'classnames';
 class PageItem extends Component {
 
   render() {
- 
+
     const {
       disabled,
       active,
@@ -31,8 +31,8 @@ class PageItem extends Component {
 }
 
 PageItem.propTypes = {
-  disabled: PropTypes.string,
-  active: PropTypes.string,
+  disabled: PropTypes.bool,
+  active: PropTypes.bool,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
   children: PropTypes.node

@@ -206,7 +206,7 @@ class DropdownPage extends React.Component {
             Dropdown
           </DropdownToggle>
           <DropdownMenu>
-            <DropdownItem header>Regular link</DropdownItem>
+            <DropdownItem>Regular link</DropdownItem>
             <DropdownItem disabled href="#">Disabled link</DropdownItem>
             <DropdownItem href="#">Another link</DropdownItem>
           </DropdownMenu>

@@ -6,7 +6,7 @@ const CardsPage = (props) => {
     <div className="container">
       <div className="row mt-5">
         <div className="col" style={{ maxWidth: '23rem' }}>
-          <Card>
+          <Card reverse>
             <CardImage className="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" />
             <CardBody>
               <CardTitle>Card title</CardTitle>
