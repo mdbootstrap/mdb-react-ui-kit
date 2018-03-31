@@ -23,7 +23,7 @@ class CarouselInner extends Component {
     } = this.props;
 
     const classes = classNames(
-      'carouse-inner',
+      'carousel-inner',
       active ? 'active' : '',
       className
     );
