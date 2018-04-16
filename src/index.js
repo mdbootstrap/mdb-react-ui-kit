@@ -14,6 +14,8 @@ import CarouselCaption from './components/CarouselCaption';
 import CarouselControl from './components/CarouselControl';
 import CarouselInner from './components/CarouselInner';
 import CarouselItem from './components/CarouselItem';
+import CarouselIndicators from './components/CarouselIndicators';
+import CarouselIndicator from './components/CarouselIndicator';
 import Col from './components/Col';
 import Collapse from './components/Collapse';
 import Container from './components/Container';
@@ -51,11 +53,10 @@ import Popover from './components/Popover';
 import PopoverBody from './components/PopoverBody';
 import PopoverHeader from './components/PopoverHeader';
 import Progress from './components/Progress';
+import Spinner from './components/Spinner';
 import Waves from './components/Waves';
 import Row from './components/Row';
 import Table from './components/Table';
-import TabPane from './components/TabPane';
-import TabContent from './components/TabContent';
 import TextField from './components/TextField';
 import Tooltip from './components/Tooltip';
 import View from './components/View';
@@ -77,6 +78,8 @@ export {
   CarouselControl,
   CarouselInner,
   CarouselItem,
+  CarouselIndicators,
+  CarouselIndicator,
   Col,
   Collapse,
   Container,
@@ -114,11 +117,10 @@ export {
   PopoverBody,
   PopoverHeader,
   Progress,
+  Spinner,
   Waves,
   Row,
   Table,
-  TabPane,
-  TabContent,
   TextField,
   Tooltip,
   View

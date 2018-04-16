@@ -1168,17 +1168,17 @@
 .z-depth-0, .hoverable, .modal-dialog.cascading-modal.modal-avatar .modal-header {
   box-shadow: none; }
 
-.z-depth-1, .jumbotron, .btn, .btn.disabled:active, .btn.disabled:focus, .btn.disabled:hover, .btn:disabled:active, .btn:disabled:focus, .btn:disabled:hover, .card, .navbar, .pagination .page-item.active .page-link, .badge, .modal-dialog.cascading-modal .modal-c-tabs .nav-tabs, .modal-dialog.modal-notify .modal-header, .md-form input[type=text].input-alternate,
-.md-form input[type=password].input-alternate,
-.md-form input[type=email].input-alternate,
-.md-form input[type=url].input-alternate,
-.md-form input[type=time].input-alternate,
-.md-form input[type=date].input-alternate,
-.md-form input[type=datetime-local].input-alternate,
-.md-form input[type=tel].input-alternate,
-.md-form input[type=number].input-alternate,
-.md-form input[type=search-md].input-alternate,
-.md-form input[type=search].input-alternate,
+.z-depth-1, .jumbotron, .btn, .btn.disabled:active, .btn.disabled:focus, .btn.disabled:hover, .btn:disabled:active, .btn:disabled:focus, .btn:disabled:hover, .card, .navbar, .pagination .page-item.active .page-link, .badge, .modal-dialog.cascading-modal .modal-c-tabs .nav-tabs, .modal-dialog.modal-notify .modal-header, .md-form input.input-alternate[type=text],
+.md-form input.input-alternate[type=password],
+.md-form input.input-alternate[type=email],
+.md-form input.input-alternate[type=url],
+.md-form input.input-alternate[type=time],
+.md-form input.input-alternate[type=date],
+.md-form input.input-alternate[type=datetime-local],
+.md-form input.input-alternate[type=tel],
+.md-form input.input-alternate[type=number],
+.md-form input.input-alternate[type=search-md],
+.md-form input.input-alternate[type=search],
 .md-form textarea.md-textarea.input-alternate, .media .media-left img {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12); }
 

@@ -28,6 +28,7 @@ class TextField extends React.Component {
     this.onBlur = this.onBlur.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onFocus = this.onFocus.bind(this);
+    this.triggerFocus = this.triggerFocus.bind(this);
   }
 
 
@@ -73,7 +74,6 @@ class TextField extends React.Component {
     let fn = this.props.onChange;
     fn && fn(ev);
   }
-
   triggerFocus() {
     // hack to enable IE10 pointer-events shim
     this.inputElRef.focus();
@@ -105,7 +105,7 @@ class TextField extends React.Component {
       ...attributes
     } = this.props;
 
-    let isNotEmpty = Boolean(this.state.innerValue.toString()) || hint || this.state.isTouched;
+    let isNotEmpty = Boolean(this.state.innerValue) || hint || this.state.isTouched;
 
 
     const inputType = type === 'input';
@@ -176,7 +176,7 @@ class TextField extends React.Component {
           onChange={this.onChange}
           onFocus={this.onFocus}
         />
-        {label ? <label className={labelClassFix} htmlFor={id} data-error={error} data-success={success}>{label}</label> : false }
+        {label ? <label className={labelClassFix} htmlFor={id} data-error={error} data-success={success} onClick={this.triggerFocus}>{label}</label> : false }
       </div>
     );
   }

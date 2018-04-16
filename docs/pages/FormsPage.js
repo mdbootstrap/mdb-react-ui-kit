@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Input, FormInline, Button, Fa } from 'mdbreact';
+import { Container, Row, Col, Input, Button, Fa } from 'mdbreact';
 
 class FormsPage extends React.Component  {
   render() {
@@ -42,7 +42,7 @@ class FormsPage extends React.Component  {
               <Input label="Your name" icon="user" group type="email" validate error="wrong" success="right"/>
               <Input label="Your email" icon="envelope" group type="email" validate error="wrong" success="right"/>
               <div className="text-center">
-                <Button color="deep-orange" color="indigo">Send <Fa icon="paper-plane-o" className="ml-1"/></Button>
+                <Button color="indigo">Send <Fa icon="paper-plane-o" className="ml-1"/></Button>
               </div>
             </form>
           </Col>
@@ -58,7 +58,7 @@ class FormsPage extends React.Component  {
               <Input label="Subject" icon="tag" group type="email" validate error="wrong" success="right"/>
               <Input type="textarea" rows="2" label="Your message" icon="pencil"/>
               <div className="text-center">
-                <Button color="deep-orange" color="unique">Send <Fa icon="paper-plane-o" className="ml-1"/></Button>
+                <Button color="unique">Send <Fa icon="paper-plane-o" className="ml-1"/></Button>
               </div>
             </form>
           </Col>

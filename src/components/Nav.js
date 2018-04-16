@@ -5,16 +5,25 @@ import classNames from 'classnames';
 class Nav extends Component {
 
   render() {
- 
+
     const {
       children,
       className,
       tag: Tag,
+      tabs,
+      color,
+      classicTabs,
+      pills,
       ...attributes
     } = this.props;
 
     const classes = classNames(
       'nav',
+      this.props.tabs && 'nav-tabs',
+      this.props.pills && 'md-pills',
+      this.props.classicTabs && 'classic-tabs',
+      this.props.pills && this.props.color ? 'pills-'+this.props.color : false,
+      (this.props.tabs || this.props.classicTabs) && this.props.color ? 'tabs-'+this.props.color : false,
       className,
     );
 
@@ -29,7 +38,11 @@ class Nav extends Component {
 Nav.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
+  color: PropTypes.string,
+  classicTabs: PropTypes.bool,
+  pills: PropTypes.bool,
+  tabs: PropTypes.bool
 };
 
 Nav.defaultProps = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ListGroup, ListGroupItem, Badge } from 'mdbreact';
 
-const PaginationPage = (props) => {
+const ListGroupPage = (props) => {
   return(
     <div className="container">
       <div className="row mt-5">
@@ -18,4 +18,4 @@ const PaginationPage = (props) => {
   );
 };
 
-export default PaginationPage;
+export default ListGroupPage;

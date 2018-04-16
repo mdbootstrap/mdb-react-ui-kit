@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Popover, PopoverBody, PopoverHeader } from 'mdbreact';
+import { Popover, PopoverBody, PopoverHeader } from 'mdbreact';
  
 class PopoverPage extends React.Component {
 
@@ -11,8 +11,7 @@ class PopoverPage extends React.Component {
           component="button"
           placement="top" 
           popoverBody="popover on top" 
-          className="btn btn-default" 
-          arrowClass="strzala">
+          className="btn btn-default">
           <PopoverHeader>popover on top</PopoverHeader>
           <PopoverBody>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</PopoverBody>
         </Popover>

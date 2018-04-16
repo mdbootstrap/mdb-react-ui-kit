@@ -16,6 +16,11 @@ const propTypes = {
   isOpen: PropTypes.bool,
   autoFocus: PropTypes.bool,
   size: PropTypes.string,
+  position: PropTypes.string,
+  side: PropTypes.bool,
+  fullHeight: PropTypes.bool,
+  frame: PropTypes.bool,
+  centered: PropTypes.bool,
   toggle: PropTypes.func,
   keyboard: PropTypes.bool,
   role: PropTypes.string,
@@ -59,7 +64,7 @@ const defaultProps = {
   backdrop: true,
   keyboard: true,
   zIndex: 1050,
-  fade: false,
+  fade: true,
   modalTransitionTimeout: 300,
   backdropTransitionTimeout: 150
 };
@@ -126,7 +131,7 @@ class Modal extends React.Component {
   handleBackdropClick(e) {
     if (this.props.backdrop !== true) return;
 
-    const container = this._dialog;
+    const container = document.getElementsByClassName('modal-content')[0];
 
     if (e.target && !container.contains(e.target) && this.props.toggle) {
       this.props.toggle();
@@ -201,7 +206,12 @@ class Modal extends React.Component {
     return (
       <div
         className={mapToCssModules(classNames('modal-dialog', this.props.className, {
-          [`modal-${this.props.size}`]: this.props.size
+          [`modal-${this.props.size}`]: this.props.size,
+          [`modal-side`]: this.props.side,
+          [`modal-full-height`]: this.props.fullHeight,
+          [`modal-frame`]: this.props.frame,
+          [`modal-dialog-centered`]: this.props.centered,
+          [`modal-${this.props.position}`]: this.props.position
         }), this.props.cssModule)}
         role="document"
         {...attributes}
@@ -322,7 +332,7 @@ class Modal extends React.Component {
         )}
         {isOpen && backdrop && (
           <div
-            className={mapToCssModules(classNames('modal-backdrop', 'show', backdropClassName), cssModule)}
+            className={mapToCssModules(classNames('modal-backdrop', 'show', backdropClassName), cssModule)} onClick={console.log("click")}
           />
         )}
       </div>

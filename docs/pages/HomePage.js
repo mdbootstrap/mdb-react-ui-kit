@@ -1,6 +1,9 @@
 import React from 'react';
-import { EdgeHeader, FreeBird, Container, Col, Row, CardBody, Fa, NavLink } from 'mdbreact';
+const NavLink = require('react-router-dom').NavLink;
+
 import './HomePage.css';
+
+import { EdgeHeader, FreeBird, Container, Col, Row, CardBody, Fa } from 'mdbreact';
 
 class HomePage extends React.Component {
   render(){

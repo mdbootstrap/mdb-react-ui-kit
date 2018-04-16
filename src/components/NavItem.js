@@ -10,6 +10,7 @@ class NavItem extends Component {
       children,
       className,
       active,
+      text,
       tag: Tag,
       ...attributes
     } = this.props;
@@ -17,6 +18,7 @@ class NavItem extends Component {
     const classes = classNames(
       'nav-item',
       active ? 'active': '',
+      text ? 'navbar-text': '',
       className,
     );
 

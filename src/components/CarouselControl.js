@@ -12,6 +12,8 @@ class Control extends Component {
       className,
       onClick,
       tag: Tag,
+      iconLeft,
+
       ...attributes
     } = this.props;
 
@@ -32,8 +34,16 @@ class Control extends Component {
 
     return (
       <Tag className={classes} data-slide={direction} onClick={onClick}>
-        <span className={caretClasses} aria-hidden="true"></span>
-        <span className="sr-only">Previous</span>
+        {this.props.iconLeft ? (
+          <i className="fa fa-chevron-left"></i>
+        ) : this.props.iconRight ? (
+          <i className="fa fa-chevron-right"></i>
+        ) : (
+          <div>
+            <span className={caretClasses} aria-hidden="true"></span>
+            <span className="sr-only">Previous</span>
+          </div>
+         )}
       </Tag>
     );
   }
@@ -44,7 +54,8 @@ Control.propTypes = {
   text: PropTypes.string,
   direction: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string
+  className: PropTypes.string,
+  iconLeft: PropTypes.bool
 };
 
 Control.defaultProps = {

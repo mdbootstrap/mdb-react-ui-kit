@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Col, Jumbotron, Fa, Badge } from 'mdbreact';
+import {Container, Row, Col, Jumbotron, Fa, Badge} from 'mdbreact';
 const NavLink = require('react-router-dom').NavLink;
 
 class CSSPage extends React.Component {
@@ -11,8 +11,8 @@ class CSSPage extends React.Component {
             <Jumbotron className="mt-3">
               <h1><Fa icon="css3" className="grey-text" /> CSS</h1>
               <ul className="list-unstyled example-components-list">
-              <li>
-                  <NavLink to="/css/hover">Hover effects <Fa icon="angle-right" /><Badge pill color="danger">NEW</Badge></NavLink>
+                <li>
+                  <NavLink to="/css/hover">Hover effects <Fa icon="angle-right" /></NavLink>
                 </li>
                 <li>
                   <NavLink to="/css/icons">Icons <Fa icon="angle-right" /></NavLink>

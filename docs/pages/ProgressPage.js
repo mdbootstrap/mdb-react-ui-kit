@@ -1,6 +1,5 @@
 import React from 'react';
-import { Progress } from 'mdbreact';
-import Spinner from '../../src/components/Spinner';
+import { Progress, Spinner } from 'mdbreact';
 
 
 const ProgressPage = (props) => {

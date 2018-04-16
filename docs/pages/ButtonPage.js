@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonGroup, ButtonToolbar, Fa } from 'mdbreact';
+import { Button, ButtonGroup, Fa } from 'mdbreact';
 
 const ButtonPage = (props) => {
   return(

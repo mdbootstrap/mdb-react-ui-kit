@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import 'font-awesome/css/font-awesome.min.css';
 
 
 class Fa extends React.Component {

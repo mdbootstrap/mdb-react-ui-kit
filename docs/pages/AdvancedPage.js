@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Jumbotron, Fa } from 'mdbreact';
+import { Container, Row, Col, Jumbotron, Fa, Badge } from 'mdbreact';
 const NavLink = require('react-router-dom').NavLink;
 
 class AdvancedPage extends React.Component {
@@ -12,10 +12,19 @@ class AdvancedPage extends React.Component {
               <h1><Fa icon="code" className="grey-text" /> Advanced</h1>
               <ul className="list-unstyled example-components-list">
                 <li>
+                  <NavLink to="/advanced/carousel">Carousel <Fa icon="angle-right" /></NavLink>
+                </li>
+                <li>
+                  <NavLink to="/advanced/charts">Charts <Fa icon="angle-right" /></NavLink>
+                </li>
+                <li>
                   <NavLink to="/advanced/collapse">Collapse <Fa icon="angle-right" /></NavLink>
                 </li>
                 <li>
                   <NavLink to="/advanced/modal">Modal <Fa icon="angle-right" /></NavLink>
+                </li>
+                <li>
+                  <NavLink to="/advanced/videocarousel">Video Carousel <Fa icon="angle-right" /></NavLink>
                 </li>
               </ul>
             </Jumbotron>

@@ -4,7 +4,7 @@ import { Badge } from 'mdbreact';
 
 const BadgePage = (props) => {
   return(
-    <div className="container-fluid text-center">
+    <div className="container-fluid text-center mt-5">
       <div className="">
         <h1>Heading <Badge>Default</Badge></h1>
         <h2>Heading <Badge color="primary">primary</Badge></h2>
