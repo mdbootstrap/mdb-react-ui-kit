@@ -1,30 +1,40 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import './CarouselFade.css';
+import './Carousel.css';
 
 class Carousel extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      activeItem: this.props.activeItem
+      activeItem: this.props.activeItem,
+      length: this.props.length,
+      slide: this.props.slide
     };
   }
 
   componentDidMount() {
+    if(this.props.interval === false) {
+      return;
+    }
     this.cycleInterval = setInterval(() => {
       this.props.next();
     }, this.props.interval);
   }
 
   componentWillUnmount() {
+    if(this.props.interval === false) {
+      return;
+    }
     clearInterval(this.cycleInterval);
   }
 
   getChildContext() {
     return {
-      activeItem: this.state.activeItem
+      activeItem: this.state.activeItem,
+      length: this.state.length,
+      slide: this.state.slide
     };
   }
 
@@ -32,6 +42,12 @@ class Carousel extends Component {
     this.setState({
       activeItem: nextProps.activeItem
     });
+    if(this.props.interval !== false) {
+      clearInterval(this.cycleInterval);
+      this.cycleInterval = setInterval(() => {
+        this.props.next();
+      }, this.props.interval);  
+    }
   }
 
   render() {
@@ -42,8 +58,10 @@ class Carousel extends Component {
       children,
       className,
       multiItem,
+      slide,
       thumbnails,
       interval,
+      testimonial,
       tag: Tag,
       ...attributes
     } = this.props;
@@ -55,6 +73,7 @@ class Carousel extends Component {
       'carousel-fade',
       this.props.multiItem ? 'carousel-multi-item' : '',
       this.props.thumbnails ? 'carousel-thumbnails' : '',
+      this.props.testimonial ? 'testimonial-carousel' : '',
       className
     );
 
@@ -74,7 +93,7 @@ Carousel.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   multiItem: PropTypes.bool,
-  interval: PropTypes.number,
+  interval: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
   thumbnails: PropTypes.bool
 };
 
@@ -84,7 +103,9 @@ Carousel.defaultProps = {
 };
 
 Carousel.childContextTypes = {
-  activeItem: PropTypes.any
+  activeItem: PropTypes.any,
+  length: PropTypes.any,
+  slide: PropTypes.any
 };
 
 export default Carousel;

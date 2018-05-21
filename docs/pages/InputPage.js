@@ -5,7 +5,7 @@ import { Input, FormInline, Button, Container, Row, Col } from 'mdbreact';
 class InputPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''};
+    this.state = {value: 'John Doe'};
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,7 +16,7 @@ class InputPage extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('Textarea value: ' + this.state.value);
+    alert('Input value: ' + this.state.value);
     event.preventDefault();
   }
 
@@ -36,7 +36,8 @@ class InputPage extends React.Component {
 
           <Input hint="placeholder" label="Example label" />
 
-          <Input defaultValue="John Doe" label="Example label" />
+          <Input value={this.state.value} onChange={this.handleChange} label="Example label" />
+          <Button onClick={this.handleSubmit}>Submit</Button>
 
           <Input label="Type your email" icon="envelope" group type="email" validate error="wrong" success="right"/>
           <Input label="Type your password" icon="lock" group type="password" validate/>
@@ -50,9 +51,7 @@ class InputPage extends React.Component {
           </FormInline>
 
           <Input type="textarea" label="Icon Prefix" rows="2" icon="pencil"/>
-          <Input type="textarea" label="Basic textarea" rows="2" value={this.state.value} onChange={this.handleChange} />
-          <Button onClick={this.handleSubmit}>Submit</Button>
-
+          <Input type="textarea" label="Basic textarea" rows="2" />
 
           <hr className="mt-5" />
 

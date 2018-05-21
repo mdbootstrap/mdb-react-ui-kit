@@ -11,6 +11,7 @@ class CSSPage extends React.Component {
             <Jumbotron className="mt-3">
               <h1><Fa icon="css3" className="grey-text" /> CSS</h1>
               <ul className="list-unstyled example-components-list">
+                <h6 className="mt-3 grey-text">FREE </h6>
                 <li>
                   <NavLink to="/css/hover">Hover effects <Fa icon="angle-right" /></NavLink>
                 </li>

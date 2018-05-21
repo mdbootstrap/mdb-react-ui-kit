@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 class CarouselItem extends Component {
-
   render() {
- 
     let {
       active,
       children,
@@ -19,12 +17,33 @@ class CarouselItem extends Component {
 
     let classes = classNames(
       'carousel-item',
-      itemId === this.context.activeItem ? 'active' : '',
+      this.context.slide ? 'active carousel-slide-item' : itemId === this.context.activeItem ? 'active' : false,
       className
     );
 
+    let slideIndex = this.context.activeItem - itemId; 
+    let style = {};
+
+    if (this.context.slide) {
+      if (slideIndex < 0) {
+        style = {
+          position: 'absolute',
+          left: '100%'
+        }
+      } else if (slideIndex > 0) {
+        style = {
+          position: 'absolute',
+          left: '-100%'
+        }
+      } else {
+        style = {
+          left: '0'
+        }
+      }
+    }
+
     return (
-      <Tag {...attributes} className={classes}>
+      <Tag {...attributes} className={classes} style={style}>
         {children}
       </Tag>
     );
@@ -44,7 +63,9 @@ CarouselItem.defaultProps = {
 };
 
 CarouselItem.contextTypes = {
-  activeItem: PropTypes.any
+  activeItem: PropTypes.any,
+  length: PropTypes.any,
+  slide: PropTypes.any
 };
 
 export default CarouselItem;

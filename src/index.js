@@ -1,3 +1,4 @@
+// FREE
 import Badge from './components/Badge';
 import Breadcrumb from './components/Breadcrumb';
 import BreadcrumbItem from './components/BreadcrumbItem';
@@ -7,6 +8,7 @@ import ButtonToolbar from './components/ButtonToolbar';
 import Card from './components/Card';
 import CardBody from './components/CardBody';
 import CardImage from './components/CardImage';
+import CardFooter from './components/CardFooter';
 import CardText from './components/CardText';
 import CardTitle from './components/CardTitle';
 import Carousel from './components/Carousel';
@@ -53,7 +55,6 @@ import Popover from './components/Popover';
 import PopoverBody from './components/PopoverBody';
 import PopoverHeader from './components/PopoverHeader';
 import Progress from './components/Progress';
-import Spinner from './components/Spinner';
 import Waves from './components/Waves';
 import Row from './components/Row';
 import Table from './components/Table';
@@ -62,6 +63,7 @@ import Tooltip from './components/Tooltip';
 import View from './components/View';
 
 export {
+  // FREE
   Badge,
   Breadcrumb,
   BreadcrumbItem,
@@ -73,6 +75,7 @@ export {
   CardImage,
   CardText,
   CardTitle,
+  CardFooter,
   Carousel,
   CarouselCaption,
   CarouselControl,
@@ -117,7 +120,6 @@ export {
   PopoverBody,
   PopoverHeader,
   Progress,
-  Spinner,
   Waves,
   Row,
   Table,

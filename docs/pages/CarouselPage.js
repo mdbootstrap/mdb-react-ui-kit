@@ -10,13 +10,13 @@ class CarouselPage extends Component {
     this.prev = this.prev.bind(this);
     this.state = {
       activeItem: 1,
-      maxLength: 4
+      length: 4
     };
   }
 
   next() {
     let nextItem = this.state.activeItem + 1;
-    if(nextItem > this.state.maxLength) {
+    if(nextItem > this.state.length) {
       this.setState({ activeItem: 1 });
     } else {
       this.setState({ activeItem: nextItem });
@@ -26,7 +26,7 @@ class CarouselPage extends Component {
   prev() {
     let prevItem = this.state.activeItem - 1;
     if(prevItem < 1) {
-      this.setState({ activeItem: this.state.maxLength });
+      this.setState({ activeItem: this.state.length });
     } else {
       this.setState({ activeItem: prevItem });
     }

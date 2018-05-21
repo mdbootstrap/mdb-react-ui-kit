@@ -83,7 +83,7 @@ class DropdownPage extends React.Component {
 
   render() {
     return (
-      <div style={{marginTop: '100px'}}>
+      <div className="container" style={{marginTop: '100px'}}>
         <h2>Basic example</h2>
         <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
           <DropdownToggle caret  color="primary">

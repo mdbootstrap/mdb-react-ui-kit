@@ -13,7 +13,7 @@ class Control extends Component {
       onClick,
       tag: Tag,
       iconLeft,
-
+      iconRight,
       ...attributes
     } = this.props;
 
@@ -55,7 +55,8 @@ Control.propTypes = {
   direction: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
-  iconLeft: PropTypes.bool
+  iconLeft: PropTypes.bool,
+  iconRight: PropTypes.bool
 };
 
 Control.defaultProps = {

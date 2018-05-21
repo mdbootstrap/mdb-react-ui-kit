@@ -1,5 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch, browserHistory } from 'react-router-dom';
+
+// FREE
 import HomePage from './pages/HomePage';
 import ButtonPage from './pages/ButtonPage';
 import CSSPage from './pages/CSSPage';
@@ -29,11 +31,13 @@ import VideoCarouselPage from './pages/VideoCarouselPage';
 import HoverPage from './pages/HoverPage';
 import FormsPage from './pages/FormsPage';
 import ChartsPage from './pages/ChartsPage';
+import ScrollBarPage from './pages/ScrollBarPage';
 
 class Routes extends React.Component {
   render() {
     return (
       <Switch>
+        {/* FREE */}
         <Route exact path='/' component={HomePage} />
         <Route exact path='/css' component={CSSPage} />
         <Route exact path='/css/table' component={TablePage} />
@@ -64,6 +68,7 @@ class Routes extends React.Component {
         <Route path='/css/hover' component={HoverPage} />
         <Route path='/advanced/videocarousel' component={VideoCarouselPage} />
         <Route path='/advanced/charts' component={ChartsPage} />
+        <Route path='/advanced/scrollbar' component={ScrollBarPage} />
         <Route render = { function() {
           return <h1>Not Found</h1>;
         }} />

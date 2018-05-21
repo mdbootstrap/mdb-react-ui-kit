@@ -171,6 +171,7 @@ class TextField extends React.Component {
           id={id}
           className={classes}
           ref={el => { this.inputElRef = el; }}
+          value={this.state.innerValue}
           placeholder={hint}
           onBlur={this.onBlur}
           onChange={this.onChange}

@@ -1,0 +1,29 @@
+.carousel-inner {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-item {
+  display: block !important;
+  visibility: hidden;
+  height: 0;
+  opacity: 0;
+  transition: transform 0ms ease-in-out, opacity .6s ease-in;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+.carousel-item.active {
+  opacity: 1;
+  left: auto;
+  height: auto;
+  visibility: visible;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+.carousel-multi-item .carousel-item {
+  display: inline-block !important;
+}
+
+.carousel .carousel-slide-item {
+  transition: left 0.5s;
+}

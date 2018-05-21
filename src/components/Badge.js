@@ -15,6 +15,7 @@ class Badge extends React.Component {
 
     const classes = classNames(
       'badge',
+      color,
       'badge-' + color,
       pill ? 'badge-pill' : false,
       className

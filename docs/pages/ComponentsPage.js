@@ -12,6 +12,7 @@ class ComponentsPage extends React.Component {
             <Jumbotron>
               <h1><Fa icon="cubes" className="grey-text" /> Components</h1>
               <ul className="list-unstyled example-components-list">
+                <h6 className="mt-3 grey-text">FREE </h6>
                 <li>
                   <NavLink to="/components/alert">Alert <Fa icon="angle-right" /></NavLink>
                 </li>

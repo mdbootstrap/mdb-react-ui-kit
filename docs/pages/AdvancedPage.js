@@ -11,6 +11,7 @@ class AdvancedPage extends React.Component {
             <Jumbotron>
               <h1><Fa icon="code" className="grey-text" /> Advanced</h1>
               <ul className="list-unstyled example-components-list">
+                <h6 className="mt-3 grey-text">FREE </h6>
                 <li>
                   <NavLink to="/advanced/carousel">Carousel <Fa icon="angle-right" /></NavLink>
                 </li>

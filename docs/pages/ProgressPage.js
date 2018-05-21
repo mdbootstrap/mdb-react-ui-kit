@@ -1,5 +1,5 @@
 import React from 'react';
-import { Progress, Spinner } from 'mdbreact';
+import { Progress } from 'mdbreact';
 
 
 const ProgressPage = (props) => {
@@ -17,15 +17,6 @@ const ProgressPage = (props) => {
         <Progress color="warning" value="30" animated>Wow!</Progress>
         <Progress color="info" value="25">Cool</Progress>
       </div>
-        <div className="col-3">
-          <Spinner green small />
-        </div>
-        <div className="col-4">
-          <Spinner yellow />
-        </div>
-        <div className="col-5">
-          <Spinner crazy big multicolor />
-        </div>
     </div>
   );
 };

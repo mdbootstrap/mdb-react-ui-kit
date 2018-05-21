@@ -1,13 +1,12 @@
 // Navbars
 .navbar {
-  @extend .z-depth-1;
+  box-shadow: $z-depth-1;
   padding-right: 1rem !important;
   font-weight: $navbar-font-weight;
   form {
     .md-form {
       input {
         margin: 0 $navbar-form-input-mr $navbar-form-input-mb $navbar-form-input-ml;
-        // height: $navbar-form-input-height;
       }
     }
   }
@@ -18,7 +17,7 @@
     font-size: $navbar-double-font-size;
     font-weight: $navbar-font-weight;
     .breadcrumb-item {
-      color: $white;
+      color: $white-base;
       &.active {
         color: $navbar-breadcrumb-color;
       }

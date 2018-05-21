@@ -88,6 +88,38 @@
   @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
 }
 
+@mixin hover-focus {
+  &:hover,
+  &:focus {
+    @content;
+  }
+}
+
+// Background color
+@mixin bg-variant($parent, $color) {
+  #{$parent} {
+    background-color: $color !important;
+  }
+  a#{$parent},
+  button#{$parent} {
+    @include hover-focus {
+      background-color: darken($color, 10%) !important;
+    }
+  }
+}
+
+// Typography
+@mixin text-emphasis-variant($parent, $color) {
+  #{$parent} {
+    color: $color !important;
+  }
+  a#{$parent} {
+    @include hover-focus {
+      color: darken($color, 10%) !important;
+    }
+  }
+}
+
 // Placeholder
 @mixin placeholder {
   &::placeholder {
@@ -96,25 +128,26 @@
 }
 
 // MDB Mixins
-// @function set-notification-text-color($color) {
-//   @if (lightness($color) > 80) {
-//     @return $black; Lighter backgorund, return dark color
-//   } @else {
-//     @return $white; Darker background, return light color
-//   }
-// }
+// Set the color of the button and badge
+@function set-notification-text-color($color) {
+  @if (lightness($color) > 80) {
+    @return $black-base; // Lighter backgorund, return dark color
+  } @else {
+    @return $white-base; // Darker background, return light color
+  }
+}
 
 // Make button
 @mixin make-button ($name, $color) {
   .btn-#{$name} {
     background-color: $color !important;
-    color: $white !important;
+    color: set-notification-text-color($color) !important;
     &:hover {
       background-color: lighten($color, 5%);
     }
     &:focus,
     &.focus {
-      @extend .z-depth-1-half;
+      box-shadow: $z-depth-1-half;
     }
     &:focus,
     &:active,
@@ -131,13 +164,13 @@
     &:not([disabled]):not(.disabled):active,
     &:not([disabled]):not(.disabled).active,
     .show > &.dropdown-toggle {
-      @extend .z-depth-1-half;
+      box-shadow: $z-depth-1-half;
       background-color: darken($color, 20%) !important;
     }
     &:not([disabled]):not(.disabled):active:focus,
     &:not([disabled]):not(.disabled).active:focus,
     .show > &.dropdown-toggle:focus {
-      @extend .z-depth-1-half;
+      box-shadow: $z-depth-1-half;
     }
   }
   .#{$name}-ic {
@@ -167,14 +200,14 @@
     &:not([disabled]):not(.disabled):active,
     &:not([disabled]):not(.disabled).active,
     .show > &.dropdown-toggle {
-      @extend .z-depth-1-half;
+      box-shadow: $z-depth-1-half;
       background-color: transparent !important;
       border-color: $color !important;
     }
     &:not([disabled]):not(.disabled):active:focus,
     &:not([disabled]):not(.disabled).active:focus,
     .show > &.dropdown-toggle:focus {
-      @extend .z-depth-1-half;
+      box-shadow: $z-depth-1-half;
     }
   }
 }
@@ -191,7 +224,7 @@
   .btn {
     &.#{$name}-gradient {
       transition: .5s ease;
-      color: $white;
+      color: $white-base;
       &:hover,
       &:focus,
       &:active,
@@ -209,15 +242,6 @@
   font-size: $font-size;
 }
 
-@function set-notification-text-color($color) {
-  @if (lightness($color) > 70) {
-    @return $black; // Lighter backgorund, return dark color
-  } @else {
-    @return $white; // Darker background, return light color
-  }
-}
-
-// Make badge
 @mixin make-badge($name, $color) {
   .badge-#{$name} {
     background-color: $color !important;
@@ -226,7 +250,7 @@
 }
 
 // Make input
-@mixin make-input($label-font-size, $label-active-font-size, $top, $prefix-font-size, $margin-left, $width) {
+@mixin make-input($label-font-size, $label-active-font-size, $top, $prefix-font-size, $margin-left, $width, $margin-left-2) {
   label {
     font-size: $label-font-size;
     &.active {
@@ -242,6 +266,9 @@
     }
     ~ label {
       margin-left: $margin-left;
+    }
+    ~ .form-text {
+      margin-left: $margin-left-2;
     }
   }
 }
@@ -290,7 +317,7 @@
       input {
         border-bottom: 1px solid $color;
         &:focus:not([readonly]) {
-          border-color: $input-focus-color;
+          border-color: $input-md-focus-color;
         }
       }
       .form-control {

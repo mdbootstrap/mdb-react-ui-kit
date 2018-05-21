@@ -1,9 +1,9 @@
 {
   "name": "mdbreact",
-  "version": "4.3.0",
+  "version": "4.4.0",
   "author": "MDBootstrap",
   "license": "MIT",
-  "repository": "https://git.mdbootstrap.com/mdb/react/re-pro",
+  "repository": "https://github.com/mdbootstrap/React-Bootstrap-with-Material-Design",
   "main": "dist/mdbreact.js",
   "files": [
     "dist/*"
@@ -49,7 +49,6 @@
     "eslint-plugin-react": "^7.5.1",
     "html-webpack-plugin": "^2.30.1",
     "jshint": "^2.9.5",
-    "mdbootstrap": "^4.4.4",
     "node-sass": "^4.7.2",
     "react-chartjs-2": "^2.7.0",
     "react-image-lightbox": "^4.6.0",

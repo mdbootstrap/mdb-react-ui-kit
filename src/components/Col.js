@@ -12,13 +12,14 @@ class Col extends Component {
       md,
       lg,
       xl,
+      size,
       className,
       tag: Tag,
       ...attributes
     } = this.props;
 
     const classes = classNames(
-      'col',
+      size ? 'col-' + size : '',
       xs ? 'col-' + xs : '',
       sm ? 'col-sm-' + sm : '',
       md ? 'col-md-' + md : '',

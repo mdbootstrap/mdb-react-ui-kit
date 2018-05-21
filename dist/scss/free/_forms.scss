@@ -22,16 +22,15 @@
     border-bottom: 1px solid $input-border-color;
     border-radius: 0;
     box-sizing: content-box;
-    // width: 100%;
     background-color: transparent;
 
     // Focused input style
     &:focus:not([readonly]) {
-      box-shadow: 0 1px 0 0 $input-focus-color;
-      border-bottom: 1px solid $input-focus-color;
+      box-shadow: 0 1px 0 0 $input-md-focus-color;
+      border-bottom: 1px solid $input-md-focus-color;
       // Focused label style
       + label {
-        color: $input-focus-color;
+        color: $input-md-focus-color;
       }
     }
 
@@ -45,20 +44,6 @@
       transition: $input-label-after-transition;
     }
 
-    // Alternative input
-    &.input-alternate {
-      @extend .z-depth-1;
-      transition: $input-alternate-transition;
-      border-bottom: 0;
-      height: $input-alternate-height;
-      padding: 0 $input-alternate-padding-x;
-      font-size: $input-alternate-font-size;
-      &:hover,
-      &:focus {
-        box-shadow: $input-alternate-box-shadow;
-        border-bottom: 0;
-      }
-    }
     // Valid input style
     &.valid, &:focus.valid {
       border-bottom: 1px solid $input-success-color;
@@ -124,14 +109,15 @@
     }
     &:disabled,
     &[readonly] {
-      border-bottom: 1px solid map-get($grey, lighten-1);
+      border-bottom: 1px solid $grey-lighten-1;
       background-color: transparent;
     }
   }
 
-  @include make-input($input-label-font-size, $input-label-active-font-size, $input-prefix-top, $input-prefix-font-size, $input-prefix-margin-left, $input-prefix-width);
+  @include make-input($input-label-font-size, $input-label-active-font-size, $input-prefix-top, $input-prefix-font-size, $input-prefix-margin-left, $input-prefix-width, $input-form-text-ml);
   position: relative;
   margin-top: $input-md-form-margin-top;
+  margin-bottom: $input-md-form-margin-bottom;
   label {
     position: absolute;
     top: $input-label-top;
@@ -147,14 +133,14 @@
     position: absolute;
     transition: $input-prefix-transition;
     &.active {
-      color: $input-focus-color;
+      color: $input-md-focus-color;
     }
   }
   &.form-lg {
-    @include make-input($input-label-font-size-lg, $input-label-active-font-size-lg, $input-prefix-top-lg, $input-prefix-font-size-lg, $input-prefix-margin-left-lg, $input-prefix-width-lg);
+    @include make-input($input-label-font-size-lg, $input-label-active-font-size-lg, $input-prefix-top-lg, $input-prefix-font-size-lg, $input-prefix-margin-left-lg, $input-prefix-width-lg, $input-form-text-ml-lg);
   }
   &.form-sm {
-    @include make-input($input-label-font-size-sm, $input-label-active-font-size-sm, $input-prefix-top-sm, $input-prefix-font-size-sm, $input-prefix-margin-left-sm, $input-prefix-width-sm);
+    @include make-input($input-label-font-size-sm, $input-label-active-font-size-sm, $input-prefix-top-sm, $input-prefix-font-size-sm, $input-prefix-margin-left-sm, $input-prefix-width-sm, $input-form-text-ml-sm);
   }
 
   // Textarea
@@ -166,7 +152,7 @@
     }
     &.md-textarea-auto {
       padding: 0;
-      padding-top: 1.5rem;
+      padding-top: $textarea-padding;
     }
   }
 }

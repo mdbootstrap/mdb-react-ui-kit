@@ -33,22 +33,27 @@
   border-top: 1px solid $hr-dark;
 }
 
+// Responsive width
+.w-responsive {
+  width: 75%;
+  @media (max-width: 740px) {
+    width: 100%;
+  }
+}
+
 // Collapsible body
 .collapsible-body {
   display: none;
 }
 
 .jumbotron {
-  @extend .z-depth-1;
+  box-shadow: $z-depth-1;
   border-radius: $border-radius-base;
-  background-color: $white;
-}
-
-.avatar {
-  max-width: $avatar-max-width;
+  background-color: $white-base;
 }
 
 @each $name, $color in $basic-mdb-colors {
+  @include bg-variant(".bg-#{$name}", $color);
   .border-#{$name} {
     border-color: $color !important;
   }

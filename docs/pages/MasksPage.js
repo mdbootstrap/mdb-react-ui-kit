@@ -25,10 +25,10 @@ class MasksPage extends React.Component {
             </View>
           </Col>
           <Col md="4">
-            <View>
+            <View waves>
               <img src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" className="img-fluid" alt="" />
               <Mask pattern={3} className="flex-center">
-                <p className="white-text">pattern = &#123;3&#125;</p>
+                <p className="white-text">pattern = &#123;3&#125;, waves</p>
               </Mask>
             </View>
           </Col>
@@ -51,10 +51,10 @@ class MasksPage extends React.Component {
             </View>
           </Col>
           <Col md="4">
-            <View>
+            <View waves >
               <img src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" className="img-fluid" alt="" />
               <Mask className="flex-center" overlay="blue-slight">
-                <p className="white-text">overlay = "blue-slight"</p>
+                <p className="white-text">overlay = "blue-slight", waves</p>
               </Mask>
             </View>
           </Col>
