@@ -1,4 +1,4 @@
-[![Material Design for Bootstrap](https://mdbootstrap.com/img/Marketing/products/social/react/mdb-react-free.jpg)](https://mdbootstrap.com/react/)
+[![Material Design for Bootstrap](https://mdbootstrap.com/img/Marketing/free/social/react/mdb-react-free.jpg)](https://mdbootstrap.com/react/)
 
 # Material Design for Bootstrap 4 - React version
 
