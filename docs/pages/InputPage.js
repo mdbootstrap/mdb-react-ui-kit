@@ -1,6 +1,5 @@
 import React from 'react';
-import { Input, FormInline, Button, Container, Row, Col } from 'mdbreact';
-
+import { Input, InputNumeric, FormInline, Button, Container, Row, Col } from 'mdbreact';
 
 class InputPage extends React.Component {
   constructor(props) {
@@ -22,7 +21,7 @@ class InputPage extends React.Component {
 
   render() {
     return (
-      <Container fluid style={{textAlign: 'initial'}}>
+      <Container style={{textAlign: 'initial'}}>
         <div>
 
           <h2 className="mt-5"><strong>Material Design Inputs</strong></h2>
@@ -52,6 +51,16 @@ class InputPage extends React.Component {
 
           <Input type="textarea" label="Icon Prefix" rows="2" icon="pencil"/>
           <Input type="textarea" label="Basic textarea" rows="2" />
+
+          <h4 className="mt-5">Numeric inputs</h4>
+          
+          <Row>
+            <Col sm="4">
+              <InputNumeric min={5} max={15} value={10} className="mb-2"/>
+              <InputNumeric precision={2} value={50.3} step={0.1} className="mb-2"/>
+              <InputNumeric precision={2} value={50.3} step={0.5} snap className="mb-2"/>
+            </Col>
+          </Row>
 
           <hr className="mt-5" />
 

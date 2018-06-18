@@ -1,7 +1,6 @@
 import React from 'react';
 import TextField from './TextField';
 
-
 class Input extends React.Component {
 
   render() {

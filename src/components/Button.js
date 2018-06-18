@@ -48,6 +48,7 @@ class Button extends React.Component {
       role,
       type,
       social,
+      action,
       tag: Tag,
       innerRef,
       ...attributes
@@ -60,6 +61,7 @@ class Button extends React.Component {
       rounded ? 'btn-rounded' : false,
       block ? 'btn-block' : false,
       social ? 'btn-' + social : false,
+      action ? 'btn-action' : false,
       'Ripple-parent',
       className,
       { active, disabled: this.props.disabled }

@@ -13,11 +13,17 @@ class ModalHeader extends React.Component {
       toggle,
       tag: Tag,
       closeAriaLabel,
+      titleClass,
       ...attributes } = this.props;
 
     const classes = classNames(
       'modal-header',
       className,
+    );
+
+    const titleClasses = classNames(
+      'modal-title',
+      this.props.titleClass
     );
 
     if (toggle) {
@@ -30,7 +36,7 @@ class ModalHeader extends React.Component {
 
     return (
       <div {...attributes} className={classes}>
-        <Tag className={'modal-title'}>
+        <Tag className={titleClasses}>
           {children}
         </Tag>
         {closeButton}

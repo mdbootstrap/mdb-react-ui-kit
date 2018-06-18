@@ -14,16 +14,18 @@ class Nav extends Component {
       color,
       classicTabs,
       pills,
+      header,
       ...attributes
     } = this.props;
 
     const classes = classNames(
       'nav',
-      this.props.tabs && 'nav-tabs',
-      this.props.pills && 'md-pills',
-      this.props.classicTabs && 'classic-tabs',
-      this.props.pills && this.props.color ? 'pills-'+this.props.color : false,
-      (this.props.tabs || this.props.classicTabs) && this.props.color ? 'tabs-'+this.props.color : false,
+      tabs && 'nav-tabs',
+      pills && 'md-pills',
+      classicTabs && 'classic-tabs',
+      header && 'nav-pills card-header-pills',
+      pills && color ? 'pills-'+color : false,
+      (tabs || classicTabs) && color ? 'tabs-'+this.props.color : false,
       className,
     );
 
@@ -42,11 +44,16 @@ Nav.propTypes = {
   color: PropTypes.string,
   classicTabs: PropTypes.bool,
   pills: PropTypes.bool,
-  tabs: PropTypes.bool
+  tabs: PropTypes.bool,
+  header: PropTypes.bool
 };
 
 Nav.defaultProps = {
-  tag: 'ul'
+  tag: 'ul',
+  classicTabs: false,
+  pills: false,
+  tabs: false,
+  header: false
 };
 
 export default Nav;

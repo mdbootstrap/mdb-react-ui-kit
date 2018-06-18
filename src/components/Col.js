@@ -5,7 +5,7 @@ import classNames from 'classnames';
 class Col extends Component {
 
   render() {
- 
+
     const {
       xs,
       sm,
@@ -25,6 +25,7 @@ class Col extends Component {
       md ? 'col-md-' + md : '',
       lg ? 'col-lg-' + lg : '',
       xl ? 'col-xl-' + xl : '',
+      !size && !xs && !sm && !md && !lg && !xl ? 'col' : '',
       className
     );
 

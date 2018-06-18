@@ -19,21 +19,27 @@ class Card extends Component {
       pricing,
       personal,
       news,
+      color,
+      text,
+      border,
       ...attributes
     } = this.props;
 
     const classes = classNames(
       'card',
-      cascade ? 'card-cascade' : false,
-      wide ? 'card-cascade wider' : false,
-      narrow ? 'card-cascade narrower' : false,
-      reverse ? 'card-cascade wider reverse' : false,
-      testimonial ? 'testimonial-card' : false,
-      ecommerce ? 'card-ecommerce' : false,
-      collection ? 'collection-card' : false,
-      pricing ? 'pricing-card' : false,
-      personal ? 'card-personal' : false,
-      news ? 'news-card': false,
+      cascade && 'card-cascade',
+      wide && 'card-cascade wider',
+      narrow && 'card-cascade narrower',
+      reverse && 'card-cascade wider reverse',
+      testimonial && 'testimonial-card',
+      ecommerce && 'card-ecommerce',
+      collection && 'collection-card',
+      pricing && 'pricing-card',
+      personal && 'card-personal',
+      news && 'news-card',
+      color && color,
+      text && text + '-text',
+      border && 'border-' + border,
       className
     );
 
@@ -45,11 +51,13 @@ class Card extends Component {
 
 Card.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string
+  className: PropTypes.string,
+  color: PropTypes.string,
+  border: PropTypes.string
 };
 
 Card.defaultProps = {
-  tag: 'div'
+  tag: 'div',
 };
 
 export default Card;

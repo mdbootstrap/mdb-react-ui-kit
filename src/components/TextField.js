@@ -131,6 +131,7 @@ class TextField extends React.Component {
 
     const classes = classNames(
       formControlClass,
+      size ? `form-control-${size}` : false,
       validate ? 'validate' : false,
       filled ? 'filled-in' : false,
       gap ? 'with-gap' : false,
@@ -150,6 +151,7 @@ class TextField extends React.Component {
       'fa',
       icon ? `fa-${icon}` : false,
       isNotEmpty ? 'active' : false,
+      size ? `fa-${size}` : false,
       iconClass,
       'prefix'
     );

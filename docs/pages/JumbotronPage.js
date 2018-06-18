@@ -3,7 +3,7 @@ import { Jumbotron, Button } from 'mdbreact';
 
 const JumbotronPage = (props) => {
   return(
-    <div className="container-fluid text-center">
+    <div className="container-fluid text-center mt-5">
       <Jumbotron>
         <h1 className="display-3">Hello, world!</h1>
         <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>

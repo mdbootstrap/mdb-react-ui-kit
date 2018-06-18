@@ -52,7 +52,8 @@ const propTypes = {
   modalTransitionTimeout: PropTypes.number,
   modalTransitionAppearTimeout: PropTypes.number,
   modalTransitionEnterTimeout: PropTypes.number,
-  modalTransitionLeaveTimeout: PropTypes.number
+  modalTransitionLeaveTimeout: PropTypes.number,
+  cascading: PropTypes.bool
 };
 
 const propsToOmit = Object.keys(propTypes);
@@ -211,7 +212,8 @@ class Modal extends React.Component {
           [`modal-full-height`]: this.props.fullHeight,
           [`modal-frame`]: this.props.frame,
           [`modal-dialog-centered`]: this.props.centered,
-          [`modal-${this.props.position}`]: this.props.position
+          [`modal-${this.props.position}`]: this.props.position,
+          ['cascading-modal']: this.props.cascading
         }), this.props.cssModule)}
         role="document"
         {...attributes}
@@ -252,7 +254,8 @@ class Modal extends React.Component {
       modalTransitionTimeout,
       backdropTransitionTimeout,
       role,
-      labelledBy
+      labelledBy,
+      cascading
     } = this.props;
 
     const modalAttributes = {

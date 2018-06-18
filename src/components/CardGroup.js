@@ -2,19 +2,20 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-class CardTitle extends Component {
+class CardGroup extends Component {
 
   render() {
 
     const {
       className,
       tag: Tag,
-      sub,
+      deck,
+      column,
       ...attributes
     } = this.props;
 
     const classes = classNames(
-      sub ? 'card-subtitle' : 'card-title',
+      deck ? 'card-deck' : column ? 'card-columns' : 'card-group',
       className
     );
 
@@ -24,15 +25,15 @@ class CardTitle extends Component {
   }
 }
 
-CardTitle.propTypes = {
+CardGroup.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  sub: PropTypes.bool,
-  className: PropTypes.string
+  className: PropTypes.string,
+  deck: PropTypes.bool,
+  column: PropTypes.bool
 };
 
-CardTitle.defaultProps = {
-  tag: 'h4',
-  sub: false
+CardGroup.defaultProps = {
+  tag: 'div'
 };
 
-export default CardTitle;
+export default CardGroup;

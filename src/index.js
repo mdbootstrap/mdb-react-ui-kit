@@ -7,8 +7,10 @@ import ButtonGroup from './components/ButtonGroup';
 import ButtonToolbar from './components/ButtonToolbar';
 import Card from './components/Card';
 import CardBody from './components/CardBody';
-import CardImage from './components/CardImage';
 import CardFooter from './components/CardFooter';
+import CardGroup from './components/CardGroup';
+import CardHeader from './components/CardHeader';
+import CardImage from './components/CardImage';
 import CardText from './components/CardText';
 import CardTitle from './components/CardTitle';
 import Carousel from './components/Carousel';
@@ -32,6 +34,7 @@ import FormInline from './components/FormInline';
 import Footer from './components/Footer';
 import FreeBird from './components/FreeBird';
 import Input from './components/Input';
+import InputNumeric from './components/InputNumeric';
 import Jumbotron from './components/Jumbotron';
 import ListGroup from './components/ListGroup';
 import ListGroupItem from './components/ListGroupItem';
@@ -72,10 +75,12 @@ export {
   ButtonToolbar,
   Card,
   CardBody,
+  CardFooter,
+  CardGroup,
+  CardHeader,
   CardImage,
   CardText,
   CardTitle,
-  CardFooter,
   Carousel,
   CarouselCaption,
   CarouselControl,
@@ -97,6 +102,7 @@ export {
   Footer,
   FreeBird,
   Input,
+  InputNumeric,
   Jumbotron,
   ListGroup,
   ListGroupItem,

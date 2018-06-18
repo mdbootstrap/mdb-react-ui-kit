@@ -22,6 +22,7 @@ import PaginationPage from './pages/PaginationPage';
 import PopoverPage from './pages/PopoverPage';
 import ListGroupPage from './pages/ListGroupPage';
 import CarouselPage from './pages/CarouselPage';
+import PanelPage from'./pages/PanelPage';
 import CollapsePage from './pages/CollapsePage';
 import TooltipsPage from './pages/TooltipsPage';
 import FooterPage from './pages/FooterPage';
@@ -31,7 +32,7 @@ import VideoCarouselPage from './pages/VideoCarouselPage';
 import HoverPage from './pages/HoverPage';
 import FormsPage from './pages/FormsPage';
 import ChartsPage from './pages/ChartsPage';
-import ScrollBarPage from './pages/ScrollBarPage';
+import SearchPage from './pages/SearchPage';
 
 class Routes extends React.Component {
   render() {
@@ -68,7 +69,8 @@ class Routes extends React.Component {
         <Route path='/css/hover' component={HoverPage} />
         <Route path='/advanced/videocarousel' component={VideoCarouselPage} />
         <Route path='/advanced/charts' component={ChartsPage} />
-        <Route path='/advanced/scrollbar' component={ScrollBarPage} />
+        <Route path='/components/panels' component={PanelPage} />
+        <Route path='/components/search' component={SearchPage} />
         <Route render = { function() {
           return <h1>Not Found</h1>;
         }} />
