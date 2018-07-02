@@ -32,6 +32,7 @@ class CardImage extends Component {
       top,
       waves,
       hover,
+      cascade,
       tag: Tag,
       ...attributes
     } = this.props;
@@ -51,7 +52,7 @@ class CardImage extends Component {
 
     if ( this.props.src ) {
       return (
-        <View hover={this.props.hover}>
+        <View hover={this.props.hover} cascade={this.props.cascade}>
           <div className="Ripple-parent" onMouseDown={ this.handleClick.bind(this) } onTouchStart={ this.handleClick.bind(this) }>
             {innerContent}
             <Mask overlay={overlay}/>
@@ -71,14 +72,16 @@ CardImage.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   waves: PropTypes.bool,
   className: PropTypes.string,
-  waves: PropTypes.bool
+  waves: PropTypes.bool,
+  cascade: PropTypes.bool
 };
 
 CardImage.defaultProps = {
   tag: 'img',
   overlay: 'white-slight',
   waves: true,
-  hover: false
+  hover: false,
+  cascade: false
 };
 
 export default CardImage;

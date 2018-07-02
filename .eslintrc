@@ -15,11 +15,11 @@
         "browser": true,
         "node":    true,
         "mocha":   true
-    },   
+    },
     "extends": [
-        "eslint:recommended", 
+        "eslint:recommended",
         "plugin:react/recommended"
-    ],    
+    ],
 
     "rules": {
       "no-unused-vars": 0,
@@ -36,7 +36,7 @@
       ],
       "linebreak-style": [
         "warn",
-        "unix"
+        "windows"
       ],
       "quotes": [
         "warn",

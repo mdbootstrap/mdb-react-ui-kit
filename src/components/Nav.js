@@ -22,7 +22,6 @@ class Nav extends Component {
       'nav',
       tabs && 'nav-tabs',
       pills && 'md-pills',
-      classicTabs && 'classic-tabs',
       header && 'nav-pills card-header-pills',
       pills && color ? 'pills-'+color : false,
       (tabs || classicTabs) && color ? 'tabs-'+this.props.color : false,

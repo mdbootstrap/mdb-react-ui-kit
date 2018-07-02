@@ -30,6 +30,7 @@ class View extends React.Component {
       rounded,
       waves,
       src,
+      cascade,
       tag: Tag,
       ...attributes
     } = this.props;
@@ -39,6 +40,7 @@ class View extends React.Component {
       rounded && 'rounded',
       zoom && 'zoom',
       hover && 'overlay',
+      cascade && 'view-cascade',
       this.props.waves ? 'Ripple-parent': false,
       className
     );
@@ -73,7 +75,8 @@ View.propTypes = {
   hover: PropTypes.bool,
   rounded: PropTypes.bool,
   tag: PropTypes.string,
-  waves: PropTypes.bool
+  waves: PropTypes.bool,
+  cascade: PropTypes.bool
 };
 
 export default View;
