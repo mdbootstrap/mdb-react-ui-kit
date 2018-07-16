@@ -59,5 +59,6 @@ ModalHeader.defaultProps = {
 };
 
 export default ModalHeader;
+export { ModalHeader as MDBModalHeader };
 
 

@@ -7,7 +7,7 @@
         "ecmaVersion": 6,
         "sourceType": "module",
         "ecmaFeatures": {
-            "jsx": true,
+            "jsx": true
         }
     },
     "env": {
@@ -34,10 +34,7 @@
         "warn",
         2
       ],
-      "linebreak-style": [
-        "warn",
-        "windows"
-      ],
+      "linebreak-style": 0,
       "quotes": [
         "warn",
         "single"

@@ -33,6 +33,7 @@ import HoverPage from './pages/HoverPage';
 import FormsPage from './pages/FormsPage';
 import ChartsPage from './pages/ChartsPage';
 import SearchPage from './pages/SearchPage';
+import ValidationPage from './pages/ValidationPage';
 
 class Routes extends React.Component {
   render() {
@@ -71,6 +72,7 @@ class Routes extends React.Component {
         <Route path='/advanced/charts' component={ChartsPage} />
         <Route path='/components/panels' component={PanelPage} />
         <Route path='/components/search' component={SearchPage} />
+        <Route path='/components/validation' component={ValidationPage} />
         <Route render = { function() {
           return <h1>Not Found</h1>;
         }} />

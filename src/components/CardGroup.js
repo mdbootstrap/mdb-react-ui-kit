@@ -37,3 +37,4 @@ CardGroup.defaultProps = {
 };
 
 export default CardGroup;
+export { CardGroup as MDBCardGroup };

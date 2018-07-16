@@ -45,3 +45,4 @@ PageItem.defaultProps = {
 };
 
 export default PageItem;
+export { PageItem as MDBPageItem };

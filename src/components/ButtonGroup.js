@@ -42,5 +42,5 @@ ButtonGroup.defaultProps = {
 };
 
 export default ButtonGroup;
-
+export { ButtonGroup as MDBBtnGroup };
 

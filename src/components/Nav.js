@@ -56,3 +56,4 @@ Nav.defaultProps = {
 };
 
 export default Nav;
+export { Nav as MDBNav };

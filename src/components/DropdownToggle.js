@@ -91,3 +91,4 @@ DropdownToggle.contextTypes = {
 };
 
 export default DropdownToggle;
+export { DropdownToggle as MDBDropdownToggle };

@@ -164,3 +164,4 @@ Collapse.defaultProps = {
   onClosed: () => {}
 };
 export default Collapse;
+export { Collapse as MDBCollapse };

@@ -5,7 +5,7 @@ import classNames from 'classnames';
 class CarouselIndicator extends Component {
 
   render() {
- 
+
     let {
       active,
       children,
@@ -29,8 +29,19 @@ class CarouselIndicator extends Component {
   }
 }
 
+CarouselIndicator.propTypes = {
+  active: PropTypes.bool.isRequired,
+  alt: PropTypes.string,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  img: PropTypes.string
+};
+
 CarouselIndicator.defaultProps = {
-  alt: 'Carousel thumbnail'
+  alt: 'Carousel thumbnail',
+  className: '',
+  img: ''
 };
 
 export default CarouselIndicator;
+export { CarouselIndicator as MDBCarouselIndicator };

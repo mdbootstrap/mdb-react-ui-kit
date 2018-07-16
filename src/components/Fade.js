@@ -129,3 +129,4 @@ Fade.propTypes = propTypes;
 Fade.defaultProps = defaultProps;
 
 export default Fade;
+export { Fade as MDBFade };

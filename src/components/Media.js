@@ -94,3 +94,4 @@ Media.propTypes = {
 };
 
 export default Media;
+export { Media as MDBMedia };

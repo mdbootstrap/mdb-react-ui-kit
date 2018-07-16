@@ -62,3 +62,4 @@ ListGroupItem.defaultProps = {
 };
 
 export default ListGroupItem;
+export { ListGroupItem as MDBListGroupItem };

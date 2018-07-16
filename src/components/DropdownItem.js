@@ -103,3 +103,4 @@ DropdownItem.defaultProps = defaultProps;
 DropdownItem.contextTypes = contextTypes;
 
 export default DropdownItem;
+export { DropdownItem as MDBDropdownItem };

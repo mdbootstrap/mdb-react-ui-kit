@@ -5,7 +5,7 @@ import classNames from 'classnames';
 class Container extends Component {
 
   render() {
- 
+
     const {
       fluid,
       className,
@@ -36,3 +36,4 @@ Container.defaultProps = {
 };
 
 export default Container;
+export { Container as MDBContainer };

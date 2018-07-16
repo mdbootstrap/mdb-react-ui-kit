@@ -29,3 +29,4 @@ PopoverBody.defaultProps = {
 };
 
 export default PopoverBody;
+export { PopoverBody as MDBPopoverBody };

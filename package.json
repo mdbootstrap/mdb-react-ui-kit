@@ -1,8 +1,8 @@
 {
   "name": "mdbreact",
-  "version": "4.5.1",
+  "version": "4.6.0",
   "author": "MDBootstrap",
-  "repository": "https://github.com/mdbootstrap/React-Bootstrap-with-Material-Design",
+  "repository": "https://git.mdbootstrap.com/mdb/react/re-pro",
   "main": "dist/mdbreact.js",
   "license": "MIT",
   "files": [
@@ -21,6 +21,7 @@
     "react": "^16.4.1",
     "react-addons-css-transition-group": "^15.6.2",
     "react-autosuggest": "^9.3.4",
+    "react-bootstrap-table-next": "^0.1.14",
     "react-dom": "^16.4.1",
     "react-motion-ui-pack": "^0.10.3",
     "react-numeric-input": "^2.2.3",

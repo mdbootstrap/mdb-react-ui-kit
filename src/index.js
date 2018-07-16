@@ -26,6 +26,7 @@ import Container from './components/Container';
 import Dropdown from './components/Dropdown';
 import DropdownItem from './components/DropdownItem';
 import DropdownMenu from './components/DropdownMenu';
+import DropdownMenuComponent from './components/DropdownMenuComponent';
 import DropdownToggle from './components/DropdownToggle';
 import EdgeHeader from './components/EdgeHeader';
 import Fa from './components/Fa';
@@ -64,6 +65,73 @@ import Table from './components/Table';
 import TextField from './components/TextField';
 import Tooltip from './components/Tooltip';
 import View from './components/View';
+// MDB FREE
+import MDBBadge from './components/Badge';
+import MDBBreadcrumb from './components/Breadcrumb';
+import MDBBreadcrumbItem from './components/BreadcrumbItem';
+import MDBBtn from './components/Button';
+import MDBBtnGroup from './components/ButtonGroup';
+import MDBBtnToolbar from './components/ButtonToolbar';
+import MDBCard from './components/Card';
+import MDBCardBody from './components/CardBody';
+import MDBCardFooter from './components/CardFooter';
+import MDBCardGroup from './components/CardGroup';
+import MDBCardHeader from './components/CardHeader';
+import MDBCardImage from './components/CardImage';
+import MDBCardText from './components/CardText';
+import MDBCardTitle from './components/CardTitle';
+import MDBCarousel from './components/Carousel';
+import MDBCarouselCaption from './components/CarouselCaption';
+import MDBCarouselControl from './components/CarouselControl';
+import MDBCarouselInner from './components/CarouselInner';
+import MDBCarouselItem from './components/CarouselItem';
+import MDBCarouselIndicators from './components/CarouselIndicators';
+import MDBCarouselIndicator from './components/CarouselIndicator';
+import MDBCol from './components/Col';
+import MDBCollapse from './components/Collapse';
+import MDBContainer from './components/Container';
+import MDBDropdown from './components/Dropdown';
+import MDBDropdownItem from './components/DropdownItem';
+import MDBDropdownMenu from './components/DropdownMenu';
+import MDBDropdownMenuComponent from './components/DropdownMenuComponent';
+import MDBDropdownToggle from './components/DropdownToggle';
+import MDBEdgeHeader from './components/EdgeHeader';
+import MDBIcon from './components/Fa';
+import MDBFade from './components/Fade';
+import MDBFormInline from './components/FormInline';
+import MDBFooter from './components/Footer';
+import MDBFreeBird from './components/FreeBird';
+import MDBInput from './components/Input';
+import MDBInputSelect from './components/InputNumeric';
+import MDBJumbotron from './components/Jumbotron';
+import MDBListGroup from './components/ListGroup';
+import MDBListGroupItem from './components/ListGroupItem';
+import MDBMask from './components/Mask';
+import MDBMedia from './components/Media';
+import MDBModal from './components/Modal';
+import MDBModalBody from './components/ModalBody';
+import MDBModalFooter from './components/ModalFooter';
+import MDBModalHeader from './components/ModalHeader';
+import MDBNav from './components/Nav';
+import MDBNavbar from './components/Navbar';
+import MDBNavbarBrand from './components/NavbarBrand';
+import MDBNavbarNav from './components/NavbarNav';
+import MDBNavbarToggler from './components/NavbarToggler';
+import MDBNavItem from './components/NavItem';
+import MDBNavLink from './components/NavLink';
+import MDBPagination from './components/Pagination';
+import MDBPageItem from './components/PageItem';
+import MDBPageNav from './components/PageLink';
+import MDBPopover from './components/Popover';
+import MDBPopoverBody from './components/PopoverBody';
+import MDBPopoverHeader from './components/PopoverHeader';
+import MDBProgress from './components/Progress';
+import MDBWaves from './components/Waves';
+import MDBRow from './components/Row';
+import MDBTable from './components/Table';
+import MDBTextarea from './components/TextField';
+import MDBTooltip from './components/Tooltip';
+import MDBView from './components/View';
 
 export {
   // FREE
@@ -94,6 +162,7 @@ export {
   Dropdown,
   DropdownItem,
   DropdownMenu,
+  DropdownMenuComponent,
   DropdownToggle,
   EdgeHeader,
   Fa,
@@ -131,5 +200,72 @@ export {
   Table,
   TextField,
   Tooltip,
-  View
+  View,
+  // MDB FREE
+  MDBBadge,
+  MDBBreadcrumb,
+  MDBBreadcrumbItem,
+  MDBBtn,
+  MDBBtnGroup,
+  MDBBtnToolbar,
+  MDBCard,
+  MDBCardBody,
+  MDBCardFooter,
+  MDBCardGroup,
+  MDBCardHeader,
+  MDBCardImage,
+  MDBCardText,
+  MDBCardTitle,
+  MDBCarousel,
+  MDBCarouselCaption,
+  MDBCarouselControl,
+  MDBCarouselInner,
+  MDBCarouselItem,
+  MDBCarouselIndicators,
+  MDBCarouselIndicator,
+  MDBCol,
+  MDBCollapse,
+  MDBContainer,
+  MDBDropdown,
+  MDBDropdownItem,
+  MDBDropdownMenu,
+  MDBDropdownMenuComponent,
+  MDBDropdownToggle,
+  MDBEdgeHeader,
+  MDBIcon,
+  MDBFade,
+  MDBFormInline,
+  MDBFooter,
+  MDBFreeBird,
+  MDBInput,
+  MDBInputSelect,
+  MDBJumbotron,
+  MDBListGroup,
+  MDBListGroupItem,
+  MDBMask,
+  MDBMedia,
+  MDBModal,
+  MDBModalBody,
+  MDBModalFooter,
+  MDBModalHeader,
+  MDBNav,
+  MDBNavbar,
+  MDBNavbarBrand,
+  MDBNavbarNav,
+  MDBNavbarToggler,
+  MDBNavItem,
+  MDBNavLink,
+  MDBPagination,
+  MDBPageItem,
+  MDBPageNav,
+  MDBPopover,
+  MDBPopoverBody,
+  MDBPopoverHeader,
+  MDBProgress,
+  MDBWaves,
+  MDBRow,
+  MDBTable,
+  MDBTextarea,
+  MDBTooltip,
+  MDBView
 };

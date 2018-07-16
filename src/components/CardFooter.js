@@ -10,6 +10,7 @@ class CardFooter extends Component {
       className,
       tag: Tag,
       color,
+      text,
       border,
       transparent,
       small,
@@ -19,22 +20,24 @@ class CardFooter extends Component {
 
     const classes = classNames(
       'card-footer',
-      color && color + ' white-text',
+      color && color,
+      text && text,
+      (color && !text) && ' white-text',
       border && 'border-' + border,
       transparent && 'bg-transparent',
       muted && 'text-muted',
       className
     );
 
-    let text = <Tag {...attributes} className={classes} />
+    let component = <Tag {...attributes} className={classes} />
 
     if (small) {
-      text = (<Tag {...attributes} className={classes} >
+      component = (<Tag {...attributes} className={classes} >
               <small> {this.props.children} </small>
             </Tag>
           )
     }
-    return text
+    return component
   }
 }
 
@@ -42,6 +45,7 @@ CardFooter.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
   color: PropTypes.string,
+  text: PropTypes.string,
   border: PropTypes.string,
   transparent: PropTypes.bool,
   small: PropTypes.bool,
@@ -53,3 +57,4 @@ CardFooter.defaultProps = {
 };
 
 export default CardFooter;
+export { CardFooter as MDBCardFooter };

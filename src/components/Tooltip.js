@@ -9,7 +9,7 @@ import classNames from 'classnames';
 
 
 
- 
+
 class Tooltip extends React.Component {
 
   constructor(props) {
@@ -25,7 +25,7 @@ class Tooltip extends React.Component {
     this.assignOutsideTouchHandler = this.assignOutsideTouchHandler.bind(this);
   }
 
-  show() { 
+  show() {
     this.setVisibility(true);
   }
 
@@ -60,7 +60,7 @@ class Tooltip extends React.Component {
   }
 
   render() {
-    const { 
+    const {
       placement,
       component,
       componentStyle,
@@ -112,7 +112,7 @@ class Tooltip extends React.Component {
               </Arrow>
             </div>}
         </Popper> : false}
-          
+
 
       </Manager>
     );
@@ -133,3 +133,4 @@ Tooltip.propTypes = {
   className: PropTypes.string
 };
 export default Tooltip;
+export { Tooltip as MDBTooltip };

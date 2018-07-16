@@ -351,3 +351,4 @@ Modal.propTypes = propTypes;
 Modal.defaultProps = defaultProps;
 
 export default Modal;
+export { Modal as MDBModal };

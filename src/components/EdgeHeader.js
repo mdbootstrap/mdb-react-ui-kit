@@ -5,7 +5,7 @@ import classNames from 'classnames';
 class EdgeHeader extends Component {
 
   render() {
- 
+
     const {
       color,
       className,
@@ -37,3 +37,4 @@ EdgeHeader.defaultProps = {
 };
 
 export default EdgeHeader;
+export { EdgeHeader as MDBEdgeHeader };

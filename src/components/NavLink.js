@@ -73,3 +73,4 @@ NavLink.propTypes = {
 
 
 export default NavLink;
+export { NavLink as MDBNavLink };

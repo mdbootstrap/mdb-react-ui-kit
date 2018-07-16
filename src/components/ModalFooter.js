@@ -31,5 +31,6 @@ ModalFooter.propTypes = {
 };
 
 export default ModalFooter;
+export { ModalFooter as MDBModalFooter };
 
 

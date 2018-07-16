@@ -5,7 +5,7 @@ import classNames from 'classnames';
 class ListGroup extends Component {
 
   render() {
- 
+
     const {
       children,
       className,
@@ -37,3 +37,4 @@ ListGroup.defaultProps = {
 };
 
 export default ListGroup;
+export { ListGroup as MDBListGroup };

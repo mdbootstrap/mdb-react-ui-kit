@@ -28,3 +28,4 @@ PopoverHeader.defaultProps = {
 };
 
 export default PopoverHeader;
+export { PopoverHeader as MDBPopoverHeader };

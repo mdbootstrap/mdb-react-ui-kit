@@ -39,3 +39,4 @@ Mask.propTypes = {
 };
 
 export default Mask;
+export { Mask as MDBMask };

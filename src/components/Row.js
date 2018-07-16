@@ -5,7 +5,7 @@ import classNames from 'classnames';
 class Row extends Component {
 
   render() {
- 
+
     const {
       className,
       tag: Tag,
@@ -33,3 +33,4 @@ Row.defaultProps = {
 };
 
 export default Row;
+export { Row as MDBRow };

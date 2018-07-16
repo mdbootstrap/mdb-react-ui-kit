@@ -61,3 +61,4 @@ Card.defaultProps = {
 };
 
 export default Card;
+export { Card as MDBCard };

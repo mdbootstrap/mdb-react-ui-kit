@@ -5,7 +5,7 @@ import classNames from 'classnames';
 class NavbarBrand extends Component {
 
   render() {
- 
+
     const {
       className,
       tag: Tag,
@@ -33,3 +33,4 @@ NavbarBrand.defaultProps = {
 };
 
 export default NavbarBrand;
+export { NavbarBrand as MDBNavbarBrand };

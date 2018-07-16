@@ -1,26 +1,71 @@
 import React, { Component } from 'react';
+import { CarouselControl, CarouselIndicators, CarouselIndicator } from '../';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './Carousel.css';
 
 class Carousel extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       activeItem: this.props.activeItem,
       length: this.props.length,
-      slide: this.props.slide
+      slide: this.props.slide,
+      srcArray: []
     };
+
+    this.carouselRef = React.createRef();
   }
 
-  componentDidMount() {
+  restartInterval = () => {
+    if(this.props.interval !== false) {
+      clearInterval(this.cycleInterval);
+      this.cycleInterval = setInterval(this.next, this.props.interval);
+    }
+  }
+
+  next = () => {
+    let nextItem = this.state.activeItem + 1;
+    if(nextItem > this.state.length) {
+      this.setState({ ...this.state,  activeItem: 1 });
+    } else {
+      this.setState({ ...this.state, activeItem: nextItem });
+    }
+    this.restartInterval();
+  }
+
+  prev = () => {
+    let prevItem = this.state.activeItem - 1;
+    if(prevItem < 1) {
+      this.setState({ ...this.state, activeItem: this.state.length });
+    } else {
+      this.setState({ ...this.state, activeItem: prevItem });
+    }
+    this.restartInterval();
+  }
+
+  goToIndex(item) {
+    if (this.state.activeItem !== item) {
+      this.setState({
+        ...this.state,
+        activeItem: item
+      });
+    }
+    this.restartInterval();
+  }
+
+  componentDidMount = () => {
     if(this.props.interval === false) {
       return;
     }
-    this.cycleInterval = setInterval(() => {
-      this.props.next();
-    }, this.props.interval);
+    this.cycleInterval = setInterval(this.next, this.props.interval);
+
+    // get images src atr
+    if(this.props.thumbnails){
+      const CarouselItemsArray = this.carouselRef.current.querySelectorAll('.carousel-item > img');
+      const srcArray = Array.prototype.map.call(CarouselItemsArray, item => item.src);
+      this.setState({ ...this.state, srcArray });
+    }
   }
 
   componentWillUnmount() {
@@ -38,23 +83,9 @@ class Carousel extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      activeItem: nextProps.activeItem
-    });
-    if(this.props.interval !== false) {
-      clearInterval(this.cycleInterval);
-      this.cycleInterval = setInterval(() => {
-        this.props.next();
-      }, this.props.interval);  
-    }
-  }
-
   render() {
-    let {
-      active,
+    const {
       activeItem,
-      next,
       children,
       className,
       multiItem,
@@ -63,6 +94,9 @@ class Carousel extends Component {
       interval,
       testimonial,
       tag: Tag,
+      length,
+      showControls,
+      showIndicators,
       ...attributes
     } = this.props;
 
@@ -71,35 +105,60 @@ class Carousel extends Component {
     const classes = classNames(
       'carousel',
       'carousel-fade',
-      this.props.multiItem ? 'carousel-multi-item' : '',
-      this.props.thumbnails ? 'carousel-thumbnails' : '',
-      this.props.testimonial ? 'testimonial-carousel' : '',
+      multiItem ? 'carousel-multi-item' : '',
+      thumbnails ? 'carousel-thumbnails' : '',
+      testimonial ? 'testimonial-carousel' : '',
       className
     );
 
+    const CarouselIndicatorsArray = [];
+    for(let i = 1; i <= this.state.length; i++){
+      CarouselIndicatorsArray.push(<CarouselIndicator img={thumbnails ? this.state.srcArray[i - 1] : null} key={i} active={this.state.activeItem === i ? true : false} onClick={() => { this.goToIndex(i); }}></CarouselIndicator>);
+    }
+
     return (
-      <Tag {...attributes} className={classes} aria-label={ariaLabel}>
+      <Tag ref={this.carouselRef} {...attributes} className={classes} aria-label={ariaLabel}>
+        {(showControls && multiItem) && (
+          <div className="controls-top">
+            <CarouselControl dark={testimonial ? true : false} iconLeft className="btn-floating" direction="prev" role="button" onClick={this.prev}/>
+            <CarouselControl dark={testimonial ? true : false} iconRight className="btn-floating" direction="next" role="button" onClick={this.next}/>
+          </div>
+        )}
         {children}
+        {(showControls && !multiItem) && (
+          <React.Fragment>
+            <CarouselControl dark={testimonial ? true : false} direction="prev" role="button" onClick={this.prev} />
+            <CarouselControl dark={testimonial ? true : false} direction="next" role="button" onClick={this.next} />
+          </React.Fragment>
+        )}
+        <CarouselIndicators>
+          {showIndicators && CarouselIndicatorsArray}
+        </CarouselIndicators>
       </Tag>
     );
   }
 }
 
 Carousel.propTypes = {
-  active: PropTypes.string,
-  activeItem: PropTypes.any,
-  next: PropTypes.func.isRequired,
+  activeItem: PropTypes.number,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
   children: PropTypes.node,
   multiItem: PropTypes.bool,
   interval: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
-  thumbnails: PropTypes.bool
+  thumbnails: PropTypes.bool,
+  testimonial: PropTypes.bool,
+  showControls: PropTypes.bool,
+  showIndicators: PropTypes.bool,
+  slide: PropTypes.bool,
+  length: PropTypes.number,
 };
 
 Carousel.defaultProps = {
   tag: 'div',
-  interval: 6000
+  interval: 6000,
+  showControls: true,
+  showIndicators: true
 };
 
 Carousel.childContextTypes = {
@@ -109,3 +168,4 @@ Carousel.childContextTypes = {
 };
 
 export default Carousel;
+export { Carousel as MDBCarousel };

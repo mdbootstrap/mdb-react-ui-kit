@@ -85,3 +85,4 @@ CardImage.defaultProps = {
 };
 
 export default CardImage;
+export { CardImage as MDBCardImage };

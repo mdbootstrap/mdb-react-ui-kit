@@ -52,3 +52,4 @@ FormInline.propTypes = {
 };
 
 export default FormInline;
+export { FormInline as MDBFormInline };

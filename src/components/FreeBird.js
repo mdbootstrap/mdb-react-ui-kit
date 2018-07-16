@@ -5,7 +5,7 @@ import classNames from 'classnames';
 class FreeBird extends Component {
 
   render() {
- 
+
     const {
       className,
       tag: Tag,
@@ -33,3 +33,4 @@ FreeBird.defaultProps = {
 };
 
 export default FreeBird;
+export { FreeBird as MDBFreeBird };

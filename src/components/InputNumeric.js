@@ -29,3 +29,4 @@ InputNumeric.propTypes = {
 };
 
 export default InputNumeric;
+export { InputNumeric as MDBInputSelect };

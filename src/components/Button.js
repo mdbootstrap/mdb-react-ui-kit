@@ -37,6 +37,7 @@ class Button extends React.Component {
     let {
       active,
       block,
+      circle,
       className,
       color,
       outline,
@@ -59,6 +60,7 @@ class Button extends React.Component {
       flat ? 'btn-flat' : gradient ? `${gradient}-gradient` : `btn${outline ? '-outline' : ''}-${color}`,
       size ? `btn-${size}` : false,
       rounded ? 'btn-rounded' : false,
+      circle && 'btn-circle',
       block ? 'btn-block' : false,
       social ? 'btn-' + social : false,
       action ? 'btn-action' : false,
@@ -104,6 +106,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   outline: PropTypes.bool,
   rounded: PropTypes.bool,
+  circle: PropTypes.bool,
   floating: PropTypes.bool,
   flat: PropTypes.bool,
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -115,3 +118,4 @@ Button.propTypes = {
 };
 
 export default Button;
+export { Button as MDBBtn };

@@ -137,3 +137,4 @@ Popover.propTypes = {
 };
 
 export default Popover;
+export { Popover as MDBPopover };

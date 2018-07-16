@@ -169,7 +169,7 @@ class FormsPage extends React.Component  {
                   </div>
                 </form>
               </CardBody>
-            </Card>                    
+            </Card>
           </Col>
           <Col md="6">
             <div className="card mx-xl-5">

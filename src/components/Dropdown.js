@@ -8,34 +8,42 @@ import { omit, keyCodes } from './utils';
 class Dropdown extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      isOpen: false
+    };
 
     this.addEvents = this.addEvents.bind(this);
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.removeEvents = this.removeEvents.bind(this);
-    this.toggle = this.toggle.bind(this);
   }
 
   getChildContext() {
     return {
-      toggle: this.props.toggle,
-      isOpen: this.props.isOpen,
-      dropup: this.props.dropup
+      isOpen: this.state.isOpen,
+      dropup: this.props.dropup,
+      toggle: this.toggle
     };
   }
 
   componentDidMount() {
-    this.handleProps();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.isOpen !== prevProps.isOpen) {
-      this.handleProps();
-    }
+    this.handleEventsBinding();
   }
 
   componentWillUnmount() {
     this.removeEvents();
+  }
+
+  componentDidUpdate() {
+    this.handleEventsBinding();
+  }
+
+  handleEventsBinding() {
+    if(this.state.isOpen) {
+      this.addEvents();
+    } else {
+      this.removeEvents();
+    }
   }
 
   getContainer() {
@@ -77,11 +85,11 @@ class Dropdown extends React.Component {
 
     const container = this.getContainer();
 
-    if (e.which === keyCodes.space && this.props.isOpen && container !== e.target) {
+    if (e.which === keyCodes.space && this.state.isOpen && container !== e.target) {
       e.target.click();
     }
 
-    if (e.which === keyCodes.esc || !this.props.isOpen) {
+    if (e.which === keyCodes.esc || !this.state.isOpen) {
       this.toggle(e);
       container.querySelector('[aria-expanded]').focus();
       return;
@@ -118,27 +126,14 @@ class Dropdown extends React.Component {
     items[index].focus();
   }
 
-  handleProps() {
-    if (this.props.isOpen) {
-      this.addEvents();
-    } else {
-      this.removeEvents();
-    }
-  }
-
-  toggle(e) {
-    if (this.props.disabled) {
-      return e && e.preventDefault();
-    }
-
-    return this.props.toggle(e);
+  toggle = () => {
+    this.setState({ isOpen: !this.state.isOpen });
   }
 
   render() {
     const {
       className,
       dropup,
-      isOpen,
       group,
       size,
       ...attrs
@@ -149,7 +144,7 @@ class Dropdown extends React.Component {
         'btn-group': group,
         [`btn-group-${size}`]: !!size,
         dropdown: !group,
-        show: isOpen,
+        show: this.state.isOpen,
         dropup: dropup
       },
       className
@@ -162,7 +157,6 @@ Dropdown.propTypes = {
   disabled: PropTypes.bool,
   dropup: PropTypes.bool,
   group: PropTypes.bool,
-  isOpen: PropTypes.bool,
   size: PropTypes.string,
   tag: PropTypes.string,
   toggle: PropTypes.func,
@@ -170,7 +164,6 @@ Dropdown.propTypes = {
   className: PropTypes.string
 };
 Dropdown.defaultProps = {
-  isOpen: false,
   dropup: false,
   tag: 'div'
 };
@@ -181,3 +174,4 @@ Dropdown.childContextTypes = {
 };
 
 export default Dropdown;
+export { Dropdown as MDBDropdown };

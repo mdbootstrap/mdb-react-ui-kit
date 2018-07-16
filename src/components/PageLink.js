@@ -5,7 +5,7 @@ import classNames from 'classnames';
 class PageLink extends Component {
 
   render() {
- 
+
     const {
       children,
       className,
@@ -37,3 +37,4 @@ PageLink.defaultProps = {
 };
 
 export default PageLink;
+export { PageLink as MDBPageNav };

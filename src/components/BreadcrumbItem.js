@@ -34,5 +34,5 @@ BreadcrumbItem.propTypes = {
 };
 
 export default BreadcrumbItem ;
-
+export { BreadcrumbItem as MDBBreadcrumbItem };
 

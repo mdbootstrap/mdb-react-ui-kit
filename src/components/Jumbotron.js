@@ -33,5 +33,6 @@ Jumbotron.propTypes = {
 };
 
 export default Jumbotron;
+export { Jumbotron as MDBJumbotron };
 
 

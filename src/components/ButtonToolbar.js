@@ -36,3 +36,4 @@ ButtonToolbar.defaultProps = {
 };
 
 export default ButtonToolbar;
+export { ButtonToolbar as MDBBtnToolbar };

@@ -44,3 +44,4 @@ CardText.defaultProps = {
 };
 
 export default CardText;
+export { CardText as MDBCardText };

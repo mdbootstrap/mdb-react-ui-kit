@@ -21,7 +21,7 @@ class CarouselItem extends Component {
       className
     );
 
-    let slideIndex = this.context.activeItem - itemId; 
+    let slideIndex = this.context.activeItem - itemId;
     let style = {};
 
     if (this.context.slide) {
@@ -29,16 +29,16 @@ class CarouselItem extends Component {
         style = {
           position: 'absolute',
           left: '100%'
-        }
+        };
       } else if (slideIndex > 0) {
         style = {
           position: 'absolute',
           left: '-100%'
-        }
+        };
       } else {
         style = {
           left: '0'
-        }
+        };
       }
     }
 
@@ -69,3 +69,4 @@ CarouselItem.contextTypes = {
 };
 
 export default CarouselItem;
+export { CarouselItem as MDBCarouselItem };

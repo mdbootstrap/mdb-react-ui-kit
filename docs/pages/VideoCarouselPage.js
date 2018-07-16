@@ -1,51 +1,18 @@
 import React, { Component } from 'react';
-import { Carousel, CarouselControl, CarouselInner, CarouselItem } from 'mdbreact';
+import { Carousel, CarouselInner, CarouselItem } from 'mdbreact';
 
 class CarouselPage extends Component {
-  constructor(props) {
-    super(props);
-    this.next = this.next.bind(this);
-    this.prev = this.prev.bind(this);
-    this.state = {
-      activeItem: 1,
-      length: 3
-    };
-  }
-
-  next() {
-    const nextItem = this.state.activeItem + 1;
-    if(nextItem > this.state.length) {
-      this.setState({ activeItem: 1 });
-    } else {
-      this.setState({ activeItem: nextItem });
-    }
-  }
-
-  prev() {
-    const prevItem = this.state.activeItem - 1;
-    if(prevItem < 1) {
-      this.setState({ activeItem: this.state.length });
-    } else {
-      this.setState({ activeItem: prevItem });
-    }
-  }
-
-  goToIndex(item) {
-    if (this.state.activeItem !== item) {
-      this.setState({
-        activeItem: item
-      });
-    }
-  }
 
   render(){
     return(
       <div className="container mt-4">
         <div className="row">
           <div className="col-md-12">
-            <Carousel 
-              activeItem={this.state.activeItem}
-              next={this.next}
+            <Carousel
+              activeItem={1}
+              length={3}
+              showControls={true}
+              showIndicators={true}
               className="z-depth-1">
               <CarouselInner>
                 <CarouselItem itemId="1">
@@ -64,8 +31,6 @@ class CarouselPage extends Component {
                   </video>
                 </CarouselItem>
               </CarouselInner>
-              <CarouselControl direction="prev" role="button" onClick={() => { this.prev(); }} />
-              <CarouselControl direction="next" role="button" onClick={() => { this.next(); }} />
             </Carousel>
           </div>
         </div>

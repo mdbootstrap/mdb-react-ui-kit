@@ -42,3 +42,4 @@ NavItem.defaultProps = {
 };
 
 export default NavItem;
+export { NavItem as MDBNavItem };

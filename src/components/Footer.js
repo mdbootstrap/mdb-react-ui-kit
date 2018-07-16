@@ -5,7 +5,7 @@ import classNames from 'classnames';
 class Footer extends Component {
 
   render() {
- 
+
     const {
       color,
       children,
@@ -40,3 +40,4 @@ Footer.defaultProps = {
 };
 
 export default Footer;
+export { Footer as MDBFooter };

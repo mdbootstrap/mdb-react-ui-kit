@@ -36,3 +36,4 @@ CardTitle.defaultProps = {
 };
 
 export default CardTitle;
+export { CardTitle as MDBCardTitle };

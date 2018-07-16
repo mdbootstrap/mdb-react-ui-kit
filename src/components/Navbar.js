@@ -102,3 +102,4 @@ Navbar.defaultProps = {
 };
 
 export default Navbar;
+export { Navbar as MDBNavbar };

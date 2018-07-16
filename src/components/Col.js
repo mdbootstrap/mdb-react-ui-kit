@@ -55,3 +55,4 @@ Col.defaultProps = {
 };
 
 export default Col;
+export { Col as MDBCol };

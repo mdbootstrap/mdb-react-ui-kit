@@ -18,3 +18,4 @@ Input.defaultProps = {
 };
 
 export default Input;
+export { Input as MDBInput };

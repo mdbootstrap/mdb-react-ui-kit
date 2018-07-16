@@ -5,7 +5,7 @@ import classNames from 'classnames';
 class CardBody extends Component {
 
   render() {
- 
+
     const {
       className,
       tag: Tag,
@@ -36,3 +36,4 @@ CardBody.defaultProps = {
 };
 
 export default CardBody;
+export { CardBody as MDBCardBody };

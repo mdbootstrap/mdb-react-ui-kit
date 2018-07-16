@@ -1,64 +1,91 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Popper } from 'react-popper';
-import Transition from 'react-motion-ui-pack';
+import DropdownMenuComponent from './DropdownMenuComponent';
+// import DropdownMenuProComponent from './pro/DropdownMenuProComponent';
 
 const noFlipModifier = { flip: { enabled: false } };
 
-const DropdownMenu = (props, context) => {
-  const { className, right, children,tag, flip, ...attrs } = props;
-  const classes = classNames(
-    'dropdown-menu',
-    {
-      'dropdown-menu-right': right,
-      'show': context.isOpen
-    },
-    className
-  );
-
-  let Tag = tag;
-
-  if (context.isOpen) {
-    Tag = Popper;
-    const position1 = context.dropup ? 'top' : 'bottom';
-    const position2 = right ? 'end' : 'start';
-    attrs.placement = `${position1}-${position2}`;
-    attrs.component = tag;
-    attrs.modifiers = !flip ? noFlipModifier : undefined;
+class DropdownMenu extends Component {
+  constructor(props, context) {
+    super(props, context);
   }
 
-  return (
-    <Transition
-      component={false}
-      enter={{ opacity: 1, scale: 1 }}
-      leave={{ opacity: 0, scale: 0.9 }}
-    >
-    {context.isOpen &&
-      <Tag
-        tabIndex="-1"
-        role="menu"
-        {...attrs}
-        aria-hidden={!context.isOpen}
-        className={classes}
-        key="dropDownMenu"
-      >{children}
-      </Tag> }
-   </Transition>
-  );
-};
+  render() {
+    const { basic, className, right, children, tag, flip, ...attrs } = this.props;
+
+    const classes = classNames(
+      'dropdown-menu',
+      {
+        'dropdown-menu-right': right,
+        'show': this.context.isOpen,
+        'basic': basic
+      },
+      className
+    );
+
+    let Tag = tag;
+
+    if (this.context.isOpen) {
+      Tag = Popper;
+      const position1 = this.context.dropup ? 'top' : 'bottom';
+      const position2 = right ? 'end' : 'start';
+      attrs.placement = `${position1}-${position2}`;
+      attrs.component = tag;
+      attrs.modifiers = !flip ? noFlipModifier : undefined;
+    }
+
+    if(typeof DropdownMenuProComponent === 'function' && !basic) {
+      return (
+        <DropdownMenuProComponent
+          isOpen={this.context.isOpen}
+          d_tag={Tag}
+          d_tabIndex="-1"
+          d_role="menu"
+          d_attributes={attrs}
+          d_aria={!this.context.isOpen}
+          d_classes={classes}
+          d_key="dropDownMenu"
+        >
+          {children}
+        </DropdownMenuProComponent>
+      );
+    }
+    else {
+      return (
+        <DropdownMenuComponent 
+          d_tag={Tag}
+          d_tabIndex="-1"
+          d_role="menu"
+          d_attributes={attrs}
+          d_aria={!this.context.isOpen}
+          d_classes={classes}
+          d_key="dropDownMenu"
+        >
+          {children}
+        </DropdownMenuComponent>
+      );
+    }
+  }
+}
+
 
 DropdownMenu.propTypes = {
-  tag: PropTypes.string,
   children: PropTypes.node.isRequired,
-  right: PropTypes.bool,
+  basic: PropTypes.bool,
+  className: PropTypes.string,
   flip: PropTypes.bool,
-  className: PropTypes.string
+  right: PropTypes.bool,
+  tag: PropTypes.string
 };
 
 DropdownMenu.defaultProps = {
-  tag: 'div',
-  flip: true
+  basic: false,
+  className: '',
+  flip: false,
+  right: false,
+  tag: 'div'
 };
 
 DropdownMenu.contextTypes = {
@@ -67,3 +94,4 @@ DropdownMenu.contextTypes = {
 };
 
 export default DropdownMenu;
+export { DropdownMenu as MDBDropdownMenu };

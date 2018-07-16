@@ -31,5 +31,5 @@ Breadcrumb.propTypes = {
 };
 
 export default Breadcrumb ;
-
+export { Breadcrumb as MDBBreadcrumb };
 

@@ -5,7 +5,7 @@ import classNames from 'classnames';
 class CarouselCaption extends Component {
 
   render() {
- 
+
     let {
       children,
       className,
@@ -38,3 +38,4 @@ CarouselCaption.defaultProps = {
 };
 
 export default CarouselCaption;
+export { CarouselCaption as MDBCarouselCaption };

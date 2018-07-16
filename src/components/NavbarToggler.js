@@ -5,7 +5,7 @@ import classNames from 'classnames';
 class NavbarToggler extends Component {
 
   render() {
- 
+
     const {
       right,
       left,
@@ -45,3 +45,4 @@ NavbarToggler.defaultProps = {
 };
 
 export default NavbarToggler;
+export { NavbarToggler as MDBNavbarToggler };

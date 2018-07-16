@@ -6,6 +6,7 @@ class Badge extends React.Component {
 
   render() {
     const {
+      tag: Tag,
       className,
       children,
       color,
@@ -21,13 +22,14 @@ class Badge extends React.Component {
       className
     );
     return (
-      <span {...attributes} className={classes} >{this.props.children}</span>
+      <Tag {...attributes} className={classes} >{this.props.children}</Tag>
 
     );
   }
 }
 
 Badge.defaultProps = {
+  tag: 'span',
   color: 'default',
   pill: false
 };
@@ -40,3 +42,4 @@ Badge.propTypes = {
 };
 
 export default Badge;
+export { Badge as MDBBadge };

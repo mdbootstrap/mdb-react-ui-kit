@@ -1,55 +1,17 @@
 import React, { Component } from 'react';
-
-import { Carousel, CarouselCaption, CarouselControl, CarouselInner, CarouselItem, CarouselIndicators, CarouselIndicator, View, Mask, Container } from 'mdbreact';
+import  {Carousel, CarouselCaption, CarouselInner, CarouselItem, View, Mask, Container } from 'mdbreact';
 
 class CarouselPage extends Component {
 
-  constructor(props) {
-    super(props);
-    this.next = this.next.bind(this);
-    this.prev = this.prev.bind(this);
-    this.state = {
-      activeItem: 1,
-      length: 4
-    };
-  }
-
-  next() {
-    let nextItem = this.state.activeItem + 1;
-    if(nextItem > this.state.length) {
-      this.setState({ activeItem: 1 });
-    } else {
-      this.setState({ activeItem: nextItem });
-    }
-  }
-
-  prev() {
-    let prevItem = this.state.activeItem - 1;
-    if(prevItem < 1) {
-      this.setState({ activeItem: this.state.length });
-    } else {
-      this.setState({ activeItem: prevItem });
-    }
-  }
-
-  goToIndex(item) {
-    if (this.state.activeItem !== item) {
-      this.setState({
-        activeItem: item
-      });
-    }
-  }
-
   render(){
-
-    const { activeItem } = this.state;
-
     return(
       <Container>
         <h4 className="mt-5 mb-2">Basic example</h4>
-        <Carousel 
-          activeItem={this.state.activeItem}
-          next={this.next}
+        <Carousel
+          activeItem={1}
+          length={4}
+          showControls={true}
+          showIndicators={true}
           className="z-depth-1">
           <CarouselInner>
             <CarouselItem itemId="1">
@@ -93,14 +55,6 @@ class CarouselPage extends Component {
               </CarouselCaption>
             </CarouselItem>
           </CarouselInner>
-          <CarouselControl direction="prev" role="button" onClick={() => { this.prev(); }} />
-          <CarouselControl direction="next" role="button" onClick={() => { this.next(); }} />
-          <CarouselIndicators>
-            <CarouselIndicator active={activeItem === 1 ? true : false} onClick={() => { this.goToIndex(1); }}></CarouselIndicator>
-            <CarouselIndicator active={activeItem === 2 ? true : false} onClick={() => { this.goToIndex(2); }}></CarouselIndicator>
-            <CarouselIndicator active={activeItem === 3 ? true : false} onClick={() => { this.goToIndex(3); }}></CarouselIndicator>
-            <CarouselIndicator active={activeItem === 4 ? true : false} onClick={() => { this.goToIndex(4); }}></CarouselIndicator>
-          </CarouselIndicators>
         </Carousel>
       </Container>
     );

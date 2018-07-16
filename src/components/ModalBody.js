@@ -31,5 +31,6 @@ ModalBody.propTypes = {
 };
 
 export default ModalBody;
+export { ModalBody as MDBModalBody };
 
 

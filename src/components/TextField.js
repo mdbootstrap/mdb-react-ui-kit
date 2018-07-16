@@ -54,11 +54,11 @@ class TextField extends React.Component {
 
   onFocus(ev) {
     // ignore if event is a window blur
-    if (document.activeElement === this.inputElRef) {
+    // if (document.activeElement === this.inputElRef) {
       this.setState({ isTouched: true });
-    }
-    // execute callback
-    let fn = this.props.onBlur;
+    // }
+            // execute callback
+    let fn = this.props.onFocus;
     fn && fn(ev);
   }
 
@@ -219,3 +219,4 @@ TextField.defaultProps = {
 };
 
 export default TextField;
+export { TextField as MDBTextarea };

@@ -80,3 +80,5 @@ View.propTypes = {
 };
 
 export default View;
+export { View as MDBView };
+

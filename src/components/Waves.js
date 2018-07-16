@@ -19,7 +19,7 @@ class Waves extends React.Component {
 
   render () {
     return (
-      <div className={'Ripple ' + (this.props.outline || this.props.flat ? 'Ripple-outline ' : '') + (this.state.animate ? 'is-reppling' : '')} style={{
+      <div className={'Ripple ' + (this.props.outline || this.props.flat || this.props.dark ? 'Ripple-outline ' : '') + (this.state.animate ? 'is-reppling' : '')} style={{
         top: this.state.top+'px',
         left: this.state.left+'px',
         width: this.state.width+'px',
@@ -83,3 +83,5 @@ Waves.propTypes = {
 };
 
 export default Waves;
+export { Waves as MDBWaves };
+

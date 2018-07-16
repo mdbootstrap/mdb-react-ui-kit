@@ -37,7 +37,7 @@ class Progress extends React.Component {
 
     return (
       <div {...attributes} className={progressClasses} style={{height: height}}>
-        <div 
+        <div
           className={progressBarClasses}
           style={{width: `${percent}%`, height: height}}
           role="progressbar"
@@ -75,5 +75,6 @@ Progress.defaultProps = {
 };
 
 export default Progress;
+export { Progress as MDBProgress };
 
 
