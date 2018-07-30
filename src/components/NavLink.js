@@ -40,6 +40,7 @@ class NavLink extends Component {
       disabled,
       active,
       to,
+      activeClassName,
       ...attributes
     } = this.props;
 
@@ -53,7 +54,8 @@ class NavLink extends Component {
     return (
       <Link className={classes}
             onClick = { this.handleClick }
-            to={this.props.to}
+            to={to}
+            activeClassName = {activeClassName}
             {...attributes}
       >
         {children}

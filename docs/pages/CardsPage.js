@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Col, Row, Container, Card, CardBody, CardImage, CardTitle, CardText } from 'mdbreact';
+import { Button, Col, Row, Container, Card, CardBody, CardGroup, CardImage, CardTitle, CardText } from 'mdbreact';
 import classNames from 'classnames';
 
 
@@ -21,6 +21,70 @@ class CardsPage extends Component {
             </Card>
           </Col>
         </Row>
+        <hr className="mt-5"/>
+    <h2 className="mt-5">Card decks</h2>
+
+    <CardGroup>
+
+    <Card>
+      <CardImage src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg" alt="Card image cap" top hover overlay="white-slight"/>
+      <CardBody>
+        <CardTitle tag="h5">Panel title</CardTitle>
+        <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+        <Button color="primary" size="md">read more</Button>
+      </CardBody>
+    </Card>
+
+    <Card>
+      <CardImage src="https://mdbootstrap.com/img/Photos/Others/images/48.jpg" alt="Card image cap" top hover overlay="white-slight"/>
+      <CardBody>
+        <CardTitle tag="h5">Panel title</CardTitle>
+        <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+        <Button color="primary" size="md">read more</Button>
+      </CardBody>
+    </Card>
+
+    <Card>
+      <CardImage src="https://mdbootstrap.com/img/Photos/Others/images/77.jpg" alt="Card image cap" top hover overlay="white-slight"/>
+      <CardBody>
+        <CardTitle tag="h5">Panel title</CardTitle>
+        <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+        <Button color="primary"  size="md">read more</Button>
+      </CardBody>
+    </Card>
+
+      </CardGroup>
+
+      <CardGroup deck className="mt-3">
+
+        <Card>
+          <CardImage src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg" alt="Card image cap" top hover overlay="white-slight"/>
+          <CardBody>
+            <CardTitle tag="h5">Panel title</CardTitle>
+            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+            <Button color="light-blue" size="md">read more</Button>
+          </CardBody>
+        </Card>
+
+        <Card>
+          <CardImage src="https://mdbootstrap.com/img/Photos/Others/images/14.jpg" alt="Card image cap" top hover overlay="white-slight"/>
+          <CardBody>
+            <CardTitle tag="h5">Panel title</CardTitle>
+            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+            <Button color="light-blue" size="md">read more</Button>
+          </CardBody>
+        </Card>
+
+        <Card>
+          <CardImage src="https://mdbootstrap.com/img/Photos/Others/images/15.jpg" alt="Card image cap" top hover overlay="white-slight"/>
+          <CardBody>
+            <CardTitle tag="h5">Panel title</CardTitle>
+            <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+            <Button color="light-blue" size="md">read more</Button>
+          </CardBody>
+        </Card>
+
+      </CardGroup>
       </Container>
     );
   }

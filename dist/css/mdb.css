@@ -1,6 +1,6 @@
 /*!
  * Material Design for Bootstrap 4
- * Version: MDB Free 4.5.6
+ * Version: MDB PRO 4.5.7
  *
  *
  * Copyright: Material Design for Bootstrap
@@ -1649,6 +1649,9 @@ a.text-light:hover, a.text-light:focus {
   .view .mask {
     position: absolute;
     top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     overflow: hidden;
     width: 100%;
     height: 100%;
@@ -1680,31 +1683,31 @@ a.text-light:hover, a.text-light:focus {
   transform: scale(1.1); }
 
 .pattern-1 {
-  background: url("../img//overlays/01.png"); }
+  background: url("../img/overlays/01.png"); }
 
 .pattern-2 {
-  background: url("../img//overlays/02.png"); }
+  background: url("../img/overlays/02.png"); }
 
 .pattern-3 {
-  background: url("../img//overlays/03.png"); }
+  background: url("../img/overlays/03.png"); }
 
 .pattern-4 {
-  background: url("../img//overlays/04.png"); }
+  background: url("../img/overlays/04.png"); }
 
 .pattern-5 {
-  background: url("../img//overlays/05.png"); }
+  background: url("../img/overlays/05.png"); }
 
 .pattern-6 {
-  background: url("../img//overlays/06.png"); }
+  background: url("../img/overlays/06.png"); }
 
 .pattern-7 {
-  background: url("../img//overlays/07.png"); }
+  background: url("../img/overlays/07.png"); }
 
 .pattern-8 {
-  background: url("../img//overlays/08.png"); }
+  background: url("../img/overlays/08.png"); }
 
 .pattern-9 {
-  background: url("../img//overlays/09.png"); }
+  background: url("../img/overlays/09.png"); }
 
 /*!
  * Waves v0.7.6
@@ -2459,8 +2462,8 @@ a.waves-effect, a.waves-light {
     -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg);
     transform: skewX(-0.78125deg) skewY(-0.78125deg); }
   77.7% {
-    -webkit-transform: skewX(0.39063deg) skewY(0.39063deg);
-    transform: skewX(0.39063deg) skewY(0.39063deg); }
+    -webkit-transform: skewX(0.39062deg) skewY(0.39062deg);
+    transform: skewX(0.39062deg) skewY(0.39062deg); }
   88.8% {
     -webkit-transform: skewX(-0.19531deg) skewY(-0.19531deg);
     transform: skewX(-0.19531deg) skewY(-0.19531deg); } }
@@ -2487,8 +2490,8 @@ a.waves-effect, a.waves-light {
     -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg);
     transform: skewX(-0.78125deg) skewY(-0.78125deg); }
   77.7% {
-    -webkit-transform: skewX(0.39063deg) skewY(0.39063deg);
-    transform: skewX(0.39063deg) skewY(0.39063deg); }
+    -webkit-transform: skewX(0.39062deg) skewY(0.39062deg);
+    transform: skewX(0.39062deg) skewY(0.39062deg); }
   88.8% {
     -webkit-transform: skewX(-0.19531deg) skewY(-0.19531deg);
     transform: skewX(-0.19531deg) skewY(-0.19531deg); } }
@@ -6414,10 +6417,10 @@ body.scrollable {
   height: 20px; }
 
 .carousel .carousel-control-prev-icon {
-  background-image: url(../img//svg/arrow_left.svg); }
+  background-image: url(../img/svg/arrow_left.svg); }
 
 .carousel .carousel-control-next-icon {
-  background-image: url(../img//svg/arrow_right.svg); }
+  background-image: url(../img/svg/arrow_right.svg); }
 
 .carousel .carousel-indicators li {
   width: 0.625rem;

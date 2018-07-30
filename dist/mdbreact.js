@@ -2485,14 +2485,20 @@ var Button = function (_React$Component) {
   _createClass(Button, [{
     key: 'handleClick',
     value: function handleClick(e) {
-      // Get Cursor Position
-      e.preventDefault();
-      var cursorPos = {
-        top: e.clientY,
-        left: e.clientX,
-        time: Date.now()
-      };
-      this.setState({ cursorPos: cursorPos });
+      if (!this.props.disabled) {
+        // Waves - Get Cursor Position
+        var cursorPos = {
+          top: e.clientY,
+          left: e.clientX,
+          time: Date.now()
+        };
+        this.setState({ cursorPos: cursorPos });
+        // do the passed in callback:
+        if (this.props.onClick) {
+          this.props.onClick(e);
+        }
+        e.stopPropagation();
+      }
     }
   }, {
     key: 'onClick',
@@ -3196,7 +3202,7 @@ var TextField = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (TextField.__proto__ || Object.getPrototypeOf(TextField)).call(this, props));
 
     var value = props.value;
-    var innerValue = value || props.defaultValue;
+    var innerValue = value || props.default;
 
     if (innerValue === undefined) innerValue = '';
 
@@ -3370,7 +3376,7 @@ TextField.propTypes = {
   id: _propTypes2.default.string,
   hint: _propTypes2.default.string,
   value: _propTypes2.default.string,
-  defaultValue: _propTypes2.default.string,
+  default: _propTypes2.default.string,
   error: _propTypes2.default.string,
   success: _propTypes2.default.string,
   label: _propTypes2.default.string,
@@ -5303,7 +5309,7 @@ exports = module.exports = __webpack_require__(15)(false);
 
 
 // module
-exports.push([module.i, ".Ripple {\r\n    position: absolute;\r\n    background: rgba(255, 255, 255, 0.3);\r\n    border-radius: 50%;\r\n    opacity: 1;\r\n    transform: scale(0);\r\n}\r\n\r\n.Ripple-outline {\r\n  background: rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.Ripple.is-reppling {\r\n    animation: ripple 0.5s linear;\r\n}\r\n\r\n.Ripple-parent {\r\n    position: relative;\r\n    overflow: hidden;\r\n    touch-action: none;\r\n}\r\n\r\n@keyframes ripple {\r\n    100% {\r\n        opacity: 0;\r\n        transform: scale(3);\r\n    }\r\n}\r\n", ""]);
+exports.push([module.i, ".Ripple {\n    position: absolute;\n    background: rgba(255, 255, 255, 0.3);\n    border-radius: 50%;\n    opacity: 1;\n    transform: scale(0);\n}\n\n.Ripple-outline {\n  background: rgba(0, 0, 0, 0.2);\n}\n\n.Ripple.is-reppling {\n    animation: ripple 0.5s linear;\n}\n\n.Ripple-parent {\n    position: relative;\n    overflow: hidden;\n    touch-action: none;\n}\n\n@keyframes ripple {\n    100% {\n        opacity: 0;\n        transform: scale(3);\n    }\n}\n", ""]);
 
 // exports
 
@@ -5530,7 +5536,7 @@ exports = module.exports = __webpack_require__(15)(false);
 
 
 // module
-exports.push([module.i, ".btn-group-vertical > .btn, .btn-group-vertical > .btn + .btn-group, .btn-group-vertical > .btn-group + .btn, .btn-group-vertical > .btn-group + .btn-group {\r\n  margin-left: 0px;\r\n}\r\n\r\n.btn-group-lg > .btn {\r\n  font-size: 0.9rem;\r\n  padding: 1rem 2.4rem;\r\n}\r\n\r\n.btn-group-sm > .btn {\r\n  font-size: 0.6rem;\r\n  padding: 0.5rem 1.6rem;\r\n}", ""]);
+exports.push([module.i, ".btn-group-vertical > .btn, .btn-group-vertical > .btn + .btn-group, .btn-group-vertical > .btn-group + .btn, .btn-group-vertical > .btn-group + .btn-group {\n  margin-left: 0px;\n}\n\n.btn-group-lg > .btn {\n  font-size: 0.9rem;\n  padding: 1rem 2.4rem;\n}\n\n.btn-group-sm > .btn {\n  font-size: 0.6rem;\n  padding: 0.5rem 1.6rem;\n}", ""]);
 
 // exports
 
@@ -6632,7 +6638,7 @@ exports = module.exports = __webpack_require__(15)(false);
 
 
 // module
-exports.push([module.i, ".carousel-inner {\r\n  position: relative;\r\n  overflow: hidden;\r\n}\r\n\r\n.carousel-item {\r\n  display: block !important;\r\n  visibility: hidden;\r\n  height: 0;\r\n  opacity: 0;\r\n  transition: transform 0ms ease-in-out, opacity .6s ease-in;\r\n  transform: translate3d(0, 0, 0) !important;\r\n}\r\n\r\n.carousel-item.active {\r\n  opacity: 1;\r\n  left: auto;\r\n  height: auto;\r\n  visibility: visible;\r\n  transform: translate3d(0, 0, 0) !important;\r\n}\r\n\r\n.carousel-multi-item .carousel-item {\r\n  display: inline-block !important;\r\n}\r\n\r\n.carousel .carousel-slide-item {\r\n  transition: left 0.5s;\r\n}", ""]);
+exports.push([module.i, ".carousel-inner {\n  position: relative;\n  overflow: hidden;\n}\n\n.carousel-item {\n  display: block !important;\n  visibility: hidden;\n  height: 0;\n  opacity: 0;\n  transition: transform 0ms ease-in-out, opacity .6s ease-in;\n  transform: translate3d(0, 0, 0) !important;\n}\n\n.carousel-item.active {\n  opacity: 1;\n  left: auto;\n  height: auto;\n  visibility: visible;\n  transform: translate3d(0, 0, 0) !important;\n}\n\n.carousel-multi-item .carousel-item {\n  display: inline-block !important;\n}\n\n.carousel .carousel-slide-item {\n  transition: left 0.5s;\n}", ""]);
 
 // exports
 
@@ -15329,7 +15335,8 @@ var NavLink = function (_Component) {
           disabled = _props.disabled,
           active = _props.active,
           to = _props.to,
-          attributes = _objectWithoutProperties(_props, ['children', 'className', 'disabled', 'active', 'to']);
+          activeClassName = _props.activeClassName,
+          attributes = _objectWithoutProperties(_props, ['children', 'className', 'disabled', 'active', 'to', 'activeClassName']);
 
       var classes = (0, _classnames2.default)('nav-link', disabled ? 'disabled' : 'Ripple-parent', active && 'active', className);
 
@@ -15337,7 +15344,8 @@ var NavLink = function (_Component) {
         Link,
         _extends({ className: classes,
           onClick: this.handleClick,
-          to: this.props.to
+          to: to,
+          activeClassName: activeClassName
         }, attributes),
         children,
         this.props.disabled ? false : _react2.default.createElement(_Waves2.default, { cursorPos: this.state.cursorPos })
