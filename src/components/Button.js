@@ -21,10 +21,6 @@ class Button extends React.Component {
         time: Date.now()
       };
       this.setState({ cursorPos: cursorPos });
-      // do the passed in callback:
-      if (this.props.onClick) {
-      this.props.onClick(e);
-      }
       e.stopPropagation();
     }
   }
