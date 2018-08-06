@@ -1,6 +1,6 @@
 {
   "name": "mdbreact",
-  "version": "4.6.1",
+  "version": "4.6.2",
   "author": "MDBootstrap",
   "repository": "https://git.mdbootstrap.com/mdb/react/re-pro",
   "main": "dist/mdbreact.js",
@@ -27,7 +27,6 @@
     "react-numeric-input": "^2.2.3",
     "react-popper": "^0.7.5",
     "react-router-dom": "^4.2.0",
-    "react-scripts": "1.0.11",
     "react-toastify": "^3.2.2"
   },
   "scripts": {
@@ -55,6 +54,7 @@
     "node-sass": "^4.7.2",
     "react-chartjs-2": "^2.7.0",
     "react-image-lightbox": "^4.6.0",
+    "react-scripts": "1.0.11",
     "salad-ui.chart": "^1.1.55",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
