@@ -15,7 +15,7 @@ const DropdownMenuComponent = (props) => {
         className={d_classes}
         key={d_key}
       >{children}
-      </Tag> 
+      </Tag>
     </Fragment>
   );
 };

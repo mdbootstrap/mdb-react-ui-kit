@@ -7,23 +7,11 @@ class TextField extends React.Component {
   constructor(props) {
     super(props);
 
-    let value = props.value;
-    let innerValue = value || props.default;
-
-    if (innerValue === undefined) innerValue = '';
-
     this.state = {
-      innerValue: innerValue,
+      innerValue: props.value || props.default || '',
       isTouched: false,
       isPristine: true
     };
-
-    // warn if value defined but onChange is not
-    if (value !== undefined && !props.onChange) {
-      console.log('You provided a `value` prop to a form field ' +
-        'without an `OnChange` handler. Please see React documentation on ' +
-        'controlled components');
-    }
 
     this.onBlur = this.onBlur.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -33,13 +21,14 @@ class TextField extends React.Component {
 
 
   componentDidMount() {
-
   }
 
-  componentWillReceiveProps(nextProps) {
-    // update innerValue when new value is received to handle programmatic
-    // changes to input box
-    if ('value' in nextProps) this.setState({ innerValue: nextProps.value });
+  static getDerivedStateFromProps(nextProps, prevState){
+    if (nextProps.value) {
+      return { ...prevState, innerValue: nextProps.value }
+    } else {
+      return null;
+    }
   }
 
   onBlur(ev) {
@@ -73,10 +62,15 @@ class TextField extends React.Component {
     // execute callback
     let fn = this.props.onChange;
     fn && fn(ev);
+    this.props.getValue && this.props.getValue(ev.target.value);
   }
   triggerFocus() {
     // hack to enable IE10 pointer-events shim
     this.inputElRef.focus();
+  }
+
+  getValueHandler() {
+    return this.state.innerValue;
   }
 
   render() {
@@ -85,6 +79,7 @@ class TextField extends React.Component {
       containerClass,
       size,
       group,
+      getValue,
       className,
       type,
       el,
@@ -210,12 +205,14 @@ TextField.propTypes = {
   className: PropTypes.string,
   containerClass: PropTypes.string,
   filled: PropTypes.bool,
-  gap: PropTypes.bool
+  gap: PropTypes.bool,
+  getValue: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
 };
 TextField.defaultProps = {
   tag: 'input',
   type: 'text',
-  hint: null
+  hint: null,
+  getValue: false
 };
 
 export default TextField;

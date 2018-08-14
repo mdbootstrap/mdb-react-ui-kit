@@ -2,8 +2,13 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Popper } from 'react-popper';
-import DropdownMenuComponent from './DropdownMenuComponent';
-// import DropdownMenuProComponent from './pro/DropdownMenuProComponent';
+require('./DropdownMenu.css');
+let DropdownMenuComponent;
+try {
+  DropdownMenuComponent = require('./pro/DropdownMenuProComponent').default;
+} catch(err) {
+  DropdownMenuComponent = require('./DropdownMenuComponent').default;
+}
 
 const noFlipModifier = { flip: { enabled: false } };
 
@@ -36,37 +41,20 @@ class DropdownMenu extends Component {
       attrs.modifiers = !flip ? noFlipModifier : undefined;
     }
 
-    if(typeof DropdownMenuProComponent === 'function' && !basic) {
-      return (
-        <DropdownMenuProComponent
-          isOpen={this.context.isOpen}
-          d_tag={Tag}
-          d_tabIndex="-1"
-          d_role="menu"
-          d_attributes={attrs}
-          d_aria={!this.context.isOpen}
-          d_classes={classes}
-          d_key="dropDownMenu"
-        >
-          {children}
-        </DropdownMenuProComponent>
-      );
-    }
-    else {
-      return (
-        <DropdownMenuComponent 
-          d_tag={Tag}
-          d_tabIndex="-1"
-          d_role="menu"
-          d_attributes={attrs}
-          d_aria={!this.context.isOpen}
-          d_classes={classes}
-          d_key="dropDownMenu"
-        >
-          {children}
-        </DropdownMenuComponent>
-      );
-    }
+    return (
+      <DropdownMenuComponent
+        isOpen={this.context.isOpen}
+        d_tag={Tag}
+        d_tabIndex="-1"
+        d_role="menu"
+        d_attributes={attrs}
+        d_aria={!this.context.isOpen}
+        d_classes={classes}
+        d_key="dropDownMenu"
+      >
+        {children}
+      </DropdownMenuComponent>
+    );
   }
 }
 

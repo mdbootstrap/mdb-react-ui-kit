@@ -4,19 +4,23 @@ import { Input, InputNumeric, FormInline, Button, Container, Row, Col } from 'md
 class InputPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: 'John Doe'};
-
-    this.handleChange = this.handleChange.bind(this);
+    this.state = {
+      value: "John Doe",
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(event) {
-    this.setState({value: event.target.value});
   }
 
   handleSubmit(event) {
     alert('Input value: ' + this.state.value);
     event.preventDefault();
+  }
+
+  saveToState = (value) => {
+    this.setState({...this.state, value: value});
+  }
+
+  handleChange = (value) => {
+    console.log(value);
   }
 
   render() {
@@ -35,7 +39,7 @@ class InputPage extends React.Component {
 
           <Input hint="placeholder" label="Example label" />
 
-          <Input value={this.state.value} onChange={this.handleChange} label="Example label" />
+          <Input value={ this.state.value } getValue={ this.saveToState } label="Example label" />
           <Button onClick={this.handleSubmit}>Submit</Button>
 
           <Input label="Type your email" icon="envelope" group type="email" validate error="wrong" success="right"/>
@@ -49,14 +53,14 @@ class InputPage extends React.Component {
             <Button>Login</Button>
           </FormInline>
 
-          <Input type="textarea" label="Icon Prefix" rows="2" icon="pencil"/>
+          <Input getValue={ this.handleChange } type="textarea" label="Icon Prefix" rows="2" icon="pencil"/>
           <Input type="textarea" label="Basic textarea" rows="2" />
 
           <h4 className="mt-5">Numeric inputs</h4>
-          
+
           <Row>
             <Col sm="4">
-              <InputNumeric min={5} max={15} value={10} className="mb-2"/>
+              <InputNumeric getValue={ this.handleChange } min={5} max={15} value={10} className="mb-2"/>
               <InputNumeric precision={2} value={50.3} step={0.1} className="mb-2"/>
               <InputNumeric precision={2} value={50.3} step={0.5} snap className="mb-2"/>
             </Col>

@@ -9,11 +9,21 @@ class Row extends Component {
     const {
       className,
       tag: Tag,
+      center,
+      start,
+      end,
+      around,
+      between,
       ...attributes
     } = this.props;
 
     const classes = classNames(
       'row',
+      end && 'justify-content-end',
+      start && 'justify-content-start',
+      center && 'justify-content-center',
+      between && 'justify-content-between',
+      around && 'justify-content-around',
       className
     );
 

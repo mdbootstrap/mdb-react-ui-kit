@@ -1,23 +1,26 @@
 .carousel-inner {
   position: relative;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
 }
 
-.carousel-item {
+.carousel-fade .carousel-item {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   display: block !important;
-  visibility: hidden;
-  height: 0;
   opacity: 0;
-  transition: transform 0ms ease-in-out, opacity .6s ease-in;
-  transform: translate3d(0, 0, 0) !important;
+  z-index: 0;
+  transition: transform 0ms ease-in-out, opacity 0.8s ease-out;
 }
 
-.carousel-item.active {
+.carousel-fade .carousel-item.active {
+  position: relative;
+  z-index: 1;
   opacity: 1;
-  left: auto;
-  height: auto;
-  visibility: visible;
-  transform: translate3d(0, 0, 0) !important;
 }
 
 .carousel-multi-item .carousel-item {
@@ -26,4 +29,8 @@
 
 .carousel .carousel-slide-item {
   transition: left 0.5s;
+}
+
+.carousel-control-prev, .carousel-control-next, .carousel-item-prev, .carousel-item-next {
+  z-index: 2;
 }

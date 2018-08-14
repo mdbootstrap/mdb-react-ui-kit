@@ -104,8 +104,7 @@ class Carousel extends Component {
 
     const classes = classNames(
       'carousel',
-      'carousel-fade',
-      multiItem ? 'carousel-multi-item' : '',
+      multiItem ? 'carousel-multi-item' : 'carousel-fade',
       thumbnails ? 'carousel-thumbnails' : '',
       testimonial ? 'testimonial-carousel' : '',
       className
@@ -120,15 +119,15 @@ class Carousel extends Component {
       <Tag ref={this.carouselRef} {...attributes} className={classes} aria-label={ariaLabel}>
         {(showControls && multiItem) && (
           <div className="controls-top">
-            <CarouselControl dark={testimonial ? true : false} iconLeft className="btn-floating" direction="prev" role="button" onClick={this.prev}/>
-            <CarouselControl dark={testimonial ? true : false} iconRight className="btn-floating" direction="next" role="button" onClick={this.next}/>
+            <CarouselControl testimonial={testimonial ? true : false} multiItem={multiItem ? true : false} iconLeft className="btn-floating" direction="prev" role="button" onClick={this.prev}/>
+            <CarouselControl testimonial={testimonial ? true : false} multiItem={multiItem ? true : false} iconRight className="btn-floating" direction="next" role="button" onClick={this.next}/>
           </div>
         )}
         {children}
         {(showControls && !multiItem) && (
           <React.Fragment>
-            <CarouselControl dark={testimonial ? true : false} direction="prev" role="button" onClick={this.prev} />
-            <CarouselControl dark={testimonial ? true : false} direction="next" role="button" onClick={this.next} />
+            <CarouselControl testimonial={testimonial ? true : false} multiItem={multiItem ? true : false} direction="prev" role="button" onClick={this.prev} />
+            <CarouselControl testimonial={testimonial ? true : false} multiItem={multiItem ? true : false} direction="next" role="button" onClick={this.next} />
           </React.Fragment>
         )}
         <CarouselIndicators>

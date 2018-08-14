@@ -3,6 +3,33 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 class CarouselItem extends Component {
+  constructor(props) {
+    super(props);
+    this.moveForward = this.moveForward.bind(this);
+    this.moveBackwards = this.moveBackwards.bind(this);
+    this.makeVisible = this.makeVisible.bind(this);
+  }
+
+  moveForward() {
+    this.style = {
+      position: 'absolute',
+      left: '100%'
+    } 
+  }
+
+  moveBackwards() {
+    this.style = {
+      position: 'absolute',
+      left: '-100%'
+    } 
+  }
+
+  makeVisible() {
+    this.style = {
+      left: '0'
+    } 
+  }
+
   render() {
     let {
       active,
@@ -22,28 +49,19 @@ class CarouselItem extends Component {
     );
 
     let slideIndex = this.context.activeItem - itemId;
-    let style = {};
 
     if (this.context.slide) {
       if (slideIndex < 0) {
-        style = {
-          position: 'absolute',
-          left: '100%'
-        };
+        this.moveForward();
       } else if (slideIndex > 0) {
-        style = {
-          position: 'absolute',
-          left: '-100%'
-        };
+        this.moveBackwards();
       } else {
-        style = {
-          left: '0'
-        };
+        this.makeVisible();
       }
     }
 
     return (
-      <Tag {...attributes} className={classes} style={style}>
+      <Tag {...attributes} className={classes} style={this.style}>
         {children}
       </Tag>
     );

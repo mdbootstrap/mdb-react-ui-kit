@@ -8,17 +8,17 @@ class Control extends Component {
 
     let {
       direction,
-      text,
       className,
       onClick,
       tag: Tag,
       iconLeft,
       iconRight,
-      dark,
+      testimonial,
+      multiItem,
       ...attributes
     } = this.props;
 
-    let classes, caretClasses;
+    let text;
 
     if(direction === 'prev') {
       text = 'Previous';
@@ -26,15 +26,16 @@ class Control extends Component {
       text = 'Next';
     }
 
-    if(!dark){
-      classes = classNames(
-        'carousel-control-' + direction,
-        className
-      );
-      caretClasses = classNames(
-        'carousel-control-' + direction + '-icon'
-      );
-    } else {
+    let classes = classNames(
+      'carousel-control-' + direction,
+      className
+    );
+
+    let caretClasses = classNames(
+      'carousel-control-' + direction + '-icon'
+    );
+
+    if (testimonial) {
       const arrow = direction === "prev" ? "left" : "right"
       classes = classNames(
         'carousel-item-' + direction,
@@ -47,6 +48,12 @@ class Control extends Component {
       );
     }
 
+    if (multiItem) {
+      classes = classNames(
+        'btn-floating'
+      );
+    }
+
     return (
       <Tag className={classes} data-slide={direction} onClick={onClick}>
         {this.props.iconLeft ? (
@@ -56,7 +63,7 @@ class Control extends Component {
         ) : (
           <div>
             <span className={caretClasses} aria-hidden="true"></span>
-            <span className="sr-only">Previous</span>
+            <span className="sr-only">{text}</span>
           </div>
         )}
       </Tag>
@@ -66,13 +73,13 @@ class Control extends Component {
 
 Control.propTypes = {
   onClick: PropTypes.any,
-  text: PropTypes.string,
   direction: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
   iconLeft: PropTypes.bool,
   iconRight: PropTypes.bool,
-  dark: PropTypes.bool,
+  testimonial: PropTypes.bool,
+  multiItem: PropTypes.bool
 };
 
 Control.defaultProps = {

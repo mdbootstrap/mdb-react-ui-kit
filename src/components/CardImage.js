@@ -33,7 +33,7 @@ class CardImage extends Component {
       waves,
       hover,
       cascade,
-      tag: Tag,
+      tag,
       ...attributes
     } = this.props;
 
@@ -42,28 +42,31 @@ class CardImage extends Component {
       className
     );
 
+    const Tag = tag;
+
     const innerContent = (
       <Tag
-      {...attributes}
-      className={classes}
+        {...attributes}
+        className={classes}
       >
+        {this.props.children}
       </Tag>
     );
 
-    if ( this.props.src ) {
+    if (this.props.src) {
       return (
         <View hover={this.props.hover} cascade={this.props.cascade}>
-          <div className="Ripple-parent" onMouseDown={ this.handleClick.bind(this) } onTouchStart={ this.handleClick.bind(this) }>
+          <div className="Ripple-parent" onMouseDown={this.handleClick.bind(this)} onTouchStart={this.handleClick.bind(this)}>
             {innerContent}
-            <Mask overlay={overlay}/>
-            {this.props.waves && <Waves cursorPos={ this.state.cursorPos } />}
+            <Mask overlay={overlay} />
+            {this.props.waves && <Waves cursorPos={this.state.cursorPos} />}
           </div>
         </View>
       );
     } else {
       return (
         <div>{innerContent}</div>
-      )
+      );
     }
   }
 }
@@ -72,8 +75,12 @@ CardImage.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   waves: PropTypes.bool,
   className: PropTypes.string,
-  waves: PropTypes.bool,
-  cascade: PropTypes.bool
+  cascade: PropTypes.bool,
+  hover: PropTypes.bool,
+  overlay: PropTypes.string,
+  top: PropTypes.bool,
+  src: PropTypes.string,
+  children: PropTypes.node
 };
 
 CardImage.defaultProps = {

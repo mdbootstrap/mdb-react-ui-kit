@@ -1,4 +1,5 @@
 // FREE
+import Animation from './components/Animation';
 import Badge from './components/Badge';
 import Breadcrumb from './components/Breadcrumb';
 import BreadcrumbItem from './components/BreadcrumbItem';
@@ -23,10 +24,11 @@ import CarouselIndicator from './components/CarouselIndicator';
 import Col from './components/Col';
 import Collapse from './components/Collapse';
 import Container from './components/Container';
-import Dropdown from './components/Dropdown';
+import DataTable from './components/DataTable';
+let Dropdown = require('./components/Dropdown').default;
 import DropdownItem from './components/DropdownItem';
 import DropdownMenu from './components/DropdownMenu';
-import DropdownMenuComponent from './components/DropdownMenuComponent';
+let DropdownMenuComponent = require('./components/DropdownMenuComponent').default;
 import DropdownToggle from './components/DropdownToggle';
 import EdgeHeader from './components/EdgeHeader';
 import Fa from './components/Fa';
@@ -62,9 +64,14 @@ import Progress from './components/Progress';
 import Waves from './components/Waves';
 import Row from './components/Row';
 import Table from './components/Table';
+import TableBody from './components/TableBody';
+import TableHead from './components/TableHead';
+import TableFoot from './components/TableFoot';
 import TextField from './components/TextField';
 import Tooltip from './components/Tooltip';
 import View from './components/View';
+import { toast, ToastContainer, cssTransition} from 'react-toastify';
+
 // MDB FREE
 import MDBBadge from './components/Badge';
 import MDBBreadcrumb from './components/Breadcrumb';
@@ -90,10 +97,11 @@ import MDBCarouselIndicator from './components/CarouselIndicator';
 import MDBCol from './components/Col';
 import MDBCollapse from './components/Collapse';
 import MDBContainer from './components/Container';
-import MDBDropdown from './components/Dropdown';
+import MDBDataTable from './components/DataTable';
+let MDBDropdown = require('./components/Dropdown').default;
 import MDBDropdownItem from './components/DropdownItem';
 import MDBDropdownMenu from './components/DropdownMenu';
-import MDBDropdownMenuComponent from './components/DropdownMenuComponent';
+let MDBDropdownMenuComponent = require('./components/DropdownMenuComponent').default;
 import MDBDropdownToggle from './components/DropdownToggle';
 import MDBEdgeHeader from './components/EdgeHeader';
 import MDBIcon from './components/Fa';
@@ -129,12 +137,16 @@ import MDBProgress from './components/Progress';
 import MDBWaves from './components/Waves';
 import MDBRow from './components/Row';
 import MDBTable from './components/Table';
+import MDBTableBody from './components/TableBody';
+import MDBTableHead from './components/TableHead';
+import MDBTableFoot from './components/TableFoot';
 import MDBTextarea from './components/TextField';
 import MDBTooltip from './components/Tooltip';
 import MDBView from './components/View';
 
 export {
   // FREE
+  Animation,
   Badge,
   Breadcrumb,
   BreadcrumbItem,
@@ -159,6 +171,7 @@ export {
   Col,
   Collapse,
   Container,
+  DataTable,
   Dropdown,
   DropdownItem,
   DropdownMenu,
@@ -198,9 +211,15 @@ export {
   Waves,
   Row,
   Table,
+  TableBody,
+  TableHead,
+  TableFoot,
   TextField,
   Tooltip,
   View,
+  toast,
+  ToastContainer,
+  cssTransition,
   // MDB FREE
   MDBBadge,
   MDBBreadcrumb,
@@ -226,6 +245,7 @@ export {
   MDBCol,
   MDBCollapse,
   MDBContainer,
+  MDBDataTable,
   MDBDropdown,
   MDBDropdownItem,
   MDBDropdownMenu,
@@ -265,6 +285,9 @@ export {
   MDBWaves,
   MDBRow,
   MDBTable,
+  MDBTableBody,
+  MDBTableHead,
+  MDBTableFoot,
   MDBTextarea,
   MDBTooltip,
   MDBView

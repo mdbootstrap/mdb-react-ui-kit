@@ -226,7 +226,7 @@ class ModalPage extends React.Component {
             <Button color="secondary" onClick={this.toggle8}>Close</Button>{' '}
             <Button color="primary">Save changes</Button>
           </ModalFooter>
-        </Modal>        
+        </Modal>
         <Button color="info" onClick={this.toggle9}>Bottom</Button>
         <Modal isOpen={this.state.modal9} toggle={this.toggle9} fullHeight position="bottom">
           <ModalHeader toggle={this.toggle9}>Modal title</ModalHeader>
@@ -237,7 +237,7 @@ class ModalPage extends React.Component {
             <Button color="secondary" onClick={this.toggle9}>Close</Button>{' '}
             <Button color="primary">Save changes</Button>
           </ModalFooter>
-        </Modal>        
+        </Modal>
         <h4 className="mt-4">Frame modal</h4>
         <Button color="warning" onClick={this.toggle10}>Bottom</Button>
         <Modal isOpen={this.state.modal10} toggle={this.toggle10} frame position="bottom">
@@ -246,7 +246,7 @@ class ModalPage extends React.Component {
             <Button color="secondary" onClick={this.toggle10}>Close</Button>{' '}
             <Button color="primary">Save changes</Button>
           </ModalBody>
-        </Modal> 
+        </Modal>
         <Button color="warning" onClick={this.toggle11}>Top</Button>
         <Modal isOpen={this.state.modal11} toggle={this.toggle11} frame position="top">
           <ModalBody className="text-center">
@@ -254,7 +254,7 @@ class ModalPage extends React.Component {
             <Button color="secondary" onClick={this.toggle11}>Close</Button>{' '}
             <Button color="primary">Save changes</Button>
           </ModalBody>
-        </Modal> 
+        </Modal>
         <h4 className="mt-4">Remove backdrop</h4>
         <Button onClick={this.toggle12}>Modal</Button>
         <Modal isOpen={this.state.modal12} toggle={this.toggle12} backdrop={false}>
@@ -266,19 +266,19 @@ class ModalPage extends React.Component {
             <Button color="secondary" onClick={this.toggle12}>Close</Button>{' '}
             <Button color="primary">Save changes</Button>
           </ModalFooter>
-        </Modal>       
+        </Modal>
         <h4 className="mt-4">Scrolling long content</h4>
         <Button color="primary" onClick={this.toggle13}>Modal</Button>
         <Modal isOpen={this.state.modal13} toggle={this.toggle13}>
           <ModalHeader toggle={this.toggle13}>Modal title</ModalHeader>
           <ModalBody>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </ModalBody>
           <ModalFooter>
             <Button color="secondary" onClick={this.toggle13}>Close</Button>{' '}
             <Button color="primary">Save changes</Button>
           </ModalFooter>
-        </Modal>    
+        </Modal>
         <h4 className="mt-4">Vertically centered</h4>
         <Button color="primary" onClick={this.toggle14} >Modal</Button>
         <Modal isOpen={this.state.modal14} toggle={this.toggle14} centered>
@@ -290,17 +290,17 @@ class ModalPage extends React.Component {
             <Button color="secondary" onClick={this.toggle14}>Close</Button>{' '}
             <Button color="primary">Save changes</Button>
           </ModalFooter>
-        </Modal> 
+        </Modal>
         <h4 className="mt-4">Tooltips and popovers</h4>
         <Button color="primary" onClick={this.toggle15} >Modal</Button>
         <Modal isOpen={this.state.modal15} toggle={this.toggle15}>
           <ModalHeader toggle={this.toggle15}>Modal title</ModalHeader>
           <ModalBody>
             This
-            <Popover 
+            <Popover
               component="button"
-              placement="right" 
-              popoverBody="button" 
+              placement="right"
+              popoverBody="button"
               tag="span"
               className="btn btn-secondary">
               <PopoverHeader>Popover title</PopoverHeader>
@@ -321,7 +321,7 @@ class ModalPage extends React.Component {
               tag="a"
               component="span"
               tooltipContent="Tooltip">
-                that link 
+                that link
             </Tooltip>
             {' '}have tooltips on hover.
           </ModalBody>
@@ -329,7 +329,7 @@ class ModalPage extends React.Component {
             <Button color="secondary" onClick={this.toggle15}>Close</Button>{' '}
             <Button color="primary">Save changes</Button>
           </ModalFooter>
-        </Modal> 
+        </Modal>
         <h4 className="mt-4">Using the grid</h4>
         <Button onClick={this.toggle16}>Modal</Button>
         <Modal isOpen={this.state.modal16} toggle={this.toggle16}>
@@ -368,14 +368,14 @@ class ModalPage extends React.Component {
             <Button color="secondary" onClick={this.toggle16}>Close</Button>{' '}
             <Button color="primary">Save changes</Button>
           </ModalFooter>
-        </Modal>  
+        </Modal>
         <h4 className="mt-4">Varying modal content</h4>
         <Button color="primary" onClick={this.toggle17} >Open modal for {this.state.mailAddress}</Button>
         <Modal isOpen={this.state.modal17} toggle={this.toggle17}>
           <ModalHeader toggle={this.toggle17}>New message to {this.state.mailAddress}</ModalHeader>
           <ModalBody>
             <div className="md-form">
-            <Input defaultValue={this.state.mailAddress} />
+            <Input value={this.state.mailAddress} />
             <Input type="textarea" label="Message" rows="2" />
             </div>
           </ModalBody>

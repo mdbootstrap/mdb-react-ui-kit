@@ -2,14 +2,20 @@ import React from 'react';
 import {BrowserRouter as Router, Route, Switch, browserHistory } from 'react-router-dom';
 
 // FREE
+import AnimationPage from './pages/AnimationPage';
 import HomePage from './pages/HomePage';
 import ButtonPage from './pages/ButtonPage';
 import CSSPage from './pages/CSSPage';
 import TablePage from './pages/TablePage';
+import TableResponsivePage from './pages/TableResponsivePage';
+import TableScrollPage from './pages/TableScrollPage';
+import TableStylesPage from './pages/TableStylesPage';
 import BadgePage from './pages/BadgePage';
 import BreadcrumbPage from './pages/BreadcrumbPage';
 import FaPage from './pages/FaPage';
 import ComponentsPage from './pages/ComponentsPage';
+import DatatablePage from './pages/DatatablePage';
+import DatatableApiPage from './pages/DatatableApiPage';
 import ModalPage from './pages/ModalPage';
 import AdvancedPage from './pages/AdvancedPage';
 import ProgressPage from './pages/ProgressPage';
@@ -40,10 +46,14 @@ class Routes extends React.Component {
     return (
       <Switch>
         {/* FREE */}
+        <Route path='/css/animations' component={AnimationPage} />
         <Route exact path='/' component={HomePage} />
         <Route exact path='/css' component={CSSPage} />
         <Route exact path='/css/table' component={TablePage} />
         <Route exact path='/components' component={ComponentsPage} />
+        <Route path='/css/table-responsive' component={TableResponsivePage} />
+        <Route path='/css/table-scroll' component={TableScrollPage} />
+        <Route path='/css/table-styles' component={TableStylesPage} />
         <Route path='/components/badge' component={BadgePage} />
         <Route path='/components/breadcrumb' component={BreadcrumbPage} />
         <Route path='/components/media' component={MediaPage} />
@@ -73,6 +83,8 @@ class Routes extends React.Component {
         <Route path='/components/panels' component={PanelPage} />
         <Route path='/components/search' component={SearchPage} />
         <Route path='/components/validation' component={ValidationPage} />
+        <Route path='/advanced/datatable' component={DatatablePage} />
+        <Route path='/advanced/datatable-api' component={DatatableApiPage} />
         <Route render = { function() {
           return <h1>Not Found</h1>;
         }} />
