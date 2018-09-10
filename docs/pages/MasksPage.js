@@ -1,13 +1,20 @@
 import React from 'react';
-import { Mask, View, Container, Row, Col } from 'mdbreact';
+import { Mask, View, Container, Row, Col, Fa } from 'mdbreact';
 
 
 class MasksPage extends React.Component {
 
   render () {
     return (
-      <Container>
-        <Row className="mt-4">
+      <Container className="mt-5">
+        <Row className="align-items-center mt-5">
+          <h4 className="grey-text" style={{margin: "0px"}}>
+            <strong>Masks</strong>
+          </h4>
+          <a className="border grey-text px-2 border-light rounded ml-2" target="_blank"  href="https://mdbootstrap.com/react/css/masks/"><Fa icon="graduation-cap" className="mr-2"/>Docs</a>
+        </Row>
+        <hr className="mb-5" />
+        <Row>
           <Col md="4">
             <View>
               <img src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg" className="img-fluid" alt="" />

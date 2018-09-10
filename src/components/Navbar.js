@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-
 
 const getExpandClass = (expand) => {
   if (expand === false) {
@@ -19,12 +17,12 @@ class Navbar extends Component {
   constructor(props, refs) {
     super(props, refs);
     this.state = {
-      isCollapsed: false,
+      isCollapsed: false
     };
     this.refs = {};
   }
 
-  handleScroll() {
+  handleScroll = () => {
     const scrollingNavbarOffset = this.props.scrollingNavbarOffset || 50;
     if(window.pageYOffset > scrollingNavbarOffset) {
       this.setState({isCollapsed: true});
@@ -35,13 +33,13 @@ class Navbar extends Component {
 
   componentDidMount() {
     if(this.props.scrolling || this.props.scrollingNavbarOffset) {
-      window.addEventListener('scroll', this.handleScroll.bind(this));
+      window.addEventListener('scroll', this.handleScroll);
     }
   }
 
   componentWillUnmount() {
     if(this.props.scrolling || this.props.scrollingNavbarOffset) {
-      window.removeEventListener('scroll', this.handleScroll.bind(this));
+      window.removeEventListener('scroll', this.handleScroll);
     }
   }
 
@@ -59,6 +57,7 @@ class Navbar extends Component {
       scrollingNavbarOffset,
       tag: Tag,
       double,
+      transparent,
       ...attributes
     } = this.props;
 
@@ -71,7 +70,7 @@ class Navbar extends Component {
       getExpandClass(expand),
       (scrolling || scrollingNavbarOffset) ? 'scrolling-navbar' : '',
       this.state.isCollapsed ? 'top-nav-collapse' : '',
-      color ? color : '',
+      color ? transparent ? this.state.isCollapsed ? color : '' : color : '',
       double ? 'double-nav': '',
       className
     );
@@ -85,6 +84,7 @@ class Navbar extends Component {
 Navbar.propTypes = {
   light: PropTypes.bool,
   dark: PropTypes.bool,
+  double: PropTypes.bool,
   fixed: PropTypes.string,
   sticky: PropTypes.string,
   scrolling: PropTypes.bool,
@@ -92,7 +92,8 @@ Navbar.propTypes = {
   color: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
-  expand: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
+  expand: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  transparent: PropTypes.bool
 };
 
 Navbar.defaultProps = {

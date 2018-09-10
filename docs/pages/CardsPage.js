@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Col, Row, Container, Card, CardBody, CardGroup, CardImage, CardTitle, CardText } from 'mdbreact';
+import { Button, Col, Row, Container, Card, CardBody, CardGroup, CardImage, CardTitle, CardText, Fa } from 'mdbreact';
 import classNames from 'classnames';
 
 
@@ -7,6 +7,14 @@ class CardsPage extends Component {
 
   render() {
     return(
+    <Container>
+      <Row className="align-items-center mt-5">
+          <h4 className="grey-text" style={{margin: "0px"}}>
+            <strong>Cards</strong>
+          </h4>
+          <a className="border grey-text px-2 border-light rounded ml-2" target="_blank"  href="https://mdbootstrap.com/react/components/cards/"><Fa icon="graduation-cap" className="mr-2"/>Docs</a>
+      </Row>
+      <hr className="mb-5" />
       <Container>
         <h2 className="mt-5">Reversed card</h2>
         <Row>
@@ -86,6 +94,7 @@ class CardsPage extends Component {
 
       </CardGroup>
       </Container>
+    </Container>
     );
   }
 };

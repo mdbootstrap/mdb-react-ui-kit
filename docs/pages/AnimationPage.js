@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Row, Col, Animation} from 'mdbreact';
+import {Container, Row, Fa, Col, Animation} from 'mdbreact';
 
 const AnimationPage = function()  {
   let count = 0;
@@ -8,7 +8,16 @@ const AnimationPage = function()  {
     if (count < 6 || count % 5 == 0) { console.log(`The MDB logo bounced ${count} times.`)}
     }
 
-    return ( <Container className="mt-5">
+    return (
+
+    <Container className="mt-5">
+      <Row className="align-items-center mt-5">
+        <h4 className="grey-text" style={{margin: "0px"}}>
+          <strong>Animations</strong>
+        </h4>
+        <a className="border grey-text px-2 border-light rounded ml-2" target="_blank"  href="https://mdbootstrap.com/react/css/animations/"><Fa icon="graduation-cap" className="mr-2"/>Docs</a>
+      </Row>
+      <hr className="mb-5" />
       <Row center>
         <Animation
           type="bounce"

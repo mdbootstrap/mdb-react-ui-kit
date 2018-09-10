@@ -39,6 +39,7 @@ class Button extends React.Component {
       circle,
       className,
       color,
+      download,
       outline,
       size,
       rounded,
@@ -50,6 +51,7 @@ class Button extends React.Component {
       social,
       action,
       tag: Tag,
+      target,
       innerRef,
       ...attributes
     } = this.props;
@@ -75,6 +77,7 @@ class Button extends React.Component {
     return (
       <Tag
         type={(Tag === 'button' && !type) ? 'button' : type}
+        target={target}
         role={(Tag === 'a' && !role) ? 'button' : role}
         className={classes}
         ref={innerRef}
@@ -82,6 +85,7 @@ class Button extends React.Component {
         onMouseDown={ this.handleClick }
         onTouchStart={ this.handleClick }
         {...attributes}
+        download={download}
       >
         {this.props.children}
         {this.props.disabled ? false : <Waves cursorPos={ this.state.cursorPos } outline={outline} flat={flat} />}
@@ -97,8 +101,10 @@ Button.defaultProps = {
 
 Button.propTypes = {
   active: PropTypes.bool,
+  action: PropTypes.bool,
   block: PropTypes.bool,
   color: PropTypes.string,
+  download: PropTypes.string,
   gradient: PropTypes.string,
   role: PropTypes.string,
   type: PropTypes.string,
@@ -111,8 +117,10 @@ Button.propTypes = {
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   onClick: PropTypes.func,
   size: PropTypes.string,
+  social: PropTypes.string,
   children: PropTypes.node,
   tag: PropTypes.string,
+  target: PropTypes.string,
   className: PropTypes.string
 };
 

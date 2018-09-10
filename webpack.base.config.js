@@ -30,6 +30,7 @@ module.exports = function (env) {
   }
 
   const config = {
+    mode: 'production',
     devtool: 'source-map',
     entry: [__dirname + '/src/index.js'],
     output: {

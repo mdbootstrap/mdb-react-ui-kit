@@ -12,10 +12,9 @@ class NavLink extends Component {
     this.state = {
       cursorPos: {}
     };
-    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(e){
+  handleClick = (e) => {
     if (!this.props.disabled) {
       // Waves - Get Cursor Position
       let cursorPos = {
@@ -49,7 +48,9 @@ class NavLink extends Component {
 
     return (
       <Link className={classes}
-            onClick = { this.handleClick }
+            onClick={this.onClick}
+            onMouseDown={ this.handleClick }
+            onTouchStart={ this.handleClick }
             to={to}
             activeClassName = {activeClassName}
             {...attributes}

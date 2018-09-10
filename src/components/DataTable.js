@@ -184,9 +184,12 @@ class DataTable extends Component {
 
     let ExportToCsvBtn;
     if(exportToCSV) {
-      try {ExportToCsvBtn = require('./pro/ExportToCSV').default}
-      catch(err) {console.log(`To export to CSV please upgrade to MDB React PRO
-      https://mdbootstrap.com/product/react-bootstrap-pro/`)}
+      try {
+        ExportToCsvBtn = require('./pro/ExportToCSV').default;
+      }
+      catch (err) {
+        console.log('Export to CSV is MDB PRO component, more here: https://mdbootstrap.com/product/react-bootstrap-pro/');
+      }
     }
 
     return (

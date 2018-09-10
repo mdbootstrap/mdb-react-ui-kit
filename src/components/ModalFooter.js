@@ -6,7 +6,6 @@ import classNames from 'classnames';
 class ModalFooter extends React.Component {
 
   render() {
-    let closeButton;
     const {
       className,
       children,

@@ -1,26 +1,26 @@
 import React from 'react';
-import { Line, Chart } from 'react-chartjs-2';
-import { Container, Row, Col, Fa } from 'mdbreact';
+import { Line, Bar, Radar, Pie, Doughnut, Polar } from 'react-chartjs-2';
+import { Container, Row, Fa } from 'mdbreact';
 
-// Line chart
-const data = {
+// LineChart
+const dataLine = {
   labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
   datasets: [
     {
       label: 'My First dataset',
       fill: false,
       lineTension: 0.1,
-      backgroundColor: '#848484',
-      borderColor: '#848484',
+      backgroundColor: 'rgba(75,192,192,0.4)',
+      borderColor: 'rgba(75,192,192,1)',
       borderCapStyle: 'butt',
       borderDash: [],
       borderDashOffset: 0.0,
       borderJoinStyle: 'miter',
-      pointBorderColor: '#848484',
+      pointBorderColor: 'rgba(75,192,192,1)',
       pointBackgroundColor: '#fff',
       pointBorderWidth: 1,
       pointHoverRadius: 5,
-      pointHoverBackgroundColor: '#848484',
+      pointHoverBackgroundColor: 'rgba(75,192,192,1)',
       pointHoverBorderColor: 'rgba(220,220,220,1)',
       pointHoverBorderWidth: 2,
       pointRadius: 1,
@@ -30,155 +30,145 @@ const data = {
   ]
 };
 
-class ChartsPage extends React.Component {
-  componentDidMount() {
-    // Radar chart
-    const ctxR = document.getElementById("radarChart").getContext('2d');
-    new Chart(ctxR, {
-      type: 'radar',
-      data: {
-        labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
-        datasets: [
-          {
-            label: "My First dataset",
-            fillColor: "rgba(220,220,220,0.2)",
-            strokeColor: "rgba(220,220,220,1)",
-            pointColor: "rgba(220,220,220,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(220,220,220,1)",
-            data: [65, 59, 90, 81, 56, 55, 40]
-          },
-          {
-            label: "My Second dataset",
-            fillColor: "rgba(151,187,205,0.2)",
-            strokeColor: "rgba(151,187,205,1)",
-            pointColor: "rgba(151,187,205,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(151,187,205,1)",
-            data: [28, 48, 40, 19, 96, 27, 100]
-          }
-        ]
+// RadarChart
+
+const dataRadar = {
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+  datasets: [
+      {
+        label: '#1',
+        backgroundColor: 'rgba(245, 74, 85, 0.5)',
+        data: [65, 59, 80, 81, 56, 55, 40]
       },
-      options: {
-          responsive: true
-      }   
-    });
-    // Bar chart
-    var ctxB = document.getElementById("barChart").getContext('2d');
-    new Chart(ctxB, {
-      type: 'bar',
-      data: {
-          labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-          datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
-              ],
-              borderColor: [
-                  'rgba(255,99,132,1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)',
-                  'rgba(75, 192, 192, 1)',
-                  'rgba(153, 102, 255, 1)',
-                  'rgba(255, 159, 64, 1)'
-              ],
-              borderWidth: 1
-          }]
+      {
+        label: '#2',
+        backgroundColor: 'rgba(90, 173, 246, 0.5)',
+        data: [12, 42, 121, 56, 24, 12, 2]
       },
-      optionss: {
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      beginAtZero:true
-                  }
-              }]
-          }
+      {
+        label: '#3',
+        backgroundColor: 'rgba(245, 192, 50, 0.5)',
+        data: [2, 123, 154, 76, 54, 23, 5]
       }
-    });
-    // Polar chart
-    var ctxPA = document.getElementById("polarChart").getContext('2d');
-    new Chart(ctxPA, {
-      type: 'polarArea',
-      data: {
-          labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
-          datasets: [
-              {
-                  data: [300, 50, 100, 40, 120],
-                  backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
-                  hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
-              }
-          ]
-      },
-      options: {
-          responsive: true
-      }    
-    });
-    // Pie chart
-    var ctxP = document.getElementById("pieChart").getContext('2d');
-    new Chart(ctxP, {
-        type: 'pie',
-        data: {
-            labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
-            datasets: [
-                {
-                    data: [300, 50, 100, 40, 120],
-                    backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
-                    hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
-                }
-            ]
-        },
-        options: {
-            responsive: true
-        }    
-    });
-    //doughnut
-    var ctxD = document.getElementById("doughnutChart").getContext('2d');
-    new Chart(ctxD, {
-        type: 'doughnut',
-        data: {
-            labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
-            datasets: [
-                {
-                    data: [300, 50, 100, 40, 120],
-                    backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
-                    hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
-                }
-            ]
-        },
-        options: {
-            responsive: true
-        }    
-    });
+    ]
+};
+
+// barChart
+const dataBar = {
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+  datasets: [
+  {
+      label: '#1',
+      data: [12, 39, 3, 50, 2, 32, 84],
+      backgroundColor: 'rgba(245, 74, 85, 0.5)',
+      borderWidth: 1
+  }, {
+      label: '#2',
+      data: [56, 24, 5, 16, 45, 24, 8],
+      backgroundColor: 'rgba(90, 173, 246, 0.5)',
+      borderWidth: 1
+  }, {
+      label: '#3',
+      data: [12, 25, 54, 3, 15, 44, 3],
+      backgroundColor: 'rgba(245, 192, 50, 0.5)',
+      borderWidth: 1
   }
+  ]
+};
+const barChartOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  scales: {
+  xAxes: [{
+      barPercentage: 1,
+      gridLines: {
+      display: true,
+      color: 'rgba(0, 0, 0, 0.1)'
+      }
+  }],
+  yAxes: [{
+      gridLines: {
+      display: true,
+      color: 'rgba(0, 0, 0, 0.1)'
+      },
+      ticks: {
+      beginAtZero: true
+      }
+  }]
+  }
+}
+
+// Polar Chart
+const dataPolar = {
+  datasets: [{
+    data: [ 11, 16, 7, 3, 14 ],
+    backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
+    label: 'My dataset' // for legend
+  }],
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May']
+};
+
+// Pie Chart
+const dataPie = {
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+  datasets: [
+  {
+      data: [300, 50, 100, 40, 120, 24, 52],
+      backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360', '#ac64ad'],
+      hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774', '#da92db']
+  }
+  ]
+}
+
+// Doughnut Chart
+const dataDoughnut = {
+  labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
+  datasets: [{
+      data: [300, 50, 100, 40, 120],
+      backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+      hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+  }]
+};
+
+
+
+class ChartsPage extends React.Component {
   render() {
     return (
-      <div style={{marginTop: '100px'}}>
-        <Container>
-          <h3>Line chart</h3>
-          <Line data={data} />
+      <Container>
+        <Row className="align-items-center mt-5">
+          <h4 className="grey-text" style={{margin: "0px"}}>
+            <strong>Charts</strong>
+          </h4>
+          <a className="border grey-text px-2 border-light rounded ml-2" target="_blank"  href="https://mdbootstrap.com/react/advanced/charts/"><Fa icon="graduation-cap" className="mr-2"/>Docs</a>
+        </Row>
+        <div>
+          <h3 className="mt-5">Line chart</h3>
+          <Line data={dataLine} options={{responsive: true }} />
+        </div>
+        <div>
           <h3 className="mt-5">Radar chart</h3>
-          <canvas id="radarChart"></canvas>
+          <Radar data={dataRadar} options={{responsive: true }} />
+        </div>
+        <div>
           <h3 className="mt-5">Bar chart</h3>
-          <canvas id="barChart"></canvas>
-          <h3 className="mt-5">Polar Area Chart</h3>
-          <canvas id="polarChart"></canvas>
+          <Bar data={dataBar} options={barChartOptions} />
+        </div>
+        <div>
+          <h3 className="mt-5">Polar chart</h3>
+          <Polar data={dataPolar} options={{responsive: true }} />
+        </div>
+        <div>
           <h3 className="mt-5">Pie Chart</h3>
-          <canvas id="pieChart"></canvas>
+          <Pie data={dataPie} options={{responsive: true}} />
+        </div>
+        <div>
           <h3 className="mt-5">Doughnut Chart</h3>
-          <canvas id="doughnutChart"></canvas>
-        </Container>
-      </div>
+          <Doughnut data={dataDoughnut} options={{responsive: true }} />
+        </div>
+      </Container>
     );
   }
- 
 };
 
 export default ChartsPage;

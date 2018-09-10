@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col } from 'mdbreact';
+import { Container, Row, Col, Fa } from 'mdbreact';
 
 class FormsPage extends React.Component  {
 
@@ -23,10 +23,15 @@ class FormsPage extends React.Component  {
 
   render() {
     return(
-      <Container className="mt-5">
-        <hr className="my-5" />
-        <h2 className="mb-5">Form Validation</h2>
-        <Row className="mt-6">
+      <Container>
+        <Row className="align-items-center mt-5">
+          <h4 className="grey-text" style={{margin: "0px"}}>
+            <strong>Form Validation</strong>
+          </h4>
+          <a className="border grey-text px-2 border-light rounded ml-2" target="_blank"  href="https://mdbootstrap.com/react/components/form-validation/"><Fa icon="graduation-cap" className="mr-2"/>Docs</a>
+        </Row>
+        <hr className="mb-5" />
+        <Row>
           <Col md="">
             <form className='needs-validation' onSubmit={this.submitHandler} noValidate>
             <Row>

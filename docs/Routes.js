@@ -1,6 +1,11 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Switch, browserHistory } from 'react-router-dom';
 
+import NavigationPage from './pages/NavigationPage';
+import FormsNavPage from './pages/FormsNavPage';
+import TablesNavPage from './pages/TablesNavPage';
+import ModalsNavPage from './pages/ModalsNavPage';
+
 // FREE
 import AnimationPage from './pages/AnimationPage';
 import HomePage from './pages/HomePage';
@@ -17,6 +22,8 @@ import ComponentsPage from './pages/ComponentsPage';
 import DatatablePage from './pages/DatatablePage';
 import DatatableApiPage from './pages/DatatableApiPage';
 import ModalPage from './pages/ModalPage';
+import ModalFormPage from './pages/ModalFormPage';
+import ModalExamplesPage from './pages/ModalExamplesPage';
 import AdvancedPage from './pages/AdvancedPage';
 import ProgressPage from './pages/ProgressPage';
 import InputPage from './pages/InputPage';
@@ -40,39 +47,48 @@ import FormsPage from './pages/FormsPage';
 import ChartsPage from './pages/ChartsPage';
 import SearchPage from './pages/SearchPage';
 import ValidationPage from './pages/ValidationPage';
+import NavbarPage from './pages/NavbarPage';
 
 class Routes extends React.Component {
   render() {
     return (
       <Switch>
-        {/* FREE */}
-        <Route path='/css/animations' component={AnimationPage} />
         <Route exact path='/' component={HomePage} />
         <Route exact path='/css' component={CSSPage} />
-        <Route exact path='/css/table' component={TablePage} />
         <Route exact path='/components' component={ComponentsPage} />
-        <Route path='/css/table-responsive' component={TableResponsivePage} />
-        <Route path='/css/table-scroll' component={TableScrollPage} />
-        <Route path='/css/table-styles' component={TableStylesPage} />
+        <Route exact path='/advanced' component={AdvancedPage} />
+        <Route exact path='/navigation' component={NavigationPage} />
+        <Route exact path='/forms' component={FormsNavPage} />
+        <Route exact path='/tables' component={TablesNavPage} />
+        <Route exact path='/modals' component={ModalsNavPage} />
+
+        {/* FREE */}
+        <Route path='/css/animations' component={AnimationPage} />
+        <Route exact path='/tables/table' component={TablePage} />
+        <Route path='/tables/table-responsive' component={TableResponsivePage} />
+        <Route path='/tables/table-scroll' component={TableScrollPage} />
+        <Route path='/tables/table-styles' component={TableStylesPage} />
         <Route path='/components/badge' component={BadgePage} />
-        <Route path='/components/breadcrumb' component={BreadcrumbPage} />
+        <Route path='/navigation/breadcrumb' component={BreadcrumbPage} />
+        <Route path='/navigation/navbar' component={NavbarPage} />
         <Route path='/components/media' component={MediaPage} />
-        <Route path='/components/input' component={InputPage} />
+        <Route path='/forms/input' component={InputPage} />
         <Route path='/components/alert' component={AlertPage} />
         <Route path='/components/dropdown' component={DropdownPage} />
         <Route path='/css/icons' component={FaPage} />
         <Route path='/css/jumbotron' component={JumbotronPage} />
         <Route path='/components/cards' component={CardsPage} />
         <Route path='/components/buttons' component={ButtonPage} />
-        <Route path='/components/forms' component={FormsPage} />
+        <Route path='/forms/forms' component={FormsPage} />
         <Route path='/components/progress' component={ProgressPage} />
-        <Route path='/components/popover' component={PopoverPage} />
+        <Route path='/advanced/popover' component={PopoverPage} />
         <Route path='/components/pagination' component={PaginationPage} />
         <Route path='/components/list-group' component={ListGroupPage} />
-        <Route path='/components/tooltips' component={TooltipsPage} />
-        <Route path='/components/footer' component={FooterPage} />
-        <Route exact path='/advanced' component={AdvancedPage} />
-        <Route path='/advanced/modal' component={ModalPage} />
+        <Route path='/advanced/tooltips' component={TooltipsPage} />
+        <Route path='/navigation/footer' component={FooterPage} />
+        <Route path='/modals/modal' component={ModalPage} />
+        <Route path='/modals/modal-form' component={ModalFormPage} />
+        <Route path='/modals/modal-examples' component={ModalExamplesPage} />
         <Route path='/advanced/carousel' component={CarouselPage} />
         <Route path='/advanced/collapse' component={CollapsePage} />
         <Route path='/advanced/videocarousel' component={VideoCarouselPage} />
@@ -82,9 +98,9 @@ class Routes extends React.Component {
         <Route path='/advanced/charts' component={ChartsPage} />
         <Route path='/components/panels' component={PanelPage} />
         <Route path='/components/search' component={SearchPage} />
-        <Route path='/components/validation' component={ValidationPage} />
-        <Route path='/advanced/datatable' component={DatatablePage} />
-        <Route path='/advanced/datatable-api' component={DatatableApiPage} />
+        <Route path='/forms/validation' component={ValidationPage} />
+        <Route path='/tables/datatable' component={DatatablePage} />
+        <Route path='/tables/datatable-api' component={DatatableApiPage} />
         <Route render = { function() {
           return <h1>Not Found</h1>;
         }} />

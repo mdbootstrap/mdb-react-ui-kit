@@ -1,10 +1,17 @@
 import React from 'react';
-import { Fa } from 'mdbreact';
+import { Fa, Container, Row } from 'mdbreact';
 
 
 const FaPage = (props) => {
   return(
-    <div className="container-fluid text-center">
+    <Container className="mt-3 text-center">
+      <Row className="align-items-center mt-5">
+        <h4 className="grey-text" style={{margin: "0px"}}>
+          <strong>Icons</strong>
+        </h4>
+        <a className="border grey-text px-2 border-light rounded ml-2" target="_blank"  href="https://mdbootstrap.com/react/content/icons/"><Fa icon="graduation-cap" className="mr-2"/>Docs</a>
+      </Row>
+      <hr className="mb-5" />
       <div className="">
         <p><Fa icon="camera-retro"/></p>
         <p><Fa icon="camera-retro" size="lg"/></p>
@@ -24,7 +31,7 @@ const FaPage = (props) => {
         <p><Fa icon="camera-retro" size="5x" rotate="90"/></p>
         <p><Fa icon="camera-retro" size="5x" flip="vertical"/></p>
       </div>
-    </div>
+    </Container>
   );
 };
 

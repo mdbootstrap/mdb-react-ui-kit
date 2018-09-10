@@ -1,6 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Jumbotron, Fa, Badge } from 'mdbreact';
-const NavLink = require('react-router-dom').NavLink;
+import { Container, Row, Col, Jumbotron, Fa, NavItem, NavLink } from 'mdbreact';
 
 class AdvancedPage extends React.Component {
   render(){
@@ -12,27 +11,24 @@ class AdvancedPage extends React.Component {
               <h1><Fa icon="code" className="grey-text" /> Advanced</h1>
               <ul className="list-unstyled example-components-list">
                 <h6 className="mt-3 grey-text">FREE </h6>
-                <li>
-                  <NavLink to="/advanced/carousel">Carousel <Fa icon="angle-right" /></NavLink>
-                </li>
-                <li>
-                  <NavLink to="/advanced/charts">Charts <Fa icon="angle-right" /></NavLink>
-                </li>
-                <li>
-                  <NavLink to="/advanced/collapse">Collapse <Fa icon="angle-right" /></NavLink>
-                </li>
-                <li>
-                  <NavLink to="/advanced/datatable">Datatable <Fa icon="angle-right" /></NavLink>
-                </li>
-                <li>
-                  <NavLink to="/advanced/datatable-api">Datatable - data from API <Fa icon="angle-right" /></NavLink>
-                </li>
-                <li>
-                  <NavLink to="/advanced/modal">Modal <Fa icon="angle-right" /></NavLink>
-                </li>
-                <li>
-                  <NavLink to="/advanced/videocarousel">Video Carousel <Fa icon="angle-right" /></NavLink>
-                </li>
+                <NavLink className="list-group-item list-group-item-action" to="/advanced/carousel">
+                  <h5 style={{margin: "0"}} className="justify-content-between d-flex align-items-center">Carousel<Fa icon="angle-right" /></h5>
+                </NavLink>
+                <NavLink className="list-group-item list-group-item-action" to="/advanced/charts">
+                  <h5 style={{margin: "0"}} className="justify-content-between d-flex align-items-center">Charts<Fa icon="angle-right" /></h5>
+                </NavLink>
+                <NavLink className="list-group-item list-group-item-action" to="/advanced/collapse">
+                  <h5 style={{margin: "0"}} className="justify-content-between d-flex align-items-center">Collapse<Fa icon="angle-right" /></h5>
+                </NavLink>
+                <NavLink className="list-group-item list-group-item-action" to="/advanced/popover">
+                  <h5 style={{margin: "0"}} className="justify-content-between d-flex align-items-center">Popover<Fa icon="angle-right" /></h5>
+                </NavLink>
+                <NavLink className="list-group-item list-group-item-action" to="/advanced/tooltips">
+                  <h5 style={{margin: "0"}} className="justify-content-between d-flex align-items-center">Tooltips<Fa icon="angle-right" /></h5>
+                </NavLink>
+                <NavLink className="list-group-item list-group-item-action" to="/advanced/videocarousel">
+                  <h5 style={{margin: "0"}} className="justify-content-between d-flex align-items-center">Video Carousel<Fa icon="angle-right" /></h5>
+                </NavLink>
               </ul>
             </Jumbotron>
           </Col>

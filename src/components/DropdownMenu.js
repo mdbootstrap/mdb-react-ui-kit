@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Popper } from 'react-popper';
-require('./DropdownMenu.css');
+import './DropdownMenu.css';
 let DropdownMenuComponent;
 try {
   DropdownMenuComponent = require('./pro/DropdownMenuProComponent').default;

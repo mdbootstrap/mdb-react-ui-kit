@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Card, CardBody, Table, TableBody, TableHead  } from 'mdbreact';
+import { Container, Row, Col, Fa, Card, CardBody, Table, TableBody, TableHead  } from 'mdbreact';
 
 const TablePage = (props) => {
   const data = {
@@ -188,6 +188,14 @@ const TablePage = (props) => {
 
   return(
     <Container className="mt-3">
+      <Row className="align-items-center mt-5">
+        <h4 className="grey-text" style={{margin: "0px"}}>
+          <strong>Tables</strong>
+        </h4>
+        <a className="border grey-text px-2 border-light rounded ml-2" target="_blank"  href="https://mdbootstrap.com/react/content/tables/"><Fa icon="graduation-cap" className="mr-2"/>Docs</a>
+      </Row>
+      <hr className="mb-5" />
+
       <Row className="py-3">
         <Col md="12">
           <Card>

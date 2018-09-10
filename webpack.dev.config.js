@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 const config = {
+  mode: 'development',
   entry: './docs/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),

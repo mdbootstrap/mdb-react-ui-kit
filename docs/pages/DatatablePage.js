@@ -1,5 +1,5 @@
 import React from 'react';
-import { DataTable, Container, Row, Col, Card, CardBody } from 'mdbreact';
+import { DataTable, Container, Row, Col, Card, CardBody, Fa } from 'mdbreact';
 
 const DatatablePage = () => {
   const data = {
@@ -503,13 +503,19 @@ const DatatablePage = () => {
 
   return (
     <Container className="mt-3">
+      <Row className="align-items-center mt-5">
+        <h4 className="grey-text" style={{margin: "0px"}}>
+          <strong>Datatable</strong>
+        </h4>
+        <a className="border grey-text px-2 border-light rounded ml-2" target="_blank"  href="https://mdbootstrap.com/react/content/datatables/"><Fa icon="graduation-cap" className="mr-2"/>Docs</a>
+      </Row>
+      <hr className="mb-5" />
       <Row className="py-3">
         <Col md="12">
           <Card>
             <CardBody>
-              <h2 className="h2-responsive pb-4">Datatable</h2>
-              <DataTable 
-                striped 
+              <DataTable
+                striped
                 bordered
                 hover
                 data={data}
@@ -524,12 +530,12 @@ const DatatablePage = () => {
           <Card>
             <CardBody>
               <h2 className="h2-responsive pb-4">Info off</h2>
-              <DataTable 
-                striped 
+              <DataTable
+                striped
                 bordered
                 hover
                 info={false}
-                data={data} 
+                data={data}
               />
             </CardBody>
           </Card>
@@ -541,12 +547,12 @@ const DatatablePage = () => {
           <Card>
             <CardBody>
               <h2 className="h2-responsive pb-4">Sortable off</h2>
-              <DataTable 
-                striped 
+              <DataTable
+                striped
                 bordered
                 hover
                 sortable={false}
-                data={data} 
+                data={data}
               />
             </CardBody>
           </Card>
@@ -558,12 +564,12 @@ const DatatablePage = () => {
           <Card>
             <CardBody>
               <h2 className="h2-responsive pb-4">Initial order</h2>
-              <DataTable 
-                striped 
+              <DataTable
+                striped
                 bordered
                 hover
                 order={['age', 'desc']}
-                data={data} 
+                data={data}
               />
             </CardBody>
           </Card>
@@ -575,12 +581,12 @@ const DatatablePage = () => {
           <Card>
             <CardBody>
               <h2 className="h2-responsive pb-4">Searching off</h2>
-              <DataTable 
-                striped 
+              <DataTable
+                striped
                 bordered
                 hover
                 searching={false}
-                data={data} 
+                data={data}
               />
             </CardBody>
           </Card>
@@ -592,12 +598,12 @@ const DatatablePage = () => {
           <Card>
             <CardBody>
               <h2 className="h2-responsive pb-4">Paging off</h2>
-              <DataTable 
-                striped 
+              <DataTable
+                striped
                 bordered
                 hover
                 paging={false}
-                data={data} 
+                data={data}
               />
             </CardBody>
           </Card>
@@ -609,13 +615,13 @@ const DatatablePage = () => {
           <Card>
             <CardBody>
               <h2 className="h2-responsive pb-4">ScrollY</h2>
-              <DataTable 
-                striped 
+              <DataTable
+                striped
                 bordered
                 hover
                 scrollY
                 maxHeight='300px'
-                data={data} 
+                data={data}
               />
             </CardBody>
           </Card>
@@ -627,13 +633,13 @@ const DatatablePage = () => {
           <Card>
             <CardBody>
               <h2 className="h2-responsive pb-4">ScrollY dynamic height</h2>
-              <DataTable 
-                striped 
+              <DataTable
+                striped
                 bordered
                 hover
                 scrollY
                 maxHeight='50vh'
-                data={data} 
+                data={data}
               />
             </CardBody>
           </Card>
@@ -645,12 +651,12 @@ const DatatablePage = () => {
           <Card>
             <CardBody>
               <h2 className="h2-responsive pb-4">scrollX</h2>
-              <DataTable 
-                striped 
+              <DataTable
+                striped
                 bordered
                 hover
                 scrollX
-                data={data} 
+                data={data}
               />
             </CardBody>
           </Card>
@@ -662,8 +668,8 @@ const DatatablePage = () => {
           <Card>
             <CardBody>
               <h2 className="h2-responsive pb-4">scroll X and Y</h2>
-              <DataTable 
-                striped 
+              <DataTable
+                striped
                 bordered
                 hover
                 scrollX
