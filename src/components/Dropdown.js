@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM, { findDOMNode } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { Manager } from 'react-popper';
 import classNames from 'classnames';
 import { omit, keyCodes } from './utils';

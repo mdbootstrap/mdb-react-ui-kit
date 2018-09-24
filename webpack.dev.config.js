@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpack = require('webpack');
 
 const config = {
   mode: 'development',
@@ -17,7 +16,7 @@ const config = {
   },
   module: {
     rules: [
-      { test: /\.(js)$/, use: 'babel-loader' },
+      { test: /\.(js)$/, exclude: /node_modules/, use: ['babel-loader', 'eslint-loader'] },
       { test: /\.css$/, use: ['style-loader', 'css-loader']},
       { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader'},
       { test: /\.(woff|woff2)$/, loader: 'url-loader?prefix=font/&limit=5000' },

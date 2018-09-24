@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Button, Modal, ModalBody, ModalHeader, ModalFooter, Row, Input, Fa, Badge, Col, Table, TableBody, TableHead, Select, SelectOption, SelectOptions, SelectInput, CollapseHeader, Card, Collapse, CardBody, Carousel, CarouselInner, CarouselItem } from 'mdbreact';
 import './ModalExamplesPage.css';
+import DocsLink from './DocsLink';
 
 class ModalPage extends React.Component {
   constructor(props) {
@@ -24,36 +25,30 @@ class ModalPage extends React.Component {
   }
 
   toggle(nr) {
-    let modalNumber = 'modal' + nr
+    let modalNumber = 'modal' + nr;
     this.setState({ ...this.state,
       [modalNumber]: !this.state[modalNumber]
     });
   }
 
   onClick = number => () => {
-      let state;
-      if(this.state.accordion !== number) {
-        state = number;
-      } else {
-        state = false;
-      }
+    let state;
+    if(this.state.accordion !== number) {
+      state = number;
+    } else {
+      state = false;
+    }
 
-      this.setState({
-        ...this.state,
-        accordion: state});
+    this.setState({
+      ...this.state,
+      accordion: state});
   }
 
   render() {
     let { accordion } = this.state;
     return (
       <Container>
-        <Row className="align-items-center mt-5">
-          <h4 className="grey-text" style={{margin: "0px"}}>
-            <strong>Modal Templates & Examples</strong>
-          </h4>
-          <a className="border grey-text px-2 border-light rounded ml-2" target="_blank"  href="https://mdbootstrap.com/react/advanced/modals/"><Fa icon="graduation-cap" className="mr-2"/>Docs</a>
-        </Row>
-        <hr className="mb-5" />
+        <DocsLink title="Modal Templates & Examples" href="https://mdbootstrap.com/react/advanced/modals/" />
         <h4 className="mt-4">Modal Cookies</h4>
         <Row>
           <Button onClick={() => this.toggle(1)}>Launch Modal</Button>
@@ -119,7 +114,7 @@ class ModalPage extends React.Component {
             <ModalBody>
               <Row>
                 <Col size="5">
-                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(55).jpg" class="img-fluid" alt="" />
+                  <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(55).jpg" className="img-fluid" alt="" />
                 </Col>
                 <Col size="7">
                   <p><strong>My travel to paradise</strong></p>
@@ -281,7 +276,7 @@ class ModalPage extends React.Component {
           <Modal size="lg" isOpen={this.state.modal11} toggle={() => this.toggle(11)} >
             <ModalBody className="mb-0 p-0">
               <div className="embed-responsive embed-responsive-16by9 z-depth-1-half">
-                  <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/A3PDXmYoF5U" allowFullScreen></iframe>
+                <iframe className="embed-responsive-item" title="This is a unique title" src="https://www.youtube.com/embed/A3PDXmYoF5U" allowFullScreen></iframe>
               </div>
             </ModalBody>
             <ModalFooter className="justify-content-center">
@@ -301,7 +296,7 @@ class ModalPage extends React.Component {
           <Modal size="lg" isOpen={this.state.modal12} toggle={() => this.toggle(12)} >
             <ModalBody className="mb-0 p-0">
               <div className="embed-responsive embed-responsive-16by9 z-depth-1-half">
-                <iframe className="embed-responsive-item" src="https://player.vimeo.com/video/115098447" allowFullScreen></iframe>
+                <iframe className="embed-responsive-item" title="embed-responsive-item-1" src="https://player.vimeo.com/video/115098447" allowFullScreen></iframe>
               </div>
             </ModalBody>
             <ModalFooter className="justify-content-center">
@@ -321,7 +316,7 @@ class ModalPage extends React.Component {
           <Modal size="lg" isOpen={this.state.modal13} toggle={() => this.toggle(13)} >
             <ModalBody className="d-flex">
               <Col size="5" lg="5">
-              {/* Carrousel */}
+                {/* Carrousel */}
                 <Carousel
                   activeItem={1}
                   length={3}
@@ -360,7 +355,7 @@ class ModalPage extends React.Component {
                 <div className="my-4">
                   <Card>
                     <CollapseHeader onClick={this.onClick(1)}>Description
-                    <i className={"ml-1 " + (accordion === 1 ? 'fa fa-angle-down rotate-icon' : 'fa fa-angle-down')}></i>
+                      <i className={'ml-1 ' + (accordion === 1 ? 'fa fa-angle-down rotate-icon' : 'fa fa-angle-down')}></i>
                     </CollapseHeader>
                     <Collapse isOpen={accordion === 1}>
                       <CardBody>
@@ -370,7 +365,7 @@ class ModalPage extends React.Component {
                   </Card>
                   <Card>
                     <CollapseHeader onClick={this.onClick(2)}>Details
-                      <i className={"ml-1 " + (accordion === 2 ? 'fa fa-angle-down rotate-icon' : 'fa fa-angle-down')}></i>
+                      <i className={'ml-1 ' + (accordion === 2 ? 'fa fa-angle-down rotate-icon' : 'fa fa-angle-down')}></i>
                     </CollapseHeader>
                     <Collapse isOpen={accordion === 2}>
                       <CardBody>
@@ -380,7 +375,7 @@ class ModalPage extends React.Component {
                   </Card>
                   <Card>
                     <CollapseHeader onClick={this.onClick(3)}>Shipping
-                    <i className={"ml-1 " + (accordion === 3 ? 'fa fa-angle-down rotate-icon' : 'fa fa-angle-down')}></i>
+                      <i className={'ml-1 ' + (accordion === 3 ? 'fa fa-angle-down rotate-icon' : 'fa fa-angle-down')}></i>
                     </CollapseHeader>
                     <Collapse isOpen={accordion === 3}>
                       <CardBody>
@@ -429,7 +424,7 @@ class ModalPage extends React.Component {
           <Button onClick={() => this.toggle(8)}>Launch Modal</Button>
           <Modal cascading isOpen={this.state.modal8} toggle={() => this.toggle(8)} >
             <ModalHeader className="text-center text-white light-blue darken-3" titleClass="w-100" tag="h5" toggle={() => this.toggle(8)}>
-             <Fa icon="users" className="text-white mr-2" />
+              <Fa icon="users" className="text-white mr-2" />
               Spreed the word!
             </ModalHeader>
             <ModalBody className="text-center">

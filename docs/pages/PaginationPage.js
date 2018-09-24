@@ -1,16 +1,11 @@
 import React from 'react';
-import { Pagination, PageItem, PageLink, Container, Row, Fa } from 'mdbreact';
+import { Pagination, PageItem, PageLink, Container } from 'mdbreact';
+import DocsLink from './DocsLink';
 
 const PaginationPage = (props) => {
   return(
     <Container>
-      <Row className="align-items-center mt-5">
-          <h4 className="grey-text" style={{margin: "0px"}}>
-            <strong>Pagination</strong>
-          </h4>
-          <a className="border grey-text px-2 border-light rounded ml-2" target="_blank"  href="https://mdbootstrap.com/react/components/pagination/"><Fa icon="graduation-cap" className="mr-2"/>Docs</a>
-      </Row>
-      <hr className="mb-5" />
+      <DocsLink title="Pagination" href="https://mdbootstrap.com/react/components/pagination/" />
       <div className="container">
         <div className="row mt-5">
           <div className="col" style={{ maxWidth: '23rem' }}>

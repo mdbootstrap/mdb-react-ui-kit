@@ -25,10 +25,8 @@ import Col from './components/Col';
 import Collapse from './components/Collapse';
 import Container from './components/Container';
 import DataTable from './components/DataTable';
-let Dropdown = require('./components/Dropdown').default;
 import DropdownItem from './components/DropdownItem';
 import DropdownMenu from './components/DropdownMenu';
-let DropdownMenuComponent = require('./components/DropdownMenuComponent').default;
 import DropdownToggle from './components/DropdownToggle';
 import EdgeHeader from './components/EdgeHeader';
 import Fa from './components/Fa';
@@ -71,6 +69,7 @@ import TextField from './components/TextField';
 import Tooltip from './components/Tooltip';
 import View from './components/View';
 import { toast, ToastContainer, cssTransition} from 'react-toastify';
+import HamburgerToggler from './components/HamburgerToggler';
 
 // MDB FREE
 import MDBBadge from './components/Badge';
@@ -98,10 +97,8 @@ import MDBCol from './components/Col';
 import MDBCollapse from './components/Collapse';
 import MDBContainer from './components/Container';
 import MDBDataTable from './components/DataTable';
-let MDBDropdown = require('./components/Dropdown').default;
 import MDBDropdownItem from './components/DropdownItem';
 import MDBDropdownMenu from './components/DropdownMenu';
-let MDBDropdownMenuComponent = require('./components/DropdownMenuComponent').default;
 import MDBDropdownToggle from './components/DropdownToggle';
 import MDBEdgeHeader from './components/EdgeHeader';
 import MDBIcon from './components/Fa';
@@ -143,6 +140,11 @@ import MDBTableFoot from './components/TableFoot';
 import MDBTextarea from './components/TextField';
 import MDBTooltip from './components/Tooltip';
 import MDBView from './components/View';
+
+let Dropdown = require('./components/Dropdown').default;
+let DropdownMenuComponent = require('./components/DropdownMenuComponent').default;
+let MDBDropdown = require('./components/Dropdown').default;
+let MDBDropdownMenuComponent = require('./components/DropdownMenuComponent').default;
 
 export {
   // FREE
@@ -220,6 +222,7 @@ export {
   toast,
   ToastContainer,
   cssTransition,
+  HamburgerToggler,
   // MDB FREE
   MDBBadge,
   MDBBreadcrumb,

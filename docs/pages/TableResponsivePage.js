@@ -1,5 +1,6 @@
 import React from 'react';
-import { Container, Row, Fa, Col, Card, CardBody, Table, TableBody, TableHead  } from 'mdbreact';
+import { Container, Row, Col, Card, CardBody, Table, TableBody, TableHead  } from 'mdbreact';
+import DocsLink from './DocsLink';
 
 const TablePage = (props) => {
   const data = {
@@ -100,7 +101,7 @@ const TablePage = (props) => {
       {
         label: '#',
         field: 'id',
-        sort: 'asc',
+        sort: 'asc'
       },
       {
         label: 'Name',
@@ -270,14 +271,7 @@ const TablePage = (props) => {
 
   return(
     <Container className="mt-3">
-    < Row className="align-items-center mt-5">
-        <h4 className="grey-text" style={{margin: "0px"}}>
-          <strong>Table Responsive</strong>
-        </h4>
-        <a className="border grey-text px-2 border-light rounded ml-2" target="_blank"  href="https://mdbootstrap.com/react/content/table-responsive/"><Fa icon="graduation-cap" className="mr-2"/>Docs</a>
-      </Row>
-      <hr className="mb-5" />
-
+      <DocsLink title="Table Responsive" href="https://mdbootstrap.com/react/content/table-responsive/" />
       <Row className="py-3">
         <Col md="12">
           <Card>

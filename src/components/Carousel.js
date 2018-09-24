@@ -150,7 +150,7 @@ Carousel.propTypes = {
   showControls: PropTypes.bool,
   showIndicators: PropTypes.bool,
   slide: PropTypes.bool,
-  length: PropTypes.number,
+  length: PropTypes.number
 };
 
 Carousel.defaultProps = {

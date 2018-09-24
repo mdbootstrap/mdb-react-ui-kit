@@ -14,8 +14,7 @@ class Control extends Component {
       iconLeft,
       iconRight,
       testimonial,
-      multiItem,
-      ...attributes
+      multiItem
     } = this.props;
 
     let text;
@@ -36,7 +35,7 @@ class Control extends Component {
     );
 
     if (testimonial) {
-      const arrow = direction === "prev" ? "left" : "right"
+      const arrow = direction === 'prev' ? 'left' : 'right';
       classes = classNames(
         'carousel-item-' + direction,
         arrow,
@@ -56,9 +55,9 @@ class Control extends Component {
 
     return (
       <Tag className={classes} data-slide={direction} onClick={onClick}>
-        {this.props.iconLeft ? (
+        {iconLeft ? (
           <i className="fa fa-chevron-left"></i>
-        ) : this.props.iconRight ? (
+        ) : iconRight ? (
           <i className="fa fa-chevron-right"></i>
         ) : (
           <div>

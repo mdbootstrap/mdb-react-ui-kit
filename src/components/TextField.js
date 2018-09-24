@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Fa from './Fa';
 
 class TextField extends React.Component {
   constructor(props) {
@@ -24,8 +23,8 @@ class TextField extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState){
-    if (nextProps.value) {
-      return { ...prevState, innerValue: nextProps.value }
+    if (nextProps.value !== prevState.value) {
+      return { ...prevState, innerValue: nextProps.value };
     } else {
       return null;
     }
@@ -44,9 +43,9 @@ class TextField extends React.Component {
   onFocus(ev) {
     // ignore if event is a window blur
     // if (document.activeElement === this.inputElRef) {
-      this.setState({ isTouched: true });
+    this.setState({ isTouched: true });
     // }
-            // execute callback
+    // execute callback
     let fn = this.props.onFocus;
     fn && fn(ev);
   }
@@ -206,7 +205,7 @@ TextField.propTypes = {
   containerClass: PropTypes.string,
   filled: PropTypes.bool,
   gap: PropTypes.bool,
-  getValue: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
+  getValue: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
 };
 TextField.defaultProps = {
   tag: 'input',

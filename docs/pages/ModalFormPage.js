@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Button, Modal, ModalBody, ModalHeader, ModalFooter, Row, Input, Fa } from 'mdbreact';
+import DocsLink from './DocsLink';
 
 class ModalPage extends React.Component {
   constructor(props) {
@@ -9,13 +10,12 @@ class ModalPage extends React.Component {
       modal2: false,
       modal3: false,
       modal4: false,
-      modal5: false,
-      modal5: false,
+      modal5: false
     };
   }
 
   toggle(nr) {
-    let modalNumber = 'modal' + nr
+    let modalNumber = 'modal' + nr;
     this.setState({
       [modalNumber]: !this.state[modalNumber]
     });
@@ -24,13 +24,7 @@ class ModalPage extends React.Component {
   render() {
     return (
       <Container>
-        <Row className="align-items-center mt-5">
-          <h4 className="grey-text" style={{margin: "0px"}}>
-            <strong>Modal Form</strong>
-          </h4>
-          <a className="border grey-text px-2 border-light rounded ml-2" target="_blank"  href="https://mdbootstrap.com/react/advanced/modals/"><Fa icon="graduation-cap" className="mr-2"/>Docs</a>
-        </Row>
-        <hr className="mb-5" />
+        <DocsLink title="Modal Form" href="https://mdbootstrap.com/react/advanced/modals/" />
         <h4 className="mt-4">Simple modal login</h4>
         <Row>
           <Button rounded onClick={() => this.toggle(1)}>Launch Modal Login Form</Button>
@@ -38,8 +32,8 @@ class ModalPage extends React.Component {
             <ModalHeader className="text-center" titleClass="w-100 font-weight-bold" toggle={() => this.toggle(1)}>Sign in</ModalHeader>
             <ModalBody>
               <form className="mx-3 grey-text">
-                  <Input label="Type your email" icon="envelope" group type="email" validate error="wrong" success="right"/>
-                  <Input label="Type your password" icon="lock" group type="password" validate/>
+                <Input label="Type your email" icon="envelope" group type="email" validate error="wrong" success="right"/>
+                <Input label="Type your password" icon="lock" group type="password" validate/>
               </form>
             </ModalBody>
             <ModalFooter className="justify-content-center">

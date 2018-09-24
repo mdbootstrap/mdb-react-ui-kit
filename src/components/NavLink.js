@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Waves from './Waves';
-
-const Link = require('react-router-dom').NavLink;
-
+import { NavLink as Link } from 'react-router-dom';
 
 class NavLink extends Component {
   constructor(props) {
@@ -16,6 +14,7 @@ class NavLink extends Component {
 
   handleClick = (e) => {
     if (!this.props.disabled) {
+      e.stopPropagation();
       // Waves - Get Cursor Position
       let cursorPos = {
         top: e.clientY,
@@ -23,7 +22,6 @@ class NavLink extends Component {
         time: Date.now()
       };
       this.setState({ cursorPos: cursorPos });
-      e.stopPropagation();
     }
   }
 
@@ -48,12 +46,10 @@ class NavLink extends Component {
 
     return (
       <Link className={classes}
-            onClick={this.onClick}
-            onMouseDown={ this.handleClick }
-            onTouchStart={ this.handleClick }
-            to={to}
-            activeClassName = {activeClassName}
-            {...attributes}
+        onMouseUp={ this.handleClick }
+        onTouchStart={ this.handleClick }
+        to={to}
+        {...attributes}
       >
         {children}
         {this.props.disabled ? false : <Waves cursorPos={ this.state.cursorPos } />}

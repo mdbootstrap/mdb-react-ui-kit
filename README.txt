@@ -1,6 +1,6 @@
 Material Design for Bootstrap
 
-Version: MDB React Free 4.7.1
+Version: MDB React Free 4.8.0
 
 Documentation:
 https://mdbootstrap.com/

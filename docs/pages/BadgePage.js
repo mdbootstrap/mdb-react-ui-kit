@@ -1,17 +1,11 @@
 import React from 'react';
-import { Badge, Container, Row, Fa } from 'mdbreact';
-
+import { Badge, Container } from 'mdbreact';
+import DocsLink from './DocsLink';
 
 const BadgePage = (props) => {
   return(
     <Container>
-      <Row className="align-items-center mt-5">
-          <h4 className="grey-text" style={{margin: "0px"}}>
-            <strong>Badges</strong>
-          </h4>
-          <a className="border grey-text px-2 border-light rounded ml-2" target="_blank"  href="https://mdbootstrap.com/react/components/badges/"><Fa icon="graduation-cap" className="mr-2"/>Docs</a>
-      </Row>
-      <hr className="mb-5" />
+      <DocsLink title="Badges" href="https://mdbootstrap.com/react/components/badges/" />
       <div className="container-fluid text-center mt-5">
         <div className="">
           <h1>Heading <Badge>Default</Badge></h1>

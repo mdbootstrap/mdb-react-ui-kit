@@ -5,7 +5,6 @@ import classNames from 'classnames';
 class Jumbotron extends React.Component {
 
   render() {
-    let closeButton;
     const {
       className,
       children,

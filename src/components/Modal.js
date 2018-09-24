@@ -157,7 +157,7 @@ class Modal extends React.Component {
     if(this.props.animation) {
       return this.props.animation;
     } else if(this.props.position){
-      return this.props.position.split("-").slice(-1)[0];
+      return this.props.position.split('-').slice(-1)[0];
     } else {
       return 'top';
     }
@@ -225,12 +225,12 @@ class Modal extends React.Component {
       <div
         className={mapToCssModules(classNames('modal-dialog', this.props.className, {
           [`modal-${this.props.size}`]: this.props.size,
-          [`modal-side`]: this.props.side,
-          [`modal-full-height`]: this.props.fullHeight,
-          [`modal-frame`]: this.props.frame,
-          [`modal-dialog-centered`]: this.props.centered,
+          'modal-side': this.props.side,
+          'modal-full-height': this.props.fullHeight,
+          'modal-frame': this.props.frame,
+          'modal-dialog-centered': this.props.centered,
           [`modal-${this.props.position}`]: this.props.position,
-          ['cascading-modal']: this.props.cascading,
+          'cascading-modal': this.props.cascading,
           [`modal-notify white-text modal-${this.props.modalStyle}`]: this.props.modalStyle
         }), this.props.cssModule)}
         role="document"
@@ -273,9 +273,7 @@ class Modal extends React.Component {
       modalTransitionTimeout,
       backdropTransitionTimeout,
       role,
-      labelledBy,
-      cascading,
-      modalStyle
+      labelledBy
     } = this.props;
 
     const modalAttributes = {

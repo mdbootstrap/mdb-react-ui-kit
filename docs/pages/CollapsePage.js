@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Collapse, Container, Row, Fa } from 'mdbreact';
+import { Button, Collapse, Container } from 'mdbreact';
+import DocsLink from './DocsLink';
 
 class CollapsePage extends Component {
   constructor(props) {
@@ -17,13 +18,7 @@ class CollapsePage extends Component {
   render() {
     return (
       <Container>
-        <Row className="align-items-center mt-5">
-          <h4 className="grey-text" style={{margin: "0px"}}>
-            <strong>Collapse</strong>
-          </h4>
-          <a className="border grey-text px-2 border-light rounded ml-2" target="_blank"  href="https://mdbootstrap.com/react/advanced/collapse/"><Fa icon="graduation-cap" className="mr-2"/>Docs</a>
-        </Row>
-        <hr className="mb-5" />
+        <DocsLink title="Collapse" href="https://mdbootstrap.com/react/advanced/collapse/" />
         <div>
           <h1>Basic examples</h1>
           <div>

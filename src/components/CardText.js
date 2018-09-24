@@ -20,15 +20,15 @@ class CardText extends Component {
       className
     );
 
-    let text = <Tag {...attributes} className={classes} />
+    let text = <Tag {...attributes} className={classes} />;
 
     if (small) {
       text = (<Tag {...attributes} className={classes} >
-              <small> {this.props.children} </small>
-            </Tag>
-          )
+        <small> {this.props.children} </small>
+      </Tag>
+      );
     }
-    return text
+    return text;
   }
 }
 
@@ -36,7 +36,7 @@ CardText.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
   muted: PropTypes.bool,
-  small: PropTypes.bool,
+  small: PropTypes.bool
 };
 
 CardText.defaultProps = {

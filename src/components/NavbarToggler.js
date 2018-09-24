@@ -12,6 +12,7 @@ class NavbarToggler extends Component {
       children,
       className,
       tag: Tag,
+      image,
       ...attributes
     } = this.props;
 
@@ -24,7 +25,9 @@ class NavbarToggler extends Component {
 
     return (
       <Tag {...attributes} className={classes}>
-        {children || <span className='navbar-toggler-icon' />}
+        {children ? children :  
+          image ? <span className='navbar-toggler-icon' style={{backgroundImage: `url("${image}")`}} /> : 
+            <span className='navbar-toggler-icon' /> }
       </Tag>
     );
   }
@@ -36,7 +39,8 @@ NavbarToggler.propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   right: PropTypes.bool,
-  left: PropTypes.bool
+  left: PropTypes.bool,
+  image: PropTypes.string
 };
 
 NavbarToggler.defaultProps = {

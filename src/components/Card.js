@@ -57,7 +57,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  tag: 'div',
+  tag: 'div'
 };
 
 export default Card;

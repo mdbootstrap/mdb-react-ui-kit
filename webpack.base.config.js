@@ -1,5 +1,4 @@
-'use strict';
-const path = require('path');
+
 const webpack = require('webpack');
 
 const libraryName = 'mdbreact';
@@ -62,7 +61,7 @@ module.exports = function (env) {
           root: 'PropTypes',
           commonjs2: 'prop-types',
           commonjs: 'prop-types',
-          amd: 'prop-types',
+          amd: 'prop-types'
         }
       }
     ],

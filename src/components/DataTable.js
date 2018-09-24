@@ -98,7 +98,7 @@ class DataTable extends Component {
         }
         return false;
       });
-      if (filteredRows.length == 0) filteredRows.push({
+      if (filteredRows.length === 0) filteredRows.push({
         message: 'No matching records found',
         colspan: prevState.columns.length
       });
@@ -117,7 +117,7 @@ class DataTable extends Component {
           const pageEndIndex = i*prevState.entries;
           prevState.pages.push(prevState.filteredRows.slice(pageEndIndex-prevState.entries, pageEndIndex));
         }
-        prevState.activePage = (prevState.activePage < prevState.pages.length || prevState.activePage == 0) ? prevState.activePage : prevState.pages.length-1;
+        prevState.activePage = (prevState.activePage < prevState.pages.length || prevState.activePage === 0) ? prevState.activePage : prevState.pages.length-1;
       }
       else {
         prevState.pages.push(prevState.filteredRows);

@@ -1,12 +1,13 @@
 import React from 'react';
-import { Container, Row, Col, Input, Button, Fa, Card, CardBody, Modal, ModalBody, ModalHeader, ModalFooter } from 'mdbreact';
+import { Container, Row, Col, Input, Button, Fa, Card, CardBody, Modal, ModalBody, ModalFooter } from 'mdbreact';
+import DocsLink from './DocsLink';
 
 class FormsPage extends React.Component  {
   constructor(props) {
     super(props);
     this.state = {
       modal: false
-    }
+    };
     this.toggle = this.toggle.bind(this);
   }
 
@@ -19,13 +20,7 @@ class FormsPage extends React.Component  {
   render() {
     return(
       <Container className="mt-5">
-        <Row className="align-items-center mt-5">
-          <h4 className="grey-text" style={{margin: "0px"}}>
-            <strong>Forms</strong>
-          </h4>
-          <a className="border grey-text px-2 border-light rounded ml-2" target="_blank"  href="https://mdbootstrap.com/react/components/forms/"><Fa icon="graduation-cap" className="mr-2"/>Docs</a>
-        </Row>
-        <hr className="mb-5" />
+        <DocsLink title="Forms" href="https://mdbootstrap.com/react/components/forms/" />
         <Row>
           <Col md="6">
             <form>
@@ -224,6 +219,6 @@ class FormsPage extends React.Component  {
       </Container>
     );
   }
-};
+}
 
 export default FormsPage;

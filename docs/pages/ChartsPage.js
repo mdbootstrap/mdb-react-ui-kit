@@ -1,6 +1,7 @@
 import React from 'react';
 import { Line, Bar, Radar, Pie, Doughnut, Polar } from 'react-chartjs-2';
-import { Container, Row, Fa } from 'mdbreact';
+import { Container } from 'mdbreact';
+import DocsLink from './DocsLink';
 
 // LineChart
 const dataLine = {
@@ -35,68 +36,68 @@ const dataLine = {
 const dataRadar = {
   labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
   datasets: [
-      {
-        label: '#1',
-        backgroundColor: 'rgba(245, 74, 85, 0.5)',
-        data: [65, 59, 80, 81, 56, 55, 40]
-      },
-      {
-        label: '#2',
-        backgroundColor: 'rgba(90, 173, 246, 0.5)',
-        data: [12, 42, 121, 56, 24, 12, 2]
-      },
-      {
-        label: '#3',
-        backgroundColor: 'rgba(245, 192, 50, 0.5)',
-        data: [2, 123, 154, 76, 54, 23, 5]
-      }
-    ]
+    {
+      label: '#1',
+      backgroundColor: 'rgba(245, 74, 85, 0.5)',
+      data: [65, 59, 80, 81, 56, 55, 40]
+    },
+    {
+      label: '#2',
+      backgroundColor: 'rgba(90, 173, 246, 0.5)',
+      data: [12, 42, 121, 56, 24, 12, 2]
+    },
+    {
+      label: '#3',
+      backgroundColor: 'rgba(245, 192, 50, 0.5)',
+      data: [2, 123, 154, 76, 54, 23, 5]
+    }
+  ]
 };
 
 // barChart
 const dataBar = {
   labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
   datasets: [
-  {
+    {
       label: '#1',
       data: [12, 39, 3, 50, 2, 32, 84],
       backgroundColor: 'rgba(245, 74, 85, 0.5)',
       borderWidth: 1
-  }, {
+    }, {
       label: '#2',
       data: [56, 24, 5, 16, 45, 24, 8],
       backgroundColor: 'rgba(90, 173, 246, 0.5)',
       borderWidth: 1
-  }, {
+    }, {
       label: '#3',
       data: [12, 25, 54, 3, 15, 44, 3],
       backgroundColor: 'rgba(245, 192, 50, 0.5)',
       borderWidth: 1
-  }
+    }
   ]
 };
 const barChartOptions = {
   responsive: true,
   maintainAspectRatio: false,
   scales: {
-  xAxes: [{
+    xAxes: [{
       barPercentage: 1,
       gridLines: {
-      display: true,
-      color: 'rgba(0, 0, 0, 0.1)'
+        display: true,
+        color: 'rgba(0, 0, 0, 0.1)'
       }
-  }],
-  yAxes: [{
+    }],
+    yAxes: [{
       gridLines: {
-      display: true,
-      color: 'rgba(0, 0, 0, 0.1)'
+        display: true,
+        color: 'rgba(0, 0, 0, 0.1)'
       },
       ticks: {
-      beginAtZero: true
+        beginAtZero: true
       }
-  }]
+    }]
   }
-}
+};
 
 // Polar Chart
 const dataPolar = {
@@ -112,21 +113,21 @@ const dataPolar = {
 const dataPie = {
   labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
   datasets: [
-  {
+    {
       data: [300, 50, 100, 40, 120, 24, 52],
       backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360', '#ac64ad'],
       hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774', '#da92db']
-  }
+    }
   ]
-}
+};
 
 // Doughnut Chart
 const dataDoughnut = {
-  labels: ["Red", "Green", "Yellow", "Grey", "Dark Grey"],
+  labels: ['Red', 'Green', 'Yellow', 'Grey', 'Dark Grey'],
   datasets: [{
-      data: [300, 50, 100, 40, 120],
-      backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
-      hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+    data: [300, 50, 100, 40, 120],
+    backgroundColor: ['#F7464A', '#46BFBD', '#FDB45C', '#949FB1', '#4D5360'],
+    hoverBackgroundColor: ['#FF5A5E', '#5AD3D1', '#FFC870', '#A8B3C5', '#616774']
   }]
 };
 
@@ -136,12 +137,7 @@ class ChartsPage extends React.Component {
   render() {
     return (
       <Container>
-        <Row className="align-items-center mt-5">
-          <h4 className="grey-text" style={{margin: "0px"}}>
-            <strong>Charts</strong>
-          </h4>
-          <a className="border grey-text px-2 border-light rounded ml-2" target="_blank"  href="https://mdbootstrap.com/react/advanced/charts/"><Fa icon="graduation-cap" className="mr-2"/>Docs</a>
-        </Row>
+        <DocsLink title="Charts" href="https://mdbootstrap.com/react/advanced/charts/" />
         <div>
           <h3 className="mt-5">Line chart</h3>
           <Line data={dataLine} options={{responsive: true }} />
@@ -169,6 +165,6 @@ class ChartsPage extends React.Component {
       </Container>
     );
   }
-};
+}
 
 export default ChartsPage;

@@ -20,13 +20,13 @@ const TableBody = (props) => {
 
   return (
     <tbody {...attributes} className={classes}>
-      { 
-        rows && rows.map((row, index) => 
+      {
+        rows && rows.map((row, index) =>
           <tr key={index}>
             {
               Object.keys(row).map((key, index, array) => {
-                if(key != 'colspan') {
-                  return array[index+1] != 'colspan' ? <td key={key}>{row[key]}</td> : null;
+                if(key !== 'colspan') {
+                  return array[index+1] !== 'colspan' ? <td key={key}>{row[key]}</td> : null;
                 }
                 else {
                   return <td key={key} colSpan={row[key]}>{row[array[index-1]]}</td>;
@@ -34,7 +34,7 @@ const TableBody = (props) => {
               })
             }
           </tr>
-        ) 
+        )
       }
       {children}
     </tbody>

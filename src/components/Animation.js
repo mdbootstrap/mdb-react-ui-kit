@@ -17,12 +17,12 @@ class Animation extends Component {
   componentDidMount() {
     // add EL on window if the animation is to "reveal"
     if (this.props.reveal) {
-      window.addEventListener("scroll", this.updatePredicate);
+      window.addEventListener('scroll', this.updatePredicate);
     }
   }
   componentWillUnmount() {
     if (this.props.reveal) {
-      window.removeEventListener("scroll", this.updatePredicate);
+      window.removeEventListener('scroll', this.updatePredicate);
     }
   }
 
@@ -33,23 +33,25 @@ class Animation extends Component {
     const scroll = window.scrollY;
     const docHeight = document.documentElement.offsetHeight;
 
-    if (windowHeight + scroll - 100 > this.getOffset(this.elemRef.current) && scroll < this.getOffset(this.elemRef.current) ||
-    windowHeight + scroll - 100 > this.getOffset(this.elemRef.current) + this.elemRef.current.clientHeight && scroll < this.getOffset(this.elemRef.current) + this.elemRef.current.clientHeight ||
-    windowHeight + scroll == docHeight && this.getOffset(this.elemRef.current) + 100 > docHeight) {
+    if (
+      (windowHeight + scroll - 100 > this.getOffset(this.elemRef.current) &&
+      scroll < this.getOffset(this.elemRef.current)) ||
+      (windowHeight + scroll - 100 > this.getOffset(this.elemRef.current) + this.elemRef.current.clientHeight && scroll < this.getOffset(this.elemRef.current) + this.elemRef.current.clientHeight) ||
+      (windowHeight + scroll === docHeight && this.getOffset(this.elemRef.current) + 100 > docHeight)) {
       // if the predicate is true, change state
       this.setState({
         isVisible: true
-      })
+      });
     } else {
       //  was the "revealing" fired at least once?
       if (this.state.revealed) {
-        return
+        return;
       } else {
       // if it wasn't, hide
         this.setState({
           isVisible: false,
           revealed: true
-        })
+        });
       }
     }
   }
@@ -58,7 +60,7 @@ class Animation extends Component {
   handleStart = (e) => {
     this.setState({
       countIterations: this.state.countIterations+1
-    })
+    });
     if (this.props.onAnimationStart) {
       this.props.onAnimationStart();
     }
@@ -68,7 +70,7 @@ class Animation extends Component {
     if (this.props.onAnimationIteration) {
       this.setState({
         countIterations: this.state.countIterations+1
-      })
+      });
       this.props.onAnimationIteration();
     }
   }
@@ -76,9 +78,9 @@ class Animation extends Component {
   handleEnd = (e) => {
     this.setState({
       countIterations: this.state.countIterations+1
-    })
-    if (this.props.onAnimationEnd && (this.props.count == this.state.countIterations)) {
-      this.props.onAnimationEnd()
+    });
+    if (this.props.onAnimationEnd && (this.props.count === this.state.countIterations)) {
+      this.props.onAnimationEnd();
     }
   }
 
@@ -91,7 +93,7 @@ class Animation extends Component {
     var clientTop = docEl.clientTop || body.clientTop || 0;
     var top = box.top + scrollTop - clientTop;
     return Math.round(top);
-}
+  }
 
   render() {
     const {
@@ -121,7 +123,7 @@ class Animation extends Component {
     let hiddenStyles = {
       animationName: 'none',
       visibility: 'hidden'
-    }
+    };
 
     const getAllStyles = Object.assign(styleObject, style);
 
@@ -134,12 +136,12 @@ class Animation extends Component {
 
     return (
       <Tag {...attributes}
-          className={classes}
-          style={(isVisible && revealed)? getAllStyles: hiddenStyles}
-          ref={this.elemRef}
-          onAnimationStart={this.handleStart}
-          onAnimationIteration={this.handleIteration}
-          onAnimationEnd={this.handleEnd}
+        className={classes}
+        style={(isVisible && revealed)? getAllStyles: hiddenStyles}
+        ref={this.elemRef}
+        onAnimationStart={this.handleStart}
+        onAnimationIteration={this.handleIteration}
+        onAnimationEnd={this.handleEnd}
       >
         {children}
       </Tag>
@@ -154,7 +156,7 @@ Animation.propTypes = {
   delay: PropTypes.string,
   count: PropTypes.number,
   onAnimationEnd: PropTypes.func,
-  onAnimationStart: PropTypes.func,
+  onAnimationStart: PropTypes.func
 
 };
 

@@ -32,7 +32,7 @@ InputNumeric.defaultProps = {
 
 InputNumeric.propTypes = {
   className: PropTypes.string,
-  getValue: PropTypes.oneOfType([PropTypes.func, PropTypes.bool]),
+  getValue: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
 };
 
 export default InputNumeric;

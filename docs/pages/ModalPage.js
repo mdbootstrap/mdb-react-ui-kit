@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Button, Modal, ModalBody, ModalHeader, ModalFooter, Popover, PopoverBody, PopoverHeader, Tooltip, Row, Col, Input, Fa } from 'mdbreact';
-
+import { Container, Button, Modal, ModalBody, ModalHeader, ModalFooter, Popover, PopoverBody, PopoverHeader, Tooltip, Row, Col, Input } from 'mdbreact';
+import DocsLink from './DocsLink';
 
 class ModalPage extends React.Component {
   constructor(props) {
@@ -29,38 +29,32 @@ class ModalPage extends React.Component {
   }
 
   toggle(nr) {
-    let modalNumber = 'modal' + nr
+    let modalNumber = 'modal' + nr;
     this.setState({
       [modalNumber]: !this.state[modalNumber]
     });
   }
 
   showFunction = () => {
-    alert("This event is fired just before the modal is open.");
+    alert('This event is fired just before the modal is open.');
   }
 
   hideFunction = () => {
-    alert("This event is fired just before the modal is hidden.");
+    alert('This event is fired just before the modal is hidden.');
   }
 
   shownFunction = () => {
-    alert("This event is fired after the modal is shown.");
+    alert('This event is fired after the modal is shown.');
   }
 
   hiddenFunction = () => {
-    alert("This event is fired after the modal is closed.");
+    alert('This event is fired after the modal is closed.');
   }
 
   render() {
     return (
       <Container>
-        <Row className="align-items-center mt-5">
-          <h4 className="grey-text" style={{margin: "0px"}}>
-            <strong>Modal</strong>
-          </h4>
-          <a className="border grey-text px-2 border-light rounded ml-2" target="_blank"  href="https://mdbootstrap.com/react/advanced/modals/"><Fa icon="graduation-cap" className="mr-2"/>Docs</a>
-        </Row>
-        <hr className="mb-5" />
+        <DocsLink title="Modal" href="https://mdbootstrap.com/react/advanced/modals/" />
         <Button color="danger" onClick={() => this.toggle(1)} >Modal</Button>
         <Modal
           // hiddenModal={this.hiddenFunction}
@@ -68,7 +62,7 @@ class ModalPage extends React.Component {
           // showModal={this.showFunction}
           isOpen={this.state.modal1}
           toggle={() => this.toggle(1)}
-          >
+        >
           <ModalHeader toggle={() => this.toggle(1)}>Modal title</ModalHeader>
           <ModalBody>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -307,8 +301,8 @@ class ModalPage extends React.Component {
           <ModalHeader toggle={() => this.toggle(17)}>New message to {this.state.mailAddress}</ModalHeader>
           <ModalBody>
             <div className="md-form">
-            <Input value={this.state.mailAddress} />
-            <Input type="textarea" label="Message" rows="2" />
+              <Input value={this.state.mailAddress} />
+              <Input type="textarea" label="Message" rows="2" />
             </div>
           </ModalBody>
           <ModalFooter>

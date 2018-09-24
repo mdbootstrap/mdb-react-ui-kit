@@ -29,15 +29,15 @@ class CardFooter extends Component {
       className
     );
 
-    let component = <Tag {...attributes} className={classes} />
+    let component = <Tag {...attributes} className={classes} />;
 
     if (small) {
       component = (<Tag {...attributes} className={classes} >
-              <small> {this.props.children} </small>
-            </Tag>
-          )
+        <small> {this.props.children} </small>
+      </Tag>
+      );
     }
-    return component
+    return component;
   }
 }
 
@@ -49,7 +49,7 @@ CardFooter.propTypes = {
   border: PropTypes.string,
   transparent: PropTypes.bool,
   small: PropTypes.bool,
-  muted: PropTypes.bool,
+  muted: PropTypes.bool
 };
 
 CardFooter.defaultProps = {

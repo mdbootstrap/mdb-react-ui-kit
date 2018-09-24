@@ -1,18 +1,13 @@
 import React from 'react';
 import { Input, FormInline, Container, Row, Col, Fa } from 'mdbreact';
+import DocsLink from './DocsLink';
 import './Search.css';
 
 class SearchPage extends React.Component {
   render() {
     return (
       <Container>
-        <Row className="align-items-center mt-5">
-          <h4 className="grey-text" style={{margin: "0px"}}>
-            <strong>Search</strong>
-          </h4>
-          <a className="border grey-text px-2 border-light rounded ml-2" target="_blank"  href="https://mdbootstrap.com/react/components/search/"><Fa icon="graduation-cap" className="mr-2"/>Docs</a>
-        </Row>
-        <hr className="mb-5" />
+        <DocsLink title="Search" href="https://mdbootstrap.com/react/components/search/" />
         <Row>
           <Col md="6">
             <Input hint="Search" type="text" containerClass="mt-0"/>

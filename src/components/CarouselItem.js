@@ -14,20 +14,20 @@ class CarouselItem extends Component {
     this.style = {
       position: 'absolute',
       left: '100%'
-    } 
+    };
   }
 
   moveBackwards() {
     this.style = {
       position: 'absolute',
       left: '-100%'
-    } 
+    };
   }
 
   makeVisible() {
     this.style = {
       left: '0'
-    } 
+    };
   }
 
   render() {
@@ -40,7 +40,7 @@ class CarouselItem extends Component {
       ...attributes
     } = this.props;
 
-    itemId = parseInt(itemId);
+    itemId = parseInt(itemId, 10);
 
     let classes = classNames(
       'carousel-item',

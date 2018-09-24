@@ -6,7 +6,6 @@ import classNames from 'classnames';
 class ModalBody extends React.Component {
 
   render() {
-    let closeButton;
     const {
       className,
       children,

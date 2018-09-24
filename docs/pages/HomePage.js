@@ -1,9 +1,9 @@
 import React from 'react';
-const NavLink = require('react-router-dom').NavLink;
 
 import './HomePage.css';
 
-import { EdgeHeader, FreeBird, Container, Col, Row, CardBody, Fa, Button, NavItem } from 'mdbreact';
+import { EdgeHeader, FreeBird, Container, Col, Row, CardBody, Fa } from 'mdbreact';
+const NavLink = require('react-router-dom').NavLink;
 
 class HomePage extends React.Component {
   render(){
@@ -18,7 +18,7 @@ class HomePage extends React.Component {
                 <p>React Bootstrap with Material Design</p>
                 <p className="pb-4">This application shows the actual use of MDB React components in the application.</p>
                 <Row className="d-flex flex-row justify-content-center row">
-                  <a className="border nav-link border-light rounded mr-1" href="https://mdbootstrap.com/react/"  target="_blank"><Fa icon="graduation-cap" className="mr-2" />Official Documentation</a>
+                  <a className="border nav-link border-light rounded mr-1" href="https://mdbootstrap.com/react/" target="_blank" rel="noopener noreferrer"><Fa icon="graduation-cap" className="mr-2" />Official Documentation</a>
                 </Row>
               </CardBody>
             </Col>

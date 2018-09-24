@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, Footer, NavLink } from 'mdbreact';
+import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, Footer, NavLink } from 'mdbreact';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './index.css';
 
@@ -10,7 +10,7 @@ class App extends Component {
     super(props);
     this.state = {
       collapseID: ''
-    }
+    };
   }
 
   toggleCollapse = collapseID => () =>
@@ -19,8 +19,7 @@ class App extends Component {
   closeCollapse = collapseID => () => this.state.collapseID === collapseID && this.setState({ collapseID: '' });
 
   render() {
-    const collapsed = this.state.collapsed;
-    const overlay = <div id="sidenav-overlay" style={{backgroundColor: 'transparent'}} onClick={this.toggleCollapse('mainNavbarCollapse')} />
+    const overlay = <div id="sidenav-overlay" style={{backgroundColor: 'transparent'}} onClick={this.toggleCollapse('mainNavbarCollapse')} />;
     return (
       <Router>
         <div className="flyout">
@@ -32,28 +31,28 @@ class App extends Component {
             <Collapse id='mainNavbarCollapse' isOpen={this.state.collapseID} navbar>
               <NavbarNav right>
                 <NavItem>
-                  <NavLink exact activeClassName="active" to="/" onClick={this.closeCollapse('mainNavbarCollapse')}>Home</NavLink>
+                  <NavLink exact to="/" onClick={this.closeCollapse('mainNavbarCollapse')}>Home</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink activeClassName="active" onClick={this.closeCollapse('mainNavbarCollapse')} to="/css">CSS</NavLink>
+                  <NavLink onClick={this.closeCollapse('mainNavbarCollapse')} to="/css">CSS</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink activeClassName="active" onClick={this.closeCollapse('mainNavbarCollapse')} to="/components">Components</NavLink>
+                  <NavLink onClick={this.closeCollapse('mainNavbarCollapse')} to="/components">Components</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink activeClassName="active" onClick={this.closeCollapse('mainNavbarCollapse')} to="/advanced">Advanced</NavLink>
+                  <NavLink onClick={this.closeCollapse('mainNavbarCollapse')} to="/advanced">Advanced</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink activeClassName="active" onClick={this.closeCollapse('mainNavbarCollapse')} to="/navigation">Navigation</NavLink>
+                  <NavLink onClick={this.closeCollapse('mainNavbarCollapse')} to="/navigation">Navigation</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink activeClassName="active" onClick={this.closeCollapse('mainNavbarCollapse')} to="/forms">Forms</NavLink>
+                  <NavLink onClick={this.closeCollapse('mainNavbarCollapse')} to="/forms">Forms</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink activeClassName="active" onClick={this.closeCollapse('mainNavbarCollapse')} to="/tables">Tables</NavLink>
+                  <NavLink onClick={this.closeCollapse('mainNavbarCollapse')} to="/tables">Tables</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink activeClassName="active" onClick={this.closeCollapse('mainNavbarCollapse')} to="/modals">Modals</NavLink>
+                  <NavLink onClick={this.closeCollapse('mainNavbarCollapse')} to="/modals">Modals</NavLink>
                 </NavItem>
               </NavbarNav>
             </Collapse>

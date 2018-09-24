@@ -1,16 +1,11 @@
 import React from 'react';
-import { Button, ButtonGroup, Fa, Row, Container } from 'mdbreact';
+import { Button, ButtonGroup, Fa, Container } from 'mdbreact';
+import DocsLink from './DocsLink';
 
 const ButtonPage = (props) => {
   return (
     <Container>
-      <Row className="align-items-center mt-5">
-        <h4 className="grey-text" style={{ margin: "0px" }}>
-          <strong>Buttons</strong>
-        </h4>
-        <a className="border grey-text px-2 border-light rounded ml-2" target="_blank" href="https://mdbootstrap.com/react/components/buttons/"><Fa icon="graduation-cap" className="mr-2" />Docs</a>
-      </Row>
-      <hr className="mb-5" />
+      <DocsLink title="Buttons" href="https://mdbootstrap.com/react/components/buttons/" />
       <div className="container-fluid text-center">
         <div className="">
 

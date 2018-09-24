@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Popper } from 'react-popper';
@@ -13,9 +13,6 @@ try {
 const noFlipModifier = { flip: { enabled: false } };
 
 class DropdownMenu extends Component {
-  constructor(props, context) {
-    super(props, context);
-  }
 
   render() {
     const { basic, className, right, children, tag, flip, ...attrs } = this.props;
