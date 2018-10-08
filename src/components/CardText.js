@@ -1,31 +1,20 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class CardText extends Component {
-
   render() {
+    const { className, tag: Tag, muted, small, ...attributes } = this.props;
 
-    const {
-      className,
-      tag: Tag,
-      muted,
-      small,
-      ...attributes
-    } = this.props;
-
-    const classes = classNames(
-      'card-text',
-      muted && 'text-muted',
-      className
-    );
+    const classes = classNames("card-text", muted && "text-muted", className);
 
     let text = <Tag {...attributes} className={classes} />;
 
     if (small) {
-      text = (<Tag {...attributes} className={classes} >
-        <small> {this.props.children} </small>
-      </Tag>
+      text = (
+        <Tag {...attributes} className={classes}>
+          <small> {this.props.children} </small>
+        </Tag>
       );
     }
     return text;
@@ -40,7 +29,7 @@ CardText.propTypes = {
 };
 
 CardText.defaultProps = {
-  tag: 'p'
+  tag: "p"
 };
 
 export default CardText;

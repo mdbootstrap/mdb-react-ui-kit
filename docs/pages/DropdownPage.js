@@ -1,12 +1,21 @@
-import React from 'react';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Container } from 'mdbreact';
-import DocsLink from './DocsLink';
+import React from "react";
+import {
+  Dropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  Container
+} from "mdbreact";
+import DocsLink from "./DocsLink";
 
 class DropdownPage extends React.Component {
   render() {
     return (
       <Container>
-        <DocsLink title="Dropdown" href="https://mdbootstrap.com/react/components/dropdowns/" />
+        <DocsLink
+          title="Dropdown"
+          href="https://mdbootstrap.com/react/components/dropdowns/"
+        />
         <div className="container">
           <h2>Basic example</h2>
           <Dropdown>
@@ -45,13 +54,11 @@ class DropdownPage extends React.Component {
           <br />
           <h2>Sizing</h2>
           <Dropdown size="lg">
-            <DropdownToggle caret>
-              Large Button
-            </DropdownToggle>
+            <DropdownToggle caret>Large Button</DropdownToggle>
             <DropdownMenu basic>
               <DropdownItem>Action</DropdownItem>
               <DropdownItem>Another Action</DropdownItem>
-              <DropdownItem >Something else here</DropdownItem>
+              <DropdownItem>Something else here</DropdownItem>
               <DropdownItem divider />
               <DropdownItem>Separated link</DropdownItem>
             </DropdownMenu>
@@ -129,7 +136,9 @@ class DropdownPage extends React.Component {
             </DropdownToggle>
             <DropdownMenu basic>
               <DropdownItem>Regular link</DropdownItem>
-              <DropdownItem disabled href="#">Disabled link</DropdownItem>
+              <DropdownItem disabled href="#">
+                Disabled link
+              </DropdownItem>
               <DropdownItem href="#">Another link</DropdownItem>
             </DropdownMenu>
           </Dropdown>

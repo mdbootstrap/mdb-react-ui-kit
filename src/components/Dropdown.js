@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
-import { Manager } from 'react-popper';
-import classNames from 'classnames';
-import { omit, keyCodes } from './utils';
+import React from "react";
+import PropTypes from "prop-types";
+import ReactDOM from "react-dom";
+import { Manager } from "react-popper";
+import classNames from "classnames";
+import { omit, keyCodes } from "./utils";
 
 class Dropdown extends React.Component {
   constructor(props) {
@@ -39,7 +39,7 @@ class Dropdown extends React.Component {
   }
 
   handleEventsBinding() {
-    if(this.state.isOpen) {
+    if (this.state.isOpen) {
       this.addEvents();
     } else {
       this.removeEvents();
@@ -51,22 +51,30 @@ class Dropdown extends React.Component {
   }
 
   addEvents() {
-    ['click', 'touchstart', 'keyup'].forEach(event =>
+    ["click", "touchstart", "keyup"].forEach(event =>
       document.addEventListener(event, this.handleDocumentClick, true)
     );
   }
 
   removeEvents() {
-    ['click', 'touchstart', 'keyup'].forEach(event =>
+    ["click", "touchstart", "keyup"].forEach(event =>
       document.removeEventListener(event, this.handleDocumentClick, true)
     );
   }
 
   handleDocumentClick(e) {
-    if (e && (e.which === 3 || (e.type === 'keyup' && e.which !== keyCodes.tab))) return;
+    if (
+      e &&
+      (e.which === 3 || (e.type === "keyup" && e.which !== keyCodes.tab))
+    )
+      return;
     const container = this.getContainer();
 
-    if (container.contains(e.target) && container !== e.target && (e.type !== 'keyup' || e.which === keyCodes.tab)) {
+    if (
+      container.contains(e.target) &&
+      container !== e.target &&
+      (e.type !== "keyup" || e.which === keyCodes.tab)
+    ) {
       return;
     }
 
@@ -74,9 +82,13 @@ class Dropdown extends React.Component {
   }
 
   handleKeyDown(e) {
-    if ([keyCodes.esc, keyCodes.up, keyCodes.down, keyCodes.space].indexOf(e.which) === -1 ||
+    if (
+      [keyCodes.esc, keyCodes.up, keyCodes.down, keyCodes.space].indexOf(
+        e.which
+      ) === -1 ||
       (/button/i.test(e.target.tagName) && e.which === keyCodes.space) ||
-      /input|textarea/i.test(e.target.tagName)) {
+      /input|textarea/i.test(e.target.tagName)
+    ) {
       return;
     }
 
@@ -85,21 +97,27 @@ class Dropdown extends React.Component {
 
     const container = this.getContainer();
 
-    if (e.which === keyCodes.space && this.state.isOpen && container !== e.target) {
+    if (
+      e.which === keyCodes.space &&
+      this.state.isOpen &&
+      container !== e.target
+    ) {
       e.target.click();
     }
 
     if (e.which === keyCodes.esc || !this.state.isOpen) {
       this.toggle(e);
-      container.querySelector('[aria-expanded]').focus();
+      container.querySelector("[aria-expanded]").focus();
       return;
     }
 
-    const menuClass = 'dropdown-menu';
-    const itemClass = 'dropdown-item';
-    const disabledClass = 'disabled';
+    const menuClass = "dropdown-menu";
+    const itemClass = "dropdown-item";
+    const disabledClass = "disabled";
 
-    const items = container.querySelectorAll(`.${menuClass} .${itemClass}:not(.${disabledClass})`);
+    const items = container.querySelectorAll(
+      `.${menuClass} .${itemClass}:not(.${disabledClass})`
+    );
 
     if (!items.length) return;
 
@@ -128,20 +146,17 @@ class Dropdown extends React.Component {
 
   toggle = () => {
     this.setState({ isOpen: !this.state.isOpen });
-  }
+  };
 
   render() {
-    const {
-      className,
-      dropup,
-      group,
-      size,
-      ...attrs
-    } = omit(this.props, ['toggle', 'disabled']);
+    const { className, dropup, group, size, ...attrs } = omit(this.props, [
+      "toggle",
+      "disabled"
+    ]);
 
     const classes = classNames(
       {
-        'btn-group': group,
+        "btn-group": group,
         [`btn-group-${size}`]: !!size,
         dropdown: !group,
         show: this.state.isOpen,
@@ -149,7 +164,9 @@ class Dropdown extends React.Component {
       },
       className
     );
-    return <Manager {...attrs} className={classes} onKeyDown={this.handleKeyDown} />;
+    return (
+      <Manager {...attrs} className={classes} onKeyDown={this.handleKeyDown} />
+    );
   }
 }
 
@@ -165,7 +182,7 @@ Dropdown.propTypes = {
 };
 Dropdown.defaultProps = {
   dropup: false,
-  tag: 'div'
+  tag: "div"
 };
 Dropdown.childContextTypes = {
   toggle: PropTypes.func.isRequired,

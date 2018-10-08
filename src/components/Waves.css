@@ -1,9 +1,9 @@
 .Ripple {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    opacity: 1;
-    transform: scale(0);
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  opacity: 1;
+  transform: scale(0);
 }
 
 .Ripple-outline {
@@ -11,18 +11,18 @@
 }
 
 .Ripple.is-reppling {
-    animation: ripple 0.5s linear;
+  animation: ripple 0.5s linear;
 }
 
 .Ripple-parent {
-    position: relative;
-    overflow: hidden;
-    touch-action: none;
+  position: relative;
+  overflow: hidden;
+  touch-action: none;
 }
 
 @keyframes ripple {
-    100% {
-        opacity: 0;
-        transform: scale(3);
-    }
+  100% {
+    opacity: 0;
+    transform: scale(3);
+  }
 }

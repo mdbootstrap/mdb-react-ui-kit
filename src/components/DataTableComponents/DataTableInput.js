@@ -1,21 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-const DataTableInput = ({ value, onChange }) => (
+const DataTableInput = ({ value, onChange, label }) => (
   <div className="dataTables_filter">
     <label>
-      Search <input
+      {label || "Search"}
+      <input
         value={value}
         onChange={onChange}
         type="search"
         className="form-control form-control-sm"
-        placeholder="Search"
+        placeholder={label || "Search"}
       />
     </label>
   </div>
 );
 
 DataTableInput.propTypes = {
+  label: PropTypes.string,
   onChange: PropTypes.func,
   value: PropTypes.string
 };

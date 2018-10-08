@@ -1,24 +1,40 @@
-import React, { Component } from 'react';
-import  {Carousel, CarouselCaption, CarouselInner, CarouselItem, View, Mask, Container } from 'mdbreact';
-import DocsLink from './DocsLink';
+import React, { Component } from "react";
+import {
+  Carousel,
+  CarouselCaption,
+  CarouselInner,
+  CarouselItem,
+  View,
+  Mask,
+  Container
+} from "mdbreact";
+import DocsLink from "./DocsLink";
 
 class CarouselPage extends Component {
-  render(){
-    return(
+  render() {
+    return (
       <Container>
-        <DocsLink title="Carousel" href="https://mdbootstrap.com/react/advanced/carousel/" />
+        <DocsLink
+          title="Carousel"
+          href="https://mdbootstrap.com/react/advanced/carousel/"
+        />
         <h4 className="mt-5 mb-2">Basic example</h4>
         <Carousel
           activeItem={1}
           length={4}
           showControls={true}
           showIndicators={true}
-          className="z-depth-1">
+          className="z-depth-1"
+        >
           <CarouselInner>
             <CarouselItem itemId="1">
               <View>
-                <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="First slide" />
-                <Mask overlay="black-light"></Mask>
+                <img
+                  className="d-block w-100"
+                  src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg"
+                  alt="First slide"
+                />
+                <Mask overlay="black-light" />
               </View>
               <CarouselCaption>
                 <h3 className="h3-responsive">Light mask</h3>
@@ -27,8 +43,12 @@ class CarouselPage extends Component {
             </CarouselItem>
             <CarouselItem itemId="2">
               <View>
-                <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(99).jpg" alt="Second slide" />
-                <Mask overlay="black-strong"></Mask>
+                <img
+                  className="d-block w-100"
+                  src="https://mdbootstrap.com/img/Photos/Slides/img%20(99).jpg"
+                  alt="Second slide"
+                />
+                <Mask overlay="black-strong" />
               </View>
               <CarouselCaption>
                 <h3 className="h3-responsive">Strong mask</h3>
@@ -37,8 +57,12 @@ class CarouselPage extends Component {
             </CarouselItem>
             <CarouselItem itemId="3">
               <View>
-                <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(17).jpg" alt="Third slide" />
-                <Mask overlay="black-slight"></Mask>
+                <img
+                  className="d-block w-100"
+                  src="https://mdbootstrap.com/img/Photos/Slides/img%20(17).jpg"
+                  alt="Third slide"
+                />
+                <Mask overlay="black-slight" />
               </View>
               <CarouselCaption>
                 <h3 className="h3-responsive">Slight mask</h3>
@@ -47,8 +71,12 @@ class CarouselPage extends Component {
             </CarouselItem>
             <CarouselItem itemId="4">
               <View>
-                <img className="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20%28143%29.jpg" alt="Mattonit's item" />
-                <Mask overlay="black-light"></Mask>
+                <img
+                  className="d-block w-100"
+                  src="https://mdbootstrap.com/img/Photos/Slides/img%20%28143%29.jpg"
+                  alt="Mattonit's item"
+                />
+                <Mask overlay="black-light" />
               </View>
               <CarouselCaption>
                 <h3 className="h3-responsive">Sopot Beach</h3>

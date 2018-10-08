@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import Waves from './Waves';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import Waves from "./Waves";
 
 class Button extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class Button extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
-  handleClick = (e) => {
+  handleClick = e => {
     if (!this.props.disabled) {
       // Waves - Get Cursor Position
       let cursorPos = {
@@ -23,7 +23,7 @@ class Button extends React.Component {
       this.setState({ cursorPos: cursorPos });
       e.stopPropagation();
     }
-  }
+  };
 
   onClick(e) {
     if (this.props.disabled) {
@@ -57,46 +57,58 @@ class Button extends React.Component {
     } = this.props;
 
     const classes = classNames(
-      floating ? 'btn-floating btn' : 'btn',
-      flat ? 'btn-flat' : gradient ? `${gradient}-gradient` : `btn${outline ? '-outline' : ''}-${color}`,
+      floating ? "btn-floating btn" : "btn",
+      flat
+        ? "btn-flat"
+        : gradient
+          ? `${gradient}-gradient`
+          : `btn${outline ? "-outline" : ""}-${color}`,
       size ? `btn-${size}` : false,
-      rounded ? 'btn-rounded' : false,
-      circle && 'btn-circle',
-      block ? 'btn-block' : false,
-      social ? 'btn-' + social : false,
-      action ? 'btn-action' : false,
-      'Ripple-parent',
+      rounded ? "btn-rounded" : false,
+      circle && "btn-circle",
+      block ? "btn-block" : false,
+      social ? "btn-" + social : false,
+      action ? "btn-action" : false,
+      "Ripple-parent",
       className,
       { active, disabled: this.props.disabled }
     );
 
-    if (attributes.href && Tag === 'button') {
-      Tag = 'a';
+    if (attributes.href && Tag === "button") {
+      Tag = "a";
     }
 
     return (
       <Tag
-        type={(Tag === 'button' && !type) ? 'button' : type}
+        type={Tag === "button" && !type ? "button" : type}
         target={target}
-        role={(Tag === 'a' && !role) ? 'button' : role}
+        role={Tag === "a" && !role ? "button" : role}
         className={classes}
         ref={innerRef}
         onClick={this.onClick}
-        onMouseDown={ this.handleClick }
-        onTouchStart={ this.handleClick }
+        onMouseDown={this.handleClick}
+        onTouchStart={this.handleClick}
         {...attributes}
         download={download}
       >
         {this.props.children}
-        {this.props.disabled ? false : <Waves cursorPos={ this.state.cursorPos } outline={outline} flat={flat} />}
+        {this.props.disabled ? (
+          false
+        ) : (
+          <Waves
+            cursorPos={this.state.cursorPos}
+            outline={outline}
+            flat={flat}
+          />
+        )}
       </Tag>
     );
   }
 }
 
 Button.defaultProps = {
-  color: 'default',
-  tag: 'button'
+  color: "default",
+  tag: "button"
 };
 
 Button.propTypes = {

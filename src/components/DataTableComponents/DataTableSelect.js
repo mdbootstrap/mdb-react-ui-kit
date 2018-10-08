@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-const DataTableSelect = ({ value, onChange, entries }) => {
-  const getValue = (e) => {
+const DataTableSelect = ({ value, onChange, entries, label }) => {
+  const getValue = e => {
     const value = parseInt(e.target.value, 10);
     onChange(value);
   };
@@ -10,26 +10,28 @@ const DataTableSelect = ({ value, onChange, entries }) => {
   return (
     <div className="dataTables_length bs-select">
       <label>
-        Show <select
+        {label || "Show entries "}
+        <select
           value={value}
           onChange={getValue}
           className="custom-select custom-select-sm form-control form-control-sm"
         >
-          {
-            entries.map(entry => <option key={entry} value={entry}>{entry}</option>)
-          }
-        </select> entries
+          {entries.map(entry => (
+            <option key={entry} value={entry}>
+              {entry}
+            </option>
+          ))}
+        </select>
       </label>
     </div>
   );
 };
 
-
-
 DataTableSelect.propTypes = {
   entries: PropTypes.arrayOf(PropTypes.number),
   onChange: PropTypes.func,
-  value: PropTypes.number
+  value: PropTypes.number,
+  label: PropTypes.string
 };
 
 export default DataTableSelect;

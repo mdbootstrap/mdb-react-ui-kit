@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class NavItem extends Component {
-
   render() {
-
     const {
       children,
       className,
@@ -16,10 +14,10 @@ class NavItem extends Component {
     } = this.props;
 
     const classes = classNames(
-      'nav-item',
-      active ? 'active': '',
-      text ? 'navbar-text': '',
-      className,
+      "nav-item",
+      active ? "active" : "",
+      text ? "navbar-text" : "",
+      className
     );
 
     return (
@@ -38,7 +36,7 @@ NavItem.propTypes = {
 };
 
 NavItem.defaultProps = {
-  tag: 'li'
+  tag: "li"
 };
 
 export default NavItem;

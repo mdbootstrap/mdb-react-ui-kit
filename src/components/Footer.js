@@ -1,23 +1,15 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class Footer extends Component {
-
   render() {
-
-    const {
-      color,
-      children,
-      className,
-      tag: Tag,
-      ...attributes
-    } = this.props;
+    const { color, children, className, tag: Tag, ...attributes } = this.props;
 
     const classes = classNames(
-      'page-footer mt-4',
-      color ? color : '',
-      className,
+      "page-footer mt-4",
+      color ? color : "",
+      className
     );
 
     return (
@@ -36,7 +28,7 @@ Footer.propTypes = {
 };
 
 Footer.defaultProps = {
-  tag: 'footer'
+  tag: "footer"
 };
 
 export default Footer;

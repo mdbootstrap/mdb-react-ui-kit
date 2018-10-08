@@ -1,49 +1,58 @@
-import React from 'react';
-import { Container, Row, Col, Card, CardBody, Table, TableBody, TableHead  } from 'mdbreact';
-import DocsLink from './DocsLink';
+import React from "react";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  CardBody,
+  Table,
+  TableBody,
+  TableHead
+} from "mdbreact";
+import DocsLink from "./DocsLink";
 
-const TablePage = (props) => {
+const TablePage = props => {
   const data = {
     columns: [
       {
-        label: '#',
-        field: 'id',
-        sort: 'asc'
+        label: "#",
+        field: "id",
+        sort: "asc"
       },
       {
-        label: 'First',
-        field: 'first',
-        sort: 'asc'
+        label: "First",
+        field: "first",
+        sort: "asc"
       },
       {
-        label: 'Last',
-        field: 'last',
-        sort: 'asc'
+        label: "Last",
+        field: "last",
+        sort: "asc"
       },
       {
-        label: 'Handle',
-        field: 'handle',
-        sort: 'asc'
+        label: "Handle",
+        field: "handle",
+        sort: "asc"
       }
     ],
     rows: [
       {
-        'id': 1,
-        'first': 'Mark',
-        'last': 'Otto',
-        'handle': '@mdo'
+        id: 1,
+        first: "Mark",
+        last: "Otto",
+        handle: "@mdo"
       },
       {
-        'id': 2,
-        'first': 'Jacob',
-        'last': 'Thornton',
-        'handle': '@fat'
+        id: 2,
+        first: "Jacob",
+        last: "Thornton",
+        handle: "@fat"
       },
       {
-        'id': 3,
-        'first': 'Larry',
-        'last': 'the Bird',
-        'handle': '@twitter'
+        id: 3,
+        first: "Larry",
+        last: "the Bird",
+        handle: "@twitter"
       }
     ]
   };
@@ -51,145 +60,147 @@ const TablePage = (props) => {
   const data_collspan = {
     columns: [
       {
-        label: '#',
-        field: 'id',
-        sort: 'asc'
+        label: "#",
+        field: "id",
+        sort: "asc"
       },
       {
-        label: 'First',
-        field: 'first',
-        sort: 'asc'
+        label: "First",
+        field: "first",
+        sort: "asc"
       },
       {
-        label: 'Last',
-        field: 'last',
-        sort: 'asc'
+        label: "Last",
+        field: "last",
+        sort: "asc"
       },
       {
-        label: 'Handle',
-        field: 'handle',
-        sort: 'asc'
+        label: "Handle",
+        field: "handle",
+        sort: "asc"
       }
     ],
     rows: [
       {
-        'id': 1,
-        'first': 'Mark',
-        'last': 'Otto',
-        'handle': '@mdo'
+        id: 1,
+        first: "Mark",
+        last: "Otto",
+        handle: "@mdo"
       },
       {
-        'id': 2,
-        'first': 'Jacob',
-        'last': 'Thornton',
-        'handle': '@fat'
+        id: 2,
+        first: "Jacob",
+        last: "Thornton",
+        handle: "@fat"
       },
       {
-        'id': 3,
-        'first': 'Larry the Bird',
-        'colspan': 2,
-        'handle': '@twitter'
+        id: 3,
+        first: "Larry the Bird",
+        colspan: 2,
+        handle: "@twitter"
       }
     ]
   };
-
 
   const data_responsive = {
     columns: [
       {
-        label: '#',
-        field: 'id',
-        sort: 'asc'
+        label: "#",
+        field: "id",
+        sort: "asc"
       },
       {
-        label: 'Heading',
-        field: 'heading0',
-        sort: 'asc'
+        label: "Heading",
+        field: "heading0",
+        sort: "asc"
       },
       {
-        label: 'Heading',
-        field: 'heading1',
-        sort: 'asc'
+        label: "Heading",
+        field: "heading1",
+        sort: "asc"
       },
       {
-        label: 'Heading',
-        field: 'heading2',
-        sort: 'asc'
+        label: "Heading",
+        field: "heading2",
+        sort: "asc"
       },
       {
-        label: 'Heading',
-        field: 'heading3',
-        sort: 'asc'
+        label: "Heading",
+        field: "heading3",
+        sort: "asc"
       },
       {
-        label: 'Heading',
-        field: 'heading4',
-        sort: 'asc'
+        label: "Heading",
+        field: "heading4",
+        sort: "asc"
       },
       {
-        label: 'Heading',
-        field: 'heading5',
-        sort: 'asc'
+        label: "Heading",
+        field: "heading5",
+        sort: "asc"
       },
       {
-        label: 'Heading',
-        field: 'heading6',
-        sort: 'asc'
+        label: "Heading",
+        field: "heading6",
+        sort: "asc"
       },
       {
-        label: 'Heading',
-        field: 'heading7',
-        sort: 'asc'
+        label: "Heading",
+        field: "heading7",
+        sort: "asc"
       },
       {
-        label: 'Heading',
-        field: 'heading8',
-        sort: 'asc'
+        label: "Heading",
+        field: "heading8",
+        sort: "asc"
       }
     ],
     rows: [
       {
-        'id': 1,
-        'heading0': 'Cell',
-        'heading1': 'Cell',
-        'heading2': 'Cell',
-        'heading3': 'Cell',
-        'heading4': 'Cell',
-        'heading5': 'Cell',
-        'heading6': 'Cell',
-        'heading7': 'Cell',
-        'heading8': 'Cell'
+        id: 1,
+        heading0: "Cell",
+        heading1: "Cell",
+        heading2: "Cell",
+        heading3: "Cell",
+        heading4: "Cell",
+        heading5: "Cell",
+        heading6: "Cell",
+        heading7: "Cell",
+        heading8: "Cell"
       },
       {
-        'id': 2,
-        'heading0': 'Cell',
-        'heading1': 'Cell',
-        'heading2': 'Cell',
-        'heading3': 'Cell',
-        'heading4': 'Cell',
-        'heading5': 'Cell',
-        'heading6': 'Cell',
-        'heading7': 'Cell',
-        'heading8': 'Cell'
+        id: 2,
+        heading0: "Cell",
+        heading1: "Cell",
+        heading2: "Cell",
+        heading3: "Cell",
+        heading4: "Cell",
+        heading5: "Cell",
+        heading6: "Cell",
+        heading7: "Cell",
+        heading8: "Cell"
       },
       {
-        'id': 3,
-        'heading0': 'Cell',
-        'heading1': 'Cell',
-        'heading2': 'Cell',
-        'heading3': 'Cell',
-        'heading4': 'Cell',
-        'heading5': 'Cell',
-        'heading6': 'Cell',
-        'heading7': 'Cell',
-        'heading8': 'Cell'
+        id: 3,
+        heading0: "Cell",
+        heading1: "Cell",
+        heading2: "Cell",
+        heading3: "Cell",
+        heading4: "Cell",
+        heading5: "Cell",
+        heading6: "Cell",
+        heading7: "Cell",
+        heading8: "Cell"
       }
     ]
   };
 
-  return(
+  return (
     <Container className="mt-3">
-      <DocsLink title="Tables" href="https://mdbootstrap.com/react/content/tables/" />
+      <DocsLink
+        title="Tables"
+        href="https://mdbootstrap.com/react/content/tables/"
+      />
       <Row className="py-3">
         <Col md="12">
           <Card>
@@ -236,7 +247,11 @@ const TablePage = (props) => {
             <CardBody>
               <h2 className="h2-responsive pb-4">Table head options</h2>
               <Table>
-                <TableHead columns={data.columns} color="primary-color" textWhite />
+                <TableHead
+                  columns={data.columns}
+                  color="primary-color"
+                  textWhite
+                />
                 <TableBody rows={data.rows} />
               </Table>
 
@@ -269,7 +284,11 @@ const TablePage = (props) => {
             <CardBody>
               <h2 className="h2-responsive pb-4">Bordered Table</h2>
               <Table bordered>
-                <TableHead columns={data_collspan.columns} color="primary-color" textWhite />
+                <TableHead
+                  columns={data_collspan.columns}
+                  color="primary-color"
+                  textWhite
+                />
                 <TableBody rows={data_collspan.rows} />
               </Table>
             </CardBody>
@@ -297,7 +316,11 @@ const TablePage = (props) => {
             <CardBody>
               <h2 className="h2-responsive pb-4">Hoverable rows</h2>
               <Table hover>
-                <TableHead columns={data_collspan.columns} color="secondary-color" textWhite />
+                <TableHead
+                  columns={data_collspan.columns}
+                  color="secondary-color"
+                  textWhite
+                />
                 <TableBody rows={data_collspan.rows} />
               </Table>
             </CardBody>
@@ -311,7 +334,11 @@ const TablePage = (props) => {
             <CardBody>
               <h2 className="h2-responsive pb-4">Samll Table</h2>
               <Table small>
-                <TableHead columns={data_collspan.columns} color="primary-color" textWhite />
+                <TableHead
+                  columns={data_collspan.columns}
+                  color="primary-color"
+                  textWhite
+                />
                 <TableBody rows={data_collspan.rows} />
               </Table>
             </CardBody>
@@ -340,7 +367,11 @@ const TablePage = (props) => {
             <CardBody>
               <h2 className="h2-responsive pb-4">Responsive Table</h2>
               <Table responsive>
-                <TableHead columns={data_responsive.columns} color="primary-color" textWhite />
+                <TableHead
+                  columns={data_responsive.columns}
+                  color="primary-color"
+                  textWhite
+                />
                 <TableBody rows={data_responsive.rows} />
               </Table>
             </CardBody>

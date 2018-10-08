@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class Col extends Component {
-
   render() {
-
     const {
       xs,
       sm,
@@ -19,19 +17,17 @@ class Col extends Component {
     } = this.props;
 
     const classes = classNames(
-      size ? 'col-' + size : '',
-      xs ? 'col-' + xs : '',
-      sm ? 'col-sm-' + sm : '',
-      md ? 'col-md-' + md : '',
-      lg ? 'col-lg-' + lg : '',
-      xl ? 'col-xl-' + xl : '',
-      !size && !xs && !sm && !md && !lg && !xl ? 'col' : '',
+      size ? "col-" + size : "",
+      xs ? "col-" + xs : "",
+      sm ? "col-sm-" + sm : "",
+      md ? "col-md-" + md : "",
+      lg ? "col-lg-" + lg : "",
+      xl ? "col-xl-" + xl : "",
+      !size && !xs && !sm && !md && !lg && !xl ? "col" : "",
       className
     );
 
-    return (
-      <Tag {...attributes} className={classes} />
-    );
+    return <Tag {...attributes} className={classes} />;
   }
 }
 
@@ -46,7 +42,7 @@ Col.propTypes = {
 };
 
 Col.defaultProps = {
-  tag: 'div',
+  tag: "div",
   xs: null,
   sm: null,
   md: null,

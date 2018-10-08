@@ -1,27 +1,17 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class CardGroup extends Component {
-
   render() {
-
-    const {
-      className,
-      tag: Tag,
-      deck,
-      column,
-      ...attributes
-    } = this.props;
+    const { className, tag: Tag, deck, column, ...attributes } = this.props;
 
     const classes = classNames(
-      deck ? 'card-deck' : column ? 'card-columns' : 'card-group',
+      deck ? "card-deck" : column ? "card-columns" : "card-group",
       className
     );
 
-    return (
-      <Tag {...attributes} className={classes} />
-    );
+    return <Tag {...attributes} className={classes} />;
   }
 }
 
@@ -33,7 +23,7 @@ CardGroup.propTypes = {
 };
 
 CardGroup.defaultProps = {
-  tag: 'div'
+  tag: "div"
 };
 
 export default CardGroup;

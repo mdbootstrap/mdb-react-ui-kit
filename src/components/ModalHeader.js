@@ -1,10 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class ModalHeader extends React.Component {
-
   render() {
     let closeButton;
     const {
@@ -14,21 +12,21 @@ class ModalHeader extends React.Component {
       tag: Tag,
       closeAriaLabel,
       titleClass,
-      ...attributes } = this.props;
+      ...attributes
+    } = this.props;
 
-    const classes = classNames(
-      'modal-header',
-      className,
-    );
+    const classes = classNames("modal-header", className);
 
-    const titleClasses = classNames(
-      'modal-title',
-      this.props.titleClass
-    );
+    const titleClasses = classNames("modal-title", this.props.titleClass);
 
     if (toggle) {
       closeButton = (
-        <button type="button" onClick={toggle} className="close" aria-label={closeAriaLabel}>
+        <button
+          type="button"
+          onClick={toggle}
+          className="close"
+          aria-label={closeAriaLabel}
+        >
           <span aria-hidden="true">{String.fromCharCode(215)}</span>
         </button>
       );
@@ -36,9 +34,7 @@ class ModalHeader extends React.Component {
 
     return (
       <div {...attributes} className={classes}>
-        <Tag className={titleClasses}>
-          {children}
-        </Tag>
+        <Tag className={titleClasses}>{children}</Tag>
         {closeButton}
       </div>
     );
@@ -54,11 +50,9 @@ ModalHeader.propTypes = {
 };
 
 ModalHeader.defaultProps = {
-  tag: 'h4',
-  closeAriaLabel: 'Close'
+  tag: "h4",
+  closeAriaLabel: "Close"
 };
 
 export default ModalHeader;
 export { ModalHeader as MDBModalHeader };
-
-

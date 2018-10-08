@@ -1,27 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class EdgeHeader extends Component {
-
   render() {
+    const { color, className, tag: Tag, ...attributes } = this.props;
 
-    const {
-      color,
-      className,
-      tag: Tag,
-      ...attributes
-    } = this.props;
+    const classes = classNames("edge-header", color, className);
 
-    const classes = classNames(
-      'edge-header',
-      color,
-      className
-    );
-
-    return (
-      <Tag {...attributes} className={classes} />
-    );
+    return <Tag {...attributes} className={classes} />;
   }
 }
 
@@ -32,8 +19,8 @@ EdgeHeader.propTypes = {
 };
 
 EdgeHeader.defaultProps = {
-  color: 'deep-purple',
-  tag: 'div'
+  color: "deep-purple",
+  tag: "div"
 };
 
 export default EdgeHeader;

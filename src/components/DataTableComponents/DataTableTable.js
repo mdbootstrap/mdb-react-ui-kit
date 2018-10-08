@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Table from '../Table';
-import DataTableHead from './DataTableHead';
-import TableBody from '../TableBody';
-import TableFoot from '../TableFoot';
+import React from "react";
+import PropTypes from "prop-types";
+import Table from "../Table";
+import DataTableHead from "./DataTableHead";
+import TableBody from "../TableBody";
+import TableFoot from "../TableFoot";
 
-const DataTableTable = (props) => {
+const DataTableTable = props => {
   const {
     autoWidth,
     bordered,
@@ -60,11 +60,7 @@ const DataTableTable = (props) => {
           handleSort={handleSort}
           sortable={sortable}
         />
-        <TableBody
-          color={tbodyColor}
-          textWhite={tbodyTextWhite}
-          rows={rows}
-        />
+        <TableBody color={tbodyColor} textWhite={tbodyTextWhite} rows={rows} />
         <TableFoot
           color={theadColor}
           textWhite={theadTextWhite}

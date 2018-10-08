@@ -1,22 +1,12 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class PageLink extends Component {
-
   render() {
+    const { children, className, tag: Tag, ...attributes } = this.props;
 
-    const {
-      children,
-      className,
-      tag: Tag,
-      ...attributes
-    } = this.props;
-
-    const classes = classNames(
-      'page-link',
-      className,
-    );
+    const classes = classNames("page-link", className);
 
     return (
       <Tag {...attributes} className={classes}>
@@ -33,7 +23,7 @@ PageLink.propTypes = {
 };
 
 PageLink.defaultProps = {
-  tag: 'a'
+  tag: "a"
 };
 
 export default PageLink;

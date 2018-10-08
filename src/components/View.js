@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import Waves from './Waves';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import Waves from "./Waves";
 
 class View extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class View extends React.Component {
     };
   }
 
-  handleClick(e){
+  handleClick(e) {
     // Get Cursor Position
     let cursorPos = {
       top: e.clientY,
@@ -36,36 +36,42 @@ class View extends React.Component {
     } = this.props;
 
     const classes = classNames(
-      'view',
-      rounded && 'rounded',
-      zoom && 'zoom',
-      hover && 'overlay',
-      cascade && 'view-cascade',
-      this.props.waves ? 'Ripple-parent': false,
+      "view",
+      rounded && "rounded",
+      zoom && "zoom",
+      hover && "overlay",
+      cascade && "view-cascade",
+      this.props.waves ? "Ripple-parent" : false,
       className
     );
 
     let viewStyle;
-    if(this.props.src) {
+    if (this.props.src) {
       viewStyle = {
-        backgroundImage: 'url(' + this.props.src + ')',
-        backgroundSize: 'cover',
-        width: '100%',
-        height: '100%'
+        backgroundImage: "url(" + this.props.src + ")",
+        backgroundSize: "cover",
+        width: "100%",
+        height: "100%"
       };
     }
 
     return (
-      <Tag {...attributes} className={classes} onMouseDown={ this.handleClick.bind(this) } onTouchStart={ this.handleClick.bind(this) } style={viewStyle} >
+      <Tag
+        {...attributes}
+        className={classes}
+        onMouseDown={this.handleClick.bind(this)}
+        onTouchStart={this.handleClick.bind(this)}
+        style={viewStyle}
+      >
         {this.props.children}
-        {this.props.waves && <Waves cursorPos={ this.state.cursorPos } />}
+        {this.props.waves && <Waves cursorPos={this.state.cursorPos} />}
       </Tag>
     );
   }
 }
 
 View.defaultProps = {
-  tag: 'div'
+  tag: "div"
 };
 
 View.propTypes = {
@@ -81,4 +87,3 @@ View.propTypes = {
 
 export default View;
 export { View as MDBView };
-

@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import Waves from './Waves';
-import Mask from './Mask';
-import View from './View';
-
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import Waves from "./Waves";
+import Mask from "./Mask";
+import View from "./View";
 
 class CardImage extends Component {
   constructor(props) {
@@ -14,7 +13,7 @@ class CardImage extends Component {
     };
   }
 
-  handleClick(e){
+  handleClick(e) {
     // Get Cursor Position
     let cursorPos = {
       top: e.clientY,
@@ -25,7 +24,6 @@ class CardImage extends Component {
   }
 
   render() {
-
     const {
       className,
       overlay,
@@ -37,18 +35,12 @@ class CardImage extends Component {
       ...attributes
     } = this.props;
 
-    const classes = classNames(
-      top && 'card-img-top',
-      className
-    );
+    const classes = classNames(top && "card-img-top", className);
 
     const Tag = tag;
 
     const innerContent = (
-      <Tag
-        {...attributes}
-        className={classes}
-      >
+      <Tag {...attributes} className={classes}>
         {this.props.children}
       </Tag>
     );
@@ -56,7 +48,11 @@ class CardImage extends Component {
     if (this.props.src) {
       return (
         <View hover={this.props.hover} cascade={this.props.cascade}>
-          <div className="Ripple-parent" onMouseDown={this.handleClick.bind(this)} onTouchStart={this.handleClick.bind(this)}>
+          <div
+            className="Ripple-parent"
+            onMouseDown={this.handleClick.bind(this)}
+            onTouchStart={this.handleClick.bind(this)}
+          >
             {innerContent}
             <Mask overlay={overlay} />
             {this.props.waves && <Waves cursorPos={this.state.cursorPos} />}
@@ -64,9 +60,7 @@ class CardImage extends Component {
         </View>
       );
     } else {
-      return (
-        <div>{innerContent}</div>
-      );
+      return <div>{innerContent}</div>;
     }
   }
 }
@@ -84,8 +78,8 @@ CardImage.propTypes = {
 };
 
 CardImage.defaultProps = {
-  tag: 'img',
-  overlay: 'white-slight',
+  tag: "img",
+  overlay: "white-slight",
   waves: true,
   hover: false,
   cascade: false

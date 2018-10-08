@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class CardHeader extends Component {
-
   render() {
-
     const {
       className,
       tag: Tag,
@@ -17,18 +15,16 @@ class CardHeader extends Component {
     } = this.props;
 
     const classes = classNames(
-      'card-header',
+      "card-header",
       color && color,
       text && text,
-      (color && !text) && ' white-text',
-      border && 'border-' + border,
-      transparent && 'bg-transparent',
+      color && !text && " white-text",
+      border && "border-" + border,
+      transparent && "bg-transparent",
       className
     );
 
-    return (
-      <Tag {...attributes} className={classes} />
-    );
+    return <Tag {...attributes} className={classes} />;
   }
 }
 
@@ -42,7 +38,7 @@ CardHeader.propTypes = {
 };
 
 CardHeader.defaultProps = {
-  tag: 'div'
+  tag: "div"
 };
 
 export default CardHeader;

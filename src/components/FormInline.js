@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import Waves from './Waves';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import Waves from "./Waves";
 
 class FormInline extends React.Component {
   constructor(props) {
@@ -11,7 +11,7 @@ class FormInline extends React.Component {
     };
   }
 
-  handleClick(e){
+  handleClick(e) {
     // Get Cursor Position
     let cursorPos = {
       top: e.clientY,
@@ -21,26 +21,24 @@ class FormInline extends React.Component {
     this.setState({ cursorPos: cursorPos });
   }
 
-
   render() {
-    const {
-      className,
-      waves,
-      children,
-      ...attributes
-    } = this.props;
+    const { className, waves, children, ...attributes } = this.props;
 
     const classes = classNames(
-      'form-inline',
-      this.props.waves ? 'Ripple-parent': false,
+      "form-inline",
+      this.props.waves ? "Ripple-parent" : false,
       className
     );
     return (
-      <form {...attributes} className={classes} onMouseDown={ this.handleClick.bind(this) } onTouchStart={ this.handleClick.bind(this)}>
+      <form
+        {...attributes}
+        className={classes}
+        onMouseDown={this.handleClick.bind(this)}
+        onTouchStart={this.handleClick.bind(this)}
+      >
         {this.props.children}
-        {this.props.waves && <Waves cursorPos={ this.state.cursorPos } />}
+        {this.props.waves && <Waves cursorPos={this.state.cursorPos} />}
       </form>
-
     );
   }
 }

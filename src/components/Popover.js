@@ -1,13 +1,12 @@
-import React from 'react';
-import { Manager, Target, Popper, Arrow } from 'react-popper';
-import { findDOMNode } from 'react-dom';
-import classNames from 'classnames';
-import PropTypes from 'prop-types';
-import Transition from 'react-motion-ui-pack';
-import outy from 'outy';
+import React from "react";
+import { Manager, Target, Popper, Arrow } from "react-popper";
+import { findDOMNode } from "react-dom";
+import classNames from "classnames";
+import PropTypes from "prop-types";
+import Transition from "react-motion-ui-pack";
+import outy from "outy";
 
 class Popover extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -18,7 +17,6 @@ class Popover extends React.Component {
     this._setOusideTap = this._setOusideTap.bind(this);
     this._handleOutsideTap = this._handleOutsideTap.bind(this);
   }
-
 
   componentDidMount() {
     this._setOusideTap();
@@ -47,7 +45,7 @@ class Popover extends React.Component {
 
     this.outsideTap = outy(
       elements,
-      ['click', 'touchstart'],
+      ["click", "touchstart"],
       this._handleOutsideTap
     );
   }
@@ -74,20 +72,15 @@ class Popover extends React.Component {
       tag
     } = this.props;
 
-    const classes = classNames(
-      className
-    );
+    const classes = classNames(className);
 
     const popoverClasses = classNames(
-      'popover',
-      placement ? 'bs-popover-'+placement : '',
+      "popover",
+      placement ? "bs-popover-" + placement : "",
       popoverClass
     );
 
-    const arrowClasses = classNames(
-      'arrow',
-      arrowClass
-    );
+    const arrowClasses = classNames("arrow", arrowClass);
     return (
       <Manager tag={tag}>
         <Target
@@ -104,19 +97,20 @@ class Popover extends React.Component {
           enter={{ opacity: 1, scale: 1 }}
           leave={{ opacity: 0, scale: 0.9 }}
         >
-          {this.state.isOpen &&
-              <Popper
-                key="popover"
-                component={componentPopover}
-                innerRef={c => {
-                  this.popper = findDOMNode(c);
-                }}
-                placement={placement}
-                className={popoverClasses}
-              >
-                {children}
-                <Arrow className={arrowClasses} />
-              </Popper>}
+          {this.state.isOpen && (
+            <Popper
+              key="popover"
+              component={componentPopover}
+              innerRef={c => {
+                this.popper = findDOMNode(c);
+              }}
+              placement={placement}
+              className={popoverClasses}
+            >
+              {children}
+              <Arrow className={arrowClasses} />
+            </Popper>
+          )}
         </Transition>
       </Manager>
     );

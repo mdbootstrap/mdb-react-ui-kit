@@ -1,23 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
+const PopoverBody = props => {
+  const { className, tag: Tag, ...attributes } = props;
 
-const PopoverBody = (props) => {
-  const {
-    className,
-    tag: Tag,
-    ...attributes
-  } = props;
+  const classes = classNames("popover-body", className);
 
-  const classes = classNames(
-    'popover-body',
-    className,
-  );
-
-  return (
-    <Tag {...attributes} className={classes} />
-  );
+  return <Tag {...attributes} className={classes} />;
 };
 
 PopoverBody.propTypes = {
@@ -25,7 +15,7 @@ PopoverBody.propTypes = {
   className: PropTypes.string
 };
 PopoverBody.defaultProps = {
-  tag: 'div'
+  tag: "div"
 };
 
 export default PopoverBody;

@@ -1,18 +1,33 @@
-import React from 'react';
-import { Button, ButtonGroup, Fa, Container } from 'mdbreact';
-import DocsLink from './DocsLink';
+import React from "react";
+import { Button, ButtonGroup, Fa, Container } from "mdbreact";
+import DocsLink from "./DocsLink";
 
-const ButtonPage = (props) => {
+const ButtonPage = props => {
   return (
     <Container>
-      <DocsLink title="Buttons" href="https://mdbootstrap.com/react/components/buttons/" />
+      <DocsLink
+        title="Buttons"
+        href="https://mdbootstrap.com/react/components/buttons/"
+      />
       <div className="container-fluid text-center">
-        <div className="">
-
-          <Button disabled color="primary">Primary disabled</Button>
-          <Button disabled href="#" color="primary">Primary href disabled</Button>
-          <Button active href="https://www.mdbootstrap.com" target="_blank" color="primary">Primary href target blank</Button>
-          <Button active color="primary">Primary active</Button>
+        <div>
+          <Button disabled color="primary">
+            Primary disabled
+          </Button>
+          <Button disabled href="#" color="primary">
+            Primary href disabled
+          </Button>
+          <Button
+            active
+            href="https://www.mdbootstrap.com"
+            target="_blank"
+            color="primary"
+          >
+            Primary href target blank
+          </Button>
+          <Button active color="primary">
+            Primary active
+          </Button>
           <Button color="primary">Primary</Button>
 
           <Button>Default</Button>
@@ -61,31 +76,49 @@ const ButtonPage = (props) => {
           <Button color="mdb-color">MDB</Button>
           <br />
 
-          <Button outline color="primary">Primary</Button>
-          <Button outline >Default</Button>
-          <Button outline color="secondary">Secondary</Button>
-          <Button outline color="success">Success</Button>
-          <Button outline color="info">Info</Button>
-          <Button outline color="warning">Warning</Button>
-          <Button outline color="danger">Danger</Button>
+          <Button outline color="primary">
+            Primary
+          </Button>
+          <Button outline>Default</Button>
+          <Button outline color="secondary">
+            Secondary
+          </Button>
+          <Button outline color="success">
+            Success
+          </Button>
+          <Button outline color="info">
+            Info
+          </Button>
+          <Button outline color="warning">
+            Warning
+          </Button>
+          <Button outline color="danger">
+            Danger
+          </Button>
           <br />
-          <Button color="primary"><Fa icon="magic" className="mr-1" /> Left</Button>
-          <Button color="default">Right <Fa icon="magic" className="ml-1" /></Button>
+          <Button color="primary">
+            <Fa icon="magic" className="mr-1" /> Left
+          </Button>
+          <Button color="default">
+            Right <Fa icon="magic" className="ml-1" />
+          </Button>
           <br />
-          <Button color="primary" href="#">Link</Button>
-          <Button color="primary" type="submit">Button</Button>
+          <Button color="primary" href="#">
+            Link
+          </Button>
+          <Button color="primary" type="submit">
+            Button
+          </Button>
 
           <br />
 
-          <Button block >Block level button</Button>
-          <Button block color="primary">Block level button</Button>
+          <Button block>Block level button</Button>
+          <Button block color="primary">
+            Block level button
+          </Button>
           <br />
-          <Button color="light-green">
-            light-green
-          </Button>
-          <Button color="mdb">
-            MDB
-          </Button>
+          <Button color="light-green">light-green</Button>
+          <Button color="mdb">MDB</Button>
           <Button color="success" outline>
             Success
           </Button>
@@ -99,7 +132,7 @@ const ButtonPage = (props) => {
             Default
           </Button>
         </div>
-        <div className="">
+        <div>
           <ButtonGroup vertical>
             <Button>Left</Button>
             <Button>Middle</Button>

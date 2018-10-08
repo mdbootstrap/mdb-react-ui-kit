@@ -1,30 +1,57 @@
-import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { Navbar, NavbarBrand, NavbarNav, NavItem, NavLink, NavbarToggler, Collapse, Container, FormInline } from 'mdbreact';
-import DocsLink from './DocsLink';
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarNav,
+  NavItem,
+  NavLink,
+  NavbarToggler,
+  Collapse,
+  Container,
+  FormInline
+} from "mdbreact";
+import DocsLink from "./DocsLink";
 
 class NavbarPage extends React.Component {
-
   state = {
-    collapseID: ''
-  }
+    collapseID: ""
+  };
 
   toggleCollapse = collapseID => () =>
-    this.setState(prevState => ({ collapseID: (prevState.collapseID !== collapseID ? collapseID : '') }));
+    this.setState(prevState => ({
+      collapseID: prevState.collapseID !== collapseID ? collapseID : ""
+    }));
 
   render() {
     return (
       <Container>
-        <DocsLink title="Navbar" href="https://mdbootstrap.com/react/components/navbar/" />
+        <DocsLink
+          title="Navbar"
+          href="https://mdbootstrap.com/react/components/navbar/"
+        />
         <Router>
-          <div style={{height: '1200px'}}>
-            <Navbar color="primary-color" style={{marginTop: '20px'}} dark expand="md" scrolling transparent>
+          <div style={{ height: "1200px" }}>
+            <Navbar
+              color="primary-color"
+              style={{ marginTop: "20px" }}
+              dark
+              expand="md"
+              scrolling
+              transparent
+            >
               <Container>
                 <NavbarBrand>
                   <strong className="white-text">MDB</strong>
                 </NavbarBrand>
-                <NavbarToggler onClick={this.toggleCollapse('navbarCollapse')} />
-                <Collapse id="navbarCollapse" isOpen={this.state.collapseID} navbar>
+                <NavbarToggler
+                  onClick={this.toggleCollapse("navbarCollapse")}
+                />
+                <Collapse
+                  id="navbarCollapse"
+                  isOpen={this.state.collapseID}
+                  navbar
+                >
                   <NavbarNav left>
                     <NavItem active>
                       <NavLink to="#!">Home</NavLink>
@@ -36,11 +63,16 @@ class NavbarPage extends React.Component {
                       <NavLink to="#!">Profile</NavLink>
                     </NavItem>
                   </NavbarNav>
-                  <NavbarNav right >
+                  <NavbarNav right>
                     <NavItem>
                       <FormInline waves>
                         <div className="md-form my-0">
-                          <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
+                          <input
+                            className="form-control mr-sm-2"
+                            type="text"
+                            placeholder="Search"
+                            aria-label="Search"
+                          />
                         </div>
                       </FormInline>
                     </NavItem>
@@ -48,13 +80,25 @@ class NavbarPage extends React.Component {
                 </Collapse>
               </Container>
             </Navbar>
-            <Navbar color="default-color" style={{marginTop: '20px'}} dark expand="md" scrolling>
+            <Navbar
+              color="default-color"
+              style={{ marginTop: "20px" }}
+              dark
+              expand="md"
+              scrolling
+            >
               <Container>
                 <NavbarBrand>
                   <strong className="white-text">MDB</strong>
                 </NavbarBrand>
-                <NavbarToggler onClick={this.toggleCollapse('navbarCollapse1')} />
-                <Collapse id="navbarCollapse1" isOpen={this.state.collapseID} navbar>
+                <NavbarToggler
+                  onClick={this.toggleCollapse("navbarCollapse1")}
+                />
+                <Collapse
+                  id="navbarCollapse1"
+                  isOpen={this.state.collapseID}
+                  navbar
+                >
                   <NavbarNav left>
                     <NavItem active>
                       <NavLink to="#!">Home</NavLink>
@@ -66,11 +110,16 @@ class NavbarPage extends React.Component {
                       <NavLink to="#!">Profile</NavLink>
                     </NavItem>
                   </NavbarNav>
-                  <NavbarNav right >
+                  <NavbarNav right>
                     <NavItem>
                       <FormInline waves>
                         <div className="md-form my-0">
-                          <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
+                          <input
+                            className="form-control mr-sm-2"
+                            type="text"
+                            placeholder="Search"
+                            aria-label="Search"
+                          />
                         </div>
                       </FormInline>
                     </NavItem>
@@ -78,13 +127,25 @@ class NavbarPage extends React.Component {
                 </Collapse>
               </Container>
             </Navbar>
-            <Navbar color="danger-color" style={{marginTop: '20px'}} dark expand="md" transparent>
+            <Navbar
+              color="danger-color"
+              style={{ marginTop: "20px" }}
+              dark
+              expand="md"
+              transparent
+            >
               <Container>
                 <NavbarBrand>
                   <strong className="white-text">MDB</strong>
                 </NavbarBrand>
-                <NavbarToggler onClick={this.toggleCollapse('navbarCollapse2')} />
-                <Collapse id="navbarCollapse2" isOpen={this.state.collapseID} navbar>
+                <NavbarToggler
+                  onClick={this.toggleCollapse("navbarCollapse2")}
+                />
+                <Collapse
+                  id="navbarCollapse2"
+                  isOpen={this.state.collapseID}
+                  navbar
+                >
                   <NavbarNav left>
                     <NavItem active>
                       <NavLink to="#!">Home</NavLink>
@@ -96,11 +157,16 @@ class NavbarPage extends React.Component {
                       <NavLink to="#!">Profile</NavLink>
                     </NavItem>
                   </NavbarNav>
-                  <NavbarNav right >
+                  <NavbarNav right>
                     <NavItem>
                       <FormInline waves>
                         <div className="md-form my-0">
-                          <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
+                          <input
+                            className="form-control mr-sm-2"
+                            type="text"
+                            placeholder="Search"
+                            aria-label="Search"
+                          />
                         </div>
                       </FormInline>
                     </NavItem>
@@ -108,13 +174,24 @@ class NavbarPage extends React.Component {
                 </Collapse>
               </Container>
             </Navbar>
-            <Navbar color="secondary-color" style={{marginTop: '20px'}} dark expand="md">
+            <Navbar
+              color="secondary-color"
+              style={{ marginTop: "20px" }}
+              dark
+              expand="md"
+            >
               <Container>
                 <NavbarBrand>
                   <strong className="white-text">MDB</strong>
                 </NavbarBrand>
-                <NavbarToggler onClick={this.toggleCollapse('navbarCollapse3')} />
-                <Collapse id="navbarCollapse3" isOpen={this.state.collapseID} navbar>
+                <NavbarToggler
+                  onClick={this.toggleCollapse("navbarCollapse3")}
+                />
+                <Collapse
+                  id="navbarCollapse3"
+                  isOpen={this.state.collapseID}
+                  navbar
+                >
                   <NavbarNav left>
                     <NavItem active>
                       <NavLink to="#!">Home</NavLink>
@@ -126,11 +203,16 @@ class NavbarPage extends React.Component {
                       <NavLink to="#!">Profile</NavLink>
                     </NavItem>
                   </NavbarNav>
-                  <NavbarNav right >
+                  <NavbarNav right>
                     <NavItem>
                       <FormInline waves>
                         <div className="md-form my-0">
-                          <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
+                          <input
+                            className="form-control mr-sm-2"
+                            type="text"
+                            placeholder="Search"
+                            aria-label="Search"
+                          />
                         </div>
                       </FormInline>
                     </NavItem>

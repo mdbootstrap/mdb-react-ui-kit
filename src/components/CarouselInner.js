@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class CarouselInner extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -12,7 +11,6 @@ class CarouselInner extends Component {
   }
 
   render() {
-
     let {
       active,
       children,
@@ -23,8 +21,8 @@ class CarouselInner extends Component {
     } = this.props;
 
     const classes = classNames(
-      'carousel-inner',
-      active ? 'active' : '',
+      "carousel-inner",
+      active ? "active" : "",
       className
     );
 
@@ -47,7 +45,7 @@ CarouselInner.propTypes = {
 };
 
 CarouselInner.defaultProps = {
-  tag: 'div'
+  tag: "div"
 };
 
 CarouselInner.contextTypes = {

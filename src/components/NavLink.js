@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import Waves from './Waves';
-import { NavLink as Link } from 'react-router-dom';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import Waves from "./Waves";
+import { NavLink as Link } from "react-router-dom";
 
 class NavLink extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class NavLink extends Component {
     };
   }
 
-  handleClick = (e) => {
+  handleClick = e => {
     if (!this.props.disabled) {
       e.stopPropagation();
       // Waves - Get Cursor Position
@@ -23,10 +23,9 @@ class NavLink extends Component {
       };
       this.setState({ cursorPos: cursorPos });
     }
-  }
+  };
 
   render() {
-
     const {
       children,
       className,
@@ -38,21 +37,26 @@ class NavLink extends Component {
     } = this.props;
 
     const classes = classNames(
-      'nav-link',
-      disabled ? 'disabled' : 'Ripple-parent',
-      active && 'active',
+      "nav-link",
+      disabled ? "disabled" : "Ripple-parent",
+      active && "active",
       className
     );
 
     return (
-      <Link className={classes}
-        onMouseUp={ this.handleClick }
-        onTouchStart={ this.handleClick }
+      <Link
+        className={classes}
+        onMouseUp={this.handleClick}
+        onTouchStart={this.handleClick}
         to={to}
         {...attributes}
       >
         {children}
-        {this.props.disabled ? false : <Waves cursorPos={ this.state.cursorPos } />}
+        {this.props.disabled ? (
+          false
+        ) : (
+          <Waves cursorPos={this.state.cursorPos} />
+        )}
       </Link>
     );
   }
@@ -65,7 +69,6 @@ NavLink.propTypes = {
   to: PropTypes.string,
   active: PropTypes.bool
 };
-
 
 export default NavLink;
 export { NavLink as MDBNavLink };

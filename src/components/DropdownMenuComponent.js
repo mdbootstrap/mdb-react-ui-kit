@@ -1,8 +1,17 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 
-const DropdownMenuComponent = (props) => {
-  const { d_tag, d_tabIndex, d_role, d_attributes, d_aria, d_classes, d_key, children } = props;
+const DropdownMenuComponent = props => {
+  const {
+    d_tag,
+    d_tabIndex,
+    d_role,
+    d_attributes,
+    d_aria,
+    d_classes,
+    d_key,
+    children
+  } = props;
   const Tag = d_tag;
 
   return (
@@ -14,7 +23,8 @@ const DropdownMenuComponent = (props) => {
         aria-hidden={d_aria}
         className={d_classes}
         key={d_key}
-      >{children}
+      >
+        {children}
       </Tag>
     </Fragment>
   );
@@ -32,7 +42,7 @@ DropdownMenuComponent.propTypes = {
 };
 
 DropdownMenuComponent.defaultProps = {
-  d_classes: ''
+  d_classes: ""
 };
 
 export default DropdownMenuComponent;

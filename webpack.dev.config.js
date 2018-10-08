@@ -1,29 +1,45 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const config = {
-  mode: 'development',
-  entry: './docs/index.js',
+  mode: "development",
+  entry: "./docs/index.js",
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/'
+    path: path.resolve(__dirname, "dist"),
+    filename: "bundle.js",
+    publicPath: "/"
   },
   resolve: {
     alias: {
-      mdbreact: path.resolve('./src/index')
+      mdbreact: path.resolve("./src/index")
     }
   },
   module: {
     rules: [
-      { test: /\.(js)$/, exclude: /node_modules/, use: ['babel-loader', 'eslint-loader'] },
-      { test: /\.css$/, use: ['style-loader', 'css-loader']},
-      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader'},
-      { test: /\.(woff|woff2)$/, loader: 'url-loader?prefix=font/&limit=5000' },
-      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=application/octet-stream' },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=image/svg+xml' },
-      { test: /\.png(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=image/png' },
-      { test: /\.gif(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=image/gif' }
+      {
+        test: /\.(js)$/,
+        exclude: /node_modules/,
+        use: ["babel-loader", "eslint-loader"]
+      },
+      { test: /\.css$/, use: ["style-loader", "css-loader"] },
+      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader" },
+      { test: /\.(woff|woff2)$/, loader: "url-loader?prefix=font/&limit=5000" },
+      {
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "url-loader?limit=10000&mimetype=application/octet-stream"
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "url-loader?limit=10000&mimetype=image/svg+xml"
+      },
+      {
+        test: /\.png(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "url-loader?limit=10000&mimetype=image/png"
+      },
+      {
+        test: /\.gif(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "url-loader?limit=10000&mimetype=image/gif"
+      }
     ]
   },
   devServer: {
@@ -31,7 +47,7 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'public/index.html'
+      template: "public/index.html"
     })
   ]
 };

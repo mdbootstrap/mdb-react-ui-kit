@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class CarouselItem extends Component {
   constructor(props) {
@@ -12,21 +12,21 @@ class CarouselItem extends Component {
 
   moveForward() {
     this.style = {
-      position: 'absolute',
-      left: '100%'
+      position: "absolute",
+      left: "100%"
     };
   }
 
   moveBackwards() {
     this.style = {
-      position: 'absolute',
-      left: '-100%'
+      position: "absolute",
+      left: "-100%"
     };
   }
 
   makeVisible() {
     this.style = {
-      left: '0'
+      left: "0"
     };
   }
 
@@ -43,8 +43,12 @@ class CarouselItem extends Component {
     itemId = parseInt(itemId, 10);
 
     let classes = classNames(
-      'carousel-item',
-      this.context.slide ? 'active carousel-slide-item' : itemId === this.context.activeItem ? 'active' : false,
+      "carousel-item",
+      this.context.slide
+        ? "active carousel-slide-item"
+        : itemId === this.context.activeItem
+          ? "active"
+          : false,
       className
     );
 
@@ -77,7 +81,7 @@ CarouselItem.propTypes = {
 };
 
 CarouselItem.defaultProps = {
-  tag: 'div'
+  tag: "div"
 };
 
 CarouselItem.contextTypes = {

@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class Pagination extends Component {
-
   render() {
-
     const {
       children,
       className,
@@ -16,10 +14,10 @@ class Pagination extends Component {
     } = this.props;
 
     const classes = classNames(
-      'pagination',
-      circle && 'pagination-circle',
-      color && 'pg-' + color,
-      className,
+      "pagination",
+      circle && "pagination-circle",
+      color && "pg-" + color,
+      className
     );
 
     return (
@@ -39,7 +37,7 @@ Pagination.propTypes = {
 };
 
 Pagination.defaultProps = {
-  tag: 'ul'
+  tag: "ul"
 };
 
 export default Pagination;

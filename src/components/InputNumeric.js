@@ -1,27 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import NumericInput from 'react-numeric-input';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import NumericInput from "react-numeric-input";
 
 class InputNumeric extends React.Component {
-
-  onChangeHandler = (event) => {
+  onChangeHandler = event => {
     this.props.getValue(event);
-  }
+  };
 
   render() {
-    const {
-      className,
-      getValue,
-      ...attributes
-    } = this.props;
+    const { className, getValue, ...attributes } = this.props;
 
-    const classes = classNames(
-      'form-control',
-      className
-    );
+    const classes = classNames("form-control", className);
     return (
-      <NumericInput {...attributes} onChange={(event) => this.onChangeHandler(event)} className={classes} />
+      <NumericInput
+        {...attributes}
+        onChange={event => this.onChangeHandler(event)}
+        className={classes}
+      />
     );
   }
 }

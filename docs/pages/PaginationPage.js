@@ -1,14 +1,17 @@
-import React from 'react';
-import { Pagination, PageItem, PageLink, Container } from 'mdbreact';
-import DocsLink from './DocsLink';
+import React from "react";
+import { Pagination, PageItem, PageLink, Container } from "mdbreact";
+import DocsLink from "./DocsLink";
 
-const PaginationPage = (props) => {
-  return(
+const PaginationPage = props => {
+  return (
     <Container>
-      <DocsLink title="Pagination" href="https://mdbootstrap.com/react/components/pagination/" />
+      <DocsLink
+        title="Pagination"
+        href="https://mdbootstrap.com/react/components/pagination/"
+      />
       <div className="container">
         <div className="row mt-5">
-          <div className="col" style={{ maxWidth: '23rem' }}>
+          <div className="col" style={{ maxWidth: "23rem" }}>
             <Pagination>
               <PageItem disabled>
                 <PageLink className="page-link" aria-label="Previous">
@@ -22,24 +25,16 @@ const PaginationPage = (props) => {
                 </PageLink>
               </PageItem>
               <PageItem>
-                <PageLink className="page-link">
-                  2
-                </PageLink>
+                <PageLink className="page-link">2</PageLink>
               </PageItem>
               <PageItem>
-                <PageLink className="page-link">
-                  3
-                </PageLink>
+                <PageLink className="page-link">3</PageLink>
               </PageItem>
               <PageItem>
-                <PageLink className="page-link">
-                  4
-                </PageLink>
+                <PageLink className="page-link">4</PageLink>
               </PageItem>
               <PageItem>
-                <PageLink className="page-link">
-                  5
-                </PageLink>
+                <PageLink className="page-link">5</PageLink>
               </PageItem>
             </Pagination>
           </div>

@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { mapToCssModules, omit } from './utils';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import { mapToCssModules, omit } from "./utils";
 
 const propTypes = {
   baseClass: PropTypes.string,
@@ -20,9 +20,9 @@ const propTypes = {
 };
 
 const defaultProps = {
-  tag: 'div',
-  baseClass: 'fade',
-  baseClassIn: 'show',
+  tag: "div",
+  baseClass: "fade",
+  baseClassIn: "show",
   transitionAppearTimeout: 0,
   transitionEnterTimeout: 0,
   transitionLeaveTimeout: 0,
@@ -69,7 +69,9 @@ class Fade extends React.Component {
       this.onEnter(cb)();
     }
 
-    this.timers.push(setTimeout(this.onEnter(cb), this.props.transitionAppearTimeout));
+    this.timers.push(
+      setTimeout(this.onEnter(cb), this.props.transitionAppearTimeout)
+    );
   }
 
   componentDidAppear() {
@@ -83,7 +85,9 @@ class Fade extends React.Component {
       this.onEnter(cb)();
     }
 
-    this.timers.push(setTimeout(this.onEnter(cb), this.props.transitionEnterTimeout));
+    this.timers.push(
+      setTimeout(this.onEnter(cb), this.props.transitionEnterTimeout)
+    );
   }
 
   componentDidEnter() {
@@ -101,7 +105,9 @@ class Fade extends React.Component {
       this.onLeave(cb)();
     }
 
-    this.timers.push(setTimeout(this.onLeave(cb), this.props.transitionLeaveTimeout));
+    this.timers.push(
+      setTimeout(this.onLeave(cb), this.props.transitionLeaveTimeout)
+    );
   }
   render() {
     const {
@@ -113,15 +119,16 @@ class Fade extends React.Component {
     } = this.props;
     const attributes = omit(this.props, Object.keys(propTypes));
 
-    const classes = mapToCssModules(classNames(
-      className,
-      baseClass,
-      this.state.mounted ? baseClassIn : false
-    ), cssModule);
-
-    return (
-      <Tag {...attributes} className={classes} />
+    const classes = mapToCssModules(
+      classNames(
+        className,
+        baseClass,
+        this.state.mounted ? baseClassIn : false
+      ),
+      cssModule
     );
+
+    return <Tag {...attributes} className={classes} />;
   }
 }
 

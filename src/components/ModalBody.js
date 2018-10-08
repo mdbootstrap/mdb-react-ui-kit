@@ -1,20 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class ModalBody extends React.Component {
-
   render() {
-    const {
-      className,
-      children,
-      ...attributes } = this.props;
+    const { className, children, ...attributes } = this.props;
 
-    const classes = classNames(
-      'modal-body',
-      className,
-    );
+    const classes = classNames("modal-body", className);
 
     return (
       <div {...attributes} className={classes}>
@@ -31,5 +23,3 @@ ModalBody.propTypes = {
 
 export default ModalBody;
 export { ModalBody as MDBModalBody };
-
-

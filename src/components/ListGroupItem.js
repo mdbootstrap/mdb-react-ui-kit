@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class ListGroupItem extends Component {
-
   render() {
-
     let {
       active,
       children,
@@ -21,19 +19,19 @@ class ListGroupItem extends Component {
     } = this.props;
 
     const classes = classNames(
-      'list-group-item',
-      active ? 'active' : '',
-      disabled ? 'disabled' : '',
-      hover ? 'list-group-item-action': '',
-      success ? 'list-group-item-success' : '',
-      info ? 'list-group-item-info' : '',
-      warning ? 'list-group-item-warning' : '',
-      danger ? 'list-group-item-danger' : '',
-      className,
+      "list-group-item",
+      active ? "active" : "",
+      disabled ? "disabled" : "",
+      hover ? "list-group-item-action" : "",
+      success ? "list-group-item-success" : "",
+      info ? "list-group-item-info" : "",
+      warning ? "list-group-item-warning" : "",
+      danger ? "list-group-item-danger" : "",
+      className
     );
 
-    if (attributes.href && Tag === 'li') {
-      Tag = 'a';
+    if (attributes.href && Tag === "li") {
+      Tag = "a";
     }
 
     return (
@@ -58,7 +56,7 @@ ListGroupItem.propTypes = {
 };
 
 ListGroupItem.defaultProps = {
-  tag: 'li'
+  tag: "li"
 };
 
 export default ListGroupItem;

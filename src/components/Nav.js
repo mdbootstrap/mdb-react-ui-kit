@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class Nav extends Component {
-
   render() {
-
     const {
       children,
       className,
@@ -19,13 +17,13 @@ class Nav extends Component {
     } = this.props;
 
     const classes = classNames(
-      'nav',
-      tabs && 'nav-tabs',
-      pills && 'md-pills',
-      header && 'nav-pills card-header-pills',
-      pills && color ? 'pills-'+color : false,
-      (tabs || classicTabs) && color ? 'tabs-'+this.props.color : false,
-      className,
+      "nav",
+      tabs && "nav-tabs",
+      pills && "md-pills",
+      header && "nav-pills card-header-pills",
+      pills && color ? "pills-" + color : false,
+      (tabs || classicTabs) && color ? "tabs-" + this.props.color : false,
+      className
     );
 
     return (
@@ -48,7 +46,7 @@ Nav.propTypes = {
 };
 
 Nav.defaultProps = {
-  tag: 'ul',
+  tag: "ul",
   classicTabs: false,
   pills: false,
   tabs: false,

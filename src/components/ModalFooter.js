@@ -1,20 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class ModalFooter extends React.Component {
-
   render() {
-    const {
-      className,
-      children,
-      ...attributes } = this.props;
+    const { className, children, ...attributes } = this.props;
 
-    const classes = classNames(
-      'modal-footer',
-      className,
-    );
+    const classes = classNames("modal-footer", className);
 
     return (
       <div {...attributes} className={classes}>
@@ -31,5 +23,3 @@ ModalFooter.propTypes = {
 
 export default ModalFooter;
 export { ModalFooter as MDBModalFooter };
-
-

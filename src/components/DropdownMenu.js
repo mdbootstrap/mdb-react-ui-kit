@@ -1,28 +1,35 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { Popper } from 'react-popper';
-import './DropdownMenu.css';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import { Popper } from "react-popper";
+import "./DropdownMenu.css";
 let DropdownMenuComponent;
 try {
-  DropdownMenuComponent = require('./pro/DropdownMenuProComponent').default;
-} catch(err) {
-  DropdownMenuComponent = require('./DropdownMenuComponent').default;
+  DropdownMenuComponent = require("./pro/DropdownMenuProComponent").default;
+} catch (err) {
+  DropdownMenuComponent = require("./DropdownMenuComponent").default;
 }
 
 const noFlipModifier = { flip: { enabled: false } };
 
 class DropdownMenu extends Component {
-
   render() {
-    const { basic, className, right, children, tag, flip, ...attrs } = this.props;
+    const {
+      basic,
+      className,
+      right,
+      children,
+      tag,
+      flip,
+      ...attrs
+    } = this.props;
 
     const classes = classNames(
-      'dropdown-menu',
+      "dropdown-menu",
       {
-        'dropdown-menu-right': right,
-        'show': this.context.isOpen,
-        'basic': basic
+        "dropdown-menu-right": right,
+        show: this.context.isOpen,
+        basic: basic
       },
       className
     );
@@ -31,8 +38,8 @@ class DropdownMenu extends Component {
 
     if (this.context.isOpen) {
       Tag = Popper;
-      const position1 = this.context.dropup ? 'top' : 'bottom';
-      const position2 = right ? 'end' : 'start';
+      const position1 = this.context.dropup ? "top" : "bottom";
+      const position2 = right ? "end" : "start";
       attrs.placement = `${position1}-${position2}`;
       attrs.component = tag;
       attrs.modifiers = !flip ? noFlipModifier : undefined;
@@ -55,7 +62,6 @@ class DropdownMenu extends Component {
   }
 }
 
-
 DropdownMenu.propTypes = {
   children: PropTypes.node.isRequired,
   basic: PropTypes.bool,
@@ -67,10 +73,10 @@ DropdownMenu.propTypes = {
 
 DropdownMenu.defaultProps = {
   basic: false,
-  className: '',
+  className: "",
   flip: false,
   right: false,
-  tag: 'div'
+  tag: "div"
 };
 
 DropdownMenu.contextTypes = {

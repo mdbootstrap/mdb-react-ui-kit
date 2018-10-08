@@ -1,7 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class Mask extends React.Component {
   render() {
@@ -15,19 +14,21 @@ class Mask extends React.Component {
     } = this.props;
 
     const classes = classNames(
-      'mask',
+      "mask",
       pattern && `pattern-${pattern}`,
       overlay && `rgba-${overlay}`,
       className
     );
     return (
-      <Tag {...attributes} className={classes}>{this.props.children}</Tag>
+      <Tag {...attributes} className={classes}>
+        {this.props.children}
+      </Tag>
     );
   }
 }
 
 Mask.defaultProps = {
-  tag: 'div'
+  tag: "div"
 };
 
 Mask.propTypes = {

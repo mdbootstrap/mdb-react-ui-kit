@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
-const DataTableHead = (props) => {
+const DataTableHead = props => {
   const {
     color,
     columns,
@@ -15,34 +15,43 @@ const DataTableHead = (props) => {
   } = props;
 
   const theadClasses = classNames(
-    (color !== 'dark' && color !== 'light') ? color : `thead-${color}`,
+    color !== "dark" && color !== "light" ? color : `thead-${color}`,
     {
-      'text-white' : textWhite
+      "text-white": textWhite
     }
   );
 
   return (
     <Fragment>
-      {
-        (scrollY || scrollX) &&
+      {(scrollY || scrollX) && (
         <colgroup>
-          {columns.map(col => <col key={col.field} style={{width: `${col.width}px` || 'auto', minWidth: `${col.width}px` || 'auto'}} />)}
+          {columns.map(col => (
+            <col
+              key={col.field}
+              style={{
+                width: `${col.width}px` || "auto",
+                minWidth: `${col.width}px` || "auto"
+              }}
+            />
+          ))}
         </colgroup>
-      }
+      )}
       <thead {...attributes} className={theadClasses}>
         <tr>
-          {
-            columns.map(col =>
-              <th
-                onClick={() => sortable && handleSort(col.field, col.sort)}
-                key={col.field}
-                className={col.hasOwnProperty('minimal') ? `th-${col.minimal}` : ''}
-              >
-                {col.label}
-                {sortable && <i className="fa fa-sort float-right" aria-hidden="true"></i>}
-              </th>
-            )
-          }
+          {columns.map(col => (
+            <th
+              onClick={() => sortable && handleSort(col.field, col.sort)}
+              key={col.field}
+              className={
+                col.hasOwnProperty("minimal") ? `th-${col.minimal}` : ""
+              }
+            >
+              {col.label}
+              {sortable && (
+                <i className="fa fa-sort float-right" aria-hidden="true" />
+              )}
+            </th>
+          ))}
         </tr>
       </thead>
     </Fragment>

@@ -1,11 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
+import React from "react";
+import ReactDOM from "react-dom";
+import PropTypes from "prop-types";
 
-require('./Waves.css');
+require("./Waves.css");
 
 class Waves extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -19,16 +18,18 @@ class Waves extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if(prevState.cursorPos.time !== this.props.cursorPos.time) {
-      if(prevState.animate) {
-        this.setState({ animate: false, cursorPos: this.props.cursorPos }, () => {
-          this.reppling();
-        });
-      }
-      else this.reppling();
+    if (prevState.cursorPos.time !== this.props.cursorPos.time) {
+      if (prevState.animate) {
+        this.setState(
+          { animate: false, cursorPos: this.props.cursorPos },
+          () => {
+            this.reppling();
+          }
+        );
+      } else this.reppling();
     }
   }
-  
+
   reppling() {
     // Get the element
     let $ripple = ReactDOM.findDOMNode(this);
@@ -40,7 +41,7 @@ class Waves extends React.Component {
     let buttonHeight = $button.offsetHeight;
 
     // Make a Square Ripple
-    let rippleWidthShouldBe = Math.max(buttonHeight,buttonWidth);
+    let rippleWidthShouldBe = Math.max(buttonHeight, buttonWidth);
 
     // Make Ripple Position to be center
     let centerize = rippleWidthShouldBe / 2;
@@ -54,17 +55,23 @@ class Waves extends React.Component {
     });
   }
 
-  render () {
+  render() {
     return (
-      <div 
-        className={'Ripple ' + (this.props.outline || this.props.flat || this.props.dark ? 'Ripple-outline ' : '') + (this.state.animate ? 'is-reppling' : '')}
+      <div
+        className={
+          "Ripple " +
+          (this.props.outline || this.props.flat || this.props.dark
+            ? "Ripple-outline "
+            : "") +
+          (this.state.animate ? "is-reppling" : "")
+        }
         style={{
-          top: this.state.top+'px',
-          left: this.state.left+'px',
-          width: this.state.width+'px',
-          height: this.state.height+'px'
+          top: this.state.top + "px",
+          left: this.state.left + "px",
+          width: this.state.width + "px",
+          height: this.state.height + "px"
         }}
-      ></div>
+      />
     );
   }
 }
@@ -79,4 +86,3 @@ Waves.propTypes = {
 
 export default Waves;
 export { Waves as MDBWaves };
-

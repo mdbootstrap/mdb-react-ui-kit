@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { omit } from './utils';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import { omit } from "./utils";
 
 const propTypes = {
   children: PropTypes.node,
@@ -20,7 +20,7 @@ const contextTypes = {
 };
 
 const defaultProps = {
-  tag: 'button',
+  tag: "button",
   toggle: true
 };
 
@@ -49,46 +49,47 @@ class DropdownItem extends React.Component {
 
   getTabIndex() {
     if (this.props.disabled || this.props.header || this.props.divider) {
-      return '-1';
+      return "-1";
     }
 
-    return '0';
+    return "0";
   }
 
   render() {
     const tabIndex = this.getTabIndex();
-    let {
-      className,
-      divider,
-      tag: Tag,
-      header,
-      active,
-      ...props } = omit(this.props, ['toggle']);
+    let { className, divider, tag: Tag, header, active, ...props } = omit(
+      this.props,
+      ["toggle"]
+    );
 
     const classes = classNames(
       {
         disabled: props.disabled,
-        'dropdown-item': !divider && !header,
+        "dropdown-item": !divider && !header,
         active: active,
-        'dropdown-header': header,
-        'dropdown-divider': divider
+        "dropdown-header": header,
+        "dropdown-divider": divider
       },
       className
     );
 
-    if (Tag === 'button') {
+    if (Tag === "button") {
       if (header) {
-        Tag = 'h6';
+        Tag = "h6";
       } else if (divider) {
-        Tag = 'div';
+        Tag = "div";
       } else if (props.href) {
-        Tag = 'a';
+        Tag = "a";
       }
     }
 
     return (
       <Tag
-        type={(Tag === 'button' && (props.onClick || this.props.toggle)) ? 'button' : undefined}
+        type={
+          Tag === "button" && (props.onClick || this.props.toggle)
+            ? "button"
+            : undefined
+        }
         {...props}
         tabIndex={tabIndex}
         className={classes}

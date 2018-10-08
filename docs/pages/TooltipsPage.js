@@ -1,21 +1,25 @@
-import React from 'react';
-import { Tooltip, Container } from 'mdbreact';
-import DocsLink from './DocsLink';
+import React from "react";
+import { Tooltip, Container } from "mdbreact";
+import DocsLink from "./DocsLink";
 
 class TooltipsPage extends React.Component {
   render() {
-    const style = {display: 'inline-block', maxWidth: '50vh'};
+    const style = { display: "inline-block", maxWidth: "50vh" };
     return (
       <Container>
-        <DocsLink title="Tooltips" href="https://mdbootstrap.com/react/advanced/tooltips/" />
+        <DocsLink
+          title="Tooltips"
+          href="https://mdbootstrap.com/react/advanced/tooltips/"
+        />
         <div className="m-5 text-center">
           <Tooltip
             placement="top"
             componentClass="btn btn-primary"
             tag="div"
             component="button"
-            tooltipContent="Tooltip on top">
-              Tooltip on top
+            tooltipContent="Tooltip on top"
+          >
+            Tooltip on top
           </Tooltip>
           <div style={style} className="text-right">
             <Tooltip
@@ -23,7 +27,8 @@ class TooltipsPage extends React.Component {
               componentClass="btn btn-primary"
               tag="div"
               component="button"
-              tooltipContent="Tooltip on left">
+              tooltipContent="Tooltip on left"
+            >
               Tooltip on left
             </Tooltip>
           </div>
@@ -33,7 +38,8 @@ class TooltipsPage extends React.Component {
               componentClass="btn btn-primary"
               tag="div"
               component="button"
-              tooltipContent="Tooltip on right">
+              tooltipContent="Tooltip on right"
+            >
               Tooltip on right
             </Tooltip>
           </div>
@@ -42,8 +48,9 @@ class TooltipsPage extends React.Component {
             componentClass="btn btn-primary"
             tag="div"
             component="button"
-            tooltipContent="Tooltip on bottom">
-              Tooltip on bottom
+            tooltipContent="Tooltip on bottom"
+          >
+            Tooltip on bottom
           </Tooltip>
         </div>
       </Container>

@@ -1,21 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class BreadcrumbItem extends React.Component {
-
   render() {
-    const {
-      className,
-      active,
-      ...attributes
-    } = this.props;
+    const { className, active, ...attributes } = this.props;
 
-
-    const classes  = classNames(
-      active ? 'active' : false,
-      'breadcrumb-item',
+    const classes = classNames(
+      active ? "active" : false,
+      "breadcrumb-item",
       className
     );
 
@@ -33,6 +26,5 @@ BreadcrumbItem.propTypes = {
   className: PropTypes.string
 };
 
-export default BreadcrumbItem ;
+export default BreadcrumbItem;
 export { BreadcrumbItem as MDBBreadcrumbItem };
-

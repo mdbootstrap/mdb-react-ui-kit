@@ -1,0 +1,85 @@
+.popover-enter {
+  opacity: 0.01;
+  transform: scale(0.9) translateY(50%);
+}
+
+.popover-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: scale 300ms ease-out, opacity 300ms ease;
+}
+
+.popover-enter-done {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.popover-exit {
+  opacity: 1;
+  transform: scale(0.8);
+  transition: all 300ms ease-out;
+}
+
+.popover-exit-active {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 300ms ease-out;
+}
+
+/* slide from side */
+
+.side-slide-enter {
+  opacity: 0.2;
+  transform: translateX(-100%);
+}
+
+.side-slide-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: transform 300ms ease-out, opacity 300ms ease;
+}
+
+.side-slide-enter-done {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.side-slide-exit {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: all 300ms ease-out;
+}
+
+.side-slide-exit-active {
+  opacity: 0.2;
+  transform: translateX(-100%);
+  transition: all 300ms ease-out;
+}
+
+.right-side-slide-enter {
+  opacity: 0.2;
+  transform: translateX(100%);
+}
+
+.right-side-slide-enter-active {
+  opacity: 1;
+  transform: translateX(0%) !important;
+  transition: transform 300ms ease-out, opacity 300ms ease;
+}
+
+.right-side-slide-enter-done {
+  opacity: 1;
+  transform: translateX(0%) !important;
+}
+
+.right-side-slide-exit {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: all 300ms ease-out;
+}
+
+.right-side-slide-exit-active {
+  opacity: 0.2;
+  transform: translateX(100%);
+  transition: all 300ms ease-out;
+}

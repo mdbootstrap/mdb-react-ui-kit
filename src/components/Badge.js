@@ -1,9 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class Badge extends React.Component {
-
   render() {
     const {
       tag: Tag,
@@ -15,22 +14,23 @@ class Badge extends React.Component {
     } = this.props;
 
     const classes = classNames(
-      'badge',
+      "badge",
       color,
-      'badge-' + color,
-      pill ? 'badge-pill' : false,
+      "badge-" + color,
+      pill ? "badge-pill" : false,
       className
     );
     return (
-      <Tag {...attributes} className={classes} >{this.props.children}</Tag>
-
+      <Tag {...attributes} className={classes}>
+        {this.props.children}
+      </Tag>
     );
   }
 }
 
 Badge.defaultProps = {
-  tag: 'span',
-  color: 'default',
+  tag: "span",
+  color: "default",
   pill: false
 };
 

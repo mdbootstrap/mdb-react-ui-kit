@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class Card extends Component {
-
   render() {
-
     const {
       className,
       tag: Tag,
@@ -26,26 +24,24 @@ class Card extends Component {
     } = this.props;
 
     const classes = classNames(
-      'card',
-      cascade && 'card-cascade',
-      wide && 'card-cascade wider',
-      narrow && 'card-cascade narrower',
-      reverse && 'card-cascade wider reverse',
-      testimonial && 'testimonial-card',
-      ecommerce && 'card-ecommerce',
-      collection && 'collection-card',
-      pricing && 'pricing-card',
-      personal && 'card-personal',
-      news && 'news-card',
+      "card",
+      cascade && "card-cascade",
+      wide && "card-cascade wider",
+      narrow && "card-cascade narrower",
+      reverse && "card-cascade wider reverse",
+      testimonial && "testimonial-card",
+      ecommerce && "card-ecommerce",
+      collection && "collection-card",
+      pricing && "pricing-card",
+      personal && "card-personal",
+      news && "news-card",
       color && color,
-      text && text + '-text',
-      border && 'border-' + border,
+      text && text + "-text",
+      border && "border-" + border,
       className
     );
 
-    return (
-      <Tag {...attributes} className={classes} />
-    );
+    return <Tag {...attributes} className={classes} />;
   }
 }
 
@@ -57,7 +53,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  tag: 'div'
+  tag: "div"
 };
 
 export default Card;

@@ -1,10 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class Fa extends React.Component {
-
   render() {
     const {
       className,
@@ -23,28 +21,24 @@ class Fa extends React.Component {
       ...attributes
     } = this.props;
 
-
-    const classes  = classNames(
-      list ? 'fa-li' : false,
-      'fa',
+    const classes = classNames(
+      list ? "fa-li" : false,
+      "fa",
       icon ? `fa-${icon}` : false,
       size ? `fa-${size}` : false,
-      fixed ? 'fa-fw' : false,
+      fixed ? "fa-fw" : false,
       pull ? `fa-pull-${pull}` : false,
-      border ? 'fa-border' : false,
-      spin ? 'fa-spin' : false,
-      pulse ? 'fa-pulse' : false,
+      border ? "fa-border" : false,
+      spin ? "fa-spin" : false,
+      pulse ? "fa-pulse" : false,
       rotate ? `fa-rotate-${rotate}` : false,
       flip ? `fa-flip-${flip}` : false,
-      inverse ? 'fa-inverse' : false,
+      inverse ? "fa-inverse" : false,
       stack ? `fa-${stack}` : false,
       className
     );
 
-
-    return (
-      <i {...attributes} className={classes}></i>
-    );
+    return <i {...attributes} className={classes} />;
   }
 }
 
@@ -64,8 +58,5 @@ Fa.propTypes = {
   icon: PropTypes.string
 };
 
-
-export default Fa ;
+export default Fa;
 export { Fa as MDBIcon };
-
-

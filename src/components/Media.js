@@ -1,9 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class Media extends React.Component {
-
   render() {
     const {
       body,
@@ -29,45 +28,58 @@ class Media extends React.Component {
 
     let defaultTag;
     if (heading) {
-      defaultTag = 'h4';
+      defaultTag = "h4";
     } else if (left || right) {
-      defaultTag = 'a';
+      defaultTag = "a";
     } else if (object || figImg) {
-      defaultTag = 'img';
+      defaultTag = "img";
     } else if (list) {
-      defaultTag = 'ul';
+      defaultTag = "ul";
     } else if (figure) {
-      defaultTag = 'figure';
+      defaultTag = "figure";
     } else if (figCap || figCapRight || figCapLeft) {
-      defaultTag = 'figcaption';
+      defaultTag = "figcaption";
     } else {
-      defaultTag = 'div';
+      defaultTag = "div";
     }
     const Tag = tag || defaultTag;
 
     const classes = classNames(
-      body ? 'media-body': false,
-      heading ? 'mt-0': false,
-      left ? 'media-left': false,
-      right ?'media-right': false,
-      top ?'align-self-start': false,
-      middle ?'align-self-center': false,
-      bottom ?'align-self-end': false,
-      object ?'media-object': false,
-      thumbnail ? 'img-thumbnail': false,
-      list ? 'media-list': false,
-      figure ? 'figure': false,
-      figImg ? 'figure-img' : false,
-      figCap ? 'figure-caption text-center': false,
-      figCapRight ? 'figure-caption text-right': false,
-      figCapLeft ? 'figure-caption text-left': false,
-      round ? 'rounded-circle z-depth-1-half': false,
-      !body && !heading && !left && !right && !top && !bottom && !middle && !object && !list && !figCap && !figCapRight&& !figCapRight && !figImg && !figure ? 'media' : false,
+      body ? "media-body" : false,
+      heading ? "mt-0" : false,
+      left ? "media-left" : false,
+      right ? "media-right" : false,
+      top ? "align-self-start" : false,
+      middle ? "align-self-center" : false,
+      bottom ? "align-self-end" : false,
+      object ? "media-object" : false,
+      thumbnail ? "img-thumbnail" : false,
+      list ? "media-list" : false,
+      figure ? "figure" : false,
+      figImg ? "figure-img" : false,
+      figCap ? "figure-caption text-center" : false,
+      figCapRight ? "figure-caption text-right" : false,
+      figCapLeft ? "figure-caption text-left" : false,
+      round ? "rounded-circle z-depth-1-half" : false,
+      !body &&
+      !heading &&
+      !left &&
+      !right &&
+      !top &&
+      !bottom &&
+      !middle &&
+      !object &&
+      !list &&
+      !figCap &&
+      !figCapRight &&
+      !figCapRight &&
+      !figImg &&
+      !figure
+        ? "media"
+        : false,
       className
     );
-    return (
-      <Tag {...attributes} className={classes} />
-    );
+    return <Tag {...attributes} className={classes} />;
   }
 }
 

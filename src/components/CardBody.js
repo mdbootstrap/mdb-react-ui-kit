@@ -1,27 +1,18 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class CardBody extends Component {
-
   render() {
-
-    const {
-      className,
-      tag: Tag,
-      cascade,
-      ...attributes
-    } = this.props;
+    const { className, tag: Tag, cascade, ...attributes } = this.props;
 
     const classes = classNames(
-      'card-body',
-      cascade && 'card-body-cascade',
+      "card-body",
+      cascade && "card-body-cascade",
       className
     );
 
-    return (
-      <Tag {...attributes} className={classes} />
-    );
+    return <Tag {...attributes} className={classes} />;
   }
 }
 
@@ -32,7 +23,7 @@ CardBody.propTypes = {
 };
 
 CardBody.defaultProps = {
-  tag: 'div'
+  tag: "div"
 };
 
 export default CardBody;

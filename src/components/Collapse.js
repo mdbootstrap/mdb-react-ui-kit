@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
-const SHOW = 'SHOW';
-const SHOWN = 'SHOWN';
-const HIDE = 'HIDE';
-const HIDDEN = 'HIDDEN';
+const SHOW = "SHOW";
+const SHOWN = "SHOWN";
+const HIDE = "HIDE";
+const HIDDEN = "HIDDEN";
 
 const DEFAULT_DELAYS = {
   show: 350,
@@ -24,21 +24,24 @@ class Collapse extends Component {
   }
 
   componentDidMount() {
-    if((this.props.isOpen === this.state.id || this.props.isOpen === true) && this.state.collapse === HIDDEN) {
+    if (
+      (this.props.isOpen === this.state.id || this.props.isOpen === true) &&
+      this.state.collapse === HIDDEN
+    ) {
       this.openCollapse();
     }
   }
-  
+
   componentDidUpdate(prevProps, prevState) {
     const collapse = prevState.collapse;
-    const willOpen = typeof this.props.isOpen !== 'boolean' 
-      ? this.props.isOpen === prevState.id 
-      : this.props.isOpen;
+    const willOpen =
+      typeof this.props.isOpen !== "boolean"
+        ? this.props.isOpen === prevState.id
+        : this.props.isOpen;
 
-    if(willOpen && this.state.collapse === HIDDEN) {
+    if (willOpen && this.state.collapse === HIDDEN) {
       this.openCollapse();
-    }
-    else if(!willOpen && collapse === SHOWN) {
+    } else if (!willOpen && collapse === SHOWN) {
       this.closeCollapse();
     }
   }
@@ -51,35 +54,44 @@ class Collapse extends Component {
     this.setState({ collapse: SHOW }, () => {
       this.setState({ height: this.getHeight() });
       this.transitionTag = setTimeout(() => {
-        this.setState({
-          collapse: SHOWN,
-          height: null
-        }, this.props.onOpened());
-      }, this.getDelay('show'));
+        this.setState(
+          {
+            collapse: SHOWN,
+            height: null
+          },
+          this.props.onOpened()
+        );
+      }, this.getDelay("show"));
     });
-  }
+  };
 
   closeCollapse = () => {
     this.setState({ height: this.getHeight() }, () => {
-      this.setState({
-        collapse: HIDE,
-        height: this.getHeight()
-      }, () => {
-        this.setState({ height: 0 });
-      });
+      this.setState(
+        {
+          collapse: HIDE,
+          height: this.getHeight()
+        },
+        () => {
+          this.setState({ height: 0 });
+        }
+      );
     });
 
     this.transitionTag = setTimeout(() => {
-      this.setState({
-        collapse: HIDDEN,
-        height: null
-      }, this.props.onClosed());
-    }, this.getDelay('hide'));
-  }
+      this.setState(
+        {
+          collapse: HIDDEN,
+          height: null
+        },
+        this.props.onClosed()
+      );
+    }, this.getDelay("hide"));
+  };
 
   getDelay(key) {
     const { delay } = this.props;
-    if (typeof delay === 'object') {
+    if (typeof delay === "object") {
       return isNaN(delay[key]) ? DEFAULT_DELAYS[key] : delay[key];
     }
     return delay;
@@ -104,27 +116,27 @@ class Collapse extends Component {
     const { collapse, height } = this.state;
     let collapseClass;
     switch (collapse) {
-    case SHOW:
-      collapseClass = 'collapsing';
-      break;
-    case SHOWN:
-      collapseClass = 'collapse show';
-      break;
-    case HIDE:
-      collapseClass = 'collapsing';
-      break;
-    case HIDDEN:
-      collapseClass = 'collapse';
-      break;
-    default:
-      // HIDDEN
-      collapseClass = 'collapse';
+      case SHOW:
+        collapseClass = "collapsing";
+        break;
+      case SHOWN:
+        collapseClass = "collapse show";
+        break;
+      case HIDE:
+        collapseClass = "collapsing";
+        break;
+      case HIDDEN:
+        collapseClass = "collapse";
+        break;
+      default:
+        // HIDDEN
+        collapseClass = "collapse";
     }
 
     const classes = classNames(
       collapseClass,
-      navbar ? 'navbar-collapse' : false,
-      className,
+      navbar ? "navbar-collapse" : false,
+      className
     );
     const style = height === null ? null : { height };
     return (
@@ -132,7 +144,9 @@ class Collapse extends Component {
         {...attributes}
         style={{ ...attributes.style, ...style }}
         className={classes}
-        ref={(c) => { this.element = c; }}
+        ref={c => {
+          this.element = c;
+        }}
       >
         {children}
       </div>
@@ -155,7 +169,7 @@ Collapse.propTypes = {
 };
 
 Collapse.defaultProps = {
-  isOpen: '',
+  isOpen: "",
   delay: DEFAULT_DELAYS,
   onOpened: () => {},
   onClosed: () => {}

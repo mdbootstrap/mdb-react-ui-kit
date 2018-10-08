@@ -1,22 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
-const PopoverHeader = (props) => {
-  const {
-    className,
-    tag: Tag,
-    ...attributes
-  } = props;
+const PopoverHeader = props => {
+  const { className, tag: Tag, ...attributes } = props;
 
-  const classes = classNames(
-    'popover-header',
-    className,
-  );
+  const classes = classNames("popover-header", className);
 
-  return (
-    <Tag {...attributes} className={classes} />
-  );
+  return <Tag {...attributes} className={classes} />;
 };
 
 PopoverHeader.propTypes = {
@@ -24,7 +15,7 @@ PopoverHeader.propTypes = {
   className: PropTypes.string
 };
 PopoverHeader.defaultProps = {
-  tag: 'h3'
+  tag: "h3"
 };
 
 export default PopoverHeader;

@@ -1,26 +1,17 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class Container extends Component {
-
   render() {
-
-    const {
-      fluid,
-      className,
-      tag: Tag,
-      ...attributes
-    } = this.props;
+    const { fluid, className, tag: Tag, ...attributes } = this.props;
 
     const classes = classNames(
-      fluid ? 'container-fluid' : 'container',
+      fluid ? "container-fluid" : "container",
       className
     );
 
-    return (
-      <Tag {...attributes} className={classes} />
-    );
+    return <Tag {...attributes} className={classes} />;
   }
 }
 
@@ -31,7 +22,7 @@ Container.propTypes = {
 };
 
 Container.defaultProps = {
-  tag: 'div',
+  tag: "div",
   fluid: false
 };
 

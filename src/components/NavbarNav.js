@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class NavbarNav extends Component {
-
   render() {
-
     const {
       children,
       className,
@@ -16,11 +14,9 @@ class NavbarNav extends Component {
     } = this.props;
 
     const classes = classNames(
-      'navbar-nav',
-      right ? 'ml-auto' :
-        left ? 'mr-auto' :
-          'justify-content-around w-100',
-      className,
+      "navbar-nav",
+      right ? "ml-auto" : left ? "mr-auto" : "justify-content-around w-100",
+      className
     );
 
     return (
@@ -40,7 +36,7 @@ NavbarNav.propTypes = {
 };
 
 NavbarNav.defaultProps = {
-  tag: 'ul'
+  tag: "ul"
 };
 
 export default NavbarNav;

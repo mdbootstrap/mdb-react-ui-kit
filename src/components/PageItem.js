@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class PageItem extends Component {
-
   render() {
-
     const {
       disabled,
       active,
@@ -16,10 +14,10 @@ class PageItem extends Component {
     } = this.props;
 
     const classes = classNames(
-      'page-item',
-      disabled ? 'disabled' : '',
-      active ? 'active' : '',
-      className,
+      "page-item",
+      disabled ? "disabled" : "",
+      active ? "active" : "",
+      className
     );
 
     return (
@@ -41,7 +39,7 @@ PageItem.propTypes = {
 PageItem.defaultProps = {
   disabled: false,
   active: false,
-  tag: 'li'
+  tag: "li"
 };
 
 export default PageItem;

@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-
-
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
 class Animation extends Component {
   constructor(props) {
@@ -17,12 +15,12 @@ class Animation extends Component {
   componentDidMount() {
     // add EL on window if the animation is to "reveal"
     if (this.props.reveal) {
-      window.addEventListener('scroll', this.updatePredicate);
+      window.addEventListener("scroll", this.updatePredicate);
     }
   }
   componentWillUnmount() {
     if (this.props.reveal) {
-      window.removeEventListener('scroll', this.updatePredicate);
+      window.removeEventListener("scroll", this.updatePredicate);
     }
   }
 
@@ -35,9 +33,16 @@ class Animation extends Component {
 
     if (
       (windowHeight + scroll - 100 > this.getOffset(this.elemRef.current) &&
-      scroll < this.getOffset(this.elemRef.current)) ||
-      (windowHeight + scroll - 100 > this.getOffset(this.elemRef.current) + this.elemRef.current.clientHeight && scroll < this.getOffset(this.elemRef.current) + this.elemRef.current.clientHeight) ||
-      (windowHeight + scroll === docHeight && this.getOffset(this.elemRef.current) + 100 > docHeight)) {
+        scroll < this.getOffset(this.elemRef.current)) ||
+      (windowHeight + scroll - 100 >
+        this.getOffset(this.elemRef.current) +
+          this.elemRef.current.clientHeight &&
+        scroll <
+          this.getOffset(this.elemRef.current) +
+            this.elemRef.current.clientHeight) ||
+      (windowHeight + scroll === docHeight &&
+        this.getOffset(this.elemRef.current) + 100 > docHeight)
+    ) {
       // if the predicate is true, change state
       this.setState({
         isVisible: true
@@ -47,45 +52,48 @@ class Animation extends Component {
       if (this.state.revealed) {
         return;
       } else {
-      // if it wasn't, hide
+        // if it wasn't, hide
         this.setState({
           isVisible: false,
           revealed: true
         });
       }
     }
-  }
+  };
 
   // React Animation Event hooks:
-  handleStart = (e) => {
+  handleStart = e => {
     this.setState({
-      countIterations: this.state.countIterations+1
+      countIterations: this.state.countIterations + 1
     });
     if (this.props.onAnimationStart) {
       this.props.onAnimationStart();
     }
-  }
+  };
 
-  handleIteration = (e) => {
+  handleIteration = e => {
     if (this.props.onAnimationIteration) {
       this.setState({
-        countIterations: this.state.countIterations+1
+        countIterations: this.state.countIterations + 1
       });
       this.props.onAnimationIteration();
     }
-  }
+  };
 
-  handleEnd = (e) => {
+  handleEnd = e => {
     this.setState({
-      countIterations: this.state.countIterations+1
+      countIterations: this.state.countIterations + 1
     });
-    if (this.props.onAnimationEnd && (this.props.count === this.state.countIterations)) {
+    if (
+      this.props.onAnimationEnd &&
+      this.props.count === this.state.countIterations
+    ) {
       this.props.onAnimationEnd();
     }
-  }
+  };
 
   // helper fx
-  getOffset = (elem) => {
+  getOffset = elem => {
     var box = elem.getBoundingClientRect();
     var body = document.body;
     var docEl = document.documentElement;
@@ -93,7 +101,7 @@ class Animation extends Component {
     var clientTop = docEl.clientTop || body.clientTop || 0;
     var top = box.top + scrollTop - clientTop;
     return Math.round(top);
-  }
+  };
 
   render() {
     const {
@@ -110,34 +118,35 @@ class Animation extends Component {
       ...attributes
     } = this.props;
 
-    const {isVisible, revealed} = this.state;
+    const { isVisible, revealed } = this.state;
 
     let styleObject = {
       animationDuration: duration,
       animationDelay: delay,
-      animationIterationCount: infinite? false : count,
-      visibility: isVisible ? 'visible' : 'hidden',
+      animationIterationCount: infinite ? false : count,
+      visibility: isVisible ? "visible" : "hidden",
       animationName: type
     };
 
     let hiddenStyles = {
-      animationName: 'none',
-      visibility: 'hidden'
+      animationName: "none",
+      visibility: "hidden"
     };
 
     const getAllStyles = Object.assign(styleObject, style);
 
     const classes = classNames(
-      this.state.isVisible && 'animated', // will this work?
+      this.state.isVisible && "animated", // will this work?
       type && type,
-      infinite && 'infinite',
+      infinite && "infinite",
       className
     );
 
     return (
-      <Tag {...attributes}
+      <Tag
+        {...attributes}
         className={classes}
-        style={(isVisible && revealed)? getAllStyles: hiddenStyles}
+        style={isVisible && revealed ? getAllStyles : hiddenStyles}
         ref={this.elemRef}
         onAnimationStart={this.handleStart}
         onAnimationIteration={this.handleIteration}
@@ -157,11 +166,10 @@ Animation.propTypes = {
   count: PropTypes.number,
   onAnimationEnd: PropTypes.func,
   onAnimationStart: PropTypes.func
-
 };
 
 Animation.defaultProps = {
-  tag: 'div',
+  tag: "div",
   reveal: false,
   duration: 1,
   count: 1

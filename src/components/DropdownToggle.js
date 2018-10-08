@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { Target } from 'react-popper';
-import Button from './Button';
+import React from "react";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import { Target } from "react-popper";
+import Button from "./Button";
 
 class DropdownToggle extends React.Component {
   constructor(props) {
@@ -30,22 +30,24 @@ class DropdownToggle extends React.Component {
 
   render() {
     const { className, color, caret, split, nav, tag, ...props } = this.props;
-    const ariaLabel = props['aria-label'] || 'Toggle Dropdown';
+    const ariaLabel = props["aria-label"] || "Toggle Dropdown";
     const classes = classNames(
       {
-        'dropdown-toggle': caret || split,
-        'dropdown-toggle-split': split,
-        'nav-link': nav
+        "dropdown-toggle": caret || split,
+        "dropdown-toggle-split": split,
+        "nav-link": nav
       },
       className
     );
-    const children = props.children || <span className="sr-only">{ariaLabel}</span>;
+    const children = props.children || (
+      <span className="sr-only">{ariaLabel}</span>
+    );
 
     let Tag;
 
     if (nav && !tag) {
-      Tag = 'a';
-      props.href = '#';
+      Tag = "a";
+      props.href = "#";
     } else if (!tag) {
       Tag = Button;
       props.color = color;
@@ -74,15 +76,15 @@ DropdownToggle.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
-  'aria-haspopup': PropTypes.bool,
+  "aria-haspopup": PropTypes.bool,
   split: PropTypes.bool,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   nav: PropTypes.bool
 };
 
 DropdownToggle.defaultProps = {
-  'aria-haspopup': true,
-  color: 'secondary'
+  "aria-haspopup": true,
+  color: "secondary"
 };
 
 DropdownToggle.contextTypes = {
