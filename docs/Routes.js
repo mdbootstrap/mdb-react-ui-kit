@@ -1,10 +1,13 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-import NavigationPage from "./pages/NavigationPage";
+import NavigationNavPage from "./pages/NavigationNavPage";
 import FormsNavPage from "./pages/FormsNavPage";
 import TablesNavPage from "./pages/TablesNavPage";
+import AddonsNavPage from "./pages/AddonsNavPage";
 import ModalsNavPage from "./pages/ModalsNavPage";
+import AdvancedNavPage from "./pages/AdvancedNavPage";
+import ComponentsNavPage from "./pages/ComponentsNavPage";
 
 // FREE
 import AnimationPage from "./pages/AnimationPage";
@@ -18,13 +21,10 @@ import TableStylesPage from "./pages/TableStylesPage";
 import BadgePage from "./pages/BadgePage";
 import BreadcrumbPage from "./pages/BreadcrumbPage";
 import FaPage from "./pages/FaPage";
-import ComponentsPage from "./pages/ComponentsPage";
 import DatatablePage from "./pages/DatatablePage";
 import DatatableApiPage from "./pages/DatatableApiPage";
 import ModalPage from "./pages/ModalPage";
 import ModalFormPage from "./pages/ModalFormPage";
-import ModalExamplesPage from "./pages/ModalExamplesPage";
-import AdvancedPage from "./pages/AdvancedPage";
 import ProgressPage from "./pages/ProgressPage";
 import InputPage from "./pages/InputPage";
 import MediaPage from "./pages/MediaPage";
@@ -56,13 +56,14 @@ class Routes extends React.Component {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/css" component={CSSPage} />
-        <Route exact path="/components" component={ComponentsPage} />
-        <Route exact path="/advanced" component={AdvancedPage} />
-        <Route exact path="/navigation" component={NavigationPage} />
+        <Route exact path="/components" component={ComponentsNavPage} />
+        <Route exact path="/advanced" component={AdvancedNavPage} />
+        <Route exact path="/navigation" component={NavigationNavPage} />
         <Route exact path="/forms" component={FormsNavPage} />
         <Route exact path="/tables" component={TablesNavPage} />
         <Route exact path="/modals" component={ModalsNavPage} />
-
+        <Route exact path="/addons" component={AddonsNavPage} />
+        
         {/* FREE */}
         <Route path="/css/animations" component={AnimationPage} />
         <Route exact path="/tables/table" component={TablePage} />
@@ -92,7 +93,6 @@ class Routes extends React.Component {
         <Route path="/navigation/footer" component={FooterPage} />
         <Route path="/modals/modal" component={ModalPage} />
         <Route path="/modals/modal-form" component={ModalFormPage} />
-        <Route path="/modals/modal-examples" component={ModalExamplesPage} />
         <Route path="/advanced/carousel" component={CarouselPage} />
         <Route path="/advanced/collapse" component={CollapsePage} />
         <Route path="/advanced/videocarousel" component={VideoCarouselPage} />
@@ -105,7 +105,7 @@ class Routes extends React.Component {
         <Route path="/forms/validation" component={ValidationPage} />
         <Route path="/tables/datatable" component={DatatablePage} />
         <Route path="/tables/datatable-api" component={DatatableApiPage} />
-        <Route path="/components/iframe" component={IframePage} />
+        <Route path="/addons/iframe" component={IframePage} />
         <Route
           render={function() {
             return <h1>Not Found</h1>;

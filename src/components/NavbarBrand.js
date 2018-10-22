@@ -1,24 +1,25 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import { NavLink as Link } from "react-router-dom";
 
-class NavbarBrand extends Component {
-  render() {
-    const { className, tag: Tag, ...attributes } = this.props;
-
-    const classes = classNames("navbar-brand", className);
-
-    return <Tag {...attributes} className={classes} />;
+const NavbarBrand = ({ className, href, ...attributes }) => {
+  const classes = classNames("navbar-brand", className);
+  const navbarBrand = () => {
+    if(href) {
+      return <Link to={href} {...attributes} className={classes} />;
+    }
+    else {
+      return <div {...attributes} className={classes} />
+    }
   }
+
+  return navbarBrand();
 }
 
 NavbarBrand.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string
-};
-
-NavbarBrand.defaultProps = {
-  tag: "a"
+  className: PropTypes.string,
+  href: PropTypes.string
 };
 
 export default NavbarBrand;

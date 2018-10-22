@@ -33,12 +33,11 @@ class NavbarPage extends React.Component {
         <Router>
           <div style={{ height: "1200px" }}>
             <Navbar
-              color="primary-color"
+              color="bg-danger"
               style={{ marginTop: "20px" }}
               dark
               expand="md"
               scrolling
-              transparent
             >
               <Container>
                 <NavbarBrand>
@@ -128,15 +127,14 @@ class NavbarPage extends React.Component {
               </Container>
             </Navbar>
             <Navbar
-              color="danger-color"
+              color="amber lighten-4"
               style={{ marginTop: "20px" }}
-              dark
               expand="md"
-              transparent
+              light
             >
               <Container>
                 <NavbarBrand>
-                  <strong className="white-text">MDB</strong>
+                  <strong>MDB</strong>
                 </NavbarBrand>
                 <NavbarToggler
                   onClick={this.toggleCollapse("navbarCollapse2")}

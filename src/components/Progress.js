@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import _ from "lodash";
 
 class Progress extends React.Component {
   render() {
@@ -17,7 +16,7 @@ class Progress extends React.Component {
       ...attributes
     } = this.props;
 
-    const percent = (_.toNumber(value) / _.toNumber(max)) * 100;
+    const percent = (parseInt(value, 10) / parseInt(max, 10)) * 100;
 
     const progressClasses = classNames("progress", className);
 

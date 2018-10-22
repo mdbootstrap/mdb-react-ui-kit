@@ -178,6 +178,7 @@ class TextField extends React.Component {
             data-error={error}
             data-success={success}
             onClick={this.triggerFocus}
+            id={id}
           >
             {label}
           </label>

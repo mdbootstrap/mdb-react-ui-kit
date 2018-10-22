@@ -37,8 +37,8 @@ function PanelPage() {
             bulk of the panel's content.
           </CardText>
           <div className="flex-row">
-            <a>Card link</a>
-            <a style={{ marginLeft: "1.25rem" }}>Another link</a>
+            <a href="#!">Card link</a>
+            <a href="#!" style={{ marginLeft: "1.25rem" }}>Another link</a>
           </div>
         </Card>
         <hr className="mt-5" />

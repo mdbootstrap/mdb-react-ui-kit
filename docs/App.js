@@ -124,6 +124,14 @@ class App extends Component {
                     Modals
                   </NavLink>
                 </NavItem>
+                <NavItem>
+                  <NavLink
+                    onClick={this.closeCollapse("mainNavbarCollapse")}
+                    to="/addons"
+                  >
+                    Addons
+                  </NavLink>
+                </NavItem>   
               </NavbarNav>
             </Collapse>
           </Navbar>

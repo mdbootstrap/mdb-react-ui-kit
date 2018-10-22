@@ -1,6 +1,6 @@
 /*!
  * Material Design for Bootstrap 4
- * Version: MDB FREE 4.5.11
+ * Version: MDB FREE 4.5.12
  *
  *
  * Copyright: Material Design for Bootstrap
@@ -45,7 +45,7 @@
 
 // FREE
 @import "free/animations-basic";
-@import "free/animations-extended";
+@import "free/modules/animations-extended/module";
 @import "free/buttons";
 @import "free/cards";
 @import "free/dropdowns";
@@ -62,9 +62,9 @@
 @import "free/tables";
 @import "free/switch";
 @import "free/depreciated";
-
+@import "free/steppers";
 // Free addons
-@import "addons/datatables";
+// @import "addons/datatables";
 
 // Your custom styles
 @import "custom-styles";

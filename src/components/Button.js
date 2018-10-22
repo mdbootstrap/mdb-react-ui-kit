@@ -9,28 +9,18 @@ class Button extends React.Component {
     this.state = {
       cursorPos: {}
     };
-    this.onClick = this.onClick.bind(this);
   }
 
   handleClick = e => {
-    if (!this.props.disabled) {
-      // Waves - Get Cursor Position
-      let cursorPos = {
-        top: e.clientY,
-        left: e.clientX,
-        time: Date.now()
-      };
-      this.setState({ cursorPos: cursorPos });
-      e.stopPropagation();
-    }
+    e.stopPropagation();
+    // Waves - Get Cursor Position
+    let cursorPos = {
+      top: e.clientY,
+      left: e.clientX,
+      time: Date.now()
+    };
+    this.setState({ cursorPos: cursorPos });
   };
-
-  onClick(e) {
-    if (this.props.disabled) {
-      e.preventDefault();
-      return;
-    }
-  }
 
   render() {
     let {
@@ -39,6 +29,7 @@ class Button extends React.Component {
       circle,
       className,
       color,
+      disabled,
       download,
       outline,
       size,
@@ -71,7 +62,7 @@ class Button extends React.Component {
       action ? "btn-action" : false,
       "Ripple-parent",
       className,
-      { active, disabled: this.props.disabled }
+      { active, disabled: disabled }
     );
 
     if (attributes.href && Tag === "button") {
@@ -85,11 +76,11 @@ class Button extends React.Component {
         role={Tag === "a" && !role ? "button" : role}
         className={classes}
         ref={innerRef}
-        onClick={this.onClick}
-        onMouseDown={this.handleClick}
+        onMouseUp={this.handleClick}
         onTouchStart={this.handleClick}
         {...attributes}
         download={download}
+        disabled={disabled}
       >
         {this.props.children}
         {this.props.disabled ? (
@@ -116,11 +107,11 @@ Button.propTypes = {
   action: PropTypes.bool,
   block: PropTypes.bool,
   color: PropTypes.string,
+  disabled: PropTypes.bool,
   download: PropTypes.string,
   gradient: PropTypes.string,
   role: PropTypes.string,
   type: PropTypes.string,
-  disabled: PropTypes.bool,
   outline: PropTypes.bool,
   rounded: PropTypes.bool,
   circle: PropTypes.bool,

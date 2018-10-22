@@ -1,6 +1,6 @@
 /*!
  * Material Design for Bootstrap 4
- * Version: MDB FREE 4.5.11
+ * Version: MDB FREE 4.5.12
  *
  *
  * Copyright: Material Design for Bootstrap
@@ -1167,7 +1167,7 @@
 .rgba-stylish-strong {
   background-color: rgba(62, 69, 81, 0.7); }
 
-.primary-color {
+.primary-color, ul.stepper li.active a .circle, ul.stepper li.completed a .circle {
   background-color: #4285f4 !important; }
 
 .primary-color-dark {
@@ -1203,7 +1203,7 @@
 .warning-color-dark {
   background-color: #ff8800 !important; }
 
-.danger-color {
+.danger-color, ul.stepper li.warning a .circle {
   background-color: #ff3547 !important; }
 
 .danger-color-dark {
@@ -5709,133 +5709,116 @@ table.table-sm td {
       .bs-switch .slider.round:before {
         border-radius: 50%; }
 
-/*
- * MDBootstrap integration with Datatables
- * Learn more: https://mdbootstrap.com/content/bootstrap-datatables/
- * About MDBootstrap: https://mdbootstrap.com/
- *
- * This combined file was created by the DataTables downloader builder:
- *   https://datatables.net/download
- *
- * To rebuild or modify this file with the latest versions of the included
- * software please visit:
- *   https://datatables.net/download/#bs4/dt-1.10.18
- *
- * Included libraries:
- *   DataTables 1.10.18
- */
-table.dataTable thead {
-  cursor: pointer; }
-  table.dataTable thead > tr > th:active {
-    outline: none; }
-  table.dataTable thead > tr > td:active {
-    outline: none; }
+ul.stepper {
+  counter-reset: section;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 1em -1.5rem;
+  padding: 0 1.5rem;
+  padding: 1.5rem; }
+  ul.stepper li a {
+    padding: 1.5rem;
+    text-align: center; }
+    ul.stepper li a .circle {
+      display: inline-block;
+      color: #fff;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.38);
+      width: 1.75rem;
+      height: 1.75rem;
+      text-align: center;
+      line-height: 1.7rem;
+      margin-right: 0.5rem; }
+    ul.stepper li a .label {
+      display: inline-block;
+      color: rgba(0, 0, 0, 0.38); }
+  ul.stepper li.active a .label, ul.stepper li.completed a .label {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.87); }
 
-div.dataTables_wrapper div.dataTables_length.d-flex.flex-row label {
-  margin-top: 1.2rem;
-  margin-right: 1rem; }
+.stepper-horizontal {
+  position: relative;
+  display: flex;
+  justify-content: space-between; }
+  .stepper-horizontal li {
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    position: relative; }
+    .stepper-horizontal li a .label {
+      margin-top: 0.63rem; }
+    .stepper-horizontal li:not(:last-child):after {
+      content: "";
+      position: relative;
+      flex: 1;
+      margin: 0.5rem 0 0 0;
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.1); }
+    .stepper-horizontal li:not(:first-child):before {
+      content: "";
+      position: relative;
+      flex: 1;
+      margin: 0.5rem 0 0 0;
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.1); }
+    .stepper-horizontal li:hover {
+      background-color: rgba(0, 0, 0, 0.06); }
+  @media (max-width: 47.9375rem) {
+    .stepper-horizontal {
+      flex-direction: column; }
+      .stepper-horizontal li {
+        align-items: flex-start;
+        flex-direction: column; }
+        .stepper-horizontal li a .label {
+          flex-flow: column nowrap;
+          order: 2;
+          margin-top: 0.2rem; }
+        .stepper-horizontal li:not(:last-child):after {
+          content: "";
+          position: absolute;
+          width: 1px;
+          height: calc(100% - 40px);
+          left: 2.19rem;
+          top: 3.75rem; } }
+  .stepper-horizontal > li:not(:last-of-type) {
+    margin-bottom: 0 !important; }
 
-div.dataTables_wrapper div.dataTables_length.d-flex.flex-row .select-wrapper.mdb-select span,
-div.dataTables_wrapper div.dataTables_length.d-flex.flex-row .select-wrapper.mdb-select .select-dropdown {
-  margin-top: 1rem; }
-
-div.dataTables_wrapper div.dataTables_length label, div.dataTables_wrapper div.dataTables_filter label {
-  text-align: left;
-  font-weight: normal;
-  padding-top: .5rem;
-  padding-bottom: .5rem; }
-
-div.dataTables_wrapper div.dataTables_length select,
-div.dataTables_wrapper div.dataTables_length input, div.dataTables_wrapper div.dataTables_filter select,
-div.dataTables_wrapper div.dataTables_filter input {
-  width: auto; }
-
-div.dataTables_wrapper div.dataTables_filter {
-  text-align: right; }
-  div.dataTables_wrapper div.dataTables_filter input {
-    margin-left: .5rem;
-    display: inline-block; }
-
-div.dataTables_wrapper div.dataTables_info, div.dataTables_wrapper div.dataTables_paginate {
-  font-weight: normal;
-  padding-top: 1rem;
-  padding-bottom: 1rem; }
-
-div.dataTables_wrapper div.dataTables_paginate {
-  text-align: right;
-  margin: 0; }
-  div.dataTables_wrapper div.dataTables_paginate ul.pagination {
-    justify-content: flex-end; }
-    div.dataTables_wrapper div.dataTables_paginate ul.pagination .page-item.active .page-link:focus {
-      background-color: #4285f4; }
-    div.dataTables_wrapper div.dataTables_paginate ul.pagination .page-item .page-link:focus {
-      box-shadow: none; }
-
-@media (max-width: 767px) {
-  div.dataTables_wrapper div .dataTables_length,
-  div.dataTables_wrapper div .dataTables_filter,
-  div.dataTables_wrapper div .dataTables_info,
-  div.dataTables_wrapper div .dataTables_paginate ul.pagination {
-    text-align: center;
-    justify-content: center; } }
-
-.bs-select select {
-  display: inline-block !important; }
-
-table.dataTable thead {
-  cursor: pointer; }
-  table.dataTable thead > tr > th:active {
-    outline: none; }
-  table.dataTable thead > tr > td:active {
-    outline: none; }
-
-div.dataTables_wrapper div.dataTables_length.d-flex.flex-row label {
-  margin-top: 1.2rem;
-  margin-right: 1rem; }
-
-div.dataTables_wrapper div.dataTables_length.d-flex.flex-row .select-wrapper.mdb-select span,
-div.dataTables_wrapper div.dataTables_length.d-flex.flex-row .select-wrapper.mdb-select .select-dropdown {
-  margin-top: 1rem; }
-
-div.dataTables_wrapper div.dataTables_length label, div.dataTables_wrapper div.dataTables_filter label {
-  text-align: left;
-  font-weight: normal;
-  padding-top: .5rem;
-  padding-bottom: .5rem; }
-
-div.dataTables_wrapper div.dataTables_length select,
-div.dataTables_wrapper div.dataTables_length input, div.dataTables_wrapper div.dataTables_filter select,
-div.dataTables_wrapper div.dataTables_filter input {
-  width: auto; }
-
-div.dataTables_wrapper div.dataTables_filter {
-  text-align: right; }
-  div.dataTables_wrapper div.dataTables_filter input {
-    margin-left: .5rem;
-    display: inline-block; }
-
-div.dataTables_wrapper div.dataTables_info, div.dataTables_wrapper div.dataTables_paginate {
-  font-weight: normal;
-  padding-top: 1rem;
-  padding-bottom: 1rem; }
-
-div.dataTables_wrapper div.dataTables_paginate {
-  text-align: right;
-  margin: 0; }
-  div.dataTables_wrapper div.dataTables_paginate ul.pagination {
-    justify-content: flex-end; }
-    div.dataTables_wrapper div.dataTables_paginate ul.pagination .page-item.active .page-link:focus {
-      background-color: #4285f4; }
-    div.dataTables_wrapper div.dataTables_paginate ul.pagination .page-item .page-link:focus {
-      box-shadow: none; }
-
-@media (max-width: 767px) {
-  div.dataTables_wrapper div .dataTables_length,
-  div.dataTables_wrapper div .dataTables_filter,
-  div.dataTables_wrapper div .dataTables_info,
-  div.dataTables_wrapper div .dataTables_paginate ul.pagination {
-    text-align: center;
-    justify-content: center; } }
-
-.bs-select select {
-  display: inline-block !important; }
+.stepper-vertical {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; }
+  .stepper-vertical li {
+    display: flex;
+    align-items: flex-start;
+    flex: 1;
+    flex-direction: column;
+    position: relative; }
+    .stepper-vertical li a {
+      align-self: flex-start;
+      display: flex;
+      position: relative; }
+      .stepper-vertical li a .circle {
+        order: 1; }
+      .stepper-vertical li a .label {
+        flex-flow: column nowrap;
+        order: 2;
+        margin-top: 0.2rem; }
+    .stepper-vertical li.completed a .label {
+      font-weight: 500; }
+    .stepper-vertical li .step-content {
+      display: block;
+      margin-top: 0;
+      margin-left: 3.13rem;
+      padding: 0.94rem; }
+      .stepper-vertical li .step-content p {
+        font-size: 0.88rem; }
+    .stepper-vertical li:not(:last-child):after {
+      content: "";
+      position: absolute;
+      width: 1px;
+      height: calc(100% - 40px);
+      left: 2.19rem;
+      top: 3.44rem;
+      background-color: rgba(0, 0, 0, 0.1); }

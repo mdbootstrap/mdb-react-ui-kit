@@ -19,7 +19,7 @@ const config = {
       {
         test: /\.(js)$/,
         exclude: /node_modules/,
-        use: ["babel-loader", "eslint-loader"]
+        use: ["babel-loader"]
       },
       { test: /\.css$/, use: ["style-loader", "css-loader"] },
       { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader" },
@@ -43,7 +43,10 @@ const config = {
     ]
   },
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    open: true,
+    compress: true,
+    port: 8080
   },
   plugins: [
     new HtmlWebpackPlugin({
