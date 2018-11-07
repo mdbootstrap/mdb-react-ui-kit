@@ -30,6 +30,7 @@ module.exports = function (env) {
   const config = {
     mode: "production",
     devtool: "source-map",
+    target: 'node',
     entry: [__dirname + "/src/index.js"],
     output: {
       path: __dirname + "/dist",
@@ -226,7 +227,14 @@ module.exports = function (env) {
       rules: [
         { test: /\.(js)$/, exclude: /node_modules/, use: "babel-loader" },
         { test: /\.(jsx)$/, exclude: /node_modules/, use: "babel-loader" },
-        { test: /\.css$/, use: ["style-loader", "css-loader"] },
+        { test: /\.css$/, use: [
+            "isomorphic-style-loader",
+            {
+              loader: 'css-loader',
+              options: { importLoaders: 1 }
+            }
+          ]
+        },
         { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader" },
         {
           test: /\.(woff|woff2)$/,
