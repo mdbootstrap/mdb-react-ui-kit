@@ -167,7 +167,7 @@ class ChartsPage extends React.Component {
       <Container>
         <DocsLink
           title="Charts"
-          href="https://mdbootstrap.com/react/advanced/charts/"
+          href="https://mdbootstrap.com/docs/react/advanced/charts/"
         />
         <div>
           <h3 className="mt-5">Line chart</h3>

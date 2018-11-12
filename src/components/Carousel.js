@@ -63,8 +63,9 @@ class Carousel extends Component {
     // get images src atr
     if (this.props.thumbnails) {
       const CarouselItemsArray = this.carouselRef.current.querySelectorAll(
-        ".carousel-item > img"
+        ".carousel-item img"
       );
+      console.log(CarouselItemsArray)
       const srcArray = Array.prototype.map.call(
         CarouselItemsArray,
         item => item.src

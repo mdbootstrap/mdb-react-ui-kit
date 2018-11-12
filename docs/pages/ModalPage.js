@@ -64,7 +64,7 @@ class ModalPage extends Component {
       <Container>
         <DocsLink
           title="Modal"
-          href="https://mdbootstrap.com/react/advanced/modals/"
+          href="https://mdbootstrap.com/docs/react/modals/basic/"
         />
 
         <h4 className="mt-4">Basic example</h4>

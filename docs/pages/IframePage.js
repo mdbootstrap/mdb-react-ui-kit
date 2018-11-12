@@ -8,7 +8,7 @@ class IframePage extends Component {
       <Container className="text-center">
         <DocsLink
           title="Iframe"
-          href="https://mdbootstrap.com/react/addons/iframe/"
+          href="https://mdbootstrap.com/plugins/react/iframe/"
         />
         <Iframe src="https://www.youtube.com/embed/v64KOxKVLVg" />
       </Container>

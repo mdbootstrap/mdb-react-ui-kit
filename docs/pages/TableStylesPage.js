@@ -402,7 +402,7 @@ const TablePage = props => {
     <Container className="mt-3">
       <DocsLink
         title="Tables with additional elements"
-        href="https://mdbootstrap.com/react/content/table-styles/"
+        href="https://mdbootstrap.com/docs/react/tables/additional/"
       />
       <Row className="py-3">
         <Col md="12">

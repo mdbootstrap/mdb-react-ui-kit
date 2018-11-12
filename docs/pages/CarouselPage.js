@@ -16,7 +16,7 @@ class CarouselPage extends Component {
       <Container>
         <DocsLink
           title="Carousel"
-          href="https://mdbootstrap.com/react/advanced/carousel/"
+          href="https://mdbootstrap.com/docs/react/advanced/carousel/"
         />
         <h4 className="mt-5 mb-2">Basic example</h4>
         <Carousel

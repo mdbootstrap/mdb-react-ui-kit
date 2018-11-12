@@ -8,7 +8,7 @@ class CarouselPage extends Component {
       <Container>
         <DocsLink
           title="Video Carousel"
-          href="https://mdbootstrap.com/react/advanced/carousel/#video"
+          href="https://mdbootstrap.com/docs/react/advanced/carousel/#video"
         />
         <div className="container mt-4">
           <div className="row">

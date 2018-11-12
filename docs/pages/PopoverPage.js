@@ -8,7 +8,7 @@ class PopoverPage extends React.Component {
       <Container>
         <DocsLink
           title="Popovers"
-          href="https://mdbootstrap.com/react/advanced/popovers/"
+          href="https://mdbootstrap.com/docs/react/advanced/popovers/"
         />
         <div style={{ display: "flex" }} className="m-5 p-5">
           <Popover

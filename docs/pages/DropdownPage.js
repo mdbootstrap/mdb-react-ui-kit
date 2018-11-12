@@ -14,7 +14,7 @@ class DropdownPage extends React.Component {
       <Container>
         <DocsLink
           title="Dropdown"
-          href="https://mdbootstrap.com/react/components/dropdowns/"
+          href="https://mdbootstrap.com/docs/react/components/dropdowns/"
         />
         <div className="container">
           <h2>Basic example</h2>

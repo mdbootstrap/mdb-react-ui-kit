@@ -72,73 +72,73 @@ import HamburgerToggler from "./components/HamburgerToggler";
 import Iframe from "./components/Iframe";
 
 // MDB FREE
-import MDBBadge from "./components/Badge";
-import MDBBreadcrumb from "./components/Breadcrumb";
-import MDBBreadcrumbItem from "./components/BreadcrumbItem";
-import MDBBtn from "./components/Button";
-import MDBBtnGroup from "./components/ButtonGroup";
-import MDBBtnToolbar from "./components/ButtonToolbar";
-import MDBCard from "./components/Card";
-import MDBCardBody from "./components/CardBody";
-import MDBCardFooter from "./components/CardFooter";
-import MDBCardGroup from "./components/CardGroup";
-import MDBCardHeader from "./components/CardHeader";
-import MDBCardImage from "./components/CardImage";
-import MDBCardText from "./components/CardText";
-import MDBCardTitle from "./components/CardTitle";
-import MDBCarousel from "./components/Carousel";
-import MDBCarouselCaption from "./components/CarouselCaption";
-import MDBCarouselControl from "./components/CarouselControl";
-import MDBCarouselInner from "./components/CarouselInner";
-import MDBCarouselItem from "./components/CarouselItem";
-import MDBCarouselIndicators from "./components/CarouselIndicators";
-import MDBCarouselIndicator from "./components/CarouselIndicator";
-import MDBCol from "./components/Col";
-import MDBCollapse from "./components/Collapse";
-import MDBContainer from "./components/Container";
-import MDBDataTable from "./components/DataTable";
-import MDBDropdownItem from "./components/DropdownItem";
-import MDBDropdownMenu from "./components/DropdownMenu";
-import MDBDropdownToggle from "./components/DropdownToggle";
-import MDBEdgeHeader from "./components/EdgeHeader";
-import MDBIcon from "./components/Fa";
-import MDBFormInline from "./components/FormInline";
-import MDBFooter from "./components/Footer";
-import MDBFreeBird from "./components/FreeBird";
-import MDBInput from "./components/Input";
-import MDBInputSelect from "./components/InputNumeric";
-import MDBJumbotron from "./components/Jumbotron";
-import MDBListGroup from "./components/ListGroup";
-import MDBListGroupItem from "./components/ListGroupItem";
-import MDBMask from "./components/Mask";
-import MDBMedia from "./components/Media";
-import MDBModal from "./components/Modal";
-import MDBModalBody from "./components/ModalBody";
-import MDBModalFooter from "./components/ModalFooter";
-import MDBModalHeader from "./components/ModalHeader";
-import MDBNav from "./components/Nav";
-import MDBNavbar from "./components/Navbar";
-import MDBNavbarBrand from "./components/NavbarBrand";
-import MDBNavbarNav from "./components/NavbarNav";
-import MDBNavbarToggler from "./components/NavbarToggler";
-import MDBNavItem from "./components/NavItem";
-import MDBNavLink from "./components/NavLink";
-import MDBPagination from "./components/Pagination";
-import MDBPageItem from "./components/PageItem";
-import MDBPageNav from "./components/PageLink";
-import MDBPopover from "./components/Popover";
-import MDBPopoverBody from "./components/PopoverBody";
-import MDBPopoverHeader from "./components/PopoverHeader";
-import MDBProgress from "./components/Progress";
-import MDBWaves from "./components/Waves";
-import MDBRow from "./components/Row";
-import MDBTable from "./components/Table";
-import MDBTableBody from "./components/TableBody";
-import MDBTableHead from "./components/TableHead";
-import MDBTableFoot from "./components/TableFoot";
-import MDBTextarea from "./components/TextField";
-import MDBTooltip from "./components/Tooltip";
-import MDBView from "./components/View";
+import {MDBBadge} from "./components/Badge";
+import {MDBBreadcrumb} from "./components/Breadcrumb";
+import {MDBBreadcrumbItem} from "./components/BreadcrumbItem";
+import {MDBBtn} from "./components/Button";
+import {MDBBtnGroup} from "./components/ButtonGroup";
+import {MDBBtnToolbar} from "./components/ButtonToolbar";
+import {MDBCard} from "./components/Card";
+import {MDBCardBody} from "./components/CardBody";
+import {MDBCardFooter} from "./components/CardFooter";
+import {MDBCardGroup} from "./components/CardGroup";
+import {MDBCardHeader} from "./components/CardHeader";
+import {MDBCardImage} from "./components/CardImage";
+import {MDBCardText} from "./components/CardText";
+import {MDBCardTitle} from "./components/CardTitle";
+import {MDBCarousel} from "./components/Carousel";
+import {MDBCarouselCaption} from "./components/CarouselCaption";
+import {MDBControl} from "./components/CarouselControl";
+import {MDBCarouselInner} from "./components/CarouselInner";
+import {MDBCarouselItem} from "./components/CarouselItem";
+import {MDBCarouselIndicators} from "./components/CarouselIndicators";
+import {MDBCarouselIndicator} from "./components/CarouselIndicator";
+import {MDBCol} from "./components/Col";
+import {MDBCollapse} from "./components/Collapse";
+import {MDBContainer} from "./components/Container";
+import {MDBDataTable} from "./components/DataTable";
+import {MDBDropdownItem} from "./components/DropdownItem";
+import {MDBDropdownMenu} from "./components/DropdownMenu";
+import {MDBDropdownToggle} from "./components/DropdownToggle";
+import {MDBEdgeHeader} from "./components/EdgeHeader";
+import {MDBIcon} from "./components/Fa";
+import {MDBFormInline} from "./components/FormInline";
+import {MDBFooter} from "./components/Footer";
+import {MDBFreeBird} from "./components/FreeBird";
+import {MDBInput} from "./components/Input";
+import {MDBInputSelect} from "./components/InputNumeric";
+import {MDBJumbotron} from "./components/Jumbotron";
+import {MDBListGroup} from "./components/ListGroup";
+import {MDBListGroupItem} from "./components/ListGroupItem";
+import {MDBMask} from "./components/Mask";
+import {MDBMedia} from "./components/Media";
+import {MDBModal} from "./components/Modal";
+import {MDBModalBody} from "./components/ModalBody";
+import {MDBModalFooter} from "./components/ModalFooter";
+import {MDBModalHeader} from "./components/ModalHeader";
+import {MDBNav} from "./components/Nav";
+import {MDBNavbar} from "./components/Navbar";
+import {MDBNavbarBrand} from "./components/NavbarBrand";
+import {MDBNavbarNav} from "./components/NavbarNav";
+import {MDBNavbarToggler} from "./components/NavbarToggler";
+import {MDBNavItem} from "./components/NavItem";
+import {MDBNavLink} from "./components/NavLink";
+import {MDBPagination} from "./components/Pagination";
+import {MDBPageItem} from "./components/PageItem";
+import {MDBPageNav} from "./components/PageLink";
+import {MDBPopover} from "./components/Popover";
+import {MDBPopoverBody} from "./components/PopoverBody";
+import {MDBPopoverHeader} from "./components/PopoverHeader";
+import {MDBProgress} from "./components/Progress";
+import {MDBWaves} from "./components/Waves";
+import {MDBRow} from "./components/Row";
+import {MDBTable} from "./components/Table";
+import {MDBTableBody} from "./components/TableBody";
+import {MDBTableHead} from "./components/TableHead";
+import {MDBTableFoot} from "./components/TableFoot";
+import {MDBTextarea} from "./components/TextField";
+import {MDBTooltip} from "./components/Tooltip";
+import {MDBView} from "./components/View";
 
 let Dropdown = require("./components/Dropdown").default;
 let DropdownMenuComponent = require("./components/DropdownMenuComponent")
@@ -148,7 +148,7 @@ let MDBDropdown = require("./components/Dropdown").default;
 let MDBDropdownMenuComponent = require("./components/DropdownMenuComponent")
   .default;
 
-export {
+export  {
   // FREE
   Animation,
   Badge,
@@ -242,7 +242,7 @@ export {
   MDBCardTitle,
   MDBCarousel,
   MDBCarouselCaption,
-  MDBCarouselControl,
+  MDBControl,
   MDBCarouselInner,
   MDBCarouselItem,
   MDBCarouselIndicators,

@@ -78,7 +78,7 @@ class ModalPage extends React.Component {
       <Container>
         <DocsLink
           title="Modal Templates & Examples"
-          href="https://mdbootstrap.com/react/advanced/modals/"
+          href="https://mdbootstrap.com/docs/react/modals/basic/"
         />
         <h4 className="mt-4">Modal Cookies</h4>
         <Row>

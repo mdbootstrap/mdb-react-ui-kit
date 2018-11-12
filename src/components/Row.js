@@ -12,6 +12,9 @@ class Row extends Component {
       end,
       around,
       between,
+      top,
+      bottom,
+      middle,
       ...attributes
     } = this.props;
 
@@ -22,6 +25,9 @@ class Row extends Component {
       center && "justify-content-center",
       between && "justify-content-between",
       around && "justify-content-around",
+      top && "align-self-start",
+      middle && "align-self-center",
+      bottom && "align-self-end",
       className
     );
 
@@ -31,7 +37,10 @@ class Row extends Component {
 
 Row.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string
+  className: PropTypes.string,
+  top: PropTypes.string,
+  bottom: PropTypes.string,
+  middle: PropTypes.string,
 };
 
 Row.defaultProps = {

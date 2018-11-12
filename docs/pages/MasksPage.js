@@ -8,7 +8,7 @@ class MasksPage extends React.Component {
       <Container className="mt-5">
         <DocsLink
           title="Masks"
-          href="https://mdbootstrap.com/react/css/masks/"
+          href="https://mdbootstrap.com/docs/react/css/masks/"
         />
         <Row>
           <Col md="4">

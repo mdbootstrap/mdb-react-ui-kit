@@ -8,7 +8,7 @@ class HoverPage extends React.Component {
       <Container className="mt-5">
         <DocsLink
           title="Hover Effects"
-          href="https://mdbootstrap.com/react/css/hover-effects/"
+          href="https://mdbootstrap.com/docs/react/css/hover-effects/"
         />
         <Row>
           <Col md="4">

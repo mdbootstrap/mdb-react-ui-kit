@@ -66,6 +66,7 @@ class Tooltip extends React.Component {
       arrowClass,
       componentTooltip,
       componentClass,
+      wrapperStyle,
       tag
     } = this.props;
 
@@ -80,9 +81,11 @@ class Tooltip extends React.Component {
       tooltipClass
     );
 
+    const wrapperStyles = wrapperStyle ? wrapperStyle: {};
+
     const arrowClasses = classNames("arrow", arrowClass);
     return (
-      <Manager tag={tag} className={classes}>
+      <Manager tag={tag} className={classes} style={wrapperStyles}>
         <Target
           component={component}
           style={componentStyle}
@@ -125,7 +128,8 @@ Tooltip.propTypes = {
   componentClass: PropTypes.string,
   children: PropTypes.node,
   tag: PropTypes.string,
-  className: PropTypes.string
+  className: PropTypes.string,
+  wrapperStyle: PropTypes.object
 };
 export default Tooltip;
 export { Tooltip as MDBTooltip };

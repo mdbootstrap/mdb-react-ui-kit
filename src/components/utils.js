@@ -193,3 +193,24 @@ export const returnAttributes = attributes => {
 
   return newAttributesObject;
 };
+
+export const getColorClass = color => {
+  const colorArray = color.split(" ");
+  const specialColors = ["danger", "warning", "success", "info", "default", "primary", "secondary", "elegant", "stylish", "unique", "special" ];
+  let colorClasses = "";
+
+  colorArray.forEach(color => {
+    if(specialColors.includes(color)){
+      if(color.includes('dark')){
+        color.replace('-', '-color-');
+        colorClasses += `${color} `;
+      } else {
+        colorClasses += `${color}-color`;
+      }
+    } else {
+      colorClasses += `${color} `;
+    }
+  })
+
+  return colorClasses;
+}

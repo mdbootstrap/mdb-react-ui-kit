@@ -7,7 +7,7 @@ const ButtonPage = props => {
     <Container>
       <DocsLink
         title="Buttons"
-        href="https://mdbootstrap.com/react/components/buttons/"
+        href="https://mdbootstrap.com/docs/react/components/buttons/"
       />
       <div className="container-fluid text-center">
         <div>

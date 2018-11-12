@@ -56,6 +56,14 @@ module.exports = function (env) {
         }
       },
       {
+        "@date-io/moment": {
+          root: "@date-io/moment",
+          commonjs2: "@date-io/moment",
+          commonjs: "@date-io/moment",
+          amd: "@date-io/moment"
+        }
+      },
+      {
         "prop-types": {
           root: "PropTypes",
           commonjs2: "prop-types",
@@ -224,8 +232,8 @@ module.exports = function (env) {
     ],
     module: {
       rules: [
-        { test: /\.(js)$/, exclude: /node_modules/, use: "babel-loader" },
-        { test: /\.(jsx)$/, exclude: /node_modules/, use: "babel-loader" },
+        { test: /\.(js)$/, use: "babel-loader" },
+        { test: /\.(jsx)$/, use: "babel-loader" },
         { test: /\.css$/, use: ["style-loader", "css-loader"] },
         { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader" },
         {
@@ -259,3 +267,7 @@ module.exports = function (env) {
 
   return config;
 };
+
+
+
+

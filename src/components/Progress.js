@@ -13,6 +13,8 @@ class Progress extends React.Component {
       animated,
       striped,
       color,
+      height,
+      wrapperStyle,
       ...attributes
     } = this.props;
 
@@ -28,17 +30,19 @@ class Progress extends React.Component {
       striped || animated ? "progress-bar-striped" : null
     );
 
-    const height = children ? "1rem" : "";
+    const computedHeight = height ? height : children ? "1rem" : ""
+
+    const computedWrapperStyle = {...wrapperStyle, height: computedHeight}
 
     return (
       <div
         {...attributes}
         className={progressClasses}
-        style={{ height: height }}
+        style={computedWrapperStyle}
       >
         <div
           className={progressBarClasses}
-          style={{ width: `${percent}%`, height: height }}
+          style={{ width: `${percent}%`, height: computedHeight }}
           role="progressbar"
           aria-valuenow={value}
           aria-valuemin="0"
@@ -59,7 +63,9 @@ Progress.propTypes = {
   striped: PropTypes.bool,
   color: PropTypes.string,
   className: PropTypes.string,
-  barClassName: PropTypes.string
+  height: PropTypes.string,
+  barClassName: PropTypes.string,
+  wrapperStyle: PropTypes.object
 };
 
 Progress.defaultProps = {

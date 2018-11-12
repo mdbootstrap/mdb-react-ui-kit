@@ -15,7 +15,7 @@ const AnimationPage = function() {
     <Container className="mt-5">
       <DocsLink
         title="Animations"
-        href="https://mdbootstrap.com/react/css/animations/"
+        href="https://mdbootstrap.com/docs/react/css/animations/"
       />
       <Row center>
         <Animation type="bounce" infinite onAnimationIteration={increment}>

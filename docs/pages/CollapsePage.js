@@ -22,7 +22,7 @@ class CollapsePage extends Component {
       <Container>
         <DocsLink
           title="Collapse"
-          href="https://mdbootstrap.com/react/advanced/collapse/"
+          href="https://mdbootstrap.com/docs/react/advanced/collapse/"
         />
         <div>
           <h1>Basic examples</h1>

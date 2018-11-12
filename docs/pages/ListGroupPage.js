@@ -7,7 +7,7 @@ const ListGroupPage = props => {
     <Container>
       <DocsLink
         title="List Group"
-        href="https://mdbootstrap.com/react/components/list-group/"
+        href="https://mdbootstrap.com/docs/react/components/list-group/"
       />
       <div className="container">
         <div className="row mt-5">

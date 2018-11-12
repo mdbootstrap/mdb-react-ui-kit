@@ -9,7 +9,7 @@ class TooltipsPage extends React.Component {
       <Container>
         <DocsLink
           title="Tooltips"
-          href="https://mdbootstrap.com/react/advanced/tooltips/"
+          href="https://mdbootstrap.com/docs/react/advanced/tooltips/"
         />
         <div className="m-5 text-center">
           <Tooltip

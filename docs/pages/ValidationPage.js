@@ -26,7 +26,7 @@ class FormsPage extends React.Component {
       <Container>
         <DocsLink
           title="Form Validation"
-          href="https://mdbootstrap.com/react/components/form-validation/"
+          href="https://mdbootstrap.com/docs/react/forms/validation/"
         />
         <Row>
           <Col md="">

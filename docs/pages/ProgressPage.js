@@ -7,7 +7,7 @@ const ProgressPage = props => {
     <Container>
       <DocsLink
         title="Progress Bar"
-        href="https://mdbootstrap.com/react/components/progress-bars/"
+        href="https://mdbootstrap.com/docs/react/components/progress-bar/"
       />
       <div className="container-fluid text-center">
         <div className="">

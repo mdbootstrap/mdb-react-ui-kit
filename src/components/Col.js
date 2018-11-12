@@ -10,6 +10,9 @@ class Col extends Component {
       md,
       lg,
       xl,
+      top,
+      bottom,
+      middle,
       size,
       className,
       tag: Tag,
@@ -17,13 +20,16 @@ class Col extends Component {
     } = this.props;
 
     const classes = classNames(
-      size ? "col-" + size : "",
-      xs ? "col-" + xs : "",
-      sm ? "col-sm-" + sm : "",
-      md ? "col-md-" + md : "",
-      lg ? "col-lg-" + lg : "",
-      xl ? "col-xl-" + xl : "",
+      size && "col-" + size,
+      xs && "col-" + xs,
+      sm && "col-sm-" + sm,
+      md && "col-md-" + md,
+      lg && "col-lg-" + lg,
+      xl && "col-xl-" + xl,
       !size && !xs && !sm && !md && !lg && !xl ? "col" : "",
+      top && "align-self-start",
+      middle && "align-self-center",
+      bottom && "align-self-end",
       className
     );
 
@@ -37,6 +43,9 @@ Col.propTypes = {
   md: PropTypes.string,
   lg: PropTypes.string,
   xl: PropTypes.string,
+  top: PropTypes.string,
+  bottom: PropTypes.string,
+  middle: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string
 };

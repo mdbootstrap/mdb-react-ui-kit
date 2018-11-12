@@ -7,7 +7,7 @@ const DatatableApiPage = () => {
     <Container className="mt-3">
       <DocsLink
         title="Datatable"
-        href="https://mdbootstrap.com/react/content/datatables/"
+        href="https://mdbootstrap.com/docs/react/tables/datatables/"
       />
       <Row className="py-3">
         <Col md="12">

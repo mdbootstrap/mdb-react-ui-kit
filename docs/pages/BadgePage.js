@@ -7,7 +7,7 @@ const BadgePage = props => {
     <Container>
       <DocsLink
         title="Badges"
-        href="https://mdbootstrap.com/react/components/badges/"
+        href="https://mdbootstrap.com/docs/react/components/badges/"
       />
       <div className="container-fluid text-center mt-5">
         <div className="">

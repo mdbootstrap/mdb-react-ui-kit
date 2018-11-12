@@ -7,7 +7,7 @@ const FaPage = props => {
     <Container className="mt-3 text-center">
       <DocsLink
         title="Icons"
-        href="https://mdbootstrap.com/react/content/icons/"
+        href="https://mdbootstrap.com/docs/react/content/icons-usage/"
       />
       <div className="">
         <p>

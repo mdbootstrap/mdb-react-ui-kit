@@ -79,7 +79,7 @@ const TablePage = props => {
     <Container className="mt-3">
       <DocsLink
         title="Table Scroll"
-        href="https://mdbootstrap.com/react/content/table-scroll/"
+        href="https://mdbootstrap.com/docs/react/tables/scroll/"
       />
       <Row className="py-3">
         <Col md="12">

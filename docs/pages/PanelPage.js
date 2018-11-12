@@ -26,7 +26,7 @@ function PanelPage() {
     <Container>
       <DocsLink
         title="Panels"
-        href="https://mdbootstrap.com/react/components/panels/"
+        href="https://mdbootstrap.com/docs/react/components/panels/"
       />
       <section className="m-5">
         <h2 className="mt-5">Basic example</h2>

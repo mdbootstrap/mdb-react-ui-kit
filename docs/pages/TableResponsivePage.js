@@ -281,7 +281,7 @@ const TablePage = props => {
     <Container className="mt-3">
       <DocsLink
         title="Table Responsive"
-        href="https://mdbootstrap.com/react/content/table-responsive/"
+        href="https://mdbootstrap.com/docs/react/tables/responsive/"
       />
       <Row className="py-3">
         <Col md="12">

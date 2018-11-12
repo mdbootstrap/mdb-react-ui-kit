@@ -19,7 +19,7 @@ class CardsPage extends Component {
       <Container>
         <DocsLink
           title="Cards"
-          href="https://mdbootstrap.com/react/components/cards/"
+          href="https://mdbootstrap.com/docs/react/components/cards/"
         />
         <Container>
           <h2 className="mt-5">Reversed card</h2>

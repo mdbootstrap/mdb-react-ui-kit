@@ -9,7 +9,7 @@ class SearchPage extends React.Component {
       <Container>
         <DocsLink
           title="Search"
-          href="https://mdbootstrap.com/react/components/search/"
+          href="https://mdbootstrap.com/docs/react/forms/search/"
         />
         <Row>
           <Col md="6">
@@ -258,7 +258,7 @@ class SearchPage extends React.Component {
               className="input-group-text purple lighten-3"
               id="basic-text1"
             >
-              <i className="fa fa-search text-white" aria-hidden="true" />
+              <Fa icon="search" className="text-grey" />
             </span>
           </div>
           <input
@@ -271,7 +271,7 @@ class SearchPage extends React.Component {
         <div className="input-group md-form form-sm form-1 pl-0">
           <div className="input-group-prepend">
             <span className="input-group-text cyan lighten-2" id="basic-text1">
-              <i className="fa fa-search text-white" aria-hidden="true" />
+              <Fa icon="search" className="text-grey" />
             </span>
           </div>
           <input
@@ -284,7 +284,7 @@ class SearchPage extends React.Component {
         <div className="input-group md-form form-sm form-1 pl-0">
           <div className="input-group-prepend">
             <span className="input-group-text pink lighten-3" id="basic-text1">
-              <i className="fa fa-search text-white" aria-hidden="true" />
+              <Fa icon="search" className="text-grey" />
             </span>
           </div>
           <input
@@ -303,7 +303,7 @@ class SearchPage extends React.Component {
           />
           <div className="input-group-append">
             <span className="input-group-text amber lighten-3" id="basic-text1">
-              <i className="fa fa-search text-grey" aria-hidden="true" />
+              <Fa icon="search" className="text-grey" />
             </span>
           </div>
         </div>
@@ -316,7 +316,7 @@ class SearchPage extends React.Component {
           />
           <div className="input-group-append">
             <span className="input-group-text lime lighten-2" id="basic-text1">
-              <i className="fa fa-search text-grey" aria-hidden="true" />
+              <Fa icon="search" className="text-grey" />
             </span>
           </div>
         </div>
@@ -329,7 +329,7 @@ class SearchPage extends React.Component {
           />
           <div className="input-group-append">
             <span className="input-group-text red lighten-3" id="basic-text1">
-              <i className="fa fa-search text-grey" aria-hidden="true" />
+              <Fa icon="search" className="text-grey" />
             </span>
           </div>
         </div>

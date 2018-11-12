@@ -33,7 +33,7 @@ const AlertPage = () => {
     <Container>
       <DocsLink
         title="Alerts"
-        href="https://mdbootstrap.com/react/components/alerts/"
+        href="https://mdbootstrap.com/docs/react/components/alerts/"
       />
       <div>
         <button className="btn btn-info" onClick={notify("info")}>

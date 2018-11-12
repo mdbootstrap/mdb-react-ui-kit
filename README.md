@@ -1,4 +1,4 @@
-[![React-Bootstrap-with-Material-Design](https://mdbootstrap.com/img/Marketing/free/main/react/mdb-react-free.jpg)](https://mdbootstrap.com/react/)
+[![React-Bootstrap-with-Material-Design](https://mdbootstrap.com/img/Marketing/free/main/react/mdb-react-free.jpg)](https://mdbootstrap.com/docs/react/)
 
 # React Bootstrap with Material Design
 
@@ -6,7 +6,7 @@
 
 Built with React and Bootstrap 4. Absolutely no jQuery.
 
-400+ material UI elements, 600+ material icons, 74 CSS animations, TypeScript modules, SASS files and many more.
+400+ material UI elements, 600+ material icons, 74 CSS animations, SASS files and many more.
 
 All fully responsive. All compatible with different browsers.
 
@@ -14,7 +14,7 @@ All fully responsive. All compatible with different browsers.
 
 # Demo:
 
-**Main demo**: https://mdbootstrap.com/react/components/
+**Main demo**: https://mdbootstrap.com/docs/react/components/demo/
 
 # Live Preview
 
@@ -24,8 +24,8 @@ All fully responsive. All compatible with different browsers.
 
 # Version:
 
-- MDBReact 4.8.1
-- React 16.5.2
+- MDBReact 4.8.3
+- React 16.6.0
 
 # Quick start
 
@@ -41,7 +41,7 @@ note "." at the end. It will clone files directly into current folder.
 - Run `npm start`
 - Voilà! Open browser and visit http://localhost:3000
 
-Now you can navigate to our documentation (http://mdbootstrap.com/react/), pick any component and place within your project.
+Now you can navigate to our documentation (http://mdbootstrap.com/docs/react/), pick any component and place within your project.
 
 # Available commands
 
@@ -66,16 +66,16 @@ import "mdbreact/dist/css/mdb.css";
 ### Run server
 
 ```bash
-npm run start
+npm start
 ```
 
 # PRO version:
 
-**React Bootstrap with Material Design PRO (from $79)**: https://mdbootstrap.com/product/react-bootstrap-pro/
+**React Bootstrap with Material Design PRO (from $79)**: https://mdbootstrap.com/products/react-ui-kit/
 
 ## Documentation:
 
-**Huge, detailed documentation avilable online on**: http://mdbootstrap.com/react/
+**Huge, detailed documentation avilable online on**: http://mdbootstrap.com/docs/react/
 
 # Highlights:
 
@@ -113,11 +113,11 @@ A big **thank you to all our users** who are working with us to improve the soft
 
 # Useful Links:
 
-Getting started: https://mdbootstrap.com/react/react-bootstrap-getting-started/
+Getting started: https://mdbootstrap.com/docs/react/getting-started/download/
 
-5 min quick start: https://mdbootstrap.com/react/5-min-quick-start/
+5 min quick start: https://mdbootstrap.com/docs/react/getting-started/quick-start/
 
-Changelog: https://mdbootstrap.com/react/changelog/
+Changelog: https://mdbootstrap.com/docs/react/changelog/
 
 # Social Media:
 

@@ -5,7 +5,7 @@ import DocsLink from "./DocsLink";
 const JumbotronPage = props => {
   return (
     <Container className="mt-5 text-center">
-      <DocsLink title="Jumbotron" href="https://mdbootstrap.com/react/" />
+      <DocsLink title="Jumbotron" href="https://mdbootstrap.com/docs/react/" />
       <Jumbotron>
         <h1 className="display-3">Hello, world!</h1>
         <p className="lead">

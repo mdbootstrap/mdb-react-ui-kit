@@ -7,7 +7,7 @@ const MediaPage = props => {
     <Container>
       <DocsLink
         title="Media Object"
-        href="https://mdbootstrap.com/react/layout/media/"
+        href="https://mdbootstrap.com/docs/react/layout/media-object/"
       />
       <div className="container-fluid mt-4">
         <div className="">

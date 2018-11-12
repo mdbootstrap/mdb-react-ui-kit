@@ -37,7 +37,7 @@ class InputPage extends React.Component {
       <Container className="mt-5">
         <DocsLink
           title="Inputs"
-          href="https://mdbootstrap.com/react/components/inputs/"
+          href="https://mdbootstrap.com/docs/react/forms/inputs/"
         />
         <Container style={{ textAlign: "initial" }}>
           <div>

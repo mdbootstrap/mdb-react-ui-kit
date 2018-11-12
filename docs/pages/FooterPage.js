@@ -8,7 +8,7 @@ class FooterPage extends React.Component {
       <Container>
         <DocsLink
           title="Footer"
-          href="https://mdbootstrap.com/react/components/footer/"
+          href="https://mdbootstrap.com/docs/react/navigation/footer/"
         />
         <Footer color="blue" className="font-small pt-4 mt-4">
           <Container fluid className="text-center text-md-left">

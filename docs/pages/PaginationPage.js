@@ -7,7 +7,7 @@ const PaginationPage = props => {
     <Container>
       <DocsLink
         title="Pagination"
-        href="https://mdbootstrap.com/react/components/pagination/"
+        href="https://mdbootstrap.com/docs/react/components/pagination/"
       />
       <div className="container">
         <div className="row mt-5">
