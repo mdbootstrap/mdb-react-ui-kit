@@ -1,149 +1,229 @@
 import React from "react";
-import {
-  Dropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  Container
-} from "mdbreact";
+import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBContainer } from "mdbreact";
 import DocsLink from "./DocsLink";
 
 class DropdownPage extends React.Component {
   render() {
     return (
-      <Container>
+      <MDBContainer>
         <DocsLink
-          title="Dropdown"
+          title="MDBDropdown"
           href="https://mdbootstrap.com/docs/react/components/dropdowns/"
         />
         <div className="container">
           <h2>Basic example</h2>
-          <Dropdown>
-            <DropdownToggle caret color="primary">
+          <MDBDropdown>
+            <MDBDropdownToggle caret color="primary">
               Material dropdown
-            </DropdownToggle>
-            <DropdownMenu basic>
-              <DropdownItem href="#">Action</DropdownItem>
-              <DropdownItem href="#">Another Action</DropdownItem>
-              <DropdownItem href="#">Something else here</DropdownItem>
-              <DropdownItem href="#">Something else here</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-          <Dropdown>
-            <DropdownToggle caret color="danger">
-              Material dropdown
-            </DropdownToggle>
-            <DropdownMenu basic>
-              <DropdownItem>Action</DropdownItem>
-              <DropdownItem>Another Action</DropdownItem>
-              <DropdownItem>Something else here</DropdownItem>
-              <DropdownItem>Something else here</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-          <Dropdown>
-            <DropdownToggle caret color="success">
-              Material dropdown
-            </DropdownToggle>
-            <DropdownMenu basic>
-              <DropdownItem>Action</DropdownItem>
-              <DropdownItem>Another Action</DropdownItem>
-              <DropdownItem>Something else here</DropdownItem>
-              <DropdownItem>Something else here</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+            </MDBDropdownToggle>
+            <MDBDropdownMenu basic>
+              <MDBDropdownItem>Action</MDBDropdownItem>
+              <MDBDropdownItem>Another Action</MDBDropdownItem>
+              <MDBDropdownItem>Something else here</MDBDropdownItem>
+              <MDBDropdownItem>Something else here</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
+          <MDBDropdown>
+            <MDBDropdownToggle caret color="primary">
+              Dropdown
+            </MDBDropdownToggle>
+            <MDBDropdownMenu  basic >
+              <MDBDropdownItem>Action</MDBDropdownItem>
+              <MDBDropdownItem>Another Action</MDBDropdownItem>
+              <MDBDropdownItem>Something else here</MDBDropdownItem>
+              <MDBDropdownItem divider />
+              <MDBDropdownItem>Separated link</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
+          <MDBDropdown>
+            <MDBDropdownToggle caret color="default">
+              Dropdown
+            </MDBDropdownToggle>
+            <MDBDropdownMenu color="default" basic>
+              <MDBDropdownItem>Action</MDBDropdownItem>
+              <MDBDropdownItem>Another Action</MDBDropdownItem>
+              <MDBDropdownItem>Something else here</MDBDropdownItem>
+              <MDBDropdownItem divider />
+              <MDBDropdownItem>Separated link</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
+          <MDBDropdown>
+            <MDBDropdownToggle caret color="secondary">
+              Dropdown
+            </MDBDropdownToggle>
+            <MDBDropdownMenu color="secondary" basic>
+              <MDBDropdownItem>Action</MDBDropdownItem>
+              <MDBDropdownItem>Another Action</MDBDropdownItem>
+              <MDBDropdownItem>Something else here</MDBDropdownItem>
+              <MDBDropdownItem divider />
+              <MDBDropdownItem>Separated link</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
+          <MDBDropdown>
+            <MDBDropdownToggle caret color="success">
+              Dropdown
+            </MDBDropdownToggle>
+            <MDBDropdownMenu color="success" basic>
+              <MDBDropdownItem>Action</MDBDropdownItem>
+              <MDBDropdownItem>Another Action</MDBDropdownItem>
+              <MDBDropdownItem>Something else here</MDBDropdownItem>
+              <MDBDropdownItem divider />
+              <MDBDropdownItem>Separated link</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
+          <MDBDropdown>
+            <MDBDropdownToggle caret color="dark">
+              Dropdown
+            </MDBDropdownToggle>
+            <MDBDropdownMenu color="dark" basic>
+              <MDBDropdownItem>Action</MDBDropdownItem>
+              <MDBDropdownItem>Another Action</MDBDropdownItem>
+              <MDBDropdownItem>Something else here</MDBDropdownItem>
+              <MDBDropdownItem divider />
+              <MDBDropdownItem>Separated link</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
+          <MDBDropdown>
+            <MDBDropdownToggle caret color="danger">
+              Dropdown
+            </MDBDropdownToggle>
+            <MDBDropdownMenu color="danger" basic>
+              <MDBDropdownItem>Action</MDBDropdownItem>
+              <MDBDropdownItem>Another Action</MDBDropdownItem>
+              <MDBDropdownItem>Something else here</MDBDropdownItem>
+              <MDBDropdownItem divider />
+              <MDBDropdownItem>Separated link</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
+          <MDBDropdown>
+            <MDBDropdownToggle caret color="info">
+              Dropdown
+            </MDBDropdownToggle>
+            <MDBDropdownMenu color="info" basic>
+              <MDBDropdownItem>Action</MDBDropdownItem>
+              <MDBDropdownItem>Another Action</MDBDropdownItem>
+              <MDBDropdownItem>Something else here</MDBDropdownItem>
+              <MDBDropdownItem divider />
+              <MDBDropdownItem>Separated link</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
+          <MDBDropdown>
+            <MDBDropdownToggle caret color="warning">
+              Dropdown
+            </MDBDropdownToggle>
+            <MDBDropdownMenu color="warning" basic>
+              <MDBDropdownItem>Action</MDBDropdownItem>
+              <MDBDropdownItem>Another Action</MDBDropdownItem>
+              <MDBDropdownItem>Something else here</MDBDropdownItem>
+              <MDBDropdownItem divider />
+              <MDBDropdownItem>Separated link</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
+          <MDBDropdown>
+            <MDBDropdownToggle caret color="ins">
+              Dropdown
+            </MDBDropdownToggle>
+            <MDBDropdownMenu color="ins" basic>
+              <MDBDropdownItem>Action</MDBDropdownItem>
+              <MDBDropdownItem>Another Action</MDBDropdownItem>
+              <MDBDropdownItem>Something else here</MDBDropdownItem>
+              <MDBDropdownItem divider />
+              <MDBDropdownItem>Separated link</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
           <br />
           <h2>Sizing</h2>
-          <Dropdown size="lg">
-            <DropdownToggle caret>Large Button</DropdownToggle>
-            <DropdownMenu basic>
-              <DropdownItem>Action</DropdownItem>
-              <DropdownItem>Another Action</DropdownItem>
-              <DropdownItem>Something else here</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Separated link</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-          <Dropdown size="sm">
-            <DropdownToggle caret color="primary">
+          <MDBDropdown size="lg">
+            <MDBDropdownToggle caret>Large Button</MDBDropdownToggle>
+            <MDBDropdownMenu basic>
+              <MDBDropdownItem>Action</MDBDropdownItem>
+              <MDBDropdownItem>Another Action</MDBDropdownItem>
+              <MDBDropdownItem>Something else here</MDBDropdownItem>
+              <MDBDropdownItem divider />
+              <MDBDropdownItem>Separated link</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
+          <MDBDropdown size="sm">
+            <MDBDropdownToggle caret color="primary">
               Small Button
-            </DropdownToggle>
-            <DropdownMenu basic>
-              <DropdownItem>Action</DropdownItem>
-              <DropdownItem>Another Action</DropdownItem>
-              <DropdownItem>Something else here</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Separated link</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+            </MDBDropdownToggle>
+            <MDBDropdownMenu basic>
+              <MDBDropdownItem>Action</MDBDropdownItem>
+              <MDBDropdownItem>Another Action</MDBDropdownItem>
+              <MDBDropdownItem>Something else here</MDBDropdownItem>
+              <MDBDropdownItem divider />
+              <MDBDropdownItem>Separated link</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
           <br />
           <h2>Dropup variation</h2>
-          <Dropdown dropup>
-            <DropdownToggle caret color="primary">
+          <MDBDropdown dropup>
+            <MDBDropdownToggle caret color="primary">
               Dropup
-            </DropdownToggle>
-            <DropdownMenu basic>
-              <DropdownItem>Action</DropdownItem>
-              <DropdownItem>Another Action</DropdownItem>
-              <DropdownItem>Something else here</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Separated link</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+            </MDBDropdownToggle>
+            <MDBDropdownMenu basic>
+              <MDBDropdownItem>Action</MDBDropdownItem>
+              <MDBDropdownItem>Another Action</MDBDropdownItem>
+              <MDBDropdownItem>Something else here</MDBDropdownItem>
+              <MDBDropdownItem divider />
+              <MDBDropdownItem>Separated link</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
           <br />
           <h2>Alignment</h2>
-          <Dropdown>
-            <DropdownToggle caret color="primary">
+          <MDBDropdown>
+            <MDBDropdownToggle caret color="primary">
               This dropdown&apos;s menu is right-aligned
-            </DropdownToggle>
-            <DropdownMenu right basic>
-              <DropdownItem>Action</DropdownItem>
-              <DropdownItem>Another Action</DropdownItem>
-              <DropdownItem>Something else here</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+            </MDBDropdownToggle>
+            <MDBDropdownMenu right basic>
+              <MDBDropdownItem>Action</MDBDropdownItem>
+              <MDBDropdownItem>Another Action</MDBDropdownItem>
+              <MDBDropdownItem>Something else here</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
           <br />
           <h2>Menu headers</h2>
-          <Dropdown>
-            <DropdownToggle caret color="primary">
-              Dropdown
-            </DropdownToggle>
-            <DropdownMenu basic>
-              <DropdownItem header>Dropdown header</DropdownItem>
-              <DropdownItem>Action</DropdownItem>
-              <DropdownItem>Another Action</DropdownItem>
-              <DropdownItem>Something else here</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+          <MDBDropdown>
+            <MDBDropdownToggle caret color="primary">
+              MDBDropdown
+            </MDBDropdownToggle>
+            <MDBDropdownMenu basic>
+              <MDBDropdownItem header>MDBDropdown header</MDBDropdownItem>
+              <MDBDropdownItem>Action</MDBDropdownItem>
+              <MDBDropdownItem>Another Action</MDBDropdownItem>
+              <MDBDropdownItem>Something else here</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
           <br />
           <h2>Menu dividers</h2>
-          <Dropdown>
-            <DropdownToggle caret color="primary">
-              Dropdown
-            </DropdownToggle>
-            <DropdownMenu basic>
-              <DropdownItem>Action</DropdownItem>
-              <DropdownItem>Another Action</DropdownItem>
-              <DropdownItem>Something else here</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Separated link</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+          <MDBDropdown>
+            <MDBDropdownToggle caret color="primary">
+              MDBDropdown
+            </MDBDropdownToggle>
+            <MDBDropdownMenu basic>
+              <MDBDropdownItem>Action</MDBDropdownItem>
+              <MDBDropdownItem>Another Action</MDBDropdownItem>
+              <MDBDropdownItem>Something else here</MDBDropdownItem>
+              <MDBDropdownItem divider />
+              <MDBDropdownItem>Separated link</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
           <br />
           <h2>Disabled menu items</h2>
-          <Dropdown>
-            <DropdownToggle caret color="primary">
-              Dropdown
-            </DropdownToggle>
-            <DropdownMenu basic>
-              <DropdownItem>Regular link</DropdownItem>
-              <DropdownItem disabled href="#">
+          <MDBDropdown>
+            <MDBDropdownToggle caret color="primary">
+              MDBDropdown
+            </MDBDropdownToggle>
+            <MDBDropdownMenu basic>
+              <MDBDropdownItem>Regular link</MDBDropdownItem>
+              <MDBDropdownItem disabled href="#">
                 Disabled link
-              </DropdownItem>
-              <DropdownItem href="#">Another link</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+              </MDBDropdownItem>
+              <MDBDropdownItem href="#">Another link</MDBDropdownItem>
+            </MDBDropdownMenu>
+          </MDBDropdown>
         </div>
-      </Container>
+      </MDBContainer>
     );
   }
 }

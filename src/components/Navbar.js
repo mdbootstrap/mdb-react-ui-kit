@@ -13,12 +13,11 @@ const getExpandClass = expand => {
 };
 
 class Navbar extends Component {
-  constructor(props, refs) {
-    super(props, refs);
+  constructor(props) {
+    super(props);
     this.state = {
       isCollapsed: false
     };
-    this.refs = {};
   }
 
   handleScroll = () => {

@@ -1,16 +1,16 @@
 import React from "react";
 import {
-  Container,
-  Row,
-  Col,
-  Input,
-  Button,
-  Fa,
-  Card,
-  CardBody,
-  Modal,
-  ModalBody,
-  ModalFooter
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBInput,
+  MDBBtn,
+  MDBIcon,
+  MDBCard,
+  MDBCardBody,
+  MDBModal,
+  MDBModalBody,
+  MDBModalFooter
 } from "mdbreact";
 import DocsLink from "./DocsLink";
 
@@ -31,17 +31,17 @@ class FormsPage extends React.Component {
 
   render() {
     return (
-      <Container className="mt-5">
+      <MDBContainer className="mt-5">
         <DocsLink
           title="Forms"
           href="https://mdbootstrap.com/docs/react/forms/basic/"
         />
-        <Row>
-          <Col md="6">
+        <MDBRow>
+          <MDBCol md="6">
             <form>
               <p className="h5 text-center mb-4">Sign in</p>
               <div className="grey-text">
-                <Input
+                <MDBInput
                   label="Type your email"
                   icon="envelope"
                   group
@@ -50,7 +50,7 @@ class FormsPage extends React.Component {
                   error="wrong"
                   success="right"
                 />
-                <Input
+                <MDBInput
                   label="Type your password"
                   icon="lock"
                   group
@@ -59,11 +59,11 @@ class FormsPage extends React.Component {
                 />
               </div>
               <div className="text-center">
-                <Button>Login</Button>
+                <MDBBtn>Login</MDBBtn>
               </div>
             </form>
-          </Col>
-          <Col md="6">
+          </MDBCol>
+          <MDBCol md="6">
             <form>
               <p className="h4 text-center mb-4">Sign in</p>
               <label htmlFor="defaultFormLoginEmailEx" className="grey-text">
@@ -89,16 +89,16 @@ class FormsPage extends React.Component {
                 </button>
               </div>
             </form>
-          </Col>
-        </Row>
+          </MDBCol>
+        </MDBRow>
         <hr className="my-5" />
         <h2 className="mb-5">Form register</h2>
-        <Row className="mt-5">
-          <Col md="6">
+        <MDBRow className="mt-5">
+          <MDBCol md="6">
             <form>
               <p className="h5 text-center mb-4">Sign up</p>
               <div className="grey-text">
-                <Input
+                <MDBInput
                   label="Your name"
                   icon="user"
                   group
@@ -107,7 +107,7 @@ class FormsPage extends React.Component {
                   error="wrong"
                   success="right"
                 />
-                <Input
+                <MDBInput
                   label="Your email"
                   icon="envelope"
                   group
@@ -116,7 +116,7 @@ class FormsPage extends React.Component {
                   error="wrong"
                   success="right"
                 />
-                <Input
+                <MDBInput
                   label="Confirm your email"
                   icon="exclamation-triangle"
                   group
@@ -125,7 +125,7 @@ class FormsPage extends React.Component {
                   error="wrong"
                   success="right"
                 />
-                <Input
+                <MDBInput
                   label="Your password"
                   icon="lock"
                   group
@@ -134,11 +134,11 @@ class FormsPage extends React.Component {
                 />
               </div>
               <div className="text-center">
-                <Button color="primary">Register</Button>
+                <MDBBtn color="primary">Register</MDBBtn>
               </div>
             </form>
-          </Col>
-          <Col md="6">
+          </MDBCol>
+          <MDBCol md="6">
             <form>
               <p className="h4 text-center mb-4">Sign up</p>
               <label htmlFor="defaultFormRegisterNameEx" className="grey-text">
@@ -188,16 +188,16 @@ class FormsPage extends React.Component {
                 </button>
               </div>
             </form>
-          </Col>
-        </Row>
+          </MDBCol>
+        </MDBRow>
         <hr className="my-5" />
         <h2 className="mb-5">Form subscription</h2>
-        <Row className="mt-5">
-          <Col md="6">
+        <MDBRow className="mt-5">
+          <MDBCol md="6">
             <form>
               <p className="h5 text-center mb-4">Subscribe</p>
               <div className="grey-text">
-                <Input
+                <MDBInput
                   label="Your name"
                   icon="user"
                   group
@@ -206,7 +206,7 @@ class FormsPage extends React.Component {
                   error="wrong"
                   success="right"
                 />
-                <Input
+                <MDBInput
                   label="Your email"
                   icon="envelope"
                   group
@@ -217,13 +217,13 @@ class FormsPage extends React.Component {
                 />
               </div>
               <div className="text-center">
-                <Button outline color="info">
-                  Send <Fa icon="paper-plane-o" className="ml-1" />
-                </Button>
+                <MDBBtn outline color="info">
+                  Send <MDBIcon icon="paper-plane-o" className="ml-1" />
+                </MDBBtn>
               </div>
             </form>
-          </Col>
-          <Col md="6">
+          </MDBCol>
+          <MDBCol md="6">
             <form>
               <p className="h4 text-center mb-4">Subscribe</p>
               <label
@@ -256,16 +256,16 @@ class FormsPage extends React.Component {
                 </button>
               </div>
             </form>
-          </Col>
-        </Row>
+          </MDBCol>
+        </MDBRow>
         <hr className="my-5" />
         <h2 className="mb-5">Form contact</h2>
-        <Row className="my-5">
-          <Col md="6">
+        <MDBRow className="my-5">
+          <MDBCol md="6">
             <form>
               <p className="h5 text-center mb-4">Write to us</p>
               <div className="grey-text">
-                <Input
+                <MDBInput
                   label="Your name"
                   icon="user"
                   group
@@ -274,7 +274,7 @@ class FormsPage extends React.Component {
                   error="wrong"
                   success="right"
                 />
-                <Input
+                <MDBInput
                   label="Your email"
                   icon="envelope"
                   group
@@ -283,7 +283,7 @@ class FormsPage extends React.Component {
                   error="wrong"
                   success="right"
                 />
-                <Input
+                <MDBInput
                   label="Subject"
                   icon="tag"
                   group
@@ -292,7 +292,7 @@ class FormsPage extends React.Component {
                   error="wrong"
                   success="right"
                 />
-                <Input
+                <MDBInput
                   type="textarea"
                   rows="2"
                   label="Your message"
@@ -300,13 +300,13 @@ class FormsPage extends React.Component {
                 />
               </div>
               <div className="text-center">
-                <Button outline color="secondary">
-                  Send <Fa icon="paper-plane-o" className="ml-1" />
-                </Button>
+                <MDBBtn outline color="secondary">
+                  Send <MDBIcon icon="paper-plane-o" className="ml-1" />
+                </MDBBtn>
               </div>
             </form>
-          </Col>
-          <Col md="6">
+          </MDBCol>
+          <MDBCol md="6">
             <form>
               <p className="h4 text-center mb-4">Write to us</p>
               <label htmlFor="defaultFormContactNameEx" className="grey-text">
@@ -358,18 +358,18 @@ class FormsPage extends React.Component {
                 </button>
               </div>
             </form>
-          </Col>
-        </Row>
+          </MDBCol>
+        </MDBRow>
         <hr className="my-5" />
         <h2 className="mb-5">A form within a card</h2>
-        <Row>
-          <Col md="6">
-            <Card>
-              <CardBody>
+        <MDBRow>
+          <MDBCol md="6">
+            <MDBCard>
+              <MDBCardBody>
                 <form>
                   <p className="h4 text-center py-4">Sign up</p>
                   <div className="grey-text">
-                    <Input
+                    <MDBInput
                       label="Your name"
                       icon="user"
                       group
@@ -378,7 +378,7 @@ class FormsPage extends React.Component {
                       error="wrong"
                       success="right"
                     />
-                    <Input
+                    <MDBInput
                       label="Your email"
                       icon="envelope"
                       group
@@ -387,7 +387,7 @@ class FormsPage extends React.Component {
                       error="wrong"
                       success="right"
                     />
-                    <Input
+                    <MDBInput
                       label="Confirm your email"
                       icon="exclamation-triangle"
                       group
@@ -396,7 +396,7 @@ class FormsPage extends React.Component {
                       error="wrong"
                       success="right"
                     />
-                    <Input
+                    <MDBInput
                       label="Your password"
                       icon="lock"
                       group
@@ -405,15 +405,15 @@ class FormsPage extends React.Component {
                     />
                   </div>
                   <div className="text-center py-4 mt-3">
-                    <Button color="cyan" type="submit">
+                    <MDBBtn color="cyan" type="submit">
                       Register
-                    </Button>
+                    </MDBBtn>
                   </div>
                 </form>
-              </CardBody>
-            </Card>
-          </Col>
-          <Col md="6">
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
+          <MDBCol md="6">
             <div className="card mx-xl-5">
               <div className="card-body">
                 <form>
@@ -450,30 +450,30 @@ class FormsPage extends React.Component {
                 </form>
               </div>
             </div>
-          </Col>
-        </Row>
+          </MDBCol>
+        </MDBRow>
         <hr className="my-5" />
         <h2 className="mb-5">A form within a modal</h2>
-        <Row>
-          <Col size="12" className="text-center mb-5">
-            <Button color="info" onClick={this.toggle}>
+        <MDBRow>
+          <MDBCol size="12" className="text-center mb-5">
+            <MDBBtn color="info" onClick={this.toggle}>
               Launch modal contact form
-            </Button>
-            <Modal
+            </MDBBtn>
+            <MDBModal
               isOpen={this.state.modal}
               toggle={this.toggle}
               className="cascading-modal"
             >
               <div className="modal-header primary-color white-text">
                 <h4 className="title">
-                  <Fa className="fa fa-pencil" /> Contact form
+                  <MDBIcon className="fa fa-pencil" /> Contact form
                 </h4>
                 <button type="button" className="close" onClick={this.toggle}>
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
-              <ModalBody className="grey-text">
-                <Input
+              <MDBModalBody className="grey-text">
+                <MDBInput
                   size="sm"
                   label="Your name"
                   icon="user"
@@ -483,7 +483,7 @@ class FormsPage extends React.Component {
                   error="wrong"
                   success="right"
                 />
-                <Input
+                <MDBInput
                   size="sm"
                   label="Your email"
                   icon="envelope"
@@ -493,7 +493,7 @@ class FormsPage extends React.Component {
                   error="wrong"
                   success="right"
                 />
-                <Input
+                <MDBInput
                   size="sm"
                   label="Subject"
                   icon="tag"
@@ -503,24 +503,24 @@ class FormsPage extends React.Component {
                   error="wrong"
                   success="right"
                 />
-                <Input
+                <MDBInput
                   size="sm"
                   type="textarea"
                   rows="2"
                   label="Your message"
                   icon="pencil"
                 />
-              </ModalBody>
-              <ModalFooter>
-                <Button color="secondary" onClick={this.toggle}>
+              </MDBModalBody>
+              <MDBModalFooter>
+                <MDBBtn color="secondary" onClick={this.toggle}>
                   Close
-                </Button>{" "}
-                <Button color="primary">Save changes</Button>
-              </ModalFooter>
-            </Modal>
-          </Col>
-        </Row>
-      </Container>
+                </MDBBtn>{" "}
+                <MDBBtn color="primary">Save changes</MDBBtn>
+              </MDBModalFooter>
+            </MDBModal>
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
     );
   }
 }

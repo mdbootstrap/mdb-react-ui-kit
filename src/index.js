@@ -1,5 +1,6 @@
 // FREE
 import Animation from "./components/Animation";
+import Alert from "./components/Alert";
 import Badge from "./components/Badge";
 import Breadcrumb from "./components/Breadcrumb";
 import BreadcrumbItem from "./components/BreadcrumbItem";
@@ -67,12 +68,12 @@ import TableFoot from "./components/TableFoot";
 import TextField from "./components/TextField";
 import Tooltip from "./components/Tooltip";
 import View from "./components/View";
-import { toast, ToastContainer, cssTransition } from "react-toastify";
 import HamburgerToggler from "./components/HamburgerToggler";
 import Iframe from "./components/Iframe";
 
 // MDB FREE
 import {MDBBadge} from "./components/Badge";
+import {MDBAlert} from "./components/Alert";
 import {MDBBreadcrumb} from "./components/Breadcrumb";
 import {MDBBreadcrumbItem} from "./components/BreadcrumbItem";
 import {MDBBtn} from "./components/Button";
@@ -151,6 +152,7 @@ let MDBDropdownMenuComponent = require("./components/DropdownMenuComponent")
 export  {
   // FREE
   Animation,
+  Alert,
   Badge,
   Breadcrumb,
   BreadcrumbItem,
@@ -220,13 +222,11 @@ export  {
   TextField,
   Tooltip,
   View,
-  toast,
-  ToastContainer,
-  cssTransition,
   HamburgerToggler,
   Iframe,
   // MDB FREE
   MDBBadge,
+  MDBAlert,
   MDBBreadcrumb,
   MDBBreadcrumbItem,
   MDBBtn,

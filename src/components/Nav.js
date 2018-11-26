@@ -18,7 +18,7 @@ class Nav extends Component {
 
     const classes = classNames(
       "nav",
-      tabs && "nav-tabs",
+      tabs && "md-tabs",
       pills && "md-pills",
       header && "nav-pills card-header-pills",
       pills && color ? "pills-" + color : false,

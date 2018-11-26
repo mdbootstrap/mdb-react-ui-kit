@@ -1,167 +1,167 @@
 import React from "react";
-import { Button, ButtonGroup, Fa, Container } from "mdbreact";
+import { MDBBtn, MDBBtnGroup, MDBIcon, MDBContainer } from "mdbreact";
 import DocsLink from "./DocsLink";
 
 const ButtonPage = props => {
   return (
-    <Container>
+    <MDBContainer>
       <DocsLink
         title="Buttons"
         href="https://mdbootstrap.com/docs/react/components/buttons/"
       />
       <div className="container-fluid text-center">
         <div>
-          <Button disabled color="primary">
+          <MDBBtn disabled color="primary">
             Primary disabled
-          </Button>
-          <Button disabled href="#" color="primary">
+          </MDBBtn>
+          <MDBBtn disabled href="#" color="primary">
             Primary href disabled
-          </Button>
-          <Button
+          </MDBBtn>
+          <MDBBtn
             active
             href="https://www.mdbootstrap.com"
             target="_blank"
             color="primary"
           >
             Primary href target blank
-          </Button>
-          <Button active color="primary">
+          </MDBBtn>
+          <MDBBtn active color="primary">
             Primary active
-          </Button>
-          <Button color="primary">Primary</Button>
+          </MDBBtn>
+          <MDBBtn color="primary">Primary</MDBBtn>
 
-          <Button>Default</Button>
+          <MDBBtn>Default</MDBBtn>
 
-          <Button color="secondary">Secondary</Button>
+          <MDBBtn color="secondary">Secondary</MDBBtn>
 
-          <Button color="success">Success</Button>
+          <MDBBtn color="success">Success</MDBBtn>
 
-          <Button color="info">Info</Button>
+          <MDBBtn color="info">Info</MDBBtn>
 
-          <Button color="warning">Warning</Button>
+          <MDBBtn color="warning">Warning</MDBBtn>
 
-          <Button color="danger">Danger</Button>
+          <MDBBtn color="danger">Danger</MDBBtn>
           <br />
 
-          <Button color="elegant">Elegant</Button>
+          <MDBBtn color="elegant">Elegant</MDBBtn>
 
-          <Button color="unique">Unique</Button>
+          <MDBBtn color="unique">Unique</MDBBtn>
 
-          <Button color="pink">Pink</Button>
+          <MDBBtn color="pink">Pink</MDBBtn>
 
-          <Button color="purple">Purple</Button>
+          <MDBBtn color="purple">Purple</MDBBtn>
 
-          <Button color="deep-purple">Deep-purple</Button>
+          <MDBBtn color="deep-purple">Deep-purple</MDBBtn>
 
-          <Button color="indigo">Indigo</Button>
+          <MDBBtn color="indigo">Indigo</MDBBtn>
 
-          <Button color="light-blue">Light blue</Button>
+          <MDBBtn color="light-blue">Light blue</MDBBtn>
 
-          <Button color="cyan">Cyan</Button>
+          <MDBBtn color="cyan">Cyan</MDBBtn>
 
-          <Button color="dark-green">Dark-green</Button>
+          <MDBBtn color="dark-green">Dark-green</MDBBtn>
 
-          <Button color="light-green">Light-green</Button>
+          <MDBBtn color="light-green">Light-green</MDBBtn>
 
-          <Button color="yellow">Yellow</Button>
+          <MDBBtn color="yellow">Yellow</MDBBtn>
 
-          <Button color="amber">Amber</Button>
+          <MDBBtn color="amber">Amber</MDBBtn>
 
-          <Button color="deep-orange">Deep-orange</Button>
+          <MDBBtn color="deep-orange">Deep-orange</MDBBtn>
 
-          <Button color="brown">Brown</Button>
+          <MDBBtn color="brown">Brown</MDBBtn>
 
-          <Button color="blue-grey">Blue-grey</Button>
+          <MDBBtn color="blue-grey">Blue-grey</MDBBtn>
 
-          <Button color="mdb-color">MDB</Button>
+          <MDBBtn color="mdb-color">MDB</MDBBtn>
           <br />
 
-          <Button outline color="primary">
+          <MDBBtn outline color="primary">
             Primary
-          </Button>
-          <Button outline>Default</Button>
-          <Button outline color="secondary">
+          </MDBBtn>
+          <MDBBtn outline>Default</MDBBtn>
+          <MDBBtn outline color="secondary">
             Secondary
-          </Button>
-          <Button outline color="success">
+          </MDBBtn>
+          <MDBBtn outline color="success">
             Success
-          </Button>
-          <Button outline color="info">
+          </MDBBtn>
+          <MDBBtn outline color="info">
             Info
-          </Button>
-          <Button outline color="warning">
+          </MDBBtn>
+          <MDBBtn outline color="warning">
             Warning
-          </Button>
-          <Button outline color="danger">
+          </MDBBtn>
+          <MDBBtn outline color="danger">
             Danger
-          </Button>
+          </MDBBtn>
           <br />
-          <Button color="primary">
-            <Fa icon="magic" className="mr-1" /> Left
-          </Button>
-          <Button color="default">
-            Right <Fa icon="magic" className="ml-1" />
-          </Button>
+          <MDBBtn color="primary">
+            <MDBIcon icon="magic" className="mr-1" /> Left
+          </MDBBtn>
+          <MDBBtn color="default">
+            Right <MDBIcon icon="magic" className="ml-1" />
+          </MDBBtn>
           <br />
-          <Button color="primary" href="#">
+          <MDBBtn color="primary" href="#">
             Link
-          </Button>
-          <Button color="primary" type="submit">
-            Button
-          </Button>
+          </MDBBtn>
+          <MDBBtn color="primary" type="submit">
+            MDBBtn
+          </MDBBtn>
 
           <br />
 
-          <Button block>Block level button</Button>
-          <Button block color="primary">
+          <MDBBtn block>Block level button</MDBBtn>
+          <MDBBtn block color="primary">
             Block level button
-          </Button>
+          </MDBBtn>
           <br />
-          <Button color="light-green">light-green</Button>
-          <Button color="mdb">MDB</Button>
-          <Button color="success" outline>
+          <MDBBtn color="light-green">light-green</MDBBtn>
+          <MDBBtn color="mdb">MDB</MDBBtn>
+          <MDBBtn color="success" outline>
             Success
-          </Button>
-          <Button color="danger" outline>
+          </MDBBtn>
+          <MDBBtn color="danger" outline>
             Danger
-          </Button>
-          <Button color="warning" outline>
+          </MDBBtn>
+          <MDBBtn color="warning" outline>
             Warning
-          </Button>
-          <Button color="default" block size="lg">
+          </MDBBtn>
+          <MDBBtn color="default" block size="lg">
             Default
-          </Button>
+          </MDBBtn>
         </div>
         <div>
-          <ButtonGroup vertical>
-            <Button>Left</Button>
-            <Button>Middle</Button>
-            <Button>Right</Button>
-          </ButtonGroup>
+          <MDBBtnGroup vertical>
+            <MDBBtn>Left</MDBBtn>
+            <MDBBtn>Middle</MDBBtn>
+            <MDBBtn>Right</MDBBtn>
+          </MDBBtnGroup>
           <br />
           <br />
-          <ButtonGroup size="lg">
-            <Button>Left</Button>
-            <Button>Middle</Button>
-            <Button>Right</Button>
-          </ButtonGroup>
+          <MDBBtnGroup size="lg">
+            <MDBBtn>Left</MDBBtn>
+            <MDBBtn>Middle</MDBBtn>
+            <MDBBtn>Right</MDBBtn>
+          </MDBBtnGroup>
           <br />
           <br />
-          <ButtonGroup>
-            <Button>Left</Button>
-            <Button>Middle</Button>
-            <Button>Right</Button>
-          </ButtonGroup>
+          <MDBBtnGroup>
+            <MDBBtn>Left</MDBBtn>
+            <MDBBtn>Middle</MDBBtn>
+            <MDBBtn>Right</MDBBtn>
+          </MDBBtnGroup>
           <br />
           <br />
-          <ButtonGroup size="sm">
-            <Button>Left</Button>
-            <Button>Middle</Button>
-            <Button>Right</Button>
-          </ButtonGroup>
+          <MDBBtnGroup size="sm">
+            <MDBBtn>Left</MDBBtn>
+            <MDBBtn>Middle</MDBBtn>
+            <MDBBtn>Right</MDBBtn>
+          </MDBBtnGroup>
         </div>
       </div>
-    </Container>
+    </MDBContainer>
   );
 };
 

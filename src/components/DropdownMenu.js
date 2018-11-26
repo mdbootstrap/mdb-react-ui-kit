@@ -21,11 +21,13 @@ class DropdownMenu extends Component {
       children,
       tag,
       flip,
+      color,
       ...attrs
     } = this.props;
 
     const classes = classNames(
       "dropdown-menu",
+      color && `dropdown-${color}`,
       {
         "dropdown-menu-right": right,
         show: this.context.isOpen,
@@ -76,12 +78,17 @@ DropdownMenu.defaultProps = {
   className: "",
   flip: false,
   right: false,
-  tag: "div"
+  tag: "div",
+  color: false
 };
 
 DropdownMenu.contextTypes = {
   isOpen: PropTypes.bool.isRequired,
-  dropup: PropTypes.bool.isRequired
+  dropup: PropTypes.bool.isRequired,
+  color: PropTypes.oneOfType([
+    PropTypes.oneOf(['primary', 'default', "secondary", "success", "dark", "danger", "info", "warning", "ins" ]),
+    PropTypes.bool])
+
 };
 
 export default DropdownMenu;

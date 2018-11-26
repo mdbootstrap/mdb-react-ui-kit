@@ -11,6 +11,7 @@ import ComponentsNavPage from "./pages/ComponentsNavPage";
 
 // FREE
 import AnimationPage from "./pages/AnimationPage";
+import AlertPage from "./pages/AlertPage";
 import HomePage from "./pages/HomePage";
 import ButtonPage from "./pages/ButtonPage";
 import CSSPage from "./pages/CSSPage";
@@ -29,7 +30,6 @@ import ProgressPage from "./pages/ProgressPage";
 import InputPage from "./pages/InputPage";
 import MediaPage from "./pages/MediaPage";
 import JumbotronPage from "./pages/JumbotronPage";
-import AlertPage from "./pages/AlertPage";
 import CardsPage from "./pages/CardsPage";
 import PaginationPage from "./pages/PaginationPage";
 import PopoverPage from "./pages/PopoverPage";
@@ -63,7 +63,7 @@ class Routes extends React.Component {
         <Route exact path="/tables" component={TablesNavPage} />
         <Route exact path="/modals" component={ModalsNavPage} />
         <Route exact path="/addons" component={AddonsNavPage} />
-        
+
         {/* FREE */}
         <Route path="/css/animations" component={AnimationPage} />
         <Route exact path="/tables/table" component={TablePage} />
@@ -78,7 +78,6 @@ class Routes extends React.Component {
         <Route path="/navigation/navbar" component={NavbarPage} />
         <Route path="/components/media" component={MediaPage} />
         <Route path="/forms/input" component={InputPage} />
-        <Route path="/components/alert" component={AlertPage} />
         <Route path="/components/dropdown" component={DropdownPage} />
         <Route path="/css/icons" component={FaPage} />
         <Route path="/css/jumbotron" component={JumbotronPage} />
@@ -106,6 +105,7 @@ class Routes extends React.Component {
         <Route path="/tables/datatable" component={DatatablePage} />
         <Route path="/tables/datatable-api" component={DatatableApiPage} />
         <Route path="/addons/iframe" component={IframePage} />
+        <Route path="/advanced/alerts" component={AlertPage} />
         <Route
           render={function() {
             return <h1>Not Found</h1>;

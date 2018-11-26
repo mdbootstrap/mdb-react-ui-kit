@@ -1,12 +1,12 @@
 import React from "react";
 import {
-  Input,
-  InputNumeric,
-  FormInline,
-  Button,
-  Container,
-  Row,
-  Col
+  MDBInput,
+  MDBInputSelect,
+  MDBFormInline,
+  MDBBtn,
+  MDBContainer,
+  MDBRow,
+  MDBCol
 } from "mdbreact";
 import DocsLink from "./DocsLink";
 
@@ -20,7 +20,7 @@ class InputPage extends React.Component {
   }
 
   handleSubmit(event) {
-    alert("Input value: " + this.state.value);
+    alert("MDBInput value: " + this.state.value);
     event.preventDefault();
   }
 
@@ -34,31 +34,31 @@ class InputPage extends React.Component {
 
   render() {
     return (
-      <Container className="mt-5">
+      <MDBContainer className="mt-5">
         <DocsLink
           title="Inputs"
           href="https://mdbootstrap.com/docs/react/forms/inputs/"
         />
-        <Container style={{ textAlign: "initial" }}>
+        <MDBContainer style={{ textAlign: "initial" }}>
           <div>
-            <Input label="Example label" />
+            <MDBInput label="Material input" />
 
-            <Input label="Example label" size="sm" />
-            <Input label="Example label" size="sm" icon="envelope" />
+            <MDBInput label="Example label" size="sm" />
+            <MDBInput label="Example label" size="sm" icon="envelope" />
 
-            <Input label="Example label" icon="envelope" />
-            <Input label="Example label" icon="user" />
+            <MDBInput label="Example label" icon="envelope" />
+            <MDBInput label="Example label" icon="user" />
 
-            <Input hint="placeholder" label="Example label" />
+            <MDBInput hint="placeholder" label="Example label" />
 
-            <Input
+            <MDBInput
               value={this.state.value}
               getValue={this.saveToState}
               label="Example label"
             />
-            <Button onClick={this.handleSubmit}>Submit</Button>
+            <MDBBtn onClick={this.handleSubmit}>Submit</MDBBtn>
 
-            <Input
+            <MDBInput
               label="Type your email"
               icon="envelope"
               group
@@ -67,7 +67,7 @@ class InputPage extends React.Component {
               error="wrong"
               success="right"
             />
-            <Input
+            <MDBInput
               label="Type your password"
               icon="lock"
               group
@@ -75,10 +75,10 @@ class InputPage extends React.Component {
               validate
             />
 
-            <Input label="Example label" disabled />
+            <MDBInput label="Example label" disabled />
 
-            <FormInline>
-              <Input
+            <MDBFormInline>
+              <MDBInput
                 label="Type your email"
                 icon="envelope"
                 group
@@ -87,51 +87,51 @@ class InputPage extends React.Component {
                 error="wrong"
                 success="right"
               />
-              <Input
+              <MDBInput
                 label="Type your password"
                 icon="lock"
                 group
                 type="password"
                 validate
               />
-              <Button>Login</Button>
-            </FormInline>
+              <MDBBtn>Login</MDBBtn>
+            </MDBFormInline>
 
-            <Input
+            <MDBInput
               getValue={this.handleChange}
               type="textarea"
               label="Icon Prefix"
               rows="2"
               icon="pencil"
             />
-            <Input type="textarea" label="Basic textarea" rows="2" />
+            <MDBInput type="textarea" label="Basic textarea" rows="2" />
 
             <h4 className="mt-5">Numeric inputs</h4>
 
-            <Row>
-              <Col sm="4">
-                <InputNumeric
+            <MDBRow>
+              <MDBCol sm="4">
+                <MDBInputSelect
                   getValue={this.handleChange}
                   min={5}
                   max={15}
                   value={10}
                   className="mb-2"
                 />
-                <InputNumeric
+                <MDBInputSelect
                   precision={2}
                   value={50.3}
                   step={0.1}
                   className="mb-2"
                 />
-                <InputNumeric
+                <MDBInputSelect
                   precision={2}
                   value={50.3}
                   step={0.5}
                   snap
                   className="mb-2"
                 />
-              </Col>
-            </Row>
+              </MDBCol>
+            </MDBRow>
 
             <hr className="mt-5" />
 
@@ -143,7 +143,7 @@ class InputPage extends React.Component {
             <input type="text" id="exampleForm2" className="form-control" />
 
             <h4 className="mt-4">
-              <strong>Input fields</strong>
+              <strong>MDBInput fields</strong>
             </h4>
             <input
               className="form-control form-control-lg"
@@ -201,42 +201,42 @@ class InputPage extends React.Component {
               <strong>Form grid</strong>
             </h4>
             <form>
-              <Row>
-                <Col>
+              <MDBRow>
+                <MDBCol>
                   <input
                     type="text"
                     className="form-control"
                     placeholder="First name"
                   />
-                </Col>
-                <Col>
+                </MDBCol>
+                <MDBCol>
                   <input
                     type="text"
                     className="form-control"
                     placeholder="Last name"
                   />
-                </Col>
-              </Row>
+                </MDBCol>
+              </MDBRow>
             </form>
             <h4 className="mt-4">
               <strong>Form row</strong>
             </h4>
             <form>
               <div className="form-row">
-                <Col>
+                <MDBCol>
                   <input
                     type="text"
                     className="form-control"
                     placeholder="First name"
                   />
-                </Col>
-                <Col>
+                </MDBCol>
+                <MDBCol>
                   <input
                     type="text"
                     className="form-control"
                     placeholder="Last name"
                   />
-                </Col>
+                </MDBCol>
               </div>
             </form>
             <h4 className="mt-4">
@@ -504,8 +504,8 @@ class InputPage extends React.Component {
               </div>
             </form>
           </div>
-        </Container>
-      </Container>
+        </MDBContainer>
+      </MDBContainer>
     );
   }
 }

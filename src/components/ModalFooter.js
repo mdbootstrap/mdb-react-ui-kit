@@ -4,9 +4,23 @@ import classNames from "classnames";
 
 class ModalFooter extends React.Component {
   render() {
-    const { className, children, ...attributes } = this.props;
+    const { className,
+            children,
+            center,
+            start,
+            end,
+            around,
+            between,
+            ...attributes } = this.props;
 
-    const classes = classNames("modal-footer", className);
+    const classes = classNames(
+      "modal-footer",
+      start && "justify-content-start",
+      end && "justify-content-end",
+      center && "justify-content-center",
+      between && "justify-content-between",
+      around && "justify-content-around",
+      className);
 
     return (
       <div {...attributes} className={classes}>

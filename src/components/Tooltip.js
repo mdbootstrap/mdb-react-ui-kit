@@ -1,7 +1,6 @@
 import React from "react";
 import { Manager, Target, Popper, Arrow } from "react-popper";
 import PropTypes from "prop-types";
-import ReactDOM from "react-dom";
 import classNames from "classnames";
 
 class Tooltip extends React.Component {
@@ -14,8 +13,6 @@ class Tooltip extends React.Component {
     this.show = this.show.bind(this);
     this.hide = this.hide.bind(this);
     this.setVisibility = this.setVisibility.bind(this);
-    this.handleTouch = this.handleTouch.bind(this);
-    this.assignOutsideTouchHandler = this.assignOutsideTouchHandler.bind(this);
   }
 
   show() {
@@ -32,26 +29,6 @@ class Tooltip extends React.Component {
         visible
       })
     );
-  }
-
-  handleTouch() {
-    this.show();
-    this.assignOutsideTouchHandler();
-  }
-
-  assignOutsideTouchHandler() {
-    const handler = e => {
-      let currentNode = e.target;
-      const componentNode = ReactDOM.findDOMNode(this.refs.instance);
-      while (currentNode.parentNode) {
-        if (currentNode === componentNode) return;
-        currentNode = currentNode.parentNode;
-      }
-      if (currentNode !== document) return;
-      this.hide();
-      document.removeEventListener("touchstart", handler);
-    };
-    document.addEventListener("touchstart", handler);
   }
 
   render() {
@@ -92,11 +69,13 @@ class Tooltip extends React.Component {
           className={componentClasses}
           onMouseEnter={this.show}
           onMouseLeave={this.hide}
-          onTouchStart={this.handleTouch}
+          onTouchStart={this.show}
+          onTouchEnd={this.hide}
         >
           {children}
         </Target>
-        {this.state.visible ? (
+        {
+          this.state.visible &&
           <Popper placement={placement} component={componentTooltip}>
             {({ popperProps }) => (
               <div {...popperProps} className={tooltipClasses}>
@@ -109,9 +88,7 @@ class Tooltip extends React.Component {
               </div>
             )}
           </Popper>
-        ) : (
-          false
-        )}
+        }
       </Manager>
     );
   }
