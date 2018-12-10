@@ -5,18 +5,18 @@ import classNames from "classnames";
 class Fa extends React.Component {
   render() {
     const {
-      className,
-      icon,
-      fixed,
-      list,
       border,
-      spin,
-      pulse,
-      pull,
-      size,
-      rotate,
+      className,
+      fixed,
       flip,
+      icon,
       inverse,
+      list,
+      pull,
+      pulse,
+      rotate,
+      size,
+      spin,
       stack,
       ...attributes
     } = this.props;
@@ -43,19 +43,19 @@ class Fa extends React.Component {
 }
 
 Fa.propTypes = {
+  border: PropTypes.bool,
   className: PropTypes.string,
   fixed: PropTypes.bool,
-  list: PropTypes.bool,
-  border: PropTypes.bool,
-  pulse: PropTypes.bool,
-  spin: PropTypes.bool,
-  pull: PropTypes.string,
-  size: PropTypes.string,
-  rotate: PropTypes.string,
   flip: PropTypes.string,
+  icon: PropTypes.string,
   inverse: PropTypes.string,
-  stack: PropTypes.string,
-  icon: PropTypes.string
+  list: PropTypes.bool,
+  pull: PropTypes.string,
+  pulse: PropTypes.bool,
+  rotate: PropTypes.string,
+  spin: PropTypes.bool,
+  size: PropTypes.string,
+  stack: PropTypes.string
 };
 
 export default Fa;

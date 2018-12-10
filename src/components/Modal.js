@@ -85,7 +85,8 @@ class Modal extends Component {
       fade,
       tabIndex,
       role,
-      id
+      id,
+      inline
     } = this.props;
 
     const timeout = fade ? 300 : 0;
@@ -104,7 +105,7 @@ class Modal extends Component {
     );
 
     const wrapperClasses = classNames(
-      "modal",
+      inline ? false : "modal",
       fade && `fade`,
       wrapClassName,
       fade &&

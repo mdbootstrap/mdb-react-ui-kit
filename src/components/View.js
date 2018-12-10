@@ -23,15 +23,15 @@ class View extends React.Component {
 
   render() {
     const {
-      className,
-      children,
-      hover,
-      zoom,
-      rounded,
-      waves,
-      src,
       cascade,
+      children,
+      className,
+      hover,
+      rounded,
+      src,
       tag: Tag,
+      waves,
+      zoom,
       ...attributes
     } = this.props;
 
@@ -41,19 +41,18 @@ class View extends React.Component {
       zoom && "zoom",
       hover && "overlay",
       cascade && "view-cascade",
-      this.props.waves ? "Ripple-parent" : false,
+      waves ? "Ripple-parent" : false,
       className
     );
 
-    let viewStyle;
-    if (this.props.src) {
-      viewStyle = {
-        backgroundImage: "url(" + this.props.src + ")",
+    const viewStyle = src 
+      ? {
+        backgroundImage: "url(" + src + ")",
         backgroundSize: "cover",
         width: "100%",
         height: "100%"
-      };
-    }
+      }
+      : {};
 
     return (
       <Tag
@@ -63,26 +62,34 @@ class View extends React.Component {
         onTouchStart={this.handleClick.bind(this)}
         style={viewStyle}
       >
-        {this.props.children}
-        {this.props.waves && <Waves cursorPos={this.state.cursorPos} />}
+        {children}
+        {waves && <Waves cursorPos={this.state.cursorPos} />}
       </Tag>
     );
   }
 }
 
 View.defaultProps = {
-  tag: "div"
+  cascade: false,
+  className: "",
+  hover: false,
+  rounded: false,
+  src: "",
+  tag: "div",
+  waves: false,
+  zoom: false
 };
 
 View.propTypes = {
+  cascade: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
-  zoom: PropTypes.bool,
   hover: PropTypes.bool,
   rounded: PropTypes.bool,
+  src: PropTypes.string,
   tag: PropTypes.string,
   waves: PropTypes.bool,
-  cascade: PropTypes.bool
+  zoom: PropTypes.bool,
 };
 
 export default View;

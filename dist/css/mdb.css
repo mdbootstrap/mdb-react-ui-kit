@@ -1,12 +1,12 @@
 /*!
  * Material Design for Bootstrap 4
- * Version: MDB FREE 4.5.14
+ * Version: MDB FREE 4.5.15
  *
  *
  * Copyright: Material Design for Bootstrap
  * https://mdbootstrap.com/
  *
- * Read the license: https://mdbootstrap.com/license/
+ * Read the license: https://mdbootstrap.com/general/license/
  *
  *
  * Documentation: https://mdbootstrap.com/
@@ -1843,8 +1843,10 @@ a.text-light:hover, a.text-light:focus {
   padding: 0.85em 1.1em; }
 
 .waves-input-wrapper {
-  border-radius: 0.2em;
-  vertical-align: bottom; }
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  border-radius: 0.2em; }
   .waves-input-wrapper.waves-button {
     padding: 0; }
   .waves-input-wrapper .waves-button-input {
@@ -3071,19 +3073,24 @@ a.waves-effect, a.waves-light {
 .btn-group .btn {
   margin: 0; }
 
-.btn .fa-lg {
+.btn .fa-lg,
+.btn-floating .fa-lg {
   font-size: 1.33333333em !important; }
 
-.btn .fa-2x {
+.btn .fa-2x,
+.btn-floating .fa-2x {
   font-size: 2em !important; }
 
-.btn .fa-3x {
+.btn .fa-3x,
+.btn-floating .fa-3x {
   font-size: 3em !important; }
 
-.btn .fa-4x {
+.btn .fa-4x,
+.btn-floating .fa-4x {
   font-size: 4em !important; }
 
-.btn .fa-5x {
+.btn .fa-5x,
+.btn-floating .fa-5x {
   font-size: 5em !important; }
 
 .btn-primary {
@@ -5528,6 +5535,8 @@ body.scrollable {
   .md-form textarea.md-textarea-auto {
     padding: 0;
     padding-top: 1.5rem; }
+  .md-form textarea ~ label.active {
+    color: #4285f4; }
 
 .edge-header {
   display: block;
@@ -6113,3 +6122,80 @@ div.dataTables_wrapper div.dataTables_paginate {
 
 .bs-select select {
   display: inline-block !important; }
+
+table.dataTable thead > tr > th.sorting_asc, table.dataTable thead > tr > th.sorting_desc, table.dataTable thead > tr > th.sorting {
+  padding-right: 30px; }
+
+table.dataTable thead > tr > td.sorting_asc, table.dataTable thead > tr > td.sorting_desc, table.dataTable thead > tr > td.sorting {
+  padding-right: 30px; }
+
+table.dataTable thead > tr > th:active,
+table.dataTable thead > tr > td:active {
+  outline: none; }
+
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_asc_disabled,
+table.dataTable thead .sorting_desc_disabled {
+  cursor: pointer;
+  position: relative; }
+
+table.dataTable thead .sorting:before, table.dataTable thead .sorting:after {
+  position: absolute;
+  bottom: 0.9em;
+  display: block;
+  opacity: 0.3; }
+
+table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_asc:after {
+  position: absolute;
+  bottom: 0.9em;
+  display: block;
+  opacity: 0.3; }
+
+table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_desc:after {
+  position: absolute;
+  bottom: 0.9em;
+  display: block;
+  opacity: 0.3; }
+
+table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_asc_disabled:after {
+  position: absolute;
+  bottom: 0.9em;
+  display: block;
+  opacity: 0.3; }
+
+table.dataTable thead .sorting_desc_disabled:before, table.dataTable thead .sorting_desc_disabled:after {
+  position: absolute;
+  bottom: 0.9em;
+  display: block;
+  opacity: 0.3; }
+
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc_disabled:before {
+  right: 1em;
+  content: "\f0de";
+  font-family: FontAwesome;
+  font-size: 1rem; }
+
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:after {
+  right: 0.5em;
+  content: "\f0dd";
+  font-family: FontAwesome;
+  right: 16px;
+  font-size: 1rem; }
+
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_desc:after {
+  opacity: 1; }
+
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc_disabled:after {
+  opacity: 0; }

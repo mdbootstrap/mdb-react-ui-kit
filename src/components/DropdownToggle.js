@@ -29,12 +29,11 @@ class DropdownToggle extends React.Component {
   }
 
   render() {
-    const { className, color, caret, split, nav, tag, ...props } = this.props;
+    const { className, color, caret, nav, tag, ...props } = this.props;
     const ariaLabel = props["aria-label"] || "Toggle Dropdown";
     const classes = classNames(
       {
-        "dropdown-toggle": caret || split,
-        "dropdown-toggle-split": split,
+        "dropdown-toggle": caret,
         "nav-link": nav
       },
       className
@@ -77,7 +76,6 @@ DropdownToggle.propTypes = {
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
   "aria-haspopup": PropTypes.bool,
-  split: PropTypes.bool,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   nav: PropTypes.bool
 };

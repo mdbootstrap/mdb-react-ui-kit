@@ -1,5 +1,5 @@
 import React from "react";
-import { Progress, Container } from "mdbreact";
+import { MDBProgress, Container } from "mdbreact";
 import DocsLink from "./DocsLink";
 
 const ProgressPage = props => {
@@ -9,27 +9,52 @@ const ProgressPage = props => {
         title="Progress Bar"
         href="https://mdbootstrap.com/docs/react/components/progress-bar/"
       />
-      <div className="container-fluid text-center">
-        <div className="">
-          <Progress value={100} />
-          <Progress value={0} />
-          <Progress value={25} />
-          <Progress value={75} />
-          <Progress animated color="warning" value={75} />
-          <Progress value="25">25%</Progress>
-          <Progress striped value={50} />
-          <Progress color="success" value="100" striped>
-            You did it!
-          </Progress>
-          <Progress color="warning" value="30" animated>
-            Wow!
-          </Progress>
-          <Progress color="info" value="25">
-            Cool
-          </Progress>
-        </div>
+      <div className="container-fluid">
+        <p>Material design</p>
+        <MDBProgress material value={100} />
+        <MDBProgress material value={75} color="success" />
+        <MDBProgress material value={50} color="danger" />
+        <MDBProgress material value={25} color="warning" />
+        <MDBProgress material animated value={100} />
+        <MDBProgress material value={75} animated color="success" />
+        <MDBProgress material value={50} animated color="danger" />
+        <MDBProgress material value={25} animated color="warning" />
+
+        <hr />
+        <p>Basic design</p>
+        <MDBProgress value={100} />
+        <br />
+        <MDBProgress value={75} color="success" />
+        <br />
+        <MDBProgress value={50} color="danger" />
+        <br />
+        <MDBProgress value={25} color="warning" />
+        <br />
+        <MDBProgress animated value={100} />
+        <br />
+        <MDBProgress value={75} animated color="success" />
+        <br />
+        <MDBProgress value={50} animated color="danger" />
+        <br />
+        <MDBProgress value={25} animated color="warning" />
+        <br />
+        <hr />
+        <p>Material with text</p>
+        <MDBProgress material value={100}>
+          You did it!
+        </MDBProgress>
+        <MDBProgress material striped value={75} color="success">
+          Almost there
+        </MDBProgress>
+        <MDBProgress material value={50} color="danger">
+          Cool
+        </MDBProgress>
+        <MDBProgress material striped value={25} color="warning">
+          Wow!
+        </MDBProgress>
       </div>
     </Container>
+
   );
 };
 

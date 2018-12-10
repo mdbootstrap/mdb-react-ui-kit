@@ -1,614 +1,592 @@
 import React from "react";
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardText,
-  ListGroup,
-  ListGroupItem,
-  CardHeader,
-  CardFooter,
-  Button,
-  Col,
-  Row,
-  Nav,
-  NavItem,
-  NavLink,
-  CardGroup,
-  Jumbotron,
-  Container
-} from "mdbreact";
+import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBListGroup, MDBListGroupItem, MDBCardHeader, MDBCardFooter, MDBBtn, MDBCol, MDBRow, MDBNav, MDBNavItem, MDBNavLink, MDBCardGroup, MDBJumbotron, MDBContainer } from "mdbreact";
 import DocsLink from "./DocsLink";
 
-function PanelPage() {
+const PanelPage = () => {
   const panelStyle = { width: "22rem", marginTop: "1rem" };
   return (
-    <Container>
+    <MDBContainer>
       <DocsLink
         title="Panels"
         href="https://mdbootstrap.com/docs/react/components/panels/"
       />
       <section className="m-5">
         <h2 className="mt-5">Basic example</h2>
-        <Card className="card-body" style={panelStyle}>
-          <CardTitle>Panel Title</CardTitle>
-          <CardText>
+        <MDBCard className="card-body" style={panelStyle}>
+          <MDBCardTitle>Panel Title</MDBCardTitle>
+          <MDBCardText>
             Some quick example text to build on the panel title and make up the
             bulk of the panel's content.
-          </CardText>
+          </MDBCardText>
           <div className="flex-row">
-            <a href="#!">Card link</a>
+            <a href="#!">MDBCard link</a>
             <a href="#!" style={{ marginLeft: "1.25rem" }}>Another link</a>
           </div>
-        </Card>
-        <hr className="mt-5" />
-        <h2 className="mt-5">Body</h2>
+        </MDBCard>
 
-        <Card>
-          <CardBody>This is some text within a panel body.</CardBody>
-        </Card>
+        <hr className="my-5" />
 
-        <h2 className="mt-5">Titles, text and links</h2>
 
-        <Card style={{ width: "22rem", marginTop: "1rem" }}>
-          <CardBody>
-            <CardTitle>Panel title</CardTitle>
-            <CardTitle tag="h6" sub className="mb-2 text-muted">
+        <MDBCard>
+          <MDBCardBody>This is some text within a panel body.</MDBCardBody>
+        </MDBCard>
+
+
+        <MDBCard style={{ width: "22rem", marginTop: "1rem" }}>
+          <MDBCardBody>
+            <MDBCardTitle>Panel title</MDBCardTitle>
+            <MDBCardTitle tag="h6" sub className="mb-2 text-muted">
               Panel title
-            </CardTitle>
-            <CardText>
+            </MDBCardTitle>
+            <MDBCardText>
               Some quick example text to build on the panel title and make up
               the bulk of the panel's content.{" "}
-            </CardText>
+            </MDBCardText>
             <a href="#!" className="card-link">
               Panel link
             </a>
             <a href="#!" className="card-link">
               Another link
             </a>
-          </CardBody>
-        </Card>
+          </MDBCardBody>
+        </MDBCard>
 
-        <h2 className="mt-5">List groups</h2>
 
-        <Card style={{ width: "22rem", marginTop: "1rem" }}>
-          <ListGroup>
-            <ListGroupItem>Cras justo odio</ListGroupItem>
-            <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-            <ListGroupItem>Vestibulum at eros</ListGroupItem>
-          </ListGroup>
-        </Card>
+        <MDBCard style={{ width: "22rem", marginTop: "1rem" }}>
+          <MDBListGroup>
+            <MDBListGroupItem>Cras justo odio</MDBListGroupItem>
+            <MDBListGroupItem>Dapibus ac facilisis in</MDBListGroupItem>
+            <MDBListGroupItem>Vestibulum at eros</MDBListGroupItem>
+          </MDBListGroup>
+        </MDBCard>
 
-        <hr className="mt-5" />
-        <h2 className="mt-5">Header and footer</h2>
+        <hr className="my-5" />
 
-        <Card style={{ width: "22rem", marginTop: "1rem" }}>
-          <CardHeader color="deep-orange lighten-1">Featured</CardHeader>
-          <CardBody>
-            <CardTitle>Special title treatment</CardTitle>
-            <CardText>
+        <MDBCard style={{ width: "22rem", marginTop: "1rem" }}>
+          <MDBCardHeader color="deep-orange lighten-1">Featured</MDBCardHeader>
+          <MDBCardBody>
+            <MDBCardTitle>Special title treatment</MDBCardTitle>
+            <MDBCardText>
               With supporting text below as a natural lead-in to additional
               content.
-            </CardText>
-            <Button color="deep-orange">go somewhere</Button>
-          </CardBody>
-        </Card>
+            </MDBCardText>
+            <MDBBtn color="deep-orange">go somewhere</MDBBtn>
+          </MDBCardBody>
+        </MDBCard>
 
-        <Card style={{ width: "22rem", marginTop: "1rem" }}>
-          <CardHeader color="primary-color" tag="h3">
+        <MDBCard style={{ width: "22rem", marginTop: "1rem" }}>
+          <MDBCardHeader color="primary-color" tag="h3">
             Featured
-          </CardHeader>
-          <CardBody>
-            <CardTitle>Special title treatment</CardTitle>
-            <CardText>
+          </MDBCardHeader>
+          <MDBCardBody>
+            <MDBCardTitle>Special title treatment</MDBCardTitle>
+            <MDBCardText>
               With supporting text below as a natural lead-in to additional
               content.
-            </CardText>
-            <Button color="primary">go somewhere</Button>
-          </CardBody>
-        </Card>
+            </MDBCardText>
+            <MDBBtn color="primary">go somewhere</MDBBtn>
+          </MDBCardBody>
+        </MDBCard>
 
-        <Card
+        <MDBCard
           style={{ width: "22rem", marginTop: "1rem" }}
           className="text-center"
         >
-          <CardHeader color="success-color">Featured</CardHeader>
-          <CardBody>
-            <CardTitle>Special title treatment</CardTitle>
-            <CardText>
+          <MDBCardHeader color="success-color">Featured</MDBCardHeader>
+          <MDBCardBody>
+            <MDBCardTitle>Special title treatment</MDBCardTitle>
+            <MDBCardText>
               With supporting text below as a natural lead-in to additional
               content.
-            </CardText>
-            <Button color="success" size="sm">
+            </MDBCardText>
+            <MDBBtn color="success" size="sm">
               go somewhere
-            </Button>
-          </CardBody>
-          <CardFooter color="success-color">2 days ago</CardFooter>
-        </Card>
+            </MDBBtn>
+          </MDBCardBody>
+          <MDBCardFooter color="success-color">2 days ago</MDBCardFooter>
+        </MDBCard>
 
-        <hr className="mt-5" />
-        <h2 className="mt-5">Sizing</h2>
+        <hr className="my-5" />
 
-        <Row className="mb-4">
-          <Col sm="6">
-            <Card>
-              <CardBody>
-                <CardTitle>Special title treatment</CardTitle>
-                <CardText>
+        <MDBRow className="mb-4">
+          <MDBCol sm="6">
+            <MDBCard>
+              <MDBCardBody>
+                <MDBCardTitle>Special title treatment</MDBCardTitle>
+                <MDBCardText>
                   With supporting text below as a natural lead-in to additional
                   content.
-                </CardText>
-                <Button color="primary">go somewhere</Button>
-              </CardBody>
-            </Card>
-          </Col>
+                </MDBCardText>
+                <MDBBtn color="primary">go somewhere</MDBBtn>
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
 
-          <Col sm="6">
-            <Card>
-              <CardBody>
-                <CardTitle>Special title treatment</CardTitle>
-                <CardText>
+          <MDBCol sm="6">
+            <MDBCard>
+              <MDBCardBody>
+                <MDBCardTitle>Special title treatment</MDBCardTitle>
+                <MDBCardText>
                   With supporting text below as a natural lead-in to additional
                   content.
-                </CardText>
-                <Button color="primary">go somewhere</Button>
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
+                </MDBCardText>
+                <MDBBtn color="primary">go somewhere</MDBBtn>
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
+        </MDBRow>
 
-        <Card className="w-75 mb-4">
-          <CardBody>
-            <CardTitle>Special title treatment</CardTitle>
-            <CardText>
+        <MDBCard className="w-75 mb-4">
+          <MDBCardBody>
+            <MDBCardTitle>Special title treatment</MDBCardTitle>
+            <MDBCardText>
               With supporting text below as a natural lead-in to additional
               content.
-            </CardText>
-            <Button color="primary">go somewhere</Button>
-          </CardBody>
-        </Card>
+            </MDBCardText>
+            <MDBBtn color="primary">go somewhere</MDBBtn>
+          </MDBCardBody>
+        </MDBCard>
 
-        <Card className="w-50">
-          <CardBody>
-            <CardTitle>Special title treatment</CardTitle>
-            <CardText>
+        <MDBCard className="w-50">
+          <MDBCardBody>
+            <MDBCardTitle>Special title treatment</MDBCardTitle>
+            <MDBCardText>
               With supporting text below as a natural lead-in to additional
               content.
-            </CardText>
-            <Button color="primary">go somewhere</Button>
-          </CardBody>
-        </Card>
+            </MDBCardText>
+            <MDBBtn color="primary">go somewhere</MDBBtn>
+          </MDBCardBody>
+        </MDBCard>
 
-        <hr className="mt-5" />
-        <h2 className="mt-5">Text alignment</h2>
+        <hr className="my-5" />
 
-        <Card style={{ width: "20rem", marginTop: "1rem" }}>
-          <CardBody>
-            <CardTitle>Special title treatment</CardTitle>
-            <CardText>
+        <MDBCard style={{ width: "20rem", marginTop: "1rem" }}>
+          <MDBCardBody>
+            <MDBCardTitle>Special title treatment</MDBCardTitle>
+            <MDBCardText>
               With supporting text below as a natural lead-in to additional
               content.
-            </CardText>
-            <Button color="primary">go somewhere</Button>
-          </CardBody>
-        </Card>
+            </MDBCardText>
+            <MDBBtn color="primary">go somewhere</MDBBtn>
+          </MDBCardBody>
+        </MDBCard>
 
-        <Card
+        <MDBCard
           className="text-center"
           style={{ width: "20rem", marginTop: "1rem" }}
         >
-          <CardBody>
-            <CardTitle>Special title treatment</CardTitle>
-            <CardText>
+          <MDBCardBody>
+            <MDBCardTitle>Special title treatment</MDBCardTitle>
+            <MDBCardText>
               With supporting text below as a natural lead-in to additional
               content.
-            </CardText>
-            <Button color="primary">go somewhere</Button>
-          </CardBody>
-        </Card>
+            </MDBCardText>
+            <MDBBtn color="primary">go somewhere</MDBBtn>
+          </MDBCardBody>
+        </MDBCard>
 
-        <Card
+        <MDBCard
           className="text-right"
           style={{ width: "20rem", marginTop: "1rem" }}
         >
-          <CardBody>
-            <CardTitle>Special title treatment</CardTitle>
-            <CardText>
+          <MDBCardBody>
+            <MDBCardTitle>Special title treatment</MDBCardTitle>
+            <MDBCardText>
               With supporting text below as a natural lead-in to additional
               content.
-            </CardText>
-            <Button color="primary">go somewhere</Button>
-          </CardBody>
-        </Card>
+            </MDBCardText>
+            <MDBBtn color="primary">go somewhere</MDBBtn>
+          </MDBCardBody>
+        </MDBCard>
 
-        <hr className="mt-5" />
-        <h2 className="mt-5">Navigation</h2>
+        <hr className="my-5" />
 
-        <Card className="text-center">
-          <CardHeader>
-            <Nav header>
-              <NavItem>
-                <NavLink active to="#">
+        <MDBCard className="text-center">
+          <MDBCardHeader>
+            <MDBNav header>
+              <MDBNavItem>
+                <MDBNavLink active to="#">
                   Active
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="#">Link</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink disabled to="#">
+                </MDBNavLink>
+              </MDBNavItem>
+              <MDBNavItem>
+                <MDBNavLink to="#">Link</MDBNavLink>
+              </MDBNavItem>
+              <MDBNavItem>
+                <MDBNavLink disabled to="#">
                   Disabled
-                </NavLink>
-              </NavItem>
-            </Nav>
-          </CardHeader>
-          <CardBody>
-            <CardTitle>Special title treatment</CardTitle>
-            <CardText>
+                </MDBNavLink>
+              </MDBNavItem>
+            </MDBNav>
+          </MDBCardHeader>
+          <MDBCardBody>
+            <MDBCardTitle>Special title treatment</MDBCardTitle>
+            <MDBCardText>
               With supporting text below as a natural lead-in to additional
               content.
-            </CardText>
-            <Button color="primary">go somewhere</Button>
-          </CardBody>
-        </Card>
+            </MDBCardText>
+            <MDBBtn color="primary">go somewhere</MDBBtn>
+          </MDBCardBody>
+        </MDBCard>
 
-        <hr className="mt-5" />
-        <h2 className="mt-5">Styles</h2>
+        <hr className="my-5" />
 
-        <Row>
-          <Col md="6" className="mb-4">
-            <Card color="indigo" text="white" className="text-center">
-              <CardBody>
+        <MDBRow>
+          <MDBCol md="6" className="mb-4">
+            <MDBCard color="indigo" text="white" className="text-center">
+              <MDBCardBody>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
                 posuere erat a ante.
-              </CardBody>
-            </Card>
+              </MDBCardBody>
+            </MDBCard>
 
             <br />
 
-            <Card color="pink lighten-2" text="white" className="text-center">
-              <CardBody>
+            <MDBCard color="pink lighten-2" text="white" className="text-center">
+              <MDBCardBody>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
                 posuere erat a ante.
-              </CardBody>
-            </Card>
+              </MDBCardBody>
+            </MDBCard>
 
             <br />
 
-            <Card color="info-color" text="white" className="text-center">
-              <CardBody>
+            <MDBCard color="info-color" text="white" className="text-center">
+              <MDBCardBody>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
                 posuere erat a ante.
-              </CardBody>
-            </Card>
-          </Col>
-          <Col md="6">
-            <Card color="red lighten-1" text="white" className="text-center">
-              <CardBody>
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
+          <MDBCol md="6">
+            <MDBCard color="red lighten-1" text="white" className="text-center">
+              <MDBCardBody>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
                 posuere erat a ante.
-              </CardBody>
-            </Card>
+              </MDBCardBody>
+            </MDBCard>
 
             <br />
 
-            <Card color="success-color" text="white" className="text-center">
-              <CardBody>
+            <MDBCard color="success-color" text="white" className="text-center">
+              <MDBCardBody>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
                 posuere erat a ante.
-              </CardBody>
-            </Card>
+              </MDBCardBody>
+            </MDBCard>
 
             <br />
 
-            <Card
+            <MDBCard
               color="mdb-color lighten-2"
               text="white"
               className="text-center"
             >
-              <CardBody>
+              <MDBCardBody>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
                 posuere erat a ante.
-              </CardBody>
-            </Card>
-          </Col>
-        </Row>
+              </MDBCardBody>
+            </MDBCard>
+          </MDBCol>
+        </MDBRow>
 
         <br />
 
-        <Card border="primary" className="mb-3" style={{ maxWidth: "18rem" }}>
-          <CardHeader>Header</CardHeader>
-          <CardBody className="text-primary">
-            <CardTitle tag="h5">Primary card title</CardTitle>
-            <CardText>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </CardText>
-          </CardBody>
-        </Card>
+        <MDBRow center>
+          <MDBCard border="primary" className="m-3" style={{ maxWidth: "18rem" }}>
+            <MDBCardHeader>Header</MDBCardHeader>
+            <MDBCardBody className="text-primary">
+              <MDBCardTitle tag="h5">Primary card title</MDBCardTitle>
+              <MDBCardText>
+                Some quick example text to build on the card title and make up the
+                bulk of the card's content.
+            </MDBCardText>
+            </MDBCardBody>
+          </MDBCard>
 
-        <Card border="secondary" className="mb-3" style={{ maxWidth: "18rem" }}>
-          <CardHeader>Header</CardHeader>
-          <CardBody className="text-secondary">
-            <CardTitle tag="h5">Secondary card title</CardTitle>
-            <CardText>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </CardText>
-          </CardBody>
-        </Card>
+          <MDBCard border="secondary" className="m-3" style={{ maxWidth: "18rem" }}>
+            <MDBCardHeader>Header</MDBCardHeader>
+            <MDBCardBody className="text-secondary">
+              <MDBCardTitle tag="h5">Secondary card title</MDBCardTitle>
+              <MDBCardText>
+                Some quick example text to build on the card title and make up the
+                bulk of the card's content.
+            </MDBCardText>
+            </MDBCardBody>
+          </MDBCard>
 
-        <Card border="success" className="mb-3" style={{ maxWidth: "18rem" }}>
-          <CardHeader>Header</CardHeader>
-          <CardBody className="text-success">
-            <CardTitle tag="h5">Success card title</CardTitle>
-            <CardText>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </CardText>
-          </CardBody>
-        </Card>
+          <MDBCard border="success" className="m-3" style={{ maxWidth: "18rem" }}>
+            <MDBCardHeader>Header</MDBCardHeader>
+            <MDBCardBody className="text-success">
+              <MDBCardTitle tag="h5">Success card title</MDBCardTitle>
+              <MDBCardText>
+                Some quick example text to build on the card title and make up the
+                bulk of the card's content.
+            </MDBCardText>
+            </MDBCardBody>
+          </MDBCard>
 
-        <Card border="danger" className="mb-3" style={{ maxWidth: "18rem" }}>
-          <CardHeader>Header</CardHeader>
-          <CardBody className="text-danger">
-            <CardTitle tag="h5">Danger card title</CardTitle>
-            <CardText>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </CardText>
-          </CardBody>
-        </Card>
+          <MDBCard border="danger" className="m-3" style={{ maxWidth: "18rem" }}>
+            <MDBCardHeader>Header</MDBCardHeader>
+            <MDBCardBody className="text-danger">
+              <MDBCardTitle tag="h5">Danger card title</MDBCardTitle>
+              <MDBCardText>
+                Some quick example text to build on the card title and make up the
+                bulk of the card's content.
+            </MDBCardText>
+            </MDBCardBody>
+          </MDBCard>
 
-        <Card border="warning" className="mb-3" style={{ maxWidth: "18rem" }}>
-          <CardHeader>Header</CardHeader>
-          <CardBody className="text-warning">
-            <CardTitle tag="h5">Warning card title</CardTitle>
-            <CardText>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </CardText>
-          </CardBody>
-        </Card>
+          <MDBCard border="warning" className="m-3" style={{ maxWidth: "18rem" }}>
+            <MDBCardHeader>Header</MDBCardHeader>
+            <MDBCardBody className="text-warning">
+              <MDBCardTitle tag="h5">Warning card title</MDBCardTitle>
+              <MDBCardText>
+                Some quick example text to build on the card title and make up the
+                bulk of the card's content.
+            </MDBCardText>
+            </MDBCardBody>
+          </MDBCard>
 
-        <Card border="info" className="mb-3" style={{ maxWidth: "18rem" }}>
-          <CardHeader>Header</CardHeader>
-          <CardBody className="text-info">
-            <CardTitle tag="h5">Info card title</CardTitle>
-            <CardText>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </CardText>
-          </CardBody>
-        </Card>
+          <MDBCard border="info" className="m-3" style={{ maxWidth: "18rem" }}>
+            <MDBCardHeader>Header</MDBCardHeader>
+            <MDBCardBody className="text-info">
+              <MDBCardTitle tag="h5">Info card title</MDBCardTitle>
+              <MDBCardText>
+                Some quick example text to build on the card title and make up the
+                bulk of the card's content.
+            </MDBCardText>
+            </MDBCardBody>
+          </MDBCard>
 
-        <Card border="light" className="mb-3" style={{ maxWidth: "18rem" }}>
-          <CardHeader>Header</CardHeader>
-          <CardBody>
-            <CardTitle tag="h5">Light card title</CardTitle>
-            <CardText>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </CardText>
-          </CardBody>
-        </Card>
+          <MDBCard border="light" className="m-3" style={{ maxWidth: "18rem" }}>
+            <MDBCardHeader>Header</MDBCardHeader>
+            <MDBCardBody>
+              <MDBCardTitle tag="h5">Light card title</MDBCardTitle>
+              <MDBCardText>
+                Some quick example text to build on the card title and make up the
+                bulk of the card's content.
+            </MDBCardText>
+            </MDBCardBody>
+          </MDBCard>
 
-        <Card border="dark" className="mb-3" style={{ maxWidth: "18rem" }}>
-          <CardHeader>Header</CardHeader>
-          <CardBody className="text-dark">
-            <CardTitle tag="h5">Dark card title</CardTitle>
-            <CardText>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </CardText>
-          </CardBody>
-        </Card>
+          <MDBCard border="dark" className="m-3" style={{ maxWidth: "18rem" }}>
+            <MDBCardHeader>Header</MDBCardHeader>
+            <MDBCardBody className="text-dark">
+              <MDBCardTitle tag="h5">Dark card title</MDBCardTitle>
+              <MDBCardText>
+                Some quick example text to build on the card title and make up the
+                bulk of the card's content.
+            </MDBCardText>
+            </MDBCardBody>
+          </MDBCard>
 
-        <Card border="success" style={{ maxWidth: "18rem" }}>
-          <CardHeader transparent border="success">
-            Header
-          </CardHeader>
-          <CardBody className="text-success">
-            <CardTitle tag="h5">Success card title</CardTitle>
-            <CardText>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </CardText>
-          </CardBody>
-          <CardFooter transparent border="success">
-            Footer
-          </CardFooter>
-        </Card>
+          <MDBCard border="success" style={{ maxWidth: "18rem" }}>
+            <MDBCardHeader transparent border="success">
+              Header
+          </MDBCardHeader>
+            <MDBCardBody className="text-success">
+              <MDBCardTitle tag="h5">Success card title</MDBCardTitle>
+              <MDBCardText>
+                Some quick example text to build on the card title and make up the
+                bulk of the card's content.
+            </MDBCardText>
+            </MDBCardBody>
+            <MDBCardFooter transparent border="success">
+              Footer
+          </MDBCardFooter>
+          </MDBCard>
+        </MDBRow>
 
-        <hr className="mt-5" />
-        <h2 className="mt-5">Layout</h2>
 
-        <CardGroup>
-          <Card>
-            <CardBody>
-              <CardTitle tag="h5">Panel title</CardTitle>
-              <CardText>
+        <hr className="my-5" />
+
+        <MDBCardGroup>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle tag="h5">Panel title</MDBCardTitle>
+              <MDBCardText>
                 This is a wider panel with supporting text below as a natural
                 lead-in to additional content. This content is a little bit
                 longer.
-              </CardText>
-              <CardText small muted>
+              </MDBCardText>
+              <MDBCardText small muted>
                 Last updated 3 mins ago
-              </CardText>
-            </CardBody>
-          </Card>
-          <Card>
-            <CardBody>
-              <CardTitle tag="h5">Panel title</CardTitle>
-              <CardText>
+              </MDBCardText>
+            </MDBCardBody>
+          </MDBCard>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle tag="h5">Panel title</MDBCardTitle>
+              <MDBCardText>
                 This panel has supporting text below as a natural lead-in to
                 additional content.
-              </CardText>
-              <CardText small muted>
+              </MDBCardText>
+              <MDBCardText small muted>
                 Last updated 3 mins ago
-              </CardText>
-            </CardBody>
-          </Card>
-          <Card>
-            <CardBody>
-              <CardTitle tag="h5">Panel title</CardTitle>
-              <CardText>
+              </MDBCardText>
+            </MDBCardBody>
+          </MDBCard>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle tag="h5">Panel title</MDBCardTitle>
+              <MDBCardText>
                 This is a wider panel with supporting text below as a natural
                 lead-in to additional content. This panel has even longer
                 content than the first to show that equal height action.
-              </CardText>
-              <CardText small muted>
+              </MDBCardText>
+              <MDBCardText small muted>
                 Last updated 3 mins ago
-              </CardText>
-            </CardBody>
-          </Card>
-        </CardGroup>
+              </MDBCardText>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCardGroup>
 
         <br />
 
-        <CardGroup>
-          <Card>
-            <CardBody>
-              <CardTitle tag="h5">Panel title</CardTitle>
-              <CardText>
+        <MDBCardGroup>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle tag="h5">Panel title</MDBCardTitle>
+              <MDBCardText>
                 This is a wider panel with supporting text below as a natural
                 lead-in to additional content. This content is a little bit
                 longer.
-              </CardText>
-            </CardBody>
-            <CardFooter small muted>
+              </MDBCardText>
+            </MDBCardBody>
+            <MDBCardFooter small muted>
               Last updated 3 mins ago
-            </CardFooter>
-          </Card>
-          <Card>
-            <CardBody>
-              <CardTitle tag="h5">Panel title</CardTitle>
-              <CardText>
+            </MDBCardFooter>
+          </MDBCard>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle tag="h5">Panel title</MDBCardTitle>
+              <MDBCardText>
                 This panel has supporting text below as a natural lead-in to
                 additional content.
-              </CardText>
-            </CardBody>
-            <CardFooter small muted>
+              </MDBCardText>
+            </MDBCardBody>
+            <MDBCardFooter small muted>
               Last updated 3 mins ago
-            </CardFooter>
-          </Card>
-          <Card>
-            <CardBody>
-              <CardTitle tag="h5">Panel title</CardTitle>
-              <CardText>
+            </MDBCardFooter>
+          </MDBCard>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle tag="h5">Panel title</MDBCardTitle>
+              <MDBCardText>
                 This is a wider panel with supporting text below as a natural
                 lead-in to additional content. This panel has even longer
                 content than the first to show that equal height action.
-              </CardText>
-            </CardBody>
-            <CardFooter small muted>
+              </MDBCardText>
+            </MDBCardBody>
+            <MDBCardFooter small muted>
               Last updated 3 mins ago
-            </CardFooter>
-          </Card>
-        </CardGroup>
+            </MDBCardFooter>
+          </MDBCard>
+        </MDBCardGroup>
 
         <br />
 
-        <CardGroup deck>
-          <Card>
-            <CardBody>
-              <CardTitle tag="h5">Panel title</CardTitle>
-              <CardText>
+        <MDBCardGroup deck>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle tag="h5">Panel title</MDBCardTitle>
+              <MDBCardText>
                 This is a wider panel with supporting text below as a natural
                 lead-in to additional content. This content is a little bit
                 longer.
-              </CardText>
-              <CardText small muted>
+              </MDBCardText>
+              <MDBCardText small muted>
                 Last updated 3 mins ago
-              </CardText>
-            </CardBody>
-          </Card>
-          <Card>
-            <CardBody>
-              <CardTitle tag="h5">Panel title</CardTitle>
-              <CardText>
+              </MDBCardText>
+            </MDBCardBody>
+          </MDBCard>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle tag="h5">Panel title</MDBCardTitle>
+              <MDBCardText>
                 This panel has supporting text below as a natural lead-in to
                 additional content.
-              </CardText>
-              <CardText small muted>
+              </MDBCardText>
+              <MDBCardText small muted>
                 Last updated 3 mins ago
-              </CardText>
-            </CardBody>
-          </Card>
-          <Card>
-            <CardBody>
-              <CardTitle tag="h5">Panel title</CardTitle>
-              <CardText>
+              </MDBCardText>
+            </MDBCardBody>
+          </MDBCard>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle tag="h5">Panel title</MDBCardTitle>
+              <MDBCardText>
                 This is a wider panel with supporting text below as a natural
                 lead-in to additional content. This panel has even longer
                 content than the first to show that equal height action.
-              </CardText>
-              <CardText small muted>
+              </MDBCardText>
+              <MDBCardText small muted>
                 Last updated 3 mins ago
-              </CardText>
-            </CardBody>
-          </Card>
-        </CardGroup>
+              </MDBCardText>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCardGroup>
 
         <br />
 
-        <CardGroup deck>
-          <Card>
-            <CardBody>
-              <CardTitle tag="h5">Panel title</CardTitle>
-              <CardText>
+        <MDBCardGroup deck>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle tag="h5">Panel title</MDBCardTitle>
+              <MDBCardText>
                 This is a wider panel with supporting text below as a natural
                 lead-in to additional content. This content is a little bit
                 longer.
-              </CardText>
-            </CardBody>
-            <CardFooter small muted>
+              </MDBCardText>
+            </MDBCardBody>
+            <MDBCardFooter small muted>
               Last updated 3 mins ago
-            </CardFooter>
-          </Card>
-          <Card>
-            <CardBody>
-              <CardTitle tag="h5">Panel title</CardTitle>
-              <CardText>
+            </MDBCardFooter>
+          </MDBCard>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle tag="h5">Panel title</MDBCardTitle>
+              <MDBCardText>
                 This panel has supporting text below as a natural lead-in to
                 additional content.
-              </CardText>
-            </CardBody>
-            <CardFooter small muted>
+              </MDBCardText>
+            </MDBCardBody>
+            <MDBCardFooter small muted>
               Last updated 3 mins ago
-            </CardFooter>
-          </Card>
-          <Card>
-            <CardBody>
-              <CardTitle tag="h5">Panel title</CardTitle>
-              <CardText>
+            </MDBCardFooter>
+          </MDBCard>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle tag="h5">Panel title</MDBCardTitle>
+              <MDBCardText>
                 This is a wider panel with supporting text below as a natural
                 lead-in to additional content. This panel has even longer
                 content than the first to show that equal height action.
-              </CardText>
-            </CardBody>
-            <CardFooter small muted>
+              </MDBCardText>
+            </MDBCardBody>
+            <MDBCardFooter small muted>
               Last updated 3 mins ago
-            </CardFooter>
-          </Card>
-        </CardGroup>
+            </MDBCardFooter>
+          </MDBCard>
+        </MDBCardGroup>
 
         <br />
 
-        <CardGroup column>
-          <Card>
-            <CardBody>
-              <CardTitle tag="h5">
+        <MDBCardGroup column>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle tag="h5">
                 Panel title that wraps to a new line
-              </CardTitle>
-              <CardText>
+              </MDBCardTitle>
+              <MDBCardText>
                 This is a longer panel with supporting text below as a natural
                 lead-in to additional content. This content is a little bit
                 longer.
-              </CardText>
-            </CardBody>
-          </Card>
-          <Card className="p-3">
+              </MDBCardText>
+            </MDBCardBody>
+          </MDBCard>
+          <MDBCard className="p-3">
             <blockquote className="blockquote mb-0 card-body">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
@@ -621,21 +599,21 @@ function PanelPage() {
                 </small>
               </footer>
             </blockquote>
-          </Card>
-          <Card>
-            <CardBody>
-              <CardTitle tag="h5">Panel title</CardTitle>
-              <CardText>
+          </MDBCard>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle tag="h5">Panel title</MDBCardTitle>
+              <MDBCardText>
                 This panel has supporting text below as a natural lead-in to
                 additional content.
-              </CardText>
-              <CardText small muted>
+              </MDBCardText>
+              <MDBCardText small muted>
                 Last updated 3 mins ago
-              </CardText>
-            </CardBody>
-          </Card>
+              </MDBCardText>
+            </MDBCardBody>
+          </MDBCard>
 
-          <Card color="primary-color" text="white" className="text-center p-3">
+          <MDBCard color="primary-color" text="white" className="text-center p-3">
             <blockquote className="blockquote mb-0">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
@@ -648,22 +626,22 @@ function PanelPage() {
                 </small>
               </footer>
             </blockquote>
-          </Card>
+          </MDBCard>
 
-          <Card className="text-center">
-            <CardBody>
-              <CardTitle tag="h5">Panel title</CardTitle>
-              <CardText>
+          <MDBCard className="text-center">
+            <MDBCardBody>
+              <MDBCardTitle tag="h5">Panel title</MDBCardTitle>
+              <MDBCardText>
                 This panel has supporting text below as a natural lead-in to
                 additional content.
-              </CardText>
-              <CardText small muted>
+              </MDBCardText>
+              <MDBCardText small muted>
                 Last updated 3 mins ago
-              </CardText>
-            </CardBody>
-          </Card>
+              </MDBCardText>
+            </MDBCardBody>
+          </MDBCard>
 
-          <Card className="text-right p-3">
+          <MDBCard className="text-right p-3">
             <blockquote className="blockquote mb-0 card-body">
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
@@ -676,27 +654,26 @@ function PanelPage() {
                 </small>
               </footer>
             </blockquote>
-          </Card>
+          </MDBCard>
 
-          <Card>
-            <CardBody>
-              <CardTitle tag="h5">Panel title</CardTitle>
-              <CardText>
+          <MDBCard>
+            <MDBCardBody>
+              <MDBCardTitle tag="h5">Panel title</MDBCardTitle>
+              <MDBCardText>
                 This is a wider panel with supporting text below as a natural
                 lead-in to additional content. This panel has even longer
                 content than the first to show that equal height action.
-              </CardText>
-              <CardText small muted>
+              </MDBCardText>
+              <MDBCardText small muted>
                 Last updated 3 mins ago
-              </CardText>
-            </CardBody>
-          </Card>
-        </CardGroup>
+              </MDBCardText>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCardGroup>
 
-        <hr className="mt-5" />
-        <h2 className="mt-5">Jumbotron</h2>
+        <hr className="my-5" />
 
-        <Jumbotron>
+        <MDBJumbotron>
           <h1 className="h1-responsive">Hello, world!</h1>
           <p className="lead">
             This is a simple hero unit, a simple jumbotron-style component for
@@ -705,14 +682,14 @@ function PanelPage() {
           <hr className="my-2" />
           <p>
             It uses utility classNamees for typography and spacing to space
-            content out within the larger container.
+            content out within the larger MDBContainer.
           </p>
-          <Button color="primary" size="lg">
+          <MDBBtn color="primary" size="lg">
             Learn more
-          </Button>
-        </Jumbotron>
+          </MDBBtn>
+        </MDBJumbotron>
       </section>
-    </Container>
+    </MDBContainer>
   );
 }
 

@@ -14,27 +14,26 @@ const PaginationPage = props => {
           <div className="col" style={{ maxWidth: "23rem" }}>
             <Pagination>
               <PageItem disabled>
-                <PageLink className="page-link" aria-label="Previous">
+                <PageLink aria-label="Previous">
                   <span aria-hidden="true">&laquo;</span>
-                  <span className="sr-only">Previous</span>
                 </PageLink>
               </PageItem>
               <PageItem active>
-                <PageLink className="page-link">
+                <PageLink>
                   1 <span className="sr-only">(current)</span>
                 </PageLink>
               </PageItem>
               <PageItem>
-                <PageLink className="page-link">2</PageLink>
+                <PageLink>2</PageLink>
               </PageItem>
               <PageItem>
-                <PageLink className="page-link">3</PageLink>
+                <PageLink>3</PageLink>
               </PageItem>
               <PageItem>
-                <PageLink className="page-link">4</PageLink>
+                <PageLink>4</PageLink>
               </PageItem>
               <PageItem>
-                <PageLink className="page-link">5</PageLink>
+                <PageLink>5</PageLink>
               </PageItem>
             </Pagination>
           </div>

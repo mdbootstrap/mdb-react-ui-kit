@@ -8,6 +8,7 @@ class ListGroupItem extends Component {
       active,
       children,
       className,
+      color,
       disabled,
       hover,
       success,
@@ -20,6 +21,7 @@ class ListGroupItem extends Component {
 
     const classes = classNames(
       "list-group-item",
+      color && `list-group-item-${color}`,
       active ? "active" : "",
       disabled ? "disabled" : "",
       hover ? "list-group-item-action" : "",
@@ -52,7 +54,8 @@ ListGroupItem.propTypes = {
   danger: PropTypes.bool,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
+  color: PropTypes.oneOf(['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']),
 };
 
 ListGroupItem.defaultProps = {

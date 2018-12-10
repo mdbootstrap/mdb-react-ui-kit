@@ -5,10 +5,10 @@ import classNames from "classnames";
 class PageItem extends Component {
   render() {
     const {
-      disabled,
       active,
-      children,
       className,
+      children,
+      disabled,
       tag: Tag,
       ...attributes
     } = this.props;
@@ -29,16 +29,17 @@ class PageItem extends Component {
 }
 
 PageItem.propTypes = {
-  disabled: PropTypes.bool,
   active: PropTypes.bool,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
+  disabled: PropTypes.bool,
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 PageItem.defaultProps = {
-  disabled: false,
   active: false,
+  className: "",
+  disabled: false,
   tag: "li"
 };
 

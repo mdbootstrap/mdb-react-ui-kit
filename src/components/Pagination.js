@@ -6,8 +6,8 @@ class Pagination extends Component {
   render() {
     const {
       children,
-      className,
       circle,
+      className,
       color,
       tag: Tag,
       ...attributes
@@ -29,14 +29,17 @@ class Pagination extends Component {
 }
 
 Pagination.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
+  children: PropTypes.node,
   circle: PropTypes.bool,
+  className: PropTypes.string,
   color: PropTypes.string,
-  children: PropTypes.node
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 Pagination.defaultProps = {
+  circle: false,
+  className: "",
+  color: "",
   tag: "ul"
 };
 

@@ -5,10 +5,10 @@ import classNames from "classnames";
 class Mask extends React.Component {
   render() {
     const {
-      className,
       children,
-      pattern,
+      className,
       overlay,
+      pattern,
       tag: Tag,
       ...attributes
     } = this.props;
@@ -27,16 +27,19 @@ class Mask extends React.Component {
   }
 }
 
-Mask.defaultProps = {
-  tag: "div"
-};
-
 Mask.propTypes = {
-  tag: PropTypes.string,
-  pattern: PropTypes.number,
   children: PropTypes.node,
   className: PropTypes.string,
-  overlay: PropTypes.string
+  overlay: PropTypes.string,
+  pattern: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  tag: PropTypes.string
+};
+
+Mask.defaultProps = {
+  className: "",
+  overlay: "",
+  pattern: "",
+  tag: "div"
 };
 
 export default Mask;

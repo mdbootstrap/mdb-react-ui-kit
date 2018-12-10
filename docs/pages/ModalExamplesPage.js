@@ -381,7 +381,7 @@ class ModalPage extends React.Component {
                   <tr>
                     <td>1</td>
                     <td>Product 1</td>
-                    <td>100$</td>
+                    <td>$100</td>
                     <td>
                       <Fa icon="remove" />
                     </td>
