@@ -1,5 +1,5 @@
 import React from "react";
-import { MDBBtn, MDBBtnGroup, MDBIcon, MDBContainer } from "mdbreact";
+import { MDBBtn, MDBBtnGroup, MDBIcon, MDBContainer, MDBCol, MDBRow, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
 import DocsLink from "./DocsLink";
 
 const ButtonPage = props => {
@@ -160,6 +160,196 @@ const ButtonPage = props => {
             <MDBBtn>Right</MDBBtn>
           </MDBBtnGroup>
         </div>
+
+        <hr className="my-5" />
+
+        <MDBRow center>
+          <div className="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <MDBBtnGroup className="mr-2">
+              <MDBBtn>1</MDBBtn>
+              <MDBBtn>2</MDBBtn>
+              <MDBBtn>3</MDBBtn>
+              <MDBBtn>4</MDBBtn>
+            </MDBBtnGroup>
+            <MDBBtnGroup className="mr-2">
+              <MDBBtn>5</MDBBtn>
+              <MDBBtn>6</MDBBtn>
+              <MDBBtn>7</MDBBtn>
+            </MDBBtnGroup>
+            <MDBBtnGroup>
+              <MDBBtn>8</MDBBtn>
+            </MDBBtnGroup>
+          </div>
+        </MDBRow>
+
+
+        <hr className="my-5" />
+
+        <MDBRow>
+          <MDBCol md='12' className="mb-4">
+            <MDBBtnGroup size="lg">
+              <MDBBtn color="unique">Left</MDBBtn>
+              <MDBBtn color="unique">Middle</MDBBtn>
+              <MDBBtn color="unique">Right</MDBBtn>
+            </MDBBtnGroup>
+          </MDBCol>
+          <MDBCol md='12' className="mb-4">
+            <MDBBtnGroup>
+              <MDBBtn color="unique">Left</MDBBtn>
+              <MDBBtn color="unique">Middle</MDBBtn>
+              <MDBBtn color="unique">Right</MDBBtn>
+            </MDBBtnGroup>
+          </MDBCol>
+          <MDBCol md='12' className="mb-4">
+            <MDBBtnGroup size="sm">
+              <MDBBtn color="unique">Left</MDBBtn>
+              <MDBBtn color="unique">Middle</MDBBtn>
+              <MDBBtn color="unique">Right</MDBBtn>
+            </MDBBtnGroup>
+          </MDBCol>
+        </MDBRow>
+
+        <hr className="my-5" />
+
+        <MDBBtnGroup>
+          <MDBBtn color="info" size="lg">1</MDBBtn>
+          <MDBBtn color="info" size="lg">2</MDBBtn>
+          <MDBBtnGroup>
+            <MDBDropdown>
+              <MDBDropdownToggle caret color="info" className="h-100">
+                Dropdown
+              </MDBDropdownToggle>
+              <MDBDropdownMenu basic color="info">
+                <MDBDropdownItem>Dropdown link</MDBDropdownItem>
+                <MDBDropdownItem>Dropdown link</MDBDropdownItem>
+              </MDBDropdownMenu>
+            </MDBDropdown>
+          </MDBBtnGroup>
+        </MDBBtnGroup>
+
+        <hr className="my-5" />
+
+
+         <MDBRow center>
+          <MDBCol xl="2" lg="3" md="4" className="mb-md-0 mb-4">
+            <MDBBtnGroup vertical>
+                <MDBBtn color="amber" className="ml-0">Button</MDBBtn>
+                <MDBBtn color="amber">Button</MDBBtn>
+                <MDBBtn color="amber">Button</MDBBtn>
+                <MDBBtn color="amber">Button</MDBBtn>
+                <MDBBtn color="amber">Button</MDBBtn>
+                <MDBBtn color="amber">Button</MDBBtn>
+            </MDBBtnGroup>
+          </MDBCol>
+
+          <MDBCol xl="2" lg="3" md="4">
+            <MDBBtnGroup vertical>
+              <MDBBtn color="indigo" className="ml-0">Button</MDBBtn>
+              <MDBBtn color="indigo">Button</MDBBtn>
+
+              <MDBDropdown className="w-100">
+                <MDBDropdownToggle caret color="indigo" className="m-0">
+                  Dropdown
+              </MDBDropdownToggle>
+                <MDBDropdownMenu basic color="info">
+                  <MDBDropdownItem>Dropdown link</MDBDropdownItem>
+                  <MDBDropdownItem>Dropdown link</MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
+
+              <MDBBtn color="indigo">Button</MDBBtn>
+              <MDBBtn color="indigo">Button</MDBBtn>
+
+              <MDBDropdown className="w-100" >
+                <MDBDropdownToggle caret color="indigo" className="m-0 rounded-0">
+                  Dropdown
+              </MDBDropdownToggle>
+                <MDBDropdownMenu basic color="indigo">
+                  <MDBDropdownItem>Dropdown link</MDBDropdownItem>
+                  <MDBDropdownItem>Dropdown link</MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
+              <MDBDropdown className="w-100">
+                <MDBDropdownToggle caret color="indigo" className="m-0 rounded-0">
+                  Dropdown
+              </MDBDropdownToggle>
+                <MDBDropdownMenu basic color="indigo">
+                  <MDBDropdownItem>Dropdown link</MDBDropdownItem>
+                  <MDBDropdownItem>Dropdown link</MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
+              <MDBDropdown className="w-100">
+                <MDBDropdownToggle caret color="indigo" className="m-0 rounded-0">
+                  Dropdown
+              </MDBDropdownToggle>
+                <MDBDropdownMenu basic color="indigo">
+                  <MDBDropdownItem>Dropdown link</MDBDropdownItem>
+                  <MDBDropdownItem>Dropdown link</MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
+
+            </MDBBtnGroup>
+          </MDBCol>
+
+
+        </MDBRow>
+
+        <hr className="my-5" />
+
+        <MDBRow>
+            <MDBCol xl="5" md="6" className="mb-xl-0 mb-4">
+
+              <MDBBtnGroup size="lg" className="mb-4" >
+                <MDBBtn color="primary">Left</MDBBtn>
+                <MDBBtn color="warning">Left</MDBBtn>
+                <MDBBtn color="danger">Left</MDBBtn>
+              </MDBBtnGroup>
+
+              <MDBBtnGroup className="mb-4" >
+                <MDBBtn color="primary">Left</MDBBtn>
+                <MDBBtn color="warning">Left</MDBBtn>
+                <MDBBtn color="danger">Left</MDBBtn>
+              </MDBBtnGroup>
+
+              <MDBBtnGroup size="sm" className="mb-4" >
+                <MDBBtn color="primary">Left</MDBBtn>
+                <MDBBtn color="warning">Left</MDBBtn>
+                <MDBBtn color="danger">Left</MDBBtn>
+              </MDBBtnGroup>
+
+            </MDBCol>
+
+            <MDBCol xl="3" md="12" className="mb-xl-0 mb-4">
+              <MDBBtnGroup vertical>
+                <MDBBtn color="primary" className="ml-0">1</MDBBtn>
+                <MDBBtn color="pink">2</MDBBtn>
+                <MDBBtn color="success">3</MDBBtn>
+                <MDBBtn color="amber">4</MDBBtn>
+                <MDBBtn color="red">5</MDBBtn>
+              </MDBBtnGroup>
+            </MDBCol>
+
+            <MDBCol xl="4" md="12">
+              <div className="btn-toolbar mb-4" role="toolbar">
+                <MDBBtnGroup className="mr-2">
+                  <MDBBtn color="mdb-color lighten-2">1</MDBBtn>
+                  <MDBBtn color="indigo lighten-2">2</MDBBtn>
+                  <MDBBtn color="blue lighten-2">3</MDBBtn>
+                  <MDBBtn color="light-blue lighten-2">4</MDBBtn>
+                  <MDBBtn color="cyan lighten-2">5</MDBBtn>
+                </MDBBtnGroup>
+              </div>
+              <div className="btn-toolbar" role="toolbar" >
+                <MDBBtnGroup className="mr-2">
+                  <MDBBtn color="indigo lighten-2"><MDBIcon icon="start" /></MDBBtn>
+                  <MDBBtn color="blue lighten-2"><MDBIcon icon="heart" /></MDBBtn>
+                  <MDBBtn color="light-blue lighten-2"><MDBIcon icon="user" /></MDBBtn>
+                  <MDBBtn color="cyan lighten-2"><MDBIcon icon="twitter" /></MDBBtn>
+                </MDBBtnGroup>
+              </div>
+            </MDBCol>
+
+        </MDBRow>
       </div>
     </MDBContainer>
   );

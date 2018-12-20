@@ -16,6 +16,18 @@ class ComponentsPage extends React.Component {
                 <h6 className="mt-3 grey-text">FREE </h6>
                 <NavLink
                   className="list-group-item list-group-item-action"
+                  to="/addons/edge-header"
+                >
+                  <h5
+                    style={{ margin: "0" }}
+                    className="justify-content-between d-flex align-items-center"
+                  >
+                    Edge Header
+                    <Fa icon="angle-right" />
+                  </h5>
+                </NavLink>
+                <NavLink
+                  className="list-group-item list-group-item-action"
                   to="/addons/iframe"
                 >
                   <h5

@@ -1,4 +1,4 @@
-[![React-Bootstrap-with-Material-Design](https://mdbootstrap.com/img/Marketing/products/react/mdb-free.jpg)](https://mdbootstrap.com/docs/react/)
+[![React-Bootstrap-with-Material-Design](https://mdbootstrap.com/img/Marketing/free/main/react/mdb-react-free.jpg)](https://mdbootstrap.com/docs/react/)
 
 # React Bootstrap with Material Design
 
@@ -24,7 +24,7 @@ All fully responsive. All compatible with different browsers.
 
 # Version:
 
-- MDBReact 4.8.5
+- MDBReact 4.8.6
 - React 16.6.0
 
 # Quick start

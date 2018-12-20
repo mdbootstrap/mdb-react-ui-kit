@@ -125,7 +125,7 @@ class DataTable extends Component {
         const filteredRows = prevState.rows.filter(row => {
           for (let key in row) {
             if (Object.prototype.hasOwnProperty.call(row, key)) {
-              const stringValue = row[key].toString();
+              const stringValue = row[key] !== null ? row[key].toString() : "";
               if (
                 stringValue.toLowerCase().match(this.state.search.toLowerCase())
               )

@@ -49,6 +49,7 @@ import SearchPage from "./pages/SearchPage";
 import ValidationPage from "./pages/ValidationPage";
 import NavbarPage from "./pages/NavbarPage";
 import IframePage from "./pages/IframePage";
+import EdgeHeaderPage from "./pages/EdgeHeaderPage"
 
 class Routes extends React.Component {
   render() {
@@ -105,6 +106,7 @@ class Routes extends React.Component {
         <Route path="/tables/datatable" component={DatatablePage} />
         <Route path="/tables/datatable-api" component={DatatableApiPage} />
         <Route path="/addons/iframe" component={IframePage} />
+        <Route path="/addons/edge-header" component={EdgeHeaderPage} />
         <Route path="/advanced/alerts" component={AlertPage} />
         <Route
           render={function() {

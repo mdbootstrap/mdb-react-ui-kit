@@ -31,7 +31,11 @@ DataTableSelect.propTypes = {
   entries: PropTypes.arrayOf(PropTypes.number),
   onChange: PropTypes.func,
   value: PropTypes.number,
-  label: PropTypes.string
+  label: PropTypes.oneOfType([
+    PropTypes.string, 
+    PropTypes.number, 
+    PropTypes.object
+  ])
 };
 
 export default DataTableSelect;

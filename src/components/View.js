@@ -47,10 +47,11 @@ class View extends React.Component {
 
     const viewStyle = src 
       ? {
-        backgroundImage: "url(" + src + ")",
+        backgroundImage: `url("${src}")`,
+        backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
-        width: "100%",
-        height: "100%"
+        backgroundPosition: "center center",
+        height: "100vh"
       }
       : {};
 

@@ -72,6 +72,7 @@ class TextField extends React.Component {
 
   render() {
     const {
+      children,
       containerClass,
       size,
       group,
@@ -185,6 +186,7 @@ class TextField extends React.Component {
         ) : (
           false
         )}
+        {children}
       </div>
     );
   }
@@ -206,7 +208,11 @@ TextField.propTypes = {
   default: PropTypes.string,
   error: PropTypes.string,
   success: PropTypes.string,
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([
+    PropTypes.string, 
+    PropTypes.number, 
+    PropTypes.object
+  ]),
   labelClass: PropTypes.string,
   icon: PropTypes.string,
   iconClass: PropTypes.string,

@@ -10,6 +10,7 @@ class Pagination extends Component {
       className,
       color,
       tag: Tag,
+      size,
       ...attributes
     } = this.props;
 
@@ -17,6 +18,7 @@ class Pagination extends Component {
       "pagination",
       circle && "pagination-circle",
       color && "pg-" + color,
+      size ? `pagination-${size}` : false,
       className
     );
 
@@ -33,7 +35,8 @@ Pagination.propTypes = {
   circle: PropTypes.bool,
   className: PropTypes.string,
   color: PropTypes.string,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  size: PropTypes.oneOf(['lg', 'sm']),
 };
 
 Pagination.defaultProps = {

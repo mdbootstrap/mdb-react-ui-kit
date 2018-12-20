@@ -1,6 +1,6 @@
 import React from "react";
 import { Line, Bar, Radar, Pie, Doughnut, Polar } from "react-chartjs-2";
-import { Container } from "mdbreact";
+import { MDBContainer } from "mdbreact";
 import DocsLink from "./DocsLink";
 
 // LineChart
@@ -164,7 +164,7 @@ const dataDoughnut = {
 class ChartsPage extends React.Component {
   render() {
     return (
-      <Container>
+      <MDBContainer>
         <DocsLink
           title="Charts"
           href="https://mdbootstrap.com/docs/react/advanced/charts/"
@@ -193,7 +193,7 @@ class ChartsPage extends React.Component {
           <h3 className="mt-5">Doughnut Chart</h3>
           <Doughnut data={dataDoughnut} options={{ responsive: true }} />
         </div>
-      </Container>
+      </MDBContainer>
     );
   }
 }
