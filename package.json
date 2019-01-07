@@ -1,6 +1,6 @@
 {
   "name": "mdbreact",
-  "version": "4.8.6",
+  "version": "4.8.7",
   "author": "MDBootstrap",
   "repository": "https://git.mdbootstrap.com/mdb/react/re-pro",
   "main": "dist/mdbreact.js",
@@ -18,8 +18,9 @@
   "dependencies": {
     "@date-io/moment": "0.0.2",
     "@material-ui/core": "^3.4.0",
-    "bootstrap-css-only": "^4.1.1",
-    "chart.js": "^2.7.2",
+    "bootstrap-css-only": "^4.1.3",
+    "chart.js": "^2.7.3",
+    "classnames": "^2.2.6",
     "font-awesome": "^4.7.0",
     "material-ui-pickers": "2.0.0",
     "moment": "^2.22.2",
@@ -31,10 +32,9 @@
     "react-image-lightbox": "5.0.0",
     "react-numeric-input": "^2.2.3",
     "react-popper": "^0.7.5",
+    "react-router-dom": "^4.3.1",
     "react-toastify": "^3.2.2",
-    "react-transition-group": "^2.5.0",
-    "react-router-dom": "^4.2.0",
-    "classnames": "^2.2.5"
+    "react-transition-group": "^2.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
@@ -53,13 +53,14 @@
     "eslint-plugin-react": "^7.11.1",
     "file-loader": "^2.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.10.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
-    "webpack": "^4.20.2",
+    "webpack": "^4.28.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.9",
-    "node-sass": "^4.10.0",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0"
+    "webpack-dev-server": "^3.1.10"
   }
 }

@@ -68,8 +68,10 @@ import TableFoot from "./components/TableFoot";
 import TextField from "./components/TextField";
 import Tooltip from "./components/Tooltip";
 import View from "./components/View";
+import { toast, ToastContainer, cssTransition } from "react-toastify";
 import HamburgerToggler from "./components/HamburgerToggler";
 import Iframe from "./components/Iframe";
+
 
 // MDB FREE
 import {MDBBadge} from "./components/Badge";
@@ -141,13 +143,16 @@ import {MDBTextarea} from "./components/TextField";
 import {MDBTooltip} from "./components/Tooltip";
 import {MDBView} from "./components/View";
 
+
 let Dropdown = require("./components/Dropdown").default;
 let DropdownMenuComponent = require("./components/DropdownMenuComponent")
   .default;
 
+
 let MDBDropdown = require("./components/Dropdown").default;
 let MDBDropdownMenuComponent = require("./components/DropdownMenuComponent")
   .default;
+
 
 export  {
   // FREE
@@ -222,9 +227,11 @@ export  {
   TextField,
   Tooltip,
   View,
+  toast,
+  ToastContainer,
+  cssTransition,
   HamburgerToggler,
   Iframe,
-  // MDB FREE
   MDBBadge,
   MDBAlert,
   MDBBreadcrumb,
@@ -294,5 +301,5 @@ export  {
   MDBTableFoot,
   MDBTextarea,
   MDBTooltip,
-  MDBView
+  MDBView,
 };

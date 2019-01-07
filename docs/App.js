@@ -131,7 +131,7 @@ class App extends Component {
                   >
                     Addons
                   </NavLink>
-                </NavItem>   
+                </NavItem>
               </NavbarNav>
             </Collapse>
           </Navbar>

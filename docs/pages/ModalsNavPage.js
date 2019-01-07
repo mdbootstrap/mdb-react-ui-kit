@@ -38,6 +38,18 @@ class ComponentsPage extends React.Component {
                     <Fa icon="angle-right" />
                   </h5>
                 </NavLink>
+                <NavLink
+                  className="list-group-item list-group-item-action"
+                  to="/modals/modal-examples"
+                >
+                  <h5
+                    style={{ margin: "0" }}
+                    className="justify-content-between d-flex align-items-center"
+                  >
+                    Modal Templates & Examples
+                    <Fa icon="angle-right" />
+                  </h5>
+                </NavLink>
               </ul>
             </Jumbotron>
           </Col>

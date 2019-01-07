@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-/node_modules
-/docs
-/public
-/src
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-yarn.lock
-=======
 docs
 public
 src
->>>>>>> 51e5233be3af3f2b21f9f14c247ee9f80b97747c

@@ -141,6 +141,16 @@ body {
         .badge {
           background-color: $color;
         }
+        .btn {
+          .fa {
+            color: #fff;
+          }
+          &.btn-outline-#{$name} {
+            .fa {
+              color: $color;
+            }
+          }
+        }
       }
     }
   }

@@ -1,0 +1,9 @@
+.text-white .close{
+  color: #fff;
+}
+
+.text-white  .close:not(:disabled):not(.disabled):focus, .close:not(:disabled):not(.disabled):hover {
+  color: #fff;
+  text-decoration: none;
+  opacity: .75;
+}
