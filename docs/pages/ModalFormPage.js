@@ -1,30 +1,17 @@
-import React from "react";
-import {
-  Container,
-  Button,
-  Modal,
-  ModalBody,
-  ModalHeader,
-  ModalFooter,
-  Row,
-  Input,
-  Fa
-} from "mdbreact";
-import DocsLink from "./DocsLink";
+import React, { Component } from "react";
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBRow, MDBInput,  MDBIcon } from "mdbreact";
+import DocsLink from "./../components/docsLink";
 
-class ModalPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modal1: false,
-      modal2: false,
-      modal3: false,
-      modal4: false,
-      modal5: false
-    };
+class ModalFormPage extends Component {
+  state = {
+    modal1: false,
+    modal2: false,
+    modal3: false,
+    modal4: false,
+    modal5: false
   }
 
-  toggle(nr) {
+  toggle = nr => () =>  {
     let modalNumber = "modal" + nr;
     this.setState({
       [modalNumber]: !this.state[modalNumber]
@@ -33,27 +20,27 @@ class ModalPage extends React.Component {
 
   render() {
     return (
-      <Container>
+      <MDBContainer>
         <DocsLink
           title="Modal Form"
           href="https://mdbootstrap.com/docs/react/modals/basic/"
         />
         <h4 className="mt-4">Simple modal login</h4>
-        <Row>
-          <Button rounded onClick={() => this.toggle(1)}>
+        <MDBRow>
+          <MDBBtn rounded onClick={this.toggle(1)}>
             Launch Modal Login Form
-          </Button>
-          <Modal isOpen={this.state.modal1} toggle={() => this.toggle(1)}>
-            <ModalHeader
+          </MDBBtn>
+          <MDBModal isOpen={this.state.modal1} toggle={this.toggle(1)}>
+            <MDBModalHeader
               className="text-center"
               titleClass="w-100 font-weight-bold"
-              toggle={() => this.toggle(1)}
+              toggle={this.toggle(1)}
             >
               Sign in
-            </ModalHeader>
-            <ModalBody>
+            </MDBModalHeader>
+            <MDBModalBody>
               <form className="mx-3 grey-text">
-                <Input
+                <MDBInput
                   label="Type your email"
                   icon="envelope"
                   group
@@ -62,7 +49,7 @@ class ModalPage extends React.Component {
                   error="wrong"
                   success="right"
                 />
-                <Input
+                <MDBInput
                   label="Type your password"
                   icon="lock"
                   group
@@ -70,29 +57,29 @@ class ModalPage extends React.Component {
                   validate
                 />
               </form>
-            </ModalBody>
-            <ModalFooter className="justify-content-center">
-              <Button onClick={() => this.toggle(1)}>Login</Button>
-            </ModalFooter>
-          </Modal>
-        </Row>
+            </MDBModalBody>
+            <MDBModalFooter className="justify-content-center">
+              <MDBBtn onClick={this.toggle(1)}>Login</MDBBtn>
+            </MDBModalFooter>
+          </MDBModal>
+        </MDBRow>
 
         <h4 className="mt-4">Simple modal register</h4>
-        <Row>
-          <Button rounded onClick={() => this.toggle(2)}>
+        <MDBRow>
+          <MDBBtn rounded onClick={this.toggle(2)}>
             Launch Modal Register Form
-          </Button>
-          <Modal isOpen={this.state.modal2} toggle={() => this.toggle(2)}>
-            <ModalHeader
+          </MDBBtn>
+          <MDBModal isOpen={this.state.modal2} toggle={this.toggle(2)}>
+            <MDBModalHeader
               className="text-center"
               titleClass="w-100 font-weight-bold"
-              toggle={() => this.toggle(2)}
+              toggle={this.toggle(2)}
             >
               Sign in
-            </ModalHeader>
-            <ModalBody>
+            </MDBModalHeader>
+            <MDBModalBody>
               <form className="mx-3 grey-text">
-                <Input
+                <MDBInput
                   label="Your name"
                   icon="user"
                   group
@@ -101,7 +88,7 @@ class ModalPage extends React.Component {
                   error="wrong"
                   success="right"
                 />
-                <Input
+                <MDBInput
                   label="Your email"
                   icon="envelope"
                   group
@@ -110,7 +97,7 @@ class ModalPage extends React.Component {
                   error="wrong"
                   success="right"
                 />
-                <Input
+                <MDBInput
                   label="Your password"
                   icon="lock"
                   group
@@ -118,38 +105,38 @@ class ModalPage extends React.Component {
                   validate
                 />
               </form>
-            </ModalBody>
-            <ModalFooter className="justify-content-center">
-              <Button color="deep-orange" onClick={() => this.toggle(2)}>
+            </MDBModalBody>
+            <MDBModalFooter className="justify-content-center">
+              <MDBBtn color="deep-orange" onClick={this.toggle(2)}>
                 SIGN UP
-              </Button>
-            </ModalFooter>
-          </Modal>
-        </Row>
+              </MDBBtn>
+            </MDBModalFooter>
+          </MDBModal>
+        </MDBRow>
 
         <h4 className="mt-4">Simple modal subscription</h4>
-        <Row>
-          <Button rounded onClick={() => this.toggle(3)}>
+        <MDBRow>
+          <MDBBtn rounded onClick={this.toggle(3)}>
             Launch Modal subscription Form
-          </Button>
-          <Modal isOpen={this.state.modal3} toggle={() => this.toggle(3)}>
-            <ModalHeader
+          </MDBBtn>
+          <MDBModal isOpen={this.state.modal3} toggle={this.toggle(3)}>
+            <MDBModalHeader
               className="text-center"
               titleClass="w-100 font-weight-bold"
-              toggle={() => this.toggle(3)}
+              toggle={this.toggle(3)}
             >
               Subscribe
-            </ModalHeader>
-            <ModalBody>
+            </MDBModalHeader>
+            <MDBModalBody>
               <form className="mx-3 grey-text">
-                <Input
+                <MDBInput
                   label="Your name"
                   icon="user"
                   group
                   type="text"
                   validate
                 />
-                <Input
+                <MDBInput
                   label="Your email"
                   icon="envelope"
                   group
@@ -159,39 +146,39 @@ class ModalPage extends React.Component {
                   success="right"
                 />
               </form>
-            </ModalBody>
-            <ModalFooter className="justify-content-center">
-              <Button color="indigo" onClick={() => this.toggle(3)}>
+            </MDBModalBody>
+            <MDBModalFooter className="justify-content-center">
+              <MDBBtn color="indigo" onClick={this.toggle(3)}>
                 Send
-                <Fa icon="paper-plane-o" className="ml-2" />
-              </Button>
-            </ModalFooter>
-          </Modal>
-        </Row>
+                <MDBIcon icon="paper-plane" className="ml-2" />
+              </MDBBtn>
+            </MDBModalFooter>
+          </MDBModal>
+        </MDBRow>
 
         <h4 className="mt-4">Simple modal contact</h4>
-        <Row>
-          <Button rounded onClick={() => this.toggle(4)}>
+        <MDBRow>
+          <MDBBtn rounded onClick={this.toggle(4)}>
             Launch Modal Contact Form
-          </Button>
-          <Modal isOpen={this.state.modal4} toggle={() => this.toggle(4)}>
-            <ModalHeader
+          </MDBBtn>
+          <MDBModal isOpen={this.state.modal4} toggle={this.toggle(4)}>
+            <MDBModalHeader
               className="text-center"
               titleClass="w-100 font-weight-bold"
-              toggle={() => this.toggle(4)}
+              toggle={this.toggle(4)}
             >
               Write to us
-            </ModalHeader>
-            <ModalBody>
+            </MDBModalHeader>
+            <MDBModalBody>
               <form className="mx-3 grey-text">
-                <Input
+                <MDBInput
                   label="Your name"
                   icon="user"
                   group
                   type="text"
                   validate
                 />
-                <Input
+                <MDBInput
                   label="Your email"
                   icon="envelope"
                   group
@@ -200,78 +187,78 @@ class ModalPage extends React.Component {
                   error="wrong"
                   success="right"
                 />
-                <Input label="Your Subject" icon="tag" group type="text" />
-                <Input
+                <MDBInput label="Your Subject" icon="tag" group type="text" />
+                <MDBInput
                   type="textarea"
                   rows="2"
                   label="Your message"
                   icon="pencil"
                 />
               </form>
-            </ModalBody>
-            <ModalFooter className="justify-content-center">
-              <Button color="unique" onClick={() => this.toggle(4)}>
+            </MDBModalBody>
+            <MDBModalFooter className="justify-content-center">
+              <MDBBtn color="unique" onClick={this.toggle(4)}>
                 Send
-                <Fa icon="paper-plane-o" className="ml-2" />
-              </Button>
-            </ModalFooter>
-          </Modal>
-        </Row>
+                <MDBIcon icon="paper-plane" className="ml-2" />
+              </MDBBtn>
+            </MDBModalFooter>
+          </MDBModal>
+        </MDBRow>
 
         <h4 className="mt-4">Modal with avatar</h4>
-        <Row>
-          <Button rounded onClick={() => this.toggle(5)}>
+        <MDBRow>
+          <MDBBtn rounded onClick={this.toggle(5)}>
             Launch Modal Login With Avatar
-          </Button>
-          <Modal
+          </MDBBtn>
+          <MDBModal
             size="sm"
             cascading
             className="modal-avatar"
             isOpen={this.state.modal5}
-            toggle={() => this.toggle(5)}
+            toggle={this.toggle(5)}
           >
-            <ModalHeader className="mx-auto">
+            <MDBModalHeader className="mx-auto">
               <img
                 src="https://mdbootstrap.com/img/Photos/Avatars/img%20%281%29.jpg"
                 alt="avatar"
                 className="rounded-circle img-responsive"
               />
-            </ModalHeader>
-            <ModalBody className="text-center mb-1">
+            </MDBModalHeader>
+            <MDBModalBody className="text-center mb-1">
               <h5 className="mt-1 mb-2">Maria Doe</h5>
               <form className="mx-3 grey-text">
-                <Input label="Enter password" group type="password" validate />
+                <MDBInput label="Enter password" group type="password" validate />
               </form>
-            </ModalBody>
-            <ModalFooter className="justify-content-center">
-              <Button color="cyan" onClick={() => this.toggle(5)}>
+            </MDBModalBody>
+            <MDBModalFooter className="justify-content-center">
+              <MDBBtn color="cyan" onClick={this.toggle(5)}>
                 Login
-                <Fa icon="sign-in" className="ml-2" />
-              </Button>
-            </ModalFooter>
-          </Modal>
-        </Row>
+                <MDBIcon icon="sign-in-alt" className="ml-2" />
+              </MDBBtn>
+            </MDBModalFooter>
+          </MDBModal>
+        </MDBRow>
 
         <h4 className="mt-4">Subscription modal with orange header</h4>
-        <Row>
-          <Button rounded onClick={() => this.toggle(6)}>
+        <MDBRow>
+          <MDBBtn rounded onClick={this.toggle(6)}>
             Launch Modal Subscription
-          </Button>
-          <Modal
+          </MDBBtn>
+          <MDBModal
             className="modal-notify modal-warning white-text"
             isOpen={this.state.modal6}
-            toggle={() => this.toggle(6)}
+            toggle={this.toggle(6)}
           >
-            <ModalHeader
+            <MDBModalHeader
               className="text-center"
               titleClass="w-100 font-weight-bold"
-              toggle={() => this.toggle(6)}
+              toggle={this.toggle(6)}
             >
               Subscribe
-            </ModalHeader>
-            <ModalBody>
+            </MDBModalHeader>
+            <MDBModalBody>
               <form className="mx-3 grey-text">
-                <Input
+                <MDBInput
                   label="Your name"
                   icon="user"
                   iconClass="grey-text"
@@ -281,7 +268,7 @@ class ModalPage extends React.Component {
                   error="wrong"
                   success="right"
                 />
-                <Input
+                <MDBInput
                   label="Your email"
                   icon="envelope"
                   iconClass="grey-text"
@@ -292,18 +279,18 @@ class ModalPage extends React.Component {
                   success="right"
                 />
               </form>
-            </ModalBody>
-            <ModalFooter className="justify-content-center">
-              <Button color="warning" outline onClick={() => this.toggle(6)}>
+            </MDBModalBody>
+            <MDBModalFooter className="justify-content-center">
+              <MDBBtn color="warning" outline onClick={this.toggle(6)}>
                 Send
-                <Fa icon="paper-plane-o" className="ml-2" />
-              </Button>
-            </ModalFooter>
-          </Modal>
-        </Row>
-      </Container>
+                <MDBIcon icon="paper-plane" className="ml-2" />
+              </MDBBtn>
+            </MDBModalFooter>
+          </MDBModal>
+        </MDBRow>
+      </MDBContainer>
     );
   }
 }
 
-export default ModalPage;
+export default ModalFormPage;

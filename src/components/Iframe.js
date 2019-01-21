@@ -106,3 +106,4 @@ Iframe.propTypes = {
 };
 
 export default Iframe;
+export { Iframe as MDBIframe };

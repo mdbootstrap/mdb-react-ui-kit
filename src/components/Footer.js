@@ -7,7 +7,7 @@ class Footer extends Component {
     const { color, children, className, tag: Tag, ...attributes } = this.props;
 
     const classes = classNames(
-      "page-footer mt-4",
+      "page-footer",
       color ? color : "",
       className
     );

@@ -30,7 +30,14 @@ const config = {
       },
       {
         test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-        loader: "url-loader?limit=10000&mimetype=image/svg+xml"
+        issuer: {
+          test: /\.jsx?$/
+        },
+        use: ['babel-loader', '@svgr/webpack', 'url-loader']
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader'
       },
       {
         test: /\.png(\?v=\d+\.\d+\.\d+)?$/,

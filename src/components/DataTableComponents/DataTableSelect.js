@@ -10,7 +10,7 @@ const DataTableSelect = ({ value, onChange, entries, label }) => {
   return (
     <div className="dataTables_length bs-select">
       <label>
-        {label || "Show entries "}
+        {label}
         <select
           value={value}
           onChange={getValue}
@@ -28,14 +28,14 @@ const DataTableSelect = ({ value, onChange, entries, label }) => {
 };
 
 DataTableSelect.propTypes = {
-  entries: PropTypes.arrayOf(PropTypes.number),
-  onChange: PropTypes.func,
-  value: PropTypes.number,
+  entries: PropTypes.arrayOf(PropTypes.number).isRequired,
   label: PropTypes.oneOfType([
     PropTypes.string, 
     PropTypes.number, 
     PropTypes.object
-  ])
+  ]).isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.number.isRequired
 };
 
 export default DataTableSelect;

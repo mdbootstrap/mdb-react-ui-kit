@@ -1,12 +1,12 @@
 import React from "react";
 import { MDBJumbotron, MDBBtn, MDBContainer, MDBRow, MDBCol } from "mdbreact";
-import DocsLink from "./DocsLink";
+import DocsLink from "../components/docsLink";
 
 const JumbotronPage = props => {
   return (
     <>
     <MDBContainer className="mt-5 text-center">
-      <DocsLink title="MDBJumbotron" href="https://mdbootstrap.com/docs/react/" />
+        <DocsLink title="Jumbotron" href="https://mdbootstrap.com/docs/react/components/jumbotron/" />
       <MDBRow>
         <MDBCol>
           <h4 className="title mb-5 text-left">Basic example</h4>

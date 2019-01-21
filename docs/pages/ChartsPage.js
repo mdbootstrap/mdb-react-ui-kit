@@ -1,7 +1,7 @@
 import React from "react";
 import { Line, Bar, Radar, Pie, Doughnut, Polar } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
-import DocsLink from "./DocsLink";
+import DocsLink from "./../components/docsLink";
 
 // LineChart
 const dataLine = {
@@ -161,41 +161,39 @@ const dataDoughnut = {
   ]
 };
 
-class ChartsPage extends React.Component {
-  render() {
-    return (
-      <MDBContainer>
-        <DocsLink
-          title="Charts"
-          href="https://mdbootstrap.com/docs/react/advanced/charts/"
-        />
-        <div>
-          <h3 className="mt-5">Line chart</h3>
-          <Line data={dataLine} options={{ responsive: true }} />
-        </div>
-        <div>
-          <h3 className="mt-5">Radar chart</h3>
-          <Radar data={dataRadar} options={{ responsive: true }} />
-        </div>
-        <div>
-          <h3 className="mt-5">Bar chart</h3>
-          <Bar data={dataBar} options={barChartOptions} />
-        </div>
-        <div>
-          <h3 className="mt-5">Polar chart</h3>
-          <Polar data={dataPolar} options={{ responsive: true }} />
-        </div>
-        <div>
-          <h3 className="mt-5">Pie Chart</h3>
-          <Pie data={dataPie} options={{ responsive: true }} />
-        </div>
-        <div>
-          <h3 className="mt-5">Doughnut Chart</h3>
-          <Doughnut data={dataDoughnut} options={{ responsive: true }} />
-        </div>
-      </MDBContainer>
-    );
-  }
+const ChartsPage = () => {
+  return (
+    <MDBContainer>
+      <DocsLink
+        title="Charts"
+        href="https://mdbootstrap.com/docs/react/advanced/charts/"
+      />
+      <div>
+        <h3 className="mt-5">Line chart</h3>
+        <Line data={dataLine} options={{ responsive: true }} />
+      </div>
+      <div>
+        <h3 className="mt-5">Radar chart</h3>
+        <Radar data={dataRadar} options={{ responsive: true }} />
+      </div>
+      <div>
+        <h3 className="mt-5">Bar chart</h3>
+        <Bar data={dataBar} options={barChartOptions} />
+      </div>
+      <div>
+        <h3 className="mt-5">Polar chart</h3>
+        <Polar data={dataPolar} options={{ responsive: true }} />
+      </div>
+      <div>
+        <h3 className="mt-5">Pie Chart</h3>
+        <Pie data={dataPie} options={{ responsive: true }} />
+      </div>
+      <div>
+        <h3 className="mt-5">Doughnut Chart</h3>
+        <Doughnut data={dataDoughnut} options={{ responsive: true }} />
+      </div>
+    </MDBContainer>
+  );
 }
 
 export default ChartsPage;

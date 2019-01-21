@@ -1,68 +1,62 @@
 import React from "react";
-import { Fa, Container } from "mdbreact";
-import DocsLink from "./DocsLink";
+import { MDBIcon, MDBContainer } from "mdbreact";
+import DocsLink from "../components/docsLink";
 
 const FaPage = props => {
   return (
-    <Container className="mt-3 text-center">
+    <MDBContainer className="mt-3 text-center">
       <DocsLink
         title="Icons"
         href="https://mdbootstrap.com/docs/react/content/icons-usage/"
       />
       <div className="">
         <p>
-          <Fa icon="camera-retro" />
+          <MDBIcon icon="camera-retro" />
         </p>
         <p>
-          <Fa icon="camera-retro" size="lg" />
+          <MDBIcon icon="camera-retro" size="lg" />
         </p>
         <p>
-          <Fa icon="camera-retro" size="2x" />
+          <MDBIcon icon="camera-retro" size="2x" />
         </p>
         <p>
-          <Fa icon="camera-retro" size="4x" />
+          <MDBIcon icon="camera-retro" size="4x" />
         </p>
         <p>
-          <Fa icon="camera-retro" size="5x" />
+          <MDBIcon icon="camera-retro" size="5x" />
         </p>
         <p>
-          <Fa icon="camera-retro" size="5x" />
+          <MDBIcon icon="camera-retro" size="10x" />
         </p>
         <p>
-          <Fa icon="quote-left" size="5x" border />
+          <MDBIcon icon="quote-left" size="5x" border />
         </p>
         <p>
-          <Fa icon="quote-left" size="5x" border pull="right" />
+          <MDBIcon icon="quote-left" size="5x" border pull="right" />
         </p>
         <p>
-          <Fa icon="quote-left" size="5x" border pull="left" />
+          <MDBIcon icon="quote-left" size="5x" border pull="left" />
         </p>
         <p>
-          <Fa icon="spinner" size="5x" spin />
+          <MDBIcon icon="spinner" size="5x" spin />
         </p>
         <p>
-          <Fa icon="spinner" size="5x" pulse />
+          <MDBIcon icon="spinner" size="5x" pulse />
         </p>
         <p>
-          <Fa icon="circle-o-notch" size="5x" spin />
+          <MDBIcon icon="circle-notch" size="5x" spin />
         </p>
         <p>
-          <Fa icon="refresh" size="5x" spin />
+          <MDBIcon icon="sync" size="5x" spin />
         </p>
         <p>
-          <Fa icon="circle-o-notch" size="5x" spin fixed />
+          <MDBIcon icon="camera-retro" size="5x" rotate="90" />
         </p>
         <p>
-          <Fa icon="refresh" size="5x" spin fixed />
-        </p>
-        <p>
-          <Fa icon="camera-retro" size="5x" rotate="90" />
-        </p>
-        <p>
-          <Fa icon="camera-retro" size="5x" flip="vertical" />
+          <MDBIcon icon="camera-retro" size="5x" flip="vertical" />
         </p>
       </div>
-    </Container>
+    </MDBContainer>
   );
 };
 

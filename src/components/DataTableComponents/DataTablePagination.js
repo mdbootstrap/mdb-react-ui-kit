@@ -1,62 +1,103 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Pagination from "../Pagination";
 import PageItem from "../PageItem";
 import PageLink from "../PageLink";
 
-const DataTablePagination = props => {
-  const { activePage, changeActivePage, pages, label } = props;
+class DataTablePagination extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pages: props.pages,
+      pGroups: []
+    }
+  }
 
-  return (
-    <div className="col-sm-12 col-md-7">
-      <div className="dataTables_paginate">
-        <Pagination>
-          <PageItem disabled={activePage === 0}>
-            <PageLink
-              className="page-link"
-              aria-label={label[0]}
-              onClick={() => changeActivePage(activePage - 1)}
-            >
-              <span>{label[0]}</span>
-            </PageLink>
-          </PageItem>
-          {pages.map((page, index) => (
-            <PageItem key={index} active={index === activePage}>
+  componentDidMount() {
+    this.groupPages();
+  }
+
+  componentDidUpdate = (prevProps) => {
+    if(prevProps.pages !== this.props.pages) {
+      this.setState({ pages: this.props.pages }, () => this.groupPages());
+    }
+  }
+  
+  pagesIndexify = () => {
+    let mutablePages = [...this.state.pages];
+    mutablePages.forEach((page, index) => page.index = index);
+    return mutablePages;
+  }
+
+  groupPages = () => {
+    let pGroups = [];
+    let pages = this.pagesIndexify();
+
+    while (pages.length > 0) {
+      pGroups.push(pages.splice(0, this.props.pagesAmount));
+    }
+
+    this.setState({ pGroups });
+  }
+
+  choosePagesGroup = () => {
+    const pGroupNumber = Math.floor(this.props.activePage / this.props.pagesAmount);
+    return this.state.pGroups.length ? this.state.pGroups[pGroupNumber] : [];
+  }
+
+  render() {
+    const { activePage, changeActivePage, pages, label } = this.props;
+
+    return (
+      <div className="col-sm-12 col-md-7">
+        <div className="dataTables_paginate">
+          <Pagination>
+            <PageItem disabled={activePage === 0}>
               <PageLink
                 className="page-link"
-                onClick={() => changeActivePage(index)}
+                aria-label={label[0]}
+                onClick={() => changeActivePage(activePage - 1)}
               >
-                {index + 1}{" "}
-                {index === activePage && (
-                  <span className="sr-only">(current)</span>
-                )}
+                <span>{label[0]}</span>
               </PageLink>
             </PageItem>
-          ))}
-          <PageItem disabled={activePage === pages.length - 1}>
-            <PageLink
-              className="page-link"
-              aria-label={label[1]}
-              onClick={() => changeActivePage(activePage + 1)}
-            >
-              <span>{label[1]}</span>
-            </PageLink>
-          </PageItem>
-        </Pagination>
+
+            {this.choosePagesGroup().map((page) => (
+              <PageItem key={page[0].name+page.index} active={page.index === activePage}>
+                <PageLink
+                  className="page-link"
+                  onClick={() => changeActivePage(page.index)}
+                >
+                  {page.index + 1}{" "}
+                  {page.index === activePage && (
+                    <span className="sr-only">(current)</span>
+                  )}
+                </PageLink>
+              </PageItem>
+            ))}
+
+            <PageItem disabled={activePage === pages.length - 1}>
+              <PageLink
+                className="page-link"
+                aria-label={label[1]}
+                onClick={() => changeActivePage(activePage + 1)}
+              >
+                <span>{label[1]}</span>
+              </PageLink>
+            </PageItem>
+          </Pagination>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 DataTablePagination.propTypes = {
   activePage: PropTypes.number.isRequired,
   changeActivePage: PropTypes.func.isRequired,
   pages: PropTypes.array.isRequired,
-  label: PropTypes.arrayOf(PropTypes.string)
-};
-
-DataTablePagination.defaultProps = {
-  label: ["Previous", "Next"]
+  pagesAmount: PropTypes.number.isRequired,
+  label: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default DataTablePagination;

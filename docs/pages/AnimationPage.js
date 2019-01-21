@@ -1,9 +1,11 @@
 import React from "react";
-import { Container, Row, Col, Animation } from "mdbreact";
-import DocsLink from "./DocsLink";
+import { MDBContainer, MDBRow, MDBCol, MDBAnimation } from "mdbreact";
+import DocsLink from "../components/docsLink";
 
-const AnimationPage = function() {
+const AnimationPage = () =>  {
+
   let count = 0;
+
   const increment = () => {
     count++;
     if (count < 6 || count % 5 === 0) {
@@ -12,77 +14,77 @@ const AnimationPage = function() {
   };
 
   return (
-    <Container className="mt-5">
+    <MDBContainer className="mt-5">
       <DocsLink
         title="Animations"
         href="https://mdbootstrap.com/docs/react/css/animations/"
       />
-      <Row center>
-        <Animation type="bounce" infinite onAnimationIteration={increment}>
+      <MDBRow center>
+        <MDBAnimation type="bounce" infinite onAnimationIteration={increment}>
           <img
             alt=""
             className="img-fluid"
             src="https://mdbootstrap.com/img/logo/mdb-transparent-250px.png"
           />
-        </Animation>
+        </MDBAnimation>
         <br />
-      </Row>
+      </MDBRow>
 
-      <Row center className="mt-5">
+      <MDBRow center className="mt-5">
         <h4>&#8659; Scroll down &#8659;</h4>
-      </Row>
+      </MDBRow>
 
-      <Row className="mb-4" style={{ marginTop: "100vh" }}>
-        <Col md="4">
-          <Animation reveal type="bounceInUp">
+      <MDBRow className="mb-4" style={{ marginTop: "100vh" }}>
+        <MDBCol md="4">
+          <MDBAnimation reveal type="bounceInUp">
             <img
               alt="A view on mountains."
               className="img-fluid"
               src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(31).jpg"
             />
-          </Animation>
-        </Col>
-        <Col md="4">
-          <Animation reveal type="tada">
+          </MDBAnimation>
+        </MDBCol>
+        <MDBCol md="4">
+          <MDBAnimation reveal type="tada">
             <img
               alt="Cottage on a lake surrounded by mountains."
               className="img-fluid"
               src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(32).jpg"
             />
-          </Animation>
-        </Col>
-        <Col md="4">
-          <Animation reveal type="fadeInLeft">
+          </MDBAnimation>
+        </MDBCol>
+        <MDBCol md="4">
+          <MDBAnimation reveal type="fadeInLeft">
             <img
               alt="A boat floating on an ocean"
               className="img-fluid"
               src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(73).jpg"
             />
-          </Animation>
-        </Col>
-      </Row>
+          </MDBAnimation>
+        </MDBCol>
+      </MDBRow>
 
-      <Row className="mb-4">
-        <Col md="4">
-          <Animation reveal type="fadeInRight">
+      <MDBRow className="mb-4">
+        <MDBCol md="4">
+          <MDBAnimation reveal type="fadeInRight">
             <img
               alt="View on mountains from mountain top."
               className="img-fluid"
               src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg"
             />
-          </Animation>
-        </Col>
-        <Col md="4">
-          <Animation reveal type="fadeInRight">
+          </MDBAnimation>
+        </MDBCol>
+        <MDBCol md="4">
+          <MDBAnimation reveal type="fadeInRight">
             <img
               alt="Rocky shore in the morning."
               className="img-fluid"
               src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(14).jpg"
             />
-          </Animation>
-        </Col>
-        <Col md="4">
-          <Animation
+          </MDBAnimation>
+        </MDBCol>
+        <MDBCol md="4">
+          <MDBAnimation
             reveal
             type="fadeInUp"
             onAnimationEnd={() =>
@@ -94,10 +96,10 @@ const AnimationPage = function() {
               className="img-fluid"
               src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg"
             />
-          </Animation>
-        </Col>
-      </Row>
-    </Container>
+          </MDBAnimation>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
   );
 };
 

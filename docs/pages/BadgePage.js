@@ -1,40 +1,35 @@
 import React from "react";
-import { Badge, Container } from "mdbreact";
-import DocsLink from "./DocsLink";
+import { MDBBadge, MDBContainer } from "mdbreact";
+import DocsLink from "../components/docsLink";
 
 const BadgePage = props => {
   return (
-    <Container>
+    <MDBContainer>
       <DocsLink
         title="Badges"
         href="https://mdbootstrap.com/docs/react/components/badges/"
       />
-      <div className="container-fluid text-center mt-5">
-        <div className="">
+      <MDBContainer fluid className="text-center mt-5">
           <h1>
-            Heading <Badge>Default</Badge>
+            Heading <MDBBadge>Default</MDBBadge>
           </h1>
           <h2>
-            Heading <Badge color="primary">primary</Badge>
+            Heading <MDBBadge color="primary">primary</MDBBadge>
           </h2>
           <h3>
-            Heading{" "}
-            <Badge pill color="success">
-              success pill
-            </Badge>
+            Heading <MDBBadge pill color="success">success pill</MDBBadge>
           </h3>
           <h4>
-            Heading <Badge color="info">info</Badge>
+            Heading <MDBBadge color="info">info</MDBBadge>
           </h4>
           <h5>
-            Heading <Badge color="warning">warning</Badge>
+            Heading <MDBBadge color="warning">warning</MDBBadge>
           </h5>
           <h6>
-            Heading <Badge color="danger">danger</Badge>
+            Heading <MDBBadge color="danger">danger</MDBBadge>
           </h6>
-        </div>
-      </div>
-    </Container>
+      </MDBContainer>
+    </MDBContainer>
   );
 };
 

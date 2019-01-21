@@ -21,7 +21,7 @@ class Col extends Component {
 
     const classes = classNames(
       size && "col-" + size,
-      xs && "col-" + xs,
+      xs && "col-xs-" + xs,
       sm && "col-sm-" + sm,
       md && "col-md-" + md,
       lg && "col-lg-" + lg,
@@ -38,14 +38,15 @@ class Col extends Component {
 }
 
 Col.propTypes = {
+  size: PropTypes.string,
   xs: PropTypes.string,
   sm: PropTypes.string,
   md: PropTypes.string,
   lg: PropTypes.string,
   xl: PropTypes.string,
-  top: PropTypes.string,
-  bottom: PropTypes.string,
-  middle: PropTypes.string,
+  top: PropTypes.bool,
+  bottom: PropTypes.bool,
+  middle: PropTypes.bool,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string
 };

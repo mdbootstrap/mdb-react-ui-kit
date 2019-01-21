@@ -1,12 +1,11 @@
 import React from 'react';
 import { MDBListGroup, MDBListGroupItem, MDBRow, MDBBadge, MDBContainer } from "mdbreact";
-import DocsLink from "./DocsLink";
+import DocsLink from "../components/docsLink";
 
 const ListGroupPage = props => {
   return (
     <MDBContainer>
-        <DocsLink title="Jumbotron" href="https://mdbootstrap.com/docs/react/" />
-
+      <DocsLink title="List Group" href="https://mdbootstrap.com/docs/react/components/list-group/" />
         <MDBRow className="justify-content-center">
 
           <MDBListGroup className="my-4 mx-4" style={{ width: "22rem" }}>

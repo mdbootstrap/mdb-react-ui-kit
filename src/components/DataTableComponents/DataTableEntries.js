@@ -29,7 +29,11 @@ DataTableEntries.propTypes = {
   entries: PropTypes.number.isRequired,
   entriesArr: PropTypes.arrayOf(PropTypes.number).isRequired,
   paging: PropTypes.bool.isRequired,
-  label: PropTypes.string
+  label: PropTypes.oneOfType([
+    PropTypes.string, 
+    PropTypes.number, 
+    PropTypes.object
+  ]).isRequired
 };
 
 export default DataTableEntries;

@@ -1,6 +1,6 @@
 /*!
  * Material Design for Bootstrap 4
- * Version: MDB FREE 4.6.0
+ * Version: MDB FREE 4.6.1
  *
  *
  * Copyright: Material Design for Bootstrap
@@ -11,7 +11,7 @@
  *
  * Documentation: https://mdbootstrap.com/
  *
- * Getting started: https://mdbootstrap.com/docs/react/getting-started/download/
+ * Getting started: https://mdbootstrap.com/docs/jquery/getting-started/download/
  *
  * Tutorials: https://mdbootstrap.com/education/bootstrap/
  *
@@ -21,7 +21,7 @@
  *
  * Contact: office@mdbootstrap.com
  *
- * Atribution: Animate CSS, Twitter Bootstrap, Materialize CSS, Normalize CSS, Waves JS, WOW JS, Toastr, Chart.js , Hammer.js
+ * Attribution: Animate CSS, Twitter Bootstrap, Materialize CSS, Normalize CSS, Waves JS, WOW JS, Toastr, Chart.js , Hammer.js
  *
  */
 /*** Global ***/
@@ -3024,27 +3024,27 @@ a.waves-effect, a.waves-light {
     outline: 0; }
   .btn:not([disabled]):not(.disabled):active, .btn:not([disabled]):not(.disabled).active {
     box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15); }
-  .btn .fa {
+  .btn .fas, .btn .fab, .btn .far {
     position: relative;
     font-size: 0.9rem; }
-    .btn .fa.right {
+    .btn .fas.right, .btn .fab.right, .btn .far.right {
       margin-left: 0.3rem; }
-    .btn .fa.left {
+    .btn .fas.left, .btn .fab.left, .btn .far.left {
       margin-right: 0.3rem; }
   .btn.btn-lg {
     padding: 1rem 2.4rem;
     font-size: 0.94rem; }
-    .btn.btn-lg .fa {
+    .btn.btn-lg .fas, .btn.btn-lg .fab, .btn.btn-lg .far {
       font-size: 1rem; }
   .btn.btn-md {
     padding: 0.7rem 1.6rem;
     font-size: 0.7rem; }
-    .btn.btn-md .fa {
+    .btn.btn-md .fas, .btn.btn-md .fab, .btn.btn-md .far {
       font-size: 0.8rem; }
   .btn.btn-sm {
     padding: 0.5rem 1.6rem;
     font-size: 0.64rem; }
-    .btn.btn-sm .fa {
+    .btn.btn-sm .fas, .btn.btn-sm .fab, .btn.btn-sm .far {
       font-size: 0.7rem; }
   .btn.btn-tb {
     padding: 0.3rem 1rem; }
@@ -4705,7 +4705,7 @@ a.waves-effect, a.waves-light {
     display: block; }
     .navbar .nav-item .nav-link.disabled:active {
       pointer-events: none; }
-    .navbar .nav-item .nav-link .fa {
+    .navbar .nav-item .nav-link .fas, .navbar .nav-item .nav-link .fab, .navbar .nav-item .nav-link .far {
       padding-right: 3px;
       padding-left: 3px; }
     @media (max-width: 992px) {
@@ -4962,7 +4962,7 @@ body.scrollable {
       margin-bottom: 0;
       width: 100%;
       font-size: 1.25rem; }
-      .modal-dialog.cascading-modal .modal-header .title .fa {
+      .modal-dialog.cascading-modal .modal-header .title .fas, .modal-dialog.cascading-modal .modal-header .title .fab, .modal-dialog.cascading-modal .modal-header .title .far {
         margin-right: 9px; }
     .modal-dialog.cascading-modal .modal-header .social-buttons {
       margin-top: 1.5rem; }
@@ -5018,76 +5018,76 @@ body.scrollable {
 .modal-dialog.modal-notify.modal-primary .modal-header {
   background-color: #4285f4; }
 
-.modal-dialog.modal-notify.modal-primary .fa {
+.modal-dialog.modal-notify.modal-primary .fas, .modal-dialog.modal-notify.modal-primary .fab, .modal-dialog.modal-notify.modal-primary .far {
   color: #4285f4; }
 
 .modal-dialog.modal-notify.modal-primary .badge {
   background-color: #4285f4; }
 
-.modal-dialog.modal-notify.modal-primary .btn .fa {
+.modal-dialog.modal-notify.modal-primary .btn .fas, .modal-dialog.modal-notify.modal-primary .btn .fab, .modal-dialog.modal-notify.modal-primary .btn .far {
   color: #fff; }
 
-.modal-dialog.modal-notify.modal-primary .btn.btn-outline-primary .fa {
+.modal-dialog.modal-notify.modal-primary .btn.btn-outline-primary .fas, .modal-dialog.modal-notify.modal-primary .btn.btn-outline-primary .fab, .modal-dialog.modal-notify.modal-primary .btn.btn-outline-primary .far {
   color: #4285f4; }
 
 .modal-dialog.modal-notify.modal-danger .modal-header {
   background-color: #ff3547; }
 
-.modal-dialog.modal-notify.modal-danger .fa {
+.modal-dialog.modal-notify.modal-danger .fas, .modal-dialog.modal-notify.modal-danger .fab, .modal-dialog.modal-notify.modal-danger .far {
   color: #ff3547; }
 
 .modal-dialog.modal-notify.modal-danger .badge {
   background-color: #ff3547; }
 
-.modal-dialog.modal-notify.modal-danger .btn .fa {
+.modal-dialog.modal-notify.modal-danger .btn .fas, .modal-dialog.modal-notify.modal-danger .btn .fab, .modal-dialog.modal-notify.modal-danger .btn .far {
   color: #fff; }
 
-.modal-dialog.modal-notify.modal-danger .btn.btn-outline-danger .fa {
+.modal-dialog.modal-notify.modal-danger .btn.btn-outline-danger .fas, .modal-dialog.modal-notify.modal-danger .btn.btn-outline-danger .fab, .modal-dialog.modal-notify.modal-danger .btn.btn-outline-danger .far {
   color: #ff3547; }
 
 .modal-dialog.modal-notify.modal-warning .modal-header {
   background-color: #ffbb33; }
 
-.modal-dialog.modal-notify.modal-warning .fa {
+.modal-dialog.modal-notify.modal-warning .fas, .modal-dialog.modal-notify.modal-warning .fab, .modal-dialog.modal-notify.modal-warning .far {
   color: #ffbb33; }
 
 .modal-dialog.modal-notify.modal-warning .badge {
   background-color: #ffbb33; }
 
-.modal-dialog.modal-notify.modal-warning .btn .fa {
+.modal-dialog.modal-notify.modal-warning .btn .fas, .modal-dialog.modal-notify.modal-warning .btn .fab, .modal-dialog.modal-notify.modal-warning .btn .far {
   color: #fff; }
 
-.modal-dialog.modal-notify.modal-warning .btn.btn-outline-warning .fa {
+.modal-dialog.modal-notify.modal-warning .btn.btn-outline-warning .fas, .modal-dialog.modal-notify.modal-warning .btn.btn-outline-warning .fab, .modal-dialog.modal-notify.modal-warning .btn.btn-outline-warning .far {
   color: #ffbb33; }
 
 .modal-dialog.modal-notify.modal-success .modal-header {
   background-color: #00c851; }
 
-.modal-dialog.modal-notify.modal-success .fa {
+.modal-dialog.modal-notify.modal-success .fas, .modal-dialog.modal-notify.modal-success .fab, .modal-dialog.modal-notify.modal-success .far {
   color: #00c851; }
 
 .modal-dialog.modal-notify.modal-success .badge {
   background-color: #00c851; }
 
-.modal-dialog.modal-notify.modal-success .btn .fa {
+.modal-dialog.modal-notify.modal-success .btn .fas, .modal-dialog.modal-notify.modal-success .btn .fab, .modal-dialog.modal-notify.modal-success .btn .far {
   color: #fff; }
 
-.modal-dialog.modal-notify.modal-success .btn.btn-outline-success .fa {
+.modal-dialog.modal-notify.modal-success .btn.btn-outline-success .fas, .modal-dialog.modal-notify.modal-success .btn.btn-outline-success .fab, .modal-dialog.modal-notify.modal-success .btn.btn-outline-success .far {
   color: #00c851; }
 
 .modal-dialog.modal-notify.modal-info .modal-header {
   background-color: #33b5e5; }
 
-.modal-dialog.modal-notify.modal-info .fa {
+.modal-dialog.modal-notify.modal-info .fas, .modal-dialog.modal-notify.modal-info .fab, .modal-dialog.modal-notify.modal-info .far {
   color: #33b5e5; }
 
 .modal-dialog.modal-notify.modal-info .badge {
   background-color: #33b5e5; }
 
-.modal-dialog.modal-notify.modal-info .btn .fa {
+.modal-dialog.modal-notify.modal-info .btn .fas, .modal-dialog.modal-notify.modal-info .btn .fab, .modal-dialog.modal-notify.modal-info .btn .far {
   color: #fff; }
 
-.modal-dialog.modal-notify.modal-info .btn.btn-outline-info .fa {
+.modal-dialog.modal-notify.modal-info .btn.btn-outline-info .fas, .modal-dialog.modal-notify.modal-info .btn.btn-outline-info .fab, .modal-dialog.modal-notify.modal-info .btn.btn-outline-info .far {
   color: #33b5e5; }
 
 .modal {

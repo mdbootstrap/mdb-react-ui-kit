@@ -14,7 +14,7 @@ import AnimationPage from "./pages/AnimationPage";
 import AlertPage from "./pages/AlertPage";
 import HomePage from "./pages/HomePage";
 import ButtonPage from "./pages/ButtonPage";
-import CSSPage from "./pages/CSSPage";
+import CSSNavPage from "./pages/CSSNavPage";
 import TablePage from "./pages/TablePage";
 import TableResponsivePage from "./pages/TableResponsivePage";
 import TableScrollPage from "./pages/TableScrollPage";
@@ -59,7 +59,7 @@ class Routes extends React.Component {
     return (
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/css" component={CSSPage} />
+        <Route exact path="/css" component={CSSNavPage} />
         <Route exact path="/components" component={ComponentsNavPage} />
         <Route exact path="/advanced" component={AdvancedNavPage} />
         <Route exact path="/navigation" component={NavigationNavPage} />

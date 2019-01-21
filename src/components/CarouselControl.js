@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import Fa from './Fa';
 
 class Control extends Component {
   render() {
@@ -45,9 +46,9 @@ class Control extends Component {
     return (
       <Tag className={classes} data-slide={direction} onClick={onClick}>
         {iconLeft ? (
-          <i className="fa fa-chevron-left" />
+          <Fa icon="chevron-left" />
         ) : iconRight ? (
-          <i className="fa fa-chevron-right" />
+          <Fa icon="chevron-right" />
         ) : (
           <div>
             <span className={caretClasses} aria-hidden="true" />

@@ -4,8 +4,8 @@ import classNames from "classnames";
 import NumericInput from "react-numeric-input";
 
 class InputNumeric extends React.Component {
-  onChangeHandler = event => {
-    this.props.getValue(event);
+  onChangeHandler = value => {
+    this.props.getValue && this.props.getValue(value);
   };
 
   render() {
@@ -15,20 +15,16 @@ class InputNumeric extends React.Component {
     return (
       <NumericInput
         {...attributes}
-        onChange={event => this.onChangeHandler(event)}
+        onChange={this.onChangeHandler}
         className={classes}
       />
     );
   }
 }
 
-InputNumeric.defaultProps = {
-  getValue: false
-};
-
 InputNumeric.propTypes = {
   className: PropTypes.string,
-  getValue: PropTypes.oneOfType([PropTypes.func, PropTypes.bool])
+  getValue: PropTypes.func
 };
 
 export default InputNumeric;

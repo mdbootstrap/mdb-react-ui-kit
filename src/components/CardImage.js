@@ -32,6 +32,7 @@ class CardImage extends Component {
       hover,
       cascade,
       tag,
+      zoom,
       ...attributes
     } = this.props;
 
@@ -47,7 +48,7 @@ class CardImage extends Component {
 
     if (this.props.src) {
       return (
-        <View hover={this.props.hover} cascade={this.props.cascade}>
+        <View zoom hover={this.props.hover} cascade={this.props.cascade}>
           <div
             className="Ripple-parent"
             onMouseDown={this.handleClick.bind(this)}
@@ -67,6 +68,7 @@ class CardImage extends Component {
 
 CardImage.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  zoom: PropTypes.bool,
   waves: PropTypes.bool,
   className: PropTypes.string,
   cascade: PropTypes.bool,
@@ -82,7 +84,8 @@ CardImage.defaultProps = {
   overlay: "white-slight",
   waves: true,
   hover: false,
-  cascade: false
+  cascade: false,
+  zoom: false
 };
 
 export default CardImage;

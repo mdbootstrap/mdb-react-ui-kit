@@ -1,60 +1,59 @@
 import React from "react";
-import { Tooltip, Container } from "mdbreact";
-import DocsLink from "./DocsLink";
+import { MDBTooltip, MDBContainer } from "mdbreact";
+import DocsLink from "./../components/docsLink";
 
-class TooltipsPage extends React.Component {
-  render() {
-    const style = { display: "inline-block", maxWidth: "50vh" };
-    return (
-      <Container>
-        <DocsLink
-          title="Tooltips"
-          href="https://mdbootstrap.com/docs/react/advanced/tooltips/"
-        />
-        <div className="m-5 text-center">
-          <Tooltip
-            placement="top"
+const TooltipsPage = () => {
+  const style = { display: "inline-block", maxWidth: "50vh" };
+  return (
+    <MDBContainer>
+      <DocsLink
+        title="Tooltips"
+        href="https://mdbootstrap.com/docs/react/advanced/tooltips/"
+      />
+      <div className="m-5 text-center">
+        <MDBTooltip
+          placement="top"
+          componentClass="btn btn-primary"
+          tag="div"
+          component="button"
+          tooltipContent="MDBTooltip on top"
+        >
+          MDBTooltip on top
+        </MDBTooltip>
+        <div style={style} className="text-right">
+          <MDBTooltip
+            placement="left"
             componentClass="btn btn-primary"
             tag="div"
             component="button"
-            tooltipContent="Tooltip on top"
+            tooltipContent="MDBTooltip on left"
           >
-            Tooltip on top
-          </Tooltip>
-          <div style={style} className="text-right">
-            <Tooltip
-              placement="left"
-              componentClass="btn btn-primary"
-              tag="div"
-              component="button"
-              tooltipContent="Tooltip on left"
-            >
-              Tooltip on left
-            </Tooltip>
-          </div>
-          <div style={style} className="text-left">
-            <Tooltip
-              placement="right"
-              componentClass="btn btn-primary"
-              tag="div"
-              component="button"
-              tooltipContent="Tooltip on right"
-            >
-              Tooltip on right
-            </Tooltip>
-          </div>
-          <Tooltip
-            placement="bottom"
-            componentClass="btn btn-primary"
-            tag="div"
-            component="button"
-            tooltipContent="Tooltip on bottom"
-          >
-            Tooltip on bottom
-          </Tooltip>
+            MDBTooltip on left
+          </MDBTooltip>
         </div>
-      </Container>
-    );
-  }
+        <div style={style} className="text-left">
+          <MDBTooltip
+            placement="right"
+            componentClass="btn btn-primary"
+            tag="div"
+            component="button"
+            tooltipContent="MDBTooltip on right"
+          >
+            MDBTooltip on right
+          </MDBTooltip>
+        </div>
+        <MDBTooltip
+          placement="bottom"
+          componentClass="btn btn-primary"
+          tag="div"
+          component="button"
+          tooltipContent="MDBTooltip on bottom"
+        >
+          MDBTooltip on bottom
+        </MDBTooltip>
+      </div>
+    </MDBContainer>
+  );
 }
+
 export default TooltipsPage;

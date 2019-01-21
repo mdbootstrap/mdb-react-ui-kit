@@ -1,12 +1,12 @@
 import React from "react";
 import { MDBPagination, MDBPageItem, MDBPageNav, MDBContainer, MDBCol, MDBRow } from "mdbreact";
-import DocsLink from "./DocsLink";
+import DocsLink from "../components/docsLink";
 
 const PaginationPage = props => {
   return (
     <MDBContainer>
       <DocsLink
-        title="MDBPagination"
+        title="Pagination"
         href="https://mdbootstrap.com/docs/react/components/pagination/"
       />
 

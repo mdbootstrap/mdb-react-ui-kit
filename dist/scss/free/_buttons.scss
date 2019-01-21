@@ -21,7 +21,7 @@
   &:not([disabled]):not(.disabled).active {
     box-shadow: $z-depth-1-half;
   }
-  .fa {
+  .fas, .fab, .far {
     position: relative;
     font-size: $btn-icon-basic;
     &.right {
@@ -33,19 +33,19 @@
   }
   &.btn-lg {
     @include button-size($btn-padding-y-large, $btn-padding-x-large, $btn-font-size-large);
-    .fa {
+    .fas, .fab, .far {
       font-size: $btn-icon-large;
     }
   }
   &.btn-md {
     @include button-size($btn-padding-y-medium, $btn-padding-x-medium, $btn-font-size-medium);
-    .fa {
+    .fas, .fab, .far {
       font-size: $btn-icon-medium;
     }
   }
   &.btn-sm {
     @include button-size($btn-padding-y-small, $btn-padding-x-small, $btn-font-size-small);
-    .fa {
+    .fas, .fab, .far {
       font-size: $btn-icon-small;
     }
   }

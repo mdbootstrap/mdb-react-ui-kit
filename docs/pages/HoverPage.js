@@ -1,78 +1,76 @@
 import React from "react";
-import { Mask, View, Container, Row, Col } from "mdbreact";
-import DocsLink from "./DocsLink";
+import { MDBMask, MDBView, MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import DocsLink from "../components/docsLink";
 
-class HoverPage extends React.Component {
-  render() {
-    return (
-      <Container className="mt-5">
-        <DocsLink
-          title="Hover Effects"
-          href="https://mdbootstrap.com/docs/react/css/hover-effects/"
-        />
-        <Row>
-          <Col md="4">
-            <View hover>
-              <img
-                src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg"
-                className="img-fluid"
-                alt=""
-              />
-              <Mask className="flex-center" overlay="red-strong">
-                <p className="white-text">Strong overlay</p>
-              </Mask>
-            </View>
-          </Col>
-          <Col md="4">
-            <View hover>
-              <img
-                src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg"
-                className="img-fluid"
-                alt=""
-              />
-              <Mask className="flex-center" overlay="red-light">
-                <p className="white-text">Light overlay</p>
-              </Mask>
-            </View>
-          </Col>
-          <Col md="4">
-            <View hover>
-              <img
-                src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg"
-                className="img-fluid"
-                alt=""
-              />
-              <Mask className="flex-center" overlay="red-slight">
-                <p className="white-text">Super light overlay</p>
-              </Mask>
-            </View>
-          </Col>
-        </Row>
-        <Row className="mt-4">
-          <Col md="6">
-            <View hover zoom>
-              <img
-                src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg"
-                className="img-fluid"
-                alt=""
-              />
-              <Mask className="flex-center">
-                <p className="white-text">Zoom effect</p>
-              </Mask>
-            </View>
-          </Col>
-          <Col md="6">
-            <h5 className="text-center">Shadow effect</h5>
+const HoverPage = () => {
+  return (
+    <MDBContainer className="mt-5">
+      <DocsLink
+        title="Hover Effects"
+        href="https://mdbootstrap.com/docs/react/css/hover-effects/"
+      />
+      <MDBRow>
+        <MDBCol md="4">
+          <MDBView hover>
             <img
               src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg"
-              className="img-fluid rounded-circle hoverable"
+              className="img-fluid"
               alt=""
             />
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
+            <MDBMask className="flex-center" overlay="red-strong">
+              <p className="white-text">Strong overlay</p>
+            </MDBMask>
+          </MDBView>
+        </MDBCol>
+        <MDBCol md="4">
+          <MDBView hover>
+            <img
+              src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg"
+              className="img-fluid"
+              alt=""
+            />
+            <MDBMask className="flex-center" overlay="red-light">
+              <p className="white-text">Light overlay</p>
+            </MDBMask>
+          </MDBView>
+        </MDBCol>
+        <MDBCol md="4">
+          <MDBView hover>
+            <img
+              src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg"
+              className="img-fluid"
+              alt=""
+            />
+            <MDBMask className="flex-center" overlay="red-slight">
+              <p className="white-text">Super light overlay</p>
+            </MDBMask>
+          </MDBView>
+        </MDBCol>
+      </MDBRow>
+      <MDBRow className="mt-4">
+        <MDBCol md="6">
+          <MDBView hover zoom>
+            <img
+              src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg"
+              className="img-fluid"
+              alt=""
+            />
+            <MDBMask className="flex-center">
+              <p className="white-text">Zoom effect</p>
+            </MDBMask>
+          </MDBView>
+        </MDBCol>
+        <MDBCol md="6">
+          <h5 className="text-center">Shadow effect</h5>
+          <img
+            src="https://mdbootstrap.com/img/Photos/Others/nature-sm.jpg"
+            className="img-fluid rounded-circle hoverable"
+            alt=""
+          />
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
+  );
 }
 
 export default HoverPage;

@@ -10,11 +10,16 @@ const TableBody = props => {
   });
 
   return (
-    <tbody {...attributes} className={classes}>
+    <tbody {...attributes} className={classes || undefined}>
       {rows &&
         rows.map((row, index) => (
-          <tr key={index}>
+          <tr 
+            onClick={row.hasOwnProperty("clickEvent") ? row.clickEvent : undefined} 
+            key={index}
+          >
             {Object.keys(row).map((key, index, array) => {
+              if(key === "clickEvent") return null;
+
               if (key !== "colspan") {
                 return array[index + 1] !== "colspan" ? (
                   <td key={key}>{row[key]}</td>

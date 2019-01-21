@@ -1,38 +1,43 @@
 import React from "react";
-import { DataTable, Container, Row, Col, Card, CardBody } from "mdbreact";
-import DocsLink from "./DocsLink";
+import { MDBDataTable, MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody } from "mdbreact";
+import DocsLink from "./../components/docsLink";
 
 const DatatablePage = () => {
-  const data = {
+  function testClickEvent(param) {
+    console.log(param);
+  }
+
+  const data = () => ({
     columns: [
       {
         label: "Name",
         field: "name",
-        sort: "asc",
-        width: 150
+        width: 150,
+        attributes: {
+          "aria-controls": "DataTable",
+          "aria-label": "Name"
+        }
       },
       {
         label: "Position",
         field: "position",
-        sort: "asc",
         width: 270
       },
       {
         label: "Office",
         field: "office",
-        sort: "asc",
         width: 200
       },
       {
         label: "Age",
         field: "age",
-        sort: "asc",
+        sort: "desc",
         width: 100
       },
       {
         label: "Start date",
         field: "date",
-        sort: "asc",
+        sort: "disabled",
         width: 150
       },
       {
@@ -49,7 +54,8 @@ const DatatablePage = () => {
         office: "Edinburgh",
         age: "61",
         date: "2011/04/25",
-        salary: "$320"
+        salary: "$320",
+        clickEvent: () => testClickEvent(1)
       },
       {
         name: "Garrett Winters",
@@ -500,151 +506,151 @@ const DatatablePage = () => {
         salary: "$112"
       }
     ]
-  };
+  });
 
   return (
-    <Container className="mt-3">
+    <MDBContainer className="mt-3">
       <DocsLink
         title="Datatable"
         href="https://mdbootstrap.com/docs/react/tables/datatables/"
       />
-      <Row className="py-3">
-        <Col md="12">
-          <Card>
-            <CardBody>
-              <DataTable striped bordered hover data={data} />
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
+      <MDBRow className="py-3">
+        <MDBCol md="12">
+          <MDBCard>
+            <MDBCardBody>
+              <MDBDataTable striped bordered hover entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={new data()} />
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
 
-      <Row className="py-3">
-        <Col md="12">
-          <Card>
-            <CardBody>
+      <MDBRow className="py-3">
+        <MDBCol md="12">
+          <MDBCard>
+            <MDBCardBody>
               <h2 className="h2-responsive pb-4">Info off</h2>
-              <DataTable striped bordered hover info={false} data={data} />
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
+              <MDBDataTable striped bordered hover info={false} data={new data()} />
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
 
-      <Row className="py-3">
-        <Col md="12">
-          <Card>
-            <CardBody>
+      <MDBRow className="py-3">
+        <MDBCol md="12">
+          <MDBCard>
+            <MDBCardBody>
               <h2 className="h2-responsive pb-4">Sortable off</h2>
-              <DataTable striped bordered hover sortable={false} data={data} />
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
+              <MDBDataTable striped bordered hover sortable={false} data={new data()} />
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
 
-      <Row className="py-3">
-        <Col md="12">
-          <Card>
-            <CardBody>
+      <MDBRow className="py-3">
+        <MDBCol md="12">
+          <MDBCard>
+            <MDBCardBody>
               <h2 className="h2-responsive pb-4">Initial order</h2>
-              <DataTable
+              <MDBDataTable
                 striped
                 bordered
                 hover
                 order={["age", "desc"]}
-                data={data}
+                data={new data()}
               />
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
 
-      <Row className="py-3">
-        <Col md="12">
-          <Card>
-            <CardBody>
+      <MDBRow className="py-3">
+        <MDBCol md="12">
+          <MDBCard>
+            <MDBCardBody>
               <h2 className="h2-responsive pb-4">Searching off</h2>
-              <DataTable striped bordered hover searching={false} data={data} />
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
+              <MDBDataTable striped bordered hover searching={false} data={new data()} />
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
 
-      <Row className="py-3">
-        <Col md="12">
-          <Card>
-            <CardBody>
+      <MDBRow className="py-3">
+        <MDBCol md="12">
+          <MDBCard>
+            <MDBCardBody>
               <h2 className="h2-responsive pb-4">Paging off</h2>
-              <DataTable striped bordered hover paging={false} data={data} />
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
+              <MDBDataTable striped bordered hover paging={false} data={new data()} />
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
 
-      <Row className="py-3">
-        <Col md="12">
-          <Card>
-            <CardBody>
+      <MDBRow className="py-3">
+        <MDBCol md="12">
+          <MDBCard>
+            <MDBCardBody>
               <h2 className="h2-responsive pb-4">ScrollY</h2>
-              <DataTable
+              <MDBDataTable
                 striped
                 bordered
                 hover
                 scrollY
                 maxHeight="300px"
-                data={data}
+                data={new data()}
               />
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
 
-      <Row className="py-3">
-        <Col md="12">
-          <Card>
-            <CardBody>
+      <MDBRow className="py-3">
+        <MDBCol md="12">
+          <MDBCard>
+            <MDBCardBody>
               <h2 className="h2-responsive pb-4">ScrollY dynamic height</h2>
-              <DataTable
+              <MDBDataTable
                 striped
                 bordered
                 hover
                 scrollY
                 maxHeight="50vh"
-                data={data}
+                data={new data()}
               />
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
 
-      <Row className="py-3">
-        <Col md="12">
-          <Card>
-            <CardBody>
+      <MDBRow className="py-3">
+        <MDBCol md="12">
+          <MDBCard>
+            <MDBCardBody>
               <h2 className="h2-responsive pb-4">scrollX</h2>
-              <DataTable striped bordered hover scrollX data={data} />
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
+              <MDBDataTable striped bordered hover scrollX data={new data()} />
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
 
-      <Row className="py-3">
-        <Col md="12">
-          <Card>
-            <CardBody>
+      <MDBRow className="py-3">
+        <MDBCol md="12">
+          <MDBCard>
+            <MDBCardBody>
               <h2 className="h2-responsive pb-4">scroll X and Y</h2>
-              <DataTable
+              <MDBDataTable
                 striped
                 bordered
                 hover
                 scrollX
                 scrollY
                 maxHeight="300xp"
-                data={data}
+                data={new data()}
               />
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
   );
 };
 

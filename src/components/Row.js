@@ -38,9 +38,14 @@ class Row extends Component {
 Row.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
-  top: PropTypes.string,
-  bottom: PropTypes.string,
-  middle: PropTypes.string,
+  top: PropTypes.bool,
+  bottom: PropTypes.bool,
+  middle: PropTypes.bool,
+  end: PropTypes.bool,
+  start: PropTypes.bool,
+  center: PropTypes.bool,
+  between: PropTypes.bool,
+  around: PropTypes.bool,
 };
 
 Row.defaultProps = {

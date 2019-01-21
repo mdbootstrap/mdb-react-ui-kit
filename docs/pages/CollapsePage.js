@@ -1,17 +1,14 @@
 import React, { Component } from "react";
 import { MDBBtn, MDBCollapse, MDBContainer } from "mdbreact";
-import DocsLink from "./DocsLink";
+import DocsLink from "./../components/docsLink";
 
 class CollapsePage extends Component {
-  constructor(props) {
-    super(props);
-    this.toggleCollapse = this.toggleCollapse.bind(this);
-    this.state = {
-      collapseID: ""
-    };
+
+  state = {
+    collapseID: ""
   }
 
-  toggleCollapse(collapseID) {
+  toggleCollapse = (collapseID) => () => {
     this.setState(prevState => ({
       collapseID: prevState.collapseID !== collapseID ? collapseID : ""
     }));
@@ -21,7 +18,7 @@ class CollapsePage extends Component {
     return (
       <MDBContainer>
         <DocsLink
-          title="MDBCollapse"
+          title="Collapse"
           href="https://mdbootstrap.com/docs/react/advanced/collapse/"
         />
         <div>
@@ -29,14 +26,14 @@ class CollapsePage extends Component {
           <div>
             <MDBBtn
               color="primary"
-              onClick={() => this.toggleCollapse("basicCollapse")}
+              onClick={this.toggleCollapse("basicCollapse")}
               style={{ marginBottom: "1rem" }}
             >
               Toggle1
             </MDBBtn>
             <MDBBtn
               color="info"
-              onClick={() => this.toggleCollapse("basicCollapse")}
+              onClick={this.toggleCollapse("basicCollapse")}
               style={{ marginBottom: "1rem" }}
             >
               Toggle2
@@ -56,7 +53,7 @@ class CollapsePage extends Component {
             <div>
               <MDBBtn
                 color="primary"
-                onClick={() => this.toggleCollapse("accordion1")}
+                onClick={this.toggleCollapse("accordion1")}
                 style={{ marginBottom: "1rem" }}
               >
                 Collapsible Group Item #1
@@ -78,7 +75,7 @@ class CollapsePage extends Component {
             <div>
               <MDBBtn
                 color="primary"
-                onClick={() => this.toggleCollapse("accordion2")}
+                onClick={this.toggleCollapse("accordion2")}
                 style={{ marginBottom: "1rem" }}
               >
                 Collapsible Group Item #2
@@ -100,7 +97,7 @@ class CollapsePage extends Component {
             <div>
               <MDBBtn
                 color="primary"
-                onClick={() => this.toggleCollapse("accordion3")}
+                onClick={this.toggleCollapse("accordion3")}
                 style={{ marginBottom: "1rem" }}
               >
                 Collapsible Group Item #2

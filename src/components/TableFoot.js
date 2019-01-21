@@ -6,21 +6,21 @@ const TableFoot = props => {
   const { children, color, columns, textWhite, ...attributes } = props;
 
   const classes = classNames(
-    color !== "dark" && color !== "light" ? color : `thead-${color}`,
+    color && (color !== "dark" && color !== "light" ? color : `thead-${color}`),
     {
       "text-white": textWhite
     }
   );
 
   return (
-    <thead {...attributes} className={classes}>
+    <thead {...attributes} className={classes || undefined}>
       {columns && (
         <tr>
           {columns.map(col => (
             <th
               key={col.field}
               className={
-                col.hasOwnProperty("minimal") ? `th-${col.minimal}` : ""
+                col.hasOwnProperty("minimal") ? `th-${col.minimal}` : undefined
               }
             >
               {col.label}

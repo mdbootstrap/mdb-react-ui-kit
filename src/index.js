@@ -34,8 +34,9 @@ import Fa from "./components/Fa";
 import FormInline from "./components/FormInline";
 import Footer from "./components/Footer";
 import FreeBird from "./components/FreeBird";
-import Input from "./components/Input";
+import HamburgerToggler from "./components/HamburgerToggler";
 import InputNumeric from "./components/InputNumeric";
+import Input from "./components/Input";
 import Jumbotron from "./components/Jumbotron";
 import ListGroup from "./components/ListGroup";
 import ListGroupItem from "./components/ListGroupItem";
@@ -65,15 +66,14 @@ import Table from "./components/Table";
 import TableBody from "./components/TableBody";
 import TableHead from "./components/TableHead";
 import TableFoot from "./components/TableFoot";
-import TextField from "./components/TextField";
 import Tooltip from "./components/Tooltip";
 import View from "./components/View";
 import { toast, ToastContainer, cssTransition } from "react-toastify";
-import HamburgerToggler from "./components/HamburgerToggler";
 import Iframe from "./components/Iframe";
 
 
 // MDB FREE
+import { MDBAnimation } from './components/Animation';
 import {MDBBadge} from "./components/Badge";
 import {MDBAlert} from "./components/Alert";
 import {MDBBreadcrumb} from "./components/Breadcrumb";
@@ -104,10 +104,11 @@ import {MDBDropdownItem} from "./components/DropdownItem";
 import {MDBDropdownMenu} from "./components/DropdownMenu";
 import {MDBDropdownToggle} from "./components/DropdownToggle";
 import {MDBEdgeHeader} from "./components/EdgeHeader";
-import {MDBIcon} from "./components/Fa";
 import {MDBFormInline} from "./components/FormInline";
 import {MDBFooter} from "./components/Footer";
 import {MDBFreeBird} from "./components/FreeBird";
+import {MDBHamburgerToggler} from "./components/HamburgerToggler";
+import {MDBIcon} from "./components/Fa";
 import {MDBInput} from "./components/Input";
 import {MDBInputSelect} from "./components/InputNumeric";
 import {MDBJumbotron} from "./components/Jumbotron";
@@ -139,9 +140,9 @@ import {MDBTable} from "./components/Table";
 import {MDBTableBody} from "./components/TableBody";
 import {MDBTableHead} from "./components/TableHead";
 import {MDBTableFoot} from "./components/TableFoot";
-import {MDBTextarea} from "./components/TextField";
 import {MDBTooltip} from "./components/Tooltip";
-import {MDBView} from "./components/View";
+import { MDBView } from "./components/View";
+import {MDBIframe} from "./components/Iframe";
 
 
 let Dropdown = require("./components/Dropdown").default;
@@ -182,6 +183,7 @@ export  {
   Col,
   Collapse,
   Container,
+  cssTransition,
   DataTable,
   Dropdown,
   DropdownItem,
@@ -193,6 +195,7 @@ export  {
   FormInline,
   Footer,
   FreeBird,
+  HamburgerToggler,
   Input,
   InputNumeric,
   Jumbotron,
@@ -224,14 +227,13 @@ export  {
   TableBody,
   TableHead,
   TableFoot,
-  TextField,
   Tooltip,
   View,
   toast,
   ToastContainer,
-  cssTransition,
-  HamburgerToggler,
   Iframe,
+  MDBIframe,
+  MDBAnimation,
   MDBBadge,
   MDBAlert,
   MDBBreadcrumb,
@@ -264,10 +266,11 @@ export  {
   MDBDropdownMenuComponent,
   MDBDropdownToggle,
   MDBEdgeHeader,
-  MDBIcon,
   MDBFormInline,
   MDBFooter,
   MDBFreeBird,
+  MDBHamburgerToggler,
+  MDBIcon,
   MDBInput,
   MDBInputSelect,
   MDBJumbotron,
@@ -299,7 +302,6 @@ export  {
   MDBTableBody,
   MDBTableHead,
   MDBTableFoot,
-  MDBTextarea,
   MDBTooltip,
   MDBView,
 };

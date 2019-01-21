@@ -1,17 +1,8 @@
 import React from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  CardBody,
-  Table,
-  TableBody,
-  TableHead
-} from "mdbreact";
-import DocsLink from "./DocsLink";
+import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
+import DocsLink from "./../components/docsLink";
 
-const TablePage = props => {
+const TableScrollPage = props => {
   const data = {
     columns: [
       {
@@ -76,28 +67,28 @@ const TablePage = props => {
   };
 
   return (
-    <Container className="mt-3">
+    <MDBContainer className="mt-3">
       <DocsLink
-        title="Table Scroll"
+        title="MDBTable Scroll"
         href="https://mdbootstrap.com/docs/react/tables/scroll/"
       />
-      <Row className="py-3">
-        <Col md="12">
-          <Card>
-            <CardBody>
+      <MDBRow className="py-3">
+        <MDBCol md="12">
+          <MDBCard>
+            <MDBCardBody>
               <h2 className="h2-responsive pb-4">
                 Static table vertical scroll
               </h2>
-              <Table scrollY>
-                <TableHead columns={data.columns} />
-                <TableBody rows={data.rows} />
-              </Table>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+              <MDBTable scrollY>
+                <MDBTableHead columns={data.columns} />
+                <MDBTableBody rows={data.rows} />
+              </MDBTable>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
   );
 };
 
-export default TablePage;
+export default TableScrollPage;

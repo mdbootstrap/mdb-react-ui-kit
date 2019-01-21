@@ -6,68 +6,86 @@ import "./Breadcrumb.css";
 
 const BreadcrumbItem = props => {
 
-    const { className, active, bold, children, icon, iconClassName, appendIcon, ...attributes } = props;
+  const { active, appendIcon, children, className, bold, icon, iconBrand, iconClassName, iconLight, iconRegular, iconSize, ...attributes } = props;
 
-    const classes = classNames(
-      active ? "active" : false,
-      icon && "bc-icons",
-      "breadcrumb-item",
-      className
-    );
+  const classes = classNames(
+    active ? "active" : false,
+    icon && "bc-icons",
+    "breadcrumb-item",
+    className
+  );
 
-    const iconClasses = classNames(
-      appendIcon ?  "mx-2" : "mr-2",
-      iconClassName
-    )
+  const iconClasses = classNames(
+    appendIcon ? "mx-2" : "mr-2",
+    iconClassName
+  )
 
-    const WithBold = ({ bold, children }) => (bold ?
-      <strong>
-        {children}
-      </strong>
-      : children
-    )
+  const WithBold = ({ children }) => (bold ?
+    <strong>
+      {children}
+    </strong>
+    : children
+  )
 
-    const WithIcon = ({ icon, children, appendIcon }) => {
-      if(icon){
-        if( !appendIcon ){
-          return (
-            <Fragment>
-              <Fa icon={ icon } className={ iconClasses }></Fa>
-              { children }
-            </Fragment>
-          );
-        } else {
-          return (
-            <Fragment>
-              { children }
-              <Fa icon={ icon } className={ iconClasses }></Fa>
-            </Fragment>
-          );
-        }
-      }
-      return children;
+  const WithIcon = () => {
+    if (icon) {
+      return (
+        <Fragment>
+          {
+            appendIcon && children
+          }
+          <Fa
+            brand={iconBrand}
+            className={iconClasses}
+            icon={icon}
+            light={iconLight}
+            regular={iconRegular}
+            size={iconSize}
+          />
+          {
+            !appendIcon && children
+          }
+        </Fragment>
+      );
     }
+    return children;
+  }
 
-    return (
-      <li { ...attributes } className={ classes }>
-        <WithBold bold={ bold }>
-          <WithIcon icon={ icon } appendIcon={ appendIcon }>
-            { props.children }
-          </WithIcon>
-        </WithBold>
-      </li>
-    );
+  return (
+    <li {...attributes} className={classes}>
+      <WithBold>
+        <WithIcon />
+      </WithBold>
+    </li>
+  );
 }
 
 BreadcrumbItem.propTypes = {
   active: PropTypes.bool,
   appendIcon: PropTypes.bool,
-  bold: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
+  bold: PropTypes.bool,
   icon: PropTypes.string,
+  iconBrand: PropTypes.bool,
   iconClassName: PropTypes.string,
+  iconLight: PropTypes.bool,
+  iconRegular: PropTypes.bool,
+  iconSize: PropTypes.string
 };
+
+BreadcrumbItem.defaultProps = {
+  active: false,
+  appendIcon: false,
+  className: "",
+  bold: false,
+  icon: "",
+  iconBrand: false, 
+  iconClassName: "",
+  iconLight: false,
+  iconRegular: false,
+  iconSize: ""
+}
 
 export default BreadcrumbItem;
 export { BreadcrumbItem as MDBBreadcrumbItem };

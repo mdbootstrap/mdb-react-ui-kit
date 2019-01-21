@@ -1,6 +1,6 @@
 import React from "react";
 import { MDBBtn, MDBBtnGroup, MDBIcon, MDBContainer, MDBCol, MDBRow, MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem } from "mdbreact";
-import DocsLink from "./DocsLink";
+import DocsLink from "../components/docsLink";
 
 const ButtonPage = props => {
   return (
@@ -29,53 +29,30 @@ const ButtonPage = props => {
             Primary active
           </MDBBtn>
           <MDBBtn color="primary">Primary</MDBBtn>
-
           <MDBBtn>Default</MDBBtn>
-
           <MDBBtn color="secondary">Secondary</MDBBtn>
-
           <MDBBtn color="success">Success</MDBBtn>
-
           <MDBBtn color="info">Info</MDBBtn>
-
           <MDBBtn color="warning">Warning</MDBBtn>
-
           <MDBBtn color="danger">Danger</MDBBtn>
           <br />
-
           <MDBBtn color="elegant">Elegant</MDBBtn>
-
           <MDBBtn color="unique">Unique</MDBBtn>
-
           <MDBBtn color="pink">Pink</MDBBtn>
-
           <MDBBtn color="purple">Purple</MDBBtn>
-
           <MDBBtn color="deep-purple">Deep-purple</MDBBtn>
-
           <MDBBtn color="indigo">Indigo</MDBBtn>
-
           <MDBBtn color="light-blue">Light blue</MDBBtn>
-
           <MDBBtn color="cyan">Cyan</MDBBtn>
-
           <MDBBtn color="dark-green">Dark-green</MDBBtn>
-
           <MDBBtn color="light-green">Light-green</MDBBtn>
-
           <MDBBtn color="yellow">Yellow</MDBBtn>
-
           <MDBBtn color="amber">Amber</MDBBtn>
-
           <MDBBtn color="deep-orange">Deep-orange</MDBBtn>
-
           <MDBBtn color="brown">Brown</MDBBtn>
-
           <MDBBtn color="blue-grey">Blue-grey</MDBBtn>
-
           <MDBBtn color="mdb-color">MDB</MDBBtn>
           <br />
-
           <MDBBtn outline color="primary">
             Primary
           </MDBBtn>
@@ -116,7 +93,9 @@ const ButtonPage = props => {
           <MDBBtn block color="primary">
             Block level button
           </MDBBtn>
+
           <br />
+
           <MDBBtn color="light-green">light-green</MDBBtn>
           <MDBBtn color="mdb">MDB</MDBBtn>
           <MDBBtn color="success" outline>
@@ -341,10 +320,10 @@ const ButtonPage = props => {
               </div>
               <div className="btn-toolbar" role="toolbar" >
                 <MDBBtnGroup className="mr-2">
-                  <MDBBtn color="indigo lighten-2"><MDBIcon icon="start" /></MDBBtn>
+                  <MDBBtn color="indigo lighten-2"><MDBIcon icon="hourglass-start" /></MDBBtn>
                   <MDBBtn color="blue lighten-2"><MDBIcon icon="heart" /></MDBBtn>
                   <MDBBtn color="light-blue lighten-2"><MDBIcon icon="user" /></MDBBtn>
-                  <MDBBtn color="cyan lighten-2"><MDBIcon icon="twitter" /></MDBBtn>
+                  <MDBBtn color="cyan lighten-2"><MDBIcon icon="twitter" brand /></MDBBtn>
                 </MDBBtnGroup>
               </div>
             </MDBCol>

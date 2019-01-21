@@ -1,6 +1,6 @@
 import React from "react";
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBListGroup, MDBListGroupItem, MDBCardHeader, MDBCardFooter, MDBBtn, MDBCol, MDBRow, MDBNav, MDBNavItem, MDBNavLink, MDBCardGroup, MDBJumbotron, MDBContainer } from "mdbreact";
-import DocsLink from "./DocsLink";
+import DocsLink from "../components/docsLink";
 
 const PanelPage = () => {
   const panelStyle = { width: "22rem", marginTop: "1rem" };

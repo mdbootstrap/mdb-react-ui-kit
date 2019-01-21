@@ -1,38 +1,38 @@
 import React from "react";
-import { DataTable, Container, Row, Col, Card, CardBody } from "mdbreact";
-import DocsLink from "./DocsLink";
+import { MDBDataTable, MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody } from "mdbreact";
+import DocsLink from "./../components/docsLink";
 
 const DatatableApiPage = () => {
   return (
-    <Container className="mt-3">
+    <MDBContainer className="mt-3">
       <DocsLink
         title="Datatable"
         href="https://mdbootstrap.com/docs/react/tables/datatables/"
       />
-      <Row className="py-3">
-        <Col md="12">
-          <Card>
-            <CardBody>
+      <MDBRow className="py-3">
+        <MDBCol md="12">
+          <MDBCard>
+            <MDBCardBody>
               <h2 className="h2-responsive pb-4">
                 Datatable with data from API
               </h2>
-              <DataTable
+              <MDBDataTable
                 striped
                 bordered
                 hover
                 data="https://my-json-server.typicode.com/Rotarepmi/exjson/db"
               />
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
 
-      <Row className="py-3">
-        <Col md="12">
-          <Card>
-            <CardBody>
+      <MDBRow className="py-3">
+        <MDBCol md="12">
+          <MDBCard>
+            <MDBCardBody>
               <h2 className="h2-responsive pb-4">scroll X and Y</h2>
-              <DataTable
+              <MDBDataTable
                 striped
                 bordered
                 hover
@@ -41,11 +41,11 @@ const DatatableApiPage = () => {
                 maxHeight="300xp"
                 data="https://my-json-server.typicode.com/Rotarepmi/exjson/db"
               />
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
   );
 };
 

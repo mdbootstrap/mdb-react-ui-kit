@@ -1,7 +1,7 @@
 import React from "react";
-import { toast, ToastContainer, Container } from "mdbreact";
+import { toast, ToastContainer, MDBContainer } from "mdbreact";
 import "./alerts.css";
-import DocsLink from "./DocsLink";
+import DocsLink from "./../components/docsLink";
 
 const NotificationPage = () => {
   const notify = type => {
@@ -30,7 +30,7 @@ const NotificationPage = () => {
   };
 
   return (
-    <Container>
+    <MDBContainer>
       <DocsLink
         title="Notifications"
         href="https://mdbootstrap.com/docs/react/addons/notification/"
@@ -57,7 +57,7 @@ const NotificationPage = () => {
           autoClose={5000}
         />
       </div>
-    </Container>
+    </MDBContainer>
   );
 };
 

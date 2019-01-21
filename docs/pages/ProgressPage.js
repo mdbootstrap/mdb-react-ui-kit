@@ -1,10 +1,10 @@
 import React from "react";
-import { MDBProgress, Container } from "mdbreact";
-import DocsLink from "./DocsLink";
+import { MDBProgress, MDBContainer } from "mdbreact";
+import DocsLink from "../components/docsLink";
 
 const ProgressPage = props => {
   return (
-    <Container>
+    <MDBContainer>
       <DocsLink
         title="Progress Bar"
         href="https://mdbootstrap.com/docs/react/components/progress-bar/"
@@ -53,7 +53,7 @@ const ProgressPage = props => {
           Wow!
         </MDBProgress>
       </div>
-    </Container>
+    </MDBContainer>
 
   );
 };

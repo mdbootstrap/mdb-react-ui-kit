@@ -1,29 +1,13 @@
-import React from "react";
-import {
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBInput,
-  MDBBtn,
-  MDBIcon,
-  MDBCard,
-  MDBCardBody,
-  MDBModal,
-  MDBModalBody,
-  MDBModalFooter
-} from "mdbreact";
-import DocsLink from "./DocsLink";
+import React, { Component } from "react";
+import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBIcon, MDBCard, MDBCardBody, MDBModal,  MDBModalBody, MDBModalFooter } from "mdbreact";
+import DocsLink from "./../components/docsLink";
 
-class FormsPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      modal: false
-    };
-    this.toggle = this.toggle.bind(this);
+class FormsPage extends Component {
+  state = {
+    modal: false
   }
 
-  toggle() {
+  toggle = () => {
     this.setState({
       modal: !this.state.modal
     });
@@ -218,7 +202,7 @@ class FormsPage extends React.Component {
               </div>
               <div className="text-center">
                 <MDBBtn outline color="info">
-                  Send <MDBIcon icon="paper-plane-o" className="ml-1" />
+                  Send <MDBIcon icon="paper-plane" className="ml-1" />
                 </MDBBtn>
               </div>
             </form>
@@ -252,7 +236,7 @@ class FormsPage extends React.Component {
               <div className="text-center mt-4">
                 <button className="btn btn-outline-purple" type="submit">
                   Send
-                  <i className="fa fa-paper-plane-o ml-2" />
+                  <MDBIcon icon="paper-plane" className="ml-2" />
                 </button>
               </div>
             </form>
@@ -296,12 +280,12 @@ class FormsPage extends React.Component {
                   type="textarea"
                   rows="2"
                   label="Your message"
-                  icon="pencil"
+                  icon="pencil-alt"
                 />
               </div>
               <div className="text-center">
                 <MDBBtn outline color="secondary">
-                  Send <MDBIcon icon="paper-plane-o" className="ml-1" />
+                  Send <MDBIcon icon="paper-plane" className="ml-1" />
                 </MDBBtn>
               </div>
             </form>
@@ -354,7 +338,7 @@ class FormsPage extends React.Component {
               <div className="text-center mt-4">
                 <button className="btn btn-outline-warning" type="submit">
                   Send
-                  <i className="fa fa-paper-plane-o ml-2" />
+                  <MDBIcon icon="paper-plane" className="ml-2" />
                 </button>
               </div>
             </form>
@@ -444,7 +428,7 @@ class FormsPage extends React.Component {
                   <div className="text-center py-4 mt-3">
                     <button className="btn btn-outline-purple" type="submit">
                       Send
-                      <i className="fa fa-paper-plane-o ml-2" />
+                      <MDBIcon icon="paper-plane" className="ml-2" />
                     </button>
                   </div>
                 </form>
@@ -466,55 +450,57 @@ class FormsPage extends React.Component {
             >
               <div className="modal-header primary-color white-text">
                 <h4 className="title">
-                  <MDBIcon className="fa fa-pencil" /> Contact form
+                  <MDBIcon icon="pencil-alt" /> Contact form
                 </h4>
                 <button type="button" className="close" onClick={this.toggle}>
                   <span aria-hidden="true">×</span>
                 </button>
               </div>
-              <MDBModalBody className="grey-text">
-                <MDBInput
-                  size="sm"
-                  label="Your name"
-                  icon="user"
-                  group
-                  type="text"
-                  validate
-                  error="wrong"
-                  success="right"
-                />
-                <MDBInput
-                  size="sm"
-                  label="Your email"
-                  icon="envelope"
-                  group
-                  type="email"
-                  validate
-                  error="wrong"
-                  success="right"
-                />
-                <MDBInput
-                  size="sm"
-                  label="Subject"
-                  icon="tag"
-                  group
-                  type="text"
-                  validate
-                  error="wrong"
-                  success="right"
-                />
-                <MDBInput
-                  size="sm"
-                  type="textarea"
-                  rows="2"
-                  label="Your message"
-                  icon="pencil"
-                />
+              <MDBModalBody>
+                <form className="grey-text">
+                  <MDBInput
+                    size="sm"
+                    label="Your name"
+                    icon="user"
+                    group
+                    type="text"
+                    validate
+                    error="wrong"
+                    success="right"
+                  />
+                  <MDBInput
+                    size="sm"
+                    label="Your email"
+                    icon="envelope"
+                    group
+                    type="email"
+                    validate
+                    error="wrong"
+                    success="right"
+                  />
+                  <MDBInput
+                    size="sm"
+                    label="Subject"
+                    icon="tag"
+                    group
+                    type="text"
+                    validate
+                    error="wrong"
+                    success="right"
+                  />
+                  <MDBInput
+                    size="sm"
+                    type="textarea"
+                    rows="2"
+                    label="Your message"
+                    icon="pencil-alt"
+                  />
+                </form>
               </MDBModalBody>
               <MDBModalFooter>
                 <MDBBtn color="secondary" onClick={this.toggle}>
                   Close
-                </MDBBtn>{" "}
+                </MDBBtn>
                 <MDBBtn color="primary">Save changes</MDBBtn>
               </MDBModalFooter>
             </MDBModal>

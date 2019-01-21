@@ -1,17 +1,8 @@
 import React from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  CardBody,
-  Table,
-  TableBody,
-  TableHead
-} from "mdbreact";
-import DocsLink from "./DocsLink";
+import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
+import DocsLink from "./../components/docsLink";
 
-const TablePage = props => {
+const TableResponsivePage = props => {
   const data = {
     columns: [
       {
@@ -278,113 +269,113 @@ const TablePage = props => {
   };
 
   return (
-    <Container className="mt-3">
+    <MDBContainer className="mt-3">
       <DocsLink
         title="Table Responsive"
         href="https://mdbootstrap.com/docs/react/tables/responsive/"
       />
-      <Row className="py-3">
-        <Col md="12">
-          <Card>
-            <CardBody>
+      <MDBRow className="py-3">
+        <MDBCol md="12">
+          <MDBCard>
+            <MDBCardBody>
               <h2 className="h2-responsive pb-4">Always responsive</h2>
-              <Table responsive>
-                <TableHead columns={data.columns} />
-                <TableBody rows={data.rows} />
-              </Table>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
+              <MDBTable responsive>
+                <MDBTableHead columns={data.columns} />
+                <MDBTableBody rows={data.rows} />
+              </MDBTable>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
 
-      <Row className="py-3">
-        <Col md="12">
-          <Card>
-            <CardBody>
+      <MDBRow className="py-3">
+        <MDBCol md="12">
+          <MDBCard>
+            <MDBCardBody>
               <h2 className="h2-responsive pb-4">Breakpoint specific</h2>
-              <Table responsiveSm>
-                <TableHead
+              <MDBTable responsiveSm>
+                <MDBTableHead
                   columns={data.columns}
                   color="primary-color"
                   textWhite
                 />
-                <TableBody rows={data.rows} />
-              </Table>
+                <MDBTableBody rows={data.rows} />
+              </MDBTable>
 
-              <Table responsiveMd>
-                <TableHead
+              <MDBTable responsiveMd>
+                <MDBTableHead
                   columns={data.columns}
                   color="default-color"
                   textWhite
                 />
-                <TableBody rows={data.rows} />
-              </Table>
+                <MDBTableBody rows={data.rows} />
+              </MDBTable>
 
-              <Table responsiveLg>
-                <TableHead
+              <MDBTable responsiveLg>
+                <MDBTableHead
                   columns={data.columns}
                   color="secondary-color"
                   textWhite
                 />
-                <TableBody rows={data.rows} />
-              </Table>
+                <MDBTableBody rows={data.rows} />
+              </MDBTable>
 
-              <Table responsiveXl>
-                <TableHead
+              <MDBTable responsiveXl>
+                <MDBTableHead
                   columns={data.columns}
                   color="success-color"
                   textWhite
                 />
-                <TableBody rows={data.rows} />
-              </Table>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
+                <MDBTableBody rows={data.rows} />
+              </MDBTable>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
 
-      <Row className="py-3">
-        <Col md="12">
-          <Card>
-            <CardBody>
+      <MDBRow className="py-3">
+        <MDBCol md="12">
+          <MDBCard>
+            <MDBCardBody>
               <h2 className="h2-responsive pb-4">Columns with auto width</h2>
-              <Table autoWidth striped>
-                <TableHead columns={data_people.columns} />
-                <TableBody rows={data_people.rows} />
-              </Table>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
+              <MDBTable autoWidth striped>
+                <MDBTableHead columns={data_people.columns} />
+                <MDBTableBody rows={data_people.rows} />
+              </MDBTable>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
 
-      <Row className="py-3">
-        <Col md="12">
-          <Card>
-            <CardBody>
+      <MDBRow className="py-3">
+        <MDBCol md="12">
+          <MDBCard>
+            <MDBCardBody>
               <h2 className="h2-responsive pb-4">Columns with minimal width</h2>
-              <Table striped bordered>
-                <TableHead columns={data_minimal_width.columns} />
-                <TableBody rows={data_minimal_width.rows} />
-              </Table>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
+              <MDBTable striped bordered>
+                <MDBTableHead columns={data_minimal_width.columns} />
+                <MDBTableBody rows={data_minimal_width.rows} />
+              </MDBTable>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
 
-      <Row className="py-3">
-        <Col md="12">
-          <Card>
-            <CardBody>
+      <MDBRow className="py-3">
+        <MDBCol md="12">
+          <MDBCard>
+            <MDBCardBody>
               <h2 className="h2-responsive pb-4">Columns with fixed with</h2>
-              <Table fixed bordered>
-                <TableHead columns={data_people.columns} />
-                <TableBody rows={data_people.rows} />
-              </Table>
-            </CardBody>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+              <MDBTable fixed bordered>
+                <MDBTableHead columns={data_people.columns} />
+                <MDBTableBody rows={data_people.rows} />
+              </MDBTable>
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
   );
 };
 
-export default TablePage;
+export default TableResponsivePage;
