@@ -15,6 +15,7 @@ const CardsPage = () => {
           <MDBCol>
             <MDBCard reverse style={{ width: "22rem" }}>
               <MDBCardImage
+                zoom
                 cascade
                 className="img-fluid"
                 src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg"

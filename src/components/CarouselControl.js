@@ -31,7 +31,7 @@ class Control extends Component {
     if (testimonial) {
       const arrow = direction === "prev" ? "left" : "right";
       classes = classNames(
-        "carousel-item-" + direction,
+        "carousel-control-" + direction,
         arrow,
         "carousel-control",
         className

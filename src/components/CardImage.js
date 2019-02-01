@@ -48,7 +48,7 @@ class CardImage extends Component {
 
     if (this.props.src) {
       return (
-        <View zoom hover={this.props.hover} cascade={this.props.cascade}>
+        <View zoom={zoom} hover={this.props.hover} cascade={this.props.cascade}>
           <div
             className="Ripple-parent"
             onMouseDown={this.handleClick.bind(this)}

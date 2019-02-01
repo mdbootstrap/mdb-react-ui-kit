@@ -1,11 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-let DataTableInput;
-try {
-  DataTableInput = require("../pro/DataTableInput").default;
-} catch (err) {
-  DataTableInput = require("./DataTableInput").default;
-}
+import React from 'react';
+import PropTypes from 'prop-types';
+import DataTableInput from './DataTableInput';
 
 const DataTableSearch = props => {
   const { handleSearchChange, search, searching, label } = props;

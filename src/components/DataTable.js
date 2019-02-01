@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import DataTableTable from "./DataTableComponents/DataTableTable";
-import DataTableTableScroll from "./DataTableComponents/DataTableTableScroll";
-import DataTableEntries from "./DataTableComponents/DataTableEntries";
-import DataTableSearch from "./DataTableComponents/DataTableSearch";
-import DataTableInfo from "./DataTableComponents/DataTableInfo";
-import DataTablePagination from "./DataTableComponents/DataTablePagination";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import DataTableTable from './DataTableComponents/DataTableTable';
+import DataTableTableScroll from './DataTableComponents/DataTableTableScroll';
+import DataTableEntries from './DataTableComponents/DataTableEntries';
+import DataTableSearch from './DataTableComponents/DataTableSearch';
+import DataTableInfo from './DataTableComponents/DataTableInfo';
+import DataTablePagination from './DataTableComponents/DataTablePagination';
 
 class DataTable extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class DataTable extends Component {
       filteredRows: props.data.rows || [],
       pages: [],
       rows: props.data.rows || [],
-      search: "",
+      search: '',
       translateScrollHead: 0,
       order: props.order || []
     };
@@ -30,7 +30,7 @@ class DataTable extends Component {
   }
 
   componentDidMount() {
-    if (typeof this.props.data === "string") {
+    if (typeof this.props.data === 'string') {
       this.fetchData(this.props.data);
     }
 
@@ -40,7 +40,7 @@ class DataTable extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.data !== this.props.data) {
-      if (typeof this.props.data === "string") {
+      if (typeof this.props.data === 'string') {
         this.fetchData(this.props.data);
       } else {
         this.setState({
@@ -94,10 +94,10 @@ class DataTable extends Component {
   };
 
   handleSort = (field, sort) => {
-    if(sort !== "disabled") {
+    if (sort !== "disabled") {
       this.setState(
         prevState => {
-          // asc by default 
+          // asc by default
           switch (sort) {
             case "desc":
               prevState.rows.sort((a, b) => (a[field] > b[field] ? -1 : 1));
@@ -105,11 +105,11 @@ class DataTable extends Component {
             default:
               prevState.rows.sort((a, b) => (a[field] > b[field] ? 1 : -1));
           }
-      
+
           prevState.columns[
             prevState.columns.findIndex(column => column.field === field)
           ].sort = sort === "asc" ? "desc" : "asc";
-  
+
           return {
             rows: prevState.rows,
             columns: prevState.columns
@@ -128,7 +128,7 @@ class DataTable extends Component {
         const filteredRows = prevState.rows.filter(row => {
           for (let key in row) {
             if (Object.prototype.hasOwnProperty.call(row, key)) {
-              const stringValue = row[key] !== null ? row[key].toString() : "";
+              const stringValue = row[key] !== null ? row[key].toString() : '';
               if (
                 stringValue.toLowerCase().match(this.state.search.toLowerCase())
               )
@@ -139,7 +139,7 @@ class DataTable extends Component {
         });
         if (filteredRows.length === 0)
           filteredRows.push({
-            message: "No matching records found",
+            message: 'No matching records found',
             colspan: prevState.columns.length
           });
         return { filteredRows, activePage: 0 };
@@ -167,7 +167,7 @@ class DataTable extends Component {
         }
         prevState.activePage =
           prevState.activePage < prevState.pages.length ||
-          prevState.activePage === 0
+            prevState.activePage === 0
             ? prevState.activePage
             : prevState.pages.length - 1;
       } else {
@@ -237,17 +237,6 @@ class DataTable extends Component {
       translateScrollHead
     } = this.state;
 
-    let ExportToCsvBtn;
-    if (exportToCSV) {
-      try {
-        ExportToCsvBtn = require("./pro/ExportToCSV").default;
-      } catch (err) {
-        console.log(
-          "Export to CSV is MDB PRO component, more here: https://mdbootstrap.com/products/react-ui-kit/"
-        );
-      }
-    }
-
     return (
       <div className="dataTables_wrapper dt-bootstrap4">
         <div className="row">
@@ -265,36 +254,35 @@ class DataTable extends Component {
             label={searchLabel}
           />
         </div>
-        {!scrollY &&
-          !scrollX && (
-            <div className="row">
-              <DataTableTable
-                autoWidth={autoWidth}
-                bordered={bordered}
-                borderless={borderless}
-                btn={btn}
-                dark={dark}
-                fixed={fixed}
-                hover={hover}
-                responsive={responsive}
-                responsiveSm={responsiveSm}
-                responsiveMd={responsiveMd}
-                responsiveLg={responsiveLg}
-                responsiveXl={responsiveXl}
-                small={small}
-                striped={striped}
-                theadColor={theadColor}
-                theadTextWhite={theadTextWhite}
-                columns={columns}
-                handleSort={this.handleSort}
-                sortable={sortable}
-                tbodyColor={tbodyColor}
-                tbodyTextWhite={tbodyTextWhite}
-                rows={pages[activePage]}
-                {...attributes}
-              />
-            </div>
-          )}
+        {!scrollY && !scrollX && (
+          <div className="row">
+            <DataTableTable
+              autoWidth={autoWidth}
+              bordered={bordered}
+              borderless={borderless}
+              btn={btn}
+              dark={dark}
+              fixed={fixed}
+              hover={hover}
+              responsive={responsive}
+              responsiveSm={responsiveSm}
+              responsiveMd={responsiveMd}
+              responsiveLg={responsiveLg}
+              responsiveXl={responsiveXl}
+              small={small}
+              striped={striped}
+              theadColor={theadColor}
+              theadTextWhite={theadTextWhite}
+              columns={columns}
+              handleSort={this.handleSort}
+              sortable={sortable}
+              tbodyColor={tbodyColor}
+              tbodyTextWhite={tbodyTextWhite}
+              rows={pages[activePage]}
+              {...attributes}
+            />
+          </div>
+        )}
         {(scrollY || scrollX) && (
           <div className="row">
             <DataTableTableScroll
@@ -348,13 +336,6 @@ class DataTable extends Component {
             />
           </div>
         )}
-        {exportToCSV && (
-          <div className="row justify-content-end">
-            <ExportToCsvBtn columns={columns} data={pages} color="primary">
-              Download CSV
-            </ExportToCsvBtn>
-          </div>
-        )}
       </div>
     );
   }
@@ -370,8 +351,8 @@ DataTable.propTypes = {
   data: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
   entries: PropTypes.number,
   entriesLabel: PropTypes.oneOfType([
-    PropTypes.string, 
-    PropTypes.number, 
+    PropTypes.string,
+    PropTypes.number,
     PropTypes.object
   ]),
   entriesOptions: PropTypes.arrayOf(PropTypes.number),
@@ -434,9 +415,9 @@ DataTable.defaultProps = {
   sortable: true,
   small: false,
   striped: false,
-  theadColor: "",
+  theadColor: '',
   theadTextWhite: false,
-  tbodyColor: "",
+  tbodyColor: '',
   tbodyTextWhite: false
 };
 

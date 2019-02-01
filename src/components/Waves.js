@@ -1,8 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
-
-require("./Waves.css");
+import React from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+import './Waves.css';
 
 class Waves extends React.Component {
   constructor(props) {
@@ -59,17 +58,17 @@ class Waves extends React.Component {
     return (
       <div
         className={
-          "Ripple " +
+          'Ripple ' +
           (this.props.outline || this.props.flat || this.props.dark
-            ? "Ripple-outline "
-            : "") +
-          (this.state.animate ? "is-reppling" : "")
+            ? 'Ripple-outline '
+            : '') +
+          (this.state.animate ? 'is-reppling' : '')
         }
         style={{
-          top: this.state.top + "px",
-          left: this.state.left + "px",
-          width: this.state.width + "px",
-          height: this.state.height + "px"
+          top: this.state.top + 'px',
+          left: this.state.left + 'px',
+          width: this.state.width + 'px',
+          height: this.state.height + 'px'
         }}
       />
     );

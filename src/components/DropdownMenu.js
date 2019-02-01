@@ -1,14 +1,9 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import { Popper } from "react-popper";
-import "./DropdownMenu.css";
-let DropdownMenuComponent;
-try {
-  DropdownMenuComponent = require("./pro/DropdownMenuProComponent").default;
-} catch (err) {
-  DropdownMenuComponent = require("./DropdownMenuComponent").default;
-}
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { Popper } from 'react-popper';
+import './DropdownMenu.css';
+import DropdownMenuComponent from './DropdownMenuComponent';
 
 const noFlipModifier = { flip: { enabled: false } };
 
@@ -26,10 +21,10 @@ class DropdownMenu extends Component {
     } = this.props;
 
     const classes = classNames(
-      "dropdown-menu",
+      'dropdown-menu',
       color && `dropdown-${color}`,
       {
-        "dropdown-menu-right": right,
+        'dropdown-menu-right': right,
         show: this.context.isOpen,
         basic: basic
       },
@@ -40,8 +35,8 @@ class DropdownMenu extends Component {
 
     if (this.context.isOpen) {
       Tag = Popper;
-      const position1 = this.context.dropup ? "top" : "bottom";
-      const position2 = right ? "end" : "start";
+      const position1 = this.context.dropup ? 'top' : 'bottom';
+      const position2 = right ? 'end' : 'start';
       attrs.placement = `${position1}-${position2}`;
       attrs.component = tag;
       attrs.modifiers = !flip ? noFlipModifier : undefined;
@@ -75,10 +70,10 @@ DropdownMenu.propTypes = {
 
 DropdownMenu.defaultProps = {
   basic: false,
-  className: "",
+  className: '',
   flip: false,
   right: false,
-  tag: "div",
+  tag: 'div',
   color: false
 };
 
@@ -86,9 +81,19 @@ DropdownMenu.contextTypes = {
   isOpen: PropTypes.bool.isRequired,
   dropup: PropTypes.bool.isRequired,
   color: PropTypes.oneOfType([
-    PropTypes.oneOf(['primary', 'default', "secondary", "success", "dark", "danger", "info", "warning", "ins" ]),
-    PropTypes.bool])
-
+    PropTypes.oneOf([
+      'primary',
+      'default',
+      'secondary',
+      'success',
+      'dark',
+      'danger',
+      'info',
+      'warning',
+      'ins'
+    ]),
+    PropTypes.bool
+  ])
 };
 
 export default DropdownMenu;

@@ -1,8 +1,10 @@
-import React, { Component } from "react";
-import { CarouselControl, CarouselIndicators, CarouselIndicator } from "../";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import "./Carousel.css";
+import React, { Component } from 'react';
+import CarouselControl from './CarouselControl';
+import CarouselIndicators from './CarouselIndicators';
+import CarouselIndicator from './CarouselIndicator';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import './Carousel.css';
 
 class Carousel extends Component {
   constructor(props) {
@@ -63,9 +65,8 @@ class Carousel extends Component {
     // get images src atr
     if (this.props.thumbnails) {
       const CarouselItemsArray = this.carouselRef.current.querySelectorAll(
-        ".carousel-item img"
+        '.carousel-item img'
       );
-      console.log(CarouselItemsArray)
       const srcArray = Array.prototype.map.call(
         CarouselItemsArray,
         item => item.src
@@ -106,13 +107,13 @@ class Carousel extends Component {
       ...attributes
     } = this.props;
 
-    let ariaLabel = "carousel";
+    let ariaLabel = 'carousel';
 
     const classes = classNames(
-      "carousel",
-      multiItem ? "carousel-multi-item" : "carousel-fade",
-      thumbnails ? "carousel-thumbnails" : "",
-      testimonial ? "testimonial-carousel" : "",
+      'carousel',
+      multiItem ? 'carousel-multi-item' : 'carousel-fade',
+      thumbnails ? 'carousel-thumbnails' : '',
+      testimonial ? 'testimonial-carousel' : '',
       className
     );
 
@@ -137,49 +138,47 @@ class Carousel extends Component {
         className={classes}
         aria-label={ariaLabel}
       >
-        {showControls &&
-          multiItem && (
-            <div className="controls-top">
-              <CarouselControl
-                testimonial={testimonial ? true : false}
-                multiItem={multiItem ? true : false}
-                iconLeft
-                className="btn-floating"
-                direction="prev"
-                role="button"
-                onClick={this.prev}
-              />
-              <CarouselControl
-                testimonial={testimonial ? true : false}
-                multiItem={multiItem ? true : false}
-                iconRight
-                className="btn-floating"
-                direction="next"
-                role="button"
-                onClick={this.next}
-              />
-            </div>
-          )}
+        {showControls && multiItem && (
+          <div className="controls-top">
+            <CarouselControl
+              testimonial={testimonial ? true : false}
+              multiItem={multiItem ? true : false}
+              iconLeft
+              className="btn-floating"
+              direction="prev"
+              role="button"
+              onClick={this.prev}
+            />
+            <CarouselControl
+              testimonial={testimonial ? true : false}
+              multiItem={multiItem ? true : false}
+              iconRight
+              className="btn-floating"
+              direction="next"
+              role="button"
+              onClick={this.next}
+            />
+          </div>
+        )}
         {children}
-        {showControls &&
-          !multiItem && (
-            <React.Fragment>
-              <CarouselControl
-                testimonial={testimonial ? true : false}
-                multiItem={multiItem ? true : false}
-                direction="prev"
-                role="button"
-                onClick={this.prev}
-              />
-              <CarouselControl
-                testimonial={testimonial ? true : false}
-                multiItem={multiItem ? true : false}
-                direction="next"
-                role="button"
-                onClick={this.next}
-              />
-            </React.Fragment>
-          )}
+        {showControls && !multiItem && (
+          <React.Fragment>
+            <CarouselControl
+              testimonial={testimonial ? true : false}
+              multiItem={multiItem ? true : false}
+              direction="prev"
+              role="button"
+              onClick={this.prev}
+            />
+            <CarouselControl
+              testimonial={testimonial ? true : false}
+              multiItem={multiItem ? true : false}
+              direction="next"
+              role="button"
+              onClick={this.next}
+            />
+          </React.Fragment>
+        )}
         <CarouselIndicators>
           {showIndicators && CarouselIndicatorsArray}
         </CarouselIndicators>
@@ -204,7 +203,7 @@ Carousel.propTypes = {
 };
 
 Carousel.defaultProps = {
-  tag: "div",
+  tag: 'div',
   interval: 6000,
   showControls: true,
   showIndicators: true

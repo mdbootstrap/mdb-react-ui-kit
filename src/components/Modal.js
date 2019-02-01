@@ -53,6 +53,7 @@ class Modal extends Component {
   };
 
   handleBackdropClick = e => {
+    if(!this.props.backdrop ) return;
     if (!this.modalContent.contains(e.target)) {
       this.props.toggle();
     }

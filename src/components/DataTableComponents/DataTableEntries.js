@@ -1,11 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-let DataTableSelect;
-try {
-  DataTableSelect = require("../pro/DataTableSelect").default;
-} catch (err) {
-  DataTableSelect = require("./DataTableSelect").default;
-}
+import React from 'react';
+import PropTypes from 'prop-types';
+import DataTableSelect from './DataTableSelect';
 
 const DataTableEntries = props => {
   const { handleEntriesChange, entries, entriesArr, paging, label } = props;

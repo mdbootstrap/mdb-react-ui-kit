@@ -1,21 +1,13 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var React = require('react');
-var React__default = _interopDefault(React);
-var PropTypes = _interopDefault(require('prop-types'));
-var classNames = _interopDefault(require('classnames'));
-var reactTransitionGroup = require('react-transition-group');
-var ReactDOM = require('react-dom');
-var ReactDOM__default = _interopDefault(ReactDOM);
-var reactPopper = require('react-popper');
-var NumericInput = _interopDefault(require('react-numeric-input'));
-var reactRouterDom = require('react-router-dom');
-var outy = _interopDefault(require('outy'));
-var reactToastify = require('react-toastify');
+import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { Transition, CSSTransition } from 'react-transition-group';
+import ReactDOM, { findDOMNode } from 'react-dom';
+import { Popper, Target, Manager, Arrow } from 'react-popper';
+import NumericInput from 'react-numeric-input';
+import { NavLink } from 'react-router-dom';
+import outy from 'outy';
+export { cssTransition, toast, ToastContainer } from 'react-toastify';
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -289,7 +281,7 @@ function (_Component) {
       revealed: _this.props.reveal ? false : true,
       countIterations: 0
     };
-    _this.elemRef = React__default.createRef();
+    _this.elemRef = React.createRef();
     return _this;
   }
 
@@ -342,7 +334,7 @@ function (_Component) {
       var getAllStyles = Object.assign(styleObject, style);
       var classes = classNames(this.state.isVisible && "animated", // will this work?
       type && type, infinite && "infinite", className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes,
         style: isVisible && revealed ? getAllStyles : hiddenStyles,
         ref: this.elemRef,
@@ -354,7 +346,7 @@ function (_Component) {
   }]);
 
   return Animation;
-}(React.Component);
+}(Component);
 
 Animation.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -426,7 +418,7 @@ function (_Component) {
       var alertComponent;
 
       if (dismiss) {
-        alertComponent = React__default.createElement(reactTransitionGroup.Transition, {
+        alertComponent = React.createElement(Transition, {
           in: this.state.isOpen,
           timeout: 150,
           unmountOnExit: true,
@@ -436,20 +428,20 @@ function (_Component) {
           onExited: function onExited(node) {
             return _this2.handleOnExited(node);
           }
-        }, React__default.createElement("div", {
+        }, React.createElement("div", {
           className: alertClasses,
           role: "alert"
-        }, children, React__default.createElement("button", {
+        }, children, React.createElement("button", {
           onClick: this.closeAlert,
           type: "button",
           className: "close",
           "data-dismiss": "alert",
           "aria-label": "Close"
-        }, React__default.createElement("span", {
+        }, React.createElement("span", {
           "aria-hidden": "true"
         }, "\xD7"))));
       } else {
-        alertComponent = React__default.createElement("div", {
+        alertComponent = React.createElement("div", {
           className: alertClasses,
           role: "alert"
         }, children);
@@ -460,7 +452,7 @@ function (_Component) {
   }]);
 
   return Alert;
-}(React.Component);
+}(Component);
 
 Alert.defaultProps = {
   color: "primary"
@@ -495,14 +487,14 @@ function (_React$Component) {
           attributes = _objectWithoutProperties(_this$props, ["tag", "className", "children", "color", "pill"]);
 
       var classes = classNames("badge", color, "badge-" + color, pill ? "badge-pill" : false, className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }), this.props.children);
     }
   }]);
 
   return Badge;
-}(React__default.Component);
+}(React.Component);
 
 Badge.defaultProps = {
   tag: "span",
@@ -570,8 +562,8 @@ var Breadcrumb = function Breadcrumb(props) {
   var children;
 
   if (bold) {
-    children = React__default.Children.map(props.children, function (child) {
-      return React__default.cloneElement(child, {
+    children = React.Children.map(props.children, function (child) {
+      return React.cloneElement(child, {
         bold: true
       });
     });
@@ -579,7 +571,7 @@ var Breadcrumb = function Breadcrumb(props) {
     children = props.children;
   }
 
-  return React__default.createElement("nav", null, React__default.createElement("ol", _extends({}, attributes, {
+  return React.createElement("nav", null, React.createElement("ol", _extends({}, attributes, {
     className: classes
   }), children));
 };
@@ -631,14 +623,14 @@ function (_React$Component) {
 
       var iconPrefix = brand || fab ? "fab" : light || fal ? "fal" : regular || far ? "far" : "fa";
       var classes = classNames(iconPrefix, list ? "fa-li" : false, icon ? "fa-".concat(icon) : false, size ? "fa-".concat(size) : false, fixed ? "fa-fw" : false, pull ? "fa-pull-".concat(pull) : false, border ? "fa-border" : false, spin ? "fa-spin" : false, pulse ? "fa-pulse" : false, rotate ? "fa-rotate-".concat(rotate) : false, flip ? "fa-flip-".concat(flip) : false, inverse ? "fa-inverse" : false, stack ? "fa-".concat(stack) : false, className);
-      return React__default.createElement("i", _extends({}, attributes, {
+      return React.createElement("i", _extends({}, attributes, {
         className: classes
       }));
     }
   }]);
 
   return Fa;
-}(React__default.Component);
+}(React.Component);
 
 Fa.propTypes = {
   icon: PropTypes.string.isRequired,
@@ -731,12 +723,12 @@ var BreadcrumbItem = function BreadcrumbItem(props) {
 
   var WithBold = function WithBold(_ref) {
     var children = _ref.children;
-    return bold ? React__default.createElement("strong", null, children) : children;
+    return bold ? React.createElement("strong", null, children) : children;
   };
 
   var WithIcon = function WithIcon() {
     if (icon) {
-      return React__default.createElement(React.Fragment, null, appendIcon && children, React__default.createElement(Fa, {
+      return React.createElement(Fragment, null, appendIcon && children, React.createElement(Fa, {
         brand: iconBrand,
         className: iconClasses,
         icon: icon,
@@ -749,9 +741,9 @@ var BreadcrumbItem = function BreadcrumbItem(props) {
     return children;
   };
 
-  return React__default.createElement("li", _extends({}, attributes, {
+  return React.createElement("li", _extends({}, attributes, {
     className: classes
-  }), React__default.createElement(WithBold, null, React__default.createElement(WithIcon, null)));
+  }), React.createElement(WithBold, null, React.createElement(WithIcon, null)));
 };
 
 BreadcrumbItem.propTypes = {
@@ -825,7 +817,7 @@ function (_React$Component) {
     key: "reppling",
     value: function reppling() {
       // Get the element
-      var $ripple = ReactDOM__default.findDOMNode(this);
+      var $ripple = ReactDOM.findDOMNode(this);
       var $button = $ripple.parentNode;
       var buttonPos = $button.getBoundingClientRect();
       var buttonWidth = $button.offsetWidth;
@@ -845,7 +837,7 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return React__default.createElement("div", {
+      return React.createElement("div", {
         className: 'Ripple ' + (this.props.outline || this.props.flat || this.props.dark ? 'Ripple-outline ' : '') + (this.state.animate ? 'is-reppling' : ''),
         style: {
           top: this.state.top + 'px',
@@ -858,7 +850,7 @@ function (_React$Component) {
   }]);
 
   return Waves;
-}(React__default.Component);
+}(React.Component);
 
 Waves.propTypes = {
   outline: PropTypes.bool,
@@ -935,7 +927,7 @@ function (_React$Component) {
         Tag = "a";
       }
 
-      return React__default.createElement(Tag, _extends({
+      return React.createElement(Tag, _extends({
         type: Tag === "button" && !type ? "button" : type,
         target: target,
         role: Tag === "a" && !role ? "button" : role,
@@ -946,7 +938,7 @@ function (_React$Component) {
       }, attributes, {
         download: download,
         disabled: disabled
-      }), this.props.children, this.props.disabled ? false : React__default.createElement(Waves, {
+      }), this.props.children, this.props.disabled ? false : React.createElement(Waves, {
         cursorPos: this.state.cursorPos,
         outline: outline,
         flat: flat
@@ -955,7 +947,7 @@ function (_React$Component) {
   }]);
 
   return Button;
-}(React__default.Component);
+}(React.Component);
 
 Button.defaultProps = {
   color: "default",
@@ -1010,14 +1002,14 @@ function (_React$Component) {
           attributes = _objectWithoutProperties(_this$props, ["className", "size", "vertical"]);
 
       var classes = classNames(className, size ? "btn-group-" + size : false, vertical ? "btn-group-vertical" : "btn-group");
-      return React__default.createElement("div", _extends({}, attributes, {
+      return React.createElement("div", _extends({}, attributes, {
         className: classes
       }), this.props.children);
     }
   }]);
 
   return ButtonGroup;
-}(React__default.Component);
+}(React.Component);
 
 ButtonGroup.propTypes = {
   "aria-label": PropTypes.string,
@@ -1050,14 +1042,14 @@ function (_React$Component) {
           attributes = _objectWithoutProperties(_this$props, ["className"]);
 
       var classes = classNames(className, "btn-toolbar");
-      return React__default.createElement("div", _extends({}, attributes, {
+      return React.createElement("div", _extends({}, attributes, {
         className: classes
       }), this.props.children);
     }
   }]);
 
   return ButtonToolbar;
-}(React__default.Component);
+}(React.Component);
 
 ButtonToolbar.propTypes = {
   "aria-label": PropTypes.string,
@@ -1102,14 +1094,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["className", "tag", "cascade", "wide", "narrow", "reverse", "testimonial", "ecommerce", "collection", "pricing", "personal", "news", "color", "text", "border"]);
 
       var classes = classNames("card", cascade && "card-cascade", wide && "card-cascade wider", narrow && "card-cascade narrower", reverse && "card-cascade wider reverse", testimonial && "testimonial-card", ecommerce && "card-ecommerce", collection && "collection-card", pricing && "pricing-card", personal && "card-personal", news && "news-card", color && color, text && text + "-text", border && "border-" + border, className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }));
     }
   }]);
 
   return Card;
-}(React.Component);
+}(Component);
 
 Card.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -1142,14 +1134,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["className", "tag", "cascade"]);
 
       var classes = classNames("card-body", cascade && "card-body-cascade", className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }));
     }
   }]);
 
   return CardBody;
-}(React.Component);
+}(Component);
 
 CardBody.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -1186,14 +1178,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["className", "tag", "color", "text", "border", "transparent", "small", "muted"]);
 
       var classes = classNames("card-footer", color && color, text && text, color && !text && " white-text", border && "border-" + border, transparent && "bg-transparent", muted && "text-muted", className);
-      var component = React__default.createElement(Tag, _extends({}, attributes, {
+      var component = React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }));
 
       if (small) {
-        component = React__default.createElement(Tag, _extends({}, attributes, {
+        component = React.createElement(Tag, _extends({}, attributes, {
           className: classes
-        }), React__default.createElement("small", null, " ", this.props.children, " "));
+        }), React.createElement("small", null, " ", this.props.children, " "));
       }
 
       return component;
@@ -1201,7 +1193,7 @@ function (_Component) {
   }]);
 
   return CardFooter;
-}(React.Component);
+}(Component);
 
 CardFooter.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -1239,14 +1231,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["className", "tag", "deck", "column"]);
 
       var classes = classNames(deck ? "card-deck" : column ? "card-columns" : "card-group", className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }));
     }
   }]);
 
   return CardGroup;
-}(React.Component);
+}(Component);
 
 CardGroup.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -1282,14 +1274,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["className", "tag", "color", "text", "border", "transparent"]);
 
       var classes = classNames("card-header", color && color, text && text, color && !text && " white-text", border && "border-" + border, transparent && "bg-transparent", className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }));
     }
   }]);
 
   return CardHeader;
-}(React.Component);
+}(Component);
 
 CardHeader.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -1326,14 +1318,14 @@ function (_React$Component) {
           attributes = _objectWithoutProperties(_this$props, ["children", "className", "overlay", "pattern", "tag"]);
 
       var classes = classNames("mask", pattern && "pattern-".concat(pattern), overlay && "rgba-".concat(overlay), className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }), this.props.children);
     }
   }]);
 
   return Mask;
-}(React__default.Component);
+}(React.Component);
 
 Mask.propTypes = {
   children: PropTypes.node,
@@ -1402,19 +1394,19 @@ function (_React$Component) {
         backgroundPosition: "center center",
         height: "100vh"
       } : {};
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes,
         onMouseDown: this.handleClick.bind(this),
         onTouchStart: this.handleClick.bind(this),
         style: viewStyle
-      }), children, waves && React__default.createElement(Waves, {
+      }), children, waves && React.createElement(Waves, {
         cursorPos: this.state.cursorPos
       }));
     }
   }]);
 
   return View;
-}(React__default.Component);
+}(React.Component);
 
 View.defaultProps = {
   cascade: false,
@@ -1484,32 +1476,32 @@ function (_Component) {
 
       var classes = classNames(top && "card-img-top", className);
       var Tag = tag;
-      var innerContent = React__default.createElement(Tag, _extends({}, attributes, {
+      var innerContent = React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }), this.props.children);
 
       if (this.props.src) {
-        return React__default.createElement(View, {
+        return React.createElement(View, {
           zoom: zoom,
           hover: this.props.hover,
           cascade: this.props.cascade
-        }, React__default.createElement("div", {
+        }, React.createElement("div", {
           className: "Ripple-parent",
           onMouseDown: this.handleClick.bind(this),
           onTouchStart: this.handleClick.bind(this)
-        }, innerContent, React__default.createElement(Mask, {
+        }, innerContent, React.createElement(Mask, {
           overlay: overlay
-        }), this.props.waves && React__default.createElement(Waves, {
+        }), this.props.waves && React.createElement(Waves, {
           cursorPos: this.state.cursorPos
         })));
       } else {
-        return React__default.createElement("div", null, innerContent);
+        return React.createElement("div", null, innerContent);
       }
     }
   }]);
 
   return CardImage;
-}(React.Component);
+}(Component);
 
 CardImage.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -1554,14 +1546,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["className", "tag", "muted", "small"]);
 
       var classes = classNames("card-text", muted && "text-muted", className);
-      var text = React__default.createElement(Tag, _extends({}, attributes, {
+      var text = React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }));
 
       if (small) {
-        text = React__default.createElement(Tag, _extends({}, attributes, {
+        text = React.createElement(Tag, _extends({}, attributes, {
           className: classes
-        }), React__default.createElement("small", null, " ", this.props.children, " "));
+        }), React.createElement("small", null, " ", this.props.children, " "));
       }
 
       return text;
@@ -1569,7 +1561,7 @@ function (_Component) {
   }]);
 
   return CardText;
-}(React.Component);
+}(Component);
 
 CardText.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -1602,14 +1594,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["className", "tag", "sub"]);
 
       var classes = classNames(sub ? "card-subtitle" : "card-title", className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }));
     }
   }]);
 
   return CardTitle;
-}(React.Component);
+}(Component);
 
 CardTitle.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -1665,25 +1657,25 @@ function (_Component) {
         classes = classNames("btn-floating");
       }
 
-      return React__default.createElement(Tag, {
+      return React.createElement(Tag, {
         className: classes,
         "data-slide": direction,
         onClick: onClick
-      }, iconLeft ? React__default.createElement(Fa, {
+      }, iconLeft ? React.createElement(Fa, {
         icon: "chevron-left"
-      }) : iconRight ? React__default.createElement(Fa, {
+      }) : iconRight ? React.createElement(Fa, {
         icon: "chevron-right"
-      }) : React__default.createElement("div", null, React__default.createElement("span", {
+      }) : React.createElement("div", null, React.createElement("span", {
         className: caretClasses,
         "aria-hidden": "true"
-      }), React__default.createElement("span", {
+      }), React.createElement("span", {
         className: "sr-only"
       }, text)));
     }
   }]);
 
   return Control;
-}(React.Component);
+}(Component);
 
 Control.propTypes = {
   onClick: PropTypes.any,
@@ -1719,14 +1711,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["children", "className"]);
 
       var classes = classNames("carousel-indicators", className);
-      return React__default.createElement("ol", _extends({}, attributes, {
+      return React.createElement("ol", _extends({}, attributes, {
         className: classes
       }), children);
     }
   }]);
 
   return CarouselIndicators;
-}(React.Component);
+}(Component);
 
 CarouselIndicators.propTypes = {
   children: PropTypes.node,
@@ -1759,9 +1751,9 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["active", "children", "className", "img", "alt"]);
 
       var classes = classNames(this.props.active ? "active" : "", className);
-      return React__default.createElement("li", _extends({}, attributes, {
+      return React.createElement("li", _extends({}, attributes, {
         className: classes
-      }), this.props.img && React__default.createElement("img", {
+      }), this.props.img && React.createElement("img", {
         src: this.props.img,
         alt: this.props.alt,
         className: "img-fluid"
@@ -1770,7 +1762,7 @@ function (_Component) {
   }]);
 
   return CarouselIndicator;
-}(React.Component);
+}(Component);
 
 CarouselIndicator.propTypes = {
   active: PropTypes.bool.isRequired,
@@ -1865,7 +1857,7 @@ function (_Component) {
       slide: _this.props.slide,
       srcArray: []
     };
-    _this.carouselRef = React__default.createRef();
+    _this.carouselRef = React.createRef();
     return _this;
   }
 
@@ -1923,7 +1915,7 @@ function (_Component) {
       var CarouselIndicatorsArray = [];
 
       var _loop = function _loop(i) {
-        CarouselIndicatorsArray.push(React__default.createElement(CarouselIndicator, {
+        CarouselIndicatorsArray.push(React.createElement(CarouselIndicator, {
           img: thumbnails ? _this2.state.srcArray[i - 1] : null,
           key: i,
           active: _this2.state.activeItem === i ? true : false,
@@ -1937,14 +1929,14 @@ function (_Component) {
         _loop(i);
       }
 
-      return React__default.createElement(Tag, _extends({
+      return React.createElement(Tag, _extends({
         ref: this.carouselRef
       }, attributes, {
         className: classes,
         "aria-label": ariaLabel
-      }), showControls && multiItem && React__default.createElement("div", {
+      }), showControls && multiItem && React.createElement("div", {
         className: "controls-top"
-      }, React__default.createElement(Control, {
+      }, React.createElement(Control, {
         testimonial: testimonial ? true : false,
         multiItem: multiItem ? true : false,
         iconLeft: true,
@@ -1952,7 +1944,7 @@ function (_Component) {
         direction: "prev",
         role: "button",
         onClick: this.prev
-      }), React__default.createElement(Control, {
+      }), React.createElement(Control, {
         testimonial: testimonial ? true : false,
         multiItem: multiItem ? true : false,
         iconRight: true,
@@ -1960,24 +1952,24 @@ function (_Component) {
         direction: "next",
         role: "button",
         onClick: this.next
-      })), children, showControls && !multiItem && React__default.createElement(React__default.Fragment, null, React__default.createElement(Control, {
+      })), children, showControls && !multiItem && React.createElement(React.Fragment, null, React.createElement(Control, {
         testimonial: testimonial ? true : false,
         multiItem: multiItem ? true : false,
         direction: "prev",
         role: "button",
         onClick: this.prev
-      }), React__default.createElement(Control, {
+      }), React.createElement(Control, {
         testimonial: testimonial ? true : false,
         multiItem: multiItem ? true : false,
         direction: "next",
         role: "button",
         onClick: this.next
-      })), React__default.createElement(CarouselIndicators, null, showIndicators && CarouselIndicatorsArray));
+      })), React.createElement(CarouselIndicators, null, showIndicators && CarouselIndicatorsArray));
     }
   }]);
 
   return Carousel;
-}(React.Component);
+}(Component);
 
 Carousel.propTypes = {
   activeItem: PropTypes.number,
@@ -2026,14 +2018,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["children", "className", "tag"]);
 
       var classes = classNames("carousel-caption", className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }), children);
     }
   }]);
 
   return CarouselCaption;
-}(React.Component);
+}(Component);
 
 CarouselCaption.propTypes = {
   active: PropTypes.string,
@@ -2057,7 +2049,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CarouselInner).call(this, props));
     _this.state = {
-      childrenCount: React__default.Children.count(_this.props.children)
+      childrenCount: React.Children.count(_this.props.children)
     };
     return _this;
   }
@@ -2074,15 +2066,15 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["active", "children", "childrenCount", "className", "tag"]);
 
       var classes = classNames("carousel-inner", active ? "active" : "", className);
-      childrenCount = React__default.Children.count(this.props.children);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      childrenCount = React.Children.count(this.props.children);
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }), children);
     }
   }]);
 
   return CarouselInner;
-}(React.Component);
+}(Component);
 
 CarouselInner.propTypes = {
   childrenCount: PropTypes.any,
@@ -2163,7 +2155,7 @@ function (_Component) {
         }
       }
 
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes,
         style: this.style
       }), children);
@@ -2171,7 +2163,7 @@ function (_Component) {
   }]);
 
   return CarouselItem;
-}(React.Component);
+}(Component);
 
 CarouselItem.propTypes = {
   active: PropTypes.bool,
@@ -2218,14 +2210,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["xs", "sm", "md", "lg", "xl", "top", "bottom", "middle", "size", "className", "tag"]);
 
       var classes = classNames(size && "col-" + size, xs && "col-xs-" + xs, sm && "col-sm-" + sm, md && "col-md-" + md, lg && "col-lg-" + lg, xl && "col-xl-" + xl, !size && !xs && !sm && !md && !lg && !xl ? "col" : "", top && "align-self-start", middle && "align-self-center", bottom && "align-self-end", className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }));
     }
   }]);
 
   return Col;
-}(React.Component);
+}(Component);
 
 Col.propTypes = {
   size: PropTypes.string,
@@ -2404,7 +2396,7 @@ function (_Component) {
       var style = height === null ? null : {
         height: height
       };
-      return React__default.createElement("div", _extends({}, attributes, {
+      return React.createElement("div", _extends({}, attributes, {
         style: _objectSpread({}, attributes.style, style),
         className: classes,
         ref: function ref(c) {
@@ -2415,7 +2407,7 @@ function (_Component) {
   }]);
 
   return Collapse;
-}(React.Component);
+}(Component);
 
 Collapse.propTypes = {
   isOpen: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
@@ -2458,14 +2450,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["fluid", "className", "tag"]);
 
       var classes = classNames(fluid ? "container-fluid" : "container", className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }));
     }
   }]);
 
   return Container;
-}(React.Component);
+}(Component);
 
 Container.propTypes = {
   fluid: PropTypes.bool,
@@ -2538,17 +2530,17 @@ function (_React$Component) {
       var wrapperStyles = {
         maxHeight: maxHeight ? "".concat(maxHeight) : null
       };
-      return React__default.createElement("div", {
+      return React.createElement("div", {
         className: wrapperClasses,
         style: wrapperStyles
-      }, React__default.createElement("table", _extends({}, attributes, {
+      }, React.createElement("table", _extends({}, attributes, {
         className: tableClasses
       }), children));
     }
   }]);
 
   return Table;
-}(React__default.Component);
+}(React.Component);
 
 Table.propTypes = {
   autoWidth: PropTypes.bool,
@@ -2581,24 +2573,24 @@ var DataTableHead = function DataTableHead(props) {
       sortable = props.sortable,
       textWhite = props.textWhite;
   var theadClasses = classNames(color && (color !== "dark" && color !== "light" ? color : "thead-".concat(color)), textWhite && "text-white");
-  return React__default.createElement(React.Fragment, null, (scrollY || scrollX) && React__default.createElement("colgroup", null, columns.map(function (col) {
-    return React__default.createElement("col", {
+  return React.createElement(Fragment, null, (scrollY || scrollX) && React.createElement("colgroup", null, columns.map(function (col) {
+    return React.createElement("col", {
       key: col.field,
       style: {
         width: "".concat(col.width, "px") || "auto",
         minWidth: "".concat(col.width, "px") || "auto"
       }
     });
-  })), React__default.createElement("thead", {
+  })), React.createElement("thead", {
     className: theadClasses || undefined
-  }, React__default.createElement("tr", null, columns.map(function (col) {
-    return React__default.createElement("th", _extends({
+  }, React.createElement("tr", null, columns.map(function (col) {
+    return React.createElement("th", _extends({
       onClick: function onClick() {
         return sortable && handleSort(col.field, col.sort);
       },
       key: col.field,
       className: col.hasOwnProperty("minimal") ? "th-".concat(col.minimal) : undefined
-    }, col.attributes), col.label, sortable && col.sort !== 'disabled' && React__default.createElement(Fa, {
+    }, col.attributes), col.label, sortable && col.sort !== 'disabled' && React.createElement(Fa, {
       icon: "sort",
       className: "float-right",
       "aria-hidden": "true"
@@ -2632,21 +2624,21 @@ var TableBody = function TableBody(props) {
   var classes = classNames(color, {
     "text-white": textWhite
   });
-  return React__default.createElement("tbody", _extends({}, attributes, {
+  return React.createElement("tbody", _extends({}, attributes, {
     className: classes || undefined
   }), rows && rows.map(function (row, index) {
-    return React__default.createElement("tr", {
+    return React.createElement("tr", {
       onClick: row.hasOwnProperty("clickEvent") ? row.clickEvent : undefined,
       key: index
     }, Object.keys(row).map(function (key, index, array) {
       if (key === "clickEvent") return null;
 
       if (key !== "colspan") {
-        return array[index + 1] !== "colspan" ? React__default.createElement("td", {
+        return array[index + 1] !== "colspan" ? React.createElement("td", {
           key: key
         }, row[key]) : null;
       } else {
-        return React__default.createElement("td", {
+        return React.createElement("td", {
           key: key,
           colSpan: row[key]
         }, row[array[index - 1]]);
@@ -2675,10 +2667,10 @@ var TableFoot = function TableFoot(props) {
   var classes = classNames(color && (color !== "dark" && color !== "light" ? color : "thead-".concat(color)), {
     "text-white": textWhite
   });
-  return React__default.createElement("thead", _extends({}, attributes, {
+  return React.createElement("thead", _extends({}, attributes, {
     className: classes || undefined
-  }), columns && React__default.createElement("tr", null, columns.map(function (col) {
-    return React__default.createElement("th", {
+  }), columns && React.createElement("tr", null, columns.map(function (col) {
+    return React.createElement("th", {
       key: col.field,
       className: col.hasOwnProperty("minimal") ? "th-".concat(col.minimal) : undefined
     }, col.label);
@@ -2721,9 +2713,9 @@ var DataTableTable = function DataTableTable(props) {
       theadTextWhite = props.theadTextWhite,
       attributes = _objectWithoutProperties(props, ["autoWidth", "bordered", "borderless", "btn", "children", "columns", "dark", "fixed", "hover", "handleSort", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "rows", "small", "sortable", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite"]);
 
-  return React__default.createElement("div", {
+  return React.createElement("div", {
     className: "col-sm-12"
-  }, React__default.createElement(Table, _extends({
+  }, React.createElement(Table, _extends({
     autoWidth: autoWidth,
     bordered: bordered,
     borderless: borderless,
@@ -2739,17 +2731,17 @@ var DataTableTable = function DataTableTable(props) {
     small: small,
     striped: striped,
     className: "dataTable"
-  }, attributes), React__default.createElement(DataTableHead, {
+  }, attributes), React.createElement(DataTableHead, {
     color: theadColor,
     textWhite: theadTextWhite,
     columns: columns,
     handleSort: handleSort,
     sortable: sortable
-  }), React__default.createElement(TableBody, {
+  }), React.createElement(TableBody, {
     color: tbodyColor,
     textWhite: tbodyTextWhite,
     rows: rows
-  }), React__default.createElement(TableFoot, {
+  }), React.createElement(TableFoot, {
     color: theadColor,
     textWhite: theadTextWhite,
     columns: columns
@@ -2813,16 +2805,16 @@ var DataTableTableScroll = function DataTableTableScroll(props) {
       translateScrollHead = props.translateScrollHead,
       attributes = _objectWithoutProperties(props, ["autoWidth", "bordered", "borderless", "btn", "children", "columns", "dark", "fixed", "hover", "handleSort", "handleTableBodyScroll", "maxHeight", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "rows", "scrollX", "scrollY", "small", "sortable", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite", "translateScrollHead"]);
 
-  return React__default.createElement("div", {
+  return React.createElement("div", {
     className: "col-sm-12"
-  }, React__default.createElement("div", {
+  }, React.createElement("div", {
     className: "dataTables_scroll"
-  }, React__default.createElement("div", {
+  }, React.createElement("div", {
     className: "dataTables_scrollHead",
     style: {
       overflow: "hidden"
     }
-  }, React__default.createElement("div", {
+  }, React.createElement("div", {
     className: "dataTables_scrollHeadInner",
     style: {
       position: "relative",
@@ -2835,7 +2827,7 @@ var DataTableTableScroll = function DataTableTableScroll(props) {
         return prev + curr;
       }, 0) + "px" : "auto")
     }
-  }, React__default.createElement(Table, _extends({
+  }, React.createElement(Table, _extends({
     autoWidth: autoWidth,
     bordered: bordered,
     borderless: borderless,
@@ -2851,7 +2843,7 @@ var DataTableTableScroll = function DataTableTableScroll(props) {
     small: small,
     striped: striped,
     className: "dataTable"
-  }, attributes), React__default.createElement(DataTableHead, {
+  }, attributes), React.createElement(DataTableHead, {
     color: theadColor,
     textWhite: theadTextWhite,
     columns: columns,
@@ -2859,13 +2851,13 @@ var DataTableTableScroll = function DataTableTableScroll(props) {
     scrollX: scrollX,
     scrollY: scrollY,
     sortable: sortable
-  })))), React__default.createElement("div", {
+  })))), React.createElement("div", {
     className: "dataTable_scrollBody",
     style: {
       overflow: "auto"
     },
     onScroll: handleTableBodyScroll
-  }, React__default.createElement(Table, _extends({
+  }, React.createElement(Table, _extends({
     style: {
       minWidth: "".concat(scrollX ? columns.map(function (col) {
         return col.width;
@@ -2890,15 +2882,15 @@ var DataTableTableScroll = function DataTableTableScroll(props) {
     small: small,
     striped: striped,
     className: "dataTable"
-  }, attributes), React__default.createElement("colgroup", null, columns.map(function (col) {
-    return React__default.createElement("col", {
+  }, attributes), React.createElement("colgroup", null, columns.map(function (col) {
+    return React.createElement("col", {
       key: col.field,
       style: {
         width: "".concat(col.width, "px") || "auto",
         minWidth: "".concat(col.width, "px") || "auto"
       }
     });
-  })), React__default.createElement(TableBody, {
+  })), React.createElement(TableBody, {
     color: tbodyColor,
     textWhite: tbodyTextWhite,
     rows: rows
@@ -2947,14 +2939,14 @@ var DataTableSelect = function DataTableSelect(_ref) {
     onChange(value);
   };
 
-  return React__default.createElement("div", {
+  return React.createElement("div", {
     className: "dataTables_length bs-select"
-  }, React__default.createElement("label", null, label, React__default.createElement("select", {
+  }, React.createElement("label", null, label, React.createElement("select", {
     value: value,
     onChange: getValue,
     className: "custom-select custom-select-sm form-control form-control-sm"
   }, entries.map(function (entry) {
-    return React__default.createElement("option", {
+    return React.createElement("option", {
       key: entry,
       value: entry
     }, entry);
@@ -2974,9 +2966,9 @@ var DataTableEntries = function DataTableEntries(props) {
       entriesArr = props.entriesArr,
       paging = props.paging,
       label = props.label;
-  return React__default.createElement("div", {
+  return React.createElement("div", {
     className: "col-sm-12 col-md-6"
-  }, paging && React__default.createElement(DataTableSelect, {
+  }, paging && React.createElement(DataTableSelect, {
     value: entries,
     onChange: handleEntriesChange,
     entries: entriesArr,
@@ -2996,9 +2988,9 @@ var DataTableInput = function DataTableInput(_ref) {
   var value = _ref.value,
       onChange = _ref.onChange,
       label = _ref.label;
-  return React__default.createElement("div", {
+  return React.createElement("div", {
     className: "dataTables_filter"
-  }, React__default.createElement("label", null, label || "Search", React__default.createElement("input", {
+  }, React.createElement("label", null, label || "Search", React.createElement("input", {
     value: value,
     onChange: onChange,
     type: "search",
@@ -3018,9 +3010,9 @@ var DataTableSearch = function DataTableSearch(props) {
       search = props.search,
       searching = props.searching,
       label = props.label;
-  return React__default.createElement("div", {
+  return React.createElement("div", {
     className: "col-sm-12 col-md-6"
-  }, searching && React__default.createElement(DataTableInput, {
+  }, searching && React.createElement(DataTableInput, {
     value: search,
     onChange: handleSearchChange,
     label: label
@@ -3041,9 +3033,9 @@ var DataTableInfo = function DataTableInfo(props) {
       info = props.info,
       pages = props.pages,
       label = props.label;
-  return React__default.createElement("div", {
+  return React.createElement("div", {
     className: "col-sm-12 col-md-5"
-  }, info && React__default.createElement("div", {
+  }, info && React.createElement("div", {
     className: "dataTables_info",
     role: "status",
     "aria-live": "polite"
@@ -3086,14 +3078,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["children", "circle", "className", "color", "tag", "size"]);
 
       var classes = classNames("pagination", circle && "pagination-circle", color && "pg-" + color, size ? "pagination-".concat(size) : false, className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }), children);
     }
   }]);
 
   return Pagination;
-}(React.Component);
+}(Component);
 
 Pagination.propTypes = {
   children: PropTypes.node,
@@ -3133,14 +3125,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["active", "className", "children", "disabled", "tag"]);
 
       var classes = classNames("page-item", disabled ? "disabled" : "", active ? "active" : "", className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }), children);
     }
   }]);
 
   return PageItem;
-}(React.Component);
+}(Component);
 
 PageItem.propTypes = {
   active: PropTypes.bool,
@@ -3177,14 +3169,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["children", "className", "tag"]);
 
       var classes = classNames("page-link", className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }), children);
     }
   }]);
 
   return PageLink;
-}(React.Component);
+}(Component);
 
 PageLink.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -3265,44 +3257,44 @@ function (_Component) {
           changeActivePage = _this$props.changeActivePage,
           pages = _this$props.pages,
           label = _this$props.label;
-      return React__default.createElement("div", {
+      return React.createElement("div", {
         className: "col-sm-12 col-md-7"
-      }, React__default.createElement("div", {
+      }, React.createElement("div", {
         className: "dataTables_paginate"
-      }, React__default.createElement(Pagination, null, React__default.createElement(PageItem, {
+      }, React.createElement(Pagination, null, React.createElement(PageItem, {
         disabled: activePage === 0
-      }, React__default.createElement(PageLink, {
+      }, React.createElement(PageLink, {
         className: "page-link",
         "aria-label": label[0],
         onClick: function onClick() {
           return changeActivePage(activePage - 1);
         }
-      }, React__default.createElement("span", null, label[0]))), this.choosePagesGroup().map(function (page) {
-        return React__default.createElement(PageItem, {
+      }, React.createElement("span", null, label[0]))), this.choosePagesGroup().map(function (page) {
+        return React.createElement(PageItem, {
           key: Object.keys(page[0])[0] + page.index,
           active: page.index === activePage
-        }, React__default.createElement(PageLink, {
+        }, React.createElement(PageLink, {
           className: "page-link",
           onClick: function onClick() {
             return changeActivePage(page.index);
           }
-        }, page.index + 1, " ", page.index === activePage && React__default.createElement("span", {
+        }, page.index + 1, " ", page.index === activePage && React.createElement("span", {
           className: "sr-only"
         }, "(current)")));
-      }), React__default.createElement(PageItem, {
+      }), React.createElement(PageItem, {
         disabled: activePage === pages.length - 1
-      }, React__default.createElement(PageLink, {
+      }, React.createElement(PageLink, {
         className: "page-link",
         "aria-label": label[1],
         onClick: function onClick() {
           return changeActivePage(activePage + 1);
         }
-      }, React__default.createElement("span", null, label[1]))))));
+      }, React.createElement("span", null, label[1]))))));
     }
   }]);
 
   return DataTablePagination;
-}(React.Component);
+}(Component);
 
 DataTablePagination.propTypes = {
   activePage: PropTypes.number.isRequired,
@@ -3553,24 +3545,24 @@ function (_Component) {
           activePage = _this$state.activePage,
           search = _this$state.search,
           translateScrollHead = _this$state.translateScrollHead;
-      return React__default.createElement("div", {
+      return React.createElement("div", {
         className: "dataTables_wrapper dt-bootstrap4"
-      }, React__default.createElement("div", {
+      }, React.createElement("div", {
         className: "row"
-      }, React__default.createElement(DataTableEntries, {
+      }, React.createElement(DataTableEntries, {
         paging: paging,
         entries: entries,
         handleEntriesChange: this.handleEntriesChange,
         entriesArr: entriesOptions,
         label: entriesLabel
-      }), React__default.createElement(DataTableSearch, {
+      }), React.createElement(DataTableSearch, {
         handleSearchChange: this.handleSearchChange,
         search: search,
         searching: searching,
         label: searchLabel
-      })), !scrollY && !scrollX && React__default.createElement("div", {
+      })), !scrollY && !scrollX && React.createElement("div", {
         className: "row"
-      }, React__default.createElement(DataTableTable, _extends({
+      }, React.createElement(DataTableTable, _extends({
         autoWidth: autoWidth,
         bordered: bordered,
         borderless: borderless,
@@ -3593,9 +3585,9 @@ function (_Component) {
         tbodyColor: tbodyColor,
         tbodyTextWhite: tbodyTextWhite,
         rows: pages[activePage]
-      }, attributes))), (scrollY || scrollX) && React__default.createElement("div", {
+      }, attributes))), (scrollY || scrollX) && React.createElement("div", {
         className: "row"
-      }, React__default.createElement(DataTableTableScroll, _extends({
+      }, React.createElement(DataTableTableScroll, _extends({
         autoWidth: autoWidth,
         bordered: bordered,
         borderless: borderless,
@@ -3623,16 +3615,16 @@ function (_Component) {
         tbodyTextWhite: tbodyTextWhite,
         rows: pages[activePage],
         translateScrollHead: translateScrollHead
-      }, attributes))), paging && React__default.createElement("div", {
+      }, attributes))), paging && React.createElement("div", {
         className: "row"
-      }, React__default.createElement(DataTableInfo, {
+      }, React.createElement(DataTableInfo, {
         activePage: activePage,
         entries: entries,
         filteredRows: filteredRows,
         info: info,
         pages: pages,
         label: infoLabel
-      }), React__default.createElement(DataTablePagination, {
+      }), React.createElement(DataTablePagination, {
         activePage: activePage,
         changeActivePage: this.changeActivePage,
         pages: pages,
@@ -3643,7 +3635,7 @@ function (_Component) {
   }]);
 
   return DataTable;
-}(React.Component);
+}(Component);
 
 DataTable.propTypes = {
   autoWidth: PropTypes.bool,
@@ -3811,7 +3803,7 @@ function (_React$Component) {
         }
       }
 
-      return React__default.createElement(Tag, _extends({
+      return React.createElement(Tag, _extends({
         type: Tag === "button" && (props.onClick || this.props.toggle) ? "button" : undefined
       }, props, {
         tabIndex: tabIndex,
@@ -3822,7 +3814,7 @@ function (_React$Component) {
   }]);
 
   return DropdownItem;
-}(React__default.Component);
+}(React.Component);
 
 DropdownItem.propTypes = propTypes;
 DropdownItem.defaultProps = defaultProps;
@@ -3841,7 +3833,7 @@ var DropdownMenuComponent = function DropdownMenuComponent(props) {
       d_key = props.d_key,
       children = props.children;
   var Tag = d_tag;
-  return React__default.createElement(React.Fragment, null, React__default.createElement(Tag, _extends({
+  return React.createElement(Fragment, null, React.createElement(Tag, _extends({
     tabIndex: d_tabIndex,
     role: d_role
   }, d_attributes, {
@@ -3903,7 +3895,7 @@ function (_Component) {
       var Tag = tag;
 
       if (this.context.isOpen) {
-        Tag = reactPopper.Popper;
+        Tag = Popper;
         var position1 = this.context.dropup ? 'top' : 'bottom';
         var position2 = right ? 'end' : 'start';
         attrs.placement = "".concat(position1, "-").concat(position2);
@@ -3911,7 +3903,7 @@ function (_Component) {
         attrs.modifiers = !flip ? noFlipModifier : undefined;
       }
 
-      return React__default.createElement(DropdownMenuComponent, {
+      return React.createElement(DropdownMenuComponent, {
         isOpen: this.context.isOpen,
         d_tag: Tag,
         d_tabIndex: "-1",
@@ -3925,7 +3917,7 @@ function (_Component) {
   }]);
 
   return DropdownMenu;
-}(React.Component);
+}(Component);
 
 DropdownMenu.propTypes = {
   children: PropTypes.node.isRequired,
@@ -3998,7 +3990,7 @@ function (_React$Component) {
         "dropdown-toggle": caret,
         "nav-link": nav
       }, className);
-      var children = props.children || React__default.createElement("span", {
+      var children = props.children || React.createElement("span", {
         className: "sr-only"
       }, ariaLabel);
       var Tag;
@@ -4013,7 +4005,7 @@ function (_React$Component) {
         Tag = tag;
       }
 
-      return React__default.createElement(reactPopper.Target, _extends({}, props, {
+      return React.createElement(Target, _extends({}, props, {
         className: classes,
         component: Tag,
         onClick: this.onClick,
@@ -4023,7 +4015,7 @@ function (_React$Component) {
   }]);
 
   return DropdownToggle;
-}(React__default.Component);
+}(React.Component);
 
 DropdownToggle.propTypes = {
   caret: PropTypes.bool,
@@ -4066,14 +4058,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["color", "className", "tag"]);
 
       var classes = classNames("edge-header", color, className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }));
     }
   }]);
 
   return EdgeHeader;
-}(React.Component);
+}(Component);
 
 EdgeHeader.propTypes = {
   color: PropTypes.string,
@@ -4125,18 +4117,18 @@ function (_React$Component) {
           attributes = _objectWithoutProperties(_this$props, ["className", "waves", "children"]);
 
       var classes = classNames("form-inline", this.props.waves ? "Ripple-parent" : false, className);
-      return React__default.createElement("form", _extends({}, attributes, {
+      return React.createElement("form", _extends({}, attributes, {
         className: classes,
         onMouseDown: this.handleClick.bind(this),
         onTouchStart: this.handleClick.bind(this)
-      }), this.props.children, this.props.waves && React__default.createElement(Waves, {
+      }), this.props.children, this.props.waves && React.createElement(Waves, {
         cursorPos: this.state.cursorPos
       }));
     }
   }]);
 
   return FormInline;
-}(React__default.Component);
+}(React.Component);
 
 FormInline.propTypes = {
   children: PropTypes.node,
@@ -4166,14 +4158,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["color", "children", "className", "tag"]);
 
       var classes = classNames("page-footer", color ? color : "", className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }), children);
     }
   }]);
 
   return Footer;
-}(React.Component);
+}(Component);
 
 Footer.propTypes = {
   color: PropTypes.string,
@@ -4205,14 +4197,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["className", "tag"]);
 
       var classes = classNames("container free-bird", className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }));
     }
   }]);
 
   return FreeBird;
-}(React.Component);
+}(Component);
 
 FreeBird.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -4258,25 +4250,25 @@ function (_React$Component) {
           color = _this$props.color,
           className = _this$props.className;
       var classes = classNames("hamburger-button__button", className);
-      return React__default.createElement(React__default.Fragment, null, React__default.createElement("input", {
+      return React.createElement(React.Fragment, null, React.createElement("input", {
         type: "checkbox",
         defaultChecked: this.state.checked,
         onChange: this.props.onClick,
         className: "hamburger-button__checkbox",
         id: id
-      }), React__default.createElement("label", {
+      }), React.createElement("label", {
         id: "nav-icon1",
         className: classes,
         htmlFor: id
-      }, React__default.createElement("span", {
+      }, React.createElement("span", {
         style: {
           background: color
         }
-      }), React__default.createElement("span", {
+      }), React.createElement("span", {
         style: {
           background: color
         }
-      }), React__default.createElement("span", {
+      }), React.createElement("span", {
         style: {
           background: color
         }
@@ -4285,7 +4277,7 @@ function (_React$Component) {
   }]);
 
   return HamburgerToggler;
-}(React__default.Component);
+}(React.Component);
 
 HamburgerToggler.propTypes = {
   id: PropTypes.string,
@@ -4362,7 +4354,7 @@ function (_React$Component) {
       isFocused: false,
       isPristine: true
     };
-    _this.inputElementRef = React__default.createRef();
+    _this.inputElementRef = React.createRef();
     return _this;
   }
 
@@ -4425,9 +4417,9 @@ function (_React$Component) {
       var containerClassFix = classNames(type === "checkbox" || type === "radio" ? "form-check my-3" : "md-form", group ? "form-group" : false, size ? "form-".concat(size) : false, containerClass);
       var iconClassFix = classNames(isNotEmpty && this.state.isFocused ? "active" : false, iconClass, "prefix");
       var labelClassFix = classNames(isNotEmpty ? "active" : false, disabled ? "disabled" : false, type === "checkbox" ? "form-check-label mr-5" : false, type === "radio" ? "form-check-label mr-5" : false, labelClass);
-      return React__default.createElement("div", {
+      return React.createElement("div", {
         className: containerClassFix
-      }, icon && React__default.createElement(Fa, {
+      }, icon && React.createElement(Fa, {
         icon: icon,
         size: iconSize,
         brand: iconBrand,
@@ -4435,7 +4427,7 @@ function (_React$Component) {
         regular: iconRegular,
         className: iconClassFix,
         onClick: this.setFocus
-      }), React__default.createElement(Tag, _extends({}, attributes, {
+      }), React.createElement(Tag, _extends({}, attributes, {
         className: classes,
         id: id,
         placeholder: hint,
@@ -4445,7 +4437,7 @@ function (_React$Component) {
         onChange: this.onChange,
         onInput: this.onInput,
         onFocus: this.onFocus
-      })), label && React__default.createElement("label", {
+      })), label && React.createElement("label", {
         className: labelClassFix,
         htmlFor: id,
         "data-error": error,
@@ -4468,7 +4460,7 @@ function (_React$Component) {
   }]);
 
   return Input;
-}(React__default.Component);
+}(React.Component);
 
 Input.propTypes = {
   className: PropTypes.string,
@@ -4563,7 +4555,7 @@ function (_React$Component) {
           attributes = _objectWithoutProperties(_this$props, ["className", "getValue"]);
 
       var classes = classNames("form-control", className);
-      return React__default.createElement(NumericInput, _extends({}, attributes, {
+      return React.createElement(NumericInput, _extends({}, attributes, {
         onChange: this.onChangeHandler,
         className: classes
       }));
@@ -4571,7 +4563,7 @@ function (_React$Component) {
   }]);
 
   return InputNumeric;
-}(React__default.Component);
+}(React.Component);
 
 InputNumeric.propTypes = {
   className: PropTypes.string,
@@ -4599,14 +4591,14 @@ function (_React$Component) {
           attributes = _objectWithoutProperties(_this$props, ["className", "children", "fluid"]);
 
       var classes = classNames("jumbotron", fluid ? "jumbotron-fluid" : false, className);
-      return React__default.createElement("div", _extends({}, attributes, {
+      return React.createElement("div", _extends({}, attributes, {
         className: classes
       }), children);
     }
   }]);
 
   return Jumbotron;
-}(React__default.Component);
+}(React.Component);
 
 Jumbotron.propTypes = {
   fluid: PropTypes.bool,
@@ -4635,14 +4627,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["children", "className", "tag"]);
 
       var classes = classNames("list-group", className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }), children);
     }
   }]);
 
   return ListGroup;
-}(React.Component);
+}(Component);
 
 ListGroup.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -4687,14 +4679,14 @@ function (_Component) {
         Tag = "a";
       }
 
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }), children);
     }
   }]);
 
   return ListGroupItem;
-}(React.Component);
+}(Component);
 
 ListGroupItem.propTypes = {
   active: PropTypes.bool,
@@ -4768,14 +4760,14 @@ function (_React$Component) {
 
       var Tag = tag || defaultTag;
       var classes = classNames(body ? "media-body" : false, heading ? "mt-0" : false, left ? "media-left" : false, right ? "media-right" : false, top ? "align-self-start" : false, middle ? "align-self-center" : false, bottom ? "align-self-end" : false, object ? "media-object" : false, thumbnail ? "img-thumbnail" : false, list ? "media-list" : false, figure ? "figure" : false, figImg ? "figure-img" : false, figCap ? "figure-caption text-center" : false, figCapRight ? "figure-caption text-right" : false, figCapLeft ? "figure-caption text-left" : false, round ? "rounded-circle z-depth-1-half" : false, !body && !heading && !left && !right && !top && !bottom && !middle && !object && !list && !figCap && !figCapRight && !figCapRight && !figImg && !figure ? "media" : false, className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }));
     }
   }]);
 
   return Media;
-}(React__default.Component);
+}(React.Component);
 
 Media.propTypes = {
   body: PropTypes.bool,
@@ -4925,7 +4917,7 @@ function (_Component) {
         role: role,
         "aria-hidden": "true"
       });
-      return React__default.createElement(React.Fragment, null, backdrop && React__default.createElement(reactTransitionGroup.Transition, {
+      return React.createElement(Fragment, null, backdrop && React.createElement(Transition, {
         timeout: timeout,
         in: this.state.isOpen,
         appear: this.state.isOpen,
@@ -4938,9 +4930,9 @@ function (_Component) {
           return _this2.handleOnExit("backdrop", node);
         },
         onExited: this.handleOnExited
-      }, React__default.createElement("div", {
+      }, React.createElement("div", {
         className: backdropClasses
-      })), React__default.createElement(reactTransitionGroup.Transition, {
+      })), React.createElement(Transition, {
         timeout: timeout,
         in: this.state.isOpen,
         appear: this.state.isOpen,
@@ -4953,13 +4945,13 @@ function (_Component) {
         onExit: function onExit(node) {
           return _this2.handleOnExit("modal", node);
         }
-      }, React__default.createElement("div", _extends({
+      }, React.createElement("div", _extends({
         onKeyUp: this.handleEscape,
         className: wrapperClasses
-      }, modalAttributes), React__default.createElement("div", {
+      }, modalAttributes), React.createElement("div", {
         className: modalDialogClasses,
         role: "document"
-      }, React__default.createElement("div", {
+      }, React.createElement("div", {
         ref: function ref(elem) {
           return _this2.modalContent = elem;
         },
@@ -4969,7 +4961,7 @@ function (_Component) {
   }]);
 
   return Modal;
-}(React.Component);
+}(Component);
 
 Modal.defaultProps = {
   backdrop: true,
@@ -5028,14 +5020,14 @@ function (_React$Component) {
           attributes = _objectWithoutProperties(_this$props, ["className", "children"]);
 
       var classes = classNames("modal-body", className);
-      return React__default.createElement("div", _extends({}, attributes, {
+      return React.createElement("div", _extends({}, attributes, {
         className: classes
       }), children);
     }
   }]);
 
   return ModalBody;
-}(React__default.Component);
+}(React.Component);
 
 ModalBody.propTypes = {
   className: PropTypes.string,
@@ -5067,14 +5059,14 @@ function (_React$Component) {
           attributes = _objectWithoutProperties(_this$props, ["className", "children", "center", "start", "end", "around", "between"]);
 
       var classes = classNames("modal-footer", start && "justify-content-start", end && "justify-content-end", center && "justify-content-center", between && "justify-content-between", around && "justify-content-around", className);
-      return React__default.createElement("div", _extends({}, attributes, {
+      return React.createElement("div", _extends({}, attributes, {
         className: classes
       }), children);
     }
   }]);
 
   return ModalFooter;
-}(React__default.Component);
+}(React.Component);
 
 ModalFooter.propTypes = {
   className: PropTypes.string,
@@ -5110,26 +5102,26 @@ function (_React$Component) {
       var titleClasses = classNames("modal-title", this.props.titleClass);
 
       if (toggle) {
-        closeButton = React__default.createElement("button", {
+        closeButton = React.createElement("button", {
           type: "button",
           onClick: toggle,
           className: "close",
           "aria-label": closeAriaLabel
-        }, React__default.createElement("span", {
+        }, React.createElement("span", {
           "aria-hidden": "true"
         }, String.fromCharCode(215)));
       }
 
-      return React__default.createElement("div", _extends({}, attributes, {
+      return React.createElement("div", _extends({}, attributes, {
         className: classes
-      }), React__default.createElement(Tag, {
+      }), React.createElement(Tag, {
         className: titleClasses
       }, children), closeButton);
     }
   }]);
 
   return ModalHeader;
-}(React__default.Component);
+}(React.Component);
 
 ModalHeader.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -5169,14 +5161,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["children", "className", "tag", "tabs", "color", "classicTabs", "pills", "header"]);
 
       var classes = classNames("nav", tabs && "md-tabs", pills && "md-pills", header && "nav-pills card-header-pills", pills && color ? "pills-" + color : false, (tabs || classicTabs) && color ? "tabs-" + this.props.color : false, className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }), children);
     }
   }]);
 
   return Nav;
-}(React.Component);
+}(Component);
 
 Nav.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -5271,7 +5263,7 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["expand", "light", "dark", "sticky", "fixed", "scrolling", "color", "className", "scrollingNavbarOffset", "tag", "double", "transparent"]);
 
       var classes = classNames("navbar", light ? "navbar-light" : "", dark ? "navbar-dark" : "", sticky ? "sticky-" + sticky : "", fixed ? "fixed-" + fixed : "", getExpandClass(expand), scrolling || scrollingNavbarOffset ? "scrolling-navbar" : "", this.state.isCollapsed ? "top-nav-collapse" : "", color ? transparent ? this.state.isCollapsed ? color : "" : color : "", double ? "double-nav" : "", className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes,
         role: "navigation"
       }));
@@ -5279,7 +5271,7 @@ function (_Component) {
   }]);
 
   return Navbar;
-}(React.Component);
+}(Component);
 
 Navbar.propTypes = {
   light: PropTypes.bool,
@@ -5310,13 +5302,13 @@ var NavbarBrand = function NavbarBrand(_ref) {
 
   var navbarBrand = function navbarBrand() {
     if (href) {
-      return React__default.createElement(reactRouterDom.NavLink, _extends({
+      return React.createElement(NavLink, _extends({
         to: href
       }, attributes, {
         className: classes
       }));
     } else {
-      return React__default.createElement("div", _extends({}, attributes, {
+      return React.createElement("div", _extends({}, attributes, {
         className: classes
       }));
     }
@@ -5353,14 +5345,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["children", "className", "right", "left", "tag"]);
 
       var classes = classNames("navbar-nav", right ? "ml-auto" : left ? "mr-auto" : "justify-content-around w-100", className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }), children);
     }
   }]);
 
   return NavbarNav;
-}(React.Component);
+}(Component);
 
 NavbarNav.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -5397,21 +5389,21 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["right", "left", "children", "className", "tag", "image"]);
 
       var classes = classNames("navbar-toggler", right && "navbar-toggler-right", left && "navbar-toggler-left", className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
-      }), children ? children : image ? React__default.createElement("span", {
+      }), children ? children : image ? React.createElement("span", {
         className: "navbar-toggler-icon",
         style: {
           backgroundImage: "url(\"".concat(image, "\")")
         }
-      }) : React__default.createElement("span", {
+      }) : React.createElement("span", {
         className: "navbar-toggler-icon"
       }));
     }
   }]);
 
   return NavbarToggler;
-}(React.Component);
+}(Component);
 
 NavbarToggler.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -5450,14 +5442,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["children", "className", "active", "text", "tag"]);
 
       var classes = classNames("nav-item", active ? "active" : "", text ? "navbar-text" : "", className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }), children);
     }
   }]);
 
   return NavItem;
-}(React.Component);
+}(Component);
 
 NavItem.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -5469,17 +5461,17 @@ NavItem.defaultProps = {
   tag: "li"
 };
 
-var NavLink =
+var NavLink$1 =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(NavLink, _Component);
+  _inherits(NavLink$$1, _Component);
 
-  function NavLink(props) {
+  function NavLink$$1(props) {
     var _this;
 
-    _classCallCheck(this, NavLink);
+    _classCallCheck(this, NavLink$$1);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(NavLink).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(NavLink$$1).call(this, props));
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClick", function (e) {
       if (!_this.props.disabled) {
@@ -5503,7 +5495,7 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(NavLink, [{
+  _createClass(NavLink$$1, [{
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -5516,21 +5508,21 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["children", "className", "disabled", "active", "to", "activeClassName"]);
 
       var classes = classNames("nav-link", disabled ? "disabled" : "Ripple-parent", active && "active", className);
-      return React__default.createElement(reactRouterDom.NavLink, _extends({
+      return React.createElement(NavLink, _extends({
         className: classes,
         onMouseUp: this.handleClick,
         onTouchStart: this.handleClick,
         to: to
-      }, attributes), children, this.props.disabled ? false : React__default.createElement(Waves, {
+      }, attributes), children, this.props.disabled ? false : React.createElement(Waves, {
         cursorPos: this.state.cursorPos
       }));
     }
   }]);
 
-  return NavLink;
-}(React.Component);
+  return NavLink$$1;
+}(Component);
 
-NavLink.propTypes = {
+NavLink$1.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
   children: PropTypes.node,
@@ -5630,17 +5622,17 @@ function (_React$Component) {
       var classes = classNames(className);
       var popoverClasses = classNames("popover", placement ? "bs-popover-" + placement : "", popoverClass);
       var arrowClasses = classNames("arrow", arrowClass);
-      return React__default.createElement(reactPopper.Manager, {
+      return React.createElement(Manager, {
         tag: tag
-      }, React__default.createElement(reactPopper.Target, {
+      }, React.createElement(Target, {
         innerRef: function innerRef(c) {
-          return _this3.target = ReactDOM.findDOMNode(c);
+          return _this3.target = findDOMNode(c);
         },
         component: component,
         style: componentStyle,
         className: classes,
         onClick: this._handleTargetClick
-      }, popoverBody), React__default.createElement(reactTransitionGroup.CSSTransition, {
+      }, popoverBody), React.createElement(CSSTransition, {
         in: this.state.isOpen,
         appear: this.state.isOpen,
         classNames: "popover",
@@ -5649,22 +5641,22 @@ function (_React$Component) {
           enter: 300,
           exit: 300
         }
-      }, React__default.createElement(reactPopper.Popper, {
+      }, React.createElement(Popper, {
         key: "popover",
         component: componentPopover,
         innerRef: function innerRef(c) {
-          _this3.popper = ReactDOM.findDOMNode(c);
+          _this3.popper = findDOMNode(c);
         },
         placement: placement,
         className: popoverClasses
-      }, children, React__default.createElement(reactPopper.Arrow, {
+      }, children, React.createElement(Arrow, {
         className: arrowClasses
       }))));
     }
   }]);
 
   return Popover;
-}(React__default.Component);
+}(React.Component);
 
 Popover.propTypes = {
   placement: PropTypes.string,
@@ -5685,7 +5677,7 @@ var PopoverBody = function PopoverBody(props) {
       attributes = _objectWithoutProperties(props, ["className", "tag"]);
 
   var classes = classNames("popover-body", className);
-  return React__default.createElement(Tag, _extends({}, attributes, {
+  return React.createElement(Tag, _extends({}, attributes, {
     className: classes
   }));
 };
@@ -5704,7 +5696,7 @@ var PopoverHeader = function PopoverHeader(props) {
       attributes = _objectWithoutProperties(props, ["className", "tag"]);
 
   var classes = classNames("popover-header", className);
-  return React__default.createElement(Tag, _extends({}, attributes, {
+  return React.createElement(Tag, _extends({}, attributes, {
     className: classes
   }));
 };
@@ -5741,10 +5733,10 @@ var Progress = function Progress(_ref) {
     height: computedHeight
   });
 
-  return React__default.createElement("div", _extends({}, attributes, {
+  return React.createElement("div", _extends({}, attributes, {
     className: progressClasses,
     style: computedWrapperStyle
-  }), React__default.createElement("div", {
+  }), React.createElement("div", {
     className: progressBarClasses,
     style: {
       width: "".concat(percent, "%"),
@@ -5815,14 +5807,14 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["className", "tag", "center", "start", "end", "around", "between", "top", "bottom", "middle"]);
 
       var classes = classNames("row", end && "justify-content-end", start && "justify-content-start", center && "justify-content-center", between && "justify-content-between", around && "justify-content-around", top && "align-self-start", middle && "align-self-center", bottom && "align-self-end", className);
-      return React__default.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }));
     }
   }]);
 
   return Row;
-}(React.Component);
+}(Component);
 
 Row.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -5850,10 +5842,10 @@ var TableHead = function TableHead(props) {
   var classes = classNames(color !== "dark" && color !== "light" ? color : "thead-".concat(color), {
     "text-white": textWhite
   });
-  return React__default.createElement("thead", _extends({}, attributes, {
+  return React.createElement("thead", _extends({}, attributes, {
     className: classes
-  }), columns && React__default.createElement("tr", null, columns.map(function (col) {
-    return React__default.createElement("th", {
+  }), columns && React.createElement("tr", null, columns.map(function (col) {
+    return React.createElement("th", {
       key: col.field,
       className: col.hasOwnProperty("minimal") ? "th-".concat(col.minimal) : ""
     }, col.label);
@@ -5928,11 +5920,11 @@ function (_React$Component) {
       var tooltipClasses = classNames("tooltip fade", placement ? "bs-tooltip-" + placement : "", this.state.visible ? "show" : "", tooltipClass);
       var wrapperStyles = wrapperStyle ? wrapperStyle : {};
       var arrowClasses = classNames("arrow", arrowClass);
-      return React__default.createElement(reactPopper.Manager, {
+      return React.createElement(Manager, {
         tag: tag,
         className: classes,
         style: wrapperStyles
-      }, React__default.createElement(reactPopper.Target, {
+      }, React.createElement(Target, {
         component: component,
         style: componentStyle,
         className: componentClasses,
@@ -5940,18 +5932,18 @@ function (_React$Component) {
         onMouseLeave: this.hide,
         onTouchStart: this.show,
         onTouchEnd: this.hide
-      }, children), this.state.visible && React__default.createElement(reactPopper.Popper, {
+      }, children), this.state.visible && React.createElement(Popper, {
         placement: placement,
         component: componentTooltip
       }, function (_ref) {
         var popperProps = _ref.popperProps;
-        return React__default.createElement("div", _extends({}, popperProps, {
+        return React.createElement("div", _extends({}, popperProps, {
           className: tooltipClasses
-        }), React__default.createElement("div", {
+        }), React.createElement("div", {
           className: "tooltip-inner"
-        }, tooltipContent), React__default.createElement(reactPopper.Arrow, null, function (_ref2) {
+        }, tooltipContent), React.createElement(Arrow, null, function (_ref2) {
           var arrowProps = _ref2.arrowProps;
-          return React__default.createElement("span", _extends({}, arrowProps, {
+          return React.createElement("span", _extends({}, arrowProps, {
             className: arrowClasses
           }));
         }));
@@ -5960,7 +5952,7 @@ function (_React$Component) {
   }]);
 
   return Tooltip;
-}(React__default.Component);
+}(React.Component);
 
 Tooltip.propTypes = {
   placement: PropTypes.string,
@@ -6066,9 +6058,9 @@ function (_Component) {
         style: style || undefined
       };
       iframeAttributes = returnAttributes(iframeAttributes);
-      return React__default.createElement("div", {
+      return React.createElement("div", {
         className: wrapperClasses
-      }, React__default.createElement("iframe", _extends({
+      }, React.createElement("iframe", _extends({
         title: title || "",
         className: classes
       }, iframeAttributes)));
@@ -6076,7 +6068,7 @@ function (_Component) {
   }]);
 
   return Iframe;
-}(React.Component);
+}(Component);
 
 Iframe.propTypes = {
   allowFullScreen: PropTypes.bool,
@@ -6159,7 +6151,7 @@ function (_React$Component) {
   }, {
     key: "getContainer",
     value: function getContainer() {
-      return ReactDOM__default.findDOMNode(this);
+      return ReactDOM.findDOMNode(this);
     }
   }, {
     key: "addEvents",
@@ -6255,7 +6247,7 @@ function (_React$Component) {
       var classes = classNames((_classNames = {
         "btn-group": group
       }, _defineProperty(_classNames, "btn-group-".concat(size), !!size), _defineProperty(_classNames, "dropdown", !group), _defineProperty(_classNames, "show", this.state.isOpen), _defineProperty(_classNames, "dropup", dropup), _classNames), className);
-      return React__default.createElement(reactPopper.Manager, _extends({}, attrs, {
+      return React.createElement(Manager, _extends({}, attrs, {
         className: classes,
         onKeyDown: this.handleKeyDown
       }));
@@ -6263,7 +6255,7 @@ function (_React$Component) {
   }]);
 
   return Dropdown;
-}(React__default.Component);
+}(React.Component);
 
 Dropdown.propTypes = {
   disabled: PropTypes.bool,
@@ -6287,148 +6279,4 @@ Dropdown.childContextTypes = {
 
 // FREE
 
-exports.cssTransition = reactToastify.cssTransition;
-exports.toast = reactToastify.toast;
-exports.ToastContainer = reactToastify.ToastContainer;
-exports.Animation = Animation;
-exports.Alert = Alert;
-exports.Badge = Badge;
-exports.Breadcrumb = Breadcrumb;
-exports.BreadcrumbItem = BreadcrumbItem;
-exports.Button = Button;
-exports.ButtonGroup = ButtonGroup;
-exports.ButtonToolbar = ButtonToolbar;
-exports.Card = Card;
-exports.CardBody = CardBody;
-exports.CardFooter = CardFooter;
-exports.CardGroup = CardGroup;
-exports.CardHeader = CardHeader;
-exports.CardImage = CardImage;
-exports.CardText = CardText;
-exports.CardTitle = CardTitle;
-exports.Carousel = Carousel;
-exports.CarouselCaption = CarouselCaption;
-exports.CarouselControl = Control;
-exports.CarouselInner = CarouselInner;
-exports.CarouselItem = CarouselItem;
-exports.CarouselIndicators = CarouselIndicators;
-exports.CarouselIndicator = CarouselIndicator;
-exports.Col = Col;
-exports.Collapse = Collapse;
-exports.Container = Container;
-exports.DataTable = DataTable;
-exports.Dropdown = Dropdown;
-exports.DropdownItem = DropdownItem;
-exports.DropdownMenu = DropdownMenu;
-exports.DropdownToggle = DropdownToggle;
-exports.EdgeHeader = EdgeHeader;
-exports.Fa = Fa;
-exports.FormInline = FormInline;
-exports.Footer = Footer;
-exports.FreeBird = FreeBird;
-exports.HamburgerToggler = HamburgerToggler;
-exports.Input = Input;
-exports.InputNumeric = InputNumeric;
-exports.Jumbotron = Jumbotron;
-exports.ListGroup = ListGroup;
-exports.ListGroupItem = ListGroupItem;
-exports.Mask = Mask;
-exports.Media = Media;
-exports.Modal = Modal;
-exports.ModalBody = ModalBody;
-exports.ModalFooter = ModalFooter;
-exports.ModalHeader = ModalHeader;
-exports.Nav = Nav;
-exports.Navbar = Navbar;
-exports.NavbarBrand = NavbarBrand;
-exports.NavbarNav = NavbarNav;
-exports.NavbarToggler = NavbarToggler;
-exports.NavItem = NavItem;
-exports.NavLink = NavLink;
-exports.Pagination = Pagination;
-exports.PageItem = PageItem;
-exports.PageLink = PageLink;
-exports.Popover = Popover;
-exports.PopoverBody = PopoverBody;
-exports.PopoverHeader = PopoverHeader;
-exports.Progress = Progress;
-exports.Waves = Waves;
-exports.Row = Row;
-exports.Table = Table;
-exports.TableBody = TableBody;
-exports.TableHead = TableHead;
-exports.TableFoot = TableFoot;
-exports.Tooltip = Tooltip;
-exports.View = View;
-exports.Iframe = Iframe;
-exports.MDBIframe = Iframe;
-exports.MDBAnimation = Animation;
-exports.MDBBadge = Badge;
-exports.MDBAlert = Alert;
-exports.MDBBreadcrumb = Breadcrumb;
-exports.MDBBreadcrumbItem = BreadcrumbItem;
-exports.MDBBtn = Button;
-exports.MDBBtnGroup = ButtonGroup;
-exports.MDBBtnToolbar = ButtonToolbar;
-exports.MDBCard = Card;
-exports.MDBCardBody = CardBody;
-exports.MDBCardFooter = CardFooter;
-exports.MDBCardGroup = CardGroup;
-exports.MDBCardHeader = CardHeader;
-exports.MDBCardImage = CardImage;
-exports.MDBCardText = CardText;
-exports.MDBCardTitle = CardTitle;
-exports.MDBCarousel = Carousel;
-exports.MDBCarouselCaption = CarouselCaption;
-exports.MDBControl = Control;
-exports.MDBCarouselInner = CarouselInner;
-exports.MDBCarouselItem = CarouselItem;
-exports.MDBCarouselIndicators = CarouselIndicators;
-exports.MDBCarouselIndicator = CarouselIndicator;
-exports.MDBCol = Col;
-exports.MDBCollapse = Collapse;
-exports.MDBContainer = Container;
-exports.MDBDataTable = DataTable;
-exports.MDBDropdown = Dropdown;
-exports.MDBDropdownItem = DropdownItem;
-exports.MDBDropdownMenu = DropdownMenu;
-exports.MDBDropdownToggle = DropdownToggle;
-exports.MDBEdgeHeader = EdgeHeader;
-exports.MDBFormInline = FormInline;
-exports.MDBFooter = Footer;
-exports.MDBFreeBird = FreeBird;
-exports.MDBHamburgerToggler = HamburgerToggler;
-exports.MDBIcon = Fa;
-exports.MDBInput = Input;
-exports.MDBInputSelect = InputNumeric;
-exports.MDBJumbotron = Jumbotron;
-exports.MDBListGroup = ListGroup;
-exports.MDBListGroupItem = ListGroupItem;
-exports.MDBMask = Mask;
-exports.MDBMedia = Media;
-exports.MDBModal = Modal;
-exports.MDBModalBody = ModalBody;
-exports.MDBModalFooter = ModalFooter;
-exports.MDBModalHeader = ModalHeader;
-exports.MDBNav = Nav;
-exports.MDBNavbar = Navbar;
-exports.MDBNavbarBrand = NavbarBrand;
-exports.MDBNavbarNav = NavbarNav;
-exports.MDBNavbarToggler = NavbarToggler;
-exports.MDBNavItem = NavItem;
-exports.MDBNavLink = NavLink;
-exports.MDBPagination = Pagination;
-exports.MDBPageItem = PageItem;
-exports.MDBPageNav = PageLink;
-exports.MDBPopover = Popover;
-exports.MDBPopoverBody = PopoverBody;
-exports.MDBPopoverHeader = PopoverHeader;
-exports.MDBProgress = Progress;
-exports.MDBWaves = Waves;
-exports.MDBRow = Row;
-exports.MDBTable = Table;
-exports.MDBTableBody = TableBody;
-exports.MDBTableHead = TableHead;
-exports.MDBTableFoot = TableFoot;
-exports.MDBTooltip = Tooltip;
-exports.MDBView = View;
+export { Animation, Alert, Badge, Breadcrumb, BreadcrumbItem, Button, ButtonGroup, ButtonToolbar, Card, CardBody, CardFooter, CardGroup, CardHeader, CardImage, CardText, CardTitle, Carousel, CarouselCaption, Control as CarouselControl, CarouselInner, CarouselItem, CarouselIndicators, CarouselIndicator, Col, Collapse, Container, DataTable, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, EdgeHeader, Fa, FormInline, Footer, FreeBird, HamburgerToggler, Input, InputNumeric, Jumbotron, ListGroup, ListGroupItem, Mask, Media, Modal, ModalBody, ModalFooter, ModalHeader, Nav, Navbar, NavbarBrand, NavbarNav, NavbarToggler, NavItem, NavLink$1 as NavLink, Pagination, PageItem, PageLink, Popover, PopoverBody, PopoverHeader, Progress, Waves, Row, Table, TableBody, TableHead, TableFoot, Tooltip, View, Iframe, Iframe as MDBIframe, Animation as MDBAnimation, Badge as MDBBadge, Alert as MDBAlert, Breadcrumb as MDBBreadcrumb, BreadcrumbItem as MDBBreadcrumbItem, Button as MDBBtn, ButtonGroup as MDBBtnGroup, ButtonToolbar as MDBBtnToolbar, Card as MDBCard, CardBody as MDBCardBody, CardFooter as MDBCardFooter, CardGroup as MDBCardGroup, CardHeader as MDBCardHeader, CardImage as MDBCardImage, CardText as MDBCardText, CardTitle as MDBCardTitle, Carousel as MDBCarousel, CarouselCaption as MDBCarouselCaption, Control as MDBControl, CarouselInner as MDBCarouselInner, CarouselItem as MDBCarouselItem, CarouselIndicators as MDBCarouselIndicators, CarouselIndicator as MDBCarouselIndicator, Col as MDBCol, Collapse as MDBCollapse, Container as MDBContainer, DataTable as MDBDataTable, Dropdown as MDBDropdown, DropdownItem as MDBDropdownItem, DropdownMenu as MDBDropdownMenu, DropdownToggle as MDBDropdownToggle, EdgeHeader as MDBEdgeHeader, FormInline as MDBFormInline, Footer as MDBFooter, FreeBird as MDBFreeBird, HamburgerToggler as MDBHamburgerToggler, Fa as MDBIcon, Input as MDBInput, InputNumeric as MDBInputSelect, Jumbotron as MDBJumbotron, ListGroup as MDBListGroup, ListGroupItem as MDBListGroupItem, Mask as MDBMask, Media as MDBMedia, Modal as MDBModal, ModalBody as MDBModalBody, ModalFooter as MDBModalFooter, ModalHeader as MDBModalHeader, Nav as MDBNav, Navbar as MDBNavbar, NavbarBrand as MDBNavbarBrand, NavbarNav as MDBNavbarNav, NavbarToggler as MDBNavbarToggler, NavItem as MDBNavItem, NavLink$1 as MDBNavLink, Pagination as MDBPagination, PageItem as MDBPageItem, PageLink as MDBPageNav, Popover as MDBPopover, PopoverBody as MDBPopoverBody, PopoverHeader as MDBPopoverHeader, Progress as MDBProgress, Waves as MDBWaves, Row as MDBRow, Table as MDBTable, TableBody as MDBTableBody, TableHead as MDBTableHead, TableFoot as MDBTableFoot, Tooltip as MDBTooltip, View as MDBView };
