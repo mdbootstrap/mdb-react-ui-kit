@@ -108,6 +108,7 @@ class Popover extends React.Component {
             }}
             placement={placement}
             className={popoverClasses}
+            onClick={this._handleTargetClick}
           >
             {children}
             <Arrow className={arrowClasses} />
