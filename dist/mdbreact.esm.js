@@ -4373,38 +4373,39 @@ function (_React$Component) {
           children = _this$props.children,
           className = _this$props.className,
           containerClass = _this$props.containerClass,
-          size = _this$props.size,
-          group = _this$props.group,
-          getValue = _this$props.getValue,
-          type = _this$props.type,
-          tag = _this$props.tag,
-          id = _this$props.id,
-          hint = _this$props.hint,
-          validate = _this$props.validate,
-          value = _this$props.value,
-          label = _this$props.label,
-          error = _this$props.error,
-          success = _this$props.success,
           disabled = _this$props.disabled,
-          labelClass = _this$props.labelClass,
+          error = _this$props.error,
+          filled = _this$props.filled,
+          gap = _this$props.gap,
+          getValue = _this$props.getValue,
+          group = _this$props.group,
+          hint = _this$props.hint,
           icon = _this$props.icon,
           iconBrand = _this$props.iconBrand,
           iconClass = _this$props.iconClass,
           iconLight = _this$props.iconLight,
           iconRegular = _this$props.iconRegular,
           iconSize = _this$props.iconSize,
+          id = _this$props.id,
           inputRef = _this$props.inputRef,
-          filled = _this$props.filled,
-          gap = _this$props.gap,
+          outline = _this$props.outline,
+          label = _this$props.label,
+          labelClass = _this$props.labelClass,
+          size = _this$props.size,
+          success = _this$props.success,
+          tag = _this$props.tag,
+          type = _this$props.type,
+          validate = _this$props.validate,
+          value = _this$props.value,
           valueDefault = _this$props.valueDefault,
-          attributes = _objectWithoutProperties(_this$props, ["children", "className", "containerClass", "size", "group", "getValue", "type", "tag", "id", "hint", "validate", "value", "label", "error", "success", "disabled", "labelClass", "icon", "iconBrand", "iconClass", "iconLight", "iconRegular", "iconSize", "inputRef", "filled", "gap", "valueDefault"]);
+          attributes = _objectWithoutProperties(_this$props, ["children", "className", "containerClass", "disabled", "error", "filled", "gap", "getValue", "group", "hint", "icon", "iconBrand", "iconClass", "iconLight", "iconRegular", "iconSize", "id", "inputRef", "outline", "label", "labelClass", "size", "success", "tag", "type", "validate", "value", "valueDefault"]);
 
       var isNotEmpty = !!this.state.innerValue || !!hint || this.state.isFocused;
       var Tag = "";
       var formControlClass = "";
 
       if (type === "textarea") {
-        formControlClass = "md-textarea form-control";
+        formControlClass = outline ? "form-control" : "md-textarea form-control";
         Tag = "textarea";
       } else {
         formControlClass = "form-control";
@@ -4414,7 +4415,7 @@ function (_React$Component) {
 
       attributes.disabled = disabled;
       var classes = classNames(formControlClass, size ? "form-control-".concat(size) : false, validate ? "validate" : false, filled ? "filled-in" : false, gap ? "with-gap" : false, type === "checkbox" ? gap ? false : "form-check-input" : false, type === "radio" ? "form-check-input" : false, className);
-      var containerClassFix = classNames(type === "checkbox" || type === "radio" ? "form-check my-3" : "md-form", group ? "form-group" : false, size ? "form-".concat(size) : false, containerClass);
+      var containerClassFix = classNames(type === "checkbox" || type === "radio" ? "form-check my-3" : "md-form", group ? "form-group" : false, size ? "form-".concat(size) : false, outline && 'md-outline', containerClass);
       var iconClassFix = classNames(isNotEmpty && this.state.isFocused ? "active" : false, iconClass, "prefix");
       var labelClassFix = classNames(isNotEmpty ? "active" : false, disabled ? "disabled" : false, type === "checkbox" ? "form-check-label mr-5" : false, type === "radio" ? "form-check-label mr-5" : false, labelClass);
       return React.createElement("div", {
@@ -4487,6 +4488,7 @@ Input.propTypes = {
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
   onInput: PropTypes.func,
+  outline: PropTypes.bool,
   size: PropTypes.string,
   success: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -4511,6 +4513,7 @@ Input.defaultProps = {
   iconRegular: false,
   iconSize: undefined,
   id: undefined,
+  outline: false,
   label: "",
   labelClass: "",
   size: "",
@@ -5160,7 +5163,7 @@ function (_Component) {
           header = _this$props.header,
           attributes = _objectWithoutProperties(_this$props, ["children", "className", "tag", "tabs", "color", "classicTabs", "pills", "header"]);
 
-      var classes = classNames("nav", tabs && "md-tabs", pills && "md-pills", header && "nav-pills card-header-pills", pills && color ? "pills-" + color : false, (tabs || classicTabs) && color ? "tabs-" + this.props.color : false, className);
+      var classes = classNames("nav", tabs && "md-tabs", pills && "md-pills", header && "nav-pills card-header-pills", color && !tabs && !classicTabs && !pills ? color : false, pills && color ? "pills-" + color : false, (tabs || classicTabs) && color ? "tabs-" + color : false, className);
       return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }), children);
@@ -5504,8 +5507,7 @@ function (_Component) {
           disabled = _this$props.disabled,
           active = _this$props.active,
           to = _this$props.to,
-          activeClassName = _this$props.activeClassName,
-          attributes = _objectWithoutProperties(_this$props, ["children", "className", "disabled", "active", "to", "activeClassName"]);
+          attributes = _objectWithoutProperties(_this$props, ["children", "className", "disabled", "active", "to"]);
 
       var classes = classNames("nav-link", disabled ? "disabled" : "Ripple-parent", active && "active", className);
       return React.createElement(NavLink, _extends({
@@ -5523,11 +5525,16 @@ function (_Component) {
 }(Component);
 
 NavLink$1.propTypes = {
+  children: PropTypes.node,
   className: PropTypes.string,
   disabled: PropTypes.bool,
-  children: PropTypes.node,
   to: PropTypes.string,
   active: PropTypes.bool
+};
+NavLink$1.defaultProps = {
+  active: false,
+  className: "",
+  disabled: false
 };
 
 var css$7 = ".popover-enter {\n  opacity: 0.01;\n  transform: scale(0.9) translateY(50%);\n}\n\n.popover-enter-active {\n  opacity: 1;\n  transform: scale(1);\n  transition: scale 300ms ease-out, opacity 300ms ease;\n}\n\n.popover-enter-done {\n  opacity: 1;\n  transform: scale(1);\n}\n\n.popover-exit {\n  opacity: 1;\n  transform: scale(0.8);\n  transition: all 300ms ease-out;\n}\n\n.popover-exit-active {\n  opacity: 0;\n  transform: scale(0.8);\n  transition: all 300ms ease-out;\n}\n\n/* slide from side */\n\n.side-slide-enter {\n  opacity: 0.2;\n  transform: translateX(-100%);\n}\n\n.side-slide-enter-active {\n  opacity: 1;\n  transform: translateX(0%);\n  transition: transform 300ms ease-out, opacity 300ms ease;\n}\n\n.side-slide-enter-done {\n  opacity: 1;\n  transform: translateX(0);\n}\n\n.side-slide-exit {\n  opacity: 1;\n  transform: translateX(0%);\n  transition: all 300ms ease-out;\n}\n\n.side-slide-exit-active {\n  opacity: 0.2;\n  transform: translateX(-100%);\n  transition: all 300ms ease-out;\n}\n\n.right-side-slide-enter {\n  opacity: 0.2;\n  transform: translateX(100%);\n}\n\n.right-side-slide-enter-active {\n  opacity: 1;\n  transform: translateX(0%) !important;\n  transition: transform 300ms ease-out, opacity 300ms ease;\n}\n\n.right-side-slide-enter-done {\n  opacity: 1;\n  transform: translateX(0%) !important;\n}\n\n.right-side-slide-exit {\n  opacity: 1;\n  transform: translateX(0%);\n  transition: all 300ms ease-out;\n}\n\n.right-side-slide-exit-active {\n  opacity: 0.2;\n  transform: translateX(100%);\n  transition: all 300ms ease-out;\n}\n";
@@ -5648,7 +5655,8 @@ function (_React$Component) {
           _this3.popper = findDOMNode(c);
         },
         placement: placement,
-        className: popoverClasses
+        className: popoverClasses,
+        onClick: this._handleTargetClick
       }, children, React.createElement(Arrow, {
         className: arrowClasses
       }))));

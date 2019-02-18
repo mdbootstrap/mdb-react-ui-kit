@@ -32,7 +32,6 @@ class NavLink extends Component {
       disabled,
       active,
       to,
-      activeClassName,
       ...attributes
     } = this.props;
 
@@ -42,7 +41,6 @@ class NavLink extends Component {
       active && "active",
       className
     );
-
     return (
       <Link
         className={classes}
@@ -55,20 +53,26 @@ class NavLink extends Component {
         {this.props.disabled ? (
           false
         ) : (
-          <Waves cursorPos={this.state.cursorPos} />
-        )}
+            <Waves cursorPos={this.state.cursorPos} />
+          )}
       </Link>
     );
   }
 }
 
 NavLink.propTypes = {
+  children: PropTypes.node,
   className: PropTypes.string,
   disabled: PropTypes.bool,
-  children: PropTypes.node,
   to: PropTypes.string,
   active: PropTypes.bool
 };
+
+NavLink.defaultProps = {
+  active: false,
+  className: "",
+  disabled: false
+}
 
 export default NavLink;
 export { NavLink as MDBNavLink };

@@ -77,29 +77,30 @@ class Input extends React.Component {
       children,
       className,
       containerClass,
-      size,
-      group,
-      getValue,
-      type,
-      tag,
-      id,
-      hint,
-      validate,
-      value,
-      label,
-      error,
-      success,
       disabled,
-      labelClass,
+      error,
+      filled,
+      gap,
+      getValue,
+      group,
+      hint,
       icon,
       iconBrand,
       iconClass,
       iconLight,
       iconRegular,
       iconSize,
+      id,
       inputRef,
-      filled,
-      gap,
+      outline,
+      label,
+      labelClass,
+      size,
+      success,
+      tag,
+      type,
+      validate,
+      value,
       valueDefault,
       ...attributes
     } = this.props;
@@ -109,7 +110,7 @@ class Input extends React.Component {
     let formControlClass = "";
 
     if (type === "textarea") {
-      formControlClass = "md-textarea form-control";
+      formControlClass = outline ? "form-control" : "md-textarea form-control";
       Tag = "textarea";
     }
     else {
@@ -135,6 +136,7 @@ class Input extends React.Component {
       type === "checkbox" || type === "radio" ? "form-check my-3" : "md-form",
       group ? "form-group" : false,
       size ? `form-${size}` : false,
+      outline && 'md-outline',
       containerClass
     );
 
@@ -226,6 +228,7 @@ Input.propTypes = {
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
   onInput: PropTypes.func,
+  outline: PropTypes.bool,
   size: PropTypes.string,
   success: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
@@ -251,6 +254,7 @@ Input.defaultProps = {
   iconRegular: false,
   iconSize: undefined,
   id: undefined,
+  outline: false,
   label: "",
   labelClass: "",
   size: "",

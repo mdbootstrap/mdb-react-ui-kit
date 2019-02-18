@@ -59,8 +59,8 @@ All fully responsive. All compatible with different browsers.
 
 # Version:
 
-- MDBReact 4.10.0
-- React 16.7.0
+- MDBReact 4.11.0
+- React 16.8.1
 
 # Quick start
 
@@ -207,4 +207,3 @@ A big ❤️ **thank you to all our users** ❤️ who are working with us to im
 ## Contact:
 
 contact@mdbootstrap.com
-
