@@ -66,8 +66,7 @@ All fully responsive. All compatible with different browsers.
 
 - Clone following repo:
 
-```
-javascript
+```bash
 git clone https://github.com/mdbootstrap/react-bootstrap-with-material-design .
 ```
 
@@ -93,17 +92,15 @@ Now you can navigate to [our documentation](http://mdbootstrap.com/docs/react/),
 - `npm install --save mdbreact`
 - Import style files into the src/index.js before the App.js file:
 
-```
-javascript
-import "font-awesome/css/font-awesome.min.css";
+```javascript
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 ```
 
 ### Run server
 
-```
-bash
+```bash
 npm start
 ```
 
