@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { MDBInput, MDBInputSelect, MDBFormInline, MDBBtn, MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import DocsLink from "./../components/docsLink";
+import "./InputPage.css";
 
 class InputPage extends Component {
   constructor() {
@@ -97,6 +98,41 @@ class InputPage extends Component {
               icon="pencil-alt"
             />
             <MDBInput type="textarea" label="Basic textarea" rows="2" />
+
+            <h4 className="mt-5">Outline inputs</h4>
+
+            <MDBInput
+              labelClass="labelBg"
+              outline
+              label="Type your email"
+              type="email"
+            />
+
+            <MDBInput
+              labelClass="labelBg"
+              outline
+              label="Type your password"
+              icon="lock"
+              type="password"
+            />
+
+            <MDBInput
+              labelClass="labelBg"
+              outline
+              getValue={this.getValue}
+              type="textarea"
+              label="Icon Prefix"
+              rows="2"
+              icon="pencil-alt"
+            />
+
+            <MDBInput
+              labelClass="labelBg" 
+              outline 
+              type="textarea" 
+              label="Basic textarea" 
+              rows="2" 
+            />
 
             <h4 className="mt-5">Numeric inputs</h4>
 

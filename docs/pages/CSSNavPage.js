@@ -18,6 +18,7 @@ const CSSPage = () => {
               <MenuLink to="/css/icons" title="Icons" />
               <MenuLink to="/css/jumbotron" title="Jumbotron" />
               <MenuLink to="/css/masks" title="Masks"  />
+              <MenuLink to="/css/masonry" title="Masonry Layout"  />
             </ul>
           </MDBJumbotron>
         </MDBCol>

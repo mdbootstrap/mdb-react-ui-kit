@@ -18,6 +18,7 @@ const AdvancedNavPage = () => {
               <MenuLink to="/advanced/charts" title="Charts" />
               <MenuLink to="/advanced/collapse" title="Collapse" />
               <MenuLink to="/advanced/popover" title="Popover" />
+              <MenuLink to="/advanced/scrollbar" title="ScrollBar" />
               <MenuLink to="/advanced/tooltips" title="Tooltips" />
               <MenuLink to="/advanced/videocarousel" title="Video Carousel" />
             </ul>
