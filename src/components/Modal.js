@@ -13,10 +13,6 @@ class Modal extends Component {
     document.body.classList.add("modal-open");
   };
 
-  componentWillUnmount = () => {
-    document.body.classList.remove("modal-open");
-  };
-
   componentDidUpdate = (prevProps, prevState) => {
     if (prevState.isOpen !== this.props.isOpen) {
       this.setState({ isOpen: this.props.isOpen });
