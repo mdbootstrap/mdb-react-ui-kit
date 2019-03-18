@@ -1,6 +1,6 @@
 {
   "name": "mdbreact",
-  "version": "4.11.0",
+  "version": "4.11.1",
   "author": "MDBootstrap",
   "repository": "https://git.mdbootstrap.com/mdb/react/re-pro",
   "main": "dist/mdbreact.js",
@@ -20,7 +20,7 @@
     "@date-io/moment": "0.0.2",
     "@fortawesome/fontawesome-free": "^5.7.1",
     "@material-ui/core": "^3.4.0",
-    "bootstrap-css-only": "^4.2.1",
+    "bootstrap-css-only": "^4.3.1",
     "chart.js": "^2.7.3",
     "classnames": "^2.2.6",
     "material-ui-pickers": "2.0.0",

@@ -212,7 +212,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Animation).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updatePredicate", function () {
+    _defineProperty(_assertThisInitialized(_this), "updatePredicate", function () {
       var windowHeight = window.innerHeight;
       var scroll = window.scrollY;
       var docHeight = document.documentElement.offsetHeight;
@@ -236,7 +236,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleStart", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleStart", function (e) {
       _this.setState({
         countIterations: _this.state.countIterations + 1
       });
@@ -246,7 +246,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleIteration", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleIteration", function (e) {
       if (_this.props.onAnimationIteration) {
         _this.setState({
           countIterations: _this.state.countIterations + 1
@@ -256,7 +256,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleEnd", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleEnd", function (e) {
       _this.setState({
         countIterations: _this.state.countIterations + 1
       });
@@ -266,7 +266,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getOffset", function (elem) {
+    _defineProperty(_assertThisInitialized(_this), "getOffset", function (elem) {
       var box = elem.getBoundingClientRect();
       var body = document.body;
       var docEl = document.documentElement;
@@ -382,22 +382,22 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Alert)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+    _defineProperty(_assertThisInitialized(_this), "state", {
       isOpen: true
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "closeAlert", function () {
+    _defineProperty(_assertThisInitialized(_this), "closeAlert", function () {
       _this.setState({
         isOpen: false
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleOnExit", function (node) {
+    _defineProperty(_assertThisInitialized(_this), "handleOnExit", function (node) {
       node.classList.add("fade");
       _this.props.onClose && _this.props.onClose();
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleOnExited", function (node) {
+    _defineProperty(_assertThisInitialized(_this), "handleOnExited", function (node) {
       _this.props.onClosed && _this.props.onClosed();
     });
 
@@ -872,7 +872,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Button).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClick", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleClick", function (e) {
       e.stopPropagation(); // Waves - Get Cursor Position
 
       var cursorPos = {
@@ -1792,14 +1792,14 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Carousel).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "restartInterval", function () {
+    _defineProperty(_assertThisInitialized(_this), "restartInterval", function () {
       if (_this.props.interval !== false) {
         clearInterval(_this.cycleInterval);
         _this.cycleInterval = setInterval(_this.next, _this.props.interval);
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "next", function () {
+    _defineProperty(_assertThisInitialized(_this), "next", function () {
       var nextItem = _this.state.activeItem + 1;
 
       if (nextItem > _this.state.length) {
@@ -1815,7 +1815,7 @@ function (_Component) {
       _this.restartInterval();
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "prev", function () {
+    _defineProperty(_assertThisInitialized(_this), "prev", function () {
       var prevItem = _this.state.activeItem - 1;
 
       if (prevItem < 1) {
@@ -1831,7 +1831,7 @@ function (_Component) {
       _this.restartInterval();
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "componentDidMount", function () {
+    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
       if (_this.props.interval === false) {
         return;
       }
@@ -2101,9 +2101,9 @@ function (_Component) {
     _classCallCheck(this, CarouselItem);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CarouselItem).call(this, props));
-    _this.moveForward = _this.moveForward.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.moveBackwards = _this.moveBackwards.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.makeVisible = _this.makeVisible.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.moveForward = _this.moveForward.bind(_assertThisInitialized(_this));
+    _this.moveBackwards = _this.moveBackwards.bind(_assertThisInitialized(_this));
+    _this.makeVisible = _this.makeVisible.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2262,7 +2262,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Collapse).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "openCollapse", function () {
+    _defineProperty(_assertThisInitialized(_this), "openCollapse", function () {
       _this.setState({
         collapse: SHOW
       }, function () {
@@ -2279,7 +2279,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "closeCollapse", function () {
+    _defineProperty(_assertThisInitialized(_this), "closeCollapse", function () {
       _this.setState({
         height: _this.getHeight()
       }, function () {
@@ -3199,7 +3199,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(DataTablePagination).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "componentDidUpdate", function (prevProps) {
+    _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function (prevProps) {
       if (prevProps.pages !== _this.props.pages) {
         _this.setState({
           pages: _this.props.pages
@@ -3209,7 +3209,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "pagesIndexify", function () {
+    _defineProperty(_assertThisInitialized(_this), "pagesIndexify", function () {
       var mutablePages = _toConsumableArray(_this.state.pages);
 
       mutablePages.forEach(function (page, index) {
@@ -3218,7 +3218,7 @@ function (_Component) {
       return mutablePages;
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "groupPages", function () {
+    _defineProperty(_assertThisInitialized(_this), "groupPages", function () {
       var pGroups = [];
 
       var pages = _this.pagesIndexify();
@@ -3232,7 +3232,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "choosePagesGroup", function () {
+    _defineProperty(_assertThisInitialized(_this), "choosePagesGroup", function () {
       var pGroupNumber = Math.floor(_this.props.activePage / _this.props.pagesAmount);
       return _this.state.pGroups.length ? _this.state.pGroups[pGroupNumber] : [];
     });
@@ -3316,7 +3316,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(DataTable).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "fetchData", function (link) {
+    _defineProperty(_assertThisInitialized(_this), "fetchData", function (link) {
       fetch(link).then(function (res) {
         return res.json();
       }).then(function (json) {
@@ -3330,7 +3330,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "paginateRowsInitialy", function () {
+    _defineProperty(_assertThisInitialized(_this), "paginateRowsInitialy", function () {
       // findout how many pages there are need to be, then slice rows into pages
       var pagesAmount = Math.ceil(_this.state.rows.length / _this.state.entries);
 
@@ -3341,7 +3341,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleEntriesChange", function (value) {
+    _defineProperty(_assertThisInitialized(_this), "handleEntriesChange", function (value) {
       _this.setState({
         entries: Array.isArray(value) ? value[0] : value
       }, function () {
@@ -3349,7 +3349,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleSearchChange", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleSearchChange", function (e) {
       _this.setState({
         search: e.target.value
       }, function () {
@@ -3357,7 +3357,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleSort", function (field, sort) {
+    _defineProperty(_assertThisInitialized(_this), "handleSort", function (field, sort) {
       if (sort !== "disabled") {
         _this.setState(function (prevState) {
           // asc by default
@@ -3387,7 +3387,7 @@ function (_Component) {
       } else return;
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "filterRows", function () {
+    _defineProperty(_assertThisInitialized(_this), "filterRows", function () {
       _this.setState(function (prevState) {
         var filteredRows = prevState.rows.filter(function (row) {
           for (var key in row) {
@@ -3412,7 +3412,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "paginateRows", function () {
+    _defineProperty(_assertThisInitialized(_this), "paginateRows", function () {
       // findout how many pages there are need to be, then slice rows into pages
       var pagesAmount = Math.ceil(_this.state.filteredRows.length / _this.state.entries);
 
@@ -3435,13 +3435,13 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "changeActivePage", function (page) {
+    _defineProperty(_assertThisInitialized(_this), "changeActivePage", function (page) {
       _this.setState({
         activePage: page
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleTableBodyScroll", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleTableBodyScroll", function (e) {
       _this.setState({
         translateScrollHead: e.target.scrollLeft
       });
@@ -3742,8 +3742,8 @@ function (_React$Component) {
     _classCallCheck(this, DropdownItem);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(DropdownItem).call(this, props));
-    _this.onClick = _this.onClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.getTabIndex = _this.getTabIndex.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.onClick = _this.onClick.bind(_assertThisInitialized(_this));
+    _this.getTabIndex = _this.getTabIndex.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -3952,7 +3952,7 @@ function (_React$Component) {
     _classCallCheck(this, DropdownToggle);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(DropdownToggle).call(this, props));
-    _this.onClick = _this.onClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.onClick = _this.onClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -4235,7 +4235,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(HamburgerToggler)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+    _defineProperty(_assertThisInitialized(_this), "state", {
       checked: _this.props.isOpen || false
     });
 
@@ -4297,7 +4297,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Input).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBlur", function (event) {
+    _defineProperty(_assertThisInitialized(_this), "onBlur", function (event) {
       event.stopPropagation();
 
       _this.setState({
@@ -4307,7 +4307,7 @@ function (_React$Component) {
       _this.props.onBlur && _this.props.onBlur(event);
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function (event) {
+    _defineProperty(_assertThisInitialized(_this), "onFocus", function (event) {
       event.stopPropagation();
 
       _this.setState({
@@ -4317,7 +4317,7 @@ function (_React$Component) {
       _this.props.onFocus && _this.props.onFocus(event);
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (event) {
+    _defineProperty(_assertThisInitialized(_this), "onChange", function (event) {
       event.stopPropagation();
 
       if (_this.props.type !== "checkbox" && _this.props.type !== "radio") {
@@ -4331,7 +4331,7 @@ function (_React$Component) {
       _this.props.getValue && _this.props.getValue(event.target.value);
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onInput", function (event) {
+    _defineProperty(_assertThisInitialized(_this), "onInput", function (event) {
       event.stopPropagation();
 
       if (_this.props.type !== "checkbox" && _this.props.type !== "radio") {
@@ -4345,7 +4345,7 @@ function (_React$Component) {
       _this.props.getValue && _this.props.getValue(event.target.value);
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "setFocus", function () {
+    _defineProperty(_assertThisInitialized(_this), "setFocus", function () {
       _this.inputElementRef.current.focus();
     });
 
@@ -4542,7 +4542,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(InputNumeric)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChangeHandler", function (value) {
+    _defineProperty(_assertThisInitialized(_this), "onChangeHandler", function (value) {
       _this.props.getValue && _this.props.getValue(value);
     });
 
@@ -4812,19 +4812,19 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Modal)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+    _defineProperty(_assertThisInitialized(_this), "state", {
       isOpen: _this.props.isOpen || false
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "componentDidMount", function () {
+    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
       document.body.classList.add("modal-open");
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "componentWillUnmount", function () {
+    _defineProperty(_assertThisInitialized(_this), "componentWillUnmount", function () {
       document.body.classList.remove("modal-open");
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "componentDidUpdate", function (prevProps, prevState) {
+    _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function (prevProps, prevState) {
       if (prevState.isOpen !== _this.props.isOpen) {
         _this.setState({
           isOpen: _this.props.isOpen
@@ -4832,7 +4832,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleOnEntered", function (type, node) {
+    _defineProperty(_assertThisInitialized(_this), "handleOnEntered", function (type, node) {
       if (type === "backdrop" && _this.props.fade === false) {
         return;
       }
@@ -4845,7 +4845,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleOnExit", function (type, node) {
+    _defineProperty(_assertThisInitialized(_this), "handleOnExit", function (type, node) {
       if (type === "backdrop" && _this.props.fade === false) {
         return;
       }
@@ -4857,11 +4857,11 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleOnExited", function (node) {
+    _defineProperty(_assertThisInitialized(_this), "handleOnExited", function (node) {
       _this.props.hiddenModal && _this.props.hiddenModal();
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleBackdropClick", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleBackdropClick", function (e) {
       if (!_this.props.backdrop) return;
 
       if (!_this.modalContent.contains(e.target)) {
@@ -4869,7 +4869,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleEscape", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleEscape", function (e) {
       if (e.keyCode === 27) {
         e.preventDefault();
 
@@ -5213,7 +5213,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Navbar).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleScroll", function () {
+    _defineProperty(_assertThisInitialized(_this), "handleScroll", function () {
       var scrollingNavbarOffset = _this.props.scrollingNavbarOffset || 50;
 
       if (window.pageYOffset > scrollingNavbarOffset) {
@@ -5476,7 +5476,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NavLink$$1).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClick", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleClick", function (e) {
       if (!_this.props.disabled) {
         e.stopPropagation(); // Waves - Get Cursor Position
 
@@ -5554,9 +5554,9 @@ function (_React$Component) {
     _this.state = {
       isOpen: false
     };
-    _this._handleTargetClick = _this._handleTargetClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this._setOusideTap = _this._setOusideTap.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this._handleOutsideTap = _this._handleOutsideTap.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this._handleTargetClick = _this._handleTargetClick.bind(_assertThisInitialized(_this));
+    _this._setOusideTap = _this._setOusideTap.bind(_assertThisInitialized(_this));
+    _this._handleOutsideTap = _this._handleOutsideTap.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -5884,9 +5884,9 @@ function (_React$Component) {
     _this.state = {
       visible: false
     };
-    _this.show = _this.show.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.hide = _this.hide.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.setVisibility = _this.setVisibility.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.show = _this.show.bind(_assertThisInitialized(_this));
+    _this.hide = _this.hide.bind(_assertThisInitialized(_this));
+    _this.setVisibility = _this.setVisibility.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -5995,13 +5995,13 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Iframe)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+    _defineProperty(_assertThisInitialized(_this), "state", {
       width: "",
       height: "",
       ratio: ""
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "componentDidMount", function () {
+    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
       var width = _this.props.width;
       var height = _this.props.height;
       var ratio = 9 / 16;
@@ -6107,7 +6107,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Dropdown).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "toggle", function () {
+    _defineProperty(_assertThisInitialized(_this), "toggle", function () {
       _this.setState({
         isOpen: !_this.state.isOpen
       });
@@ -6116,10 +6116,10 @@ function (_React$Component) {
     _this.state = {
       isOpen: false
     };
-    _this.addEvents = _this.addEvents.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.handleDocumentClick = _this.handleDocumentClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.handleKeyDown = _this.handleKeyDown.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.removeEvents = _this.removeEvents.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.addEvents = _this.addEvents.bind(_assertThisInitialized(_this));
+    _this.handleDocumentClick = _this.handleDocumentClick.bind(_assertThisInitialized(_this));
+    _this.handleKeyDown = _this.handleKeyDown.bind(_assertThisInitialized(_this));
+    _this.removeEvents = _this.removeEvents.bind(_assertThisInitialized(_this));
     return _this;
   }
 

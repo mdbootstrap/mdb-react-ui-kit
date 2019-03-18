@@ -8,7 +8,7 @@ class NavsPage extends Component {
     return (
       <MDBContainer>
         <DocsLink
-          title="Tabs"
+          title="Navs"
           href="https://mdbootstrap.com/docs/react/navigation/navs/"
         />
 

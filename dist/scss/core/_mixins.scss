@@ -127,7 +127,7 @@
 // Placeholder
 @mixin placeholder {
   &::placeholder {
-    @content
+    @content;
   }
 }
 
@@ -135,14 +135,13 @@
 //
 // Generate semantic grid columns with these mixins.
 
-@mixin make-container() {
+@mixin make-container($gutter: $grid-gutter-width) {
   width: 100%;
-  padding-right: ($grid-gutter-width / 2);
-  padding-left: ($grid-gutter-width / 2);
+  padding-right: $gutter / 2;
+  padding-left: $gutter / 2;
   margin-right: auto;
   margin-left: auto;
 }
-
 
 // For each breakpoint, define the maximum width of the container in a media query
 @mixin make-container-max-widths($max-widths: $container-max-widths, $breakpoints: $grid-breakpoints) {
@@ -269,9 +268,10 @@
 @mixin make-button ($name, $color) {
   .btn-#{$name} {
     background-color: $color !important;
-    color: set-notification-text-color($color) !important;
+    color: set-notification-text-color($color);
     &:hover {
       background-color: lighten($color, 5%);
+      color: set-notification-text-color($color);
     }
     &:focus,
     &.focus {
@@ -307,6 +307,11 @@
     &:focus {
       color: $color;
     }
+  }
+  a.btn:not([href]):not([tabindex]), 
+  a.btn:not([href]):not([tabindex]):focus, 
+  a.btn:not([href]):not([tabindex]):hover {
+    color: set-notification-text-color($color);
   }
 }
 

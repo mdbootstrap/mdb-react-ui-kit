@@ -19,8 +19,8 @@
     text-align: center;
     font-weight: 900;
     font-size: 2rem;
-  } 
-  @for $i from 1 through 36 { 
+  }
+  @for $i from 1 through 36 {
     div:nth-child(#{$i}) {
       $h: (random(400) + 100) + px;
       height: $h;
@@ -43,8 +43,8 @@
     font-weight: 900;
     font-size: 2rem;
     flex: 1 0 auto;
-  } 
-  @for $i from 1 through 36 { 
+  }
+  @for $i from 1 through 36 {
     div:nth-child(#{$i}) {
       $h: (random(400) + 70) + px;
       width: $h;
@@ -66,8 +66,8 @@
     text-align: center;
     font-weight: 900;
     font-size: 2rem;
-  } 
-  @for $i from 1 through 36 { 
+  }
+  @for $i from 1 through 36 {
     div:nth-child(#{$i}) {
       $h: (random(400) + 100) + px;
       height: $h;
