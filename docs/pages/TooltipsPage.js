@@ -1,5 +1,5 @@
 import React from "react";
-import { MDBTooltip, MDBContainer } from "mdbreact";
+import { MDBTooltip, MDBContainer, MDBBtn } from "mdbreact";
 import DocsLink from "./../components/docsLink";
 
 const TooltipsPage = () => {
@@ -13,44 +13,62 @@ const TooltipsPage = () => {
       <div className="m-5 text-center">
         <MDBTooltip
           placement="top"
-          componentClass="btn btn-primary"
-          tag="div"
-          component="button"
-          tooltipContent="MDBTooltip on top"
         >
-          MDBTooltip on top
+          <MDBBtn>Top tooltip</MDBBtn>
+          <div>
+            MDBTooltip on top
+          </div>
         </MDBTooltip>
-        <div style={style} className="text-right">
-          <MDBTooltip
-            placement="left"
-            componentClass="btn btn-primary"
-            tag="div"
-            component="button"
-            tooltipContent="MDBTooltip on left"
-          >
-            MDBTooltip on left
-          </MDBTooltip>
+
+        <div>
+          <div style={style} className="text-right">
+            <MDBTooltip
+              placement="left"
+            >
+              <MDBBtn>Left tooltip</MDBBtn>
+              <div>
+                MDBTooltip on left
+            </div>
+            </MDBTooltip>
+          </div>
+
+          <div style={style} className="text-left">
+            <MDBTooltip
+              placement="right"
+            >
+              <MDBBtn>Right tooltip</MDBBtn>
+              <div>
+                MDBTooltip on right
+            </div>
+            </MDBTooltip>
+          </div>
         </div>
-        <div style={style} className="text-left">
-          <MDBTooltip
-            placement="right"
-            componentClass="btn btn-primary"
-            tag="div"
-            component="button"
-            tooltipContent="MDBTooltip on right"
-          >
-            MDBTooltip on right
-          </MDBTooltip>
-        </div>
+
         <MDBTooltip
           placement="bottom"
-          componentClass="btn btn-primary"
-          tag="div"
-          component="button"
-          tooltipContent="MDBTooltip on bottom"
         >
-          MDBTooltip on bottom
+          <MDBBtn>Top tooltip</MDBBtn>
+          <div>
+            MDBTooltip on bottom
+          </div>
         </MDBTooltip>
+
+        <MDBTooltip
+          placement="top"
+          clickable
+        >
+          <MDBBtn style={{ position: 'fixed', bottom: '145px', left: '50%', transform: 'translateX(-50%)' }} color="indigo">Tooltip on click</MDBBtn>
+          <div>
+            MDBTooltip on click
+          </div>
+        </MDBTooltip>
+
+        <p className="my-5">
+          Lorem ipsum dolor sit amet, <MDBTooltip domElement tag='span' style={{ display: 'inline' }} placement="top">
+            <span className="blue-text">consectetur adipiscing</span>
+            <span>Tooltip within text paragraph</span>
+          </MDBTooltip> elit. Phasellus id dictum lectus. Cras vitae nibh enim. Curabitur scelerisque tortor eget eros accumsan aliquam. Aliquam a luctus leo, vitae rhoncus purus. Etiam iaculis lacus massa, sit amet placerat risus dictum at. Nullam venenatis sed lacus eget congue. Maecenas auctor augue et ex fermentum porttitor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Mauris nec convallis velit. Nullam non libero efficitur lacus aliquet pretium eget eget lorem. Cras at odio nulla. Duis molestie magna a rhoncus ultricies.
+        </p>
       </div>
     </MDBContainer>
   );

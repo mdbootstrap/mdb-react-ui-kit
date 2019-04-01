@@ -149,7 +149,7 @@ class Dropdown extends React.Component {
   };
 
   render() {
-    const { className, dropup, group, size, ...attrs } = omit(this.props, [
+    const { className, children, dropup, group, size } = omit(this.props, [
       "toggle",
       "disabled"
     ]);
@@ -165,7 +165,11 @@ class Dropdown extends React.Component {
       className
     );
     return (
-      <Manager {...attrs} className={classes} onKeyDown={this.handleKeyDown} />
+      <Manager>
+        <div className={classes} onKeyDown={this.handleKeyDown}>
+          {children}
+        </div>
+      </Manager>
     );
   }
 }

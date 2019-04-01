@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { Target } from "react-popper";
+import { Reference } from "react-popper";
 import Button from "./Button";
 
 class DropdownToggle extends React.Component {
@@ -55,15 +55,31 @@ class DropdownToggle extends React.Component {
     }
 
     return (
-      <Target
-        {...props}
-        className={classes}
-        component={Tag}
-        onClick={this.onClick}
-        aria-expanded={this.context.isOpen}
-      >
-        {children}
-      </Target>
+      <Reference>
+        {
+          ({ ref }) => (
+            tag || nav
+              ? <Tag
+                {...props}
+                className={classes}
+                onClick={this.onClick}
+                aria-expanded={this.context.isOpen}
+                ref={ref}
+              >
+                {children}
+              </Tag>
+              : <Tag
+                {...props}
+                className={classes}
+                onClick={this.onClick}
+                aria-expanded={this.context.isOpen}
+                innerRef={ref}
+              >
+                {children}
+              </Tag>
+          )
+        }
+      </Reference>
     );
   }
 }

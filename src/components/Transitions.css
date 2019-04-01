@@ -28,12 +28,12 @@
 
 /* slide from side */
 
-.side-slide-enter {
+.side-slide-enter, .side-slide-appear {
   opacity: 0.2;
   transform: translateX(-100%);
 }
 
-.side-slide-enter-active {
+.side-slide-enter-active, .side-slide-appear-active {
   opacity: 1;
   transform: translateX(0%);
   transition: transform 300ms ease-out, opacity 300ms ease;
@@ -56,12 +56,12 @@
   transition: all 300ms ease-out;
 }
 
-.right-side-slide-enter {
+.right-side-slide-enter, .right-side-slide-appear {
   opacity: 0.2;
   transform: translateX(100%);
 }
 
-.right-side-slide-enter-active {
+.right-side-slide-enter-active, .right-side-slide-appear-active {
   opacity: 1;
   transform: translateX(0%) !important;
   transition: transform 300ms ease-out, opacity 300ms ease;
@@ -83,3 +83,29 @@
   transform: translateX(100%);
   transition: all 300ms ease-out;
 }
+
+.side-nav[data-animate="false"]{
+  transform: translateX(0%);
+}
+
+
+.side-nav.wide {
+    transition-property: all;
+    transition-duration: 300ms;
+    transition-timing-function: ease-out;
+}
+
+
+.side-nav.wide.slim {
+    width: 3.75rem;
+    transition-property: all;
+    transition-duration: 300ms;
+    transition-timing-function: ease-out;
+    right: 3.75rem;
+}
+
+.right-aligned.side-nav.wide.slim {
+    right: 0;
+}
+
+

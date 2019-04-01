@@ -1,20 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
-import classNames from "classnames";
+import classNames from 'classnames';
 
-const PopoverHeader = props => {
-  const { className, tag: Tag, ...attributes } = props;
+const PopoverHeader = ({ attributes, children, className, tag: Tag }) => {
+  const classes = classNames(
+    'popover-header',
+    className
+  );
 
-  const classes = classNames("popover-header", className);
-
-  return <Tag {...attributes} className={classes} />;
-};
+  return <Tag {...attributes} className={classes}>{children}</Tag>;
+}
 
 PopoverHeader.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string
+  children: PropTypes.node,
+  className: PropTypes.string,
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
+
 PopoverHeader.defaultProps = {
+  className: "",
   tag: "h3"
 };
 

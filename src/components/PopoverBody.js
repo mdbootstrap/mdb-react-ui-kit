@@ -2,18 +2,21 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-const PopoverBody = props => {
-  const { className, tag: Tag, ...attributes } = props;
+const PopoverBody = ({ attributes, children, className, tag: Tag }) => {
+  const classes = classNames(
+    'popover-body',
+    className
+  );
 
-  const classes = classNames("popover-body", className);
-
-  return <Tag {...attributes} className={classes} />;
+  return <Tag {...attributes} className={classes}>{children}</Tag>;
 };
 
 PopoverBody.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string
 };
+
 PopoverBody.defaultProps = {
   tag: "div"
 };

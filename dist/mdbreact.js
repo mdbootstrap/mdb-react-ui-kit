@@ -9,12 +9,10 @@ var React__default = _interopDefault(React);
 var PropTypes = _interopDefault(require('prop-types'));
 var classNames = _interopDefault(require('classnames'));
 var reactTransitionGroup = require('react-transition-group');
-var ReactDOM = require('react-dom');
-var ReactDOM__default = _interopDefault(ReactDOM);
+var ReactDOM = _interopDefault(require('react-dom'));
 var reactPopper = require('react-popper');
 var NumericInput = _interopDefault(require('react-numeric-input'));
 var reactRouterDom = require('react-router-dom');
-var outy = _interopDefault(require('outy'));
 var reactToastify = require('react-toastify');
 
 function _typeof(obj) {
@@ -188,6 +186,10 @@ function _possibleConstructorReturn(self, call) {
   return _assertThisInitialized(self);
 }
 
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+}
+
 function _toConsumableArray(arr) {
   return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
 }
@@ -200,12 +202,46 @@ function _arrayWithoutHoles(arr) {
   }
 }
 
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
 function _iterableToArray(iter) {
   if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
 }
 
+function _iterableToArrayLimit(arr, i) {
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _e = undefined;
+
+  try {
+    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
 function _nonIterableSpread() {
   throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance");
 }
 
 var Animation =
@@ -220,7 +256,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Animation).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_this), "updatePredicate", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updatePredicate", function () {
       var windowHeight = window.innerHeight;
       var scroll = window.scrollY;
       var docHeight = document.documentElement.offsetHeight;
@@ -244,7 +280,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleStart", function (e) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleStart", function (e) {
       _this.setState({
         countIterations: _this.state.countIterations + 1
       });
@@ -254,7 +290,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleIteration", function (e) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleIteration", function (e) {
       if (_this.props.onAnimationIteration) {
         _this.setState({
           countIterations: _this.state.countIterations + 1
@@ -264,7 +300,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleEnd", function (e) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleEnd", function (e) {
       _this.setState({
         countIterations: _this.state.countIterations + 1
       });
@@ -274,7 +310,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "getOffset", function (elem) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getOffset", function (elem) {
       var box = elem.getBoundingClientRect();
       var body = document.body;
       var docEl = document.documentElement;
@@ -390,22 +426,22 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Alert)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_this), "state", {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       isOpen: true
     });
 
-    _defineProperty(_assertThisInitialized(_this), "closeAlert", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "closeAlert", function () {
       _this.setState({
         isOpen: false
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleOnExit", function (node) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleOnExit", function (node) {
       node.classList.add("fade");
       _this.props.onClose && _this.props.onClose();
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleOnExited", function (node) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleOnExited", function (node) {
       _this.props.onClosed && _this.props.onClosed();
     });
 
@@ -825,7 +861,7 @@ function (_React$Component) {
     key: "reppling",
     value: function reppling() {
       // Get the element
-      var $ripple = ReactDOM__default.findDOMNode(this);
+      var $ripple = ReactDOM.findDOMNode(this);
       var $button = $ripple.parentNode;
       var buttonPos = $button.getBoundingClientRect();
       var buttonWidth = $button.offsetWidth;
@@ -880,7 +916,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Button).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_this), "handleClick", function (e) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClick", function (e) {
       e.stopPropagation(); // Waves - Get Cursor Position
 
       var cursorPos = {
@@ -1800,14 +1836,14 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Carousel).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_this), "restartInterval", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "restartInterval", function () {
       if (_this.props.interval !== false) {
         clearInterval(_this.cycleInterval);
         _this.cycleInterval = setInterval(_this.next, _this.props.interval);
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "next", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "next", function () {
       var nextItem = _this.state.activeItem + 1;
 
       if (nextItem > _this.state.length) {
@@ -1823,7 +1859,7 @@ function (_Component) {
       _this.restartInterval();
     });
 
-    _defineProperty(_assertThisInitialized(_this), "prev", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "prev", function () {
       var prevItem = _this.state.activeItem - 1;
 
       if (prevItem < 1) {
@@ -1839,7 +1875,7 @@ function (_Component) {
       _this.restartInterval();
     });
 
-    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "componentDidMount", function () {
       if (_this.props.interval === false) {
         return;
       }
@@ -2109,9 +2145,9 @@ function (_Component) {
     _classCallCheck(this, CarouselItem);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CarouselItem).call(this, props));
-    _this.moveForward = _this.moveForward.bind(_assertThisInitialized(_this));
-    _this.moveBackwards = _this.moveBackwards.bind(_assertThisInitialized(_this));
-    _this.makeVisible = _this.makeVisible.bind(_assertThisInitialized(_this));
+    _this.moveForward = _this.moveForward.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.moveBackwards = _this.moveBackwards.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.makeVisible = _this.makeVisible.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -2270,7 +2306,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Collapse).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_this), "openCollapse", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "openCollapse", function () {
       _this.setState({
         collapse: SHOW
       }, function () {
@@ -2287,7 +2323,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "closeCollapse", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "closeCollapse", function () {
       _this.setState({
         height: _this.getHeight()
       }, function () {
@@ -2970,13 +3006,14 @@ DataTableSelect.propTypes = {
 
 var DataTableEntries = function DataTableEntries(props) {
   var handleEntriesChange = props.handleEntriesChange,
+      displayEntries = props.displayEntries,
       entries = props.entries,
       entriesArr = props.entriesArr,
       paging = props.paging,
       label = props.label;
   return React__default.createElement("div", {
     className: "col-sm-12 col-md-6"
-  }, paging && React__default.createElement(DataTableSelect, {
+  }, paging && displayEntries && React__default.createElement(DataTableSelect, {
     value: entries,
     onChange: handleEntriesChange,
     entries: entriesArr,
@@ -2986,6 +3023,7 @@ var DataTableEntries = function DataTableEntries(props) {
 
 DataTableEntries.propTypes = {
   handleEntriesChange: PropTypes.func.isRequired,
+  displayEntries: PropTypes.bool.isRequired,
   entries: PropTypes.number.isRequired,
   entriesArr: PropTypes.arrayOf(PropTypes.number).isRequired,
   paging: PropTypes.bool.isRequired,
@@ -3207,7 +3245,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(DataTablePagination).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function (prevProps) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "componentDidUpdate", function (prevProps) {
       if (prevProps.pages !== _this.props.pages) {
         _this.setState({
           pages: _this.props.pages
@@ -3217,7 +3255,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "pagesIndexify", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "pagesIndexify", function () {
       var mutablePages = _toConsumableArray(_this.state.pages);
 
       mutablePages.forEach(function (page, index) {
@@ -3226,7 +3264,7 @@ function (_Component) {
       return mutablePages;
     });
 
-    _defineProperty(_assertThisInitialized(_this), "groupPages", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "groupPages", function () {
       var pGroups = [];
 
       var pages = _this.pagesIndexify();
@@ -3240,7 +3278,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "choosePagesGroup", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "choosePagesGroup", function () {
       var pGroupNumber = Math.floor(_this.props.activePage / _this.props.pagesAmount);
       return _this.state.pGroups.length ? _this.state.pGroups[pGroupNumber] : [];
     });
@@ -3324,7 +3362,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(DataTable).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_this), "fetchData", function (link) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "fetchData", function (link) {
       fetch(link).then(function (res) {
         return res.json();
       }).then(function (json) {
@@ -3338,7 +3376,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "paginateRowsInitialy", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "paginateRowsInitialy", function () {
       // findout how many pages there are need to be, then slice rows into pages
       var pagesAmount = Math.ceil(_this.state.rows.length / _this.state.entries);
 
@@ -3349,7 +3387,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleEntriesChange", function (value) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleEntriesChange", function (value) {
       _this.setState({
         entries: Array.isArray(value) ? value[0] : value
       }, function () {
@@ -3357,7 +3395,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleSearchChange", function (e) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleSearchChange", function (e) {
       _this.setState({
         search: e.target.value
       }, function () {
@@ -3365,7 +3403,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleSort", function (field, sort) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleSort", function (field, sort) {
       if (sort !== "disabled") {
         _this.setState(function (prevState) {
           // asc by default
@@ -3395,7 +3433,7 @@ function (_Component) {
       } else return;
     });
 
-    _defineProperty(_assertThisInitialized(_this), "filterRows", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "filterRows", function () {
       _this.setState(function (prevState) {
         var filteredRows = prevState.rows.filter(function (row) {
           for (var key in row) {
@@ -3420,7 +3458,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "paginateRows", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "paginateRows", function () {
       // findout how many pages there are need to be, then slice rows into pages
       var pagesAmount = Math.ceil(_this.state.filteredRows.length / _this.state.entries);
 
@@ -3443,13 +3481,13 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "changeActivePage", function (page) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "changeActivePage", function (page) {
       _this.setState({
         activePage: page
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleTableBodyScroll", function (e) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleTableBodyScroll", function (e) {
       _this.setState({
         translateScrollHead: e.target.scrollLeft
       });
@@ -3515,6 +3553,7 @@ function (_Component) {
           children = _this$props.children,
           dark = _this$props.dark,
           data = _this$props.data,
+          displayEntries = _this$props.displayEntries,
           entriesOptions = _this$props.entriesOptions,
           entriesLabel = _this$props.entriesLabel,
           exportToCSV = _this$props.exportToCSV,
@@ -3543,7 +3582,7 @@ function (_Component) {
           tbodyTextWhite = _this$props.tbodyTextWhite,
           theadColor = _this$props.theadColor,
           theadTextWhite = _this$props.theadTextWhite,
-          attributes = _objectWithoutProperties(_this$props, ["autoWidth", "bordered", "borderless", "btn", "children", "dark", "data", "entriesOptions", "entriesLabel", "exportToCSV", "fixed", "hover", "info", "infoLabel", "maxHeight", "order", "pagesAmount", "paging", "paginationLabel", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "searching", "searchLabel", "scrollX", "scrollY", "small", "sortable", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite"]);
+          attributes = _objectWithoutProperties(_this$props, ["autoWidth", "bordered", "borderless", "btn", "children", "dark", "data", "displayEntries", "entriesOptions", "entriesLabel", "exportToCSV", "fixed", "hover", "info", "infoLabel", "maxHeight", "order", "pagesAmount", "paging", "paginationLabel", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "searching", "searchLabel", "scrollX", "scrollY", "small", "sortable", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite"]);
 
       var _this$state = this.state,
           columns = _this$state.columns,
@@ -3559,6 +3598,7 @@ function (_Component) {
         className: "row"
       }, React__default.createElement(DataTableEntries, {
         paging: paging,
+        displayEntries: displayEntries,
         entries: entries,
         handleEntriesChange: this.handleEntriesChange,
         entriesArr: entriesOptions,
@@ -3653,6 +3693,7 @@ DataTable.propTypes = {
   children: PropTypes.node,
   dark: PropTypes.bool,
   data: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  displayEntries: PropTypes.bool,
   entries: PropTypes.number,
   entriesLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object]),
   entriesOptions: PropTypes.arrayOf(PropTypes.number),
@@ -3690,6 +3731,7 @@ DataTable.defaultProps = {
   btn: false,
   dark: false,
   data: {},
+  displayEntries: true,
   entries: 10,
   entriesLabel: "Show entries",
   entriesOptions: [10, 20, 50, 100],
@@ -3750,8 +3792,8 @@ function (_React$Component) {
     _classCallCheck(this, DropdownItem);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(DropdownItem).call(this, props));
-    _this.onClick = _this.onClick.bind(_assertThisInitialized(_this));
-    _this.getTabIndex = _this.getTabIndex.bind(_assertThisInitialized(_this));
+    _this.onClick = _this.onClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.getTabIndex = _this.getTabIndex.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -3831,38 +3873,31 @@ DropdownItem.contextTypes = contextTypes;
 var css$5 = ".dropup .dropdown-menu {\n  top: auto !important;\n  bottom: 100% !important;\n  transform: translate3d(5px, 5px, 0px) !important;\n}\n\n.dropdown-menu-right {\n  left: 0 !important;\n  right: auto !important;\n}\n";
 styleInject(css$5);
 
-var DropdownMenuComponent = function DropdownMenuComponent(props) {
-  var d_tag = props.d_tag,
-      d_tabIndex = props.d_tabIndex,
-      d_role = props.d_role,
-      d_attributes = props.d_attributes,
-      d_aria = props.d_aria,
-      d_classes = props.d_classes,
-      d_key = props.d_key,
-      children = props.children;
-  var Tag = d_tag;
-  return React__default.createElement(React.Fragment, null, React__default.createElement(Tag, _extends({
-    tabIndex: d_tabIndex,
-    role: d_role
-  }, d_attributes, {
-    "aria-hidden": d_aria,
-    className: d_classes,
+var DropdownMenuComponent = function DropdownMenuComponent(_ref) {
+  var Tag = _ref.tag,
+      tabIndex = _ref.tabIndex,
+      role = _ref.role,
+      attributes = _ref.attributes,
+      aria = _ref.aria,
+      d_key = _ref.d_key,
+      children = _ref.children;
+  return React__default.createElement(Tag, _extends({
+    tabIndex: tabIndex,
+    role: role
+  }, attributes, {
+    "aria-hidden": aria,
     key: d_key
-  }), children));
+  }), children);
 };
 
 DropdownMenuComponent.propTypes = {
-  d_aria: PropTypes.bool.isRequired,
-  d_attributes: PropTypes.object.isRequired,
+  aria: PropTypes.bool.isRequired,
+  attributes: PropTypes.object.isRequired,
   d_key: PropTypes.string.isRequired,
-  d_role: PropTypes.string.isRequired,
-  d_tabIndex: PropTypes.string.isRequired,
-  d_tag: PropTypes.any.isRequired,
-  children: PropTypes.node.isRequired,
-  d_classes: PropTypes.string
-};
-DropdownMenuComponent.defaultProps = {
-  d_classes: ""
+  role: PropTypes.string.isRequired,
+  tabIndex: PropTypes.string.isRequired,
+  tag: PropTypes.any.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 var noFlipModifier = {
@@ -3885,6 +3920,8 @@ function (_Component) {
   _createClass(DropdownMenu, [{
     key: "render",
     value: function render() {
+      var _this = this;
+
       var _this$props = this.props,
           basic = _this$props.basic,
           className = _this$props.className,
@@ -3903,7 +3940,6 @@ function (_Component) {
       var Tag = tag;
 
       if (this.context.isOpen) {
-        Tag = reactPopper.Popper;
         var position1 = this.context.dropup ? 'top' : 'bottom';
         var position2 = right ? 'end' : 'start';
         attrs.placement = "".concat(position1, "-").concat(position2);
@@ -3911,16 +3947,31 @@ function (_Component) {
         attrs.modifiers = !flip ? noFlipModifier : undefined;
       }
 
-      return React__default.createElement(DropdownMenuComponent, {
-        isOpen: this.context.isOpen,
-        d_tag: Tag,
-        d_tabIndex: "-1",
-        d_role: "menu",
-        d_attributes: attrs,
-        d_aria: !this.context.isOpen,
-        d_classes: classes,
-        d_key: "dropDownMenu"
-      }, children);
+      return React__default.createElement(reactPopper.Popper, {
+        modifires: attrs.modifiers,
+        eventsEnabled: true,
+        positionFixed: false,
+        placement: attrs.placement
+      }, function (_ref) {
+        var placement = _ref.placement,
+            ref = _ref.ref,
+            style = _ref.style;
+        return React__default.createElement(Tag, {
+          ref: ref,
+          style: style,
+          "data-placement": placement,
+          className: classes
+        }, React__default.createElement(DropdownMenuComponent, {
+          isOpen: _this.context.isOpen,
+          tag: Tag,
+          tabIndex: "-1",
+          role: "menu",
+          attributes: attrs,
+          aria: !_this.context.isOpen,
+          d_key: "dropDownMenu",
+          color: color
+        }, children));
+      });
     }
   }]);
 
@@ -3960,7 +4011,7 @@ function (_React$Component) {
     _classCallCheck(this, DropdownToggle);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(DropdownToggle).call(this, props));
-    _this.onClick = _this.onClick.bind(_assertThisInitialized(_this));
+    _this.onClick = _this.onClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -3985,6 +4036,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$props = this.props,
           className = _this$props.className,
           color = _this$props.color,
@@ -4013,12 +4066,20 @@ function (_React$Component) {
         Tag = tag;
       }
 
-      return React__default.createElement(reactPopper.Target, _extends({}, props, {
-        className: classes,
-        component: Tag,
-        onClick: this.onClick,
-        "aria-expanded": this.context.isOpen
-      }), children);
+      return React__default.createElement(reactPopper.Reference, null, function (_ref) {
+        var ref = _ref.ref;
+        return tag || nav ? React__default.createElement(Tag, _extends({}, props, {
+          className: classes,
+          onClick: _this2.onClick,
+          "aria-expanded": _this2.context.isOpen,
+          ref: ref
+        }), children) : React__default.createElement(Tag, _extends({}, props, {
+          className: classes,
+          onClick: _this2.onClick,
+          "aria-expanded": _this2.context.isOpen,
+          innerRef: ref
+        }), children);
+      });
     }
   }]);
 
@@ -4243,7 +4304,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(HamburgerToggler)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_this), "state", {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       checked: _this.props.isOpen || false
     });
 
@@ -4305,7 +4366,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Input).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_this), "onBlur", function (event) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBlur", function (event) {
       event.stopPropagation();
 
       _this.setState({
@@ -4315,7 +4376,7 @@ function (_React$Component) {
       _this.props.onBlur && _this.props.onBlur(event);
     });
 
-    _defineProperty(_assertThisInitialized(_this), "onFocus", function (event) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function (event) {
       event.stopPropagation();
 
       _this.setState({
@@ -4325,7 +4386,7 @@ function (_React$Component) {
       _this.props.onFocus && _this.props.onFocus(event);
     });
 
-    _defineProperty(_assertThisInitialized(_this), "onChange", function (event) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (event) {
       event.stopPropagation();
 
       if (_this.props.type !== "checkbox" && _this.props.type !== "radio") {
@@ -4339,7 +4400,7 @@ function (_React$Component) {
       _this.props.getValue && _this.props.getValue(event.target.value);
     });
 
-    _defineProperty(_assertThisInitialized(_this), "onInput", function (event) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onInput", function (event) {
       event.stopPropagation();
 
       if (_this.props.type !== "checkbox" && _this.props.type !== "radio") {
@@ -4350,10 +4411,9 @@ function (_React$Component) {
       }
 
       _this.props.onInput && _this.props.onInput(event);
-      _this.props.getValue && _this.props.getValue(event.target.value);
     });
 
-    _defineProperty(_assertThisInitialized(_this), "setFocus", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "setFocus", function () {
       _this.inputElementRef.current.focus();
     });
 
@@ -4550,7 +4610,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(InputNumeric)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_this), "onChangeHandler", function (value) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChangeHandler", function (value) {
       _this.props.getValue && _this.props.getValue(value);
     });
 
@@ -4820,19 +4880,19 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Modal)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_this), "state", {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       isOpen: _this.props.isOpen || false
     });
 
-    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "componentDidMount", function () {
       document.body.classList.add("modal-open");
     });
 
-    _defineProperty(_assertThisInitialized(_this), "componentWillUnmount", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "componentWillUnmount", function () {
       document.body.classList.remove("modal-open");
     });
 
-    _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function (prevProps, prevState) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "componentDidUpdate", function (prevProps, prevState) {
       if (prevState.isOpen !== _this.props.isOpen) {
         _this.setState({
           isOpen: _this.props.isOpen
@@ -4840,7 +4900,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleOnEntered", function (type, node) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleOnEntered", function (type, node) {
       if (type === "backdrop" && _this.props.fade === false) {
         return;
       }
@@ -4853,7 +4913,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleOnExit", function (type, node) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleOnExit", function (type, node) {
       if (type === "backdrop" && _this.props.fade === false) {
         return;
       }
@@ -4865,11 +4925,11 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleOnExited", function (node) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleOnExited", function (node) {
       _this.props.hiddenModal && _this.props.hiddenModal();
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleBackdropClick", function (e) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleBackdropClick", function (e) {
       if (!_this.props.backdrop) return;
 
       if (!_this.modalContent.contains(e.target)) {
@@ -4877,7 +4937,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_this), "handleEscape", function (e) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleEscape", function (e) {
       if (e.keyCode === 27) {
         e.preventDefault();
 
@@ -5221,7 +5281,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Navbar).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_this), "handleScroll", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleScroll", function () {
       var scrollingNavbarOffset = _this.props.scrollingNavbarOffset || 50;
 
       if (window.pageYOffset > scrollingNavbarOffset) {
@@ -5484,7 +5544,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NavLink).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_this), "handleClick", function (e) {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClick", function (e) {
       if (!_this.props.disabled) {
         e.stopPropagation(); // Waves - Get Cursor Position
 
@@ -5545,183 +5605,179 @@ NavLink.defaultProps = {
   disabled: false
 };
 
-var css$7 = ".popover-enter {\n  opacity: 0.01;\n  transform: scale(0.9) translateY(50%);\n}\n\n.popover-enter-active {\n  opacity: 1;\n  transform: scale(1);\n  transition: scale 300ms ease-out, opacity 300ms ease;\n}\n\n.popover-enter-done {\n  opacity: 1;\n  transform: scale(1);\n}\n\n.popover-exit {\n  opacity: 1;\n  transform: scale(0.8);\n  transition: all 300ms ease-out;\n}\n\n.popover-exit-active {\n  opacity: 0;\n  transform: scale(0.8);\n  transition: all 300ms ease-out;\n}\n\n/* slide from side */\n\n.side-slide-enter {\n  opacity: 0.2;\n  transform: translateX(-100%);\n}\n\n.side-slide-enter-active {\n  opacity: 1;\n  transform: translateX(0%);\n  transition: transform 300ms ease-out, opacity 300ms ease;\n}\n\n.side-slide-enter-done {\n  opacity: 1;\n  transform: translateX(0);\n}\n\n.side-slide-exit {\n  opacity: 1;\n  transform: translateX(0%);\n  transition: all 300ms ease-out;\n}\n\n.side-slide-exit-active {\n  opacity: 0.2;\n  transform: translateX(-100%);\n  transition: all 300ms ease-out;\n}\n\n.right-side-slide-enter {\n  opacity: 0.2;\n  transform: translateX(100%);\n}\n\n.right-side-slide-enter-active {\n  opacity: 1;\n  transform: translateX(0%) !important;\n  transition: transform 300ms ease-out, opacity 300ms ease;\n}\n\n.right-side-slide-enter-done {\n  opacity: 1;\n  transform: translateX(0%) !important;\n}\n\n.right-side-slide-exit {\n  opacity: 1;\n  transform: translateX(0%);\n  transition: all 300ms ease-out;\n}\n\n.right-side-slide-exit-active {\n  opacity: 0.2;\n  transform: translateX(100%);\n  transition: all 300ms ease-out;\n}\n";
-styleInject(css$7);
+var Popper = function Popper(_ref) {
+  var children = _ref.children,
+      clickable = _ref.clickable,
+      domElement = _ref.domElement,
+      modifiers = _ref.modifiers,
+      id = _ref.id,
+      isVisible = _ref.isVisible,
+      onChange = _ref.onChange,
+      placement = _ref.placement,
+      popover = _ref.popover,
+      style = _ref.style,
+      tag = _ref.tag;
 
-var Popover =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(Popover, _React$Component);
+  var _useState = React.useState(isVisible),
+      _useState2 = _slicedToArray(_useState, 2),
+      visible = _useState2[0],
+      setVisible = _useState2[1];
 
-  function Popover(props) {
-    var _this;
-
-    _classCallCheck(this, Popover);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Popover).call(this, props));
-    _this.state = {
-      isOpen: false
+  React.useEffect(function () {
+    setVisible(isVisible);
+  }, [isVisible]);
+  React.useEffect(function () {
+    onChange && onChange(visible);
+  }, [visible]);
+  React.useEffect(function () {
+    window.addEventListener('click', handleClick);
+    return function () {
+      return window.removeEventListener('click', handleClick);
     };
-    _this._handleTargetClick = _this._handleTargetClick.bind(_assertThisInitialized(_this));
-    _this._setOusideTap = _this._setOusideTap.bind(_assertThisInitialized(_this));
-    _this._handleOutsideTap = _this._handleOutsideTap.bind(_assertThisInitialized(_this));
-    return _this;
+  }, []);
+
+  function handleClick(e) {
+    var element = document.elementsFromPoint(e.clientX, e.clientY).find(function (el) {
+      return el.dataset.popper === id;
+    });
+    if (element) return;
+    setVisible(false);
   }
 
-  _createClass(Popover, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this._setOusideTap();
-    }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(lastProps, lastState) {
-      var _this2 = this;
-
-      if (lastState.isOpen !== this.state.isOpen) {
-        setTimeout(function () {
-          return _this2._setOusideTap();
-        });
-      }
-    }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      this.outsideTap.remove();
-    }
-  }, {
-    key: "_setOusideTap",
-    value: function _setOusideTap() {
-      var elements = [this.target];
-
-      if (this.popper) {
-        elements.push(this.popper);
-      }
-
-      if (this.outsideTap) {
-        this.outsideTap.remove();
-      }
-
-      this.outsideTap = outy(elements, ["click", "touchstart"], this._handleOutsideTap);
-    }
-  }, {
-    key: "_handleOutsideTap",
-    value: function _handleOutsideTap() {
-      this.setState({
-        isOpen: false
-      });
-    }
-  }, {
-    key: "_handleTargetClick",
-    value: function _handleTargetClick() {
-      this.setState({
-        isOpen: !this.state.isOpen
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-
-      var _this$props = this.props,
-          placement = _this$props.placement,
-          component = _this$props.component,
-          componentStyle = _this$props.componentStyle,
-          className = _this$props.className,
-          children = _this$props.children,
-          componentPopover = _this$props.componentPopover,
-          popoverBody = _this$props.popoverBody,
-          popoverClass = _this$props.popoverClass,
-          arrowClass = _this$props.arrowClass,
-          tag = _this$props.tag;
-      var classes = classNames(className);
-      var popoverClasses = classNames("popover", placement ? "bs-popover-" + placement : "", popoverClass);
-      var arrowClasses = classNames("arrow", arrowClass);
-      return React__default.createElement(reactPopper.Manager, {
-        tag: tag
-      }, React__default.createElement(reactPopper.Target, {
-        innerRef: function innerRef(c) {
-          return _this3.target = ReactDOM.findDOMNode(c);
-        },
-        component: component,
-        style: componentStyle,
-        className: classes,
-        onClick: this._handleTargetClick
-      }, popoverBody), React__default.createElement(reactTransitionGroup.CSSTransition, {
-        in: this.state.isOpen,
-        appear: this.state.isOpen,
-        classNames: "popover",
-        unmountOnExit: true,
-        timeout: {
-          enter: 300,
-          exit: 300
-        }
-      }, React__default.createElement(reactPopper.Popper, {
-        key: "popover",
-        component: componentPopover,
-        innerRef: function innerRef(c) {
-          _this3.popper = ReactDOM.findDOMNode(c);
-        },
-        placement: placement,
-        className: popoverClasses,
-        onClick: this._handleTargetClick
-      }, children, React__default.createElement(reactPopper.Arrow, {
-        className: arrowClasses
-      }))));
-    }
-  }]);
-
-  return Popover;
-}(React__default.Component);
-
-Popover.propTypes = {
-  placement: PropTypes.string,
-  component: PropTypes.string,
-  componentStyle: PropTypes.string,
-  componentPopover: PropTypes.string,
-  popoverBody: PropTypes.string,
-  arrowClass: PropTypes.string,
-  popoverClass: PropTypes.string,
-  children: PropTypes.node,
-  tag: PropTypes.string,
-  className: PropTypes.string
+  var Wrapper = children[0];
+  var Content = children[1];
+  var Tag = tag;
+  var tooltipClasses = classNames("fade", popover ? "popover bs-popover-".concat(placement, " popover-enter-done") : "tooltip bs-tooltip-".concat(placement), visible ? "show" : "");
+  var contentClasses = classNames(!popover && "tooltip-inner");
+  return React__default.createElement(reactPopper.Manager, null, React__default.createElement(reactPopper.Reference, null, function (_ref2) {
+    var ref = _ref2.ref;
+    return !domElement ? React__default.createElement(Wrapper.type, _extends({}, Wrapper.props, {
+      onMouseEnter: function onMouseEnter() {
+        return !clickable && setVisible(true);
+      },
+      onMouseLeave: function onMouseLeave() {
+        return !clickable && setVisible(false);
+      },
+      onTouchStart: function onTouchStart() {
+        return !clickable && setVisible(true);
+      },
+      onTouchEnd: function onTouchEnd() {
+        return !clickable && setVisible(false);
+      },
+      onClick: function onClick() {
+        return clickable && setVisible(!visible);
+      },
+      innerRef: ref,
+      "data-popper": id
+    })) : React__default.createElement(Wrapper.type, _extends({}, Wrapper.props, {
+      onMouseEnter: function onMouseEnter() {
+        return !clickable && setVisible(true);
+      },
+      onMouseLeave: function onMouseLeave() {
+        return !clickable && setVisible(false);
+      },
+      onTouchStart: function onTouchStart() {
+        return !clickable && setVisible(true);
+      },
+      onTouchEnd: function onTouchEnd() {
+        return !clickable && setVisible(false);
+      },
+      onClick: function onClick() {
+        return clickable && setVisible(!visible);
+      },
+      ref: ref,
+      "data-popper": id
+    }));
+  }), visible && React__default.createElement(Tag, {
+    style: style
+  }, React__default.createElement(reactPopper.Popper, {
+    modifiers: modifiers,
+    eventsEnabled: true,
+    positionFixed: false,
+    placement: placement
+  }, function (_ref3) {
+    var placement = _ref3.placement,
+        ref = _ref3.ref,
+        style = _ref3.style,
+        arrowProps = _ref3.arrowProps;
+    return React__default.createElement(Tag, {
+      ref: ref,
+      style: style,
+      "data-placement": placement,
+      className: tooltipClasses,
+      "data-popper": id
+    }, React__default.createElement(Content.type, _extends({}, Content.props, {
+      className: contentClasses
+    }), Content.props.children), React__default.createElement("span", {
+      ref: arrowProps.ref,
+      style: arrowProps.style,
+      "data-placement": placement,
+      className: "arrow"
+    }));
+  })));
 };
 
-var PopoverBody = function PopoverBody(props) {
-  var className = props.className,
-      Tag = props.tag,
-      attributes = _objectWithoutProperties(props, ["className", "tag"]);
+Popper.propTypes = {
+  children: PropTypes.node,
+  clickable: PropTypes.bool,
+  domElement: PropTypes.bool,
+  modifiers: PropTypes.object,
+  id: PropTypes.string,
+  isVisible: PropTypes.bool,
+  placement: PropTypes.string,
+  style: PropTypes.objectOf(PropTypes.string),
+  tag: PropTypes.string
+};
+Popper.defaultProps = {
+  clickable: false,
+  domElement: false,
+  id: 'popper',
+  isVisible: false,
+  placement: 'top',
+  style: {
+    display: 'inline-block'
+  },
+  tag: 'div'
+};
 
-  var classes = classNames("popover-body", className);
+var PopoverBody = function PopoverBody(_ref) {
+  var attributes = _ref.attributes,
+      children = _ref.children,
+      className = _ref.className,
+      Tag = _ref.tag;
+  var classes = classNames('popover-body', className);
   return React__default.createElement(Tag, _extends({}, attributes, {
     className: classes
-  }));
+  }), children);
 };
 
 PopoverBody.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string
+  children: PropTypes.node,
+  className: PropTypes.string,
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 PopoverBody.defaultProps = {
   tag: "div"
 };
 
-var PopoverHeader = function PopoverHeader(props) {
-  var className = props.className,
-      Tag = props.tag,
-      attributes = _objectWithoutProperties(props, ["className", "tag"]);
-
-  var classes = classNames("popover-header", className);
+var PopoverHeader = function PopoverHeader(_ref) {
+  var attributes = _ref.attributes,
+      children = _ref.children,
+      className = _ref.className,
+      Tag = _ref.tag;
+  var classes = classNames('popover-header', className);
   return React__default.createElement(Tag, _extends({}, attributes, {
     className: classes
-  }));
+  }), children);
 };
 
 PopoverHeader.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string
+  children: PropTypes.node,
+  className: PropTypes.string,
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 PopoverHeader.defaultProps = {
+  className: "",
   tag: "h3"
 };
 
@@ -5878,113 +5934,6 @@ TableHead.defaultProps = {
   textWhite: false
 };
 
-var Tooltip =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(Tooltip, _React$Component);
-
-  function Tooltip(props) {
-    var _this;
-
-    _classCallCheck(this, Tooltip);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Tooltip).call(this, props));
-    _this.state = {
-      visible: false
-    };
-    _this.show = _this.show.bind(_assertThisInitialized(_this));
-    _this.hide = _this.hide.bind(_assertThisInitialized(_this));
-    _this.setVisibility = _this.setVisibility.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(Tooltip, [{
-    key: "show",
-    value: function show() {
-      this.setVisibility(true);
-    }
-  }, {
-    key: "hide",
-    value: function hide() {
-      this.setVisibility(false);
-    }
-  }, {
-    key: "setVisibility",
-    value: function setVisibility(visible) {
-      this.setState(Object.assign({}, this.state, {
-        visible: visible
-      }));
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          placement = _this$props.placement,
-          component = _this$props.component,
-          componentStyle = _this$props.componentStyle,
-          className = _this$props.className,
-          children = _this$props.children,
-          tooltipContent = _this$props.tooltipContent,
-          tooltipClass = _this$props.tooltipClass,
-          arrowClass = _this$props.arrowClass,
-          componentTooltip = _this$props.componentTooltip,
-          componentClass = _this$props.componentClass,
-          wrapperStyle = _this$props.wrapperStyle,
-          tag = _this$props.tag;
-      var classes = classNames(className);
-      var componentClasses = classNames(componentClass);
-      var tooltipClasses = classNames("tooltip fade", placement ? "bs-tooltip-" + placement : "", this.state.visible ? "show" : "", tooltipClass);
-      var wrapperStyles = wrapperStyle ? wrapperStyle : {};
-      var arrowClasses = classNames("arrow", arrowClass);
-      return React__default.createElement(reactPopper.Manager, {
-        tag: tag,
-        className: classes,
-        style: wrapperStyles
-      }, React__default.createElement(reactPopper.Target, {
-        component: component,
-        style: componentStyle,
-        className: componentClasses,
-        onMouseEnter: this.show,
-        onMouseLeave: this.hide,
-        onTouchStart: this.show,
-        onTouchEnd: this.hide
-      }, children), this.state.visible && React__default.createElement(reactPopper.Popper, {
-        placement: placement,
-        component: componentTooltip
-      }, function (_ref) {
-        var popperProps = _ref.popperProps;
-        return React__default.createElement("div", _extends({}, popperProps, {
-          className: tooltipClasses
-        }), React__default.createElement("div", {
-          className: "tooltip-inner"
-        }, tooltipContent), React__default.createElement(reactPopper.Arrow, null, function (_ref2) {
-          var arrowProps = _ref2.arrowProps;
-          return React__default.createElement("span", _extends({}, arrowProps, {
-            className: arrowClasses
-          }));
-        }));
-      }));
-    }
-  }]);
-
-  return Tooltip;
-}(React__default.Component);
-
-Tooltip.propTypes = {
-  placement: PropTypes.string,
-  component: PropTypes.string,
-  componentStyle: PropTypes.string,
-  tooltipContent: PropTypes.string,
-  tooltipClass: PropTypes.string,
-  arrowClass: PropTypes.string,
-  componentTooltip: PropTypes.string,
-  componentClass: PropTypes.string,
-  children: PropTypes.node,
-  tag: PropTypes.string,
-  className: PropTypes.string,
-  wrapperStyle: PropTypes.object
-};
-
 var Iframe =
 /*#__PURE__*/
 function (_Component) {
@@ -6003,13 +5952,13 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Iframe)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_this), "state", {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       width: "",
       height: "",
       ratio: ""
     });
 
-    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "componentDidMount", function () {
       var width = _this.props.width;
       var height = _this.props.height;
       var ratio = 9 / 16;
@@ -6115,7 +6064,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Dropdown).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_this), "toggle", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "toggle", function () {
       _this.setState({
         isOpen: !_this.state.isOpen
       });
@@ -6124,10 +6073,10 @@ function (_React$Component) {
     _this.state = {
       isOpen: false
     };
-    _this.addEvents = _this.addEvents.bind(_assertThisInitialized(_this));
-    _this.handleDocumentClick = _this.handleDocumentClick.bind(_assertThisInitialized(_this));
-    _this.handleKeyDown = _this.handleKeyDown.bind(_assertThisInitialized(_this));
-    _this.removeEvents = _this.removeEvents.bind(_assertThisInitialized(_this));
+    _this.addEvents = _this.addEvents.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleDocumentClick = _this.handleDocumentClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.handleKeyDown = _this.handleKeyDown.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.removeEvents = _this.removeEvents.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
@@ -6167,7 +6116,7 @@ function (_React$Component) {
   }, {
     key: "getContainer",
     value: function getContainer() {
-      return ReactDOM__default.findDOMNode(this);
+      return ReactDOM.findDOMNode(this);
     }
   }, {
     key: "addEvents",
@@ -6255,18 +6204,18 @@ function (_React$Component) {
 
       var _omit = omit(this.props, ["toggle", "disabled"]),
           className = _omit.className,
+          children = _omit.children,
           dropup = _omit.dropup,
           group = _omit.group,
-          size = _omit.size,
-          attrs = _objectWithoutProperties(_omit, ["className", "dropup", "group", "size"]);
+          size = _omit.size;
 
       var classes = classNames((_classNames = {
         "btn-group": group
       }, _defineProperty(_classNames, "btn-group-".concat(size), !!size), _defineProperty(_classNames, "dropdown", !group), _defineProperty(_classNames, "show", this.state.isOpen), _defineProperty(_classNames, "dropup", dropup), _classNames), className);
-      return React__default.createElement(reactPopper.Manager, _extends({}, attrs, {
+      return React__default.createElement(reactPopper.Manager, null, React__default.createElement("div", {
         className: classes,
         onKeyDown: this.handleKeyDown
-      }));
+      }, children));
     }
   }]);
 
@@ -6356,7 +6305,9 @@ exports.NavLink = NavLink;
 exports.Pagination = Pagination;
 exports.PageItem = PageItem;
 exports.PageLink = PageLink;
-exports.Popover = Popover;
+exports.Popover = Popper;
+exports.Popper = Popper;
+exports.Tooltip = Popper;
 exports.PopoverBody = PopoverBody;
 exports.PopoverHeader = PopoverHeader;
 exports.Progress = Progress;
@@ -6366,7 +6317,6 @@ exports.Table = Table;
 exports.TableBody = TableBody;
 exports.TableHead = TableHead;
 exports.TableFoot = TableFoot;
-exports.Tooltip = Tooltip;
 exports.View = View;
 exports.Iframe = Iframe;
 exports.MDBIframe = Iframe;
@@ -6428,7 +6378,9 @@ exports.MDBNavLink = NavLink;
 exports.MDBPagination = Pagination;
 exports.MDBPageItem = PageItem;
 exports.MDBPageNav = PageLink;
-exports.MDBPopover = Popover;
+exports.MDBPopover = Popper;
+exports.MDBPopper = Popper;
+exports.MDBTooltip = Popper;
 exports.MDBPopoverBody = PopoverBody;
 exports.MDBPopoverHeader = PopoverHeader;
 exports.MDBProgress = Progress;
@@ -6438,5 +6390,4 @@ exports.MDBTable = Table;
 exports.MDBTableBody = TableBody;
 exports.MDBTableHead = TableHead;
 exports.MDBTableFoot = TableFoot;
-exports.MDBTooltip = Tooltip;
 exports.MDBView = View;

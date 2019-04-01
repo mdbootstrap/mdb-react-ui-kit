@@ -34,7 +34,6 @@ class DropdownMenu extends Component {
     let Tag = tag;
 
     if (this.context.isOpen) {
-      Tag = Popper;
       const position1 = this.context.dropup ? 'top' : 'bottom';
       const position2 = right ? 'end' : 'start';
       attrs.placement = `${position1}-${position2}`;
@@ -43,18 +42,31 @@ class DropdownMenu extends Component {
     }
 
     return (
-      <DropdownMenuComponent
-        isOpen={this.context.isOpen}
-        d_tag={Tag}
-        d_tabIndex="-1"
-        d_role="menu"
-        d_attributes={attrs}
-        d_aria={!this.context.isOpen}
-        d_classes={classes}
-        d_key="dropDownMenu"
+      <Popper
+        modifires={attrs.modifiers}
+        eventsEnabled={true}
+        positionFixed={false}
+        placement={attrs.placement}
       >
-        {children}
-      </DropdownMenuComponent>
+        {
+          ({ placement, ref, style }) => (
+            <Tag ref={ref} style={style} data-placement={placement} className={classes}>
+              <DropdownMenuComponent
+                isOpen={this.context.isOpen}
+                tag={Tag}
+                tabIndex="-1"
+                role="menu"
+                attributes={attrs}
+                aria={!this.context.isOpen}
+                d_key="dropDownMenu"
+                color={color}
+              >
+                {children}
+              </DropdownMenuComponent>
+            </Tag>
+          )
+        }
+      </Popper>
     );
   }
 }

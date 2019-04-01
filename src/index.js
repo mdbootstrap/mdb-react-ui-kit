@@ -56,7 +56,8 @@ import NavLink from './components/NavLink';
 import Pagination from './components/Pagination';
 import PageItem from './components/PageItem';
 import PageLink from './components/PageLink';
-import Popover from './components/Popover';
+import Popover from './components/Popper';
+import Popper from './components/Popper';
 import PopoverBody from './components/PopoverBody';
 import PopoverHeader from './components/PopoverHeader';
 import Progress from './components/Progress';
@@ -66,7 +67,7 @@ import Table from './components/Table';
 import TableBody from './components/TableBody';
 import TableHead from './components/TableHead';
 import TableFoot from './components/TableFoot';
-import Tooltip from './components/Tooltip';
+import Tooltip from './components/Popper';
 import View from './components/View';
 import { toast, ToastContainer, cssTransition } from 'react-toastify';
 import Iframe from './components/Iframe';
@@ -131,7 +132,8 @@ import { MDBNavLink } from './components/NavLink';
 import { MDBPagination } from './components/Pagination';
 import { MDBPageItem } from './components/PageItem';
 import { MDBPageNav } from './components/PageLink';
-import { MDBPopover } from './components/Popover';
+import { MDBPopover } from './components/Popper';
+import { MDBPopper } from './components/Popper';
 import { MDBPopoverBody } from './components/PopoverBody';
 import { MDBPopoverHeader } from './components/PopoverHeader';
 import { MDBProgress } from './components/Progress';
@@ -141,7 +143,7 @@ import { MDBTable } from './components/Table';
 import { MDBTableBody } from './components/TableBody';
 import { MDBTableHead } from './components/TableHead';
 import { MDBTableFoot } from './components/TableFoot';
-import { MDBTooltip } from './components/Tooltip';
+import { MDBTooltip } from './components/Popper';
 import { MDBView } from './components/View';
 import { MDBIframe } from './components/Iframe';
 import { MDBDropdown } from './components/Dropdown';
@@ -209,6 +211,7 @@ export {
   PageItem,
   PageLink,
   Popover,
+  Popper,
   PopoverBody,
   PopoverHeader,
   Progress,
@@ -283,6 +286,7 @@ export {
   MDBPageItem,
   MDBPageNav,
   MDBPopover,
+  MDBPopper,
   MDBPopoverBody,
   MDBPopoverHeader,
   MDBProgress,

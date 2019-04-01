@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBPopover,  MDBPopoverBody, MDBPopoverHeader, MDBTooltip, MDBRow, MDBCol, MDBInput } from "mdbreact";
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBTooltip, MDBRow, MDBCol, MDBInput } from "mdbreact";
 import DocsLink from "./../components/docsLink";
 
 class ModalPage extends Component {
@@ -33,7 +33,7 @@ class ModalPage extends Component {
     });
   }
 
-  showFunction = () =>{
+  showFunction = () => {
     alert("This event is fired just before the modal is open.");
   };
 
@@ -404,37 +404,40 @@ class ModalPage extends Component {
           <MDBModalBody>
             This
             <MDBPopover
-              component="button"
+              popover
+              clickable
+              id="popper1"
               placement="right"
-              popoverBody="button"
-              tag="span"
-              className="btn btn-secondary"
             >
-              <MDBPopoverHeader>MDBPopover title</MDBPopoverHeader>
-              <MDBPopoverBody>
-                MDBPopover body content is set in this attribute.
+              <MDBBtn color="secondary">button</MDBBtn>
+              <div>
+                <MDBPopoverHeader>MDBPopover title</MDBPopoverHeader>
+                <MDBPopoverBody>
+                  MDBPopover body content is set in this attribute.
               </MDBPopoverBody>
+              </div>
             </MDBPopover>
             triggers a popover on click.
             <hr />
             <MDBTooltip
-              placement="top"
-              tag="a"
-              component="span"
-              tooltipContent="MDBTooltip"
+              id="popper4"
+              tag="span"
+              domElement
             >
-              This link
-            </MDBTooltip>
-            and
-            <MDBTooltip
-              placement="top"
-              tag="a"
-              component="span"
-              tooltipContent="MDBTooltip"
+              <a href="!#">This link</a>
+              <span>
+                Tooltip
+              </span>
+            </MDBTooltip> and <MDBTooltip
+              id="popper3"
+              tag="span"
+              domElement
             >
-              that link
-            </MDBTooltip>
-            have tooltips on hover.
+              <a href="!#">that link</a>
+              <span>
+                Tooltip
+              </span>
+            </MDBTooltip> have tooltips on hover.
           </MDBModalBody>
           <MDBModalFooter>
             <MDBBtn color="secondary" onClick={this.toggle(15)}>
