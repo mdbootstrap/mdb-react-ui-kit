@@ -1428,7 +1428,8 @@ function (_React$Component) {
           Tag = _this$props.tag,
           waves = _this$props.waves,
           zoom = _this$props.zoom,
-          attributes = _objectWithoutProperties(_this$props, ["cascade", "children", "className", "hover", "rounded", "src", "tag", "waves", "zoom"]);
+          fixed = _this$props.fixed,
+          attributes = _objectWithoutProperties(_this$props, ["cascade", "children", "className", "hover", "rounded", "src", "tag", "waves", "zoom", "fixed"]);
 
       var classes = classNames("view", rounded && "rounded", zoom && "zoom", hover && "overlay", cascade && "view-cascade", waves ? "Ripple-parent" : false, className);
       var viewStyle = src ? {
@@ -1436,7 +1437,8 @@ function (_React$Component) {
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center center",
-        height: "100vh"
+        height: "100vh",
+        backgroundAttachment: fixed ? "fixed" : null
       } : {};
       return React__default.createElement(Tag, _extends({}, attributes, {
         className: classes,
@@ -3940,7 +3942,7 @@ function (_Component) {
       var Tag = tag;
 
       if (this.context.isOpen) {
-        var position1 = this.context.dropup ? 'top' : 'bottom';
+        var position1 = this.context.dropup ? 'top' : this.context.dropright ? 'right' : this.context.dropleft ? 'left' : 'bottom';
         var position2 = right ? 'end' : 'start';
         attrs.placement = "".concat(position1, "-").concat(position2);
         attrs.component = tag;
@@ -3997,6 +3999,8 @@ DropdownMenu.defaultProps = {
 DropdownMenu.contextTypes = {
   isOpen: PropTypes.bool.isRequired,
   dropup: PropTypes.bool.isRequired,
+  dropright: PropTypes.bool.isRequired,
+  dropleft: PropTypes.bool.isRequired,
   color: PropTypes.oneOfType([PropTypes.oneOf(['primary', 'default', 'secondary', 'success', 'dark', 'danger', 'info', 'warning', 'ins']), PropTypes.bool])
 };
 
@@ -5725,6 +5729,7 @@ Popper.propTypes = {
   id: PropTypes.string,
   isVisible: PropTypes.bool,
   placement: PropTypes.string,
+  popover: PropTypes.bool,
   style: PropTypes.objectOf(PropTypes.string),
   tag: PropTypes.string
 };
@@ -5734,6 +5739,7 @@ Popper.defaultProps = {
   id: 'popper',
   isVisible: false,
   placement: 'top',
+  popover: false,
   style: {
     display: 'inline-block'
   },
@@ -6086,6 +6092,8 @@ function (_React$Component) {
       return {
         isOpen: this.state.isOpen,
         dropup: this.props.dropup,
+        dropright: this.props.dropright,
+        dropleft: this.props.dropleft,
         toggle: this.toggle
       };
     }
@@ -6207,11 +6215,13 @@ function (_React$Component) {
           children = _omit.children,
           dropup = _omit.dropup,
           group = _omit.group,
-          size = _omit.size;
+          size = _omit.size,
+          dropright = _omit.dropright,
+          dropleft = _omit.dropleft;
 
       var classes = classNames((_classNames = {
         "btn-group": group
-      }, _defineProperty(_classNames, "btn-group-".concat(size), !!size), _defineProperty(_classNames, "dropdown", !group), _defineProperty(_classNames, "show", this.state.isOpen), _defineProperty(_classNames, "dropup", dropup), _classNames), className);
+      }, _defineProperty(_classNames, "btn-group-".concat(size), !!size), _defineProperty(_classNames, "dropdown", !group), _defineProperty(_classNames, "show", this.state.isOpen), _defineProperty(_classNames, "dropup", dropup), _defineProperty(_classNames, "dropright", dropright), _defineProperty(_classNames, "dropleft", dropleft), _classNames), className);
       return React__default.createElement(reactPopper.Manager, null, React__default.createElement("div", {
         className: classes,
         onKeyDown: this.handleKeyDown
@@ -6225,6 +6235,8 @@ function (_React$Component) {
 Dropdown.propTypes = {
   disabled: PropTypes.bool,
   dropup: PropTypes.bool,
+  dropright: PropTypes.bool,
+  dropleft: PropTypes.bool,
   group: PropTypes.bool,
   size: PropTypes.string,
   tag: PropTypes.string,
@@ -6234,12 +6246,16 @@ Dropdown.propTypes = {
 };
 Dropdown.defaultProps = {
   dropup: false,
+  dropright: false,
+  dropleft: false,
   tag: "div"
 };
 Dropdown.childContextTypes = {
   toggle: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
-  dropup: PropTypes.bool.isRequired
+  dropup: PropTypes.bool.isRequired,
+  dropright: PropTypes.bool.isRequired,
+  dropleft: PropTypes.bool.isRequired
 };
 
 // FREE

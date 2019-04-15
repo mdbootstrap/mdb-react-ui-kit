@@ -32,6 +32,7 @@ class View extends React.Component {
       tag: Tag,
       waves,
       zoom,
+      fixed,
       ...attributes
     } = this.props;
 
@@ -47,11 +48,12 @@ class View extends React.Component {
 
     const viewStyle = src 
       ? {
-        backgroundImage: `url("${src}")`,
+      backgroundImage: `url("${src}")`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center center",
-        height: "100vh"
+        height: "100vh",
+        backgroundAttachment: fixed ? "fixed" : null
       }
       : {};
 

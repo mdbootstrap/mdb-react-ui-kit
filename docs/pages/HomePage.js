@@ -69,8 +69,8 @@ class HomePage extends React.Component {
                     </p>
                     <MDBNavLink
                       tag="button"
-                      className="btn btn-sm indigo darken-3"
-                      to="/css"
+                      className="btn btn-sm indigo darken-3 text-white" 
+                      to="css"
                     >
                       Learn more
                     </MDBNavLink>
@@ -88,7 +88,7 @@ class HomePage extends React.Component {
                     </p>
                     <MDBNavLink
                       tag="button"
-                      className="btn btn-sm indigo lighten-2"
+                      className="btn btn-sm indigo lighten-2 text-white"
                       to="/components"
                     >
                       Learn more
@@ -107,8 +107,8 @@ class HomePage extends React.Component {
                     </p>
                     <MDBNavLink
                       tag="button"
-                      className="btn btn-sm indigo darken-3"
-                      to="/advanced"
+                      className="btn btn-sm indigo darken-3 text-white" 
+                      to="advanced"
                     >
                       Learn more
                     </MDBNavLink>
@@ -128,7 +128,7 @@ class HomePage extends React.Component {
                     </p>
                     <MDBNavLink
                       tag="button"
-                      className="btn btn-sm indigo darken-3"
+                      className="btn btn-sm indigo darken-3 text-white"
                       to="/navigation"
                     >
                       Learn more
@@ -147,7 +147,7 @@ class HomePage extends React.Component {
                     </p>
                     <MDBNavLink
                       tag="button"
-                      className="btn btn-sm indigo lighten-2"
+                      className="btn btn-sm indigo lighten-2 text-white"
                       to="/forms"
                     >
                       Learn more
@@ -166,8 +166,8 @@ class HomePage extends React.Component {
                     </p>
                     <MDBNavLink
                       tag="button"
-                      className="btn btn-sm indigo darken-3"
-                      to="/tables"
+                      className="btn btn-sm indigo darken-3 text-white" 
+                      to="tables"
                     >
                       Learn more
                     </MDBNavLink>
@@ -187,8 +187,8 @@ class HomePage extends React.Component {
                     </p>
                     <MDBNavLink
                       tag="button"
-                      className="btn btn-sm indigo darken-3"
-                      to="/modals"
+                      className="btn btn-sm indigo darken-3 text-white" 
+                      to="modals"
                     >
                       Learn more
                     </MDBNavLink>
@@ -206,7 +206,7 @@ class HomePage extends React.Component {
                     </p>
                     <MDBNavLink
                       tag="button"
-                      className="btn btn-sm indigo lighten-2"
+                      className="btn btn-sm indigo lighten-2 text-white"
                       to="/addons"
                     >
                       Learn more

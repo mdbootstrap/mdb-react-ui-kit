@@ -100,6 +100,7 @@ Popper.propTypes = {
   id: PropTypes.string,
   isVisible: PropTypes.bool,
   placement: PropTypes.string,
+  popover: PropTypes.bool,
   style: PropTypes.objectOf(PropTypes.string),
   tag: PropTypes.string,
 };
@@ -110,6 +111,7 @@ Popper.defaultProps = {
   id: 'popper',
   isVisible: false,
   placement: 'top',
+  popover: false,
   style: { display: 'inline-block' },
   tag: 'div'
 }

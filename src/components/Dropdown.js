@@ -22,6 +22,8 @@ class Dropdown extends React.Component {
     return {
       isOpen: this.state.isOpen,
       dropup: this.props.dropup,
+      dropright: this.props.dropright,
+      dropleft: this.props.dropleft,
       toggle: this.toggle
     };
   }
@@ -149,7 +151,8 @@ class Dropdown extends React.Component {
   };
 
   render() {
-    const { className, children, dropup, group, size } = omit(this.props, [
+    
+    const { className, children, dropup, group, size, dropright, dropleft } = omit(this.props, [
       "toggle",
       "disabled"
     ]);
@@ -160,7 +163,9 @@ class Dropdown extends React.Component {
         [`btn-group-${size}`]: !!size,
         dropdown: !group,
         show: this.state.isOpen,
-        dropup: dropup
+        dropup: dropup,
+        dropright: dropright,
+        dropleft: dropleft,
       },
       className
     );
@@ -177,6 +182,8 @@ class Dropdown extends React.Component {
 Dropdown.propTypes = {
   disabled: PropTypes.bool,
   dropup: PropTypes.bool,
+  dropright: PropTypes.bool,
+  dropleft: PropTypes.bool,
   group: PropTypes.bool,
   size: PropTypes.string,
   tag: PropTypes.string,
@@ -186,12 +193,17 @@ Dropdown.propTypes = {
 };
 Dropdown.defaultProps = {
   dropup: false,
+  dropright: false,
+  dropleft: false,
   tag: "div"
+
 };
 Dropdown.childContextTypes = {
   toggle: PropTypes.func.isRequired,
   isOpen: PropTypes.bool.isRequired,
-  dropup: PropTypes.bool.isRequired
+  dropup: PropTypes.bool.isRequired,
+  dropright: PropTypes.bool.isRequired,
+  dropleft: PropTypes.bool.isRequired
 };
 
 export default Dropdown;
