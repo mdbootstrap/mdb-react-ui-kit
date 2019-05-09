@@ -73,7 +73,6 @@ import { toast, ToastContainer, cssTransition } from 'react-toastify';
 import Iframe from './components/Iframe';
 import Dropdown from './components/Dropdown';
 
-
 // MDB FREE
 import { MDBAnimation } from './components/Animation';
 import { MDBBadge } from './components/Badge';
@@ -84,6 +83,7 @@ import { MDBBtn } from './components/Button';
 import { MDBBtnGroup } from './components/ButtonGroup';
 import { MDBBtnToolbar } from './components/ButtonToolbar';
 import { MDBCard } from './components/Card';
+import { MDBCloseIcon } from './components/CloseIcon'
 import { MDBCardBody } from './components/CardBody';
 import { MDBCardFooter } from './components/CardFooter';
 import { MDBCardGroup } from './components/CardGroup';
@@ -147,7 +147,6 @@ import { MDBTooltip } from './components/Popper';
 import { MDBView } from './components/View';
 import { MDBIframe } from './components/Iframe';
 import { MDBDropdown } from './components/Dropdown';
-
 
 export {
   // FREE
@@ -236,6 +235,7 @@ export {
   MDBBtnGroup,
   MDBBtnToolbar,
   MDBCard,
+  MDBCloseIcon,
   MDBCardBody,
   MDBCardFooter,
   MDBCardGroup,
@@ -297,5 +297,5 @@ export {
   MDBTableHead,
   MDBTableFoot,
   MDBTooltip,
-  MDBView,
+  MDBView
 };

@@ -73,6 +73,7 @@ class Input extends React.Component {
 
   render() {
     const {
+      background,
       children,
       className,
       containerClass,
@@ -136,6 +137,7 @@ class Input extends React.Component {
       group ? "form-group" : false,
       size ? `form-${size}` : false,
       outline && 'md-outline',
+      background && 'md-bg',
       containerClass
     );
 

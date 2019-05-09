@@ -249,7 +249,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Animation).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "updatePredicate", function () {
+    _defineProperty(_assertThisInitialized(_this), "updatePredicate", function () {
       var windowHeight = window.innerHeight;
       var scroll = window.scrollY;
       var docHeight = document.documentElement.offsetHeight;
@@ -273,7 +273,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleStart", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleStart", function (e) {
       _this.setState({
         countIterations: _this.state.countIterations + 1
       });
@@ -283,7 +283,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleIteration", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleIteration", function (e) {
       if (_this.props.onAnimationIteration) {
         _this.setState({
           countIterations: _this.state.countIterations + 1
@@ -293,7 +293,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleEnd", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleEnd", function (e) {
       _this.setState({
         countIterations: _this.state.countIterations + 1
       });
@@ -303,7 +303,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getOffset", function (elem) {
+    _defineProperty(_assertThisInitialized(_this), "getOffset", function (elem) {
       var box = elem.getBoundingClientRect();
       var body = document.body;
       var docEl = document.documentElement;
@@ -419,22 +419,22 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Alert)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+    _defineProperty(_assertThisInitialized(_this), "state", {
       isOpen: true
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "closeAlert", function () {
+    _defineProperty(_assertThisInitialized(_this), "closeAlert", function () {
       _this.setState({
         isOpen: false
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleOnExit", function (node) {
+    _defineProperty(_assertThisInitialized(_this), "handleOnExit", function (node) {
       node.classList.add("fade");
       _this.props.onClose && _this.props.onClose();
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleOnExited", function (node) {
+    _defineProperty(_assertThisInitialized(_this), "handleOnExited", function (node) {
       _this.props.onClosed && _this.props.onClosed();
     });
 
@@ -456,7 +456,7 @@ function (_Component) {
 
       if (dismiss) {
         alertComponent = React.createElement(Transition, {
-          in: this.state.isOpen,
+          "in": this.state.isOpen,
           timeout: 150,
           unmountOnExit: true,
           onExit: function onExit(node) {
@@ -909,7 +909,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Button).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClick", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleClick", function (e) {
       e.stopPropagation(); // Waves - Get Cursor Position
 
       var cursorPos = {
@@ -1831,14 +1831,14 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Carousel).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "restartInterval", function () {
+    _defineProperty(_assertThisInitialized(_this), "restartInterval", function () {
       if (_this.props.interval !== false) {
         clearInterval(_this.cycleInterval);
         _this.cycleInterval = setInterval(_this.next, _this.props.interval);
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "next", function () {
+    _defineProperty(_assertThisInitialized(_this), "next", function () {
       var nextItem = _this.state.activeItem + 1;
 
       if (nextItem > _this.state.length) {
@@ -1854,7 +1854,7 @@ function (_Component) {
       _this.restartInterval();
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "prev", function () {
+    _defineProperty(_assertThisInitialized(_this), "prev", function () {
       var prevItem = _this.state.activeItem - 1;
 
       if (prevItem < 1) {
@@ -1870,7 +1870,7 @@ function (_Component) {
       _this.restartInterval();
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "componentDidMount", function () {
+    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
       if (_this.props.interval === false) {
         return;
       }
@@ -2140,9 +2140,9 @@ function (_Component) {
     _classCallCheck(this, CarouselItem);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(CarouselItem).call(this, props));
-    _this.moveForward = _this.moveForward.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.moveBackwards = _this.moveBackwards.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.makeVisible = _this.makeVisible.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.moveForward = _this.moveForward.bind(_assertThisInitialized(_this));
+    _this.moveBackwards = _this.moveBackwards.bind(_assertThisInitialized(_this));
+    _this.makeVisible = _this.makeVisible.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -2301,7 +2301,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Collapse).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "openCollapse", function () {
+    _defineProperty(_assertThisInitialized(_this), "openCollapse", function () {
       _this.setState({
         collapse: SHOW
       }, function () {
@@ -2318,7 +2318,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "closeCollapse", function () {
+    _defineProperty(_assertThisInitialized(_this), "closeCollapse", function () {
       _this.setState({
         height: _this.getHeight()
       }, function () {
@@ -3240,7 +3240,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(DataTablePagination).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "componentDidUpdate", function (prevProps) {
+    _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function (prevProps) {
       if (prevProps.pages !== _this.props.pages) {
         _this.setState({
           pages: _this.props.pages
@@ -3250,7 +3250,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "pagesIndexify", function () {
+    _defineProperty(_assertThisInitialized(_this), "pagesIndexify", function () {
       var mutablePages = _toConsumableArray(_this.state.pages);
 
       mutablePages.forEach(function (page, index) {
@@ -3259,7 +3259,7 @@ function (_Component) {
       return mutablePages;
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "groupPages", function () {
+    _defineProperty(_assertThisInitialized(_this), "groupPages", function () {
       var pGroups = [];
 
       var pages = _this.pagesIndexify();
@@ -3273,7 +3273,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "choosePagesGroup", function () {
+    _defineProperty(_assertThisInitialized(_this), "choosePagesGroup", function () {
       var pGroupNumber = Math.floor(_this.props.activePage / _this.props.pagesAmount);
       return _this.state.pGroups.length ? _this.state.pGroups[pGroupNumber] : [];
     });
@@ -3357,7 +3357,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(DataTable).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "fetchData", function (link) {
+    _defineProperty(_assertThisInitialized(_this), "fetchData", function (link) {
       fetch(link).then(function (res) {
         return res.json();
       }).then(function (json) {
@@ -3366,12 +3366,12 @@ function (_Component) {
           filteredRows: json.rows,
           rows: json.rows
         });
-      }).catch(function (err) {
+      })["catch"](function (err) {
         return console.log(err);
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "paginateRowsInitialy", function () {
+    _defineProperty(_assertThisInitialized(_this), "paginateRowsInitialy", function () {
       // findout how many pages there are need to be, then slice rows into pages
       var pagesAmount = Math.ceil(_this.state.rows.length / _this.state.entries);
 
@@ -3382,7 +3382,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleEntriesChange", function (value) {
+    _defineProperty(_assertThisInitialized(_this), "handleEntriesChange", function (value) {
       _this.setState({
         entries: Array.isArray(value) ? value[0] : value
       }, function () {
@@ -3390,7 +3390,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleSearchChange", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleSearchChange", function (e) {
       _this.setState({
         search: e.target.value
       }, function () {
@@ -3398,7 +3398,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleSort", function (field, sort) {
+    _defineProperty(_assertThisInitialized(_this), "handleSort", function (field, sort) {
       if (sort !== "disabled") {
         _this.setState(function (prevState) {
           // asc by default
@@ -3428,7 +3428,7 @@ function (_Component) {
       } else return;
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "filterRows", function () {
+    _defineProperty(_assertThisInitialized(_this), "filterRows", function () {
       _this.setState(function (prevState) {
         var filteredRows = prevState.rows.filter(function (row) {
           for (var key in row) {
@@ -3453,7 +3453,7 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "paginateRows", function () {
+    _defineProperty(_assertThisInitialized(_this), "paginateRows", function () {
       // findout how many pages there are need to be, then slice rows into pages
       var pagesAmount = Math.ceil(_this.state.filteredRows.length / _this.state.entries);
 
@@ -3476,13 +3476,13 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "changeActivePage", function (page) {
+    _defineProperty(_assertThisInitialized(_this), "changeActivePage", function (page) {
       _this.setState({
         activePage: page
       });
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleTableBodyScroll", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleTableBodyScroll", function (e) {
       _this.setState({
         translateScrollHead: e.target.scrollLeft
       });
@@ -3787,8 +3787,8 @@ function (_React$Component) {
     _classCallCheck(this, DropdownItem);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(DropdownItem).call(this, props));
-    _this.onClick = _this.onClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.getTabIndex = _this.getTabIndex.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.onClick = _this.onClick.bind(_assertThisInitialized(_this));
+    _this.getTabIndex = _this.getTabIndex.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -4008,7 +4008,7 @@ function (_React$Component) {
     _classCallCheck(this, DropdownToggle);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(DropdownToggle).call(this, props));
-    _this.onClick = _this.onClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.onClick = _this.onClick.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -4301,7 +4301,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(HamburgerToggler)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+    _defineProperty(_assertThisInitialized(_this), "state", {
       checked: _this.props.isOpen || false
     });
 
@@ -4363,7 +4363,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Input).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onBlur", function (event) {
+    _defineProperty(_assertThisInitialized(_this), "onBlur", function (event) {
       event.stopPropagation();
 
       _this.setState({
@@ -4373,7 +4373,7 @@ function (_React$Component) {
       _this.props.onBlur && _this.props.onBlur(event);
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onFocus", function (event) {
+    _defineProperty(_assertThisInitialized(_this), "onFocus", function (event) {
       event.stopPropagation();
 
       _this.setState({
@@ -4383,7 +4383,7 @@ function (_React$Component) {
       _this.props.onFocus && _this.props.onFocus(event);
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChange", function (event) {
+    _defineProperty(_assertThisInitialized(_this), "onChange", function (event) {
       event.stopPropagation();
 
       if (_this.props.type !== "checkbox" && _this.props.type !== "radio") {
@@ -4397,7 +4397,7 @@ function (_React$Component) {
       _this.props.getValue && _this.props.getValue(event.target.value);
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onInput", function (event) {
+    _defineProperty(_assertThisInitialized(_this), "onInput", function (event) {
       event.stopPropagation();
 
       if (_this.props.type !== "checkbox" && _this.props.type !== "radio") {
@@ -4410,7 +4410,7 @@ function (_React$Component) {
       _this.props.onInput && _this.props.onInput(event);
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "setFocus", function () {
+    _defineProperty(_assertThisInitialized(_this), "setFocus", function () {
       _this.inputElementRef.current.focus();
     });
 
@@ -4435,6 +4435,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       var _this$props = this.props,
+          background = _this$props.background,
           children = _this$props.children,
           className = _this$props.className,
           containerClass = _this$props.containerClass,
@@ -4463,7 +4464,7 @@ function (_React$Component) {
           validate = _this$props.validate,
           value = _this$props.value,
           valueDefault = _this$props.valueDefault,
-          attributes = _objectWithoutProperties(_this$props, ["children", "className", "containerClass", "disabled", "error", "filled", "gap", "getValue", "group", "hint", "icon", "iconBrand", "iconClass", "iconLight", "iconRegular", "iconSize", "id", "inputRef", "outline", "label", "labelClass", "size", "success", "tag", "type", "validate", "value", "valueDefault"]);
+          attributes = _objectWithoutProperties(_this$props, ["background", "children", "className", "containerClass", "disabled", "error", "filled", "gap", "getValue", "group", "hint", "icon", "iconBrand", "iconClass", "iconLight", "iconRegular", "iconSize", "id", "inputRef", "outline", "label", "labelClass", "size", "success", "tag", "type", "validate", "value", "valueDefault"]);
 
       var isNotEmpty = !!this.state.innerValue || !!hint || this.state.isFocused;
       var Tag = "";
@@ -4480,7 +4481,7 @@ function (_React$Component) {
 
       attributes.disabled = disabled;
       var classes = classNames(formControlClass, size ? "form-control-".concat(size) : false, validate ? "validate" : false, filled ? "filled-in" : false, gap ? "with-gap" : false, type === "checkbox" ? gap ? false : "form-check-input" : false, type === "radio" ? "form-check-input" : false, className);
-      var containerClassFix = classNames(type === "checkbox" || type === "radio" ? "form-check my-3" : "md-form", group ? "form-group" : false, size ? "form-".concat(size) : false, outline && 'md-outline', containerClass);
+      var containerClassFix = classNames(type === "checkbox" || type === "radio" ? "form-check my-3" : "md-form", group ? "form-group" : false, size ? "form-".concat(size) : false, outline && 'md-outline', background && 'md-bg', containerClass);
       var iconClassFix = classNames(isNotEmpty && this.state.isFocused ? "active" : false, iconClass, "prefix");
       var labelClassFix = classNames(isNotEmpty ? "active" : false, disabled ? "disabled" : false, type === "checkbox" ? "form-check-label mr-5" : false, type === "radio" ? "form-check-label mr-5" : false, labelClass);
       return React.createElement("div", {
@@ -4607,7 +4608,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(InputNumeric)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onChangeHandler", function (value) {
+    _defineProperty(_assertThisInitialized(_this), "onChangeHandler", function (value) {
       _this.props.getValue && _this.props.getValue(value);
     });
 
@@ -4877,19 +4878,19 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Modal)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+    _defineProperty(_assertThisInitialized(_this), "state", {
       isOpen: _this.props.isOpen || false
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "componentDidMount", function () {
+    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
       document.body.classList.add("modal-open");
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "componentWillUnmount", function () {
+    _defineProperty(_assertThisInitialized(_this), "componentWillUnmount", function () {
       document.body.classList.remove("modal-open");
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "componentDidUpdate", function (prevProps, prevState) {
+    _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function (prevProps, prevState) {
       if (prevState.isOpen !== _this.props.isOpen) {
         _this.setState({
           isOpen: _this.props.isOpen
@@ -4897,7 +4898,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleOnEntered", function (type, node) {
+    _defineProperty(_assertThisInitialized(_this), "handleOnEntered", function (type, node) {
       if (type === "backdrop" && _this.props.fade === false) {
         return;
       }
@@ -4910,7 +4911,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleOnExit", function (type, node) {
+    _defineProperty(_assertThisInitialized(_this), "handleOnExit", function (type, node) {
       if (type === "backdrop" && _this.props.fade === false) {
         return;
       }
@@ -4922,11 +4923,11 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleOnExited", function (node) {
+    _defineProperty(_assertThisInitialized(_this), "handleOnExited", function (node) {
       _this.props.hiddenModal && _this.props.hiddenModal();
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleBackdropClick", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleBackdropClick", function (e) {
       if (!_this.props.backdrop) return;
 
       if (!_this.modalContent.contains(e.target)) {
@@ -4934,7 +4935,7 @@ function (_Component) {
       }
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleEscape", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleEscape", function (e) {
       if (e.keyCode === 27) {
         e.preventDefault();
 
@@ -4987,7 +4988,7 @@ function (_Component) {
       });
       return React.createElement(Fragment, null, backdrop && React.createElement(Transition, {
         timeout: timeout,
-        in: this.state.isOpen,
+        "in": this.state.isOpen,
         appear: this.state.isOpen,
         mountOnEnter: true,
         unmountOnExit: true,
@@ -5002,7 +5003,7 @@ function (_Component) {
         className: backdropClasses
       })), React.createElement(Transition, {
         timeout: timeout,
-        in: this.state.isOpen,
+        "in": this.state.isOpen,
         appear: this.state.isOpen,
         mountOnEnter: true,
         unmountOnExit: true,
@@ -5278,7 +5279,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Navbar).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleScroll", function () {
+    _defineProperty(_assertThisInitialized(_this), "handleScroll", function () {
       var scrollingNavbarOffset = _this.props.scrollingNavbarOffset || 50;
 
       if (window.pageYOffset > scrollingNavbarOffset) {
@@ -5326,11 +5327,11 @@ function (_Component) {
           className = _this$props.className,
           scrollingNavbarOffset = _this$props.scrollingNavbarOffset,
           Tag = _this$props.tag,
-          double = _this$props.double,
+          _double = _this$props["double"],
           transparent = _this$props.transparent,
           attributes = _objectWithoutProperties(_this$props, ["expand", "light", "dark", "sticky", "fixed", "scrolling", "color", "className", "scrollingNavbarOffset", "tag", "double", "transparent"]);
 
-      var classes = classNames("navbar", light ? "navbar-light" : "", dark ? "navbar-dark" : "", sticky ? "sticky-" + sticky : "", fixed ? "fixed-" + fixed : "", getExpandClass(expand), scrolling || scrollingNavbarOffset ? "scrolling-navbar" : "", this.state.isCollapsed ? "top-nav-collapse" : "", color ? transparent ? this.state.isCollapsed ? color : "" : color : "", double ? "double-nav" : "", className);
+      var classes = classNames("navbar", light ? "navbar-light" : "", dark ? "navbar-dark" : "", sticky ? "sticky-" + sticky : "", fixed ? "fixed-" + fixed : "", getExpandClass(expand), scrolling || scrollingNavbarOffset ? "scrolling-navbar" : "", this.state.isCollapsed ? "top-nav-collapse" : "", color ? transparent ? this.state.isCollapsed ? color : "" : color : "", _double ? "double-nav" : "", className);
       return React.createElement(Tag, _extends({}, attributes, {
         className: classes,
         role: "navigation"
@@ -5344,7 +5345,7 @@ function (_Component) {
 Navbar.propTypes = {
   light: PropTypes.bool,
   dark: PropTypes.bool,
-  double: PropTypes.bool,
+  "double": PropTypes.bool,
   fixed: PropTypes.string,
   sticky: PropTypes.string,
   scrolling: PropTypes.bool,
@@ -5541,7 +5542,7 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(NavLink$$1).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClick", function (e) {
+    _defineProperty(_assertThisInitialized(_this), "handleClick", function (e) {
       if (!_this.props.disabled) {
         e.stopPropagation(); // Waves - Get Cursor Position
 
@@ -5951,13 +5952,13 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Iframe)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+    _defineProperty(_assertThisInitialized(_this), "state", {
       width: "",
       height: "",
       ratio: ""
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "componentDidMount", function () {
+    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
       var width = _this.props.width;
       var height = _this.props.height;
       var ratio = 9 / 16;
@@ -6063,7 +6064,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Dropdown).call(this, props));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "toggle", function () {
+    _defineProperty(_assertThisInitialized(_this), "toggle", function () {
       _this.setState({
         isOpen: !_this.state.isOpen
       });
@@ -6072,10 +6073,10 @@ function (_React$Component) {
     _this.state = {
       isOpen: false
     };
-    _this.addEvents = _this.addEvents.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.handleDocumentClick = _this.handleDocumentClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.handleKeyDown = _this.handleKeyDown.bind(_assertThisInitialized(_assertThisInitialized(_this)));
-    _this.removeEvents = _this.removeEvents.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.addEvents = _this.addEvents.bind(_assertThisInitialized(_this));
+    _this.handleDocumentClick = _this.handleDocumentClick.bind(_assertThisInitialized(_this));
+    _this.handleKeyDown = _this.handleKeyDown.bind(_assertThisInitialized(_this));
+    _this.removeEvents = _this.removeEvents.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -6251,6 +6252,37 @@ Dropdown.childContextTypes = {
   dropleft: PropTypes.bool.isRequired
 };
 
+var MDBCloseIcon = function MDBCloseIcon(_ref) {
+  var onClick = _ref.onClick,
+      className = _ref.className,
+      ariaLabel = _ref.ariaLabel,
+      props = _objectWithoutProperties(_ref, ["onClick", "className", "ariaLabel"]);
+
+  var onClickHandler = function onClickHandler(e) {
+    onClick && onClick(e);
+  };
+
+  var btnClasses = className ? ['close'].concat(_toConsumableArray(className.split(" "))) : ['close'];
+  return React.createElement("button", _extends({
+    "data-test": "close-button",
+    type: "button"
+  }, props, {
+    className: btnClasses.join(" "),
+    onClick: onClickHandler,
+    "aria-label": ariaLabel
+  }), React.createElement("span", {
+    "aria-hidden": "true"
+  }, "\xD7"));
+};
+MDBCloseIcon.defaultProps = {
+  ariaLabel: "Close"
+};
+MDBCloseIcon.propTypes = {
+  className: PropTypes.string,
+  ariaLabel: PropTypes.string,
+  onClick: PropTypes.func
+};
+
 // FREE
 
-export { Animation, Alert, Badge, Breadcrumb, BreadcrumbItem, Button, ButtonGroup, ButtonToolbar, Card, CardBody, CardFooter, CardGroup, CardHeader, CardImage, CardText, CardTitle, Carousel, CarouselCaption, Control as CarouselControl, CarouselInner, CarouselItem, CarouselIndicators, CarouselIndicator, Col, Collapse, Container, DataTable, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, EdgeHeader, Fa, FormInline, Footer, FreeBird, HamburgerToggler, Input, InputNumeric, Jumbotron, ListGroup, ListGroupItem, Mask, Media, Modal, ModalBody, ModalFooter, ModalHeader, Nav, Navbar, NavbarBrand, NavbarNav, NavbarToggler, NavItem, NavLink$1 as NavLink, Pagination, PageItem, PageLink, Popper$1 as Popover, Popper$1 as Popper, Popper$1 as Tooltip, PopoverBody, PopoverHeader, Progress, Waves, Row, Table, TableBody, TableHead, TableFoot, View, Iframe, Iframe as MDBIframe, Animation as MDBAnimation, Badge as MDBBadge, Alert as MDBAlert, Breadcrumb as MDBBreadcrumb, BreadcrumbItem as MDBBreadcrumbItem, Button as MDBBtn, ButtonGroup as MDBBtnGroup, ButtonToolbar as MDBBtnToolbar, Card as MDBCard, CardBody as MDBCardBody, CardFooter as MDBCardFooter, CardGroup as MDBCardGroup, CardHeader as MDBCardHeader, CardImage as MDBCardImage, CardText as MDBCardText, CardTitle as MDBCardTitle, Carousel as MDBCarousel, CarouselCaption as MDBCarouselCaption, Control as MDBControl, CarouselInner as MDBCarouselInner, CarouselItem as MDBCarouselItem, CarouselIndicators as MDBCarouselIndicators, CarouselIndicator as MDBCarouselIndicator, Col as MDBCol, Collapse as MDBCollapse, Container as MDBContainer, DataTable as MDBDataTable, Dropdown as MDBDropdown, DropdownItem as MDBDropdownItem, DropdownMenu as MDBDropdownMenu, DropdownToggle as MDBDropdownToggle, EdgeHeader as MDBEdgeHeader, FormInline as MDBFormInline, Footer as MDBFooter, FreeBird as MDBFreeBird, HamburgerToggler as MDBHamburgerToggler, Fa as MDBIcon, Input as MDBInput, InputNumeric as MDBInputSelect, Jumbotron as MDBJumbotron, ListGroup as MDBListGroup, ListGroupItem as MDBListGroupItem, Mask as MDBMask, Media as MDBMedia, Modal as MDBModal, ModalBody as MDBModalBody, ModalFooter as MDBModalFooter, ModalHeader as MDBModalHeader, Nav as MDBNav, Navbar as MDBNavbar, NavbarBrand as MDBNavbarBrand, NavbarNav as MDBNavbarNav, NavbarToggler as MDBNavbarToggler, NavItem as MDBNavItem, NavLink$1 as MDBNavLink, Pagination as MDBPagination, PageItem as MDBPageItem, PageLink as MDBPageNav, Popper$1 as MDBPopover, Popper$1 as MDBPopper, Popper$1 as MDBTooltip, PopoverBody as MDBPopoverBody, PopoverHeader as MDBPopoverHeader, Progress as MDBProgress, Waves as MDBWaves, Row as MDBRow, Table as MDBTable, TableBody as MDBTableBody, TableHead as MDBTableHead, TableFoot as MDBTableFoot, View as MDBView };
+export { Animation, Alert, Badge, Breadcrumb, BreadcrumbItem, Button, ButtonGroup, ButtonToolbar, Card, CardBody, CardFooter, CardGroup, CardHeader, CardImage, CardText, CardTitle, Carousel, CarouselCaption, Control as CarouselControl, CarouselInner, CarouselItem, CarouselIndicators, CarouselIndicator, Col, Collapse, Container, DataTable, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, EdgeHeader, Fa, FormInline, Footer, FreeBird, HamburgerToggler, Input, InputNumeric, Jumbotron, ListGroup, ListGroupItem, Mask, Media, Modal, ModalBody, ModalFooter, ModalHeader, Nav, Navbar, NavbarBrand, NavbarNav, NavbarToggler, NavItem, NavLink$1 as NavLink, Pagination, PageItem, PageLink, Popper$1 as Popover, Popper$1 as Popper, Popper$1 as Tooltip, PopoverBody, PopoverHeader, Progress, Waves, Row, Table, TableBody, TableHead, TableFoot, View, Iframe, Iframe as MDBIframe, Animation as MDBAnimation, Badge as MDBBadge, Alert as MDBAlert, Breadcrumb as MDBBreadcrumb, BreadcrumbItem as MDBBreadcrumbItem, Button as MDBBtn, ButtonGroup as MDBBtnGroup, ButtonToolbar as MDBBtnToolbar, Card as MDBCard, MDBCloseIcon, CardBody as MDBCardBody, CardFooter as MDBCardFooter, CardGroup as MDBCardGroup, CardHeader as MDBCardHeader, CardImage as MDBCardImage, CardText as MDBCardText, CardTitle as MDBCardTitle, Carousel as MDBCarousel, CarouselCaption as MDBCarouselCaption, Control as MDBControl, CarouselInner as MDBCarouselInner, CarouselItem as MDBCarouselItem, CarouselIndicators as MDBCarouselIndicators, CarouselIndicator as MDBCarouselIndicator, Col as MDBCol, Collapse as MDBCollapse, Container as MDBContainer, DataTable as MDBDataTable, Dropdown as MDBDropdown, DropdownItem as MDBDropdownItem, DropdownMenu as MDBDropdownMenu, DropdownToggle as MDBDropdownToggle, EdgeHeader as MDBEdgeHeader, FormInline as MDBFormInline, Footer as MDBFooter, FreeBird as MDBFreeBird, HamburgerToggler as MDBHamburgerToggler, Fa as MDBIcon, Input as MDBInput, InputNumeric as MDBInputSelect, Jumbotron as MDBJumbotron, ListGroup as MDBListGroup, ListGroupItem as MDBListGroupItem, Mask as MDBMask, Media as MDBMedia, Modal as MDBModal, ModalBody as MDBModalBody, ModalFooter as MDBModalFooter, ModalHeader as MDBModalHeader, Nav as MDBNav, Navbar as MDBNavbar, NavbarBrand as MDBNavbarBrand, NavbarNav as MDBNavbarNav, NavbarToggler as MDBNavbarToggler, NavItem as MDBNavItem, NavLink$1 as MDBNavLink, Pagination as MDBPagination, PageItem as MDBPageItem, PageLink as MDBPageNav, Popper$1 as MDBPopover, Popper$1 as MDBPopper, Popper$1 as MDBTooltip, PopoverBody as MDBPopoverBody, PopoverHeader as MDBPopoverHeader, Progress as MDBProgress, Waves as MDBWaves, Row as MDBRow, Table as MDBTable, TableBody as MDBTableBody, TableHead as MDBTableHead, TableFoot as MDBTableFoot, View as MDBView };

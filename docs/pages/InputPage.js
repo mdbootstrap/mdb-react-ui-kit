@@ -38,7 +38,7 @@ class InputPage extends Component {
             <MDBInput label="Material input" getValue={this.getValue} valueDefault="Uncontrolled input with default value" />
 
             <MDBInput label="Example label" onChange={this.handleChange} value={this.state.value} />
-            
+
             <MDBInput label="Focus next input on change (uses ref)" onChange={this.changeFocus} size="sm" icon="envelope" />
 
             <MDBInput label="Example label" inputRef={ref => this.nextInputRef = ref} icon="envelope" />
@@ -60,6 +60,7 @@ class InputPage extends Component {
               error="wrong"
               success="right"
             />
+            
             <MDBInput
               label="Type your password"
               icon="lock"
@@ -127,11 +128,46 @@ class InputPage extends Component {
             />
 
             <MDBInput
-              labelClass="labelBg" 
-              outline 
-              type="textarea" 
-              label="Basic textarea" 
-              rows="2" 
+              labelClass="labelBg"
+              outline
+              type="textarea"
+              label="Basic textarea"
+              rows="2"
+            />
+
+            <h4 className="mt-5">Inputs with background</h4>
+
+            <MDBInput
+              labelClass="labelBg"
+              background
+              label="Type your email"
+              type="email"
+            />
+
+            <MDBInput
+              labelClass="labelBg"
+              background
+              label="Type your password"
+              icon="lock"
+              type="password"
+            />
+
+            <MDBInput
+              labelClass="labelBg"
+              background
+              getValue={this.getValue}
+              type="textarea"
+              label="Icon Prefix"
+              rows="2"
+              icon="pencil-alt"
+            />
+
+            <MDBInput
+              labelClass="labelBg"
+              background
+              type="textarea"
+              label="Basic textarea"
+              rows="2"
             />
 
             <h4 className="mt-5">Numeric inputs</h4>

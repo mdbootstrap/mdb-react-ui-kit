@@ -57,7 +57,6 @@ import MasonryPage from './pages/MasonryPage';
 import ScrollBarPage from './pages/ScrollBarPage';
 import NavsPage from './pages/NavsPage';
 
-
 class Routes extends React.Component {
   render() {
     return (

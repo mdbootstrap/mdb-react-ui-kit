@@ -17,7 +17,6 @@ const ModalsNavPage = () => {
               <MenuLink to="/modals/modal" title="Modal" />
               <MenuLink to="/modals/modal-form" title="Modal Form" />
               <MenuLink to="/modals/modal-examples" title="Modal Templates & Examples" />
-
             </ul>
           </MDBJumbotron>
         </MDBCol>

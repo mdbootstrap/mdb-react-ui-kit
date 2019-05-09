@@ -6,7 +6,6 @@ import DataTableEntries from './DataTableComponents/DataTableEntries';
 import DataTableSearch from './DataTableComponents/DataTableSearch';
 import DataTableInfo from './DataTableComponents/DataTableInfo';
 import DataTablePagination from './DataTableComponents/DataTablePagination';
-
 class DataTable extends Component {
   constructor(props) {
     super(props);
