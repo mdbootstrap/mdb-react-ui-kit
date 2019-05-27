@@ -25,6 +25,7 @@ const DataTableTable = props => {
     rows,
     small,
     sortable,
+    sorted,
     striped,
     tbodyColor,
     tbodyTextWhite,
@@ -59,6 +60,7 @@ const DataTableTable = props => {
           columns={columns}
           handleSort={handleSort}
           sortable={sortable}
+          sorted={sorted}
         />
         <TableBody color={tbodyColor} textWhite={tbodyTextWhite} rows={rows} />
         <TableFoot
@@ -87,6 +89,7 @@ DataTableTable.propTypes = {
   responsiveLg: PropTypes.bool.isRequired,
   responsiveXl: PropTypes.bool.isRequired,
   sortable: PropTypes.bool.isRequired,
+  sorted: PropTypes.bool.isRequired,
   small: PropTypes.bool.isRequired,
   striped: PropTypes.bool.isRequired,
   theadColor: PropTypes.string.isRequired,

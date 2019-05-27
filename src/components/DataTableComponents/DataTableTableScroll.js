@@ -28,6 +28,7 @@ const DataTableTableScroll = props => {
     scrollY,
     small,
     sortable,
+    sorted,
     striped,
     tbodyColor,
     tbodyTextWhite,
@@ -83,6 +84,7 @@ const DataTableTableScroll = props => {
                 scrollX={scrollX}
                 scrollY={scrollY}
                 sortable={sortable}
+                sorted={sorted}
               />
             </Table>
           </div>
@@ -162,6 +164,7 @@ DataTableTableScroll.propTypes = {
   responsiveLg: PropTypes.bool.isRequired,
   responsiveXl: PropTypes.bool.isRequired,
   sortable: PropTypes.bool.isRequired,
+  sorted: PropTypes.bool.isRequired,
   small: PropTypes.bool.isRequired,
   striped: PropTypes.bool.isRequired,
   theadColor: PropTypes.string.isRequired,

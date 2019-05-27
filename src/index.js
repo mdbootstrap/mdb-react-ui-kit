@@ -69,7 +69,6 @@ import TableHead from './components/TableHead';
 import TableFoot from './components/TableFoot';
 import Tooltip from './components/Popper';
 import View from './components/View';
-import { toast, ToastContainer, cssTransition } from 'react-toastify';
 import Iframe from './components/Iframe';
 import Dropdown from './components/Dropdown';
 
@@ -176,7 +175,6 @@ export {
   Col,
   Collapse,
   Container,
-  cssTransition,
   DataTable,
   Dropdown,
   DropdownItem,
@@ -222,9 +220,8 @@ export {
   TableFoot,
   Tooltip,
   View,
-  toast,
-  ToastContainer,
   Iframe,
+
   MDBIframe,
   MDBAnimation,
   MDBBadge,
@@ -297,5 +294,5 @@ export {
   MDBTableHead,
   MDBTableFoot,
   MDBTooltip,
-  MDBView
+  MDBView,
 };

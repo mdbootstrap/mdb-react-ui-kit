@@ -18,7 +18,8 @@ class DataTable extends Component {
       rows: props.data.rows || [],
       search: '',
       translateScrollHead: 0,
-      order: props.order || []
+      order: props.order || [],
+      sorted: false
     };
 
     if (this.props.paging) {
@@ -46,15 +47,8 @@ class DataTable extends Component {
           columns: this.props.data.columns || [],
           filteredRows: this.props.data.rows || [],
           rows: this.props.data.rows || []
-        });
+        }, () => this.paginateRows());
       }
-    }
-
-    if (
-      prevState.pages !== this.state.pages ||
-      prevState.rows !== this.state.rows
-    ) {
-      this.paginateRows();
     }
   }
 
@@ -92,6 +86,16 @@ class DataTable extends Component {
     this.setState({ search: e.target.value }, () => this.filterRows());
   };
 
+  checkFieldValue = (array, field) => {
+    return (array[field] && typeof array[field] !== 'string') ? array[field].props.searchValue : array[field];
+  }
+
+  checkField = (field, a, b, direction = 'desc') => {
+    let [aField, bField] = [this.checkFieldValue(a, field), this.checkFieldValue(b, field)];
+
+    return direction === 'desc' ? aField < bField : aField > bField;
+  }
+
   handleSort = (field, sort) => {
     if (sort !== "disabled") {
       this.setState(
@@ -99,19 +103,34 @@ class DataTable extends Component {
           // asc by default
           switch (sort) {
             case "desc":
-              prevState.rows.sort((a, b) => (a[field] > b[field] ? -1 : 1));
+              prevState.rows.sort((a, b) => {
+                if (this.props.sortRows && this.props.sortRows.includes(field)) {
+                  return this.checkField(field, a, b);
+                }
+
+                return a[field] > b[field] ? -1 : 1;
+              });
               break;
             default:
-              prevState.rows.sort((a, b) => (a[field] > b[field] ? 1 : -1));
+              prevState.rows.sort((a, b) => {
+                if (this.props.sortRows && this.props.sortRows.includes(field)) {
+                  return this.checkField(field, a, b, 'asc');
+                }
+
+                return a[field] < b[field] ? -1 : 1;
+              });
           }
 
-          prevState.columns[
-            prevState.columns.findIndex(column => column.field === field)
-          ].sort = sort === "asc" ? "desc" : "asc";
+          prevState.columns.forEach(col => {
+            if(col.sort === 'disabled') return;
+
+            col.sort = col.field === field ? col.sort === "desc" ? "asc" : "desc" : '';
+          });
 
           return {
             rows: prevState.rows,
-            columns: prevState.columns
+            columns: prevState.columns,
+            sorted: true
           };
         },
         () => this.filterRows()
@@ -127,7 +146,17 @@ class DataTable extends Component {
         const filteredRows = prevState.rows.filter(row => {
           for (let key in row) {
             if (Object.prototype.hasOwnProperty.call(row, key)) {
-              const stringValue = row[key] !== null ? row[key].toString() : '';
+              let stringValue = "";
+
+              if (this.props.sortRows && typeof row[key] !== "string") {
+                stringValue = row[key].props.searchValue;
+              }
+              else {
+                if (row[key]) {
+                  stringValue = row[key].toString();
+                }
+              }
+
               if (
                 stringValue.toLowerCase().match(this.state.search.toLowerCase())
               )
@@ -224,6 +253,7 @@ class DataTable extends Component {
       tbodyTextWhite,
       theadColor,
       theadTextWhite,
+      sortRows,
       ...attributes
     } = this.props;
 
@@ -280,6 +310,7 @@ class DataTable extends Component {
               tbodyColor={tbodyColor}
               tbodyTextWhite={tbodyTextWhite}
               rows={pages[activePage]}
+              sorted={this.state.sorted}
               {...attributes}
             />
           </div>
@@ -310,6 +341,7 @@ class DataTable extends Component {
               columns={columns}
               handleSort={this.handleSort}
               sortable={sortable}
+              sorted={this.state.sorted}
               tbodyColor={tbodyColor}
               tbodyTextWhite={tbodyTextWhite}
               rows={pages[activePage]}
@@ -378,6 +410,7 @@ DataTable.propTypes = {
   scrollX: PropTypes.bool,
   scrollY: PropTypes.bool,
   sortable: PropTypes.bool,
+  sortRows: PropTypes.arrayOf(PropTypes.string),
   small: PropTypes.bool,
   striped: PropTypes.bool,
   theadColor: PropTypes.string,

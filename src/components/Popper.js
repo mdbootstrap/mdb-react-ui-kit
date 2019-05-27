@@ -8,18 +8,18 @@ const Popper = ({ children, clickable, domElement, modifiers, id, isVisible, onC
 
   useEffect(() => { setVisible(isVisible) }, [isVisible]);
 
-  useEffect(() => { onChange && onChange(visible) }, [visible]);
+  useEffect(() => { onChange && onChange(visible) }, [onChange, visible]);
 
   useEffect(() => {
     window.addEventListener('click', handleClick);
 
     return (() => window.removeEventListener('click', handleClick));
-  }, []);
+  });
 
   function handleClick(e) {
     const element = document.elementsFromPoint(e.clientX, e.clientY).find(el => el.dataset.popper === id);
     if (element) return;
-
+    
     setVisible(false);
   }
 

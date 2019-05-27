@@ -6,14 +6,12 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var React = require('react');
 var React__default = _interopDefault(React);
-var PropTypes = _interopDefault(require('prop-types'));
 var classNames = _interopDefault(require('classnames'));
 var reactTransitionGroup = require('react-transition-group');
 var ReactDOM = _interopDefault(require('react-dom'));
 var reactPopper = require('react-popper');
 var NumericInput = _interopDefault(require('react-numeric-input'));
 var reactRouterDom = require('react-router-dom');
-var reactToastify = require('react-toastify');
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -244,6 +242,88 @@ function _nonIterableRest() {
   throw new TypeError("Invalid attempt to destructure non-iterable instance");
 }
 
+function createCommonjsModule(fn, module) {
+	return module = { exports: {} }, fn(module, module.exports), module.exports;
+}
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+var ReactPropTypesSecret_1 = ReactPropTypesSecret;
+
+function emptyFunction() {}
+function emptyFunctionWithReset() {}
+emptyFunctionWithReset.resetWarningCache = emptyFunction;
+
+var factoryWithThrowingShims = function() {
+  function shim(props, propName, componentName, location, propFullName, secret) {
+    if (secret === ReactPropTypesSecret_1) {
+      // It is still safe when called from React.
+      return;
+    }
+    var err = new Error(
+      'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+      'Use PropTypes.checkPropTypes() to call them. ' +
+      'Read more at http://fb.me/use-check-prop-types'
+    );
+    err.name = 'Invariant Violation';
+    throw err;
+  }  shim.isRequired = shim;
+  function getShim() {
+    return shim;
+  }  // Important!
+  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+  var ReactPropTypes = {
+    array: shim,
+    bool: shim,
+    func: shim,
+    number: shim,
+    object: shim,
+    string: shim,
+    symbol: shim,
+
+    any: shim,
+    arrayOf: getShim,
+    element: shim,
+    elementType: shim,
+    instanceOf: getShim,
+    node: shim,
+    objectOf: getShim,
+    oneOf: getShim,
+    oneOfType: getShim,
+    shape: getShim,
+    exact: getShim,
+
+    checkPropTypes: emptyFunctionWithReset,
+    resetWarningCache: emptyFunction
+  };
+
+  ReactPropTypes.PropTypes = ReactPropTypes;
+
+  return ReactPropTypes;
+};
+
+var propTypes = createCommonjsModule(function (module) {
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+{
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = factoryWithThrowingShims();
+}
+});
+
 var Animation =
 /*#__PURE__*/
 function (_Component) {
@@ -393,13 +473,13 @@ function (_Component) {
 }(React.Component);
 
 Animation.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  type: PropTypes.string,
-  delay: PropTypes.string,
-  count: PropTypes.number,
-  onAnimationEnd: PropTypes.func,
-  onAnimationStart: PropTypes.func
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  type: propTypes.string,
+  delay: propTypes.string,
+  count: propTypes.number,
+  onAnimationEnd: propTypes.func,
+  onAnimationStart: propTypes.func
 };
 Animation.defaultProps = {
   tag: "div",
@@ -502,10 +582,10 @@ Alert.defaultProps = {
   color: "primary"
 };
 Alert.propTypes = {
-  className: PropTypes.string,
-  color: PropTypes.oneOf(['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']),
-  onClose: PropTypes.func,
-  onClosed: PropTypes.func
+  className: propTypes.string,
+  color: propTypes.oneOf(['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']),
+  onClose: propTypes.func,
+  onClosed: propTypes.func
 };
 
 var Badge =
@@ -546,10 +626,10 @@ Badge.defaultProps = {
   pill: false
 };
 Badge.propTypes = {
-  color: PropTypes.string,
-  pill: PropTypes.bool,
-  children: PropTypes.node,
-  className: PropTypes.string
+  color: propTypes.string,
+  pill: propTypes.bool,
+  children: propTypes.node,
+  className: propTypes.string
 };
 
 function omit(obj, omitKeys) {
@@ -621,12 +701,12 @@ var Breadcrumb = function Breadcrumb(props) {
 };
 
 Breadcrumb.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  color: PropTypes.string,
-  light: PropTypes.bool,
-  uppercase: PropTypes.bool,
-  bold: PropTypes.bool
+  children: propTypes.node,
+  className: propTypes.string,
+  color: propTypes.string,
+  light: propTypes.bool,
+  uppercase: propTypes.bool,
+  bold: propTypes.bool
 };
 
 var Fa =
@@ -677,25 +757,25 @@ function (_React$Component) {
 }(React__default.Component);
 
 Fa.propTypes = {
-  icon: PropTypes.string.isRequired,
-  border: PropTypes.bool,
-  brand: PropTypes.bool,
-  className: PropTypes.string,
-  fab: PropTypes.bool,
-  fal: PropTypes.bool,
-  far: PropTypes.bool,
-  fixed: PropTypes.bool,
-  flip: PropTypes.string,
-  inverse: PropTypes.string,
-  light: PropTypes.bool,
-  list: PropTypes.bool,
-  pull: PropTypes.string,
-  pulse: PropTypes.bool,
-  regular: PropTypes.bool,
-  rotate: PropTypes.string,
-  spin: PropTypes.bool,
-  size: PropTypes.string,
-  stack: PropTypes.string
+  icon: propTypes.string.isRequired,
+  border: propTypes.bool,
+  brand: propTypes.bool,
+  className: propTypes.string,
+  fab: propTypes.bool,
+  fal: propTypes.bool,
+  far: propTypes.bool,
+  fixed: propTypes.bool,
+  flip: propTypes.string,
+  inverse: propTypes.string,
+  light: propTypes.bool,
+  list: propTypes.bool,
+  pull: propTypes.string,
+  pulse: propTypes.bool,
+  regular: propTypes.bool,
+  rotate: propTypes.string,
+  spin: propTypes.bool,
+  size: propTypes.string,
+  stack: propTypes.string
 };
 Fa.defaultProps = {
   border: false,
@@ -791,17 +871,17 @@ var BreadcrumbItem = function BreadcrumbItem(props) {
 };
 
 BreadcrumbItem.propTypes = {
-  active: PropTypes.bool,
-  appendIcon: PropTypes.bool,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  bold: PropTypes.bool,
-  icon: PropTypes.string,
-  iconBrand: PropTypes.bool,
-  iconClassName: PropTypes.string,
-  iconLight: PropTypes.bool,
-  iconRegular: PropTypes.bool,
-  iconSize: PropTypes.string
+  active: propTypes.bool,
+  appendIcon: propTypes.bool,
+  children: propTypes.node,
+  className: propTypes.string,
+  bold: propTypes.bool,
+  icon: propTypes.string,
+  iconBrand: propTypes.bool,
+  iconClassName: propTypes.string,
+  iconLight: propTypes.bool,
+  iconRegular: propTypes.bool,
+  iconSize: propTypes.string
 };
 BreadcrumbItem.defaultProps = {
   active: false,
@@ -897,11 +977,11 @@ function (_React$Component) {
 }(React__default.Component);
 
 Waves.propTypes = {
-  outline: PropTypes.bool,
-  flat: PropTypes.bool,
-  animate: PropTypes.bool,
-  cursorPos: PropTypes.object,
-  children: PropTypes.node
+  outline: propTypes.bool,
+  flat: propTypes.bool,
+  animate: propTypes.bool,
+  cursorPos: propTypes.object,
+  children: propTypes.node
 };
 
 var Button =
@@ -998,28 +1078,28 @@ Button.defaultProps = {
   tag: "button"
 };
 Button.propTypes = {
-  active: PropTypes.bool,
-  action: PropTypes.bool,
-  block: PropTypes.bool,
-  color: PropTypes.string,
-  disabled: PropTypes.bool,
-  download: PropTypes.string,
-  gradient: PropTypes.string,
-  role: PropTypes.string,
-  type: PropTypes.string,
-  outline: PropTypes.bool,
-  rounded: PropTypes.bool,
-  circle: PropTypes.bool,
-  floating: PropTypes.bool,
-  flat: PropTypes.bool,
-  innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  onClick: PropTypes.func,
-  size: PropTypes.string,
-  social: PropTypes.string,
-  children: PropTypes.node,
-  tag: PropTypes.string,
-  target: PropTypes.string,
-  className: PropTypes.string
+  active: propTypes.bool,
+  action: propTypes.bool,
+  block: propTypes.bool,
+  color: propTypes.string,
+  disabled: propTypes.bool,
+  download: propTypes.string,
+  gradient: propTypes.string,
+  role: propTypes.string,
+  type: propTypes.string,
+  outline: propTypes.bool,
+  rounded: propTypes.bool,
+  circle: propTypes.bool,
+  floating: propTypes.bool,
+  flat: propTypes.bool,
+  innerRef: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  onClick: propTypes.func,
+  size: propTypes.string,
+  social: propTypes.string,
+  children: propTypes.node,
+  tag: propTypes.string,
+  target: propTypes.string,
+  className: propTypes.string
 };
 
 var css$2 = ".btn-group-vertical>.btn,\n.btn-group-vertical>.btn+.btn-group,\n.btn-group-vertical>.btn-group+.btn,\n.btn-group-vertical>.btn-group+.btn-group {\n  margin-left: 0px;\n}\n\n.btn-group-lg>.btn {\n  font-size: 0.9rem;\n  padding: 1rem 2.4rem;\n}\n\n.btn-group-sm>.btn {\n  font-size: 0.6rem;\n  padding: 0.5rem 1.6rem;\n}\n\n.btn-floating.btn.btn-sm,\n.btn-floating.btn.btn-lg {\n  padding: 0;\n}\n";
@@ -1056,12 +1136,12 @@ function (_React$Component) {
 }(React__default.Component);
 
 ButtonGroup.propTypes = {
-  "aria-label": PropTypes.string,
-  className: PropTypes.string,
-  role: PropTypes.string,
-  size: PropTypes.string,
-  children: PropTypes.node,
-  vertical: PropTypes.bool
+  "aria-label": propTypes.string,
+  className: propTypes.string,
+  role: propTypes.string,
+  size: propTypes.string,
+  children: propTypes.node,
+  vertical: propTypes.bool
 };
 ButtonGroup.defaultProps = {
   role: "group"
@@ -1096,10 +1176,10 @@ function (_React$Component) {
 }(React__default.Component);
 
 ButtonToolbar.propTypes = {
-  "aria-label": PropTypes.string,
-  className: PropTypes.string,
-  children: PropTypes.node,
-  role: PropTypes.string
+  "aria-label": propTypes.string,
+  className: propTypes.string,
+  children: propTypes.node,
+  role: propTypes.string
 };
 ButtonToolbar.defaultProps = {
   role: "toolbar"
@@ -1148,10 +1228,10 @@ function (_Component) {
 }(React.Component);
 
 Card.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  color: PropTypes.string,
-  border: PropTypes.string
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  color: propTypes.string,
+  border: propTypes.string
 };
 Card.defaultProps = {
   tag: "div"
@@ -1188,9 +1268,9 @@ function (_Component) {
 }(React.Component);
 
 CardBody.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  cascade: PropTypes.bool
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  cascade: propTypes.bool
 };
 CardBody.defaultProps = {
   tag: "div"
@@ -1240,14 +1320,14 @@ function (_Component) {
 }(React.Component);
 
 CardFooter.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  color: PropTypes.string,
-  text: PropTypes.string,
-  border: PropTypes.string,
-  transparent: PropTypes.bool,
-  small: PropTypes.bool,
-  muted: PropTypes.bool
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  color: propTypes.string,
+  text: propTypes.string,
+  border: propTypes.string,
+  transparent: propTypes.bool,
+  small: propTypes.bool,
+  muted: propTypes.bool
 };
 CardFooter.defaultProps = {
   tag: "div"
@@ -1285,10 +1365,10 @@ function (_Component) {
 }(React.Component);
 
 CardGroup.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  deck: PropTypes.bool,
-  column: PropTypes.bool
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  deck: propTypes.bool,
+  column: propTypes.bool
 };
 CardGroup.defaultProps = {
   tag: "div"
@@ -1328,12 +1408,12 @@ function (_Component) {
 }(React.Component);
 
 CardHeader.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  color: PropTypes.string,
-  text: PropTypes.string,
-  border: PropTypes.string,
-  transparent: PropTypes.bool
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  color: propTypes.string,
+  text: propTypes.string,
+  border: propTypes.string,
+  transparent: propTypes.bool
 };
 CardHeader.defaultProps = {
   tag: "div"
@@ -1372,11 +1452,11 @@ function (_React$Component) {
 }(React__default.Component);
 
 Mask.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  overlay: PropTypes.string,
-  pattern: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  tag: PropTypes.string
+  children: propTypes.node,
+  className: propTypes.string,
+  overlay: propTypes.string,
+  pattern: propTypes.oneOfType([propTypes.string, propTypes.number]),
+  tag: propTypes.string
 };
 Mask.defaultProps = {
   className: "",
@@ -1465,15 +1545,15 @@ View.defaultProps = {
   zoom: false
 };
 View.propTypes = {
-  cascade: PropTypes.bool,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  hover: PropTypes.bool,
-  rounded: PropTypes.bool,
-  src: PropTypes.string,
-  tag: PropTypes.string,
-  waves: PropTypes.bool,
-  zoom: PropTypes.bool
+  cascade: propTypes.bool,
+  children: propTypes.node,
+  className: propTypes.string,
+  hover: propTypes.bool,
+  rounded: propTypes.bool,
+  src: propTypes.string,
+  tag: propTypes.string,
+  waves: propTypes.bool,
+  zoom: propTypes.bool
 };
 
 var CardImage =
@@ -1550,16 +1630,16 @@ function (_Component) {
 }(React.Component);
 
 CardImage.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  zoom: PropTypes.bool,
-  waves: PropTypes.bool,
-  className: PropTypes.string,
-  cascade: PropTypes.bool,
-  hover: PropTypes.bool,
-  overlay: PropTypes.string,
-  top: PropTypes.bool,
-  src: PropTypes.string,
-  children: PropTypes.node
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  zoom: propTypes.bool,
+  waves: propTypes.bool,
+  className: propTypes.string,
+  cascade: propTypes.bool,
+  hover: propTypes.bool,
+  overlay: propTypes.string,
+  top: propTypes.bool,
+  src: propTypes.string,
+  children: propTypes.node
 };
 CardImage.defaultProps = {
   tag: "img",
@@ -1610,10 +1690,10 @@ function (_Component) {
 }(React.Component);
 
 CardText.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  muted: PropTypes.bool,
-  small: PropTypes.bool
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  muted: propTypes.bool,
+  small: propTypes.bool
 };
 CardText.defaultProps = {
   tag: "p"
@@ -1650,9 +1730,9 @@ function (_Component) {
 }(React.Component);
 
 CardTitle.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  sub: PropTypes.bool,
-  className: PropTypes.string
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  sub: propTypes.bool,
+  className: propTypes.string
 };
 CardTitle.defaultProps = {
   tag: "h4",
@@ -1724,14 +1804,14 @@ function (_Component) {
 }(React.Component);
 
 Control.propTypes = {
-  onClick: PropTypes.any,
-  direction: PropTypes.string,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  iconLeft: PropTypes.bool,
-  iconRight: PropTypes.bool,
-  testimonial: PropTypes.bool,
-  multiItem: PropTypes.bool
+  onClick: propTypes.any,
+  direction: propTypes.string,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  iconLeft: propTypes.bool,
+  iconRight: propTypes.bool,
+  testimonial: propTypes.bool,
+  multiItem: propTypes.bool
 };
 Control.defaultProps = {
   tag: "a"
@@ -1767,8 +1847,8 @@ function (_Component) {
 }(React.Component);
 
 CarouselIndicators.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string
+  children: propTypes.node,
+  className: propTypes.string
 };
 CarouselIndicators.defaultProps = {
   className: ""
@@ -1811,11 +1891,11 @@ function (_Component) {
 }(React.Component);
 
 CarouselIndicator.propTypes = {
-  active: PropTypes.bool.isRequired,
-  alt: PropTypes.string,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  img: PropTypes.string
+  active: propTypes.bool.isRequired,
+  alt: propTypes.string,
+  children: propTypes.node,
+  className: propTypes.string,
+  img: propTypes.string
 };
 CarouselIndicator.defaultProps = {
   alt: "Carousel thumbnail",
@@ -2018,18 +2098,18 @@ function (_Component) {
 }(React.Component);
 
 Carousel.propTypes = {
-  activeItem: PropTypes.number,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  children: PropTypes.node,
-  multiItem: PropTypes.bool,
-  interval: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
-  thumbnails: PropTypes.bool,
-  testimonial: PropTypes.bool,
-  showControls: PropTypes.bool,
-  showIndicators: PropTypes.bool,
-  slide: PropTypes.bool,
-  length: PropTypes.number
+  activeItem: propTypes.number,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  children: propTypes.node,
+  multiItem: propTypes.bool,
+  interval: propTypes.oneOfType([propTypes.number, propTypes.bool]),
+  thumbnails: propTypes.bool,
+  testimonial: propTypes.bool,
+  showControls: propTypes.bool,
+  showIndicators: propTypes.bool,
+  slide: propTypes.bool,
+  length: propTypes.number
 };
 Carousel.defaultProps = {
   tag: 'div',
@@ -2038,9 +2118,9 @@ Carousel.defaultProps = {
   showIndicators: true
 };
 Carousel.childContextTypes = {
-  activeItem: PropTypes.any,
-  length: PropTypes.any,
-  slide: PropTypes.any
+  activeItem: propTypes.any,
+  length: propTypes.any,
+  slide: propTypes.any
 };
 
 var CarouselCaption =
@@ -2074,10 +2154,10 @@ function (_Component) {
 }(React.Component);
 
 CarouselCaption.propTypes = {
-  active: PropTypes.string,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  children: PropTypes.node
+  active: propTypes.string,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  children: propTypes.node
 };
 CarouselCaption.defaultProps = {
   tag: "div"
@@ -2123,17 +2203,17 @@ function (_Component) {
 }(React.Component);
 
 CarouselInner.propTypes = {
-  childrenCount: PropTypes.any,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  active: PropTypes.bool,
-  children: PropTypes.node
+  childrenCount: propTypes.any,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  active: propTypes.bool,
+  children: propTypes.node
 };
 CarouselInner.defaultProps = {
   tag: "div"
 };
 CarouselInner.contextTypes = {
-  childrenCount: PropTypes.any
+  childrenCount: propTypes.any
 };
 
 var CarouselItem =
@@ -2212,19 +2292,19 @@ function (_Component) {
 }(React.Component);
 
 CarouselItem.propTypes = {
-  active: PropTypes.bool,
-  itemId: PropTypes.any,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  children: PropTypes.node
+  active: propTypes.bool,
+  itemId: propTypes.any,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  children: propTypes.node
 };
 CarouselItem.defaultProps = {
   tag: "div"
 };
 CarouselItem.contextTypes = {
-  activeItem: PropTypes.any,
-  length: PropTypes.any,
-  slide: PropTypes.any
+  activeItem: propTypes.any,
+  length: propTypes.any,
+  slide: propTypes.any
 };
 
 var Col =
@@ -2266,17 +2346,17 @@ function (_Component) {
 }(React.Component);
 
 Col.propTypes = {
-  size: PropTypes.string,
-  xs: PropTypes.string,
-  sm: PropTypes.string,
-  md: PropTypes.string,
-  lg: PropTypes.string,
-  xl: PropTypes.string,
-  top: PropTypes.bool,
-  bottom: PropTypes.bool,
-  middle: PropTypes.bool,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string
+  size: propTypes.string,
+  xs: propTypes.string,
+  sm: propTypes.string,
+  md: propTypes.string,
+  lg: propTypes.string,
+  xl: propTypes.string,
+  top: propTypes.bool,
+  bottom: propTypes.bool,
+  middle: propTypes.bool,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string
 };
 Col.defaultProps = {
   tag: "div",
@@ -2456,17 +2536,17 @@ function (_Component) {
 }(React.Component);
 
 Collapse.propTypes = {
-  isOpen: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-  id: PropTypes.string,
-  className: PropTypes.node,
-  children: PropTypes.node,
-  navbar: PropTypes.bool,
-  delay: PropTypes.oneOfType([PropTypes.shape({
-    show: PropTypes.number,
-    hide: PropTypes.number
-  }), PropTypes.number]),
-  onOpened: PropTypes.func,
-  onClosed: PropTypes.func
+  isOpen: propTypes.oneOfType([propTypes.string, propTypes.bool]),
+  id: propTypes.string,
+  className: propTypes.node,
+  children: propTypes.node,
+  navbar: propTypes.bool,
+  delay: propTypes.oneOfType([propTypes.shape({
+    show: propTypes.number,
+    hide: propTypes.number
+  }), propTypes.number]),
+  onOpened: propTypes.func,
+  onClosed: propTypes.func
 };
 Collapse.defaultProps = {
   isOpen: "",
@@ -2506,9 +2586,9 @@ function (_Component) {
 }(React.Component);
 
 Container.propTypes = {
-  fluid: PropTypes.bool,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string
+  fluid: propTypes.bool,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string
 };
 Container.defaultProps = {
   tag: "div",
@@ -2589,25 +2669,25 @@ function (_React$Component) {
 }(React__default.Component);
 
 Table.propTypes = {
-  autoWidth: PropTypes.bool,
-  bordered: PropTypes.bool,
-  borderless: PropTypes.bool,
-  btn: PropTypes.bool,
-  children: PropTypes.node,
-  dark: PropTypes.bool,
-  fixed: PropTypes.bool,
-  theadColor: PropTypes.string,
-  hover: PropTypes.bool,
-  maxHeight: PropTypes.string,
-  responsive: PropTypes.bool,
-  responsiveSm: PropTypes.bool,
-  responsiveMd: PropTypes.bool,
-  responsiveLg: PropTypes.bool,
-  responsiveXl: PropTypes.bool,
-  scrollY: PropTypes.bool,
-  small: PropTypes.bool,
-  striped: PropTypes.bool,
-  className: PropTypes.string
+  autoWidth: propTypes.bool,
+  bordered: propTypes.bool,
+  borderless: propTypes.bool,
+  btn: propTypes.bool,
+  children: propTypes.node,
+  dark: propTypes.bool,
+  fixed: propTypes.bool,
+  theadColor: propTypes.string,
+  hover: propTypes.bool,
+  maxHeight: propTypes.string,
+  responsive: propTypes.bool,
+  responsiveSm: propTypes.bool,
+  responsiveMd: propTypes.bool,
+  responsiveLg: propTypes.bool,
+  responsiveXl: propTypes.bool,
+  scrollY: propTypes.bool,
+  small: propTypes.bool,
+  striped: propTypes.bool,
+  className: propTypes.string
 };
 
 var DataTableHead = function DataTableHead(props) {
@@ -2617,6 +2697,7 @@ var DataTableHead = function DataTableHead(props) {
       scrollX = props.scrollX,
       scrollY = props.scrollY,
       sortable = props.sortable,
+      sorted = props.sorted,
       textWhite = props.textWhite;
   var theadClasses = classNames(color && (color !== "dark" && color !== "light" ? color : "thead-".concat(color)), textWhite && "text-white");
   return React__default.createElement(React.Fragment, null, (scrollY || scrollX) && React__default.createElement("colgroup", null, columns.map(function (col) {
@@ -2635,23 +2716,20 @@ var DataTableHead = function DataTableHead(props) {
         return sortable && handleSort(col.field, col.sort);
       },
       key: col.field,
-      className: col.hasOwnProperty("minimal") ? "th-".concat(col.minimal) : undefined
-    }, col.attributes), col.label, sortable && col.sort !== 'disabled' && React__default.createElement(Fa, {
-      icon: "sort",
-      className: "float-right",
-      "aria-hidden": "true"
-    }));
+      className: classNames(col.hasOwnProperty("minimal") ? "th-".concat(col.minimal) : null, sortable && col.sort !== 'disabled' && (sorted && col.sort ? "sorting_".concat(col.sort === 'asc' ? 'desc' : 'asc') : 'sorting'))
+    }, col.attributes), col.label);
   }))));
 };
 
 DataTableHead.propTypes = {
-  color: PropTypes.string,
-  columns: PropTypes.arrayOf(PropTypes.object),
-  handleSort: PropTypes.func,
-  scrollX: PropTypes.bool,
-  scrollY: PropTypes.bool,
-  sortable: PropTypes.bool,
-  textWhite: PropTypes.bool
+  sorted: propTypes.bool.isRequired,
+  color: propTypes.string,
+  columns: propTypes.arrayOf(propTypes.object),
+  handleSort: propTypes.func,
+  scrollX: propTypes.bool,
+  scrollY: propTypes.bool,
+  sortable: propTypes.bool,
+  textWhite: propTypes.bool
 };
 DataTableHead.defaultProps = {
   scrollX: false,
@@ -2694,10 +2772,10 @@ var TableBody = function TableBody(props) {
 };
 
 TableBody.propTypes = {
-  children: PropTypes.node,
-  color: PropTypes.string,
-  rows: PropTypes.arrayOf(PropTypes.object),
-  textWhite: PropTypes.bool
+  children: propTypes.node,
+  color: propTypes.string,
+  rows: propTypes.arrayOf(propTypes.object),
+  textWhite: propTypes.bool
 };
 TableBody.defaultProps = {
   textWhite: false
@@ -2724,10 +2802,10 @@ var TableFoot = function TableFoot(props) {
 };
 
 TableFoot.propTypes = {
-  children: PropTypes.node,
-  color: PropTypes.string,
-  columns: PropTypes.arrayOf(PropTypes.object),
-  textWhite: PropTypes.bool
+  children: propTypes.node,
+  color: propTypes.string,
+  columns: propTypes.arrayOf(propTypes.object),
+  textWhite: propTypes.bool
 };
 TableFoot.defaultProps = {
   textWhite: false
@@ -2752,12 +2830,13 @@ var DataTableTable = function DataTableTable(props) {
       rows = props.rows,
       small = props.small,
       sortable = props.sortable,
+      sorted = props.sorted,
       striped = props.striped,
       tbodyColor = props.tbodyColor,
       tbodyTextWhite = props.tbodyTextWhite,
       theadColor = props.theadColor,
       theadTextWhite = props.theadTextWhite,
-      attributes = _objectWithoutProperties(props, ["autoWidth", "bordered", "borderless", "btn", "children", "columns", "dark", "fixed", "hover", "handleSort", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "rows", "small", "sortable", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite"]);
+      attributes = _objectWithoutProperties(props, ["autoWidth", "bordered", "borderless", "btn", "children", "columns", "dark", "fixed", "hover", "handleSort", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "rows", "small", "sortable", "sorted", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite"]);
 
   return React__default.createElement("div", {
     className: "col-sm-12"
@@ -2782,7 +2861,8 @@ var DataTableTable = function DataTableTable(props) {
     textWhite: theadTextWhite,
     columns: columns,
     handleSort: handleSort,
-    sortable: sortable
+    sortable: sortable,
+    sorted: sorted
   }), React__default.createElement(TableBody, {
     color: tbodyColor,
     textWhite: tbodyTextWhite,
@@ -2795,29 +2875,30 @@ var DataTableTable = function DataTableTable(props) {
 };
 
 DataTableTable.propTypes = {
-  autoWidth: PropTypes.bool.isRequired,
-  bordered: PropTypes.bool.isRequired,
-  borderless: PropTypes.bool.isRequired,
-  btn: PropTypes.bool.isRequired,
-  dark: PropTypes.bool.isRequired,
-  fixed: PropTypes.bool.isRequired,
-  hover: PropTypes.bool.isRequired,
-  handleSort: PropTypes.func.isRequired,
-  responsive: PropTypes.bool.isRequired,
-  responsiveSm: PropTypes.bool.isRequired,
-  responsiveMd: PropTypes.bool.isRequired,
-  responsiveLg: PropTypes.bool.isRequired,
-  responsiveXl: PropTypes.bool.isRequired,
-  sortable: PropTypes.bool.isRequired,
-  small: PropTypes.bool.isRequired,
-  striped: PropTypes.bool.isRequired,
-  theadColor: PropTypes.string.isRequired,
-  theadTextWhite: PropTypes.bool.isRequired,
-  tbodyColor: PropTypes.string.isRequired,
-  tbodyTextWhite: PropTypes.bool.isRequired,
-  columns: PropTypes.arrayOf(PropTypes.object),
-  rows: PropTypes.arrayOf(PropTypes.object),
-  children: PropTypes.node
+  autoWidth: propTypes.bool.isRequired,
+  bordered: propTypes.bool.isRequired,
+  borderless: propTypes.bool.isRequired,
+  btn: propTypes.bool.isRequired,
+  dark: propTypes.bool.isRequired,
+  fixed: propTypes.bool.isRequired,
+  hover: propTypes.bool.isRequired,
+  handleSort: propTypes.func.isRequired,
+  responsive: propTypes.bool.isRequired,
+  responsiveSm: propTypes.bool.isRequired,
+  responsiveMd: propTypes.bool.isRequired,
+  responsiveLg: propTypes.bool.isRequired,
+  responsiveXl: propTypes.bool.isRequired,
+  sortable: propTypes.bool.isRequired,
+  sorted: propTypes.bool.isRequired,
+  small: propTypes.bool.isRequired,
+  striped: propTypes.bool.isRequired,
+  theadColor: propTypes.string.isRequired,
+  theadTextWhite: propTypes.bool.isRequired,
+  tbodyColor: propTypes.string.isRequired,
+  tbodyTextWhite: propTypes.bool.isRequired,
+  columns: propTypes.arrayOf(propTypes.object),
+  rows: propTypes.arrayOf(propTypes.object),
+  children: propTypes.node
 };
 
 var DataTableTableScroll = function DataTableTableScroll(props) {
@@ -2843,13 +2924,14 @@ var DataTableTableScroll = function DataTableTableScroll(props) {
       scrollY = props.scrollY,
       small = props.small,
       sortable = props.sortable,
+      sorted = props.sorted,
       striped = props.striped,
       tbodyColor = props.tbodyColor,
       tbodyTextWhite = props.tbodyTextWhite,
       theadColor = props.theadColor,
       theadTextWhite = props.theadTextWhite,
       translateScrollHead = props.translateScrollHead,
-      attributes = _objectWithoutProperties(props, ["autoWidth", "bordered", "borderless", "btn", "children", "columns", "dark", "fixed", "hover", "handleSort", "handleTableBodyScroll", "maxHeight", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "rows", "scrollX", "scrollY", "small", "sortable", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite", "translateScrollHead"]);
+      attributes = _objectWithoutProperties(props, ["autoWidth", "bordered", "borderless", "btn", "children", "columns", "dark", "fixed", "hover", "handleSort", "handleTableBodyScroll", "maxHeight", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "rows", "scrollX", "scrollY", "small", "sortable", "sorted", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite", "translateScrollHead"]);
 
   return React__default.createElement("div", {
     className: "col-sm-12"
@@ -2896,7 +2978,8 @@ var DataTableTableScroll = function DataTableTableScroll(props) {
     handleSort: handleSort,
     scrollX: scrollX,
     scrollY: scrollY,
-    sortable: sortable
+    sortable: sortable,
+    sorted: sorted
   })))), React__default.createElement("div", {
     className: "dataTable_scrollBody",
     style: {
@@ -2944,34 +3027,35 @@ var DataTableTableScroll = function DataTableTableScroll(props) {
 };
 
 DataTableTableScroll.propTypes = {
-  autoWidth: PropTypes.bool.isRequired,
-  bordered: PropTypes.bool.isRequired,
-  borderless: PropTypes.bool.isRequired,
-  btn: PropTypes.bool.isRequired,
-  dark: PropTypes.bool.isRequired,
-  fixed: PropTypes.bool.isRequired,
-  hover: PropTypes.bool.isRequired,
-  handleSort: PropTypes.func.isRequired,
-  handleTableBodyScroll: PropTypes.func.isRequired,
-  responsive: PropTypes.bool.isRequired,
-  responsiveSm: PropTypes.bool.isRequired,
-  responsiveMd: PropTypes.bool.isRequired,
-  responsiveLg: PropTypes.bool.isRequired,
-  responsiveXl: PropTypes.bool.isRequired,
-  sortable: PropTypes.bool.isRequired,
-  small: PropTypes.bool.isRequired,
-  striped: PropTypes.bool.isRequired,
-  theadColor: PropTypes.string.isRequired,
-  theadTextWhite: PropTypes.bool.isRequired,
-  tbodyColor: PropTypes.string.isRequired,
-  tbodyTextWhite: PropTypes.bool.isRequired,
-  translateScrollHead: PropTypes.number.isRequired,
-  columns: PropTypes.arrayOf(PropTypes.object),
-  rows: PropTypes.arrayOf(PropTypes.object),
-  children: PropTypes.node,
-  maxHeight: PropTypes.string,
-  scrollX: PropTypes.bool,
-  scrollY: PropTypes.bool
+  autoWidth: propTypes.bool.isRequired,
+  bordered: propTypes.bool.isRequired,
+  borderless: propTypes.bool.isRequired,
+  btn: propTypes.bool.isRequired,
+  dark: propTypes.bool.isRequired,
+  fixed: propTypes.bool.isRequired,
+  hover: propTypes.bool.isRequired,
+  handleSort: propTypes.func.isRequired,
+  handleTableBodyScroll: propTypes.func.isRequired,
+  responsive: propTypes.bool.isRequired,
+  responsiveSm: propTypes.bool.isRequired,
+  responsiveMd: propTypes.bool.isRequired,
+  responsiveLg: propTypes.bool.isRequired,
+  responsiveXl: propTypes.bool.isRequired,
+  sortable: propTypes.bool.isRequired,
+  sorted: propTypes.bool.isRequired,
+  small: propTypes.bool.isRequired,
+  striped: propTypes.bool.isRequired,
+  theadColor: propTypes.string.isRequired,
+  theadTextWhite: propTypes.bool.isRequired,
+  tbodyColor: propTypes.string.isRequired,
+  tbodyTextWhite: propTypes.bool.isRequired,
+  translateScrollHead: propTypes.number.isRequired,
+  columns: propTypes.arrayOf(propTypes.object),
+  rows: propTypes.arrayOf(propTypes.object),
+  children: propTypes.node,
+  maxHeight: propTypes.string,
+  scrollX: propTypes.bool,
+  scrollY: propTypes.bool
 };
 
 var DataTableSelect = function DataTableSelect(_ref) {
@@ -3000,10 +3084,10 @@ var DataTableSelect = function DataTableSelect(_ref) {
 };
 
 DataTableSelect.propTypes = {
-  entries: PropTypes.arrayOf(PropTypes.number).isRequired,
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object]).isRequired,
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.number.isRequired
+  entries: propTypes.arrayOf(propTypes.number).isRequired,
+  label: propTypes.oneOfType([propTypes.string, propTypes.number, propTypes.object]).isRequired,
+  onChange: propTypes.func.isRequired,
+  value: propTypes.number.isRequired
 };
 
 var DataTableEntries = function DataTableEntries(props) {
@@ -3024,12 +3108,12 @@ var DataTableEntries = function DataTableEntries(props) {
 };
 
 DataTableEntries.propTypes = {
-  handleEntriesChange: PropTypes.func.isRequired,
-  displayEntries: PropTypes.bool.isRequired,
-  entries: PropTypes.number.isRequired,
-  entriesArr: PropTypes.arrayOf(PropTypes.number).isRequired,
-  paging: PropTypes.bool.isRequired,
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object]).isRequired
+  handleEntriesChange: propTypes.func.isRequired,
+  displayEntries: propTypes.bool.isRequired,
+  entries: propTypes.number.isRequired,
+  entriesArr: propTypes.arrayOf(propTypes.number).isRequired,
+  paging: propTypes.bool.isRequired,
+  label: propTypes.oneOfType([propTypes.string, propTypes.number, propTypes.object]).isRequired
 };
 
 var DataTableInput = function DataTableInput(_ref) {
@@ -3048,9 +3132,9 @@ var DataTableInput = function DataTableInput(_ref) {
 };
 
 DataTableInput.propTypes = {
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object]),
-  onChange: PropTypes.func,
-  value: PropTypes.string
+  label: propTypes.oneOfType([propTypes.string, propTypes.number, propTypes.object]),
+  onChange: propTypes.func,
+  value: propTypes.string
 };
 
 var DataTableSearch = function DataTableSearch(props) {
@@ -3068,10 +3152,10 @@ var DataTableSearch = function DataTableSearch(props) {
 };
 
 DataTableSearch.propTypes = {
-  handleSearchChange: PropTypes.func.isRequired,
-  search: PropTypes.string.isRequired,
-  searching: PropTypes.bool.isRequired,
-  label: PropTypes.string
+  handleSearchChange: propTypes.func.isRequired,
+  search: propTypes.string.isRequired,
+  searching: propTypes.bool.isRequired,
+  label: propTypes.string
 };
 
 var DataTableInfo = function DataTableInfo(props) {
@@ -3091,12 +3175,12 @@ var DataTableInfo = function DataTableInfo(props) {
 };
 
 DataTableInfo.propTypes = {
-  activePage: PropTypes.number.isRequired,
-  entries: PropTypes.number.isRequired,
-  filteredRows: PropTypes.array.isRequired,
-  info: PropTypes.bool.isRequired,
-  pages: PropTypes.array.isRequired,
-  label: PropTypes.arrayOf(PropTypes.string)
+  activePage: propTypes.number.isRequired,
+  entries: propTypes.number.isRequired,
+  filteredRows: propTypes.array.isRequired,
+  info: propTypes.bool.isRequired,
+  pages: propTypes.array.isRequired,
+  label: propTypes.arrayOf(propTypes.string)
 };
 DataTableInfo.defaultProps = {
   label: ["Showing", "to", "of", "entries"]
@@ -3136,12 +3220,12 @@ function (_Component) {
 }(React.Component);
 
 Pagination.propTypes = {
-  children: PropTypes.node,
-  circle: PropTypes.bool,
-  className: PropTypes.string,
-  color: PropTypes.string,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  size: PropTypes.oneOf(['lg', 'sm'])
+  children: propTypes.node,
+  circle: propTypes.bool,
+  className: propTypes.string,
+  color: propTypes.string,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  size: propTypes.oneOf(['lg', 'sm'])
 };
 Pagination.defaultProps = {
   circle: false,
@@ -3183,11 +3267,11 @@ function (_Component) {
 }(React.Component);
 
 PageItem.propTypes = {
-  active: PropTypes.bool,
-  className: PropTypes.string,
-  children: PropTypes.node,
-  disabled: PropTypes.bool,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  active: propTypes.bool,
+  className: propTypes.string,
+  children: propTypes.node,
+  disabled: propTypes.bool,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string])
 };
 PageItem.defaultProps = {
   active: false,
@@ -3227,9 +3311,9 @@ function (_Component) {
 }(React.Component);
 
 PageLink.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  children: PropTypes.node
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  children: propTypes.node
 };
 PageLink.defaultProps = {
   tag: "a"
@@ -3345,11 +3429,11 @@ function (_Component) {
 }(React.Component);
 
 DataTablePagination.propTypes = {
-  activePage: PropTypes.number.isRequired,
-  changeActivePage: PropTypes.func.isRequired,
-  pages: PropTypes.array.isRequired,
-  pagesAmount: PropTypes.number.isRequired,
-  label: PropTypes.arrayOf(PropTypes.string).isRequired
+  activePage: propTypes.number.isRequired,
+  changeActivePage: propTypes.func.isRequired,
+  pages: propTypes.array.isRequired,
+  pagesAmount: propTypes.number.isRequired,
+  label: propTypes.arrayOf(propTypes.string).isRequired
 };
 
 var DataTable =
@@ -3405,6 +3489,18 @@ function (_Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "checkFieldValue", function (array, field) {
+      return array[field] && typeof array[field] !== 'string' ? array[field].props.searchValue : array[field];
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "checkField", function (field, a, b) {
+      var direction = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'desc';
+      var _ref = [_this.checkFieldValue(a, field), _this.checkFieldValue(b, field)],
+          aField = _ref[0],
+          bField = _ref[1];
+      return direction === 'desc' ? aField < bField : aField > bField;
+    });
+
     _defineProperty(_assertThisInitialized(_this), "handleSort", function (field, sort) {
       if (sort !== "disabled") {
         _this.setState(function (prevState) {
@@ -3412,22 +3508,32 @@ function (_Component) {
           switch (sort) {
             case "desc":
               prevState.rows.sort(function (a, b) {
+                if (_this.props.sortRows && _this.props.sortRows.includes(field)) {
+                  return _this.checkField(field, a, b);
+                }
+
                 return a[field] > b[field] ? -1 : 1;
               });
               break;
 
             default:
               prevState.rows.sort(function (a, b) {
-                return a[field] > b[field] ? 1 : -1;
+                if (_this.props.sortRows && _this.props.sortRows.includes(field)) {
+                  return _this.checkField(field, a, b, 'asc');
+                }
+
+                return a[field] < b[field] ? -1 : 1;
               });
           }
 
-          prevState.columns[prevState.columns.findIndex(function (column) {
-            return column.field === field;
-          })].sort = sort === "asc" ? "desc" : "asc";
+          prevState.columns.forEach(function (col) {
+            if (col.sort === 'disabled') return;
+            col.sort = col.field === field ? col.sort === "desc" ? "asc" : "desc" : '';
+          });
           return {
             rows: prevState.rows,
-            columns: prevState.columns
+            columns: prevState.columns,
+            sorted: true
           };
         }, function () {
           return _this.filterRows();
@@ -3440,7 +3546,16 @@ function (_Component) {
         var filteredRows = prevState.rows.filter(function (row) {
           for (var key in row) {
             if (Object.prototype.hasOwnProperty.call(row, key)) {
-              var stringValue = row[key] !== null ? row[key].toString() : '';
+              var stringValue = "";
+
+              if (_this.props.sortRows && typeof row[key] !== "string") {
+                stringValue = row[key].props.searchValue;
+              } else {
+                if (row[key]) {
+                  stringValue = row[key].toString();
+                }
+              }
+
               if (stringValue.toLowerCase().match(_this.state.search.toLowerCase())) return true;
             }
           }
@@ -3504,7 +3619,8 @@ function (_Component) {
       rows: props.data.rows || [],
       search: '',
       translateScrollHead: 0,
-      order: props.order || []
+      order: props.order || [],
+      sorted: false
     };
 
     if (_this.props.paging) {
@@ -3528,6 +3644,8 @@ function (_Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps, prevState) {
+      var _this2 = this;
+
       if (prevProps.data !== this.props.data) {
         if (typeof this.props.data === 'string') {
           this.fetchData(this.props.data);
@@ -3536,12 +3654,10 @@ function (_Component) {
             columns: this.props.data.columns || [],
             filteredRows: this.props.data.rows || [],
             rows: this.props.data.rows || []
+          }, function () {
+            return _this2.paginateRows();
           });
         }
-      }
-
-      if (prevState.pages !== this.state.pages || prevState.rows !== this.state.rows) {
-        this.paginateRows();
       }
     }
   }, {
@@ -3584,7 +3700,8 @@ function (_Component) {
           tbodyTextWhite = _this$props.tbodyTextWhite,
           theadColor = _this$props.theadColor,
           theadTextWhite = _this$props.theadTextWhite,
-          attributes = _objectWithoutProperties(_this$props, ["autoWidth", "bordered", "borderless", "btn", "children", "dark", "data", "displayEntries", "entriesOptions", "entriesLabel", "exportToCSV", "fixed", "hover", "info", "infoLabel", "maxHeight", "order", "pagesAmount", "paging", "paginationLabel", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "searching", "searchLabel", "scrollX", "scrollY", "small", "sortable", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite"]);
+          sortRows = _this$props.sortRows,
+          attributes = _objectWithoutProperties(_this$props, ["autoWidth", "bordered", "borderless", "btn", "children", "dark", "data", "displayEntries", "entriesOptions", "entriesLabel", "exportToCSV", "fixed", "hover", "info", "infoLabel", "maxHeight", "order", "pagesAmount", "paging", "paginationLabel", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "searching", "searchLabel", "scrollX", "scrollY", "small", "sortable", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite", "sortRows"]);
 
       var _this$state = this.state,
           columns = _this$state.columns,
@@ -3634,7 +3751,8 @@ function (_Component) {
         sortable: sortable,
         tbodyColor: tbodyColor,
         tbodyTextWhite: tbodyTextWhite,
-        rows: pages[activePage]
+        rows: pages[activePage],
+        sorted: this.state.sorted
       }, attributes))), (scrollY || scrollX) && React__default.createElement("div", {
         className: "row"
       }, React__default.createElement(DataTableTableScroll, _extends({
@@ -3661,6 +3779,7 @@ function (_Component) {
         columns: columns,
         handleSort: this.handleSort,
         sortable: sortable,
+        sorted: this.state.sorted,
         tbodyColor: tbodyColor,
         tbodyTextWhite: tbodyTextWhite,
         rows: pages[activePage],
@@ -3688,43 +3807,44 @@ function (_Component) {
 }(React.Component);
 
 DataTable.propTypes = {
-  autoWidth: PropTypes.bool,
-  bordered: PropTypes.bool,
-  borderless: PropTypes.bool,
-  btn: PropTypes.bool,
-  children: PropTypes.node,
-  dark: PropTypes.bool,
-  data: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  displayEntries: PropTypes.bool,
-  entries: PropTypes.number,
-  entriesLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object]),
-  entriesOptions: PropTypes.arrayOf(PropTypes.number),
-  exportToCSV: PropTypes.bool,
-  fixed: PropTypes.bool,
-  hover: PropTypes.bool,
-  info: PropTypes.bool,
-  infoLabel: PropTypes.arrayOf(PropTypes.string),
-  maxHeight: PropTypes.string,
-  order: PropTypes.arrayOf(PropTypes.string),
-  pagesAmount: PropTypes.number,
-  paging: PropTypes.bool,
-  paginationLabel: PropTypes.arrayOf(PropTypes.string),
-  responsive: PropTypes.bool,
-  responsiveSm: PropTypes.bool,
-  responsiveMd: PropTypes.bool,
-  responsiveLg: PropTypes.bool,
-  responsiveXl: PropTypes.bool,
-  searching: PropTypes.bool,
-  searchLabel: PropTypes.string,
-  scrollX: PropTypes.bool,
-  scrollY: PropTypes.bool,
-  sortable: PropTypes.bool,
-  small: PropTypes.bool,
-  striped: PropTypes.bool,
-  theadColor: PropTypes.string,
-  theadTextWhite: PropTypes.bool,
-  tbodyColor: PropTypes.string,
-  tbodyTextWhite: PropTypes.bool
+  autoWidth: propTypes.bool,
+  bordered: propTypes.bool,
+  borderless: propTypes.bool,
+  btn: propTypes.bool,
+  children: propTypes.node,
+  dark: propTypes.bool,
+  data: propTypes.oneOfType([propTypes.object, propTypes.string]),
+  displayEntries: propTypes.bool,
+  entries: propTypes.number,
+  entriesLabel: propTypes.oneOfType([propTypes.string, propTypes.number, propTypes.object]),
+  entriesOptions: propTypes.arrayOf(propTypes.number),
+  exportToCSV: propTypes.bool,
+  fixed: propTypes.bool,
+  hover: propTypes.bool,
+  info: propTypes.bool,
+  infoLabel: propTypes.arrayOf(propTypes.string),
+  maxHeight: propTypes.string,
+  order: propTypes.arrayOf(propTypes.string),
+  pagesAmount: propTypes.number,
+  paging: propTypes.bool,
+  paginationLabel: propTypes.arrayOf(propTypes.string),
+  responsive: propTypes.bool,
+  responsiveSm: propTypes.bool,
+  responsiveMd: propTypes.bool,
+  responsiveLg: propTypes.bool,
+  responsiveXl: propTypes.bool,
+  searching: propTypes.bool,
+  searchLabel: propTypes.string,
+  scrollX: propTypes.bool,
+  scrollY: propTypes.bool,
+  sortable: propTypes.bool,
+  sortRows: propTypes.arrayOf(propTypes.string),
+  small: propTypes.bool,
+  striped: propTypes.bool,
+  theadColor: propTypes.string,
+  theadTextWhite: propTypes.bool,
+  tbodyColor: propTypes.string,
+  tbodyTextWhite: propTypes.bool
 };
 DataTable.defaultProps = {
   autoWidth: false,
@@ -3764,19 +3884,19 @@ DataTable.defaultProps = {
   tbodyTextWhite: false
 };
 
-var propTypes = {
-  children: PropTypes.node,
-  active: PropTypes.bool,
-  disabled: PropTypes.bool,
-  divider: PropTypes.bool,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  header: PropTypes.bool,
-  onClick: PropTypes.func,
-  className: PropTypes.string,
-  toggle: PropTypes.bool
+var propTypes$1 = {
+  children: propTypes.node,
+  active: propTypes.bool,
+  disabled: propTypes.bool,
+  divider: propTypes.bool,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  header: propTypes.bool,
+  onClick: propTypes.func,
+  className: propTypes.string,
+  toggle: propTypes.bool
 };
 var contextTypes = {
-  toggle: PropTypes.func
+  toggle: propTypes.func
 };
 var defaultProps = {
   tag: "button",
@@ -3868,7 +3988,7 @@ function (_React$Component) {
   return DropdownItem;
 }(React__default.Component);
 
-DropdownItem.propTypes = propTypes;
+DropdownItem.propTypes = propTypes$1;
 DropdownItem.defaultProps = defaultProps;
 DropdownItem.contextTypes = contextTypes;
 
@@ -3893,13 +4013,13 @@ var DropdownMenuComponent = function DropdownMenuComponent(_ref) {
 };
 
 DropdownMenuComponent.propTypes = {
-  aria: PropTypes.bool.isRequired,
-  attributes: PropTypes.object.isRequired,
-  d_key: PropTypes.string.isRequired,
-  role: PropTypes.string.isRequired,
-  tabIndex: PropTypes.string.isRequired,
-  tag: PropTypes.any.isRequired,
-  children: PropTypes.node.isRequired
+  aria: propTypes.bool.isRequired,
+  attributes: propTypes.object.isRequired,
+  d_key: propTypes.string.isRequired,
+  role: propTypes.string.isRequired,
+  tabIndex: propTypes.string.isRequired,
+  tag: propTypes.any.isRequired,
+  children: propTypes.node.isRequired
 };
 
 var noFlipModifier = {
@@ -3981,12 +4101,12 @@ function (_Component) {
 }(React.Component);
 
 DropdownMenu.propTypes = {
-  children: PropTypes.node.isRequired,
-  basic: PropTypes.bool,
-  className: PropTypes.string,
-  flip: PropTypes.bool,
-  right: PropTypes.bool,
-  tag: PropTypes.string
+  children: propTypes.node.isRequired,
+  basic: propTypes.bool,
+  className: propTypes.string,
+  flip: propTypes.bool,
+  right: propTypes.bool,
+  tag: propTypes.string
 };
 DropdownMenu.defaultProps = {
   basic: false,
@@ -3997,11 +4117,11 @@ DropdownMenu.defaultProps = {
   color: false
 };
 DropdownMenu.contextTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  dropup: PropTypes.bool.isRequired,
-  dropright: PropTypes.bool.isRequired,
-  dropleft: PropTypes.bool.isRequired,
-  color: PropTypes.oneOfType([PropTypes.oneOf(['primary', 'default', 'secondary', 'success', 'dark', 'danger', 'info', 'warning', 'ins']), PropTypes.bool])
+  isOpen: propTypes.bool.isRequired,
+  dropup: propTypes.bool.isRequired,
+  dropright: propTypes.bool.isRequired,
+  dropleft: propTypes.bool.isRequired,
+  color: propTypes.oneOfType([propTypes.oneOf(['primary', 'default', 'secondary', 'success', 'dark', 'danger', 'info', 'warning', 'ins']), propTypes.bool])
 };
 
 var DropdownToggle =
@@ -4091,23 +4211,23 @@ function (_React$Component) {
 }(React__default.Component);
 
 DropdownToggle.propTypes = {
-  caret: PropTypes.bool,
-  color: PropTypes.string,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  disabled: PropTypes.bool,
-  onClick: PropTypes.func,
-  "aria-haspopup": PropTypes.bool,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  nav: PropTypes.bool
+  caret: propTypes.bool,
+  color: propTypes.string,
+  children: propTypes.node,
+  className: propTypes.string,
+  disabled: propTypes.bool,
+  onClick: propTypes.func,
+  "aria-haspopup": propTypes.bool,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  nav: propTypes.bool
 };
 DropdownToggle.defaultProps = {
   "aria-haspopup": true,
   color: "secondary"
 };
 DropdownToggle.contextTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  toggle: PropTypes.func.isRequired
+  isOpen: propTypes.bool.isRequired,
+  toggle: propTypes.func.isRequired
 };
 
 var EdgeHeader =
@@ -4141,9 +4261,9 @@ function (_Component) {
 }(React.Component);
 
 EdgeHeader.propTypes = {
-  color: PropTypes.string,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string
+  color: propTypes.string,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string
 };
 EdgeHeader.defaultProps = {
   color: "deep-purple",
@@ -4204,9 +4324,9 @@ function (_React$Component) {
 }(React__default.Component);
 
 FormInline.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  waves: PropTypes.bool
+  children: propTypes.node,
+  className: propTypes.string,
+  waves: propTypes.bool
 };
 
 var Footer =
@@ -4241,10 +4361,10 @@ function (_Component) {
 }(React.Component);
 
 Footer.propTypes = {
-  color: PropTypes.string,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  children: PropTypes.node
+  color: propTypes.string,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  children: propTypes.node
 };
 Footer.defaultProps = {
   tag: "footer"
@@ -4280,8 +4400,8 @@ function (_Component) {
 }(React.Component);
 
 FreeBird.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string
 };
 FreeBird.defaultProps = {
   tag: "div"
@@ -4353,9 +4473,9 @@ function (_React$Component) {
 }(React__default.Component);
 
 HamburgerToggler.propTypes = {
-  id: PropTypes.string,
-  color: PropTypes.string,
-  className: PropTypes.string
+  id: propTypes.string,
+  color: propTypes.string,
+  className: propTypes.string
 };
 
 var Input =
@@ -4537,38 +4657,38 @@ function (_React$Component) {
 }(React__default.Component);
 
 Input.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node,
-  containerClass: PropTypes.string,
-  disabled: PropTypes.bool,
-  error: PropTypes.string,
-  filled: PropTypes.bool,
-  gap: PropTypes.bool,
-  getValue: PropTypes.func,
-  group: PropTypes.bool,
-  hint: PropTypes.string,
-  icon: PropTypes.string,
-  iconBrand: PropTypes.bool,
-  iconClass: PropTypes.string,
-  iconLight: PropTypes.bool,
-  iconRegular: PropTypes.bool,
-  iconSize: PropTypes.string,
-  id: PropTypes.string,
-  inputRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object]),
-  labelClass: PropTypes.string,
-  onBlur: PropTypes.func,
-  onChange: PropTypes.func,
-  onFocus: PropTypes.func,
-  onInput: PropTypes.func,
-  outline: PropTypes.bool,
-  size: PropTypes.string,
-  success: PropTypes.string,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  type: PropTypes.string,
-  validate: PropTypes.bool,
-  value: PropTypes.string,
-  valueDefault: PropTypes.string
+  className: propTypes.string,
+  children: propTypes.node,
+  containerClass: propTypes.string,
+  disabled: propTypes.bool,
+  error: propTypes.string,
+  filled: propTypes.bool,
+  gap: propTypes.bool,
+  getValue: propTypes.func,
+  group: propTypes.bool,
+  hint: propTypes.string,
+  icon: propTypes.string,
+  iconBrand: propTypes.bool,
+  iconClass: propTypes.string,
+  iconLight: propTypes.bool,
+  iconRegular: propTypes.bool,
+  iconSize: propTypes.string,
+  id: propTypes.string,
+  inputRef: propTypes.oneOfType([propTypes.object, propTypes.func]),
+  label: propTypes.oneOfType([propTypes.string, propTypes.number, propTypes.object]),
+  labelClass: propTypes.string,
+  onBlur: propTypes.func,
+  onChange: propTypes.func,
+  onFocus: propTypes.func,
+  onInput: propTypes.func,
+  outline: propTypes.bool,
+  size: propTypes.string,
+  success: propTypes.string,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  type: propTypes.string,
+  validate: propTypes.bool,
+  value: propTypes.string,
+  valueDefault: propTypes.string
 };
 Input.defaultProps = {
   className: "",
@@ -4642,8 +4762,8 @@ function (_React$Component) {
 }(React__default.Component);
 
 InputNumeric.propTypes = {
-  className: PropTypes.string,
-  getValue: PropTypes.func
+  className: propTypes.string,
+  getValue: propTypes.func
 };
 
 var Jumbotron =
@@ -4677,9 +4797,9 @@ function (_React$Component) {
 }(React__default.Component);
 
 Jumbotron.propTypes = {
-  fluid: PropTypes.bool,
-  children: PropTypes.node,
-  className: PropTypes.string
+  fluid: propTypes.bool,
+  children: propTypes.node,
+  className: propTypes.string
 };
 
 var ListGroup =
@@ -4713,9 +4833,9 @@ function (_Component) {
 }(React.Component);
 
 ListGroup.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  children: PropTypes.node
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  children: propTypes.node
 };
 ListGroup.defaultProps = {
   tag: "ul"
@@ -4765,17 +4885,17 @@ function (_Component) {
 }(React.Component);
 
 ListGroupItem.propTypes = {
-  active: PropTypes.bool,
-  disabled: PropTypes.bool,
-  hover: PropTypes.bool,
-  success: PropTypes.bool,
-  info: PropTypes.bool,
-  warning: PropTypes.bool,
-  danger: PropTypes.bool,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  children: PropTypes.node,
-  color: PropTypes.oneOf(['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'])
+  active: propTypes.bool,
+  disabled: propTypes.bool,
+  hover: propTypes.bool,
+  success: propTypes.bool,
+  info: propTypes.bool,
+  warning: propTypes.bool,
+  danger: propTypes.bool,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  children: propTypes.node,
+  color: propTypes.oneOf(['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'])
 };
 ListGroupItem.defaultProps = {
   tag: "li"
@@ -4846,25 +4966,25 @@ function (_React$Component) {
 }(React__default.Component);
 
 Media.propTypes = {
-  body: PropTypes.bool,
-  bottom: PropTypes.bool,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  heading: PropTypes.bool,
-  figure: PropTypes.bool,
-  figImg: PropTypes.bool,
-  figCap: PropTypes.bool,
-  figCapRight: PropTypes.bool,
-  figCapLeft: PropTypes.bool,
-  left: PropTypes.bool,
-  list: PropTypes.bool,
-  middle: PropTypes.bool,
-  object: PropTypes.bool,
-  thumbnail: PropTypes.bool,
-  round: PropTypes.bool,
-  right: PropTypes.bool,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  top: PropTypes.bool
+  body: propTypes.bool,
+  bottom: propTypes.bool,
+  children: propTypes.node,
+  className: propTypes.string,
+  heading: propTypes.bool,
+  figure: propTypes.bool,
+  figImg: propTypes.bool,
+  figCap: propTypes.bool,
+  figCapRight: propTypes.bool,
+  figCapLeft: propTypes.bool,
+  left: propTypes.bool,
+  list: propTypes.bool,
+  middle: propTypes.bool,
+  object: propTypes.bool,
+  thumbnail: propTypes.bool,
+  round: propTypes.bool,
+  right: propTypes.bool,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  top: propTypes.bool
 };
 
 var Modal =
@@ -5051,29 +5171,29 @@ Modal.defaultProps = {
   tabIndex: "-1"
 };
 Modal.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  backdrop: PropTypes.bool,
-  backdropClassName: PropTypes.string,
-  contentClassName: PropTypes.string,
-  modalClassName: PropTypes.string,
-  size: PropTypes.string,
-  side: PropTypes.bool,
-  fullHeight: PropTypes.bool,
-  frame: PropTypes.bool,
-  centered: PropTypes.bool,
-  position: PropTypes.string,
-  cascading: PropTypes.bool,
-  modalStyle: PropTypes.string,
-  wrapClassName: PropTypes.string,
-  animation: PropTypes.string,
-  fade: PropTypes.bool,
-  id: PropTypes.string,
-  role: PropTypes.string,
-  tabIndex: PropTypes.string,
-  showModal: PropTypes.func,
-  hiddenModal: PropTypes.func,
-  hideModal: PropTypes.func
+  children: propTypes.node,
+  className: propTypes.string,
+  backdrop: propTypes.bool,
+  backdropClassName: propTypes.string,
+  contentClassName: propTypes.string,
+  modalClassName: propTypes.string,
+  size: propTypes.string,
+  side: propTypes.bool,
+  fullHeight: propTypes.bool,
+  frame: propTypes.bool,
+  centered: propTypes.bool,
+  position: propTypes.string,
+  cascading: propTypes.bool,
+  modalStyle: propTypes.string,
+  wrapClassName: propTypes.string,
+  animation: propTypes.string,
+  fade: propTypes.bool,
+  id: propTypes.string,
+  role: propTypes.string,
+  tabIndex: propTypes.string,
+  showModal: propTypes.func,
+  hiddenModal: propTypes.func,
+  hideModal: propTypes.func
 };
 
 var ModalBody =
@@ -5106,8 +5226,8 @@ function (_React$Component) {
 }(React__default.Component);
 
 ModalBody.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node
+  className: propTypes.string,
+  children: propTypes.node
 };
 
 var ModalFooter =
@@ -5145,8 +5265,8 @@ function (_React$Component) {
 }(React__default.Component);
 
 ModalFooter.propTypes = {
-  className: PropTypes.string,
-  children: PropTypes.node
+  className: propTypes.string,
+  children: propTypes.node
 };
 
 var ModalHeader =
@@ -5200,11 +5320,11 @@ function (_React$Component) {
 }(React__default.Component);
 
 ModalHeader.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  toggle: PropTypes.func,
-  className: PropTypes.string,
-  children: PropTypes.node,
-  closeAriaLabel: PropTypes.string
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  toggle: propTypes.func,
+  className: propTypes.string,
+  children: propTypes.node,
+  closeAriaLabel: propTypes.string
 };
 ModalHeader.defaultProps = {
   tag: "h4",
@@ -5247,14 +5367,14 @@ function (_Component) {
 }(React.Component);
 
 Nav.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  children: PropTypes.node,
-  color: PropTypes.string,
-  classicTabs: PropTypes.bool,
-  pills: PropTypes.bool,
-  tabs: PropTypes.bool,
-  header: PropTypes.bool
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  children: propTypes.node,
+  color: propTypes.string,
+  classicTabs: propTypes.bool,
+  pills: propTypes.bool,
+  tabs: propTypes.bool,
+  header: propTypes.bool
 };
 Nav.defaultProps = {
   tag: "ul",
@@ -5350,18 +5470,18 @@ function (_Component) {
 }(React.Component);
 
 Navbar.propTypes = {
-  light: PropTypes.bool,
-  dark: PropTypes.bool,
-  "double": PropTypes.bool,
-  fixed: PropTypes.string,
-  sticky: PropTypes.string,
-  scrolling: PropTypes.bool,
-  scrollingNavbarOffset: PropTypes.number,
-  color: PropTypes.string,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  expand: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
-  transparent: PropTypes.bool
+  light: propTypes.bool,
+  dark: propTypes.bool,
+  "double": propTypes.bool,
+  fixed: propTypes.string,
+  sticky: propTypes.string,
+  scrolling: propTypes.bool,
+  scrollingNavbarOffset: propTypes.number,
+  color: propTypes.string,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  expand: propTypes.oneOfType([propTypes.bool, propTypes.string]),
+  transparent: propTypes.bool
 };
 Navbar.defaultProps = {
   tag: "nav",
@@ -5394,8 +5514,8 @@ var NavbarBrand = function NavbarBrand(_ref) {
 };
 
 NavbarBrand.propTypes = {
-  className: PropTypes.string,
-  href: PropTypes.string
+  className: propTypes.string,
+  href: propTypes.string
 };
 
 var NavbarNav =
@@ -5431,11 +5551,11 @@ function (_Component) {
 }(React.Component);
 
 NavbarNav.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  children: PropTypes.node,
-  right: PropTypes.bool,
-  left: PropTypes.bool
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  children: propTypes.node,
+  right: propTypes.bool,
+  left: propTypes.bool
 };
 NavbarNav.defaultProps = {
   tag: "ul"
@@ -5482,13 +5602,13 @@ function (_Component) {
 }(React.Component);
 
 NavbarToggler.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  type: PropTypes.string,
-  className: PropTypes.string,
-  children: PropTypes.node,
-  right: PropTypes.bool,
-  left: PropTypes.bool,
-  image: PropTypes.string
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  type: propTypes.string,
+  className: propTypes.string,
+  children: propTypes.node,
+  right: propTypes.bool,
+  left: propTypes.bool,
+  image: propTypes.string
 };
 NavbarToggler.defaultProps = {
   tag: "button",
@@ -5528,10 +5648,10 @@ function (_Component) {
 }(React.Component);
 
 NavItem.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  children: PropTypes.node,
-  active: PropTypes.bool
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  children: propTypes.node,
+  active: propTypes.bool
 };
 NavItem.defaultProps = {
   tag: "li"
@@ -5598,11 +5718,11 @@ function (_Component) {
 }(React.Component);
 
 NavLink.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  disabled: PropTypes.bool,
-  to: PropTypes.string,
-  active: PropTypes.bool
+  children: propTypes.node,
+  className: propTypes.string,
+  disabled: propTypes.bool,
+  to: propTypes.string,
+  active: propTypes.bool
 };
 NavLink.defaultProps = {
   active: false,
@@ -5633,13 +5753,13 @@ var Popper = function Popper(_ref) {
   }, [isVisible]);
   React.useEffect(function () {
     onChange && onChange(visible);
-  }, [visible]);
+  }, [onChange, visible]);
   React.useEffect(function () {
     window.addEventListener('click', handleClick);
     return function () {
       return window.removeEventListener('click', handleClick);
     };
-  }, []);
+  });
 
   function handleClick(e) {
     var element = document.elementsFromPoint(e.clientX, e.clientY).find(function (el) {
@@ -5723,16 +5843,16 @@ var Popper = function Popper(_ref) {
 };
 
 Popper.propTypes = {
-  children: PropTypes.node,
-  clickable: PropTypes.bool,
-  domElement: PropTypes.bool,
-  modifiers: PropTypes.object,
-  id: PropTypes.string,
-  isVisible: PropTypes.bool,
-  placement: PropTypes.string,
-  popover: PropTypes.bool,
-  style: PropTypes.objectOf(PropTypes.string),
-  tag: PropTypes.string
+  children: propTypes.node,
+  clickable: propTypes.bool,
+  domElement: propTypes.bool,
+  modifiers: propTypes.object,
+  id: propTypes.string,
+  isVisible: propTypes.bool,
+  placement: propTypes.string,
+  popover: propTypes.bool,
+  style: propTypes.objectOf(propTypes.string),
+  tag: propTypes.string
 };
 Popper.defaultProps = {
   clickable: false,
@@ -5759,9 +5879,9 @@ var PopoverBody = function PopoverBody(_ref) {
 };
 
 PopoverBody.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  children: propTypes.node,
+  className: propTypes.string,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string])
 };
 PopoverBody.defaultProps = {
   tag: "div"
@@ -5779,9 +5899,9 @@ var PopoverHeader = function PopoverHeader(_ref) {
 };
 
 PopoverHeader.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+  children: propTypes.node,
+  className: propTypes.string,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string])
 };
 PopoverHeader.defaultProps = {
   className: "",
@@ -5829,19 +5949,19 @@ var Progress = function Progress(_ref) {
 };
 
 Progress.propTypes = {
-  animated: PropTypes.bool,
-  barClassName: PropTypes.string,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  color: PropTypes.string,
-  height: PropTypes.string,
-  material: PropTypes.bool,
-  max: PropTypes.number,
-  min: PropTypes.number,
-  preloader: PropTypes.bool,
-  striped: PropTypes.bool,
-  wrapperStyle: PropTypes.object,
-  value: PropTypes.number
+  animated: propTypes.bool,
+  barClassName: propTypes.string,
+  children: propTypes.node,
+  className: propTypes.string,
+  color: propTypes.string,
+  height: propTypes.string,
+  material: propTypes.bool,
+  max: propTypes.number,
+  min: propTypes.number,
+  preloader: propTypes.bool,
+  striped: propTypes.bool,
+  wrapperStyle: propTypes.object,
+  value: propTypes.number
 };
 Progress.defaultProps = {
   animated: false,
@@ -5896,16 +6016,16 @@ function (_Component) {
 }(React.Component);
 
 Row.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  top: PropTypes.bool,
-  bottom: PropTypes.bool,
-  middle: PropTypes.bool,
-  end: PropTypes.bool,
-  start: PropTypes.bool,
-  center: PropTypes.bool,
-  between: PropTypes.bool,
-  around: PropTypes.bool
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  top: propTypes.bool,
+  bottom: propTypes.bool,
+  middle: propTypes.bool,
+  end: propTypes.bool,
+  start: propTypes.bool,
+  center: propTypes.bool,
+  between: propTypes.bool,
+  around: propTypes.bool
 };
 Row.defaultProps = {
   tag: "div"
@@ -5932,10 +6052,10 @@ var TableHead = function TableHead(props) {
 };
 
 TableHead.propTypes = {
-  children: PropTypes.node,
-  color: PropTypes.string,
-  columns: PropTypes.arrayOf(PropTypes.object),
-  textWhite: PropTypes.bool
+  children: propTypes.node,
+  color: propTypes.string,
+  columns: propTypes.arrayOf(propTypes.object),
+  textWhite: propTypes.bool
 };
 TableHead.defaultProps = {
   textWhite: false
@@ -6043,20 +6163,20 @@ function (_Component) {
 }(React.Component);
 
 Iframe.propTypes = {
-  allowFullScreen: PropTypes.bool,
-  className: PropTypes.string,
-  height: PropTypes.number,
-  id: PropTypes.string,
-  name: PropTypes.string,
-  onMouseOver: PropTypes.func,
-  onMouseOut: PropTypes.func,
-  onLoad: PropTypes.func,
-  ratio: PropTypes.string,
-  sandbox: PropTypes.string,
-  src: PropTypes.string.isRequired,
-  styles: PropTypes.object,
-  width: PropTypes.number,
-  title: PropTypes.string
+  allowFullScreen: propTypes.bool,
+  className: propTypes.string,
+  height: propTypes.number,
+  id: propTypes.string,
+  name: propTypes.string,
+  onMouseOver: propTypes.func,
+  onMouseOut: propTypes.func,
+  onLoad: propTypes.func,
+  ratio: propTypes.string,
+  sandbox: propTypes.string,
+  src: propTypes.string.isRequired,
+  styles: propTypes.object,
+  width: propTypes.number,
+  title: propTypes.string
 };
 
 var Dropdown =
@@ -6234,16 +6354,16 @@ function (_React$Component) {
 }(React__default.Component);
 
 Dropdown.propTypes = {
-  disabled: PropTypes.bool,
-  dropup: PropTypes.bool,
-  dropright: PropTypes.bool,
-  dropleft: PropTypes.bool,
-  group: PropTypes.bool,
-  size: PropTypes.string,
-  tag: PropTypes.string,
-  toggle: PropTypes.func,
-  children: PropTypes.node,
-  className: PropTypes.string
+  disabled: propTypes.bool,
+  dropup: propTypes.bool,
+  dropright: propTypes.bool,
+  dropleft: propTypes.bool,
+  group: propTypes.bool,
+  size: propTypes.string,
+  tag: propTypes.string,
+  toggle: propTypes.func,
+  children: propTypes.node,
+  className: propTypes.string
 };
 Dropdown.defaultProps = {
   dropup: false,
@@ -6252,11 +6372,11 @@ Dropdown.defaultProps = {
   tag: "div"
 };
 Dropdown.childContextTypes = {
-  toggle: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  dropup: PropTypes.bool.isRequired,
-  dropright: PropTypes.bool.isRequired,
-  dropleft: PropTypes.bool.isRequired
+  toggle: propTypes.func.isRequired,
+  isOpen: propTypes.bool.isRequired,
+  dropup: propTypes.bool.isRequired,
+  dropright: propTypes.bool.isRequired,
+  dropleft: propTypes.bool.isRequired
 };
 
 var MDBCloseIcon = function MDBCloseIcon(_ref) {
@@ -6285,18 +6405,15 @@ MDBCloseIcon.defaultProps = {
   ariaLabel: "Close"
 };
 MDBCloseIcon.propTypes = {
-  className: PropTypes.string,
-  ariaLabel: PropTypes.string,
-  onClick: PropTypes.func
+  className: propTypes.string,
+  ariaLabel: propTypes.string,
+  onClick: propTypes.func
 };
 
 // FREE
 
-exports.cssTransition = reactToastify.cssTransition;
-exports.toast = reactToastify.toast;
-exports.ToastContainer = reactToastify.ToastContainer;
-exports.Animation = Animation;
 exports.Alert = Alert;
+exports.Animation = Animation;
 exports.Badge = Badge;
 exports.Breadcrumb = Breadcrumb;
 exports.BreadcrumbItem = BreadcrumbItem;
@@ -6314,10 +6431,10 @@ exports.CardTitle = CardTitle;
 exports.Carousel = Carousel;
 exports.CarouselCaption = CarouselCaption;
 exports.CarouselControl = Control;
+exports.CarouselIndicator = CarouselIndicator;
+exports.CarouselIndicators = CarouselIndicators;
 exports.CarouselInner = CarouselInner;
 exports.CarouselItem = CarouselItem;
-exports.CarouselIndicators = CarouselIndicators;
-exports.CarouselIndicator = CarouselIndicator;
 exports.Col = Col;
 exports.Collapse = Collapse;
 exports.Container = Container;
@@ -6328,56 +6445,25 @@ exports.DropdownMenu = DropdownMenu;
 exports.DropdownToggle = DropdownToggle;
 exports.EdgeHeader = EdgeHeader;
 exports.Fa = Fa;
-exports.FormInline = FormInline;
 exports.Footer = Footer;
+exports.FormInline = FormInline;
 exports.FreeBird = FreeBird;
 exports.HamburgerToggler = HamburgerToggler;
+exports.Iframe = Iframe;
 exports.Input = Input;
 exports.InputNumeric = InputNumeric;
 exports.Jumbotron = Jumbotron;
 exports.ListGroup = ListGroup;
 exports.ListGroupItem = ListGroupItem;
-exports.Mask = Mask;
-exports.Media = Media;
-exports.Modal = Modal;
-exports.ModalBody = ModalBody;
-exports.ModalFooter = ModalFooter;
-exports.ModalHeader = ModalHeader;
-exports.Nav = Nav;
-exports.Navbar = Navbar;
-exports.NavbarBrand = NavbarBrand;
-exports.NavbarNav = NavbarNav;
-exports.NavbarToggler = NavbarToggler;
-exports.NavItem = NavItem;
-exports.NavLink = NavLink;
-exports.Pagination = Pagination;
-exports.PageItem = PageItem;
-exports.PageLink = PageLink;
-exports.Popover = Popper;
-exports.Popper = Popper;
-exports.Tooltip = Popper;
-exports.PopoverBody = PopoverBody;
-exports.PopoverHeader = PopoverHeader;
-exports.Progress = Progress;
-exports.Waves = Waves;
-exports.Row = Row;
-exports.Table = Table;
-exports.TableBody = TableBody;
-exports.TableHead = TableHead;
-exports.TableFoot = TableFoot;
-exports.View = View;
-exports.Iframe = Iframe;
-exports.MDBIframe = Iframe;
+exports.MDBAlert = Alert;
 exports.MDBAnimation = Animation;
 exports.MDBBadge = Badge;
-exports.MDBAlert = Alert;
 exports.MDBBreadcrumb = Breadcrumb;
 exports.MDBBreadcrumbItem = BreadcrumbItem;
 exports.MDBBtn = Button;
 exports.MDBBtnGroup = ButtonGroup;
 exports.MDBBtnToolbar = ButtonToolbar;
 exports.MDBCard = Card;
-exports.MDBCloseIcon = MDBCloseIcon;
 exports.MDBCardBody = CardBody;
 exports.MDBCardFooter = CardFooter;
 exports.MDBCardGroup = CardGroup;
@@ -6387,25 +6473,27 @@ exports.MDBCardText = CardText;
 exports.MDBCardTitle = CardTitle;
 exports.MDBCarousel = Carousel;
 exports.MDBCarouselCaption = CarouselCaption;
-exports.MDBControl = Control;
+exports.MDBCarouselIndicator = CarouselIndicator;
+exports.MDBCarouselIndicators = CarouselIndicators;
 exports.MDBCarouselInner = CarouselInner;
 exports.MDBCarouselItem = CarouselItem;
-exports.MDBCarouselIndicators = CarouselIndicators;
-exports.MDBCarouselIndicator = CarouselIndicator;
+exports.MDBCloseIcon = MDBCloseIcon;
 exports.MDBCol = Col;
 exports.MDBCollapse = Collapse;
 exports.MDBContainer = Container;
+exports.MDBControl = Control;
 exports.MDBDataTable = DataTable;
 exports.MDBDropdown = Dropdown;
 exports.MDBDropdownItem = DropdownItem;
 exports.MDBDropdownMenu = DropdownMenu;
 exports.MDBDropdownToggle = DropdownToggle;
 exports.MDBEdgeHeader = EdgeHeader;
-exports.MDBFormInline = FormInline;
 exports.MDBFooter = Footer;
+exports.MDBFormInline = FormInline;
 exports.MDBFreeBird = FreeBird;
 exports.MDBHamburgerToggler = HamburgerToggler;
 exports.MDBIcon = Fa;
+exports.MDBIframe = Iframe;
 exports.MDBInput = Input;
 exports.MDBInputSelect = InputNumeric;
 exports.MDBJumbotron = Jumbotron;
@@ -6418,25 +6506,54 @@ exports.MDBModalBody = ModalBody;
 exports.MDBModalFooter = ModalFooter;
 exports.MDBModalHeader = ModalHeader;
 exports.MDBNav = Nav;
+exports.MDBNavItem = NavItem;
+exports.MDBNavLink = NavLink;
 exports.MDBNavbar = Navbar;
 exports.MDBNavbarBrand = NavbarBrand;
 exports.MDBNavbarNav = NavbarNav;
 exports.MDBNavbarToggler = NavbarToggler;
-exports.MDBNavItem = NavItem;
-exports.MDBNavLink = NavLink;
-exports.MDBPagination = Pagination;
 exports.MDBPageItem = PageItem;
 exports.MDBPageNav = PageLink;
+exports.MDBPagination = Pagination;
 exports.MDBPopover = Popper;
-exports.MDBPopper = Popper;
-exports.MDBTooltip = Popper;
 exports.MDBPopoverBody = PopoverBody;
 exports.MDBPopoverHeader = PopoverHeader;
+exports.MDBPopper = Popper;
 exports.MDBProgress = Progress;
-exports.MDBWaves = Waves;
 exports.MDBRow = Row;
 exports.MDBTable = Table;
 exports.MDBTableBody = TableBody;
-exports.MDBTableHead = TableHead;
 exports.MDBTableFoot = TableFoot;
+exports.MDBTableHead = TableHead;
+exports.MDBTooltip = Popper;
 exports.MDBView = View;
+exports.MDBWaves = Waves;
+exports.Mask = Mask;
+exports.Media = Media;
+exports.Modal = Modal;
+exports.ModalBody = ModalBody;
+exports.ModalFooter = ModalFooter;
+exports.ModalHeader = ModalHeader;
+exports.Nav = Nav;
+exports.NavItem = NavItem;
+exports.NavLink = NavLink;
+exports.Navbar = Navbar;
+exports.NavbarBrand = NavbarBrand;
+exports.NavbarNav = NavbarNav;
+exports.NavbarToggler = NavbarToggler;
+exports.PageItem = PageItem;
+exports.PageLink = PageLink;
+exports.Pagination = Pagination;
+exports.Popover = Popper;
+exports.PopoverBody = PopoverBody;
+exports.PopoverHeader = PopoverHeader;
+exports.Popper = Popper;
+exports.Progress = Progress;
+exports.Row = Row;
+exports.Table = Table;
+exports.TableBody = TableBody;
+exports.TableFoot = TableFoot;
+exports.TableHead = TableHead;
+exports.Tooltip = Popper;
+exports.View = View;
+exports.Waves = Waves;

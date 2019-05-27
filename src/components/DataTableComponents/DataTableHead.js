@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import Fa from "../Fa";
 
 const DataTableHead = props => {
   const {
@@ -11,6 +10,7 @@ const DataTableHead = props => {
     scrollX,
     scrollY,
     sortable,
+    sorted,
     textWhite
   } = props;
 
@@ -40,15 +40,13 @@ const DataTableHead = props => {
             <th
               onClick={() => sortable && handleSort(col.field, col.sort)}
               key={col.field}
-              className={
-                col.hasOwnProperty("minimal") ? `th-${col.minimal}` : undefined
-              }
+              className={classNames(
+                col.hasOwnProperty("minimal") ? `th-${col.minimal}` : null, 
+                sortable && col.sort !== 'disabled' && ( sorted && col.sort ? `sorting_${col.sort === 'asc' ? 'desc' : 'asc'}` : 'sorting' )
+              )}
               {...col.attributes}
             >
               {col.label}
-              {sortable && col.sort !== 'disabled' && (
-                <Fa icon="sort" className="float-right" aria-hidden="true" />
-              )}
             </th>
           ))}
         </tr>
@@ -58,6 +56,7 @@ const DataTableHead = props => {
 };
 
 DataTableHead.propTypes = {
+  sorted: PropTypes.bool.isRequired,
   color: PropTypes.string,
   columns: PropTypes.arrayOf(PropTypes.object),
   handleSort: PropTypes.func,
