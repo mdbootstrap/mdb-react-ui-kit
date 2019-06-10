@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import DataTableTable from './DataTableComponents/DataTableTable';
-import DataTableTableScroll from './DataTableComponents/DataTableTableScroll';
-import DataTableEntries from './DataTableComponents/DataTableEntries';
-import DataTableSearch from './DataTableComponents/DataTableSearch';
-import DataTableInfo from './DataTableComponents/DataTableInfo';
-import DataTablePagination from './DataTableComponents/DataTablePagination';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import DataTableTable from "./DataTableComponents/DataTableTable";
+import DataTableTableScroll from "./DataTableComponents/DataTableTableScroll";
+import DataTableEntries from "./DataTableComponents/DataTableEntries";
+import DataTableSearch from "./DataTableComponents/DataTableSearch";
+import DataTableInfo from "./DataTableComponents/DataTableInfo";
+import DataTablePagination from "./DataTableComponents/DataTablePagination";
+import classnames from "classnames";
+
 class DataTable extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +18,8 @@ class DataTable extends Component {
       filteredRows: props.data.rows || [],
       pages: [],
       rows: props.data.rows || [],
-      search: '',
+      search: "",
+      unsearchable: [],
       translateScrollHead: 0,
       order: props.order || [],
       sorted: false
@@ -30,27 +33,45 @@ class DataTable extends Component {
   }
 
   componentDidMount() {
-    if (typeof this.props.data === 'string') {
+    if (typeof this.props.data === "string") {
       this.fetchData(this.props.data);
     }
 
     this.state.order.length &&
       this.handleSort(this.state.order[0], this.state.order[1]);
+
+    this.setUnsearchable(this.state.columns);
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.data !== this.props.data) {
-      if (typeof this.props.data === 'string') {
+      if (typeof this.props.data === "string") {
         this.fetchData(this.props.data);
       } else {
-        this.setState({
-          columns: this.props.data.columns || [],
-          filteredRows: this.props.data.rows || [],
-          rows: this.props.data.rows || []
-        }, () => this.paginateRows());
+        this.setState(
+          {
+            columns: this.props.data.columns || [],
+            filteredRows: this.props.data.rows || [],
+            rows: this.props.data.rows || []
+          },
+          () => this.paginateRows()
+        );
       }
+      this.setUnsearchable(this.state.columns);
     }
   }
+
+  setUnsearchable = columns => {
+    const unsearchable = [];
+
+    columns.forEach(column => {
+      if (column.searchable !== undefined && column.searchable === false) {
+        unsearchable.push(column.field);
+      }
+    });
+
+    this.setState({ unsearchable });
+  };
 
   fetchData = link => {
     fetch(link)
@@ -87,14 +108,19 @@ class DataTable extends Component {
   };
 
   checkFieldValue = (array, field) => {
-    return (array[field] && typeof array[field] !== 'string') ? array[field].props.searchValue : array[field];
-  }
+    return array[field] && typeof array[field] !== "string"
+      ? array[field].props.searchValue
+      : array[field];
+  };
 
-  checkField = (field, a, b, direction = 'desc') => {
-    let [aField, bField] = [this.checkFieldValue(a, field), this.checkFieldValue(b, field)];
+  checkField = (field, a, b, direction = "desc") => {
+    let [aField, bField] = [
+      this.checkFieldValue(a, field),
+      this.checkFieldValue(b, field)
+    ];
 
-    return direction === 'desc' ? aField < bField : aField > bField;
-  }
+    return direction === "desc" ? aField < bField : aField > bField;
+  };
 
   handleSort = (field, sort) => {
     if (sort !== "disabled") {
@@ -104,7 +130,10 @@ class DataTable extends Component {
           switch (sort) {
             case "desc":
               prevState.rows.sort((a, b) => {
-                if (this.props.sortRows && this.props.sortRows.includes(field)) {
+                if (
+                  this.props.sortRows &&
+                  this.props.sortRows.includes(field)
+                ) {
                   return this.checkField(field, a, b);
                 }
 
@@ -113,8 +142,11 @@ class DataTable extends Component {
               break;
             default:
               prevState.rows.sort((a, b) => {
-                if (this.props.sortRows && this.props.sortRows.includes(field)) {
-                  return this.checkField(field, a, b, 'asc');
+                if (
+                  this.props.sortRows &&
+                  this.props.sortRows.includes(field)
+                ) {
+                  return this.checkField(field, a, b, "asc");
                 }
 
                 return a[field] < b[field] ? -1 : 1;
@@ -122,9 +154,10 @@ class DataTable extends Component {
           }
 
           prevState.columns.forEach(col => {
-            if(col.sort === 'disabled') return;
+            if (col.sort === "disabled") return;
 
-            col.sort = col.field === field ? col.sort === "desc" ? "asc" : "desc" : '';
+            col.sort =
+              col.field === field ? (col.sort === "desc" ? "asc" : "desc") : "";
           });
 
           return {
@@ -135,9 +168,7 @@ class DataTable extends Component {
         },
         () => this.filterRows()
       );
-    }
-
-    else return;
+    } else return;
   };
 
   filterRows = () => {
@@ -146,28 +177,35 @@ class DataTable extends Component {
         const filteredRows = prevState.rows.filter(row => {
           for (let key in row) {
             if (Object.prototype.hasOwnProperty.call(row, key)) {
-              let stringValue = "";
-
-              if (this.props.sortRows && typeof row[key] !== "string") {
-                stringValue = row[key].props.searchValue;
-              }
-              else {
-                if (row[key]) {
-                  stringValue = row[key].toString();
-                }
-              }
-
               if (
-                stringValue.toLowerCase().match(this.state.search.toLowerCase())
-              )
-                return true;
+                (!this.state.unsearchable.length ||
+                  !this.state.unsearchable.includes(key)) &&
+                typeof row[key] !== "function"
+              ) {
+                let stringValue = "";
+
+                if (this.props.sortRows && typeof row[key] !== "string") {
+                  stringValue = row[key].props.searchValue;
+                } else {
+                  if (row[key]) {
+                    stringValue = row[key].toString();
+                  }
+                }
+
+                if (
+                  stringValue
+                    .toLowerCase()
+                    .match(this.state.search.toLowerCase())
+                )
+                  return true;
+              }
             }
           }
           return false;
         });
         if (filteredRows.length === 0)
           filteredRows.push({
-            message: 'No matching records found',
+            message: "No matching records found",
             colspan: prevState.columns.length
           });
         return { filteredRows, activePage: 0 };
@@ -195,7 +233,7 @@ class DataTable extends Component {
         }
         prevState.activePage =
           prevState.activePage < prevState.pages.length ||
-            prevState.activePage === 0
+          prevState.activePage === 0
             ? prevState.activePage
             : prevState.pages.length - 1;
       } else {
@@ -221,6 +259,7 @@ class DataTable extends Component {
       bordered,
       borderless,
       btn,
+      className,
       children,
       dark,
       data,
@@ -267,8 +306,13 @@ class DataTable extends Component {
       translateScrollHead
     } = this.state;
 
+    const tableClasses = classnames(
+      className && `${className}`,
+      "dataTables_wrapper dt-bootstrap4"
+    );
+
     return (
-      <div className="dataTables_wrapper dt-bootstrap4">
+      <div className={tableClasses}>
         <div className="row">
           <DataTableEntries
             paging={paging}
@@ -379,6 +423,7 @@ DataTable.propTypes = {
   bordered: PropTypes.bool,
   borderless: PropTypes.bool,
   btn: PropTypes.bool,
+  className: PropTypes.string,
   children: PropTypes.node,
   dark: PropTypes.bool,
   data: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
@@ -451,9 +496,9 @@ DataTable.defaultProps = {
   sortable: true,
   small: false,
   striped: false,
-  theadColor: '',
+  theadColor: "",
   theadTextWhite: false,
-  tbodyColor: '',
+  tbodyColor: "",
   tbodyTextWhite: false
 };
 

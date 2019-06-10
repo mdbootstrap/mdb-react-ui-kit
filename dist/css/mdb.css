@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*!
  * Material Design for Bootstrap 4
- * Version: MDB FREE 4.8.1
+ * Version: MDB FREE 4.8.2
  *
  *
  * Copyright: Material Design for Bootstrap
@@ -5886,6 +5886,7 @@ body.scrollable {
   .md-form label {
     position: absolute;
     top: 0;
+    left: 0;
     font-size: 1rem;
     transition: transform .2s ease-out, color .2s ease-out;
     transform-origin: 0% 100%;
@@ -6574,6 +6575,336 @@ table.table-sm td {
 .table-responsive-xl > .table-bordered {
   border-top: 1px solid #dee2e6; }
 
+.masonry-with-columns {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 1000px; }
+  .masonry-with-columns div {
+    flex: 1 0 auto;
+    background: #00997B;
+    color: white;
+    margin: 0 1rem 1rem 0;
+    text-align: center;
+    font-weight: 900;
+    font-size: 2rem; }
+  .masonry-with-columns div:nth-child(1) {
+    height: 278px;
+    line-height: 278px; }
+  .masonry-with-columns div:nth-child(2) {
+    height: 217px;
+    line-height: 217px; }
+  .masonry-with-columns div:nth-child(3) {
+    height: 300px;
+    line-height: 300px; }
+  .masonry-with-columns div:nth-child(4) {
+    height: 236px;
+    line-height: 236px; }
+  .masonry-with-columns div:nth-child(5) {
+    height: 310px;
+    line-height: 310px; }
+  .masonry-with-columns div:nth-child(6) {
+    height: 452px;
+    line-height: 452px; }
+  .masonry-with-columns div:nth-child(7) {
+    height: 177px;
+    line-height: 177px; }
+  .masonry-with-columns div:nth-child(8) {
+    height: 191px;
+    line-height: 191px; }
+  .masonry-with-columns div:nth-child(9) {
+    height: 343px;
+    line-height: 343px; }
+  .masonry-with-columns div:nth-child(10) {
+    height: 336px;
+    line-height: 336px; }
+  .masonry-with-columns div:nth-child(11) {
+    height: 217px;
+    line-height: 217px; }
+  .masonry-with-columns div:nth-child(12) {
+    height: 176px;
+    line-height: 176px; }
+  .masonry-with-columns div:nth-child(13) {
+    height: 277px;
+    line-height: 277px; }
+  .masonry-with-columns div:nth-child(14) {
+    height: 446px;
+    line-height: 446px; }
+  .masonry-with-columns div:nth-child(15) {
+    height: 368px;
+    line-height: 368px; }
+  .masonry-with-columns div:nth-child(16) {
+    height: 310px;
+    line-height: 310px; }
+  .masonry-with-columns div:nth-child(17) {
+    height: 261px;
+    line-height: 261px; }
+  .masonry-with-columns div:nth-child(18) {
+    height: 130px;
+    line-height: 130px; }
+  .masonry-with-columns div:nth-child(19) {
+    height: 426px;
+    line-height: 426px; }
+  .masonry-with-columns div:nth-child(20) {
+    height: 239px;
+    line-height: 239px; }
+  .masonry-with-columns div:nth-child(21) {
+    height: 337px;
+    line-height: 337px; }
+  .masonry-with-columns div:nth-child(22) {
+    height: 269px;
+    line-height: 269px; }
+  .masonry-with-columns div:nth-child(23) {
+    height: 365px;
+    line-height: 365px; }
+  .masonry-with-columns div:nth-child(24) {
+    height: 493px;
+    line-height: 493px; }
+  .masonry-with-columns div:nth-child(25) {
+    height: 369px;
+    line-height: 369px; }
+  .masonry-with-columns div:nth-child(26) {
+    height: 459px;
+    line-height: 459px; }
+  .masonry-with-columns div:nth-child(27) {
+    height: 496px;
+    line-height: 496px; }
+  .masonry-with-columns div:nth-child(28) {
+    height: 355px;
+    line-height: 355px; }
+  .masonry-with-columns div:nth-child(29) {
+    height: 435px;
+    line-height: 435px; }
+  .masonry-with-columns div:nth-child(30) {
+    height: 127px;
+    line-height: 127px; }
+  .masonry-with-columns div:nth-child(31) {
+    height: 484px;
+    line-height: 484px; }
+  .masonry-with-columns div:nth-child(32) {
+    height: 248px;
+    line-height: 248px; }
+  .masonry-with-columns div:nth-child(33) {
+    height: 324px;
+    line-height: 324px; }
+  .masonry-with-columns div:nth-child(34) {
+    height: 352px;
+    line-height: 352px; }
+  .masonry-with-columns div:nth-child(35) {
+    height: 380px;
+    line-height: 380px; }
+  .masonry-with-columns div:nth-child(36) {
+    height: 230px;
+    line-height: 230px; }
+
+.masonry-with-columns-2 {
+  display: flex;
+  flex-wrap: wrap; }
+  .masonry-with-columns-2 div {
+    height: 150px;
+    line-height: 150px;
+    background: #9B1B30;
+    color: white;
+    margin: 0 1rem 1rem 0;
+    text-align: center;
+    font-weight: 900;
+    font-size: 2rem;
+    flex: 1 0 auto; }
+  .masonry-with-columns-2 div:nth-child(1) {
+    width: 431px; }
+  .masonry-with-columns-2 div:nth-child(2) {
+    width: 92px; }
+  .masonry-with-columns-2 div:nth-child(3) {
+    width: 74px; }
+  .masonry-with-columns-2 div:nth-child(4) {
+    width: 322px; }
+  .masonry-with-columns-2 div:nth-child(5) {
+    width: 454px; }
+  .masonry-with-columns-2 div:nth-child(6) {
+    width: 119px; }
+  .masonry-with-columns-2 div:nth-child(7) {
+    width: 106px; }
+  .masonry-with-columns-2 div:nth-child(8) {
+    width: 98px; }
+  .masonry-with-columns-2 div:nth-child(9) {
+    width: 163px; }
+  .masonry-with-columns-2 div:nth-child(10) {
+    width: 149px; }
+  .masonry-with-columns-2 div:nth-child(11) {
+    width: 151px; }
+  .masonry-with-columns-2 div:nth-child(12) {
+    width: 344px; }
+  .masonry-with-columns-2 div:nth-child(13) {
+    width: 309px; }
+  .masonry-with-columns-2 div:nth-child(14) {
+    width: 446px; }
+  .masonry-with-columns-2 div:nth-child(15) {
+    width: 290px; }
+  .masonry-with-columns-2 div:nth-child(16) {
+    width: 399px; }
+  .masonry-with-columns-2 div:nth-child(17) {
+    width: 286px; }
+  .masonry-with-columns-2 div:nth-child(18) {
+    width: 254px; }
+  .masonry-with-columns-2 div:nth-child(19) {
+    width: 244px; }
+  .masonry-with-columns-2 div:nth-child(20) {
+    width: 385px; }
+  .masonry-with-columns-2 div:nth-child(21) {
+    width: 208px; }
+  .masonry-with-columns-2 div:nth-child(22) {
+    width: 384px; }
+  .masonry-with-columns-2 div:nth-child(23) {
+    width: 238px; }
+  .masonry-with-columns-2 div:nth-child(24) {
+    width: 390px; }
+  .masonry-with-columns-2 div:nth-child(25) {
+    width: 190px; }
+  .masonry-with-columns-2 div:nth-child(26) {
+    width: 447px; }
+  .masonry-with-columns-2 div:nth-child(27) {
+    width: 262px; }
+  .masonry-with-columns-2 div:nth-child(28) {
+    width: 150px; }
+  .masonry-with-columns-2 div:nth-child(29) {
+    width: 428px; }
+  .masonry-with-columns-2 div:nth-child(30) {
+    width: 171px; }
+  .masonry-with-columns-2 div:nth-child(31) {
+    width: 264px; }
+  .masonry-with-columns-2 div:nth-child(32) {
+    width: 465px; }
+  .masonry-with-columns-2 div:nth-child(33) {
+    width: 232px; }
+  .masonry-with-columns-2 div:nth-child(34) {
+    width: 378px; }
+  .masonry-with-columns-2 div:nth-child(35) {
+    width: 214px; }
+  .masonry-with-columns-2 div:nth-child(36) {
+    width: 399px; }
+
+.masonry-with-flex {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 1000px; }
+  .masonry-with-flex div {
+    width: auto;
+    background: #975A58;
+    color: white;
+    margin: 0 1rem 1rem 0;
+    text-align: center;
+    font-weight: 900;
+    font-size: 2rem; }
+  .masonry-with-flex div:nth-child(1) {
+    height: 108px;
+    line-height: 108px; }
+  .masonry-with-flex div:nth-child(2) {
+    height: 153px;
+    line-height: 153px; }
+  .masonry-with-flex div:nth-child(3) {
+    height: 485px;
+    line-height: 485px; }
+  .masonry-with-flex div:nth-child(4) {
+    height: 393px;
+    line-height: 393px; }
+  .masonry-with-flex div:nth-child(5) {
+    height: 175px;
+    line-height: 175px; }
+  .masonry-with-flex div:nth-child(6) {
+    height: 349px;
+    line-height: 349px; }
+  .masonry-with-flex div:nth-child(7) {
+    height: 309px;
+    line-height: 309px; }
+  .masonry-with-flex div:nth-child(8) {
+    height: 131px;
+    line-height: 131px; }
+  .masonry-with-flex div:nth-child(9) {
+    height: 308px;
+    line-height: 308px; }
+  .masonry-with-flex div:nth-child(10) {
+    height: 430px;
+    line-height: 430px; }
+  .masonry-with-flex div:nth-child(11) {
+    height: 354px;
+    line-height: 354px; }
+  .masonry-with-flex div:nth-child(12) {
+    height: 462px;
+    line-height: 462px; }
+  .masonry-with-flex div:nth-child(13) {
+    height: 387px;
+    line-height: 387px; }
+  .masonry-with-flex div:nth-child(14) {
+    height: 294px;
+    line-height: 294px; }
+  .masonry-with-flex div:nth-child(15) {
+    height: 238px;
+    line-height: 238px; }
+  .masonry-with-flex div:nth-child(16) {
+    height: 419px;
+    line-height: 419px; }
+  .masonry-with-flex div:nth-child(17) {
+    height: 165px;
+    line-height: 165px; }
+  .masonry-with-flex div:nth-child(18) {
+    height: 185px;
+    line-height: 185px; }
+  .masonry-with-flex div:nth-child(19) {
+    height: 438px;
+    line-height: 438px; }
+  .masonry-with-flex div:nth-child(20) {
+    height: 184px;
+    line-height: 184px; }
+  .masonry-with-flex div:nth-child(21) {
+    height: 463px;
+    line-height: 463px; }
+  .masonry-with-flex div:nth-child(22) {
+    height: 425px;
+    line-height: 425px; }
+  .masonry-with-flex div:nth-child(23) {
+    height: 386px;
+    line-height: 386px; }
+  .masonry-with-flex div:nth-child(24) {
+    height: 380px;
+    line-height: 380px; }
+  .masonry-with-flex div:nth-child(25) {
+    height: 393px;
+    line-height: 393px; }
+  .masonry-with-flex div:nth-child(26) {
+    height: 348px;
+    line-height: 348px; }
+  .masonry-with-flex div:nth-child(27) {
+    height: 252px;
+    line-height: 252px; }
+  .masonry-with-flex div:nth-child(28) {
+    height: 250px;
+    line-height: 250px; }
+  .masonry-with-flex div:nth-child(29) {
+    height: 221px;
+    line-height: 221px; }
+  .masonry-with-flex div:nth-child(30) {
+    height: 176px;
+    line-height: 176px; }
+  .masonry-with-flex div:nth-child(31) {
+    height: 335px;
+    line-height: 335px; }
+  .masonry-with-flex div:nth-child(32) {
+    height: 211px;
+    line-height: 211px; }
+  .masonry-with-flex div:nth-child(33) {
+    height: 161px;
+    line-height: 161px; }
+  .masonry-with-flex div:nth-child(34) {
+    height: 477px;
+    line-height: 477px; }
+  .masonry-with-flex div:nth-child(35) {
+    height: 108px;
+    line-height: 108px; }
+  .masonry-with-flex div:nth-child(36) {
+    height: 263px;
+    line-height: 263px; }
+
 ul.stepper {
   counter-reset: section;
   overflow-y: auto;
@@ -6746,13 +7077,7 @@ div.dataTables_wrapper div.dataTables_length.d-flex.flex-row label {
 div.dataTables_wrapper div.dataTables_length.d-flex.flex-row .select-wrapper.mdb-select span, div.dataTables_wrapper div.dataTables_length.d-flex.flex-row .select-wrapper.mdb-select .select-dropdown {
   margin-top: 1rem; }
 
-div.dataTables_wrapper div.dataTables_length label {
-  text-align: left;
-  font-weight: normal;
-  padding-top: .5rem;
-  padding-bottom: .5rem; }
-
-div.dataTables_wrapper div.dataTables_filter label {
+div.dataTables_wrapper div.dataTables_length label, div.dataTables_wrapper div.dataTables_filter label {
   text-align: left;
   font-weight: normal;
   padding-top: .5rem;
@@ -6763,22 +7088,19 @@ div.dataTables_wrapper div.dataTables_length select, div.dataTables_wrapper div.
 
 div.dataTables_wrapper div.dataTables_filter {
   text-align: right; }
-  div.dataTables_wrapper div.dataTables_filter select {
+  div.dataTables_wrapper div.dataTables_filter select,
+  div.dataTables_wrapper div.dataTables_filter input {
     width: auto; }
   div.dataTables_wrapper div.dataTables_filter input {
-    width: auto;
     margin-left: .5rem;
     display: inline-block; }
 
-div.dataTables_wrapper div.dataTables_info {
+div.dataTables_wrapper div.dataTables_info, div.dataTables_wrapper div.dataTables_paginate {
   font-weight: normal;
   padding-top: 1rem;
   padding-bottom: 1rem; }
 
 div.dataTables_wrapper div.dataTables_paginate {
-  font-weight: normal;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
   text-align: right;
   margin: 0; }
   div.dataTables_wrapper div.dataTables_paginate ul.pagination {
@@ -6803,10 +7125,10 @@ div.dataTables_wrapper div.dataTables_paginate {
 .bs-select select {
   display: inline-block !important; }
 
-table.dataTable thead > tr > th.sorting_asc, table.dataTable thead > tr > th.sorting_desc, table.dataTable thead > tr > th.sorting {
-  padding-right: 30px; }
-
-table.dataTable thead > tr > td.sorting_asc, table.dataTable thead > tr > td.sorting_desc, table.dataTable thead > tr > td.sorting {
+table.dataTable thead > tr > th.sorting_asc, table.dataTable thead > tr > th.sorting_desc, table.dataTable thead > tr > th.sorting,
+table.dataTable thead > tr > td.sorting_asc,
+table.dataTable thead > tr > td.sorting_desc,
+table.dataTable thead > tr > td.sorting {
   padding-right: 30px; }
 
 table.dataTable thead > tr > th:active, table.dataTable thead > tr > td:active {
@@ -6816,31 +7138,15 @@ table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTa
   cursor: pointer;
   position: relative; }
 
-table.dataTable thead .sorting:before, table.dataTable thead .sorting:after {
-  position: absolute;
-  bottom: 0.9em;
-  display: block;
-  opacity: 0.3; }
-
-table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_asc:after {
-  position: absolute;
-  bottom: 0.9em;
-  display: block;
-  opacity: 0.3; }
-
-table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_desc:after {
-  position: absolute;
-  bottom: 0.9em;
-  display: block;
-  opacity: 0.3; }
-
-table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_asc_disabled:after {
-  position: absolute;
-  bottom: 0.9em;
-  display: block;
-  opacity: 0.3; }
-
-table.dataTable thead .sorting_desc_disabled:before, table.dataTable thead .sorting_desc_disabled:after {
+table.dataTable thead .sorting:before, table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before,
+table.dataTable thead .sorting_desc_disabled:after {
   position: absolute;
   bottom: 0.9em;
   display: block;
@@ -6848,17 +7154,16 @@ table.dataTable thead .sorting_desc_disabled:before, table.dataTable thead .sort
 
 table.dataTable thead .sorting:before, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_desc_disabled:before {
   right: 1em;
-  content: "\f0de";
-  font-family: 'Font Awesome\ 5 Free';
-  font-weight: 900;
-  font-size: 1rem; }
+  content: "\f0de"; }
 
 table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after {
-  right: 0.5em;
   content: "\f0dd";
+  right: 16px; }
+
+table.dataTable thead .sorting:before, table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:before, table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorting_desc_disabled:before,
+table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after {
   font-family: 'Font Awesome\ 5 Free';
   font-weight: 900;
-  right: 16px;
   font-size: 1rem; }
 
 table.dataTable thead .sorting_asc:before, table.dataTable thead .sorting_desc:after {
@@ -6873,7 +7178,6 @@ table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorti
  * About MDBootstrap: https://mdbootstrap.com/
  *
  * This combined file was created taking that code from this webstie:
-
  *  https://cdn.datatables.net/select/1.2.7/css/select.dataTables.min.css
  *
  *
@@ -6884,37 +7188,27 @@ table.dataTable thead .sorting_asc_disabled:before, table.dataTable thead .sorti
  * Included libraries:
  *   DataTables 1.10.18
  */
-table.dataTable tbody > tr.selected, table.dataTable tbody > tr > .selected {
+table.dataTable tbody > tr.selected,
+table.dataTable tbody > tr > .selected {
   background-color: #B0BED9; }
 
-table.dataTable.stripe tbody > tr.odd.selected, table.dataTable.stripe tbody > tr.odd > .selected {
+table.dataTable.stripe tbody > tr.odd.selected,
+table.dataTable.stripe tbody > tr.odd > .selected, table.dataTable.display tbody > tr.odd.selected,
+table.dataTable.display tbody > tr.odd > .selected {
   background-color: #acbad4; }
 
-table.dataTable.display tbody > tr.odd.selected, table.dataTable.display tbody > tr.odd > .selected {
-  background-color: #acbad4; }
-
-table.dataTable.hover tbody > tr.selected:hover, table.dataTable.hover tbody > tr > .selected:hover {
+table.dataTable.hover tbody > tr.selected:hover,
+table.dataTable.hover tbody > tr > .selected:hover, table.dataTable.display tbody > tr.selected:hover,
+table.dataTable.display tbody > tr > .selected:hover {
   background-color: #aab7d1; }
 
-table.dataTable.display tbody > tr.selected:hover, table.dataTable.display tbody > tr > .selected:hover {
-  background-color: #aab7d1; }
-
-table.dataTable.order-column tbody > tr.selected > .sorting_1, table.dataTable.order-column tbody > tr.selected > .sorting_2, table.dataTable.order-column tbody > tr.selected > .sorting_3 {
+table.dataTable.order-column tbody > tr.selected > .sorting_1, table.dataTable.order-column tbody > tr.selected > .sorting_2, table.dataTable.order-column tbody > tr.selected > .sorting_3, table.dataTable.display tbody > tr.selected > .sorting_1, table.dataTable.display tbody > tr.selected > .sorting_2, table.dataTable.display tbody > tr.selected > .sorting_3 {
   background-color: #acbad5; }
 
-table.dataTable.order-column tbody > tr > .selected {
+table.dataTable.order-column tbody > tr > .selected, table.dataTable.display tbody > tr > .selected {
   background-color: #acbad5; }
 
-table.dataTable.display tbody > tr.selected > .sorting_1, table.dataTable.display tbody > tr.selected > .sorting_2, table.dataTable.display tbody > tr.selected > .sorting_3 {
-  background-color: #acbad5; }
-
-table.dataTable.display tbody > tr > .selected {
-  background-color: #acbad5; }
-
-table.dataTable.display tbody > tr.odd.selected > .sorting_1 {
-  background-color: #a6b4cd; }
-
-table.dataTable.order-column.stripe tbody > tr.odd.selected > .sorting_1 {
+table.dataTable.display tbody > tr.odd.selected > .sorting_1, table.dataTable.order-column.stripe tbody > tr.odd.selected > .sorting_1 {
   background-color: #a6b4cd; }
 
 table.dataTable.display tbody > tr.odd.selected > .sorting_2, table.dataTable.order-column.stripe tbody > tr.odd.selected > .sorting_2 {
@@ -6947,16 +7241,13 @@ table.dataTable.display tbody > tr.selected:hover > .sorting_2, table.dataTable.
 table.dataTable.display tbody > tr.selected:hover > .sorting_3, table.dataTable.order-column.hover tbody > tr.selected:hover > .sorting_3 {
   background-color: #a5b2cb; }
 
-table.dataTable.display tbody > tr:hover > .selected, table.dataTable.display tbody > tr > .selected:hover {
-  background-color: #a2aec7; }
-
-table.dataTable.order-column.hover tbody > tr:hover > .selected, table.dataTable.order-column.hover tbody > tr > .selected:hover {
+table.dataTable.display tbody > tr:hover > .selected, table.dataTable.display tbody > tr > .selected:hover, table.dataTable.order-column.hover tbody > tr:hover > .selected, table.dataTable.order-column.hover tbody > tr > .selected:hover {
   background-color: #a2aec7; }
 
 table.dataTable tbody td.select-checkbox, table.dataTable tbody th.select-checkbox {
   position: relative; }
 
-table.dataTable tbody td.select-checkbox:before, table.dataTable tbody td.select-checkbox:after {
+table.dataTable tbody td.select-checkbox:before, table.dataTable tbody td.select-checkbox:after, table.dataTable tbody th.select-checkbox:before, table.dataTable tbody th.select-checkbox:after {
   display: block;
   position: absolute;
   top: 1.2em;
@@ -6965,23 +7256,16 @@ table.dataTable tbody td.select-checkbox:before, table.dataTable tbody td.select
   height: 12px;
   box-sizing: border-box; }
 
-table.dataTable tbody th.select-checkbox:before, table.dataTable tbody th.select-checkbox:after {
-  display: block;
-  position: absolute;
-  top: 1.2em;
-  left: 50%;
-  width: 12px;
-  height: 12px;
-  box-sizing: border-box; }
-
-table.dataTable tbody td.select-checkbox:before, table.dataTable tbody th.select-checkbox:before {
+table.dataTable tbody td.select-checkbox:before,
+table.dataTable tbody th.select-checkbox:before {
   content: ' ';
   margin-top: 4px;
   margin-left: -6px;
   border: 1px solid black;
   border-radius: 3px; }
 
-table.dataTable tr.selected td.select-checkbox:after, table.dataTable tr.selected th.select-checkbox:after {
+table.dataTable tr.selected td.select-checkbox:after,
+table.dataTable tr.selected th.select-checkbox:after {
   content: '\2714';
   margin-top: 0px;
   margin-left: -4px;

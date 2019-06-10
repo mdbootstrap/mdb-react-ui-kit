@@ -53,6 +53,7 @@ import NavbarNav from './components/NavbarNav';
 import NavbarToggler from './components/NavbarToggler';
 import NavItem from './components/NavItem';
 import NavLink from './components/NavLink';
+import Notification from './components/Notification';
 import Pagination from './components/Pagination';
 import PageItem from './components/PageItem';
 import PageLink from './components/PageLink';
@@ -63,6 +64,8 @@ import PopoverHeader from './components/PopoverHeader';
 import Progress from './components/Progress';
 import Waves from './components/Waves';
 import Row from './components/Row';
+import TabPane from './components/TabPane';
+import TabContent from './components/TabContent';
 import Table from './components/Table';
 import TableBody from './components/TableBody';
 import TableHead from './components/TableHead';
@@ -128,6 +131,7 @@ import { MDBNavbarNav } from './components/NavbarNav';
 import { MDBNavbarToggler } from './components/NavbarToggler';
 import { MDBNavItem } from './components/NavItem';
 import { MDBNavLink } from './components/NavLink';
+import { MDBNotification } from './components/Notification';
 import { MDBPagination } from './components/Pagination';
 import { MDBPageItem } from './components/PageItem';
 import { MDBPageNav } from './components/PageLink';
@@ -138,6 +142,8 @@ import { MDBPopoverHeader } from './components/PopoverHeader';
 import { MDBProgress } from './components/Progress';
 import { MDBWaves } from './components/Waves';
 import { MDBRow } from './components/Row';
+import { MDBTabPane } from './components/TabPane';
+import { MDBTabContent } from './components/TabContent';
 import { MDBTable } from './components/Table';
 import { MDBTableBody } from './components/TableBody';
 import { MDBTableHead } from './components/TableHead';
@@ -204,6 +210,7 @@ export {
   NavbarToggler,
   NavItem,
   NavLink,
+  Notification,
   Pagination,
   PageItem,
   PageLink,
@@ -214,6 +221,8 @@ export {
   Progress,
   Waves,
   Row,
+  TabPane,
+  TabContent,
   Table,
   TableBody,
   TableHead,
@@ -221,7 +230,6 @@ export {
   Tooltip,
   View,
   Iframe,
-
   MDBIframe,
   MDBAnimation,
   MDBBadge,
@@ -279,6 +287,7 @@ export {
   MDBNavbarToggler,
   MDBNavItem,
   MDBNavLink,
+  MDBNotification,
   MDBPagination,
   MDBPageItem,
   MDBPageNav,
@@ -289,6 +298,8 @@ export {
   MDBProgress,
   MDBWaves,
   MDBRow,
+  MDBTabPane,
+  MDBTabContent,
   MDBTable,
   MDBTableBody,
   MDBTableHead,

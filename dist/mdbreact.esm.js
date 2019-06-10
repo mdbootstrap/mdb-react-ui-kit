@@ -3441,6 +3441,19 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(DataTable).call(this, props));
 
+    _defineProperty(_assertThisInitialized(_this), "setUnsearchable", function (columns) {
+      var unsearchable = [];
+      columns.forEach(function (column) {
+        if (column.searchable !== undefined && column.searchable === false) {
+          unsearchable.push(column.field);
+        }
+      });
+
+      _this.setState({
+        unsearchable: unsearchable
+      });
+    });
+
     _defineProperty(_assertThisInitialized(_this), "fetchData", function (link) {
       fetch(link).then(function (res) {
         return res.json();
@@ -3483,15 +3496,15 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "checkFieldValue", function (array, field) {
-      return array[field] && typeof array[field] !== 'string' ? array[field].props.searchValue : array[field];
+      return array[field] && typeof array[field] !== "string" ? array[field].props.searchValue : array[field];
     });
 
     _defineProperty(_assertThisInitialized(_this), "checkField", function (field, a, b) {
-      var direction = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 'desc';
+      var direction = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "desc";
       var _ref = [_this.checkFieldValue(a, field), _this.checkFieldValue(b, field)],
           aField = _ref[0],
           bField = _ref[1];
-      return direction === 'desc' ? aField < bField : aField > bField;
+      return direction === "desc" ? aField < bField : aField > bField;
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleSort", function (field, sort) {
@@ -3512,7 +3525,7 @@ function (_Component) {
             default:
               prevState.rows.sort(function (a, b) {
                 if (_this.props.sortRows && _this.props.sortRows.includes(field)) {
-                  return _this.checkField(field, a, b, 'asc');
+                  return _this.checkField(field, a, b, "asc");
                 }
 
                 return a[field] < b[field] ? -1 : 1;
@@ -3520,8 +3533,8 @@ function (_Component) {
           }
 
           prevState.columns.forEach(function (col) {
-            if (col.sort === 'disabled') return;
-            col.sort = col.field === field ? col.sort === "desc" ? "asc" : "desc" : '';
+            if (col.sort === "disabled") return;
+            col.sort = col.field === field ? col.sort === "desc" ? "asc" : "desc" : "";
           });
           return {
             rows: prevState.rows,
@@ -3539,24 +3552,26 @@ function (_Component) {
         var filteredRows = prevState.rows.filter(function (row) {
           for (var key in row) {
             if (Object.prototype.hasOwnProperty.call(row, key)) {
-              var stringValue = "";
+              if ((!_this.state.unsearchable.length || !_this.state.unsearchable.includes(key)) && typeof row[key] !== "function") {
+                var stringValue = "";
 
-              if (_this.props.sortRows && typeof row[key] !== "string") {
-                stringValue = row[key].props.searchValue;
-              } else {
-                if (row[key]) {
-                  stringValue = row[key].toString();
+                if (_this.props.sortRows && typeof row[key] !== "string") {
+                  stringValue = row[key].props.searchValue;
+                } else {
+                  if (row[key]) {
+                    stringValue = row[key].toString();
+                  }
                 }
-              }
 
-              if (stringValue.toLowerCase().match(_this.state.search.toLowerCase())) return true;
+                if (stringValue.toLowerCase().match(_this.state.search.toLowerCase())) return true;
+              }
             }
           }
 
           return false;
         });
         if (filteredRows.length === 0) filteredRows.push({
-          message: 'No matching records found',
+          message: "No matching records found",
           colspan: prevState.columns.length
         });
         return {
@@ -3610,7 +3625,8 @@ function (_Component) {
       filteredRows: props.data.rows || [],
       pages: [],
       rows: props.data.rows || [],
-      search: '',
+      search: "",
+      unsearchable: [],
       translateScrollHead: 0,
       order: props.order || [],
       sorted: false
@@ -3628,11 +3644,12 @@ function (_Component) {
   _createClass(DataTable, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      if (typeof this.props.data === 'string') {
+      if (typeof this.props.data === "string") {
         this.fetchData(this.props.data);
       }
 
       this.state.order.length && this.handleSort(this.state.order[0], this.state.order[1]);
+      this.setUnsearchable(this.state.columns);
     }
   }, {
     key: "componentDidUpdate",
@@ -3640,7 +3657,7 @@ function (_Component) {
       var _this2 = this;
 
       if (prevProps.data !== this.props.data) {
-        if (typeof this.props.data === 'string') {
+        if (typeof this.props.data === "string") {
           this.fetchData(this.props.data);
         } else {
           this.setState({
@@ -3651,6 +3668,8 @@ function (_Component) {
             return _this2.paginateRows();
           });
         }
+
+        this.setUnsearchable(this.state.columns);
       }
     }
   }, {
@@ -3661,6 +3680,7 @@ function (_Component) {
           bordered = _this$props.bordered,
           borderless = _this$props.borderless,
           btn = _this$props.btn,
+          className = _this$props.className,
           children = _this$props.children,
           dark = _this$props.dark,
           data = _this$props.data,
@@ -3694,7 +3714,7 @@ function (_Component) {
           theadColor = _this$props.theadColor,
           theadTextWhite = _this$props.theadTextWhite,
           sortRows = _this$props.sortRows,
-          attributes = _objectWithoutProperties(_this$props, ["autoWidth", "bordered", "borderless", "btn", "children", "dark", "data", "displayEntries", "entriesOptions", "entriesLabel", "exportToCSV", "fixed", "hover", "info", "infoLabel", "maxHeight", "order", "pagesAmount", "paging", "paginationLabel", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "searching", "searchLabel", "scrollX", "scrollY", "small", "sortable", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite", "sortRows"]);
+          attributes = _objectWithoutProperties(_this$props, ["autoWidth", "bordered", "borderless", "btn", "className", "children", "dark", "data", "displayEntries", "entriesOptions", "entriesLabel", "exportToCSV", "fixed", "hover", "info", "infoLabel", "maxHeight", "order", "pagesAmount", "paging", "paginationLabel", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "searching", "searchLabel", "scrollX", "scrollY", "small", "sortable", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite", "sortRows"]);
 
       var _this$state = this.state,
           columns = _this$state.columns,
@@ -3704,8 +3724,9 @@ function (_Component) {
           activePage = _this$state.activePage,
           search = _this$state.search,
           translateScrollHead = _this$state.translateScrollHead;
+      var tableClasses = classNames(className && "".concat(className), "dataTables_wrapper dt-bootstrap4");
       return React.createElement("div", {
-        className: "dataTables_wrapper dt-bootstrap4"
+        className: tableClasses
       }, React.createElement("div", {
         className: "row"
       }, React.createElement(DataTableEntries, {
@@ -3804,6 +3825,7 @@ DataTable.propTypes = {
   bordered: propTypes.bool,
   borderless: propTypes.bool,
   btn: propTypes.bool,
+  className: propTypes.string,
   children: propTypes.node,
   dark: propTypes.bool,
   data: propTypes.oneOfType([propTypes.object, propTypes.string]),
@@ -3871,9 +3893,9 @@ DataTable.defaultProps = {
   sortable: true,
   small: false,
   striped: false,
-  theadColor: '',
+  theadColor: "",
   theadTextWhite: false,
-  tbodyColor: '',
+  tbodyColor: "",
   tbodyTextWhite: false
 };
 
@@ -5723,6 +5745,159 @@ NavLink.defaultProps = {
   disabled: false
 };
 
+var MDBCloseIcon = function MDBCloseIcon(_ref) {
+  var onClick = _ref.onClick,
+      className = _ref.className,
+      ariaLabel = _ref.ariaLabel,
+      props = _objectWithoutProperties(_ref, ["onClick", "className", "ariaLabel"]);
+
+  var onClickHandler = function onClickHandler(e) {
+    onClick && onClick(e);
+  };
+
+  var btnClasses = className ? ['close'].concat(_toConsumableArray(className.split(" "))) : ['close'];
+  return React.createElement("button", _extends({
+    "data-test": "close-button",
+    type: "button"
+  }, props, {
+    className: btnClasses.join(" "),
+    onClick: onClickHandler,
+    "aria-label": ariaLabel
+  }), React.createElement("span", {
+    "aria-hidden": "true"
+  }, "\xD7"));
+};
+MDBCloseIcon.defaultProps = {
+  ariaLabel: "Close"
+};
+MDBCloseIcon.propTypes = {
+  className: propTypes.string,
+  ariaLabel: propTypes.string,
+  onClick: propTypes.func
+};
+
+var Notification =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Notification, _React$Component);
+
+  function Notification() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, Notification);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Notification)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      componentState: _this.props.show ? "show" : "hide"
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "hide", function () {
+      var time = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      setTimeout(function () {
+        _this.setState({
+          componentState: ""
+        }, function () {
+          setTimeout(function () {
+            _this.setState({
+              componentState: "hide"
+            });
+          }, 150);
+        });
+      }, time);
+    });
+
+    return _this;
+  }
+
+  _createClass(Notification, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.autohide > 0) this.hide(this.props.autohide);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$props = this.props,
+          Tag = _this$props.tag,
+          className = _this$props.className,
+          show = _this$props.show,
+          fade = _this$props.fade,
+          message = _this$props.message,
+          bodyClassName = _this$props.bodyClassName,
+          labelColor = _this$props.labelColor,
+          title = _this$props.title,
+          titleClassName = _this$props.titleClassName,
+          text = _this$props.text,
+          closeClassName = _this$props.closeClassName,
+          attributes = _objectWithoutProperties(_this$props, ["tag", "className", "show", "fade", "message", "bodyClassName", "labelColor", "title", "titleClassName", "text", "closeClassName"]);
+
+      var classes = classNames("toast", fade && "fade", this.state.componentState, className);
+      var headerClasses = classNames("toast-header", titleClassName);
+      var bodyClasses = classNames("toast-body", bodyClassName);
+      var closeClasses = classNames("ml-2", "mb-1", closeClassName);
+      return React.createElement(Tag, _extends({}, attributes, {
+        className: classes
+      }), React.createElement("div", {
+        className: headerClasses
+      }, React.createElement("svg", {
+        className: "rounded mr-2",
+        width: "20",
+        height: "20",
+        xmlns: "http://www.w3.org/2000/svg",
+        preserveAspectRatio: "xMidYMid slice",
+        focusable: "false",
+        role: "img"
+      }, React.createElement("rect", {
+        fill: labelColor,
+        width: "100%",
+        height: "100%"
+      })), React.createElement("strong", {
+        className: "mr-auto"
+      }, title), React.createElement("small", null, text), React.createElement(MDBCloseIcon, {
+        className: closeClasses,
+        onClick: function onClick() {
+          return _this2.hide();
+        }
+      })), React.createElement("div", {
+        className: bodyClasses
+      }, message));
+    }
+  }]);
+
+  return Notification;
+}(React.Component);
+
+Notification.propTypes = {
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  show: propTypes.bool,
+  fade: propTypes.bool,
+  autohide: propTypes.number,
+  labelColor: propTypes.string,
+  title: propTypes.string,
+  text: propTypes.string,
+  titleColor: propTypes.string,
+  titleClassName: propTypes.string,
+  closeClassName: propTypes.string,
+  bodyClassName: propTypes.string,
+  bodyColor: propTypes.string,
+  message: propTypes.string
+};
+Notification.defaultProps = {
+  tag: "div",
+  labelColor: "#007aff",
+  closeClassName: "text-dark"
+};
+
 var Popper = function Popper(_ref) {
   var children = _ref.children,
       clickable = _ref.clickable,
@@ -6023,6 +6198,103 @@ Row.propTypes = {
 Row.defaultProps = {
   tag: "div"
 };
+
+var TabPane =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(TabPane, _React$Component);
+
+  function TabPane() {
+    _classCallCheck(this, TabPane);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(TabPane).apply(this, arguments));
+  }
+
+  _createClass(TabPane, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          className = _this$props.className,
+          tabId = _this$props.tabId,
+          attributes = _objectWithoutProperties(_this$props, ["className", "tabId"]);
+
+      var classes = classNames("tab-pane", {
+        active: tabId === this.context.activeItemId
+      }, className);
+      return React.createElement("div", _extends({}, attributes, {
+        className: classes,
+        role: "tabpanel"
+      }));
+    }
+  }]);
+
+  return TabPane;
+}(React.Component);
+
+TabPane.contextTypes = {
+  activeItemId: propTypes.any
+};
+TabPane.propTypes = {
+  tabId: propTypes.any,
+  className: propTypes.string
+};
+
+var propTypes$2 = {
+  activeItem: propTypes.any,
+  tabId: propTypes.any,
+  className: propTypes.string
+};
+
+var TabContent =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(TabContent, _React$Component);
+
+  function TabContent(props) {
+    var _this;
+
+    _classCallCheck(this, TabContent);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(TabContent).call(this, props));
+    _this.state = {
+      activeItem: _this.props.activeItem
+    };
+    return _this;
+  }
+
+  _createClass(TabContent, [{
+    key: "getChildContext",
+    value: function getChildContext() {
+      return {
+        activeItemId: this.state.activeItem
+      };
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var className = this.props.className;
+      var attributes = omit(this.props, Object.keys(propTypes$2));
+      var classes = classNames("tab-content", className);
+      return React.createElement("div", _extends({}, attributes, {
+        className: classes
+      }));
+    }
+  }], [{
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(nextProps, prevState) {
+      return prevState.activeItem !== nextProps.activeItem ? {
+        activeItem: nextProps.activeItem
+      } : null;
+    }
+  }]);
+
+  return TabContent;
+}(React.Component);
+
+TabContent.childContextTypes = {
+  activeItemId: propTypes.any
+};
+TabContent.propTypes = propTypes$2;
 
 var TableHead = function TableHead(props) {
   var children = props.children,
@@ -6372,37 +6644,6 @@ Dropdown.childContextTypes = {
   dropleft: propTypes.bool.isRequired
 };
 
-var MDBCloseIcon = function MDBCloseIcon(_ref) {
-  var onClick = _ref.onClick,
-      className = _ref.className,
-      ariaLabel = _ref.ariaLabel,
-      props = _objectWithoutProperties(_ref, ["onClick", "className", "ariaLabel"]);
-
-  var onClickHandler = function onClickHandler(e) {
-    onClick && onClick(e);
-  };
-
-  var btnClasses = className ? ['close'].concat(_toConsumableArray(className.split(" "))) : ['close'];
-  return React.createElement("button", _extends({
-    "data-test": "close-button",
-    type: "button"
-  }, props, {
-    className: btnClasses.join(" "),
-    onClick: onClickHandler,
-    "aria-label": ariaLabel
-  }), React.createElement("span", {
-    "aria-hidden": "true"
-  }, "\xD7"));
-};
-MDBCloseIcon.defaultProps = {
-  ariaLabel: "Close"
-};
-MDBCloseIcon.propTypes = {
-  className: propTypes.string,
-  ariaLabel: propTypes.string,
-  onClick: propTypes.func
-};
-
 // FREE
 
-export { Alert, Animation, Badge, Breadcrumb, BreadcrumbItem, Button, ButtonGroup, ButtonToolbar, Card, CardBody, CardFooter, CardGroup, CardHeader, CardImage, CardText, CardTitle, Carousel, CarouselCaption, Control as CarouselControl, CarouselIndicator, CarouselIndicators, CarouselInner, CarouselItem, Col, Collapse, Container, DataTable, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, EdgeHeader, Fa, Footer, FormInline, FreeBird, HamburgerToggler, Iframe, Input, InputNumeric, Jumbotron, ListGroup, ListGroupItem, Alert as MDBAlert, Animation as MDBAnimation, Badge as MDBBadge, Breadcrumb as MDBBreadcrumb, BreadcrumbItem as MDBBreadcrumbItem, Button as MDBBtn, ButtonGroup as MDBBtnGroup, ButtonToolbar as MDBBtnToolbar, Card as MDBCard, CardBody as MDBCardBody, CardFooter as MDBCardFooter, CardGroup as MDBCardGroup, CardHeader as MDBCardHeader, CardImage as MDBCardImage, CardText as MDBCardText, CardTitle as MDBCardTitle, Carousel as MDBCarousel, CarouselCaption as MDBCarouselCaption, CarouselIndicator as MDBCarouselIndicator, CarouselIndicators as MDBCarouselIndicators, CarouselInner as MDBCarouselInner, CarouselItem as MDBCarouselItem, MDBCloseIcon, Col as MDBCol, Collapse as MDBCollapse, Container as MDBContainer, Control as MDBControl, DataTable as MDBDataTable, Dropdown as MDBDropdown, DropdownItem as MDBDropdownItem, DropdownMenu as MDBDropdownMenu, DropdownToggle as MDBDropdownToggle, EdgeHeader as MDBEdgeHeader, Footer as MDBFooter, FormInline as MDBFormInline, FreeBird as MDBFreeBird, HamburgerToggler as MDBHamburgerToggler, Fa as MDBIcon, Iframe as MDBIframe, Input as MDBInput, InputNumeric as MDBInputSelect, Jumbotron as MDBJumbotron, ListGroup as MDBListGroup, ListGroupItem as MDBListGroupItem, Mask as MDBMask, Media as MDBMedia, Modal as MDBModal, ModalBody as MDBModalBody, ModalFooter as MDBModalFooter, ModalHeader as MDBModalHeader, Nav as MDBNav, NavItem as MDBNavItem, NavLink as MDBNavLink, Navbar as MDBNavbar, NavbarBrand as MDBNavbarBrand, NavbarNav as MDBNavbarNav, NavbarToggler as MDBNavbarToggler, PageItem as MDBPageItem, PageLink as MDBPageNav, Pagination as MDBPagination, Popper as MDBPopover, PopoverBody as MDBPopoverBody, PopoverHeader as MDBPopoverHeader, Popper as MDBPopper, Progress as MDBProgress, Row as MDBRow, Table as MDBTable, TableBody as MDBTableBody, TableFoot as MDBTableFoot, TableHead as MDBTableHead, Popper as MDBTooltip, View as MDBView, Waves as MDBWaves, Mask, Media, Modal, ModalBody, ModalFooter, ModalHeader, Nav, NavItem, NavLink, Navbar, NavbarBrand, NavbarNav, NavbarToggler, PageItem, PageLink, Pagination, Popper as Popover, PopoverBody, PopoverHeader, Popper, Progress, Row, Table, TableBody, TableFoot, TableHead, Popper as Tooltip, View, Waves };
+export { Alert, Animation, Badge, Breadcrumb, BreadcrumbItem, Button, ButtonGroup, ButtonToolbar, Card, CardBody, CardFooter, CardGroup, CardHeader, CardImage, CardText, CardTitle, Carousel, CarouselCaption, Control as CarouselControl, CarouselIndicator, CarouselIndicators, CarouselInner, CarouselItem, Col, Collapse, Container, DataTable, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, EdgeHeader, Fa, Footer, FormInline, FreeBird, HamburgerToggler, Iframe, Input, InputNumeric, Jumbotron, ListGroup, ListGroupItem, Alert as MDBAlert, Animation as MDBAnimation, Badge as MDBBadge, Breadcrumb as MDBBreadcrumb, BreadcrumbItem as MDBBreadcrumbItem, Button as MDBBtn, ButtonGroup as MDBBtnGroup, ButtonToolbar as MDBBtnToolbar, Card as MDBCard, CardBody as MDBCardBody, CardFooter as MDBCardFooter, CardGroup as MDBCardGroup, CardHeader as MDBCardHeader, CardImage as MDBCardImage, CardText as MDBCardText, CardTitle as MDBCardTitle, Carousel as MDBCarousel, CarouselCaption as MDBCarouselCaption, CarouselIndicator as MDBCarouselIndicator, CarouselIndicators as MDBCarouselIndicators, CarouselInner as MDBCarouselInner, CarouselItem as MDBCarouselItem, MDBCloseIcon, Col as MDBCol, Collapse as MDBCollapse, Container as MDBContainer, Control as MDBControl, DataTable as MDBDataTable, Dropdown as MDBDropdown, DropdownItem as MDBDropdownItem, DropdownMenu as MDBDropdownMenu, DropdownToggle as MDBDropdownToggle, EdgeHeader as MDBEdgeHeader, Footer as MDBFooter, FormInline as MDBFormInline, FreeBird as MDBFreeBird, HamburgerToggler as MDBHamburgerToggler, Fa as MDBIcon, Iframe as MDBIframe, Input as MDBInput, InputNumeric as MDBInputSelect, Jumbotron as MDBJumbotron, ListGroup as MDBListGroup, ListGroupItem as MDBListGroupItem, Mask as MDBMask, Media as MDBMedia, Modal as MDBModal, ModalBody as MDBModalBody, ModalFooter as MDBModalFooter, ModalHeader as MDBModalHeader, Nav as MDBNav, NavItem as MDBNavItem, NavLink as MDBNavLink, Navbar as MDBNavbar, NavbarBrand as MDBNavbarBrand, NavbarNav as MDBNavbarNav, NavbarToggler as MDBNavbarToggler, Notification as MDBNotification, PageItem as MDBPageItem, PageLink as MDBPageNav, Pagination as MDBPagination, Popper as MDBPopover, PopoverBody as MDBPopoverBody, PopoverHeader as MDBPopoverHeader, Popper as MDBPopper, Progress as MDBProgress, Row as MDBRow, TabContent as MDBTabContent, TabPane as MDBTabPane, Table as MDBTable, TableBody as MDBTableBody, TableFoot as MDBTableFoot, TableHead as MDBTableHead, Popper as MDBTooltip, View as MDBView, Waves as MDBWaves, Mask, Media, Modal, ModalBody, ModalFooter, ModalHeader, Nav, NavItem, NavLink, Navbar, NavbarBrand, NavbarNav, NavbarToggler, Notification, PageItem, PageLink, Pagination, Popper as Popover, PopoverBody, PopoverHeader, Popper, Progress, Row, TabContent, TabPane, Table, TableBody, TableFoot, TableHead, Popper as Tooltip, View, Waves };

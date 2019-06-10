@@ -55,6 +55,9 @@ import SpinnerPage from './pages/SpinnerPage';
 import MasonryPage from './pages/MasonryPage';
 import ScrollBarPage from './pages/ScrollBarPage';
 import NavsPage from './pages/NavsPage';
+import TabsPage from './pages/TabsPage';
+import PillsPage from './pages/PillsPage';
+import NotificationPage from './pages/NotificationPage';
 
 class Routes extends React.Component {
   render() {
@@ -73,6 +76,7 @@ class Routes extends React.Component {
         {/* FREE */}
         <Route path="/addons/iframe" component={IframePage} />
         <Route path="/addons/edge-header" component={EdgeHeaderPage} />
+        <Route path="/addons/notifications" component={NotificationPage} />
         <Route path="/advanced/carousel" component={CarouselPage} />
         <Route path="/advanced/collapse" component={CollapsePage} />
         <Route path="/advanced/videocarousel" component={VideoCarouselPage} />
@@ -99,6 +103,8 @@ class Routes extends React.Component {
         <Route path="/components/panels" component={PanelPage} />
         <Route path="/components/search" component={SearchPage} />
         <Route path="/components/spinner" component={SpinnerPage} />
+        <Route path="/components/tabs" component={TabsPage} />
+        <Route path="/components/pills" component={PillsPage} />
         <Route path="/forms/forms" component={FormsPage} />
         <Route path="/forms/validation" component={ValidationPage} />
         <Route path="/forms/input" component={InputPage} />
