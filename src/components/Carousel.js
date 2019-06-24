@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import CarouselControl from './CarouselControl';
-import CarouselIndicators from './CarouselIndicators';
-import CarouselIndicator from './CarouselIndicator';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import './Carousel.css';
+import React, { Component } from "react";
+import CarouselControl from "./CarouselControl";
+import CarouselIndicators from "./CarouselIndicators";
+import CarouselIndicator from "./CarouselIndicator";
+import PropTypes from "prop-types";
+import classNames from "classnames";
+import "./Carousel.css";
 
 class Carousel extends Component {
   constructor(props) {
@@ -13,7 +13,10 @@ class Carousel extends Component {
       activeItem: this.props.activeItem,
       length: this.props.length,
       slide: this.props.slide,
-      srcArray: []
+      srcArray: [],
+      swipeAvailable: true,
+      initialX: null,
+      initialY: null
     };
 
     this.carouselRef = React.createRef();
@@ -56,6 +59,47 @@ class Carousel extends Component {
     this.restartInterval();
   }
 
+  startTouch(e) {
+    this.setState({
+      initialX: e.touches[0].clientX,
+      initialY: e.touches[0].clientY
+    });
+  }
+
+  moveTouch(e) {
+    this.setState({
+      swipeAvailable: false
+    });
+
+    let { initialX, initialY } = this.state;
+    if (initialX === null) {
+      return;
+    }
+    if (initialY === null) {
+      return;
+    }
+
+    let currentX = e.touches[0].clientX;
+    let currentY = e.touches[0].clientY;
+
+    let diffX = initialX - currentX;
+    let diffY = initialY - currentY;
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+      // sliding horizontally
+      if (diffX > 0) {
+        this.next();
+      } else {
+        this.prev();
+      }
+    }
+
+    this.setState({
+      initialX: null,
+      initialY: null
+    });
+  }
+
   componentDidMount = () => {
     if (this.props.interval === false) {
       return;
@@ -65,7 +109,7 @@ class Carousel extends Component {
     // get images src atr
     if (this.props.thumbnails) {
       const CarouselItemsArray = this.carouselRef.current.querySelectorAll(
-        '.carousel-item img'
+        ".carousel-item img"
       );
       const srcArray = Array.prototype.map.call(
         CarouselItemsArray,
@@ -107,13 +151,13 @@ class Carousel extends Component {
       ...attributes
     } = this.props;
 
-    let ariaLabel = 'carousel';
+    let ariaLabel = "carousel";
 
     const classes = classNames(
-      'carousel',
-      multiItem ? 'carousel-multi-item' : 'carousel-fade',
-      thumbnails ? 'carousel-thumbnails' : '',
-      testimonial ? 'testimonial-carousel' : '',
+      "carousel",
+      multiItem ? "carousel-multi-item" : "carousel-fade",
+      thumbnails ? "carousel-thumbnails" : "",
+      testimonial ? "testimonial-carousel" : "",
       className
     );
 
@@ -137,6 +181,11 @@ class Carousel extends Component {
         {...attributes}
         className={classes}
         aria-label={ariaLabel}
+        onTouchStart={touchStart => this.startTouch(touchStart)}
+        onTouchMove={touchMove =>
+          this.state.swipeAvailable ? this.moveTouch(touchMove) : null
+        }
+        onTouchEnd={() => this.setState({ swipeAvailable: true })}
       >
         {showControls && multiItem && (
           <div className="controls-top">
@@ -203,7 +252,7 @@ Carousel.propTypes = {
 };
 
 Carousel.defaultProps = {
-  tag: 'div',
+  tag: "div",
   interval: 6000,
   showControls: true,
   showIndicators: true

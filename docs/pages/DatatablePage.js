@@ -590,6 +590,17 @@ const DatatablePage = () => {
         <MDBCol md="12">
           <MDBCard>
             <MDBCardBody>
+              <h2 className="h2-responsive pb-4">Bar reverse position</h2>
+              <MDBDataTable barReverse striped bordered hover data={new data()} />
+            </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
+
+      <MDBRow className="py-3">
+        <MDBCol md="12">
+          <MDBCard>
+            <MDBCardBody>
               <h2 className="h2-responsive pb-4">ScrollY</h2>
               <MDBDataTable
                 striped

@@ -1965,7 +1965,7 @@ function (_Component) {
       _this.cycleInterval = setInterval(_this.next, _this.props.interval); // get images src atr
 
       if (_this.props.thumbnails) {
-        var CarouselItemsArray = _this.carouselRef.current.querySelectorAll('.carousel-item img');
+        var CarouselItemsArray = _this.carouselRef.current.querySelectorAll(".carousel-item img");
 
         var srcArray = Array.prototype.map.call(CarouselItemsArray, function (item) {
           return item.src;
@@ -1981,7 +1981,10 @@ function (_Component) {
       activeItem: _this.props.activeItem,
       length: _this.props.length,
       slide: _this.props.slide,
-      srcArray: []
+      srcArray: [],
+      swipeAvailable: true,
+      initialX: null,
+      initialY: null
     };
     _this.carouselRef = React__default.createRef();
     return _this;
@@ -1997,6 +2000,51 @@ function (_Component) {
       }
 
       this.restartInterval();
+    }
+  }, {
+    key: "startTouch",
+    value: function startTouch(e) {
+      this.setState({
+        initialX: e.touches[0].clientX,
+        initialY: e.touches[0].clientY
+      });
+    }
+  }, {
+    key: "moveTouch",
+    value: function moveTouch(e) {
+      this.setState({
+        swipeAvailable: false
+      });
+      var _this$state = this.state,
+          initialX = _this$state.initialX,
+          initialY = _this$state.initialY;
+
+      if (initialX === null) {
+        return;
+      }
+
+      if (initialY === null) {
+        return;
+      }
+
+      var currentX = e.touches[0].clientX;
+      var currentY = e.touches[0].clientY;
+      var diffX = initialX - currentX;
+      var diffY = initialY - currentY;
+
+      if (Math.abs(diffX) > Math.abs(diffY)) {
+        // sliding horizontally
+        if (diffX > 0) {
+          this.next();
+        } else {
+          this.prev();
+        }
+      }
+
+      this.setState({
+        initialX: null,
+        initialY: null
+      });
     }
   }, {
     key: "componentWillUnmount",
@@ -2036,8 +2084,8 @@ function (_Component) {
           showIndicators = _this$props.showIndicators,
           attributes = _objectWithoutProperties(_this$props, ["activeItem", "children", "className", "multiItem", "slide", "thumbnails", "interval", "testimonial", "tag", "length", "showControls", "showIndicators"]);
 
-      var ariaLabel = 'carousel';
-      var classes = classNames('carousel', multiItem ? 'carousel-multi-item' : 'carousel-fade', thumbnails ? 'carousel-thumbnails' : '', testimonial ? 'testimonial-carousel' : '', className);
+      var ariaLabel = "carousel";
+      var classes = classNames("carousel", multiItem ? "carousel-multi-item" : "carousel-fade", thumbnails ? "carousel-thumbnails" : "", testimonial ? "testimonial-carousel" : "", className);
       var CarouselIndicatorsArray = [];
 
       var _loop = function _loop(i) {
@@ -2059,7 +2107,18 @@ function (_Component) {
         ref: this.carouselRef
       }, attributes, {
         className: classes,
-        "aria-label": ariaLabel
+        "aria-label": ariaLabel,
+        onTouchStart: function onTouchStart(touchStart) {
+          return _this2.startTouch(touchStart);
+        },
+        onTouchMove: function onTouchMove(touchMove) {
+          return _this2.state.swipeAvailable ? _this2.moveTouch(touchMove) : null;
+        },
+        onTouchEnd: function onTouchEnd() {
+          return _this2.setState({
+            swipeAvailable: true
+          });
+        }
       }), showControls && multiItem && React__default.createElement("div", {
         className: "controls-top"
       }, React__default.createElement(Control, {
@@ -2112,7 +2171,7 @@ Carousel.propTypes = {
   length: propTypes.number
 };
 Carousel.defaultProps = {
-  tag: 'div',
+  tag: "div",
   interval: 6000,
   showControls: true,
   showIndicators: true
@@ -3096,18 +3155,21 @@ var DataTableEntries = function DataTableEntries(props) {
       entries = props.entries,
       entriesArr = props.entriesArr,
       paging = props.paging,
-      label = props.label;
+      label = props.label,
+      barReverse = props.barReverse;
   return React__default.createElement("div", {
     className: "col-sm-12 col-md-6"
   }, paging && displayEntries && React__default.createElement(DataTableSelect, {
     value: entries,
     onChange: handleEntriesChange,
     entries: entriesArr,
-    label: label
+    label: label,
+    barReverse: barReverse
   }));
 };
 
 DataTableEntries.propTypes = {
+  barReverse: propTypes.bool,
   handleEntriesChange: propTypes.func.isRequired,
   displayEntries: propTypes.bool.isRequired,
   entries: propTypes.number.isRequired,
@@ -3141,17 +3203,20 @@ var DataTableSearch = function DataTableSearch(props) {
   var handleSearchChange = props.handleSearchChange,
       search = props.search,
       searching = props.searching,
-      label = props.label;
+      label = props.label,
+      barReverse = props.barReverse;
   return React__default.createElement("div", {
     className: "col-sm-12 col-md-6"
   }, searching && React__default.createElement(DataTableInput, {
     value: search,
     onChange: handleSearchChange,
-    label: label
+    label: label,
+    barReverse: barReverse
   }));
 };
 
 DataTableSearch.propTypes = {
+  barReverse: propTypes.bool,
   handleSearchChange: propTypes.func.isRequired,
   search: propTypes.string.isRequired,
   searching: propTypes.bool.isRequired,
@@ -3686,6 +3751,7 @@ function (_Component) {
           autoWidth = _this$props.autoWidth,
           bordered = _this$props.bordered,
           borderless = _this$props.borderless,
+          barReverse = _this$props.barReverse,
           btn = _this$props.btn,
           className = _this$props.className,
           children = _this$props.children,
@@ -3721,7 +3787,7 @@ function (_Component) {
           theadColor = _this$props.theadColor,
           theadTextWhite = _this$props.theadTextWhite,
           sortRows = _this$props.sortRows,
-          attributes = _objectWithoutProperties(_this$props, ["autoWidth", "bordered", "borderless", "btn", "className", "children", "dark", "data", "displayEntries", "entriesOptions", "entriesLabel", "exportToCSV", "fixed", "hover", "info", "infoLabel", "maxHeight", "order", "pagesAmount", "paging", "paginationLabel", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "searching", "searchLabel", "scrollX", "scrollY", "small", "sortable", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite", "sortRows"]);
+          attributes = _objectWithoutProperties(_this$props, ["autoWidth", "bordered", "borderless", "barReverse", "btn", "className", "children", "dark", "data", "displayEntries", "entriesOptions", "entriesLabel", "exportToCSV", "fixed", "hover", "info", "infoLabel", "maxHeight", "order", "pagesAmount", "paging", "paginationLabel", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "searching", "searchLabel", "scrollX", "scrollY", "small", "sortable", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite", "sortRows"]);
 
       var _this$state = this.state,
           columns = _this$state.columns,
@@ -3735,19 +3801,21 @@ function (_Component) {
       return React__default.createElement("div", {
         className: tableClasses
       }, React__default.createElement("div", {
-        className: "row"
+        className: "row".concat(barReverse ? ' flex-row-reverse' : '')
       }, React__default.createElement(DataTableEntries, {
         paging: paging,
         displayEntries: displayEntries,
         entries: entries,
         handleEntriesChange: this.handleEntriesChange,
         entriesArr: entriesOptions,
-        label: entriesLabel
+        label: entriesLabel,
+        barReverse: barReverse
       }), React__default.createElement(DataTableSearch, {
         handleSearchChange: this.handleSearchChange,
         search: search,
         searching: searching,
-        label: searchLabel
+        label: searchLabel,
+        barReverse: barReverse
       })), !scrollY && !scrollX && React__default.createElement("div", {
         className: "row"
       }, React__default.createElement(DataTableTable, _extends({
@@ -3829,6 +3897,7 @@ function (_Component) {
 
 DataTable.propTypes = {
   autoWidth: propTypes.bool,
+  barReverse: propTypes.bool,
   bordered: propTypes.bool,
   borderless: propTypes.bool,
   btn: propTypes.bool,
@@ -3870,6 +3939,7 @@ DataTable.propTypes = {
 };
 DataTable.defaultProps = {
   autoWidth: false,
+  barReverse: false,
   bordered: false,
   borderless: false,
   btn: false,
@@ -5077,7 +5147,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleBackdropClick", function (e) {
-      if (!_this.props.backdrop) return;
+      if (!_this.props.backdrop || e.target.closest('[role="dialog"]') && !e.target.classList.contains("modal")) return;
 
       if (!_this.modalContent.contains(e.target)) {
         _this.props.toggle();

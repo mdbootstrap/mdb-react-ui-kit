@@ -258,6 +258,7 @@ class DataTable extends Component {
       autoWidth,
       bordered,
       borderless,
+      barReverse,
       btn,
       className,
       children,
@@ -313,7 +314,7 @@ class DataTable extends Component {
 
     return (
       <div className={tableClasses}>
-        <div className="row">
+        <div className={`row${ barReverse ? ' flex-row-reverse' : ''}`}>
           <DataTableEntries
             paging={paging}
             displayEntries={displayEntries}
@@ -321,12 +322,14 @@ class DataTable extends Component {
             handleEntriesChange={this.handleEntriesChange}
             entriesArr={entriesOptions}
             label={entriesLabel}
+            barReverse={barReverse}
           />
           <DataTableSearch
             handleSearchChange={this.handleSearchChange}
             search={search}
             searching={searching}
             label={searchLabel}
+            barReverse={barReverse}
           />
         </div>
         {!scrollY && !scrollX && (
@@ -420,6 +423,7 @@ class DataTable extends Component {
 
 DataTable.propTypes = {
   autoWidth: PropTypes.bool,
+  barReverse: PropTypes.bool,
   bordered: PropTypes.bool,
   borderless: PropTypes.bool,
   btn: PropTypes.bool,
@@ -466,6 +470,7 @@ DataTable.propTypes = {
 
 DataTable.defaultProps = {
   autoWidth: false,
+  barReverse: false,
   bordered: false,
   borderless: false,
   btn: false,
