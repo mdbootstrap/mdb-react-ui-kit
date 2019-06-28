@@ -119,7 +119,12 @@ class DataTable extends Component {
       this.checkFieldValue(b, field)
     ];
 
-    return direction === "desc" ? aField < bField : aField > bField;
+    let comp = aField > bField ? -1 : 1;
+    if (direction === "desc") {
+      comp *= -1
+    }
+
+    return comp;
   };
 
   handleSort = (field, sort) => {
