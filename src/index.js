@@ -36,6 +36,7 @@ import Footer from './components/Footer';
 import FreeBird from './components/FreeBird';
 import HamburgerToggler from './components/HamburgerToggler';
 import Input from './components/Input';
+import InputGroup from './components/InputGroup';
 import InputNumeric from './components/InputNumeric';
 import Jumbotron from './components/Jumbotron';
 import ListGroup from './components/ListGroup';
@@ -114,6 +115,7 @@ import { MDBFreeBird } from './components/FreeBird';
 import { MDBHamburgerToggler } from './components/HamburgerToggler';
 import { MDBIcon } from './components/Fa';
 import { MDBInput } from './components/Input';
+import { MDBInputGroup } from './components/InputGroup';
 import { MDBInputSelect } from './components/InputNumeric';
 import { MDBJumbotron } from './components/Jumbotron';
 import { MDBListGroup } from './components/ListGroup';
@@ -193,6 +195,7 @@ export {
   FreeBird,
   HamburgerToggler,
   Input,
+  InputGroup,
   InputNumeric,
   Jumbotron,
   ListGroup,
@@ -270,6 +273,7 @@ export {
   MDBHamburgerToggler,
   MDBIcon,
   MDBInput,
+  MDBInputGroup,
   MDBInputSelect,
   MDBJumbotron,
   MDBListGroup,

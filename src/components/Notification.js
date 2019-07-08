@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import MDBCloseIcon from "./CloseIcon";
+import MDBIcon from "./Fa"
 
 class Notification extends React.Component {
   state = {
@@ -32,7 +33,8 @@ class Notification extends React.Component {
       fade,
       message,
       bodyClassName,
-      labelColor,
+      icon,
+      iconClassName,
       title,
       titleClassName,
       text,
@@ -48,23 +50,14 @@ class Notification extends React.Component {
     );
 
     const headerClasses = classNames("toast-header", titleClassName);
+    const iconClassNames = classNames("mr-2", iconClassName)
     const bodyClasses = classNames("toast-body", bodyClassName);
     const closeClasses = classNames("ml-2", "mb-1", closeClassName);
 
     return (
       <Tag {...attributes} className={classes}>
         <div className={headerClasses}>
-          <svg
-            className="rounded mr-2"
-            width="20"
-            height="20"
-            xmlns="http://www.w3.org/2000/svg"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-            role="img"
-          >
-            <rect fill={labelColor} width="100%" height="100%" />
-          </svg>
+          <MDBIcon icon={icon} className={iconClassNames} size="lg"/>
           <strong className="mr-auto">{title}</strong>
           <small>{text}</small>
           <MDBCloseIcon className={closeClasses} onClick={() => this.hide()} />
@@ -81,7 +74,7 @@ Notification.propTypes = {
   show: PropTypes.bool,
   fade: PropTypes.bool,
   autohide: PropTypes.number,
-  labelColor: PropTypes.string,
+  iconClassName: PropTypes.string,
   title: PropTypes.string,
   text: PropTypes.string,
   titleColor: PropTypes.string,
@@ -93,8 +86,8 @@ Notification.propTypes = {
 };
 
 Notification.defaultProps = {
+  icon: "square",
   tag: "div",
-  labelColor: "#007aff",
   closeClassName: "text-dark"
 };
 

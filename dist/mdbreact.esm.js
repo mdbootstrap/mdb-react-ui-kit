@@ -2075,7 +2075,8 @@ function (_Component) {
           length = _this$props.length,
           showControls = _this$props.showControls,
           showIndicators = _this$props.showIndicators,
-          attributes = _objectWithoutProperties(_this$props, ["activeItem", "children", "className", "multiItem", "slide", "thumbnails", "interval", "testimonial", "tag", "length", "showControls", "showIndicators"]);
+          onHoverStop = _this$props.onHoverStop,
+          attributes = _objectWithoutProperties(_this$props, ["activeItem", "children", "className", "multiItem", "slide", "thumbnails", "interval", "testimonial", "tag", "length", "showControls", "showIndicators", "onHoverStop"]);
 
       var ariaLabel = "carousel";
       var classes = classNames("carousel", multiItem ? "carousel-multi-item" : "carousel-fade", thumbnails ? "carousel-thumbnails" : "", testimonial ? "testimonial-carousel" : "", className);
@@ -2111,6 +2112,12 @@ function (_Component) {
           return _this2.setState({
             swipeAvailable: true
           });
+        },
+        onMouseEnter: function onMouseEnter() {
+          return onHoverStop ? clearInterval(_this2.cycleInterval) : false;
+        },
+        onMouseLeave: function onMouseLeave() {
+          return onHoverStop ? _this2.restartInterval() : false;
         }
       }), showControls && multiItem && React.createElement("div", {
         className: "controls-top"
@@ -2161,13 +2168,15 @@ Carousel.propTypes = {
   showControls: propTypes.bool,
   showIndicators: propTypes.bool,
   slide: propTypes.bool,
-  length: propTypes.number
+  length: propTypes.number,
+  onHoverStop: propTypes.bool
 };
 Carousel.defaultProps = {
   tag: "div",
   interval: 6000,
   showControls: true,
-  showIndicators: true
+  showIndicators: true,
+  onHoverStop: true
 };
 Carousel.childContextTypes = {
   activeItem: propTypes.any,
@@ -4646,6 +4655,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this2 = this;
+
       var _this$props = this.props,
           background = _this$props.background,
           children = _this$props.children,
@@ -4662,10 +4673,14 @@ function (_React$Component) {
           iconBrand = _this$props.iconBrand,
           iconClass = _this$props.iconClass,
           iconLight = _this$props.iconLight,
+          onIconClick = _this$props.onIconClick,
+          onIconMouseEnter = _this$props.onIconMouseEnter,
+          onIconMouseLeave = _this$props.onIconMouseLeave,
           iconRegular = _this$props.iconRegular,
           iconSize = _this$props.iconSize,
           id = _this$props.id,
           inputRef = _this$props.inputRef,
+          noTag = _this$props.noTag,
           outline = _this$props.outline,
           label = _this$props.label,
           labelClass = _this$props.labelClass,
@@ -4676,9 +4691,9 @@ function (_React$Component) {
           validate = _this$props.validate,
           value = _this$props.value,
           valueDefault = _this$props.valueDefault,
-          attributes = _objectWithoutProperties(_this$props, ["background", "children", "className", "containerClass", "disabled", "error", "filled", "gap", "getValue", "group", "hint", "icon", "iconBrand", "iconClass", "iconLight", "iconRegular", "iconSize", "id", "inputRef", "outline", "label", "labelClass", "size", "success", "tag", "type", "validate", "value", "valueDefault"]);
+          attributes = _objectWithoutProperties(_this$props, ["background", "children", "className", "containerClass", "disabled", "error", "filled", "gap", "getValue", "group", "hint", "icon", "iconBrand", "iconClass", "iconLight", "onIconClick", "onIconMouseEnter", "onIconMouseLeave", "iconRegular", "iconSize", "id", "inputRef", "noTag", "outline", "label", "labelClass", "size", "success", "tag", "type", "validate", "value", "valueDefault"]);
 
-      var isNotEmpty = !!this.state.innerValue || !!hint || this.state.isFocused;
+      var isNotEmpty = (!!this.state.innerValue || !!hint || this.state.isFocused || this.state.innerValue === 0) && type !== "checkbox" && type !== "radio";
       var Tag = "";
       var formControlClass = "";
 
@@ -4693,37 +4708,46 @@ function (_React$Component) {
 
       attributes.disabled = disabled;
       var classes = classNames(formControlClass, size ? "form-control-".concat(size) : false, validate ? "validate" : false, filled ? "filled-in" : false, gap ? "with-gap" : false, type === "checkbox" ? gap ? false : "form-check-input" : false, type === "radio" ? "form-check-input" : false, className);
-      var containerClassFix = classNames(type === "checkbox" || type === "radio" ? "form-check my-3" : "md-form", group ? "form-group" : false, size ? "form-".concat(size) : false, outline && 'md-outline', background && 'md-bg', containerClass);
+      var containerClassFix = classNames(type === "checkbox" || type === "radio" ? typeof label === "boolean" && label ? "d-flex" : "form-check my-3" : "md-form", group ? "form-group" : false, size ? "form-".concat(size) : false, outline && "md-outline", background && "md-bg", containerClass);
       var iconClassFix = classNames(isNotEmpty && this.state.isFocused ? "active" : false, iconClass, "prefix");
-      var labelClassFix = classNames(isNotEmpty ? "active" : false, disabled ? "disabled" : false, type === "checkbox" ? "form-check-label mr-5" : false, type === "radio" ? "form-check-label mr-5" : false, labelClass);
-      return React.createElement("div", {
+      var labelClassFix = classNames(isNotEmpty ? "active" : false, disabled ? "disabled" : false, type === "checkbox" ? typeof label === "boolean" && label ? "form-check-label" : "form-check-label mr-5" : false, type === "radio" ? typeof label === "boolean" && label ? "form-check-label" : "form-check-label mr-5" : false, labelClass);
+
+      var renderFunction = function renderFunction() {
+        return React.createElement(React.Fragment, null, icon && React.createElement(Fa, {
+          icon: icon,
+          size: iconSize,
+          brand: iconBrand,
+          light: iconLight,
+          regular: iconRegular,
+          className: iconClassFix,
+          onClick: function onClick(e) {
+            onIconClick ? onIconClick() : _this2.setFocus(e);
+          },
+          onMouseEnter: onIconMouseEnter,
+          onMouseLeave: onIconMouseLeave
+        }), React.createElement(Tag, _extends({}, attributes, {
+          className: classes,
+          id: id,
+          placeholder: hint,
+          ref: _this2.inputElementRef,
+          value: _this2.state.innerValue,
+          onBlur: _this2.onBlur,
+          onChange: _this2.onChange,
+          onInput: _this2.onInput,
+          onFocus: _this2.onFocus
+        })), label && React.createElement("label", {
+          className: labelClassFix,
+          htmlFor: id,
+          "data-error": error,
+          "data-success": success,
+          id: id,
+          onClick: _this2.setFocus
+        }, label), children);
+      };
+
+      return noTag ? renderFunction() : React.createElement("div", {
         className: containerClassFix
-      }, icon && React.createElement(Fa, {
-        icon: icon,
-        size: iconSize,
-        brand: iconBrand,
-        light: iconLight,
-        regular: iconRegular,
-        className: iconClassFix,
-        onClick: this.setFocus
-      }), React.createElement(Tag, _extends({}, attributes, {
-        className: classes,
-        id: id,
-        placeholder: hint,
-        ref: this.inputElementRef,
-        value: this.state.innerValue,
-        onBlur: this.onBlur,
-        onChange: this.onChange,
-        onInput: this.onInput,
-        onFocus: this.onFocus
-      })), label && React.createElement("label", {
-        className: labelClassFix,
-        htmlFor: id,
-        "data-error": error,
-        "data-success": success,
-        id: id,
-        onClick: this.setFocus
-      }, label), children);
+      }, renderFunction());
     }
   }], [{
     key: "getDerivedStateFromProps",
@@ -4756,12 +4780,16 @@ Input.propTypes = {
   iconBrand: propTypes.bool,
   iconClass: propTypes.string,
   iconLight: propTypes.bool,
+  onIconClick: propTypes.func,
+  onIconMouseEnter: propTypes.func,
+  onIconMouseLeave: propTypes.func,
   iconRegular: propTypes.bool,
   iconSize: propTypes.string,
   id: propTypes.string,
   inputRef: propTypes.oneOfType([propTypes.object, propTypes.func]),
-  label: propTypes.oneOfType([propTypes.string, propTypes.number, propTypes.object]),
+  label: propTypes.oneOfType([propTypes.string, propTypes.number, propTypes.object, propTypes.bool]),
   labelClass: propTypes.string,
+  noTag: propTypes.bool,
   onBlur: propTypes.func,
   onChange: propTypes.func,
   onFocus: propTypes.func,
@@ -4772,8 +4800,8 @@ Input.propTypes = {
   tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
   type: propTypes.string,
   validate: propTypes.bool,
-  value: propTypes.string,
-  valueDefault: propTypes.string
+  value: propTypes.oneOfType([propTypes.number, propTypes.string]),
+  valueDefault: propTypes.oneOfType([propTypes.number, propTypes.string])
 };
 Input.defaultProps = {
   className: "",
@@ -4788,9 +4816,12 @@ Input.defaultProps = {
   iconBrand: false,
   iconClass: "",
   iconLight: false,
+  onIconMouseEnter: function onIconMouseEnter() {},
+  onIconMouseLeave: function onIconMouseLeave() {},
   iconRegular: false,
   iconSize: undefined,
   id: undefined,
+  noTag: false,
   outline: false,
   label: "",
   labelClass: "",
@@ -4800,6 +4831,90 @@ Input.defaultProps = {
   type: "text",
   validate: false,
   valueDefault: ""
+};
+
+var InputGroup = function InputGroup(_ref) {
+  var append = _ref.append,
+      appendClassName = _ref.appendClassName,
+      ariaLabel = _ref.ariaLabel,
+      children = _ref.children,
+      className = _ref.className,
+      containerClassName = _ref.containerClassName,
+      containerId = _ref.containerId,
+      hint = _ref.hint,
+      id = _ref.id,
+      inputs = _ref.inputs,
+      inputTag = _ref.inputTag,
+      label = _ref.label,
+      labelClassName = _ref.labelClassName,
+      material = _ref.material,
+      prepend = _ref.prepend,
+      prependClassName = _ref.prependClassName,
+      size = _ref.size,
+      Tag = _ref.tag,
+      textClassName = _ref.textClassName,
+      type = _ref.type,
+      value = _ref.value,
+      valueDefault = _ref.valueDefault,
+      attributes = _objectWithoutProperties(_ref, ["append", "appendClassName", "ariaLabel", "children", "className", "containerClassName", "containerId", "hint", "id", "inputs", "inputTag", "label", "labelClassName", "material", "prepend", "prependClassName", "size", "tag", "textClassName", "type", "value", "valueDefault"]);
+
+  var containerClassNames = classNames("input-group", material && "md-form", size && "input-group-".concat(size), containerClassName);
+  var inputClassNames = classNames(className);
+  var prependClassNames = classNames("input-group-prepend", prependClassName);
+  var appendClassNames = classNames("input-group-append", appendClassName);
+  var textClassNames = classNames("input-group-text", material && "md-addon", textClassName);
+  return React.createElement(React.Fragment, null, label && React.createElement("label", {
+    htmlFor: id,
+    className: labelClassName
+  }, label), React.createElement(Tag, _extends({}, attributes, {
+    className: containerClassNames,
+    id: containerId
+  }), prepend && React.createElement("div", {
+    className: prependClassNames
+  }, typeof prepend === "string" ? React.createElement("span", {
+    className: textClassNames
+  }, prepend) : prepend), inputs || React.createElement(Input, {
+    noTag: true,
+    type: type,
+    className: inputClassNames,
+    id: id,
+    value: value,
+    valueDefault: valueDefault,
+    hint: hint,
+    "aria-label": ariaLabel
+  }), append && React.createElement("div", {
+    className: appendClassNames
+  }, typeof append === "string" ? React.createElement("span", {
+    className: textClassNames
+  }, append) : append), children));
+};
+
+InputGroup.propTypes = {
+  append: propTypes.oneOfType([propTypes.node, propTypes.string]),
+  appendClassNames: propTypes.string,
+  ariaLabel: propTypes.string,
+  children: propTypes.node,
+  className: propTypes.string,
+  containerClassName: propTypes.string,
+  containerId: propTypes.string,
+  hint: propTypes.string,
+  id: propTypes.string,
+  inputs: propTypes.node,
+  label: propTypes.string,
+  labelClassName: propTypes.string,
+  material: propTypes.bool,
+  prepend: propTypes.any,
+  prependClassName: propTypes.string,
+  size: propTypes.string,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  textClassName: propTypes.string,
+  type: propTypes.string,
+  value: propTypes.string,
+  valueDefault: propTypes.string
+};
+InputGroup.defaultProps = {
+  tag: "div",
+  type: "text"
 };
 
 var InputNumeric =
@@ -5903,34 +6018,28 @@ function (_React$Component) {
           fade = _this$props.fade,
           message = _this$props.message,
           bodyClassName = _this$props.bodyClassName,
-          labelColor = _this$props.labelColor,
+          icon = _this$props.icon,
+          iconClassName = _this$props.iconClassName,
           title = _this$props.title,
           titleClassName = _this$props.titleClassName,
           text = _this$props.text,
           closeClassName = _this$props.closeClassName,
-          attributes = _objectWithoutProperties(_this$props, ["tag", "className", "show", "fade", "message", "bodyClassName", "labelColor", "title", "titleClassName", "text", "closeClassName"]);
+          attributes = _objectWithoutProperties(_this$props, ["tag", "className", "show", "fade", "message", "bodyClassName", "icon", "iconClassName", "title", "titleClassName", "text", "closeClassName"]);
 
       var classes = classNames("toast", fade && "fade", this.state.componentState, className);
       var headerClasses = classNames("toast-header", titleClassName);
+      var iconClassNames = classNames("mr-2", iconClassName);
       var bodyClasses = classNames("toast-body", bodyClassName);
       var closeClasses = classNames("ml-2", "mb-1", closeClassName);
       return React.createElement(Tag, _extends({}, attributes, {
         className: classes
       }), React.createElement("div", {
         className: headerClasses
-      }, React.createElement("svg", {
-        className: "rounded mr-2",
-        width: "20",
-        height: "20",
-        xmlns: "http://www.w3.org/2000/svg",
-        preserveAspectRatio: "xMidYMid slice",
-        focusable: "false",
-        role: "img"
-      }, React.createElement("rect", {
-        fill: labelColor,
-        width: "100%",
-        height: "100%"
-      })), React.createElement("strong", {
+      }, React.createElement(Fa, {
+        icon: icon,
+        className: iconClassNames,
+        size: "lg"
+      }), React.createElement("strong", {
         className: "mr-auto"
       }, title), React.createElement("small", null, text), React.createElement(MDBCloseIcon, {
         className: closeClasses,
@@ -5952,7 +6061,7 @@ Notification.propTypes = {
   show: propTypes.bool,
   fade: propTypes.bool,
   autohide: propTypes.number,
-  labelColor: propTypes.string,
+  iconClassName: propTypes.string,
   title: propTypes.string,
   text: propTypes.string,
   titleColor: propTypes.string,
@@ -5963,8 +6072,8 @@ Notification.propTypes = {
   message: propTypes.string
 };
 Notification.defaultProps = {
+  icon: "square",
   tag: "div",
-  labelColor: "#007aff",
   closeClassName: "text-dark"
 };
 
@@ -6051,7 +6160,7 @@ var Popper = function Popper(_ref) {
       ref: ref,
       "data-popper": id
     }));
-  }), visible && React.createElement(Tag, {
+  }), visible && Content.props.children && React.createElement(Tag, {
     style: style
   }, React.createElement(Popper$1, {
     modifiers: modifiers,
@@ -6716,4 +6825,4 @@ Dropdown.childContextTypes = {
 
 // FREE
 
-export { Alert, Animation, Badge, Breadcrumb, BreadcrumbItem, Button, ButtonGroup, ButtonToolbar, Card, CardBody, CardFooter, CardGroup, CardHeader, CardImage, CardText, CardTitle, Carousel, CarouselCaption, Control as CarouselControl, CarouselIndicator, CarouselIndicators, CarouselInner, CarouselItem, Col, Collapse, Container, DataTable, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, EdgeHeader, Fa, Footer, FormInline, FreeBird, HamburgerToggler, Iframe, Input, InputNumeric, Jumbotron, ListGroup, ListGroupItem, Alert as MDBAlert, Animation as MDBAnimation, Badge as MDBBadge, Breadcrumb as MDBBreadcrumb, BreadcrumbItem as MDBBreadcrumbItem, Button as MDBBtn, ButtonGroup as MDBBtnGroup, ButtonToolbar as MDBBtnToolbar, Card as MDBCard, CardBody as MDBCardBody, CardFooter as MDBCardFooter, CardGroup as MDBCardGroup, CardHeader as MDBCardHeader, CardImage as MDBCardImage, CardText as MDBCardText, CardTitle as MDBCardTitle, Carousel as MDBCarousel, CarouselCaption as MDBCarouselCaption, CarouselIndicator as MDBCarouselIndicator, CarouselIndicators as MDBCarouselIndicators, CarouselInner as MDBCarouselInner, CarouselItem as MDBCarouselItem, MDBCloseIcon, Col as MDBCol, Collapse as MDBCollapse, Container as MDBContainer, Control as MDBControl, DataTable as MDBDataTable, Dropdown as MDBDropdown, DropdownItem as MDBDropdownItem, DropdownMenu as MDBDropdownMenu, DropdownToggle as MDBDropdownToggle, EdgeHeader as MDBEdgeHeader, Footer as MDBFooter, FormInline as MDBFormInline, FreeBird as MDBFreeBird, HamburgerToggler as MDBHamburgerToggler, Fa as MDBIcon, Iframe as MDBIframe, Input as MDBInput, InputNumeric as MDBInputSelect, Jumbotron as MDBJumbotron, ListGroup as MDBListGroup, ListGroupItem as MDBListGroupItem, Mask as MDBMask, Media as MDBMedia, Modal as MDBModal, ModalBody as MDBModalBody, ModalFooter as MDBModalFooter, ModalHeader as MDBModalHeader, Nav as MDBNav, NavItem as MDBNavItem, NavLink as MDBNavLink, Navbar as MDBNavbar, NavbarBrand as MDBNavbarBrand, NavbarNav as MDBNavbarNav, NavbarToggler as MDBNavbarToggler, Notification as MDBNotification, PageItem as MDBPageItem, PageLink as MDBPageNav, Pagination as MDBPagination, Popper as MDBPopover, PopoverBody as MDBPopoverBody, PopoverHeader as MDBPopoverHeader, Popper as MDBPopper, Progress as MDBProgress, Row as MDBRow, TabContent as MDBTabContent, TabPane as MDBTabPane, Table as MDBTable, TableBody as MDBTableBody, TableFoot as MDBTableFoot, TableHead as MDBTableHead, Popper as MDBTooltip, View as MDBView, Waves as MDBWaves, Mask, Media, Modal, ModalBody, ModalFooter, ModalHeader, Nav, NavItem, NavLink, Navbar, NavbarBrand, NavbarNav, NavbarToggler, Notification, PageItem, PageLink, Pagination, Popper as Popover, PopoverBody, PopoverHeader, Popper, Progress, Row, TabContent, TabPane, Table, TableBody, TableFoot, TableHead, Popper as Tooltip, View, Waves };
+export { Alert, Animation, Badge, Breadcrumb, BreadcrumbItem, Button, ButtonGroup, ButtonToolbar, Card, CardBody, CardFooter, CardGroup, CardHeader, CardImage, CardText, CardTitle, Carousel, CarouselCaption, Control as CarouselControl, CarouselIndicator, CarouselIndicators, CarouselInner, CarouselItem, Col, Collapse, Container, DataTable, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, EdgeHeader, Fa, Footer, FormInline, FreeBird, HamburgerToggler, Iframe, Input, InputGroup, InputNumeric, Jumbotron, ListGroup, ListGroupItem, Alert as MDBAlert, Animation as MDBAnimation, Badge as MDBBadge, Breadcrumb as MDBBreadcrumb, BreadcrumbItem as MDBBreadcrumbItem, Button as MDBBtn, ButtonGroup as MDBBtnGroup, ButtonToolbar as MDBBtnToolbar, Card as MDBCard, CardBody as MDBCardBody, CardFooter as MDBCardFooter, CardGroup as MDBCardGroup, CardHeader as MDBCardHeader, CardImage as MDBCardImage, CardText as MDBCardText, CardTitle as MDBCardTitle, Carousel as MDBCarousel, CarouselCaption as MDBCarouselCaption, CarouselIndicator as MDBCarouselIndicator, CarouselIndicators as MDBCarouselIndicators, CarouselInner as MDBCarouselInner, CarouselItem as MDBCarouselItem, MDBCloseIcon, Col as MDBCol, Collapse as MDBCollapse, Container as MDBContainer, Control as MDBControl, DataTable as MDBDataTable, Dropdown as MDBDropdown, DropdownItem as MDBDropdownItem, DropdownMenu as MDBDropdownMenu, DropdownToggle as MDBDropdownToggle, EdgeHeader as MDBEdgeHeader, Footer as MDBFooter, FormInline as MDBFormInline, FreeBird as MDBFreeBird, HamburgerToggler as MDBHamburgerToggler, Fa as MDBIcon, Iframe as MDBIframe, Input as MDBInput, InputGroup as MDBInputGroup, InputNumeric as MDBInputSelect, Jumbotron as MDBJumbotron, ListGroup as MDBListGroup, ListGroupItem as MDBListGroupItem, Mask as MDBMask, Media as MDBMedia, Modal as MDBModal, ModalBody as MDBModalBody, ModalFooter as MDBModalFooter, ModalHeader as MDBModalHeader, Nav as MDBNav, NavItem as MDBNavItem, NavLink as MDBNavLink, Navbar as MDBNavbar, NavbarBrand as MDBNavbarBrand, NavbarNav as MDBNavbarNav, NavbarToggler as MDBNavbarToggler, Notification as MDBNotification, PageItem as MDBPageItem, PageLink as MDBPageNav, Pagination as MDBPagination, Popper as MDBPopover, PopoverBody as MDBPopoverBody, PopoverHeader as MDBPopoverHeader, Popper as MDBPopper, Progress as MDBProgress, Row as MDBRow, TabContent as MDBTabContent, TabPane as MDBTabPane, Table as MDBTable, TableBody as MDBTableBody, TableFoot as MDBTableFoot, TableHead as MDBTableHead, Popper as MDBTooltip, View as MDBView, Waves as MDBWaves, Mask, Media, Modal, ModalBody, ModalFooter, ModalHeader, Nav, NavItem, NavLink, Navbar, NavbarBrand, NavbarNav, NavbarToggler, Notification, PageItem, PageLink, Pagination, Popper as Popover, PopoverBody, PopoverHeader, Popper, Progress, Row, TabContent, TabPane, Table, TableBody, TableFoot, TableHead, Popper as Tooltip, View, Waves };

@@ -203,6 +203,50 @@ const CarouselPage = () => {
           </MDBCarouselItem>
         </MDBCarouselInner>
       </MDBCarousel>
+
+
+      <h4 className="mt-5 mb-3">Stop when mouse is on the carousel</h4>
+      <MDBCarousel
+        interval={1500}
+        activeItem={1}
+        length={3}
+        showControls={true}
+        showIndicators={true}
+        className="z-depth-1"
+      >
+        <MDBCarouselInner>
+          <MDBCarouselItem itemId="1">
+            <MDBView>
+              <img
+                className="d-block w-100"
+                src="https://mdbootstrap.com/img/Photos/Slides/img%20(131).jpg"
+                alt="First slide"
+              />
+            </MDBView>
+          </MDBCarouselItem>
+          <MDBCarouselItem itemId="2">
+            <MDBView>
+              <img
+                className="d-block w-100"
+                src="https://mdbootstrap.com/img/Photos/Slides/img%20(132).jpg"
+                alt="Second slide"
+              />
+            </MDBView>
+          </MDBCarouselItem>
+          <MDBCarouselItem itemId="3">
+            <MDBView>
+              <img
+                className="d-block w-100"
+                src="https://mdbootstrap.com/img/Photos/Slides/img%20(133).jpg"
+                alt="Third slide"
+              />
+            </MDBView>
+          </MDBCarouselItem>
+        </MDBCarouselInner>
+      </MDBCarousel>
+
+
+
     </MDBContainer>
   );
 }

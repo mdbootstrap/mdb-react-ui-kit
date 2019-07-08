@@ -148,6 +148,7 @@ class Carousel extends Component {
       length,
       showControls,
       showIndicators,
+      onHoverStop,
       ...attributes
     } = this.props;
 
@@ -186,6 +187,9 @@ class Carousel extends Component {
           this.state.swipeAvailable ? this.moveTouch(touchMove) : null
         }
         onTouchEnd={() => this.setState({ swipeAvailable: true })}
+        
+        onMouseEnter={()=> onHoverStop ? clearInterval(this.cycleInterval) : false}
+        onMouseLeave={()=> onHoverStop ? this.restartInterval() : false}
       >
         {showControls && multiItem && (
           <div className="controls-top">
@@ -248,14 +252,16 @@ Carousel.propTypes = {
   showControls: PropTypes.bool,
   showIndicators: PropTypes.bool,
   slide: PropTypes.bool,
-  length: PropTypes.number
+  length: PropTypes.number,
+  onHoverStop: PropTypes.bool
 };
 
 Carousel.defaultProps = {
   tag: "div",
   interval: 6000,
   showControls: true,
-  showIndicators: true
+  showIndicators: true,
+  onHoverStop: true
 };
 
 Carousel.childContextTypes = {

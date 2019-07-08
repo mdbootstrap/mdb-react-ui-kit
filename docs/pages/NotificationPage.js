@@ -12,6 +12,18 @@ class NotificationPage extends Component {
         />
         <h2 className="mt-5">Default</h2>
         <MDBNotification
+          iconClassName="text-primary"
+          show
+          fade
+          title="Bootstrap"
+          message="Hello, world! This is a toast message."
+          text="11 mins ago"
+        />
+
+        <h2 className="mt-5">Custom icons</h2>
+        <MDBNotification
+          iconClassName="green-text"
+          icon="envelope"
           show
           fade
           title="Bootstrap"
@@ -21,6 +33,7 @@ class NotificationPage extends Component {
         <h2 className="mt-5">Translucent</h2>
         <MDBContainer className="grey darken-3 p-3">
           <MDBNotification
+            iconClassName="text-primary"
             show
             fade
             title="Bootstrap"
@@ -30,6 +43,7 @@ class NotificationPage extends Component {
         </MDBContainer>
         <h2 className="mt-5">Stacking</h2>
         <MDBNotification
+          iconClassName="text-primary"
           show
           fade
           title="Bootstrap"
@@ -37,6 +51,7 @@ class NotificationPage extends Component {
           text="just now"
         />
         <MDBNotification
+          iconClassName="text-primary"
           show
           fade
           title="Bootstrap"
@@ -47,6 +62,7 @@ class NotificationPage extends Component {
         <MDBContainer className="grey darken-3 p-3 mb-5">
           <div style={{ minHeight: "200px", position: "relative" }}>
             <MDBNotification
+              iconClassName="text-primary"
               show
               fade
               title="Bootstrap"
@@ -60,8 +76,15 @@ class NotificationPage extends Component {
             />
           </div>
         </MDBContainer>
-        <MDBContainer className="grey darken-3 p-3  mb-5">
-          <div style={{ minHeight: "200px", position: "relative" }}>
+        <MDBContainer
+          className="p-3 mb-5"
+          style={{
+            backgroundImage:
+              "url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20(122).jpg')",
+            minHeight: "350px"
+          }}
+        >
+          <div style={{ position: "relative" }}>
             <div
               style={{
                 position: "absolute",
@@ -70,6 +93,7 @@ class NotificationPage extends Component {
               }}
             >
               <MDBNotification
+                iconClassName="text-primary"
                 show
                 fade
                 title="Bootstrap"
@@ -77,11 +101,21 @@ class NotificationPage extends Component {
                 text="just now"
               />
               <MDBNotification
+                icon="user"
                 show
                 fade
                 title="Bootstrap"
                 message="Heads up, toasts will stack automatically"
                 text="2 seconds ago"
+              />
+              <MDBNotification
+                iconClassName="green-text"
+                icon="envelope"
+                show
+                fade
+                title="Bootstrap"
+                message="Hello, world! This is a toast message."
+                text="11 mins ago"
               />
             </div>
           </div>
@@ -90,6 +124,7 @@ class NotificationPage extends Component {
           Accessibility
         </h2>
         <MDBNotification
+          iconClassName="text-primary"
           show
           fade
           title="Bootstrap"
@@ -102,17 +137,18 @@ class NotificationPage extends Component {
         </p>
         <h2 className="mt-5">Customizable</h2>
         <MDBNotification
-          show
+          autohide={0} // by default = ∞ ms
+          bodyClassName="p-5 font-weight-bold white-text"
+          className="stylish-color-dark"
+          closeClassName="blue-grey-text"
           fade
-          labelColor="#59698d"
+          icon="bell"
+          iconClassName="blue-grey-text"
+          message="Hello, world! This is a toast message."
+          show
+          text="11 mins ago"
           title="Bootstrap"
           titleClassName="elegant-color-dark white-text"
-          closeClassName="blue-grey-text"
-          message="Hello, world! This is a toast message."
-          bodyClassName="p-5 font-weight-bold white-text"
-          text="11 mins ago"
-          autohide={0} // by default = ∞ ms
-          className="stylish-color-dark"
         />
         <hr
           style={{

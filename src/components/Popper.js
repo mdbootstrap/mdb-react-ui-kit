@@ -67,7 +67,7 @@ const Popper = ({ children, clickable, domElement, modifiers, id, isVisible, onC
         }
       </Reference>
       {
-        visible &&
+        visible && Content.props.children &&
         <Tag style={style}>
           <ReactPopper
             modifiers={modifiers}

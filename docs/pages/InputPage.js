@@ -1,5 +1,13 @@
 import React, { Component } from "react";
-import { MDBInput, MDBInputSelect, MDBFormInline, MDBBtn, MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import {
+  MDBInput,
+  MDBInputSelect,
+  MDBFormInline,
+  MDBBtn,
+  MDBContainer,
+  MDBRow,
+  MDBCol
+} from "mdbreact";
 import DocsLink from "./../components/docsLink";
 import "./InputPage.css";
 
@@ -8,15 +16,23 @@ class InputPage extends Component {
     super();
     this.state = {
       value: "Controlled input with value",
-    }
+      iconInput: "eye-slash",
+      typeInput: "password"
+    };
 
     this.nextInputRef = null;
+  }
+
+  componentDidMount() {
+    document
+      .querySelectorAll(".iconHover")
+      .forEach(el => (el.style.cursor = "pointer"));
   }
 
   handleSubmit = event => {
     alert("MDBInput value: " + this.state.value);
     event.preventDefault();
-  }
+  };
 
   saveToState = value => this.setState({ value });
 
@@ -25,6 +41,20 @@ class InputPage extends Component {
   handleChange = event => this.setState({ value: event.target.value });
 
   changeFocus = () => this.nextInputRef.focus();
+
+  mouseEnter = () => {
+    this.setState({
+      iconInput: "eye",
+      typeInput: "text"
+    });
+  };
+
+  mouseLeave = () => {
+    this.setState({
+      iconInput: "eye-slash",
+      typeInput: "password"
+    });
+  };
 
   render() {
     return (
@@ -35,15 +65,45 @@ class InputPage extends Component {
         />
         <MDBContainer style={{ textAlign: "initial" }}>
           <div>
-            <MDBInput label="Material input" getValue={this.getValue} valueDefault="Uncontrolled input with default value" />
+            <MDBInput
+              label="Material input"
+              getValue={this.getValue}
+              valueDefault="Uncontrolled input with default value"
+            />
 
-            <MDBInput label="Example label" onChange={this.handleChange} value={this.state.value} />
+            <MDBInput
+              label="Example label"
+              onChange={this.handleChange}
+              value={this.state.value}
+            />
 
-            <MDBInput label="Focus next input on change (uses ref)" onChange={this.changeFocus} size="sm" icon="envelope" />
+            <MDBInput
+              label="Focus next input on change (uses ref)"
+              onChange={this.changeFocus}
+              size="sm"
+              icon="envelope"
+            />
 
-            <MDBInput label="Example label" inputRef={ref => this.nextInputRef = ref} icon="envelope" />
+            <MDBInput
+              label="Example label"
+              inputRef={ref => (this.nextInputRef = ref)}
+              icon="envelope"
+            />
 
-            <MDBInput label="Example label" icon="user" />
+            <MDBInput
+              iconClass="iconHover"
+              label="Run function on click icon"
+              icon="bell"
+              onIconClick={() => alert("Wait! This is an alert!")}
+            />
+            <MDBInput
+              label="Hover Eye to show password!"
+              valueDefault="Do you see me?"
+              type={this.state.typeInput}
+              icon={this.state.iconInput}
+              onIconMouseEnter={this.mouseEnter}
+              onIconMouseLeave={this.mouseLeave}
+            />
 
             <MDBInput hint="placeholder" label="Example label" />
 
@@ -60,7 +120,7 @@ class InputPage extends Component {
               error="wrong"
               success="right"
             />
-            
+
             <MDBInput
               label="Type your password"
               icon="lock"
@@ -69,7 +129,7 @@ class InputPage extends Component {
               validate
             />
 
-            <MDBInput label="Example label" disabled />
+            <MDBInput label="Disabled" disabled />
 
             <MDBFormInline>
               <MDBInput

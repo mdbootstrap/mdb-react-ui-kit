@@ -30,19 +30,19 @@ class Input extends React.Component {
     return null;
   }
 
-  onBlur = (event) => {
+  onBlur = event => {
     event.stopPropagation();
     this.setState({ isFocused: false });
     this.props.onBlur && this.props.onBlur(event);
-  }
+  };
 
-  onFocus = (event) => {
+  onFocus = event => {
     event.stopPropagation();
     this.setState({ isFocused: true });
     this.props.onFocus && this.props.onFocus(event);
-  }
+  };
 
-  onChange = (event) => {
+  onChange = event => {
     event.stopPropagation();
     if (this.props.type !== "checkbox" && this.props.type !== "radio") {
       this.setState({
@@ -53,9 +53,9 @@ class Input extends React.Component {
 
     this.props.onChange && this.props.onChange(event);
     this.props.getValue && this.props.getValue(event.target.value);
-  }
+  };
 
-  onInput = (event) => {
+  onInput = event => {
     event.stopPropagation();
     if (this.props.type !== "checkbox" && this.props.type !== "radio") {
       this.setState({
@@ -65,11 +65,11 @@ class Input extends React.Component {
     }
 
     this.props.onInput && this.props.onInput(event);
-  }
+  };
 
   setFocus = () => {
     this.inputElementRef.current.focus();
-  }
+  };
 
   render() {
     const {
@@ -88,10 +88,14 @@ class Input extends React.Component {
       iconBrand,
       iconClass,
       iconLight,
+      onIconClick,
+      onIconMouseEnter,
+      onIconMouseLeave,
       iconRegular,
       iconSize,
       id,
       inputRef,
+      noTag,
       outline,
       label,
       labelClass,
@@ -105,15 +109,19 @@ class Input extends React.Component {
       ...attributes
     } = this.props;
 
-    let isNotEmpty = !!this.state.innerValue || !!hint || this.state.isFocused;
+    let isNotEmpty =
+      (!!this.state.innerValue ||
+        !!hint ||
+        this.state.isFocused ||
+        this.state.innerValue === 0) &&
+      (type !== "checkbox" && type !== "radio");
     let Tag = "";
     let formControlClass = "";
 
     if (type === "textarea") {
       formControlClass = outline ? "form-control" : "md-textarea form-control";
       Tag = "textarea";
-    }
-    else {
+    } else {
       formControlClass = "form-control";
       Tag = "input";
       attributes.type = type;
@@ -133,11 +141,16 @@ class Input extends React.Component {
     );
 
     const containerClassFix = classNames(
-      type === "checkbox" || type === "radio" ? "form-check my-3" : "md-form",
+      type === "checkbox" || type === "radio"
+        ? typeof label === "boolean" && label
+          ? "d-flex"
+          : "form-check my-3"
+        : "md-form",
+
       group ? "form-group" : false,
       size ? `form-${size}` : false,
-      outline && 'md-outline',
-      background && 'md-bg',
+      outline && "md-outline",
+      background && "md-bg",
       containerClass
     );
 
@@ -150,15 +163,21 @@ class Input extends React.Component {
     const labelClassFix = classNames(
       isNotEmpty ? "active" : false,
       disabled ? "disabled" : false,
-      type === "checkbox" ? "form-check-label mr-5" : false,
-      type === "radio" ? "form-check-label mr-5" : false,
+      type === "checkbox"
+        ? typeof label === "boolean" && label
+          ? "form-check-label"
+          : "form-check-label mr-5"
+        : false,
+      type === "radio"
+        ? typeof label === "boolean" && label
+          ? "form-check-label"
+          : "form-check-label mr-5"
+        : false,
       labelClass
     );
-
-    return (
-      <div className={containerClassFix}>
-        {
-          icon &&
+    const renderFunction = () => (
+      <>
+        {icon && (
           <Fa
             icon={icon}
             size={iconSize}
@@ -166,9 +185,13 @@ class Input extends React.Component {
             light={iconLight}
             regular={iconRegular}
             className={iconClassFix}
-            onClick={this.setFocus}
+            onClick={e => {
+              onIconClick ? onIconClick() : this.setFocus(e);
+            }}
+            onMouseEnter={onIconMouseEnter}
+            onMouseLeave={onIconMouseLeave}
           />
-        }
+        )}
         <Tag
           {...attributes}
           className={classes}
@@ -181,8 +204,7 @@ class Input extends React.Component {
           onInput={this.onInput}
           onFocus={this.onFocus}
         />
-        {
-          label &&
+        {label && (
           <label
             className={labelClassFix}
             htmlFor={id}
@@ -193,9 +215,15 @@ class Input extends React.Component {
           >
             {label}
           </label>
-        }
+        )}
         {children}
-      </div>
+      </>
+    );
+
+    return noTag ? (
+      renderFunction()
+    ) : (
+      <div className={containerClassFix}>{renderFunction()}</div>
     );
   }
 }
@@ -215,6 +243,9 @@ Input.propTypes = {
   iconBrand: PropTypes.bool,
   iconClass: PropTypes.string,
   iconLight: PropTypes.bool,
+  onIconClick: PropTypes.func,
+  onIconMouseEnter: PropTypes.func,
+  onIconMouseLeave: PropTypes.func,
   iconRegular: PropTypes.bool,
   iconSize: PropTypes.string,
   id: PropTypes.string,
@@ -222,9 +253,11 @@ Input.propTypes = {
   label: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
-    PropTypes.object
+    PropTypes.object,
+    PropTypes.bool
   ]),
   labelClass: PropTypes.string,
+  noTag: PropTypes.bool,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
@@ -235,8 +268,8 @@ Input.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   type: PropTypes.string,
   validate: PropTypes.bool,
-  value: PropTypes.string,
-  valueDefault: PropTypes.string
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  valueDefault: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 Input.defaultProps = {
@@ -252,9 +285,12 @@ Input.defaultProps = {
   iconBrand: false,
   iconClass: "",
   iconLight: false,
+  onIconMouseEnter: () => {},
+  onIconMouseLeave: () => {},
   iconRegular: false,
   iconSize: undefined,
   id: undefined,
+  noTag: false,
   outline: false,
   label: "",
   labelClass: "",

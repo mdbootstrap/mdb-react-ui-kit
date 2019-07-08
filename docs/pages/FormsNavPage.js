@@ -16,6 +16,7 @@ const FormsNavPage = () =>  {
               <h6 className="mt-3 grey-text">FREE </h6>
               <MenuLink to="/forms/forms" title="Forms" />
               <MenuLink to="/forms/input" title="Input" />
+              <MenuLink to="/forms/inputgroup" title="Input Group" />
               <MenuLink to="/forms/validation" title="Validation" />
             </ul>
           </MDBJumbotron>
