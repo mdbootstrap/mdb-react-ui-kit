@@ -337,7 +337,8 @@ function (_Component) {
       if (windowHeight + scroll - 100 > _this.getOffset(_this.elemRef.current) && scroll < _this.getOffset(_this.elemRef.current) || windowHeight + scroll - 100 > _this.getOffset(_this.elemRef.current) + _this.elemRef.current.clientHeight && scroll < _this.getOffset(_this.elemRef.current) + _this.elemRef.current.clientHeight || windowHeight + scroll === docHeight && _this.getOffset(_this.elemRef.current) + 100 > docHeight) {
         // if the predicate is true, change state
         _this.setState({
-          isVisible: true
+          isVisible: true,
+          revealed: true
         });
       } else {
         //  was the "revealing" fired at least once?
@@ -408,6 +409,7 @@ function (_Component) {
       // add EL on window if the animation is to "reveal"
       if (this.props.reveal) {
         window.addEventListener("scroll", this.updatePredicate);
+        this.updatePredicate();
       }
     }
   }, {
@@ -1515,8 +1517,8 @@ function (_React$Component) {
       } : {};
       return React.createElement(Tag, _extends({}, attributes, {
         className: classes,
-        onMouseDown: this.handleClick.bind(this),
-        onTouchStart: this.handleClick.bind(this),
+        onMouseDown: this.handleClick.bind(this) // onTouchStart={this.handleClick.bind(this)}
+        ,
         style: viewStyle
       }), children, waves && React.createElement(Waves, {
         cursorPos: this.state.cursorPos
@@ -1607,7 +1609,9 @@ function (_Component) {
         }, React.createElement("div", {
           className: "Ripple-parent",
           onMouseDown: this.handleClick.bind(this),
-          onTouchStart: this.handleClick.bind(this)
+          style: {
+            touchAction: "unset"
+          }
         }, innerContent, React.createElement(Mask, {
           overlay: overlay
         }), this.props.waves && React.createElement(Waves, {
@@ -4686,7 +4690,7 @@ function (_React$Component) {
           labelClass = _this$props.labelClass,
           size = _this$props.size,
           success = _this$props.success,
-          tag = _this$props.tag,
+          Tag = _this$props.tag,
           type = _this$props.type,
           validate = _this$props.validate,
           value = _this$props.value,
@@ -4694,15 +4698,15 @@ function (_React$Component) {
           attributes = _objectWithoutProperties(_this$props, ["background", "children", "className", "containerClass", "disabled", "error", "filled", "gap", "getValue", "group", "hint", "icon", "iconBrand", "iconClass", "iconLight", "onIconClick", "onIconMouseEnter", "onIconMouseLeave", "iconRegular", "iconSize", "id", "inputRef", "noTag", "outline", "label", "labelClass", "size", "success", "tag", "type", "validate", "value", "valueDefault"]);
 
       var isNotEmpty = (!!this.state.innerValue || !!hint || this.state.isFocused || this.state.innerValue === 0) && type !== "checkbox" && type !== "radio";
-      var Tag = "";
+      var TagInput = "";
       var formControlClass = "";
 
       if (type === "textarea") {
         formControlClass = outline ? "form-control" : "md-textarea form-control";
-        Tag = "textarea";
+        TagInput = "textarea";
       } else {
         formControlClass = "form-control";
-        Tag = "input";
+        TagInput = "input";
         attributes.type = type;
       }
 
@@ -4725,7 +4729,7 @@ function (_React$Component) {
           },
           onMouseEnter: onIconMouseEnter,
           onMouseLeave: onIconMouseLeave
-        }), React.createElement(Tag, _extends({}, attributes, {
+        }), React.createElement(TagInput, _extends({}, attributes, {
           className: classes,
           id: id,
           placeholder: hint,
@@ -4745,7 +4749,7 @@ function (_React$Component) {
         }, label), children);
       };
 
-      return noTag ? renderFunction() : React.createElement("div", {
+      return noTag ? renderFunction() : React.createElement(Tag, {
         className: containerClassFix
       }, renderFunction());
     }
@@ -4827,7 +4831,7 @@ Input.defaultProps = {
   labelClass: "",
   size: "",
   success: "",
-  tag: "input",
+  tag: "div",
   type: "text",
   validate: false,
   valueDefault: ""
@@ -5334,7 +5338,7 @@ function (_Component) {
         appear: this.state.isOpen,
         mountOnEnter: true,
         unmountOnExit: true,
-        onClick: this.handleBackdropClick,
+        onMouseDown: this.handleBackdropClick,
         onEntered: function onEntered(node) {
           return _this2.handleOnEntered("modal", node);
         },
@@ -6136,7 +6140,7 @@ var Popper = function Popper(_ref) {
       onTouchEnd: function onTouchEnd() {
         return !clickable && setVisible(false);
       },
-      onClick: function onClick() {
+      onMouseDown: function onMouseDown() {
         return clickable && setVisible(!visible);
       },
       innerRef: ref,
@@ -6154,7 +6158,7 @@ var Popper = function Popper(_ref) {
       onTouchEnd: function onTouchEnd() {
         return !clickable && setVisible(false);
       },
-      onClick: function onClick() {
+      onMouseDown: function onMouseDown() {
         return clickable && setVisible(!visible);
       },
       ref: ref,

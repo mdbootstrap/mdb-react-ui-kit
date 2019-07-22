@@ -60,6 +60,7 @@ import PillsPage from './pages/PillsPage';
 import NotificationPage from './pages/NotificationPage';
 import InputGroupPage from './pages/InputGroupPage'
 
+
 class Routes extends React.Component {
   render() {
     return (

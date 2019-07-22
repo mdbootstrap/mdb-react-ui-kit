@@ -1,6 +1,7 @@
 import React from "react";
 import { MDBContainer } from "mdbreact";
 import DocsLink from "./../components/docsLink";
+import SectionContainer from "./../components/sectionContainer";
 import "./ScrollbarPage.css";
 
 const ScrollBarPage = () => {
@@ -8,21 +9,20 @@ const ScrollBarPage = () => {
   return (
     <MDBContainer>
       <DocsLink title="ScrollBar" href="https://mdbootstrap.com/docs/react/" />
-      <div className="scrollbar scrollbar-primary  mt-5 mx-auto" style={scrollContainerStyle}>
-        <img
-          alt=""
-          src="https://mdbootstrap.com/img/Photos/Others/img%20(51).jpg"
-        />
-      </div>
 
-      <div className="scrollbar my-5 mx-auto" style={scrollContainerStyle}>
-        <img
-          alt=""
-          src="https://mdbootstrap.com/img/Photos/Others/img%20(51).jpg"
-        />
-      </div>
+      <SectionContainer header="Default" className="py-5">
+        <div className="scrollbar mx-auto" style={scrollContainerStyle}>
+          <img alt="" src="https://mdbootstrap.com/img/Photos/Others/img%20(51).jpg" />
+        </div>
+      </SectionContainer>
+
+      <SectionContainer header="Primary" className="py-5">
+        <div className="scrollbar scrollbar-primary m-auto" style={scrollContainerStyle}>
+          <img alt="" src="https://mdbootstrap.com/img/Photos/Others/img%20(51).jpg" />
+        </div>
+      </SectionContainer>
     </MDBContainer>
   );
-}
+};
 
 export default ScrollBarPage;

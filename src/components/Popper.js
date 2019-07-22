@@ -36,7 +36,6 @@ const Popper = ({ children, clickable, domElement, modifiers, id, isVisible, onC
   const contentClasses = classNames(
     !popover && "tooltip-inner"
   );
-
   return (
     <Manager>
       <Reference>
@@ -49,7 +48,7 @@ const Popper = ({ children, clickable, domElement, modifiers, id, isVisible, onC
                 onMouseLeave={() => !clickable && setVisible(false)}
                 onTouchStart={() => !clickable && setVisible(true)}
                 onTouchEnd={() => !clickable && setVisible(false)}
-                onClick={() => clickable && setVisible(!visible)}
+                onMouseDown={() => clickable && setVisible(!visible)}
                 innerRef={ref}
                 data-popper={id}
               />
@@ -59,7 +58,7 @@ const Popper = ({ children, clickable, domElement, modifiers, id, isVisible, onC
                 onMouseLeave={() => !clickable && setVisible(false)}
                 onTouchStart={() => !clickable && setVisible(true)}
                 onTouchEnd={() => !clickable && setVisible(false)}
-                onClick={() => clickable && setVisible(!visible)}
+                onMouseDown={() => clickable && setVisible(!visible)}
                 ref={ref}
                 data-popper={id}
               />

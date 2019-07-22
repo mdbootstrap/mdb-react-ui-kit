@@ -1,19 +1,19 @@
 .flyout {
-	display:flex;
-	flex-direction: column;
-	min-height:100vh;
-	justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
 }
 
 .home-feature-box .fa {
-	font-size:6rem;
+  font-size: 6rem;
 }
 
 .home-feature-box span {
-	display: block;
-	color:#111;
-	font-weight:bold;
-	margin-top:1.5rem;
+  display: block;
+  color: #111;
+  font-weight: bold;
+  margin-top: 1.5rem;
 }
 
 .example-components-list li > a {
@@ -21,10 +21,27 @@
 }
 
 .example-components-list li:last-child > a {
-	border-bottom:0;
+  border-bottom: 0;
 }
 
 .example-components-list li > a .fa {
-	color:rgba(0,0,0,.35);
-	float:right;
+  color: rgba(0, 0, 0, 0.35);
+  float: right;
+}
+
+.list-unstyled .list-group-item-action {
+  transition: all 0.2s;
+  color: #495057;
+}
+
+.list-unstyled .list-group-item-action:hover {
+  transform: translateX(5px);
+}
+
+.list-unstyled .list-group-item-action:hover i {
+  color: #283593;
+}
+
+.nav-link:focus{
+  outline: none;
 }

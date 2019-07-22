@@ -17,7 +17,7 @@ class App extends Component {
   state = {
     collapseID: ""
   };
-
+  
   toggleCollapse = collapseID => () =>
     this.setState(prevState => ({
       collapseID: prevState.collapseID !== collapseID ? collapseID : ""
@@ -43,9 +43,9 @@ class App extends Component {
       <Router>
         <div className="flyout">
           <MDBNavbar color="indigo" dark expand="md" fixed="top" scrolling>
-            <MDBNavbarBrand href="/">
+            <MDBNavbarBrand href="/" className="py-0 font-weight-bold">
               <Logo style={{ height: "2.5rem", width: "2.5rem" }} />
-              MDB React
+              <strong className="align-middle">MDB React</strong>
             </MDBNavbarBrand>
             <MDBNavbarToggler
               onClick={this.toggleCollapse("mainNavbarCollapse")}
@@ -62,7 +62,7 @@ class App extends Component {
                     to="/"
                     onClick={this.closeCollapse("mainNavbarCollapse")}
                   >
-                    Home
+                    <strong>Home</strong>
                   </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
@@ -70,7 +70,7 @@ class App extends Component {
                     onClick={this.closeCollapse("mainNavbarCollapse")}
                     to="/css"
                   >
-                    CSS
+                    <strong>CSS</strong>
                   </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
@@ -78,7 +78,7 @@ class App extends Component {
                     onClick={this.closeCollapse("mainNavbarCollapse")}
                     to="/components"
                   >
-                    Components
+                    <strong>Components</strong>
                   </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
@@ -86,7 +86,7 @@ class App extends Component {
                     onClick={this.closeCollapse("mainNavbarCollapse")}
                     to="/advanced"
                   >
-                    Advanced
+                    <strong>Advanced</strong>
                   </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
@@ -94,7 +94,7 @@ class App extends Component {
                     onClick={this.closeCollapse("mainNavbarCollapse")}
                     to="/navigation"
                   >
-                    Navigation
+                    <strong>Navigation</strong>
                   </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
@@ -102,7 +102,7 @@ class App extends Component {
                     onClick={this.closeCollapse("mainNavbarCollapse")}
                     to="/forms"
                   >
-                    Forms
+                    <strong>Forms</strong>
                   </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
@@ -110,7 +110,7 @@ class App extends Component {
                     onClick={this.closeCollapse("mainNavbarCollapse")}
                     to="/tables"
                   >
-                    Tables
+                    <strong>Tables</strong>
                   </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
@@ -118,7 +118,7 @@ class App extends Component {
                     onClick={this.closeCollapse("mainNavbarCollapse")}
                     to="/modals"
                   >
-                    Modals
+                    <strong>Modals</strong>
                   </MDBNavLink>
                 </MDBNavItem>
                 <MDBNavItem>
@@ -126,7 +126,7 @@ class App extends Component {
                     onClick={this.closeCollapse("mainNavbarCollapse")}
                     to="/addons"
                   >
-                    Addons
+                    <strong>Addons</strong>
                   </MDBNavLink>
                 </MDBNavItem>
               </MDBNavbarNav>
@@ -138,7 +138,7 @@ class App extends Component {
           </main>
           <MDBFooter color="indigo">
             <p className="footer-copyright mb-0 py-3 text-center">
-              &copy; {new Date().getFullYear()} Copyright:{" "}
+              &copy; {new Date().getFullYear()} Copyright:
               <a href="https://www.MDBootstrap.com"> MDBootstrap.com </a>
             </p>
           </MDBFooter>

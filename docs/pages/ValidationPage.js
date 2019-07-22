@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from "mdbreact";
 import DocsLink from "./../components/docsLink";
+import SectionContainer from "./../components/sectionContainer";
 
 class ValidationPage extends Component {
   state = {
@@ -24,22 +25,13 @@ class ValidationPage extends Component {
   render() {
     return (
       <MDBContainer>
-        <DocsLink
-          title="Form Validation"
-          href="https://mdbootstrap.com/docs/react/forms/validation/"
-        />
-        <div>
-          <form
-            className="needs-validation"
-            onSubmit={this.submitHandler}
-            noValidate
-          >
+        <DocsLink title="Form Validation" href="https://mdbootstrap.com/docs/react/forms/validation/" />
+
+        <SectionContainer header="Validations">
+          <form className="needs-validation" onSubmit={this.submitHandler} noValidate>
             <MDBRow>
               <MDBCol md="4" className="mb-3">
-                <label
-                  htmlFor="defaultFormRegisterNameEx"
-                  className="grey-text"
-                >
+                <label htmlFor="defaultFormRegisterNameEx" className="grey-text">
                   First name
                 </label>
                 <input
@@ -55,10 +47,7 @@ class ValidationPage extends Component {
                 <div className="valid-feedback">Looks good!</div>
               </MDBCol>
               <MDBCol md="4" className="mb-3">
-                <label
-                  htmlFor="defaultFormRegisterEmailEx2"
-                  className="grey-text"
-                >
+                <label htmlFor="defaultFormRegisterEmailEx2" className="grey-text">
                   Last name
                 </label>
                 <input
@@ -74,10 +63,7 @@ class ValidationPage extends Component {
                 <div className="valid-feedback">Looks good!</div>
               </MDBCol>
               <MDBCol md="4" className="mb-3">
-                <label
-                  htmlFor="defaultFormRegisterConfirmEx3"
-                  className="grey-text"
-                >
+                <label htmlFor="defaultFormRegisterConfirmEx3" className="grey-text">
                   Email
                 </label>
                 <input
@@ -96,10 +82,7 @@ class ValidationPage extends Component {
             </MDBRow>
             <MDBRow>
               <MDBCol md="4" className="mb-3">
-                <label
-                  htmlFor="defaultFormRegisterPasswordEx4"
-                  className="grey-text"
-                >
+                <label htmlFor="defaultFormRegisterPasswordEx4" className="grey-text">
                   City
                 </label>
                 <input
@@ -112,16 +95,11 @@ class ValidationPage extends Component {
                   placeholder="City"
                   required
                 />
-                <div className="invalid-feedback">
-                  Please provide a valid city.
-                </div>
+                <div className="invalid-feedback">Please provide a valid city.</div>
                 <div className="valid-feedback">Looks good!</div>
               </MDBCol>
               <MDBCol md="4" className="mb-3">
-                <label
-                  htmlFor="defaultFormRegisterPasswordEx4"
-                  className="grey-text"
-                >
+                <label htmlFor="defaultFormRegisterPasswordEx4" className="grey-text">
                   State
                 </label>
                 <input
@@ -134,16 +112,11 @@ class ValidationPage extends Component {
                   placeholder="State"
                   required
                 />
-                <div className="invalid-feedback">
-                  Please provide a valid state.
-                </div>
+                <div className="invalid-feedback">Please provide a valid state.</div>
                 <div className="valid-feedback">Looks good!</div>
               </MDBCol>
               <MDBCol md="4" className="mb-3">
-                <label
-                  htmlFor="defaultFormRegisterPasswordEx4"
-                  className="grey-text"
-                >
+                <label htmlFor="defaultFormRegisterPasswordEx4" className="grey-text">
                   Zip
                 </label>
                 <input
@@ -156,37 +129,26 @@ class ValidationPage extends Component {
                   placeholder="Zip"
                   required
                 />
-                <div className="invalid-feedback">
-                  Please provide a valid zip.
-                </div>
+                <div className="invalid-feedback">Please provide a valid zip.</div>
                 <div className="valid-feedback">Looks good!</div>
               </MDBCol>
             </MDBRow>
             <MDBCol md="4" className="mb-3">
               <div className="custom-control custom-checkbox pl-3">
-                <input
-                  className="custom-control-input"
-                  type="checkbox"
-                  value=""
-                  id="invalidCheck"
-                  required
-                />
+                <input className="custom-control-input" type="checkbox" value="" id="invalidCheck" required />
                 <label className="custom-control-label" htmlFor="invalidCheck">
                   Agree to terms and conditions
                 </label>
-                <div className="invalid-feedback">
-                  You must agree before submitting.
-                </div>
+                <div className="invalid-feedback">You must agree before submitting.</div>
               </div>
             </MDBCol>
             <MDBBtn color="unique" type="submit">
               Submit Form
             </MDBBtn>
           </form>
-        </div>
-        <hr className="my-5" />
-        <h2 className="mb-5">Browser defualt validation</h2>
-        <div>
+        </SectionContainer>
+
+        <SectionContainer header="Browser defualt validation">
           <form>
             <MDBRow>
               <MDBCol md="4">
@@ -270,29 +232,17 @@ class ValidationPage extends Component {
               Submit Form
             </MDBBtn>
           </form>
-        </div>
+        </SectionContainer>
 
-        <hr className="my-5" />
-        <h2 className="mb-5">Supported elements</h2>
-        <MDBRow className="mt-6">
+        <SectionContainer header="Supported elements">
           <MDBCol md="4">
             <form className="was-validated" noValidate>
               <div className="custom-control custom-checkbox mb-3">
-                <input
-                  type="checkbox"
-                  className="custom-control-input"
-                  id="customControlValidation1"
-                  required
-                />
-                <label
-                  className="custom-control-label"
-                  htmlFor="customControlValidation1"
-                >
+                <input type="checkbox" className="custom-control-input" id="customControlValidation1" required />
+                <label className="custom-control-label" htmlFor="customControlValidation1">
                   Check this custom checkbox
                 </label>
-                <div className="invalid-feedback">
-                  Example invalid feedback text
-                </div>
+                <div className="invalid-feedback">Example invalid feedback text</div>
               </div>
 
               <div className="custom-control custom-radio">
@@ -303,10 +253,7 @@ class ValidationPage extends Component {
                   name="radio-stacked"
                   required
                 />
-                <label
-                  className="custom-control-label"
-                  htmlFor="customControlValidation2"
-                >
+                <label className="custom-control-label" htmlFor="customControlValidation2">
                   Toggle this custom radio
                 </label>
               </div>
@@ -318,15 +265,10 @@ class ValidationPage extends Component {
                   name="radio-stacked"
                   required
                 />
-                <label
-                  className="custom-control-label"
-                  htmlFor="customControlValidation3"
-                >
+                <label className="custom-control-label" htmlFor="customControlValidation3">
                   Or toggle this other custom radio
                 </label>
-                <div className="invalid-feedback">
-                  More example invalid feedback text
-                </div>
+                <div className="invalid-feedback">More example invalid feedback text</div>
               </div>
 
               <div className="form-group">
@@ -336,47 +278,26 @@ class ValidationPage extends Component {
                   <option value="2">Two</option>
                   <option value="3">Three</option>
                 </select>
-                <div className="invalid-feedback">
-                  Example invalid custom select feedback
-                </div>
+                <div className="invalid-feedback">Example invalid custom select feedback</div>
               </div>
 
               <div className="custom-file">
-                <input
-                  type="file"
-                  className="custom-file-input"
-                  id="validatedCustomFile"
-                  required
-                />
-                <label
-                  className="custom-file-label"
-                  htmlFor="validatedCustomFile"
-                >
+                <input type="file" className="custom-file-input" id="validatedCustomFile" required />
+                <label className="custom-file-label" htmlFor="validatedCustomFile">
                   Choose file...
                 </label>
-                <div className="invalid-feedback">
-                  Example invalid custom file feedback
-                </div>
+                <div className="invalid-feedback">Example invalid custom file feedback</div>
               </div>
             </form>
           </MDBCol>
-        </MDBRow>
+        </SectionContainer>
 
-        <hr className="my-5" />
-        <h2 className="mb-5">Tooltips</h2>
-        <MDBRow className="mt-6">
+        <SectionContainer header="Tooltips">
           <MDBCol md="">
-            <form
-              className="needs-validation"
-              onSubmit={this.submitHandler}
-              noValidate
-            >
+            <form className="needs-validation" onSubmit={this.submitHandler} noValidate>
               <MDBRow>
                 <div className="col-md-4 mb-3">
-                  <label
-                    htmlFor="defaultFormRegisterNameEx"
-                    className="grey-text"
-                  >
+                  <label htmlFor="defaultFormRegisterNameEx" className="grey-text">
                     First name
                   </label>
                   <input
@@ -394,10 +315,7 @@ class ValidationPage extends Component {
                   </div>
                 </div>
                 <div className="col-md-4 mb-3">
-                  <label
-                    htmlFor="defaultFormRegisterEmailEx2"
-                    className="grey-text"
-                  >
+                  <label htmlFor="defaultFormRegisterEmailEx2" className="grey-text">
                     Last name
                   </label>
                   <input
@@ -415,10 +333,7 @@ class ValidationPage extends Component {
                   </div>
                 </div>
                 <div className="col-md-4 mb-3">
-                  <label
-                    htmlFor="defaultFormRegisterConfirmEx3"
-                    className="grey-text"
-                  >
+                  <label htmlFor="defaultFormRegisterConfirmEx3" className="grey-text">
                     Email
                   </label>
                   <input
@@ -437,10 +352,7 @@ class ValidationPage extends Component {
               </MDBRow>
               <MDBRow>
                 <div className="col-md-4 mb-3">
-                  <label
-                    htmlFor="defaultFormRegisterPasswordEx4"
-                    className="grey-text"
-                  >
+                  <label htmlFor="defaultFormRegisterPasswordEx4" className="grey-text">
                     City
                   </label>
                   <input
@@ -461,10 +373,7 @@ class ValidationPage extends Component {
                   </div>
                 </div>
                 <div className="col-md-4 mb-3">
-                  <label
-                    htmlFor="defaultFormRegisterPasswordEx4"
-                    className="grey-text"
-                  >
+                  <label htmlFor="defaultFormRegisterPasswordEx4" className="grey-text">
                     State
                   </label>
                   <input
@@ -485,10 +394,7 @@ class ValidationPage extends Component {
                   </div>
                 </div>
                 <div className="col-md-4 mb-3">
-                  <label
-                    htmlFor="defaultFormRegisterPasswordEx4"
-                    className="grey-text"
-                  >
+                  <label htmlFor="defaultFormRegisterPasswordEx4" className="grey-text">
                     Zip
                   </label>
                   <input
@@ -514,7 +420,7 @@ class ValidationPage extends Component {
               </button>
             </form>
           </MDBCol>
-        </MDBRow>
+        </SectionContainer>
       </MDBContainer>
     );
   }

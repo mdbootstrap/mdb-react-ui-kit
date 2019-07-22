@@ -157,7 +157,7 @@ class Modal extends Component {
           appear={this.state.isOpen}
           mountOnEnter
           unmountOnExit
-          onClick={this.handleBackdropClick}
+          onMouseDown={this.handleBackdropClick}
           onEntered={node => this.handleOnEntered("modal", node)}
           onExit={node => this.handleOnExit("modal", node)}
         >

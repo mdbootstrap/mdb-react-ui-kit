@@ -1,16 +1,14 @@
 import React from "react";
 import { MDBProgress, MDBContainer } from "mdbreact";
 import DocsLink from "../components/docsLink";
+import SectionContainer from "../components/sectionContainer";
 
 const ProgressPage = props => {
   return (
     <MDBContainer>
-      <DocsLink
-        title="Progress Bar"
-        href="https://mdbootstrap.com/docs/react/components/progress-bar/"
-      />
-      <div className="container-fluid">
-        <p>Material design</p>
+      <DocsLink title="Progress Bar" href="https://mdbootstrap.com/docs/react/components/progress-bar/" />
+
+      <SectionContainer header="Material design">
         <MDBProgress material value={100} />
         <MDBProgress material value={75} color="success" />
         <MDBProgress material value={50} color="danger" />
@@ -19,9 +17,9 @@ const ProgressPage = props => {
         <MDBProgress material value={75} animated color="success" />
         <MDBProgress material value={50} animated color="danger" />
         <MDBProgress material value={25} animated color="warning" />
+      </SectionContainer>
 
-        <hr />
-        <p>Basic design</p>
+      <SectionContainer header="Basic design">
         <MDBProgress value={100} />
         <br />
         <MDBProgress value={75} color="success" />
@@ -38,8 +36,9 @@ const ProgressPage = props => {
         <br />
         <MDBProgress value={25} animated color="warning" />
         <br />
-        <hr />
-        <p>Material with text</p>
+      </SectionContainer>
+
+      <SectionContainer header="Material with text">
         <MDBProgress material value={100}>
           You did it!
         </MDBProgress>
@@ -52,9 +51,8 @@ const ProgressPage = props => {
         <MDBProgress material striped value={25} color="warning">
           Wow!
         </MDBProgress>
-      </div>
+      </SectionContainer>
     </MDBContainer>
-
   );
 };
 

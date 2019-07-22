@@ -62,7 +62,7 @@ class View extends React.Component {
         {...attributes}
         className={classes}
         onMouseDown={this.handleClick.bind(this)}
-        onTouchStart={this.handleClick.bind(this)}
+        // onTouchStart={this.handleClick.bind(this)}
         style={viewStyle}
       >
         {children}

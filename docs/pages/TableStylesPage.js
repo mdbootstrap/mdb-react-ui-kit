@@ -1,6 +1,18 @@
 import React from "react";
-import { MDBBtn, MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBTable, MDBTableBody, MDBTableHead,   MDBIcon } from "mdbreact";
+import {
+  MDBBtn,
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBCard,
+  MDBCardBody,
+  MDBTable,
+  MDBTableBody,
+  MDBTableHead,
+  MDBIcon
+} from "mdbreact";
 import DocsLink from "./../components/docsLink";
+import SectionContainer from "../components/sectionContainer";
 
 const TableStylesPage = props => {
   const columns = [
@@ -133,41 +145,17 @@ const TableStylesPage = props => {
         sort: "asc"
       },
       {
-        label: [
-          <MDBIcon
-            key="Lorem"
-            icon="leaf"
-            className="mr-2 blue-text"
-            aria-hidden="true"
-          />,
-          "Lorem"
-        ],
+        label: [<MDBIcon key="Lorem" icon="leaf" className="mr-2 blue-text" aria-hidden="true" />, "Lorem"],
         field: "lorem",
         sort: "asc"
       },
       {
-        label: [
-          <MDBIcon
-            key="Ipsum"
-            icon="leaf"
-            className="mr-2 teal-text"
-            aria-hidden="true"
-          />,
-          "Ipsum"
-        ],
+        label: [<MDBIcon key="Ipsum" icon="leaf" className="mr-2 teal-text" aria-hidden="true" />, "Ipsum"],
         field: "ipsum",
         sort: "asc"
       },
       {
-        label: [
-          <MDBIcon
-            key="Dolor"
-            icon="leaf"
-            className="mr-2 indigo-text"
-            aria-hidden="true"
-          />,
-          "Dolor"
-        ],
+        label: [<MDBIcon key="Dolor" icon="leaf" className="mr-2 indigo-text" aria-hidden="true" />, "Dolor"],
         field: "dolor",
         sort: "asc"
       }
@@ -175,93 +163,24 @@ const TableStylesPage = props => {
     rows: [
       {
         id: 1,
-        lorem: [
-          <MDBIcon
-            key="cell1"
-            icon="gem"
-            className="mr-2 grey-text"
-            aria-hidden="true"
-          />,
-          "Cell1"
-        ],
-        ipsum: [
-          <MDBIcon
-            key="cell2"
-            icon="download"
-            className="mr-2 grey-text"
-            aria-hidden="true"
-          />,
-          "Cell2"
-        ],
-        dolor: [
-          <MDBIcon
-            key="cell3"
-            icon="book"
-            className="mr-2 grey-text"
-            aria-hidden="true"
-          />,
-          "Cell3"
-        ]
+        lorem: [<MDBIcon key="cell1" icon="gem" className="mr-2 grey-text" aria-hidden="true" />, "Cell1"],
+        ipsum: [<MDBIcon key="cell2" icon="download" className="mr-2 grey-text" aria-hidden="true" />, "Cell2"],
+        dolor: [<MDBIcon key="cell3" icon="book" className="mr-2 grey-text" aria-hidden="true" />, "Cell3"]
       },
       {
         id: 2,
         lorem: [
-          <MDBIcon
-            key="cell1"
-            icon="graduation-cap"
-            className="mr-2 grey-text"
-            aria-hidden="true"
-          />,
+          <MDBIcon key="cell1" icon="graduation-cap" className="mr-2 grey-text" aria-hidden="true" />,
           "Cell1"
         ],
-        ipsum: [
-          <MDBIcon
-            key="cell2"
-            icon="gift"
-            className="mr-2 grey-text"
-            aria-hidden="true"
-          />,
-          "Cell2"
-        ],
-        dolor: [
-          <MDBIcon
-            key="cell3"
-            icon="image"
-            className="mr-2 grey-text"
-            aria-hidden="true"
-          />,
-          "Cell3"
-        ]
+        ipsum: [<MDBIcon key="cell2" icon="gift" className="mr-2 grey-text" aria-hidden="true" />, "Cell2"],
+        dolor: [<MDBIcon key="cell3" icon="image" className="mr-2 grey-text" aria-hidden="true" />, "Cell3"]
       },
       {
         id: 3,
-        lorem: [
-          <MDBIcon
-            key="cell1"
-            icon="magic"
-            className="mr-2 grey-text"
-            aria-hidden="true"
-          />,
-          "Cell1"
-        ],
-        ipsum: [
-          <MDBIcon
-            key="cell2"
-            icon="table"
-            className="mr-2 grey-text"
-            aria-hidden="true"
-          />,
-          "Cell2"
-        ],
-        dolor: [
-          <MDBIcon
-            key="cell3"
-            icon="edit"
-            className="mr-2 grey-text"
-            aria-hidden="true"
-          />,
-          "Cell3"
-        ]
+        lorem: [<MDBIcon key="cell1" icon="magic" className="mr-2 grey-text" aria-hidden="true" />, "Cell1"],
+        ipsum: [<MDBIcon key="cell2" icon="table" className="mr-2 grey-text" aria-hidden="true" />, "Cell2"],
+        dolor: [<MDBIcon key="cell3" icon="edit" className="mr-2 grey-text" aria-hidden="true" />, "Cell3"]
       }
     ]
   };
@@ -274,57 +193,61 @@ const TableStylesPage = props => {
       />
       <MDBRow className="py-3">
         <MDBCol md="12">
-          <MDBCard>
-            <MDBCardBody>
-              <h2 className="h2-responsive pb-4">Table with regular buttons</h2>
-              <MDBTable btn>
-                <MDBTableHead columns={columns} />
-                <MDBTableBody rows={rows_regular_btn} />
-              </MDBTable>
-            </MDBCardBody>
-          </MDBCard>
+          <SectionContainer header="With regular buttons" noBorder>
+            <MDBCard>
+              <MDBCardBody>
+                <MDBTable btn>
+                  <MDBTableHead columns={columns} />
+                  <MDBTableBody rows={rows_regular_btn} />
+                </MDBTable>
+              </MDBCardBody>
+            </MDBCard>
+          </SectionContainer>
         </MDBCol>
       </MDBRow>
 
       <MDBRow className="py-3">
         <MDBCol md="12">
-          <MDBCard>
-            <MDBCardBody>
-              <h2 className="h2-responsive pb-4">Table with outline buttons</h2>
-              <MDBTable btn>
-                <MDBTableHead columns={columns} />
-                <MDBTableBody rows={rows_outline_btn} />
-              </MDBTable>
-            </MDBCardBody>
-          </MDBCard>
+          <SectionContainer header="With outline buttons" noBorder>
+            <MDBCard>
+              <MDBCardBody>
+                <MDBTable btn>
+                  <MDBTableHead columns={columns} />
+                  <MDBTableBody rows={rows_outline_btn} />
+                </MDBTable>
+              </MDBCardBody>
+            </MDBCard>
+          </SectionContainer>
         </MDBCol>
       </MDBRow>
 
       <MDBRow className="py-3">
         <MDBCol md="12">
-          <MDBCard>
-            <MDBCardBody>
-              <h2 className="h2-responsive pb-4">Table with outline buttons</h2>
-              <MDBTable btn>
-                <MDBTableHead columns={columns} />
-                <MDBTableBody rows={rows_rounded_btn} />
-              </MDBTable>
-            </MDBCardBody>
-          </MDBCard>
+          <SectionContainer header="With rounded buttons" noBorder>
+            <MDBCard>
+              <MDBCardBody>
+                <MDBTable btn>
+                  <MDBTableHead columns={columns} />
+                  <MDBTableBody rows={rows_rounded_btn} />
+                </MDBTable>
+              </MDBCardBody>
+            </MDBCard>
+          </SectionContainer>
         </MDBCol>
       </MDBRow>
 
       <MDBRow className="py-3">
         <MDBCol md="12">
-          <MDBCard>
-            <MDBCardBody>
-              <h2 className="h2-responsive pb-4">Table with icons</h2>
-              <MDBTable btn fixed>
-                <MDBTableHead columns={data_icons.columns} />
-                <MDBTableBody rows={data_icons.rows} />
-              </MDBTable>
-            </MDBCardBody>
-          </MDBCard>
+          <SectionContainer header="With icons" noBorder>
+            <MDBCard>
+              <MDBCardBody>
+                <MDBTable btn fixed>
+                  <MDBTableHead columns={data_icons.columns} />
+                  <MDBTableBody rows={data_icons.rows} />
+                </MDBTable>
+              </MDBCardBody>
+            </MDBCard>
+          </SectionContainer>
         </MDBCol>
       </MDBRow>
     </MDBContainer>

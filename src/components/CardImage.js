@@ -52,7 +52,7 @@ class CardImage extends Component {
           <div
             className="Ripple-parent"
             onMouseDown={this.handleClick.bind(this)}
-            onTouchStart={this.handleClick.bind(this)}
+            style={{touchAction: "unset"}}
           >
             {innerContent}
             <Mask overlay={overlay} />

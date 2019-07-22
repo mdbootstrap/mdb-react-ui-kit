@@ -1,7 +1,16 @@
 import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBTable, MDBTableBody, MDBTableHead
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBCard,
+  MDBCardBody,
+  MDBTable,
+  MDBTableBody,
+  MDBTableHead
 } from "mdbreact";
 import DocsLink from "./../components/docsLink";
+import SectionContainer from "../components/sectionContainer";
 
 const TablePage = props => {
   const data = {
@@ -189,185 +198,171 @@ const TablePage = props => {
 
   return (
     <MDBContainer className="mt-3">
-      <DocsLink
-        title="Tables"
-        href="https://mdbootstrap.com/docs/react/tables/basic/"
-      />
+      <DocsLink title="Tables" href="https://mdbootstrap.com/docs/react/tables/basic/" />
       <MDBRow className="py-3">
         <MDBCol md="12">
-          <MDBCard>
-            <MDBCardBody>
-              <h2 className="h2-responsive pb-4">Basic Table</h2>
-              <MDBTable>
-                <MDBTableHead>
-                  <tr>
-                    <th>#</th>
-                    <th>First</th>
-                    <th>Last</th>
-                    <th>Handle</th>
-                  </tr>
-                </MDBTableHead>
-                <MDBTableBody>
-                  <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
-                </MDBTableBody>
-              </MDBTable>
-            </MDBCardBody>
-          </MDBCard>
+          <SectionContainer noBorder title="Basic example">
+            <MDBCard>
+              <MDBCardBody>
+                <MDBTable>
+                  <MDBTableHead>
+                    <tr>
+                      <th>#</th>
+                      <th>First</th>
+                      <th>Last</th>
+                      <th>Handle</th>
+                    </tr>
+                  </MDBTableHead>
+                  <MDBTableBody>
+                    <tr>
+                      <td>1</td>
+                      <td>Mark</td>
+                      <td>Otto</td>
+                      <td>@mdo</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>Jacob</td>
+                      <td>Thornton</td>
+                      <td>@fat</td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>Larry</td>
+                      <td>the Bird</td>
+                      <td>@twitter</td>
+                    </tr>
+                  </MDBTableBody>
+                </MDBTable>
+              </MDBCardBody>
+            </MDBCard>
+          </SectionContainer>
         </MDBCol>
       </MDBRow>
 
       <MDBRow className="py-3">
         <MDBCol md="12">
-          <MDBCard>
-            <MDBCardBody>
-              <h2 className="h2-responsive pb-4">Table head options</h2>
-              <MDBTable>
-                <MDBTableHead
-                  columns={data.columns}
-                  color="primary-color"
-                  textWhite
-                />
-                <MDBTableBody rows={data.rows} />
-              </MDBTable>
+          <SectionContainer noBorder title="Head options">
+            <MDBCard>
+              <MDBCardBody>
+                <MDBTable className="mb-5">
+                  <MDBTableHead columns={data.columns} color="primary-color" textWhite />
+                  <MDBTableBody rows={data.rows} />
+                </MDBTable>
 
-              <MDBTable>
-                <MDBTableHead columns={data.columns} color="dark" />
-                <MDBTableBody rows={data.rows} />
-              </MDBTable>
-            </MDBCardBody>
-          </MDBCard>
+                <MDBTable>
+                  <MDBTableHead columns={data.columns} color="dark" />
+                  <MDBTableBody rows={data.rows} />
+                </MDBTable>
+              </MDBCardBody>
+            </MDBCard>
+          </SectionContainer>
         </MDBCol>
       </MDBRow>
 
       <MDBRow className="py-3">
         <MDBCol md="12">
-          <MDBCard>
-            <MDBCardBody>
-              <h2 className="h2-responsive pb-4">Striped rows</h2>
-              <MDBTable striped>
-                <MDBTableHead columns={data.columns} />
-                <MDBTableBody rows={data.rows} />
-              </MDBTable>
-            </MDBCardBody>
-          </MDBCard>
+          <SectionContainer noBorder title="Striped rows">
+            <MDBCard>
+              <MDBCardBody>
+                <MDBTable striped>
+                  <MDBTableHead columns={data.columns} />
+                  <MDBTableBody rows={data.rows} />
+                </MDBTable>
+              </MDBCardBody>
+            </MDBCard>
+          </SectionContainer>
         </MDBCol>
       </MDBRow>
 
       <MDBRow className="py-3">
         <MDBCol md="12">
-          <MDBCard>
-            <MDBCardBody>
-              <h2 className="h2-responsive pb-4">Bordered Table</h2>
-              <MDBTable bordered>
-                <MDBTableHead
-                  columns={data_collspan.columns}
-                  color="primary-color"
-                  textWhite
-                />
-                <MDBTableBody rows={data_collspan.rows} />
-              </MDBTable>
-            </MDBCardBody>
-          </MDBCard>
+          <SectionContainer noBorder title="Bordered">
+            <MDBCard>
+              <MDBCardBody>
+                <MDBTable bordered>
+                  <MDBTableHead columns={data_collspan.columns} color="primary-color" textWhite />
+                  <MDBTableBody rows={data_collspan.rows} />
+                </MDBTable>
+              </MDBCardBody>
+            </MDBCard>
+          </SectionContainer>
         </MDBCol>
       </MDBRow>
 
       <MDBRow className="py-3">
         <MDBCol md="12">
-          <MDBCard>
-            <MDBCardBody>
-              <h2 className="h2-responsive pb-4">Borderless Table</h2>
-              <MDBTable borderless>
-                <MDBTableHead columns={data_collspan.columns} />
-                <MDBTableBody rows={data_collspan.rows} />
-              </MDBTable>
-            </MDBCardBody>
-          </MDBCard>
+          <SectionContainer noBorder title="Borderless">
+            <MDBCard>
+              <MDBCardBody>
+                <MDBTable borderless>
+                  <MDBTableHead columns={data_collspan.columns} />
+                  <MDBTableBody rows={data_collspan.rows} />
+                </MDBTable>
+              </MDBCardBody>
+            </MDBCard>
+          </SectionContainer>
         </MDBCol>
       </MDBRow>
 
       <MDBRow className="py-3">
         <MDBCol md="12">
-          <MDBCard>
-            <MDBCardBody>
-              <h2 className="h2-responsive pb-4">Hoverable rows</h2>
-              <MDBTable hover>
-                <MDBTableHead
-                  columns={data_collspan.columns}
-                  color="secondary-color"
-                  textWhite
-                />
-                <MDBTableBody rows={data_collspan.rows} />
-              </MDBTable>
-            </MDBCardBody>
-          </MDBCard>
+          <SectionContainer noBorder title="Hoverable">
+            <MDBCard>
+              <MDBCardBody>
+                <MDBTable hover>
+                  <MDBTableHead columns={data_collspan.columns} color="secondary-color" textWhite />
+                  <MDBTableBody rows={data_collspan.rows} />
+                </MDBTable>
+              </MDBCardBody>
+            </MDBCard>
+          </SectionContainer>
         </MDBCol>
       </MDBRow>
 
       <MDBRow className="py-3">
         <MDBCol md="12">
-          <MDBCard>
-            <MDBCardBody>
-              <h2 className="h2-responsive pb-4">Samll Table</h2>
-              <MDBTable small>
-                <MDBTableHead
-                  columns={data_collspan.columns}
-                  color="primary-color"
-                  textWhite
-                />
-                <MDBTableBody rows={data_collspan.rows} />
-              </MDBTable>
-            </MDBCardBody>
-          </MDBCard>
+          <SectionContainer noBorder title="Small">
+            <MDBCard>
+              <MDBCardBody>
+                <MDBTable small>
+                  <MDBTableHead columns={data_collspan.columns} color="primary-color" textWhite />
+                  <MDBTableBody rows={data_collspan.rows} />
+                </MDBTable>
+              </MDBCardBody>
+            </MDBCard>
+          </SectionContainer>
         </MDBCol>
       </MDBRow>
 
       <MDBRow className="py-3">
         <MDBCol md="12">
-          <MDBCard>
-            <MDBCardBody>
-              <h2 className="h2-responsive pb-4">Captions</h2>
-              <MDBTable>
-                <caption>List of users</caption>
-                <MDBTableHead columns={data.columns} color="indigo" textWhite />
-                <MDBTableBody rows={data.rows} />
-              </MDBTable>
-            </MDBCardBody>
-          </MDBCard>
+          <SectionContainer noBorder title="Captions">
+            <MDBCard>
+              <MDBCardBody>
+                <MDBTable>
+                  <caption>List of users</caption>
+                  <MDBTableHead columns={data.columns} color="indigo" textWhite />
+                  <MDBTableBody rows={data.rows} />
+                </MDBTable>
+              </MDBCardBody>
+            </MDBCard>
+          </SectionContainer>
         </MDBCol>
       </MDBRow>
 
       <MDBRow className="py-3">
         <MDBCol md="12">
-          <MDBCard>
-            <MDBCardBody>
-              <h2 className="h2-responsive pb-4">Responsive Table</h2>
-              <MDBTable responsive>
-                <MDBTableHead
-                  columns={data_responsive.columns}
-                  color="primary-color"
-                  textWhite
-                />
-                <MDBTableBody rows={data_responsive.rows} />
-              </MDBTable>
-            </MDBCardBody>
-          </MDBCard>
+          <SectionContainer noBorder title="Responsive">
+            <MDBCard>
+              <MDBCardBody>
+                <MDBTable responsive>
+                  <MDBTableHead columns={data_responsive.columns} color="primary-color" textWhite />
+                  <MDBTableBody rows={data_responsive.rows} />
+                </MDBTable>
+              </MDBCardBody>
+            </MDBCard>
+          </SectionContainer>
         </MDBCol>
       </MDBRow>
     </MDBContainer>

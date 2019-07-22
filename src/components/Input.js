@@ -101,7 +101,7 @@ class Input extends React.Component {
       labelClass,
       size,
       success,
-      tag,
+      tag: Tag,  
       type,
       validate,
       value,
@@ -115,15 +115,15 @@ class Input extends React.Component {
         this.state.isFocused ||
         this.state.innerValue === 0) &&
       (type !== "checkbox" && type !== "radio");
-    let Tag = "";
+    let TagInput = "";
     let formControlClass = "";
 
     if (type === "textarea") {
       formControlClass = outline ? "form-control" : "md-textarea form-control";
-      Tag = "textarea";
+      TagInput = "textarea";
     } else {
       formControlClass = "form-control";
-      Tag = "input";
+      TagInput = "input";
       attributes.type = type;
     }
 
@@ -192,7 +192,7 @@ class Input extends React.Component {
             onMouseLeave={onIconMouseLeave}
           />
         )}
-        <Tag
+        <TagInput
           {...attributes}
           className={classes}
           id={id}
@@ -223,7 +223,7 @@ class Input extends React.Component {
     return noTag ? (
       renderFunction()
     ) : (
-      <div className={containerClassFix}>{renderFunction()}</div>
+      <Tag className={containerClassFix}>{renderFunction()}</Tag>
     );
   }
 }
@@ -296,7 +296,7 @@ Input.defaultProps = {
   labelClass: "",
   size: "",
   success: "",
-  tag: "input",
+  tag: "div",
   type: "text",
   validate: false,
   valueDefault: ""

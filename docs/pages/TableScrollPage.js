@@ -1,6 +1,16 @@
 import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBTable, MDBTableBody, MDBTableHead } from "mdbreact";
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBCard,
+  MDBCardBody,
+  MDBTable,
+  MDBTableBody,
+  MDBTableHead
+} from "mdbreact";
 import DocsLink from "./../components/docsLink";
+import SectionContainer from "../components/sectionContainer";
 
 const TableScrollPage = props => {
   const data = {
@@ -68,23 +78,19 @@ const TableScrollPage = props => {
 
   return (
     <MDBContainer className="mt-3">
-      <DocsLink
-        title="MDBTable Scroll"
-        href="https://mdbootstrap.com/docs/react/tables/scroll/"
-      />
+      <DocsLink title="MDBTable Scroll" href="https://mdbootstrap.com/docs/react/tables/scroll/" />
       <MDBRow className="py-3">
         <MDBCol md="12">
-          <MDBCard>
-            <MDBCardBody>
-              <h2 className="h2-responsive pb-4">
-                Static table vertical scroll
-              </h2>
-              <MDBTable scrollY>
-                <MDBTableHead columns={data.columns} />
-                <MDBTableBody rows={data.rows} />
-              </MDBTable>
-            </MDBCardBody>
-          </MDBCard>
+          <SectionContainer noBorder header="Static table vertical scroll">
+            <MDBCard>
+              <MDBCardBody>
+                <MDBTable scrollY>
+                  <MDBTableHead columns={data.columns} />
+                  <MDBTableBody rows={data.rows} />
+                </MDBTable>
+              </MDBCardBody>
+            </MDBCard>
+          </SectionContainer>
         </MDBCol>
       </MDBRow>
     </MDBContainer>

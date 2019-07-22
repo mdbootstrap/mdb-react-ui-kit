@@ -1,18 +1,18 @@
 import React, { Component } from "react";
 import { MDBBtn, MDBCollapse, MDBContainer } from "mdbreact";
 import DocsLink from "./../components/docsLink";
+import SectionContainer from "./../components/sectionContainer";
 
 class CollapsePage extends Component {
-
   state = {
     collapseID: ""
-  }
+  };
 
-  toggleCollapse = (collapseID) => () => {
+  toggleCollapse = collapseID => () => {
     this.setState(prevState => ({
       collapseID: prevState.collapseID !== collapseID ? collapseID : ""
     }));
-  }
+  };
 
   render() {
     return (
@@ -21,34 +21,33 @@ class CollapsePage extends Component {
           title="Collapse"
           href="https://mdbootstrap.com/docs/react/advanced/collapse/"
         />
-        <div>
-          <h1>Basic examples</h1>
-          <div>
-            <MDBBtn
-              color="primary"
-              onClick={this.toggleCollapse("basicCollapse")}
-              style={{ marginBottom: "1rem" }}
-            >
-              Toggle1
-            </MDBBtn>
-            <MDBBtn
-              color="info"
-              onClick={this.toggleCollapse("basicCollapse")}
-              style={{ marginBottom: "1rem" }}
-            >
-              Toggle2
-            </MDBBtn>
-            <MDBCollapse id="basicCollapse" isOpen={this.state.collapseID}>
-              <p>
-                Anim pariatur cliche reprehenderit, enim eiusmod high life
-                accusamus terry richardson ad squid. Nihil anim keffiyeh
-                helvetica, craft beer labore wes anderson cred nesciunt sapiente
-                ea proident.
-              </p>
-            </MDBCollapse>
-          </div>
 
-          <h1>Accordion without icon</h1>
+        <SectionContainer header="Basic examples">
+          <MDBBtn
+            color="primary"
+            onClick={this.toggleCollapse("basicCollapse")}
+            style={{ marginBottom: "1rem" }}
+          >
+            Toggle1
+          </MDBBtn>
+          <MDBBtn
+            color="info"
+            onClick={this.toggleCollapse("basicCollapse")}
+            style={{ marginBottom: "1rem" }}
+          >
+            Toggle2
+          </MDBBtn>
+          <MDBCollapse id="basicCollapse" isOpen={this.state.collapseID}>
+            <p>
+              Anim pariatur cliche reprehenderit, enim eiusmod high life
+              accusamus terry richardson ad squid. Nihil anim keffiyeh
+              helvetica, craft beer labore wes anderson cred nesciunt sapiente
+              ea proident.
+            </p>
+          </MDBCollapse>
+        </SectionContainer>
+
+        <SectionContainer header="Accordion without icon">
           <div>
             <div>
               <MDBBtn
@@ -116,7 +115,7 @@ class CollapsePage extends Component {
               accusamus labore sustainable VHS.
             </MDBCollapse>
           </div>
-        </div>
+        </SectionContainer>
       </MDBContainer>
     );
   }
