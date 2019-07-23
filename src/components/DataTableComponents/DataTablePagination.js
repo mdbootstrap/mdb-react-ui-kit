@@ -1,8 +1,9 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import Pagination from "../Pagination";
-import PageItem from "../PageItem";
-import PageLink from "../PageLink";
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+
+import PageItem from '../PageItem';
+import PageLink from '../PageLink';
+import Pagination from '../Pagination';
 
 class DataTablePagination extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class DataTablePagination extends Component {
     this.state = {
       pages: props.pages,
       pGroups: []
-    }
+    };
   }
 
   componentDidMount() {
@@ -18,16 +19,16 @@ class DataTablePagination extends Component {
   }
 
   componentDidUpdate = (prevProps) => {
-    if(prevProps.pages !== this.props.pages) {
+    if (prevProps.pages !== this.props.pages) {
       this.setState({ pages: this.props.pages }, () => this.groupPages());
     }
-  }
-  
+  };
+
   pagesIndexify = () => {
     let mutablePages = [...this.state.pages];
-    mutablePages.forEach((page, index) => page.index = index);
+    mutablePages.forEach((page, index) => (page.index = index));
     return mutablePages;
-  }
+  };
 
   groupPages = () => {
     let pGroups = [];
@@ -38,12 +39,12 @@ class DataTablePagination extends Component {
     }
 
     this.setState({ pGroups });
-  }
+  };
 
   choosePagesGroup = () => {
     const pGroupNumber = Math.floor(this.props.activePage / this.props.pagesAmount);
     return this.state.pGroups.length ? this.state.pGroups[pGroupNumber] : [];
-  }
+  };
 
   render() {
     const { activePage, changeActivePage, pages, label } = this.props;
@@ -52,36 +53,22 @@ class DataTablePagination extends Component {
       <div className="col-sm-12 col-md-7">
         <div className="dataTables_paginate">
           <Pagination>
-            <PageItem disabled={activePage === 0}>
-              <PageLink
-                className="page-link"
-                aria-label={label[0]}
-                onClick={() => changeActivePage(activePage - 1)}
-              >
+            <PageItem disabled={activePage <= 0}>
+              <PageLink className="page-link" aria-label={label[0]} onClick={() => changeActivePage(activePage - 1)}>
                 <span>{label[0]}</span>
               </PageLink>
             </PageItem>
 
             {this.choosePagesGroup().map((page) => (
-              <PageItem key={Object.keys(page[0])[0]+page.index} active={page.index === activePage}>
-                <PageLink
-                  className="page-link"
-                  onClick={() => changeActivePage(page.index)}
-                >
-                  {page.index + 1}{" "}
-                  {page.index === activePage && (
-                    <span className="sr-only">(current)</span>
-                  )}
+              <PageItem key={Object.keys(page[0])[0] + page.index} active={page.index === activePage}>
+                <PageLink className="page-link" onClick={() => changeActivePage(page.index)}>
+                  {page.index + 1} {page.index === activePage && <span className="sr-only">(current)</span>}
                 </PageLink>
               </PageItem>
             ))}
 
-            <PageItem disabled={activePage === pages.length - 1}>
-              <PageLink
-                className="page-link"
-                aria-label={label[1]}
-                onClick={() => changeActivePage(activePage + 1)}
-              >
+            <PageItem disabled={!pages.length || activePage === pages.length - 1}>
+              <PageLink className="page-link" aria-label={label[1]} onClick={() => changeActivePage(activePage + 1)}>
                 <span>{label[1]}</span>
               </PageLink>
             </PageItem>
