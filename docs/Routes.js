@@ -59,6 +59,7 @@ import TabsPage from './pages/TabsPage';
 import PillsPage from './pages/PillsPage';
 import NotificationPage from './pages/NotificationPage';
 import InputGroupPage from './pages/InputGroupPage'
+import TreeviewPage from './pages/TreeviewPage'
 
 
 class Routes extends React.Component {
@@ -79,6 +80,7 @@ class Routes extends React.Component {
         <Route path="/addons/iframe" component={IframePage} />
         <Route path="/addons/edge-header" component={EdgeHeaderPage} />
         <Route path="/addons/notifications" component={NotificationPage} />
+        <Route path="/addons/treeview" component={TreeviewPage} />
         <Route path="/advanced/carousel" component={CarouselPage} />
         <Route path="/advanced/collapse" component={CollapsePage} />
         <Route path="/advanced/videocarousel" component={VideoCarouselPage} />

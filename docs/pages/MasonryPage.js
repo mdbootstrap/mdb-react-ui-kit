@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { MDBContainer, MDBRow } from "mdbreact";
+import { MDBContainer } from "mdbreact";
 import DocsLink from "../components/docsLink";
 import SectionContainer from "../components/sectionContainer";
+import './Masonry.css'; 
+
 class MasonryPage extends React.Component {
   constructor() {
     super();
@@ -32,7 +34,7 @@ class MasonryPage extends React.Component {
         <DocsLink title="Masks" href="https://mdbootstrap.com/docs/react/css/masks/" />
 
         <SectionContainer noBorder header="Column layout">
-          <MDBRow className="masonry-with-columns mx-0" ref={this.MasonryRef}>
+          <div className="masonry-with-columns mx-0" ref={this.MasonryRef}>
             <div style={{ order: 0 }}>1</div>
             <div style={{ order: 1 }}>2</div>
             <div style={{ order: 2 }}>3</div>
@@ -48,13 +50,13 @@ class MasonryPage extends React.Component {
             <div style={{ order: 0 }}>13</div>
             <div style={{ order: 1 }}>14</div>
             <div style={{ order: 2 }}>15</div>
-          </MDBRow>
+          </div>
         </SectionContainer>
 
         <hr />
 
         <SectionContainer noBorder header="Horizontal layout">
-          <MDBRow className="masonry-with-columns-2 mx-0">
+          <div className="masonry-with-columns-2 mx-0">
             <div>1</div>
             <div>2</div>
             <div>3</div>
@@ -70,13 +72,13 @@ class MasonryPage extends React.Component {
             <div>13</div>
             <div>14</div>
             <div>15</div>
-          </MDBRow>
+          </div>
         </SectionContainer>
 
         <hr />
 
         <SectionContainer noBorder header="Flex layout">
-          <MDBRow className="masonry-with-flex mx-0">
+          <div className="masonry-with-flex mx-0">
             <div>1</div>
             <div>2</div>
             <div>3</div>
@@ -92,7 +94,7 @@ class MasonryPage extends React.Component {
             <div>13</div>
             <div>14</div>
             <div>15</div>
-          </MDBRow>
+          </div>
         </SectionContainer>
       </MDBContainer>
     );

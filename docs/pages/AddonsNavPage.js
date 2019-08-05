@@ -20,6 +20,7 @@ const AddonsNavPage = () => {
                   <MenuLink to="/addons/edge-header" title="Edge Header" />
                   <MenuLink to="/addons/iframe" title="Iframe" />
                   <MenuLink to="/addons/notifications" title="Notifications" />
+                  <MenuLink to="/addons/treeview" title="Treeview" />
                 </ul>
               </MDBJumbotron>
             </MDBCol>

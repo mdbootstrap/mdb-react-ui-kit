@@ -59,7 +59,7 @@ All fully responsive. All compatible with different browsers.
 
 # Version:
 
-- MDBReact 4.18.1
+- MDBReact 4.19.0
 - React 16.8.6
 
 # Quick start

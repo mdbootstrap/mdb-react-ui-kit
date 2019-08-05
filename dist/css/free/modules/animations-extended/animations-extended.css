@@ -16,21 +16,21 @@
   53%,
   80%,
   to {
-    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    transform: translate3d(0, 0, 0); }
+    transform: translate3d(0, 0, 0);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); }
   40%,
   43% {
-    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    transform: translate3d(0, -30px, 0); }
+    transform: translate3d(0, -30px, 0);
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06); }
   70% {
-    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    transform: translate3d(0, -15px, 0); }
+    transform: translate3d(0, -15px, 0);
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06); }
   90% {
     transform: translate3d(0, -4px, 0); } }
 
 .bounce {
-  animation-name: bounce;
-  transform-origin: center bottom; }
+  transform-origin: center bottom;
+  animation-name: bounce; }
 
 @keyframes flash {
   from,
@@ -109,8 +109,8 @@
     transform: translateX(0); } }
 
 .headShake {
-  animation-timing-function: ease-in-out;
-  animation-name: headShake; }
+  animation-name: headShake;
+  animation-timing-function: ease-in-out; }
 
 @keyframes swing {
   20% {
@@ -190,8 +190,8 @@
     transform: skewX(-0.19531deg) skewY(-0.19531deg); } }
 
 .jello {
-  animation-name: jello;
-  transform-origin: center; }
+  transform-origin: center;
+  animation-name: jello; }
 
 @keyframes heartBeat {
   0% {
@@ -235,8 +235,8 @@
     transform: scale3d(1, 1, 1); } }
 
 .bounceIn {
-  animation-duration: 0.75s;
-  animation-name: bounceIn; }
+  animation-name: bounceIn;
+  animation-duration: .75s; }
 
 @keyframes bounceInDown {
   from,
@@ -342,8 +342,8 @@
     transform: scale3d(0.3, 0.3, 0.3); } }
 
 .bounceOut {
-  animation-duration: 0.75s;
-  animation-name: bounceOut; }
+  animation-name: bounceOut;
+  animation-duration: .75s; }
 
 @keyframes bounceOutDown {
   20% {
@@ -502,81 +502,81 @@
 
 @keyframes flipInX {
   from {
+    opacity: 0;
     transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
-    animation-timing-function: ease-in;
-    opacity: 0; }
+    animation-timing-function: ease-in; }
   40% {
     transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
     animation-timing-function: ease-in; }
   60% {
-    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
-    opacity: 1; }
+    opacity: 1;
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg); }
   80% {
     transform: perspective(400px) rotate3d(1, 0, 0, -5deg); }
   to {
     transform: perspective(400px); } }
 
 .flipInX {
-  backface-visibility: visible !important;
+  backface-visibility: visible;
   animation-name: flipInX; }
 
 @keyframes flipInY {
   from {
+    opacity: 0;
     transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
-    animation-timing-function: ease-in;
-    opacity: 0; }
+    animation-timing-function: ease-in; }
   40% {
     transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
     animation-timing-function: ease-in; }
   60% {
-    transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
-    opacity: 1; }
+    opacity: 1;
+    transform: perspective(400px) rotate3d(0, 1, 0, 10deg); }
   80% {
     transform: perspective(400px) rotate3d(0, 1, 0, -5deg); }
   to {
     transform: perspective(400px); } }
 
 .flipInY {
-  backface-visibility: visible !important;
+  backface-visibility: visible;
   animation-name: flipInY; }
 
 @keyframes flipOutX {
   from {
     transform: perspective(400px); }
   30% {
-    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
-    opacity: 1; }
+    opacity: 1;
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg); }
   to {
-    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
-    opacity: 0; } }
+    opacity: 0;
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg); } }
 
 .flipOutX {
-  animation-duration: 0.75s;
   animation-name: flipOutX;
-  backface-visibility: visible !important; }
+  animation-duration: .75s;
+  backface-visibility: visible; }
 
 @keyframes flipOutY {
   from {
     transform: perspective(400px); }
   30% {
-    transform: perspective(400px) rotate3d(0, 1, 0, -15deg);
-    opacity: 1; }
+    opacity: 1;
+    transform: perspective(400px) rotate3d(0, 1, 0, -15deg); }
   to {
-    transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
-    opacity: 0; } }
+    opacity: 0;
+    transform: perspective(400px) rotate3d(0, 1, 0, 90deg); } }
 
 .flipOutY {
-  animation-duration: 0.75s;
-  backface-visibility: visible !important;
-  animation-name: flipOutY; }
+  animation-name: flipOutY;
+  animation-duration: .75s;
+  backface-visibility: visible; }
 
 @keyframes lightSpeedIn {
   from {
-    transform: translate3d(100%, 0, 0) skewX(-30deg);
-    opacity: 0; }
+    opacity: 0;
+    transform: translate3d(100%, 0, 0) skewX(-30deg); }
   60% {
-    transform: skewX(20deg);
-    opacity: 1; }
+    opacity: 1;
+    transform: skewX(20deg); }
   80% {
     transform: skewX(-5deg); }
   to {
@@ -590,8 +590,8 @@
   from {
     opacity: 1; }
   to {
-    transform: translate3d(100%, 0, 0) skewX(30deg);
-    opacity: 0; } }
+    opacity: 0;
+    transform: translate3d(100%, 0, 0) skewX(30deg); } }
 
 .lightSpeedOut {
   animation-name: lightSpeedOut;
@@ -599,125 +599,125 @@
 
 @keyframes rotateIn {
   from {
-    transform-origin: center;
+    opacity: 0;
     transform: rotate3d(0, 0, 1, -200deg);
-    opacity: 0; }
+    transform-origin: center; }
   to {
-    transform-origin: center;
+    opacity: 1;
     transform: translate3d(0, 0, 0);
-    opacity: 1; } }
+    transform-origin: center; } }
 
 .rotateIn {
   animation-name: rotateIn; }
 
 @keyframes rotateInDownLeft {
   from {
-    transform-origin: left bottom;
+    opacity: 0;
     transform: rotate3d(0, 0, 1, -45deg);
-    opacity: 0; }
+    transform-origin: left bottom; }
   to {
-    transform-origin: left bottom;
+    opacity: 1;
     transform: translate3d(0, 0, 0);
-    opacity: 1; } }
+    transform-origin: left bottom; } }
 
 .rotateInDownLeft {
   animation-name: rotateInDownLeft; }
 
 @keyframes rotateInDownRight {
   from {
-    transform-origin: right bottom;
+    opacity: 0;
     transform: rotate3d(0, 0, 1, 45deg);
-    opacity: 0; }
+    transform-origin: right bottom; }
   to {
-    transform-origin: right bottom;
+    opacity: 1;
     transform: translate3d(0, 0, 0);
-    opacity: 1; } }
+    transform-origin: right bottom; } }
 
 .rotateInDownRight {
   animation-name: rotateInDownRight; }
 
 @keyframes rotateInUpLeft {
   from {
-    transform-origin: left bottom;
+    opacity: 0;
     transform: rotate3d(0, 0, 1, 45deg);
-    opacity: 0; }
+    transform-origin: left bottom; }
   to {
-    transform-origin: left bottom;
+    opacity: 1;
     transform: translate3d(0, 0, 0);
-    opacity: 1; } }
+    transform-origin: left bottom; } }
 
 .rotateInUpLeft {
   animation-name: rotateInUpLeft; }
 
 @keyframes rotateInUpRight {
   from {
-    transform-origin: right bottom;
+    opacity: 0;
     transform: rotate3d(0, 0, 1, -90deg);
-    opacity: 0; }
+    transform-origin: right bottom; }
   to {
-    transform-origin: right bottom;
+    opacity: 1;
     transform: translate3d(0, 0, 0);
-    opacity: 1; } }
+    transform-origin: right bottom; } }
 
 .rotateInUpRight {
   animation-name: rotateInUpRight; }
 
 @keyframes rotateOut {
   from {
-    transform-origin: center;
-    opacity: 1; }
+    opacity: 1;
+    transform-origin: center; }
   to {
-    transform-origin: center;
+    opacity: 0;
     transform: rotate3d(0, 0, 1, 200deg);
-    opacity: 0; } }
+    transform-origin: center; } }
 
 .rotateOut {
   animation-name: rotateOut; }
 
 @keyframes rotateOutDownLeft {
   from {
-    transform-origin: left bottom;
-    opacity: 1; }
+    opacity: 1;
+    transform-origin: left bottom; }
   to {
-    transform-origin: left bottom;
+    opacity: 0;
     transform: rotate3d(0, 0, 1, 45deg);
-    opacity: 0; } }
+    transform-origin: left bottom; } }
 
 .rotateOutDownLeft {
   animation-name: rotateOutDownLeft; }
 
 @keyframes rotateOutDownRight {
   from {
-    transform-origin: right bottom;
-    opacity: 1; }
+    opacity: 1;
+    transform-origin: right bottom; }
   to {
-    transform-origin: right bottom;
+    opacity: 0;
     transform: rotate3d(0, 0, 1, -45deg);
-    opacity: 0; } }
+    transform-origin: right bottom; } }
 
 .rotateOutDownRight {
   animation-name: rotateOutDownRight; }
 
 @keyframes rotateOutUpLeft {
   from {
-    transform-origin: left bottom;
-    opacity: 1; }
+    opacity: 1;
+    transform-origin: left bottom; }
   to {
-    transform-origin: left bottom;
+    opacity: 0;
     transform: rotate3d(0, 0, 1, -45deg);
-    opacity: 0; } }
+    transform-origin: left bottom; } }
 
 .rotateOutUpLeft {
   animation-name: rotateOutUpLeft; }
 
 @keyframes rotateOutUpRight {
   from {
-    transform-origin: right bottom;
-    opacity: 1; }
+    opacity: 1;
+    transform-origin: right bottom; }
   to {
-    transform-origin: right bottom;
+    opacity: 0;
     transform: rotate3d(0, 0, 1, 90deg);
-    opacity: 0; } }
+    transform-origin: right bottom; } }
 
 .rotateOutUpRight {
   animation-name: rotateOutUpRight; }
@@ -733,17 +733,17 @@
     animation-timing-function: ease-in-out; }
   40%,
   80% {
+    opacity: 1;
     transform: rotate3d(0, 0, 1, 60deg);
     transform-origin: top left;
-    animation-timing-function: ease-in-out;
-    opacity: 1; }
+    animation-timing-function: ease-in-out; }
   to {
-    transform: translate3d(0, 700px, 0);
-    opacity: 0; } }
+    opacity: 0;
+    transform: translate3d(0, 700px, 0); } }
 
 .hinge {
-  animation-duration: 2s;
-  animation-name: hinge; }
+  animation-name: hinge;
+  animation-duration: 2s; }
 
 @keyframes jackInTheBox {
   from {
@@ -912,8 +912,8 @@
 
 @keyframes slideInDown {
   from {
-    transform: translate3d(0, -100%, 0);
-    visibility: visible; }
+    visibility: visible;
+    transform: translate3d(0, -100%, 0); }
   to {
     transform: translate3d(0, 0, 0); } }
 
@@ -922,8 +922,8 @@
 
 @keyframes slideInLeft {
   from {
-    transform: translate3d(-100%, 0, 0);
-    visibility: visible; }
+    visibility: visible;
+    transform: translate3d(-100%, 0, 0); }
   to {
     transform: translate3d(0, 0, 0); } }
 
@@ -932,8 +932,8 @@
 
 @keyframes slideInRight {
   from {
-    transform: translate3d(100%, 0, 0);
-    visibility: visible; }
+    visibility: visible;
+    transform: translate3d(100%, 0, 0); }
   to {
     transform: translate3d(0, 0, 0); } }
 
@@ -942,8 +942,8 @@
 
 @keyframes slideInUp {
   from {
-    transform: translate3d(0, 100%, 0);
-    visibility: visible; }
+    visibility: visible;
+    transform: translate3d(0, 100%, 0); }
   to {
     transform: translate3d(0, 0, 0); } }
 

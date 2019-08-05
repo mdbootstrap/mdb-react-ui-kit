@@ -5,6 +5,7 @@ import babel from 'rollup-plugin-babel';
 import pkg from './package.json';
 import commonjs from 'rollup-plugin-commonjs';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import dts from "rollup-plugin-dts";
 const dependencies = Object.keys(require("./package.json").dependencies)
 
 const plugins = [
@@ -41,5 +42,11 @@ export default [
         format: 'es',
       }
     ]
-  }
+  },
+  {
+    input: "./src/index.d.ts",
+    output: [{ file: "dist/types/index.d.ts", format: "es" }],
+    plugins: [dts()],
+  },
+
 ];
