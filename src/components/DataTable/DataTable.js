@@ -192,12 +192,19 @@ class DataTable extends Component {
                   }
                 }
 
-                if (
-                  stringValue
-                    .toLowerCase()
-                    .match(this.state.search.toLowerCase())
-                )
-                  return true;
+                var search = this.state.search;
+
+                try {
+                  if (
+                    stringValue
+                      .toLowerCase()
+                      .match(search.toLowerCase())
+                  )
+                    return true;
+                }
+                catch {
+                  this.state.search = search.substring(0, search.length - 1);
+                }
               }
             }
           }
