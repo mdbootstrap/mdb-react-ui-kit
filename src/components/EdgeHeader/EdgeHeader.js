@@ -7,7 +7,7 @@ const EdgeHeader = props => {
 
   const classes = classNames("edge-header", color, className);
 
-  return <Tag {...attributes} className={classes} />;
+  return <Tag data-test="edgeHeader" {...attributes} className={classes} />;
 };
 
 EdgeHeader.propTypes = {

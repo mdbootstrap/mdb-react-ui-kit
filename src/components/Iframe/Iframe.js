@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import { returnAttributes } from "../utils";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { returnAttributes } from '../utils';
 
 class Iframe extends Component {
   state = {
-    width: "",
-    height: "",
-    ratio: ""
+    width: '',
+    height: '',
+    ratio: ''
   };
 
   componentDidMount = () => {
@@ -17,8 +17,8 @@ class Iframe extends Component {
 
     if (this.props.ratio) {
       const newRatio =
-        this.props.ratio.split("by")[0] / this.props.ratio.split("by")[1];
-      if (typeof ratio === "number") ratio = newRatio;
+        this.props.ratio.split('by')[0] / this.props.ratio.split('by')[1];
+      if (typeof ratio === 'number') ratio = newRatio;
     }
 
     if (this.props.width && this.props.height) {
@@ -49,28 +49,27 @@ class Iframe extends Component {
       sandbox,
       src,
       style,
-      title,
+      title = "",
       ratio,
       height,
       width
     } = this.props;
 
-    const classes = classNames("embed-responsive-item", className);
+    const classes = classNames('embed-responsive-item', className);
     const wrapperClasses = classNames(
-      !(height || width) && "embed-responsive",
-      ratio ? `embed-responsive-${ratio}` : `embed-responsive-16by9`,
-      className
+      !(height || width) && 'embed-responsive',
+      ratio ? `embed-responsive-${ratio}` : `embed-responsive-16by9`
     );
 
     let iframeAttributes = {
       src,
       id: id || false,
-      frameBorder: "0",
-      target: "_parent",
+      frameBorder: '0',
+      target: '_parent',
       allowFullScreen: allowFullScreen || true,
-      height: this.state.height || "100%",
+      height: this.state.height || '100%',
       name: name || undefined,
-      width: this.state.width || "100%",
+      width: this.state.width || '100%',
       onLoad: onLoad || undefined,
       onMouseOver: onMouseOver || undefined,
       onMouseOut: onMouseOut || undefined,
@@ -81,8 +80,8 @@ class Iframe extends Component {
     iframeAttributes = returnAttributes(iframeAttributes);
 
     return (
-      <div className={wrapperClasses}>
-        <iframe title={title || ""} className={classes} {...iframeAttributes} />
+      <div data-test='iframe' className={wrapperClasses}>
+        <iframe title={title} className={classes} {...iframeAttributes} />
       </div>
     );
   }

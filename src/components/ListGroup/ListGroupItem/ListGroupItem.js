@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const ListGroupItem = props => {
   let {
@@ -18,22 +18,19 @@ const ListGroupItem = props => {
     ...attributes
   } = props;
 
-  const classes = classNames(
-    "list-group-item", 
-    className, 
-    {
-      active,
-      disabled,
-      [`list-group-item-${color}`]: " color",
-      "list-group-item-action": hover
+  const classes = classNames('list-group-item', className, {
+    active,
+    disabled,
+    [`list-group-item-${color}`]: ' color',
+    'list-group-item-action': hover
   });
 
-  if (attributes.href && Tag === "li") {
-    Tag = "a";
+  if (attributes.href && Tag === 'li') {
+    Tag = 'a';
   }
 
   return (
-    <Tag {...attributes} className={classes}>
+    <Tag data-test='list-group-item' {...attributes} className={classes}>
       {children}
     </Tag>
   );
@@ -50,11 +47,20 @@ ListGroupItem.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
   children: PropTypes.node,
-  color: PropTypes.oneOf(["primary", "secondary", "success", "danger", "warning", "info", "light", "dark"])
+  color: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info',
+    'light',
+    'dark'
+  ])
 };
 
 ListGroupItem.defaultProps = {
-  tag: "li"
+  tag: 'li'
 };
 
 export default ListGroupItem;

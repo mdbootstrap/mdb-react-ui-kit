@@ -1,22 +1,30 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const Pagination = props => {
-  const { children, circle, className, color, tag: Tag, size, ...attributes } = props;
+  const {
+    children,
+    circle,
+    className,
+    color,
+    tag: Tag,
+    size,
+    ...attributes
+  } = props;
 
   const classes = classNames(
     {
-      "pagination-circle": circle,
+      'pagination-circle': circle,
       [`pg-${color}`]: color,
       [`pagination-${size}`]: size
     },
-    "pagination",
+    'pagination',
     className
   );
 
   return (
-    <Tag {...attributes} className={classes}>
+    <Tag data-test='pagination' {...attributes} className={classes}>
       {children}
     </Tag>
   );
@@ -28,14 +36,14 @@ Pagination.propTypes = {
   className: PropTypes.string,
   color: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  size: PropTypes.oneOf(["lg", "sm"])
+  size: PropTypes.oneOf(['lg', 'sm'])
 };
 
 Pagination.defaultProps = {
   circle: false,
-  className: "",
-  color: "",
-  tag: "ul"
+  className: '',
+  color: '',
+  tag: 'ul'
 };
 
 export default Pagination;

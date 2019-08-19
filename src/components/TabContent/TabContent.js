@@ -35,7 +35,7 @@ class TabContent extends React.Component {
     const attributes = omit(this.props, Object.keys(propTypes));
 
     const classes = classNames("tab-content", className);
-    return <div {...attributes} className={classes} />;
+    return <div data-test="tabContent" {...attributes} className={classes} />;
   }
 }
 

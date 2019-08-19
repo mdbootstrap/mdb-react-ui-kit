@@ -8,7 +8,7 @@ const Footer = props => {
   const classes = classNames("page-footer", color && color, className);
 
   return (
-    <Tag {...attributes} className={classes}>
+    <Tag  data-test="footer" {...attributes} className={classes}>
       {children}
     </Tag>
   );

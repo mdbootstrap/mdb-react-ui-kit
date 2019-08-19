@@ -8,7 +8,7 @@ const ButtonToolbar = props => {
   const classes = classNames(className, "btn-toolbar");
 
   return (
-    <div {...attributes} className={classes}>
+    <div data-test="button-toolbar" {...attributes} className={classes}>
       {props.children}
     </div>
   );

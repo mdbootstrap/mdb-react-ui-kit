@@ -8,7 +8,7 @@ const ListGroup = props => {
   const classes = classNames("list-group", className);
 
   return (
-    <Tag {...attributes} className={classes}>
+    <Tag data-test="list-group" {...attributes} className={classes}>
       {children}
     </Tag>
   );

@@ -42,14 +42,25 @@ const Card = props => {
     className,
   );
 
-  return <Tag {...attributes} className={classes} />;
+  return <Tag data-test="card" {...attributes} className={classes} />;
 };
 
 Card.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  border: PropTypes.string,
+  cascade: PropTypes.bool,
   className: PropTypes.string,
   color: PropTypes.string,
-  border: PropTypes.string
+  collection: PropTypes.bool,
+  ecommerce: PropTypes.bool,
+  narrow: PropTypes.bool,
+  news: PropTypes.bool,
+  pricing: PropTypes.bool,
+  personal: PropTypes.bool,
+  reverse: PropTypes.bool,
+  tag: PropTypes.string,
+  testimonial: PropTypes.bool,
+  text: PropTypes.string,
+  wide: PropTypes.bool,
 };
 
 Card.defaultProps = {

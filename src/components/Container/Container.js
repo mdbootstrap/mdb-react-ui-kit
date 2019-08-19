@@ -1,13 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const Container = props => {
   const { fluid, className, tag: Tag, ...attributes } = props;
 
-  const classes = classNames(fluid ? "container-fluid" : "container", className);
+  const classes = classNames(
+    fluid ? 'container-fluid' : 'container',
+    className
+  );
 
-  return <Tag {...attributes} className={classes} />;
+  return <Tag data-test='container' {...attributes} className={classes} />;
 };
 
 Container.propTypes = {
@@ -17,7 +20,7 @@ Container.propTypes = {
 };
 
 Container.defaultProps = {
-  tag: "div",
+  tag: 'div',
   fluid: false
 };
 

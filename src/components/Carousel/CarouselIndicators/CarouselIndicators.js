@@ -8,7 +8,7 @@ const CarouselIndicators = props => {
   let classes = classNames("carousel-indicators", className);
 
   return (
-    <ol {...attributes} className={classes}>
+    <ol data-test="carousel-indicators" {...attributes} className={classes}>
       {children}
     </ol>
   );

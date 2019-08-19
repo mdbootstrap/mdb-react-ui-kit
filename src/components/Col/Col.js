@@ -19,7 +19,7 @@ const Col = props => {
     className
   );
 
-  return <Tag {...attributes} className={classes} />;
+  return <Tag data-test="col" {...attributes} className={classes} />;
 };
 
 Col.propTypes = {

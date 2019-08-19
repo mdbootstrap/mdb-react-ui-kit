@@ -18,7 +18,7 @@ const Row = props => {
     className
   );
 
-  return <Tag {...attributes} className={classes} />;
+  return <Tag data-test="row" {...attributes} className={classes} />;
 };
 
 Row.propTypes = {

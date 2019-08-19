@@ -1,24 +1,34 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const CardFooter = props => {
-  const { className, tag: Tag, color, text, border, transparent, small, muted, ...attributes } = props;
+  const {
+    className,
+    tag: Tag,
+    color,
+    text,
+    border,
+    transparent,
+    small,
+    muted,
+    ...attributes
+  } = props;
 
   const classes = classNames(
     {
-      " white-text": color && !text,
+      'white-text': color && !text,
       [`border-${border}`]: border,
-      "bg-transparent": transparent,
-      "text-muted": muted,
-      color,
-      text
+      'bg-transparent': transparent,
+      'text-muted': muted,
+      [`${text}-text`]: text,
     },
-    "card-footer",
+    'card-footer',
+    color,
     className
   );
 
-  let component = <Tag {...attributes} className={classes} />;
+  let component = <Tag data-test="card-footer" {...attributes} className={classes} />;
 
   if (small) {
     component = (
@@ -42,7 +52,7 @@ CardFooter.propTypes = {
 };
 
 CardFooter.defaultProps = {
-  tag: "div"
+  tag: 'div'
 };
 
 export default CardFooter;

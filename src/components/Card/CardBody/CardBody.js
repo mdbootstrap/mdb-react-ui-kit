@@ -1,13 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const CardBody = props => {
   const { className, tag: Tag, cascade, ...attributes } = props;
 
-  const classes = classNames("card-body", cascade && "card-body-cascade", className);
+  const classes = classNames(
+    'card-body',
+    cascade && 'card-body-cascade',
+    className
+  );
 
-  return <Tag {...attributes} className={classes} />;
+  return <Tag data-test='card-body' {...attributes} className={classes} />;
 };
 
 CardBody.propTypes = {
@@ -17,7 +21,7 @@ CardBody.propTypes = {
 };
 
 CardBody.defaultProps = {
-  tag: "div"
+  tag: 'div'
 };
 
 export default CardBody;

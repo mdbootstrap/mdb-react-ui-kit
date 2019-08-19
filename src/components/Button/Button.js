@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import Waves from "../Waves";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import Waves from '../Waves';
 
 const Button = props => {
   const [cursorPos, setCursorPos] = useState({});
@@ -42,32 +42,37 @@ const Button = props => {
   } = props;
 
   const classes = classNames(
-    flat ? "btn-flat" : gradient ? `${gradient}-gradient` : `btn${outline ? "-outline" : ""}-${color}`,
-    "btn",
-    "Ripple-parent",
+    flat
+      ? 'btn-flat'
+      : gradient
+      ? `${gradient}-gradient`
+      : `btn${outline ? '-outline' : ''}-${color}`,
+    'btn',
+    'Ripple-parent',
     className,
     {
       active,
-      "btn-floating": floating,
-      "btn-rounded": rounded,
-      "btn-circle": circle,
-      "btn-block": block,
-      "btn-action": action,
+      'btn-floating': floating,
+      'btn-rounded': rounded,
+      'btn-circle': circle,
+      'btn-block': block,
+      'btn-action': action,
       [`btn-${social}`]: social,
       [`btn-${size}`]: size,
       disabled
     }
   );
 
-  if (attributes.href && Tag === "button") {
-    Tag = "a";
+  if (attributes.href && Tag === 'button') {
+    Tag = 'a';
   }
 
   return (
     <Tag
-      type={Tag === "button" && !type ? "button" : type}
+      data-test='button'
+      type={Tag === 'button' && !type ? 'button' : type}
       target={target}
-      role={Tag === "a" && !role ? "button" : role}
+      role={Tag === 'a' && !role ? 'button' : role}
       className={classes}
       ref={innerRef}
       onMouseUp={handleClick}
@@ -77,14 +82,18 @@ const Button = props => {
       disabled={disabled}
     >
       {props.children}
-      {disabled ? false : <Waves cursorPos={cursorPos} outline={outline} flat={flat} />}
+      {disabled ? (
+        false
+      ) : (
+        <Waves cursorPos={cursorPos} outline={outline} flat={flat} />
+      )}
     </Tag>
   );
 };
 
 Button.defaultProps = {
-  color: "default",
-  tag: "button"
+  color: 'default',
+  tag: 'button'
 };
 
 Button.propTypes = {

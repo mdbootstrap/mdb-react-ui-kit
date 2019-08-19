@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import Waves from "../../Waves";
-import Mask from "../../Mask";
-import View from "../../View";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import Waves from '../../Waves';
+import Mask from '../../Mask';
+import View from '../../View';
 
 const CardImage = props => {
   const [cursorPos, setCursorPos] = useState({});
@@ -18,14 +18,24 @@ const CardImage = props => {
     setCursorPos(cursorPos);
   };
 
-  const { className, overlay, top, waves, hover, cascade, tag, zoom, ...attributes } = props;
+  const {
+    className,
+    overlay,
+    top,
+    waves,
+    hover,
+    cascade,
+    tag,
+    zoom,
+    ...attributes
+  } = props;
 
-  const classes = classNames(top && "card-img-top", className);
+  const classes = classNames(top && 'card-img-top', className);
 
   const Tag = tag;
 
   const innerContent = (
-    <Tag {...attributes} className={classes}>
+    <Tag data-test="card-image" {...attributes} className={classes}>
       {props.children}
     </Tag>
   );
@@ -33,7 +43,11 @@ const CardImage = props => {
   if (props.src) {
     return (
       <View zoom={zoom} hover={hover} cascade={cascade}>
-        <div className="Ripple-parent" onMouseDown={handleClick} style={{ touchAction: "unset" }}>
+        <div
+          className='Ripple-parent'
+          onMouseDown={handleClick}
+          style={{ touchAction: 'unset' }}
+        >
           {innerContent}
           <Mask overlay={overlay} />
           {waves && <Waves cursorPos={cursorPos} />}
@@ -59,8 +73,8 @@ CardImage.propTypes = {
 };
 
 CardImage.defaultProps = {
-  tag: "img",
-  overlay: "white-slight",
+  tag: 'img',
+  overlay: 'white-slight',
   waves: true,
   hover: false,
   cascade: false,

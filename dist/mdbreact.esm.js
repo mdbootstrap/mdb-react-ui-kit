@@ -355,6 +355,7 @@ var Alert = function Alert(props) {
         return handleOnExited(node);
       }
     }, React.createElement("div", {
+      "data-test": "alert",
       className: alertClasses,
       role: "alert"
     }, children, React.createElement("button", {
@@ -368,6 +369,7 @@ var Alert = function Alert(props) {
     }, "\xD7"))));
   } else {
     alertComponent = React.createElement("div", {
+      "data-test": "alert",
       className: alertClasses,
       role: "alert"
     }, children);
@@ -477,7 +479,7 @@ function (_Component) {
     value: function componentDidMount() {
       // add EL on window if the animation is to "reveal"
       if (this.props.reveal) {
-        window.addEventListener("scroll", this.updatePredicate);
+        window.addEventListener('scroll', this.updatePredicate);
         this.updatePredicate();
       }
     }
@@ -485,7 +487,7 @@ function (_Component) {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       if (this.props.reveal) {
-        window.removeEventListener("scroll", this.updatePredicate);
+        window.removeEventListener('scroll', this.updatePredicate);
       }
     } // the function to judge whether the animation should be started
 
@@ -512,17 +514,19 @@ function (_Component) {
         animationDuration: duration,
         animationDelay: delay,
         animationIterationCount: infinite ? false : count,
-        visibility: isVisible ? "visible" : "hidden",
+        visibility: isVisible ? 'visible' : 'hidden',
         animationName: type
       };
       var hiddenStyles = {
-        animationName: "none",
-        visibility: "hidden"
+        animationName: 'none',
+        visibility: 'hidden'
       };
       var getAllStyles = Object.assign(styleObject, style);
-      var classes = classNames(this.state.isVisible && "animated", // will this work?
-      type && type, infinite && "infinite", className);
-      return React.createElement(Tag, _extends({}, attributes, {
+      var classes = classNames(this.state.isVisible && 'animated', // will this work?
+      type && type, infinite && 'infinite', className);
+      return React.createElement(Tag, _extends({
+        "data-test": "animation"
+      }, attributes, {
         className: classes,
         style: isVisible && revealed ? getAllStyles : hiddenStyles,
         ref: this.elemRef,
@@ -546,7 +550,7 @@ Animation.propTypes = {
   onAnimationStart: propTypes.func
 };
 Animation.defaultProps = {
-  tag: "div",
+  tag: 'div',
   reveal: false,
   duration: 1,
   count: 1
@@ -560,15 +564,17 @@ var Badge = function Badge(props) {
       pill = props.pill,
       attributes = _objectWithoutProperties(props, ["tag", "className", "children", "color", "pill"]);
 
-  var classes = classNames("badge", color, "badge-" + color, pill ? "badge-pill" : false, className);
-  return React.createElement(Tag, _extends({}, attributes, {
+  var classes = classNames('badge', color, 'badge-' + color, pill ? 'badge-pill' : false, className);
+  return React.createElement(Tag, _extends({
+    "data-test": "badge"
+  }, attributes, {
     className: classes
   }), children);
 };
 
 Badge.defaultProps = {
-  tag: "span",
-  color: "default",
+  tag: 'span',
+  color: 'default',
   pill: false
 };
 Badge.propTypes = {
@@ -628,7 +634,7 @@ var Breadcrumb = function Breadcrumb(props) {
       bold = props.bold,
       attributes = _objectWithoutProperties(props, ["className", "color", "light", "uppercase", "bold"]);
 
-  var classes = classNames("breadcrumb", uppercase && "text-uppercase", bold && "font-up-bold", light && "white-text", color && getColorClass(color), className);
+  var classes = classNames('breadcrumb', uppercase && 'text-uppercase', bold && 'font-up-bold', light && 'white-text', color && getColorClass(color), className);
   var children;
 
   if (bold) {
@@ -641,7 +647,9 @@ var Breadcrumb = function Breadcrumb(props) {
     children = props.children;
   }
 
-  return React.createElement("nav", null, React.createElement("ol", _extends({}, attributes, {
+  return React.createElement("nav", {
+    "data-test": "breadcrumb"
+  }, React.createElement("ol", _extends({}, attributes, {
     className: classes
   }), children));
 };
@@ -679,7 +687,9 @@ var Fa = function Fa(props) {
 
   var iconPrefix = brand || fab ? "fab" : light || fal ? "fal" : regular || far ? "far" : "fa";
   var classes = classNames(iconPrefix, list ? "fa-li" : false, icon ? "fa-".concat(icon) : false, size ? "fa-".concat(size) : false, fixed ? "fa-fw" : false, pull ? "fa-pull-".concat(pull) : false, border ? "fa-border" : false, spin ? "fa-spin" : false, pulse ? "fa-pulse" : false, rotate ? "fa-rotate-".concat(rotate) : false, flip ? "fa-flip-".concat(flip) : false, inverse ? "fa-inverse" : false, stack ? "fa-".concat(stack) : false, className);
-  return React.createElement("i", _extends({}, attributes, {
+  return React.createElement("i", _extends({
+    "data-test": "fa"
+  }, attributes, {
     className: classes
   }));
 };
@@ -694,7 +704,7 @@ Fa.propTypes = {
   far: propTypes.bool,
   fixed: propTypes.bool,
   flip: propTypes.string,
-  inverse: propTypes.string,
+  inverse: propTypes.bool,
   light: propTypes.bool,
   list: propTypes.bool,
   pull: propTypes.string,
@@ -714,7 +724,7 @@ Fa.defaultProps = {
   far: false,
   fixed: false,
   flip: "",
-  inverse: "",
+  inverse: false,
   light: false,
   list: false,
   pull: "",
@@ -793,7 +803,9 @@ var BreadcrumbItem = function BreadcrumbItem(props) {
     return children;
   };
 
-  return React.createElement("li", _extends({}, attributes, {
+  return React.createElement("li", _extends({
+    "data-test": "breadcrumb-item"
+  }, attributes, {
     className: classes
   }), React.createElement(WithBold, null, React.createElement(WithIcon, null)));
 };
@@ -890,6 +902,7 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return React.createElement("div", {
+        "data-test": "waves",
         className: 'Ripple ' + (this.props.outline || this.props.flat || this.props.dark ? 'Ripple-outline ' : '') + (this.state.animate ? 'is-reppling' : ''),
         style: {
           top: this.state.top + 'px',
@@ -953,23 +966,24 @@ var Button = function Button(props) {
       innerRef = props.innerRef,
       attributes = _objectWithoutProperties(props, ["active", "block", "circle", "className", "color", "disabled", "download", "outline", "size", "rounded", "gradient", "floating", "flat", "role", "type", "social", "action", "tag", "target", "innerRef"]);
 
-  var classes = classNames(flat ? "btn-flat" : gradient ? "".concat(gradient, "-gradient") : "btn".concat(outline ? "-outline" : "", "-").concat(color), "btn", "Ripple-parent", className, (_classNames = {
+  var classes = classNames(flat ? 'btn-flat' : gradient ? "".concat(gradient, "-gradient") : "btn".concat(outline ? '-outline' : '', "-").concat(color), 'btn', 'Ripple-parent', className, (_classNames = {
     active: active,
-    "btn-floating": floating,
-    "btn-rounded": rounded,
-    "btn-circle": circle,
-    "btn-block": block,
-    "btn-action": action
+    'btn-floating': floating,
+    'btn-rounded': rounded,
+    'btn-circle': circle,
+    'btn-block': block,
+    'btn-action': action
   }, _defineProperty(_classNames, "btn-".concat(social), social), _defineProperty(_classNames, "btn-".concat(size), size), _defineProperty(_classNames, "disabled", disabled), _classNames));
 
-  if (attributes.href && Tag === "button") {
-    Tag = "a";
+  if (attributes.href && Tag === 'button') {
+    Tag = 'a';
   }
 
   return React.createElement(Tag, _extends({
-    type: Tag === "button" && !type ? "button" : type,
+    "data-test": "button",
+    type: Tag === 'button' && !type ? 'button' : type,
     target: target,
-    role: Tag === "a" && !role ? "button" : role,
+    role: Tag === 'a' && !role ? 'button' : role,
     className: classes,
     ref: innerRef,
     onMouseUp: handleClick,
@@ -985,8 +999,8 @@ var Button = function Button(props) {
 };
 
 Button.defaultProps = {
-  color: "default",
-  tag: "button"
+  color: 'default',
+  tag: 'button'
 };
 Button.propTypes = {
   active: propTypes.bool,
@@ -1022,14 +1036,16 @@ var ButtonGroup = function ButtonGroup(props) {
       vertical = props.vertical,
       attributes = _objectWithoutProperties(props, ["className", "size", "vertical"]);
 
-  var classes = classNames(className, size ? "btn-group-" + size : false, vertical ? "btn-group-vertical" : "btn-group");
-  return React.createElement("div", _extends({}, attributes, {
+  var classes = classNames(className, size ? 'btn-group-' + size : false, vertical ? 'btn-group-vertical' : 'btn-group');
+  return React.createElement("div", _extends({
+    "data-test": "button-group"
+  }, attributes, {
     className: classes
   }), props.children);
 };
 
 ButtonGroup.propTypes = {
-  "aria-label": propTypes.string,
+  'aria-label': propTypes.string,
   className: propTypes.string,
   role: propTypes.string,
   size: propTypes.string,
@@ -1037,7 +1053,7 @@ ButtonGroup.propTypes = {
   vertical: propTypes.bool
 };
 ButtonGroup.defaultProps = {
-  role: "group"
+  role: 'group'
 };
 
 var ButtonToolbar = function ButtonToolbar(props) {
@@ -1045,7 +1061,9 @@ var ButtonToolbar = function ButtonToolbar(props) {
       attributes = _objectWithoutProperties(props, ["className"]);
 
   var classes = classNames(className, "btn-toolbar");
-  return React.createElement("div", _extends({}, attributes, {
+  return React.createElement("div", _extends({
+    "data-test": "button-toolbar"
+  }, attributes, {
     className: classes
   }), props.children);
 };
@@ -1092,16 +1110,29 @@ var Card = function Card(props) {
     "card-personal": personal,
     "news-card": news
   }, _defineProperty(_classNames, "".concat(text, "-text"), text), _defineProperty(_classNames, "border-".concat(border), border), _classNames), "card", color, className);
-  return React.createElement(Tag, _extends({}, attributes, {
+  return React.createElement(Tag, _extends({
+    "data-test": "card"
+  }, attributes, {
     className: classes
   }));
 };
 
 Card.propTypes = {
-  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  border: propTypes.string,
+  cascade: propTypes.bool,
   className: propTypes.string,
   color: propTypes.string,
-  border: propTypes.string
+  collection: propTypes.bool,
+  ecommerce: propTypes.bool,
+  narrow: propTypes.bool,
+  news: propTypes.bool,
+  pricing: propTypes.bool,
+  personal: propTypes.bool,
+  reverse: propTypes.bool,
+  tag: propTypes.string,
+  testimonial: propTypes.bool,
+  text: propTypes.string,
+  wide: propTypes.bool
 };
 Card.defaultProps = {
   tag: "div"
@@ -1113,8 +1144,10 @@ var CardBody = function CardBody(props) {
       cascade = props.cascade,
       attributes = _objectWithoutProperties(props, ["className", "tag", "cascade"]);
 
-  var classes = classNames("card-body", cascade && "card-body-cascade", className);
-  return React.createElement(Tag, _extends({}, attributes, {
+  var classes = classNames('card-body', cascade && 'card-body-cascade', className);
+  return React.createElement(Tag, _extends({
+    "data-test": "card-body"
+  }, attributes, {
     className: classes
   }));
 };
@@ -1125,7 +1158,7 @@ CardBody.propTypes = {
   cascade: propTypes.bool
 };
 CardBody.defaultProps = {
-  tag: "div"
+  tag: 'div'
 };
 
 var CardFooter = function CardFooter(props) {
@@ -1142,9 +1175,11 @@ var CardFooter = function CardFooter(props) {
       attributes = _objectWithoutProperties(props, ["className", "tag", "color", "text", "border", "transparent", "small", "muted"]);
 
   var classes = classNames((_classNames = {
-    " white-text": color && !text
-  }, _defineProperty(_classNames, "border-".concat(border), border), _defineProperty(_classNames, "bg-transparent", transparent), _defineProperty(_classNames, "text-muted", muted), _defineProperty(_classNames, "color", color), _defineProperty(_classNames, "text", text), _classNames), "card-footer", className);
-  var component = React.createElement(Tag, _extends({}, attributes, {
+    'white-text': color && !text
+  }, _defineProperty(_classNames, "border-".concat(border), border), _defineProperty(_classNames, 'bg-transparent', transparent), _defineProperty(_classNames, 'text-muted', muted), _defineProperty(_classNames, "".concat(text, "-text"), text), _classNames), 'card-footer', color, className);
+  var component = React.createElement(Tag, _extends({
+    "data-test": "card-footer"
+  }, attributes, {
     className: classes
   }));
 
@@ -1168,7 +1203,7 @@ CardFooter.propTypes = {
   muted: propTypes.bool
 };
 CardFooter.defaultProps = {
-  tag: "div"
+  tag: 'div'
 };
 
 var CardGroup = function CardGroup(props) {
@@ -1178,8 +1213,10 @@ var CardGroup = function CardGroup(props) {
       column = props.column,
       attributes = _objectWithoutProperties(props, ["className", "tag", "deck", "column"]);
 
-  var classes = classNames(deck ? "card-deck" : column ? "card-columns" : "card-group", className);
-  return React.createElement(Tag, _extends({}, attributes, {
+  var classes = classNames(deck ? 'card-deck' : column ? 'card-columns' : 'card-group', className);
+  return React.createElement(Tag, _extends({
+    "data-test": "card-group"
+  }, attributes, {
     className: classes
   }));
 };
@@ -1191,7 +1228,7 @@ CardGroup.propTypes = {
   column: propTypes.bool
 };
 CardGroup.defaultProps = {
-  tag: "div"
+  tag: 'div'
 };
 
 var CardHeader = function CardHeader(props) {
@@ -1206,9 +1243,11 @@ var CardHeader = function CardHeader(props) {
       attributes = _objectWithoutProperties(props, ["className", "tag", "color", "text", "border", "transparent"]);
 
   var classes = classNames((_classNames = {
-    " white-text": color && !text
-  }, _defineProperty(_classNames, "border-".concat(border), border), _defineProperty(_classNames, "bg-transparent", transparent), _classNames), "card-header", className, color, text);
-  return React.createElement(Tag, _extends({}, attributes, {
+    'white-text': color && !text
+  }, _defineProperty(_classNames, "border-".concat(border), border), _defineProperty(_classNames, 'bg-transparent', transparent), _defineProperty(_classNames, "".concat(text, "-text"), text), _classNames), 'card-header', className, color);
+  return React.createElement(Tag, _extends({
+    "data-test": "card-header"
+  }, attributes, {
     className: classes
   }));
 };
@@ -1222,7 +1261,7 @@ CardHeader.propTypes = {
   transparent: propTypes.bool
 };
 CardHeader.defaultProps = {
-  tag: "div"
+  tag: 'div'
 };
 
 var Mask = function Mask(props) {
@@ -1233,8 +1272,10 @@ var Mask = function Mask(props) {
       Tag = props.tag,
       attributes = _objectWithoutProperties(props, ["children", "className", "overlay", "pattern", "tag"]);
 
-  var classes = classNames("mask", pattern && "pattern-".concat(pattern), overlay && "rgba-".concat(overlay), className);
-  return React.createElement(Tag, _extends({}, attributes, {
+  var classes = classNames('mask', pattern && "pattern-".concat(pattern), overlay && "rgba-".concat(overlay), className);
+  return React.createElement(Tag, _extends({
+    "data-test": "mask"
+  }, attributes, {
     className: classes
   }), children);
 };
@@ -1247,10 +1288,10 @@ Mask.propTypes = {
   tag: propTypes.string
 };
 Mask.defaultProps = {
-  className: "",
-  overlay: "",
-  pattern: "",
-  tag: "div"
+  className: '',
+  overlay: '',
+  pattern: '',
+  tag: 'div'
 };
 
 var View = function View(props) {
@@ -1290,7 +1331,9 @@ var View = function View(props) {
     height: "100vh",
     backgroundAttachment: fixed ? "fixed" : null
   } : {};
-  return React.createElement(Tag, _extends({}, attributes, {
+  return React.createElement(Tag, _extends({
+    "data-test": "view"
+  }, attributes, {
     className: classes,
     onMouseDown: handleClick,
     onTouchStart: handleClick,
@@ -1348,9 +1391,11 @@ var CardImage = function CardImage(props) {
       zoom = props.zoom,
       attributes = _objectWithoutProperties(props, ["className", "overlay", "top", "waves", "hover", "cascade", "tag", "zoom"]);
 
-  var classes = classNames(top && "card-img-top", className);
+  var classes = classNames(top && 'card-img-top', className);
   var Tag = tag;
-  var innerContent = React.createElement(Tag, _extends({}, attributes, {
+  var innerContent = React.createElement(Tag, _extends({
+    "data-test": "card-image"
+  }, attributes, {
     className: classes
   }), props.children);
 
@@ -1363,7 +1408,7 @@ var CardImage = function CardImage(props) {
       className: "Ripple-parent",
       onMouseDown: handleClick,
       style: {
-        touchAction: "unset"
+        touchAction: 'unset'
       }
     }, innerContent, React.createElement(Mask, {
       overlay: overlay
@@ -1388,8 +1433,8 @@ CardImage.propTypes = {
   children: propTypes.node
 };
 CardImage.defaultProps = {
-  tag: "img",
-  overlay: "white-slight",
+  tag: 'img',
+  overlay: 'white-slight',
   waves: true,
   hover: false,
   cascade: false,
@@ -1399,22 +1444,18 @@ CardImage.defaultProps = {
 var CardText = function CardText(props) {
   var className = props.className,
       Tag = props.tag,
+      textNode = props.children,
       muted = props.muted,
       small = props.small,
-      attributes = _objectWithoutProperties(props, ["className", "tag", "muted", "small"]);
+      attributes = _objectWithoutProperties(props, ["className", "tag", "children", "muted", "small"]);
 
-  var classes = classNames("card-text", muted && "text-muted", className);
-  var text = React.createElement(Tag, _extends({}, attributes, {
+  var classes = classNames('card-text', muted && 'text-muted', className);
+  var children = small ? React.createElement("small", null, textNode) : textNode;
+  return React.createElement(Tag, _extends({
+    "data-test": "card-text"
+  }, attributes, {
     className: classes
-  }));
-
-  if (small) {
-    text = React.createElement(Tag, _extends({}, attributes, {
-      className: classes
-    }), React.createElement("small", null, " ", props.children, " "));
-  }
-
-  return text;
+  }), children);
 };
 
 CardText.propTypes = {
@@ -1424,7 +1465,7 @@ CardText.propTypes = {
   small: propTypes.bool
 };
 CardText.defaultProps = {
-  tag: "p"
+  tag: 'p'
 };
 
 var CardTitle = function CardTitle(props) {
@@ -1433,8 +1474,10 @@ var CardTitle = function CardTitle(props) {
       sub = props.sub,
       attributes = _objectWithoutProperties(props, ["className", "tag", "sub"]);
 
-  var classes = classNames(sub ? "card-subtitle" : "card-title", className);
-  return React.createElement(Tag, _extends({}, attributes, {
+  var classes = classNames(sub ? 'card-subtitle' : 'card-title', className);
+  return React.createElement(Tag, _extends({
+    "data-test": "card-title"
+  }, attributes, {
     className: classes
   }));
 };
@@ -1445,7 +1488,7 @@ CardTitle.propTypes = {
   className: propTypes.string
 };
 CardTitle.defaultProps = {
-  tag: "h4",
+  tag: 'h4',
   sub: false
 };
 
@@ -1460,26 +1503,27 @@ var Control = function Control(props) {
       multiItem = props.multiItem;
   var text;
 
-  if (direction === "prev") {
-    text = "Previous";
-  } else if (direction === "next") {
-    text = "Next";
+  if (direction === 'prev') {
+    text = 'Previous';
+  } else if (direction === 'next') {
+    text = 'Next';
   }
 
-  var classes = classNames("carousel-control-" + direction, className);
-  var caretClasses = classNames("carousel-control-" + direction + "-icon");
+  var classes = classNames('carousel-control-' + direction, className);
+  var caretClasses = classNames('carousel-control-' + direction + '-icon');
 
   if (testimonial) {
-    var arrow = direction === "prev" ? "left" : "right";
-    classes = classNames("carousel-control-" + direction, arrow, "carousel-control", className);
-    caretClasses = classNames("icon-" + direction);
+    var arrow = direction === 'prev' ? 'left' : 'right';
+    classes = classNames('carousel-control-' + direction, arrow, 'carousel-control', className);
+    caretClasses = classNames('icon-' + direction);
   }
 
   if (multiItem) {
-    classes = classNames("btn-floating");
+    classes = classNames('btn-floating');
   }
 
   return React.createElement(Tag, {
+    "data-test": "carousel-control",
     className: classes,
     "data-slide": direction,
     onClick: onClick
@@ -1506,7 +1550,7 @@ Control.propTypes = {
   multiItem: propTypes.bool
 };
 Control.defaultProps = {
-  tag: "a"
+  tag: 'a'
 };
 
 var CarouselIndicator = function CarouselIndicator(props) {
@@ -1517,8 +1561,10 @@ var CarouselIndicator = function CarouselIndicator(props) {
       alt = props.alt,
       attributes = _objectWithoutProperties(props, ["active", "children", "className", "img", "alt"]);
 
-  var classes = classNames(active && "active", className);
-  return React.createElement("li", _extends({}, attributes, {
+  var classes = classNames(active && 'active', className);
+  return React.createElement("li", _extends({
+    "data-test": "carousel-indicator"
+  }, attributes, {
     className: classes
   }), img && React.createElement("img", {
     src: img,
@@ -1535,9 +1581,9 @@ CarouselIndicator.propTypes = {
   img: propTypes.string
 };
 CarouselIndicator.defaultProps = {
-  alt: "Carousel thumbnail",
-  className: "",
-  img: ""
+  alt: 'Carousel thumbnail',
+  className: '',
+  img: ''
 };
 
 var CarouselIndicators = function CarouselIndicators(props) {
@@ -1546,7 +1592,9 @@ var CarouselIndicators = function CarouselIndicators(props) {
       attributes = _objectWithoutProperties(props, ["children", "className"]);
 
   var classes = classNames("carousel-indicators", className);
-  return React.createElement("ol", _extends({}, attributes, {
+  return React.createElement("ol", _extends({
+    "data-test": "carousel-indicators"
+  }, attributes, {
     className: classes
   }), children);
 };
@@ -1574,63 +1622,84 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Carousel).call(this, props));
 
+    _defineProperty(_assertThisInitialized(_this), "clearCycleIntervalHandler", function () {
+      return clearInterval(_this.cycleInterval);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "swipeAvailableHandler", function () {
+      return _this.setState({
+        swipeAvailable: true
+      });
+    });
+
     _defineProperty(_assertThisInitialized(_this), "restartInterval", function () {
       if (_this.props.interval !== false) {
-        clearInterval(_this.cycleInterval);
+        _this.clearCycleIntervalHandler();
+
         _this.cycleInterval = setInterval(_this.next, _this.props.interval);
       }
     });
 
     _defineProperty(_assertThisInitialized(_this), "next", function () {
-      var nextItem = _this.state.activeItem + 1;
+      var nextIndex = _this.state.activeItem + 1;
+      var nextItem = nextIndex > _this.state.length ? 1 : nextIndex;
 
-      if (nextItem > _this.state.length) {
-        _this.setState(_objectSpread({}, _this.state, {
-          activeItem: 1
-        }));
-      } else {
-        _this.setState(_objectSpread({}, _this.state, {
-          activeItem: nextItem
-        }));
-      }
-
-      _this.restartInterval();
+      _this.goToIndex(nextItem);
     });
 
     _defineProperty(_assertThisInitialized(_this), "prev", function () {
-      var prevItem = _this.state.activeItem - 1;
+      var prevIndex = _this.state.activeItem - 1;
+      var prevItem = prevIndex < 1 ? _this.state.length : prevIndex;
 
-      if (prevItem < 1) {
-        _this.setState(_objectSpread({}, _this.state, {
-          activeItem: _this.state.length
-        }));
-      } else {
-        _this.setState(_objectSpread({}, _this.state, {
-          activeItem: prevItem
-        }));
-      }
+      _this.goToIndex(prevItem);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "goToIndex", function (item) {
+      _this.setState(_objectSpread({}, _this.state, {
+        activeItem: item
+      }));
 
       _this.restartInterval();
     });
 
-    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
-      if (_this.props.interval === false) {
+    _defineProperty(_assertThisInitialized(_this), "startTouch", function (e) {
+      _this.setState({
+        initialX: e.touches[0].clientX,
+        initialY: e.touches[0].clientY
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "moveTouch", function (e) {
+      _this.setState({
+        swipeAvailable: false
+      });
+
+      var _this$state = _this.state,
+          initialX = _this$state.initialX,
+          initialY = _this$state.initialY;
+
+      if (initialX === null || initialY === null) {
         return;
       }
 
-      _this.cycleInterval = setInterval(_this.next, _this.props.interval); // get images src atr
+      var currentX = e.touches[0].clientX;
+      var currentY = e.touches[0].clientY;
+      var diffX = initialX - currentX;
+      var diffY = initialY - currentY;
 
-      if (_this.props.thumbnails) {
-        var CarouselItemsArray = _this.carouselRef.current.querySelectorAll(".carousel-item img");
-
-        var srcArray = Array.prototype.map.call(CarouselItemsArray, function (item) {
-          return item.src;
-        });
-
-        _this.setState(_objectSpread({}, _this.state, {
-          srcArray: srcArray
-        }));
+      if (Math.abs(diffX) > Math.abs(diffY)) {
+        // sliding horizontally
+        if (diffX > 0) {
+          _this.next();
+        } else {
+          _this.prev();
+        }
       }
+
+      _this.setState({
+        initialX: null,
+        initialY: null
+      });
     });
 
     _this.state = {
@@ -1647,60 +1716,23 @@ function (_Component) {
   }
 
   _createClass(Carousel, [{
-    key: "goToIndex",
-    value: function goToIndex(item) {
-      if (this.state.activeItem !== item) {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.interval === false) {
+        return;
+      }
+
+      this.cycleInterval = setInterval(this.next, this.props.interval); // get images src atr
+
+      if (this.props.thumbnails) {
+        var CarouselItemsArray = this.carouselRef.current.querySelectorAll('.carousel-item img');
+        var srcArray = Array.prototype.map.call(CarouselItemsArray, function (item) {
+          return item.src;
+        });
         this.setState(_objectSpread({}, this.state, {
-          activeItem: item
+          srcArray: srcArray
         }));
       }
-
-      this.restartInterval();
-    }
-  }, {
-    key: "startTouch",
-    value: function startTouch(e) {
-      this.setState({
-        initialX: e.touches[0].clientX,
-        initialY: e.touches[0].clientY
-      });
-    }
-  }, {
-    key: "moveTouch",
-    value: function moveTouch(e) {
-      this.setState({
-        swipeAvailable: false
-      });
-      var _this$state = this.state,
-          initialX = _this$state.initialX,
-          initialY = _this$state.initialY;
-
-      if (initialX === null) {
-        return;
-      }
-
-      if (initialY === null) {
-        return;
-      }
-
-      var currentX = e.touches[0].clientX;
-      var currentY = e.touches[0].clientY;
-      var diffX = initialX - currentX;
-      var diffY = initialY - currentY;
-
-      if (Math.abs(diffX) > Math.abs(diffY)) {
-        // sliding horizontally
-        if (diffX > 0) {
-          this.next();
-        } else {
-          this.prev();
-        }
-      }
-
-      this.setState({
-        initialX: null,
-        initialY: null
-      });
     }
   }, {
     key: "componentWillUnmount",
@@ -1709,7 +1741,7 @@ function (_Component) {
         return;
       }
 
-      clearInterval(this.cycleInterval);
+      this.clearCycleIntervalHandler();
     }
   }, {
     key: "getChildContext",
@@ -1741,17 +1773,18 @@ function (_Component) {
           onHoverStop = _this$props.onHoverStop,
           attributes = _objectWithoutProperties(_this$props, ["activeItem", "children", "className", "multiItem", "slide", "thumbnails", "interval", "testimonial", "tag", "length", "showControls", "showIndicators", "onHoverStop"]);
 
-      var ariaLabel = "carousel";
-      var classes = classNames("carousel", multiItem ? "carousel-multi-item" : "carousel-fade", thumbnails ? "carousel-thumbnails" : "", testimonial ? "testimonial-carousel" : "", className);
+      var swipeAvailable = this.state.swipeAvailable;
+      var ariaLabel = 'carousel';
+      var classes = classNames('carousel', multiItem ? 'carousel-multi-item' : 'carousel-fade', thumbnails ? 'carousel-thumbnails' : '', testimonial ? 'testimonial-carousel' : '', className);
       var CarouselIndicatorsArray = [];
 
       var _loop = function _loop(i) {
         CarouselIndicatorsArray.push(React.createElement(CarouselIndicator, {
           img: thumbnails ? _this2.state.srcArray[i - 1] : null,
           key: i,
-          active: _this2.state.activeItem === i ? true : false,
+          active: _this2.state.activeItem === i,
           onClick: function onClick() {
-            _this2.goToIndex(i);
+            return _this2.goToIndex(i);
           }
         }));
       };
@@ -1760,59 +1793,50 @@ function (_Component) {
         _loop(i);
       }
 
+      var isMultiItem = multiItem ? true : false;
+      var isTestimonial = testimonial ? true : false;
       return React.createElement(Tag, _extends({
+        "data-test": "carousel",
         ref: this.carouselRef
       }, attributes, {
         className: classes,
         "aria-label": ariaLabel,
-        onTouchStart: function onTouchStart(touchStart) {
-          return _this2.startTouch(touchStart);
-        },
-        onTouchMove: function onTouchMove(touchMove) {
-          return _this2.state.swipeAvailable ? _this2.moveTouch(touchMove) : null;
-        },
-        onTouchEnd: function onTouchEnd() {
-          return _this2.setState({
-            swipeAvailable: true
-          });
-        },
-        onMouseEnter: function onMouseEnter() {
-          return onHoverStop ? clearInterval(_this2.cycleInterval) : false;
-        },
-        onMouseLeave: function onMouseLeave() {
-          return onHoverStop ? _this2.restartInterval() : false;
-        }
+        onTouchStart: this.startTouch,
+        onTouchMove: swipeAvailable ? this.moveTouch : null,
+        onTouchEnd: this.swipeAvailableHandler,
+        onMouseEnter: onHoverStop ? this.clearCycleIntervalHandler : false,
+        onMouseLeave: onHoverStop ? this.restartInterval : false
       }), showControls && multiItem && React.createElement("div", {
         className: "controls-top"
       }, React.createElement(Control, {
-        testimonial: testimonial ? true : false,
-        multiItem: multiItem ? true : false,
+        testimonial: isTestimonial,
+        multiItem: isMultiItem,
         iconLeft: true,
         className: "btn-floating",
         direction: "prev",
         role: "button",
         onClick: this.prev
       }), React.createElement(Control, {
-        testimonial: testimonial ? true : false,
-        multiItem: multiItem ? true : false,
+        testimonial: isTestimonial,
+        multiItem: isMultiItem,
         iconRight: true,
         className: "btn-floating",
         direction: "next",
         role: "button",
         onClick: this.next
       })), children, showControls && !multiItem && React.createElement(React.Fragment, null, React.createElement(Control, {
-        testimonial: testimonial ? true : false,
-        multiItem: multiItem ? true : false,
+        testimonial: isTestimonial,
+        multiItem: isMultiItem,
         direction: "prev",
         role: "button",
         onClick: this.prev
       }), React.createElement(Control, {
-        testimonial: testimonial ? true : false,
-        multiItem: multiItem ? true : false,
+        testimonial: isTestimonial,
+        multiItem: isMultiItem,
         direction: "next",
         role: "button",
         onClick: this.next
-      })), React.createElement(CarouselIndicators, null, showIndicators && CarouselIndicatorsArray));
+      })), showIndicators && React.createElement(CarouselIndicators, null, CarouselIndicatorsArray));
     }
   }]);
 
@@ -1835,7 +1859,7 @@ Carousel.propTypes = {
   onHoverStop: propTypes.bool
 };
 Carousel.defaultProps = {
-  tag: "div",
+  tag: 'div',
   interval: 6000,
   showControls: true,
   showIndicators: true,
@@ -1853,8 +1877,10 @@ var CarouselCaption = function CarouselCaption(props) {
       Tag = props.tag,
       attributes = _objectWithoutProperties(props, ["children", "className", "tag"]);
 
-  var classes = classNames("carousel-caption", className);
-  return React.createElement(Tag, _extends({}, attributes, {
+  var classes = classNames('carousel-caption', className);
+  return React.createElement(Tag, _extends({
+    "data-test": "carousel-caption"
+  }, attributes, {
     className: classes
   }), children);
 };
@@ -1866,60 +1892,33 @@ CarouselCaption.propTypes = {
   children: propTypes.node
 };
 CarouselCaption.defaultProps = {
-  tag: "div"
+  tag: 'div'
 };
 
-var CarouselInner =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(CarouselInner, _Component);
+var CarouselInner = function CarouselInner(props) {
+  var active = props.active,
+      children = props.children,
+      childrenCount = props.childrenCount,
+      className = props.className,
+      Tag = props.tag,
+      attributes = _objectWithoutProperties(props, ["active", "children", "childrenCount", "className", "tag"]);
 
-  function CarouselInner(props) {
-    var _this;
-
-    _classCallCheck(this, CarouselInner);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(CarouselInner).call(this, props));
-    _this.state = {
-      childrenCount: React.Children.count(_this.props.children)
-    };
-    return _this;
-  }
-
-  _createClass(CarouselInner, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          active = _this$props.active,
-          children = _this$props.children,
-          childrenCount = _this$props.childrenCount,
-          className = _this$props.className,
-          Tag = _this$props.tag,
-          attributes = _objectWithoutProperties(_this$props, ["active", "children", "childrenCount", "className", "tag"]);
-
-      var classes = classNames("carousel-inner", active ? "active" : "", className);
-      childrenCount = React.Children.count(this.props.children);
-      return React.createElement(Tag, _extends({}, attributes, {
-        className: classes
-      }), children);
-    }
-  }]);
-
-  return CarouselInner;
-}(Component);
+  var classes = classNames('carousel-inner', active ? 'active' : '', className);
+  return React.createElement(Tag, _extends({
+    "data-test": "carousel-inner"
+  }, attributes, {
+    className: classes
+  }), children);
+};
 
 CarouselInner.propTypes = {
-  childrenCount: propTypes.any,
   tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
   className: propTypes.string,
   active: propTypes.bool,
   children: propTypes.node
 };
 CarouselInner.defaultProps = {
-  tag: "div"
-};
-CarouselInner.contextTypes = {
-  childrenCount: propTypes.any
+  tag: 'div'
 };
 
 var CarouselItem =
@@ -1927,42 +1926,43 @@ var CarouselItem =
 function (_Component) {
   _inherits(CarouselItem, _Component);
 
-  function CarouselItem(props) {
+  function CarouselItem() {
+    var _getPrototypeOf2;
+
     var _this;
 
     _classCallCheck(this, CarouselItem);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(CarouselItem).call(this, props));
-    _this.moveForward = _this.moveForward.bind(_assertThisInitialized(_this));
-    _this.moveBackwards = _this.moveBackwards.bind(_assertThisInitialized(_this));
-    _this.makeVisible = _this.makeVisible.bind(_assertThisInitialized(_this));
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(CarouselItem)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "moveForward", function () {
+      _this.style = {
+        position: 'absolute',
+        left: '100%'
+      };
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "moveBackwards", function () {
+      _this.style = {
+        position: 'absolute',
+        left: '-100%'
+      };
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "makeVisible", function () {
+      _this.style = {
+        left: '0'
+      };
+    });
+
     return _this;
   }
 
   _createClass(CarouselItem, [{
-    key: "moveForward",
-    value: function moveForward() {
-      this.style = {
-        position: "absolute",
-        left: "100%"
-      };
-    }
-  }, {
-    key: "moveBackwards",
-    value: function moveBackwards() {
-      this.style = {
-        position: "absolute",
-        left: "-100%"
-      };
-    }
-  }, {
-    key: "makeVisible",
-    value: function makeVisible() {
-      this.style = {
-        left: "0"
-      };
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -1974,7 +1974,10 @@ function (_Component) {
           attributes = _objectWithoutProperties(_this$props, ["active", "children", "className", "itemId", "tag"]);
 
       itemId = parseInt(itemId, 10);
-      var classes = classNames("carousel-item", this.context.slide ? "active carousel-slide-item" : itemId === this.context.activeItem ? "active" : false, className);
+      var classes = classNames('carousel-item', {
+        'active carousel-slide-item': this.context.slide,
+        'active': !this.context.slide && itemId === this.context.activeItem
+      }, className);
       var slideIndex = this.context.activeItem - itemId;
 
       if (this.context.slide) {
@@ -1987,7 +1990,9 @@ function (_Component) {
         }
       }
 
-      return React.createElement(Tag, _extends({}, attributes, {
+      return React.createElement(Tag, _extends({
+        "data-test": "carousel-item"
+      }, attributes, {
         className: classes,
         style: this.style
       }), children);
@@ -2005,7 +2010,7 @@ CarouselItem.propTypes = {
   children: propTypes.node
 };
 CarouselItem.defaultProps = {
-  tag: "div"
+  tag: 'div'
 };
 CarouselItem.contextTypes = {
   activeItem: propTypes.any,
@@ -2023,12 +2028,12 @@ var MDBCloseIcon = function MDBCloseIcon(_ref) {
     onClick && onClick(e);
   };
 
-  var btnClasses = className ? ['close'].concat(_toConsumableArray(className.split(" "))) : ['close'];
+  var btnClasses = className ? ['close'].concat(_toConsumableArray(className.split(' '))) : ['close'];
   return React.createElement("button", _extends({
     "data-test": "close-button",
     type: "button"
   }, props, {
-    className: btnClasses.join(" "),
+    className: btnClasses.join(' '),
     onClick: onClickHandler,
     "aria-label": ariaLabel
   }), React.createElement("span", {
@@ -2036,7 +2041,7 @@ var MDBCloseIcon = function MDBCloseIcon(_ref) {
   }, "\xD7"));
 };
 MDBCloseIcon.defaultProps = {
-  ariaLabel: "Close"
+  ariaLabel: 'Close'
 };
 MDBCloseIcon.propTypes = {
   className: propTypes.string,
@@ -2059,7 +2064,9 @@ var Col = function Col(props) {
       attributes = _objectWithoutProperties(props, ["xs", "sm", "md", "lg", "xl", "top", "bottom", "middle", "size", "className", "tag"]);
 
   var classes = classNames(size && "col-" + size, xs && "col-xs-" + xs, sm && "col-sm-" + sm, md && "col-md-" + md, lg && "col-lg-" + lg, xl && "col-xl-" + xl, !size && !xs && !sm && !md && !lg && !xl ? "col" : "", top && "align-self-start", middle && "align-self-center", bottom && "align-self-end", className);
-  return React.createElement(Tag, _extends({}, attributes, {
+  return React.createElement(Tag, _extends({
+    "data-test": "col"
+  }, attributes, {
     className: classes
   }));
 };
@@ -2086,10 +2093,10 @@ Col.defaultProps = {
   xl: null
 };
 
-var SHOW = "SHOW";
-var SHOWN = "SHOWN";
-var HIDE = "HIDE";
-var HIDDEN = "HIDDEN";
+var SHOW = 'SHOW';
+var SHOWN = 'SHOWN';
+var HIDE = 'HIDE';
+var HIDDEN = 'HIDDEN';
 var DEFAULT_DELAYS = {
   show: 350,
   hide: 350
@@ -2107,6 +2114,15 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Collapse).call(this, props));
 
+    _defineProperty(_assertThisInitialized(_this), "setTransitionTag", function (collapse, callback, delayType) {
+      _this.transitionTag = setTimeout(function () {
+        _this.setState({
+          collapse: collapse,
+          height: null
+        }, callback());
+      }, _this.getDelay(delayType));
+    });
+
     _defineProperty(_assertThisInitialized(_this), "openCollapse", function () {
       _this.setState({
         collapse: SHOW
@@ -2115,12 +2131,7 @@ function (_Component) {
           height: _this.getHeight()
         });
 
-        _this.transitionTag = setTimeout(function () {
-          _this.setState({
-            collapse: SHOWN,
-            height: null
-          }, _this.props.onOpened());
-        }, _this.getDelay("show"));
+        _this.setTransitionTag(SHOWN, _this.props.onOpened, 'show');
       });
     });
 
@@ -2138,12 +2149,7 @@ function (_Component) {
         });
       });
 
-      _this.transitionTag = setTimeout(function () {
-        _this.setState({
-          collapse: HIDDEN,
-          height: null
-        }, _this.props.onClosed());
-      }, _this.getDelay("hide"));
+      _this.setTransitionTag(HIDDEN, _this.props.onClosed, 'hide');
     });
 
     _this.state = {
@@ -2166,7 +2172,7 @@ function (_Component) {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps, prevState) {
       var collapse = prevState.collapse;
-      var willOpen = typeof this.props.isOpen !== "boolean" ? this.props.isOpen === prevState.id : this.props.isOpen;
+      var willOpen = typeof this.props.isOpen !== 'boolean' ? this.props.isOpen === prevState.id : this.props.isOpen;
 
       if (willOpen && this.state.collapse === HIDDEN) {
         this.openCollapse();
@@ -2184,7 +2190,7 @@ function (_Component) {
     value: function getDelay(key) {
       var delay = this.props.delay;
 
-      if (_typeof(delay) === "object") {
+      if (_typeof(delay) === 'object') {
         return isNaN(delay[key]) ? DEFAULT_DELAYS[key] : delay[key];
       }
 
@@ -2217,31 +2223,33 @@ function (_Component) {
 
       switch (collapse) {
         case SHOW:
-          collapseClass = "collapsing";
+          collapseClass = 'collapsing';
           break;
 
         case SHOWN:
-          collapseClass = "collapse show";
+          collapseClass = 'collapse show';
           break;
 
         case HIDE:
-          collapseClass = "collapsing";
+          collapseClass = 'collapsing';
           break;
 
         case HIDDEN:
-          collapseClass = "collapse";
+          collapseClass = 'collapse';
           break;
 
         default:
           // HIDDEN
-          collapseClass = "collapse";
+          collapseClass = 'collapse';
       }
 
-      var classes = classNames(collapseClass, navbar ? "navbar-collapse" : false, className);
+      var classes = classNames(collapseClass, navbar ? 'navbar-collapse' : false, className);
       var style = height === null ? null : {
         height: height
       };
-      return React.createElement("div", _extends({}, attributes, {
+      return React.createElement("div", _extends({
+        "data-test": "collapse"
+      }, attributes, {
         style: _objectSpread({}, attributes.style, style),
         className: classes,
         ref: function ref(c) {
@@ -2268,7 +2276,7 @@ Collapse.propTypes = {
   onClosed: propTypes.func
 };
 Collapse.defaultProps = {
-  isOpen: "",
+  isOpen: '',
   delay: DEFAULT_DELAYS,
   onOpened: function onOpened() {},
   onClosed: function onClosed() {}
@@ -2280,8 +2288,10 @@ var Container = function Container(props) {
       Tag = props.tag,
       attributes = _objectWithoutProperties(props, ["fluid", "className", "tag"]);
 
-  var classes = classNames(fluid ? "container-fluid" : "container", className);
-  return React.createElement(Tag, _extends({}, attributes, {
+  var classes = classNames(fluid ? 'container-fluid' : 'container', className);
+  return React.createElement(Tag, _extends({
+    "data-test": "container"
+  }, attributes, {
     className: classes
   }));
 };
@@ -2292,7 +2302,7 @@ Container.propTypes = {
   className: propTypes.string
 };
 Container.defaultProps = {
-  tag: "div",
+  tag: 'div',
   fluid: false
 };
 
@@ -2369,29 +2379,30 @@ var Table = function Table(props) {
       className = props.className,
       attributes = _objectWithoutProperties(props, ["autoWidth", "bordered", "borderless", "btn", "children", "dark", "fixed", "theadColor", "hover", "maxHeight", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "scrollY", "small", "striped", "className"]);
 
-  var tableClasses = classNames("table", {
-    "w-auto": autoWidth,
-    "table-bordered": bordered,
-    "table-borderless": borderless,
-    "btn-table": btn,
-    "table-fixed": fixed,
-    "table-hover": hover,
-    "table-sm": small,
-    "table-striped": striped
+  var tableClasses = classNames('table', {
+    'w-auto': autoWidth,
+    'table-bordered': bordered,
+    'table-borderless': borderless,
+    'btn-table': btn,
+    'table-fixed': fixed,
+    'table-hover': hover,
+    'table-sm': small,
+    'table-striped': striped
   }, className);
   var wrapperClasses = classNames({
-    "table-dark": dark,
-    "table-responsive": responsive,
-    "table-responsive-sm": responsiveSm,
-    "table-responsive-md": responsiveMd,
-    "table-responsive-lg": responsiveLg,
-    "table-responsive-xl": responsiveXl,
-    "table-wrapper-scroll-y": scrollY
+    'table-dark': dark,
+    'table-responsive': responsive,
+    'table-responsive-sm': responsiveSm,
+    'table-responsive-md': responsiveMd,
+    'table-responsive-lg': responsiveLg,
+    'table-responsive-xl': responsiveXl,
+    'table-wrapper-scroll-y': scrollY
   });
   var wrapperStyles = {
     maxHeight: maxHeight ? "".concat(maxHeight) : null
   };
   return React.createElement("div", {
+    "data-test": "table",
     className: wrapperClasses,
     style: wrapperStyles
   }, React.createElement("table", _extends({}, attributes, {
@@ -2431,7 +2442,9 @@ var TableBody = function TableBody(props) {
   var classes = classNames(color, {
     "text-white": textWhite
   });
-  return React.createElement("tbody", _extends({}, attributes, {
+  return React.createElement("tbody", _extends({
+    "data-test": "table-body"
+  }, attributes, {
     className: classes || undefined
   }), rows && rows.map(function (row, index) {
     return React.createElement("tr", {
@@ -2465,21 +2478,26 @@ TableBody.defaultProps = {
 };
 
 var TableFoot = function TableFoot(props) {
+  var _classNames;
+
   var children = props.children,
       color = props.color,
       columns = props.columns,
       textWhite = props.textWhite,
       attributes = _objectWithoutProperties(props, ["children", "color", "columns", "textWhite"]);
 
-  var classes = classNames(color && (color !== "dark" && color !== "light" ? color : "thead-".concat(color)), {
-    "text-white": textWhite
-  });
-  return React.createElement("thead", _extends({}, attributes, {
+  var isTheadColor = color === 'dark' || color === 'light';
+  var classes = classNames((_classNames = {
+    'text-white': textWhite
+  }, _defineProperty(_classNames, "thead-".concat(color), color && isTheadColor), _defineProperty(_classNames, "".concat(color), color && !isTheadColor), _classNames));
+  return React.createElement("thead", _extends({
+    "data-test": "table-foot"
+  }, attributes, {
     className: classes || undefined
   }), columns && React.createElement("tr", null, columns.map(function (col) {
     return React.createElement("th", {
       key: col.field,
-      className: col.hasOwnProperty("minimal") ? "th-".concat(col.minimal) : undefined
+      className: col.hasOwnProperty('minimal') ? "th-".concat(col.minimal) : undefined
     }, col.label);
   })), children);
 };
@@ -2890,9 +2908,11 @@ var Pagination = function Pagination(props) {
       attributes = _objectWithoutProperties(props, ["children", "circle", "className", "color", "tag", "size"]);
 
   var classes = classNames((_classNames = {
-    "pagination-circle": circle
-  }, _defineProperty(_classNames, "pg-".concat(color), color), _defineProperty(_classNames, "pagination-".concat(size), size), _classNames), "pagination", className);
-  return React.createElement(Tag, _extends({}, attributes, {
+    'pagination-circle': circle
+  }, _defineProperty(_classNames, "pg-".concat(color), color), _defineProperty(_classNames, "pagination-".concat(size), size), _classNames), 'pagination', className);
+  return React.createElement(Tag, _extends({
+    "data-test": "pagination"
+  }, attributes, {
     className: classes
   }), children);
 };
@@ -2903,13 +2923,13 @@ Pagination.propTypes = {
   className: propTypes.string,
   color: propTypes.string,
   tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
-  size: propTypes.oneOf(["lg", "sm"])
+  size: propTypes.oneOf(['lg', 'sm'])
 };
 Pagination.defaultProps = {
   circle: false,
-  className: "",
-  color: "",
-  tag: "ul"
+  className: '',
+  color: '',
+  tag: 'ul'
 };
 
 var PageItem = function PageItem(props) {
@@ -2920,8 +2940,13 @@ var PageItem = function PageItem(props) {
       Tag = props.tag,
       attributes = _objectWithoutProperties(props, ["active", "className", "children", "disabled", "tag"]);
 
-  var classes = classNames("page-item", disabled && "disabled", active && "active", className);
-  return React.createElement(Tag, _extends({}, attributes, {
+  var classes = classNames({
+    'disabled': disabled,
+    'active': active
+  }, 'page-item', className);
+  return React.createElement(Tag, _extends({
+    "data-test": "page-item"
+  }, attributes, {
     className: classes
   }), children);
 };
@@ -2935,9 +2960,9 @@ PageItem.propTypes = {
 };
 PageItem.defaultProps = {
   active: false,
-  className: "",
+  className: '',
   disabled: false,
-  tag: "li"
+  tag: 'li'
 };
 
 var PageLink = function PageLink(props) {
@@ -2946,8 +2971,10 @@ var PageLink = function PageLink(props) {
       Tag = props.tag,
       attributes = _objectWithoutProperties(props, ["children", "className", "tag"]);
 
-  var classes = classNames("page-link", className);
-  return React.createElement(Tag, _extends({}, attributes, {
+  var classes = classNames('page-link', className);
+  return React.createElement(Tag, _extends({
+    "data-test": "page-link"
+  }, attributes, {
     className: classes
   }), children);
 };
@@ -2958,7 +2985,7 @@ PageLink.propTypes = {
   children: propTypes.node
 };
 PageLink.defaultProps = {
-  tag: "a"
+  tag: 'a'
 };
 
 var DataTablePagination =
@@ -4106,7 +4133,9 @@ var EdgeHeader = function EdgeHeader(props) {
       attributes = _objectWithoutProperties(props, ["color", "className", "tag"]);
 
   var classes = classNames("edge-header", color, className);
-  return React.createElement(Tag, _extends({}, attributes, {
+  return React.createElement(Tag, _extends({
+    "data-test": "edgeHeader"
+  }, attributes, {
     className: classes
   }));
 };
@@ -4129,7 +4158,9 @@ var Footer = function Footer(props) {
       attributes = _objectWithoutProperties(props, ["color", "children", "className", "tag"]);
 
   var classes = classNames("page-footer", color && color, className);
-  return React.createElement(Tag, _extends({}, attributes, {
+  return React.createElement(Tag, _extends({
+    "data-test": "footer"
+  }, attributes, {
     className: classes
   }), children);
 };
@@ -4165,8 +4196,10 @@ var FormInline = function FormInline(props) {
       children = props.children,
       attributes = _objectWithoutProperties(props, ["className", "waves", "children"]);
 
-  var classes = classNames("form-inline", props.waves && "Ripple-parent", className);
-  return React.createElement("form", _extends({}, attributes, {
+  var classes = classNames('form-inline', props.waves && 'Ripple-parent', className);
+  return React.createElement("form", _extends({
+    "data-test": "form-inline"
+  }, attributes, {
     className: classes,
     onMouseDown: handleClick,
     onTouchStart: handleClick
@@ -4187,7 +4220,9 @@ var FreeBird = function FreeBird(props) {
       attributes = _objectWithoutProperties(props, ["className", "tag"]);
 
   var classes = classNames("container free-bird", className);
-  return React.createElement(Tag, _extends({}, attributes, {
+  return React.createElement(Tag, _extends({
+    "data-test": "freebird"
+  }, attributes, {
     className: classes
   }));
 };
@@ -4209,8 +4244,9 @@ var HamburgerToggler = function HamburgerToggler(props) {
       className = props.className,
       isOpen = props.isOpen,
       onClick = props.onClick;
-  var classes = classNames("hamburger-button__button", className);
+  var classes = classNames('hamburger-button__button', className);
   return React.createElement(React.Fragment, null, React.createElement("input", {
+    "data-test": "hamburger-toggler",
     type: "checkbox",
     defaultChecked: isOpen || false,
     onChange: onClick,
@@ -4260,9 +4296,9 @@ function (_Component) {
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Iframe)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      width: "",
-      height: "",
-      ratio: ""
+      width: '',
+      height: '',
+      ratio: ''
     });
 
     _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
@@ -4271,9 +4307,9 @@ function (_Component) {
       var ratio = 9 / 16;
 
       if (_this.props.ratio) {
-        var newRatio = _this.props.ratio.split("by")[0] / _this.props.ratio.split("by")[1];
+        var newRatio = _this.props.ratio.split('by')[0] / _this.props.ratio.split('by')[1];
 
-        if (typeof ratio === "number") ratio = newRatio;
+        if (typeof ratio === 'number') ratio = newRatio;
       }
 
       if (_this.props.width && _this.props.height) {
@@ -4308,21 +4344,22 @@ function (_Component) {
           sandbox = _this$props.sandbox,
           src = _this$props.src,
           style = _this$props.style,
-          title = _this$props.title,
+          _this$props$title = _this$props.title,
+          title = _this$props$title === void 0 ? "" : _this$props$title,
           ratio = _this$props.ratio,
           height = _this$props.height,
           width = _this$props.width;
-      var classes = classNames("embed-responsive-item", className);
-      var wrapperClasses = classNames(!(height || width) && "embed-responsive", ratio ? "embed-responsive-".concat(ratio) : "embed-responsive-16by9", className);
+      var classes = classNames('embed-responsive-item', className);
+      var wrapperClasses = classNames(!(height || width) && 'embed-responsive', ratio ? "embed-responsive-".concat(ratio) : "embed-responsive-16by9");
       var iframeAttributes = {
         src: src,
         id: id || false,
-        frameBorder: "0",
-        target: "_parent",
+        frameBorder: '0',
+        target: '_parent',
         allowFullScreen: allowFullScreen || true,
-        height: this.state.height || "100%",
+        height: this.state.height || '100%',
         name: name || undefined,
-        width: this.state.width || "100%",
+        width: this.state.width || '100%',
         onLoad: onLoad || undefined,
         onMouseOver: onMouseOver || undefined,
         onMouseOut: onMouseOut || undefined,
@@ -4331,9 +4368,10 @@ function (_Component) {
       };
       iframeAttributes = returnAttributes(iframeAttributes);
       return React.createElement("div", {
+        "data-test": "iframe",
         className: wrapperClasses
       }, React.createElement("iframe", _extends({
-        title: title || "",
+        title: title,
         className: classes
       }, iframeAttributes)));
     }
@@ -4510,7 +4548,9 @@ function (_React$Component) {
           onClick: onIconClick ? onIconClick : _this2.setFocus,
           onMouseEnter: onIconMouseEnter,
           onMouseLeave: onIconMouseLeave
-        }), React.createElement(TagInput, _extends({}, attributes, {
+        }), React.createElement(TagInput, _extends({
+          "data-test": "input"
+        }, attributes, {
           className: classes,
           id: id,
           placeholder: hint,
@@ -4711,8 +4751,10 @@ var InputNumeric = function InputNumeric(props) {
       getValue = props.getValue,
       attributes = _objectWithoutProperties(props, ["className", "getValue"]);
 
-  var classes = classNames("form-control", className);
-  return React.createElement(NumericInput, _extends({}, attributes, {
+  var classes = classNames('form-control', className);
+  return React.createElement(NumericInput, _extends({
+    "data-test": "input-numeric"
+  }, attributes, {
     onChange: onChangeHandler,
     className: classes
   }));
@@ -4729,8 +4771,10 @@ var Jumbotron = function Jumbotron(props) {
       fluid = props.fluid,
       attributes = _objectWithoutProperties(props, ["className", "children", "fluid"]);
 
-  var classes = classNames("jumbotron", fluid ? "jumbotron-fluid" : false, className);
-  return React.createElement("div", _extends({}, attributes, {
+  var classes = classNames('jumbotron', fluid ? 'jumbotron-fluid' : false, className);
+  return React.createElement("div", _extends({
+    "data-test": "jumbotron"
+  }, attributes, {
     className: classes
   }), children);
 };
@@ -4748,7 +4792,9 @@ var ListGroup = function ListGroup(props) {
       attributes = _objectWithoutProperties(props, ["children", "className", "tag"]);
 
   var classes = classNames("list-group", className);
-  return React.createElement(Tag, _extends({}, attributes, {
+  return React.createElement(Tag, _extends({
+    "data-test": "list-group"
+  }, attributes, {
     className: classes
   }), children);
 };
@@ -4778,16 +4824,18 @@ var ListGroupItem = function ListGroupItem(props) {
       Tag = props.tag,
       attributes = _objectWithoutProperties(props, ["active", "children", "className", "color", "disabled", "hover", "success", "info", "warning", "danger", "tag"]);
 
-  var classes = classNames("list-group-item", className, (_classNames = {
+  var classes = classNames('list-group-item', className, (_classNames = {
     active: active,
     disabled: disabled
-  }, _defineProperty(_classNames, "list-group-item-".concat(color), " color"), _defineProperty(_classNames, "list-group-item-action", hover), _classNames));
+  }, _defineProperty(_classNames, "list-group-item-".concat(color), ' color'), _defineProperty(_classNames, 'list-group-item-action', hover), _classNames));
 
-  if (attributes.href && Tag === "li") {
-    Tag = "a";
+  if (attributes.href && Tag === 'li') {
+    Tag = 'a';
   }
 
-  return React.createElement(Tag, _extends({}, attributes, {
+  return React.createElement(Tag, _extends({
+    "data-test": "list-group-item"
+  }, attributes, {
     className: classes
   }), children);
 };
@@ -4803,10 +4851,10 @@ ListGroupItem.propTypes = {
   tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
   className: propTypes.string,
   children: propTypes.node,
-  color: propTypes.oneOf(["primary", "secondary", "success", "danger", "warning", "info", "light", "dark"])
+  color: propTypes.oneOf(['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'])
 };
 ListGroupItem.defaultProps = {
-  tag: "li"
+  tag: 'li'
 };
 
 var Media = function Media(props) {
@@ -4867,7 +4915,9 @@ var Media = function Media(props) {
     "figure-caption text-left": figCapLeft,
     "rounded-circle z-depth-1-half": round
   }, !body && !heading && !left && !right && !top && !bottom && !middle && !object && !list && !figCap && !figCapRight && !figCapRight && !figImg && !figure ? "media" : false, className);
-  return React.createElement(Tag, _extends({}, attributes, {
+  return React.createElement(Tag, _extends({
+    "data-test": "media"
+  }, attributes, {
     className: classes
   }));
 };
@@ -4916,12 +4966,14 @@ function (_Component) {
       isOpen: _this.props.isOpen || false
     });
 
+    _defineProperty(_assertThisInitialized(_this), "modalContent", React.createRef());
+
     _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
-      document.body.classList.add("modal-open");
+      document.body.classList.add('modal-open');
     });
 
     _defineProperty(_assertThisInitialized(_this), "componentWillUnmount", function () {
-      document.body.classList.remove("modal-open");
+      document.body.classList.remove('modal-open');
     });
 
     _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function (prevProps, prevState) {
@@ -4933,26 +4985,26 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleOnEntered", function (type, node) {
-      if (type === "backdrop" && _this.props.fade === false) {
+      if (type === 'backdrop' && _this.props.fade === false) {
         return;
       }
 
-      node.classList.add("show");
+      node.classList.add('show');
       _this.props.autoFocus && node.focus();
 
-      if (type === "modal") {
+      if (type === 'modal') {
         _this.props.showModal && _this.props.showModal();
       }
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleOnExit", function (type, node) {
-      if (type === "backdrop" && _this.props.fade === false) {
+      if (type === 'backdrop' && _this.props.fade === false) {
         return;
       }
 
-      node.classList.remove("show");
+      node.classList.remove('show');
 
-      if (type === "modal") {
+      if (type === 'modal') {
         _this.props.hideModal && _this.props.hideModal();
       }
     });
@@ -4962,7 +5014,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleBackdropClick", function (e) {
-      if (!_this.props.backdrop || e.target.closest('[role="dialog"]') && !e.target.classList.contains("modal")) return;
+      if (!_this.props.backdrop || e.target.closest('[role="dialog"]') && !e.target.classList.contains('modal')) return;
 
       if (!_this.modalContent.contains(e.target)) {
         _this.props.toggle();
@@ -4983,7 +5035,8 @@ function (_Component) {
   _createClass(Modal, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _classNames,
+          _this2 = this;
 
       var _this$props = this.props,
           children = _this$props.children,
@@ -5007,18 +5060,28 @@ function (_Component) {
           id = _this$props.id,
           inline = _this$props.inline;
       var timeout = fade ? 300 : 0;
-      var modalDialogClasses = classNames("modal-dialog", className, size && "modal-".concat(size), side && "modal-side", fullHeight && "modal-full-height", frame && "modal-frame", centered && "modal-dialog-centered", position && "modal-".concat(this.props.position), cascading && "cascading-modal", modalStyle && "modal-notify white-text modal-".concat(this.props.modalStyle));
-      var wrapperClasses = classNames(inline ? false : "modal", fade && "fade", wrapClassName, fade && (animation || position && position.split("-").slice(-1)[0] || "top"));
-      var backdropClasses = classNames("modal-backdrop", fade ? "fade" : "show", backdropClassName);
-      var contentClasses = classNames("modal-content", contentClassName);
+      var modalDialogClasses = classNames((_classNames = {
+        'cascading-modal': cascading,
+        'modal-side': side,
+        'modal-full-height': fullHeight,
+        'modal-frame': frame,
+        'modal-dialog-centered': centered
+      }, _defineProperty(_classNames, "modal-".concat(size), size), _defineProperty(_classNames, "modal-".concat(position), position), _defineProperty(_classNames, "modal-notify white-text modal-".concat(modalStyle), modalStyle), _classNames), 'modal-dialog', className);
+      var wrapperClasses = classNames(_defineProperty({
+        modal: !inline,
+        fade: fade,
+        top: fade && !animation && !position
+      }, "".concat(animation), fade && animation), fade && position && position.split('-')[1], wrapClassName);
+      var backdropClasses = classNames('modal-backdrop', fade ? 'fade' : 'show', backdropClassName);
+      var contentClasses = classNames('modal-content', contentClassName);
       var modalAttributes = returnAttributes({
         style: {
-          display: "block"
+          display: 'block'
         },
-        id: id || undefined,
+        id: id,
         tabIndex: tabIndex,
         role: role,
-        "aria-hidden": "true"
+        'aria-hidden': 'true'
       });
       return React.createElement(Fragment, null, backdrop && React.createElement(Transition, {
         timeout: timeout,
@@ -5027,10 +5090,10 @@ function (_Component) {
         mountOnEnter: true,
         unmountOnExit: true,
         onEntered: function onEntered(node) {
-          return _this2.handleOnEntered("backdrop", node);
+          return _this2.handleOnEntered('backdrop', node);
         },
         onExit: function onExit(node) {
-          return _this2.handleOnExit("backdrop", node);
+          return _this2.handleOnExit('backdrop', node);
         },
         onExited: this.handleOnExited
       }, React.createElement("div", {
@@ -5043,12 +5106,13 @@ function (_Component) {
         unmountOnExit: true,
         onMouseDown: this.handleBackdropClick,
         onEntered: function onEntered(node) {
-          return _this2.handleOnEntered("modal", node);
+          return _this2.handleOnEntered('modal', node);
         },
         onExit: function onExit(node) {
-          return _this2.handleOnExit("modal", node);
+          return _this2.handleOnExit('modal', node);
         }
       }, React.createElement("div", _extends({
+        "data-test": "modal",
         onKeyUp: this.handleEscape,
         className: wrapperClasses
       }, modalAttributes), React.createElement("div", {
@@ -5067,40 +5131,40 @@ function (_Component) {
 }(Component);
 
 Modal.defaultProps = {
+  autoFocus: true,
   backdrop: true,
+  backdropTransitionTimeout: 150,
   fade: true,
   isOpen: false,
-  autoFocus: true,
-  role: "dialog",
-  zIndex: 1050,
   modalTransitionTimeout: 300,
-  backdropTransitionTimeout: 150,
-  tabIndex: "-1"
+  role: 'dialog',
+  tabIndex: '-1',
+  zIndex: 1050
 };
 Modal.propTypes = {
-  children: propTypes.node,
-  className: propTypes.string,
+  animation: propTypes.string,
   backdrop: propTypes.bool,
   backdropClassName: propTypes.string,
+  cascading: propTypes.bool,
+  centered: propTypes.bool,
+  children: propTypes.node,
+  className: propTypes.string,
   contentClassName: propTypes.string,
+  fade: propTypes.bool,
+  frame: propTypes.bool,
+  fullHeight: propTypes.bool,
+  hiddenModal: propTypes.func,
+  hideModal: propTypes.func,
+  id: propTypes.string,
   modalClassName: propTypes.string,
+  modalStyle: propTypes.string,
+  position: propTypes.string,
+  role: propTypes.string,
   size: propTypes.string,
   side: propTypes.bool,
-  fullHeight: propTypes.bool,
-  frame: propTypes.bool,
-  centered: propTypes.bool,
-  position: propTypes.string,
-  cascading: propTypes.bool,
-  modalStyle: propTypes.string,
-  wrapClassName: propTypes.string,
-  animation: propTypes.string,
-  fade: propTypes.bool,
-  id: propTypes.string,
-  role: propTypes.string,
-  tabIndex: propTypes.string,
   showModal: propTypes.func,
-  hiddenModal: propTypes.func,
-  hideModal: propTypes.func
+  tabIndex: propTypes.string,
+  wrapClassName: propTypes.string
 };
 
 var ModalBody = function ModalBody(props) {
@@ -5108,8 +5172,10 @@ var ModalBody = function ModalBody(props) {
       children = props.children,
       attributes = _objectWithoutProperties(props, ["className", "children"]);
 
-  var classes = classNames("modal-body", className);
-  return React.createElement("div", _extends({}, attributes, {
+  var classes = classNames('modal-body', className);
+  return React.createElement("div", _extends({
+    "data-test": "modal-body"
+  }, attributes, {
     className: classes
   }), children);
 };
@@ -5129,14 +5195,16 @@ var ModalFooter = function ModalFooter(props) {
       between = props.between,
       attributes = _objectWithoutProperties(props, ["className", "children", "center", "start", "end", "around", "between"]);
 
-  var classes = classNames("modal-footer", className, {
-    "justify-content-start": start,
-    "justify-content-end": end,
-    "justify-content-center": center,
-    "justify-content-between": between,
-    "justify-content-around": around
+  var classes = classNames('modal-footer', className, {
+    'justify-content-start': start,
+    'justify-content-end': end,
+    'justify-content-center': center,
+    'justify-content-between': between,
+    'justify-content-around': around
   });
-  return React.createElement("div", _extends({}, attributes, {
+  return React.createElement("div", _extends({
+    "data-test": "modal-footer"
+  }, attributes, {
     className: classes
   }), children);
 };
@@ -5157,8 +5225,8 @@ var ModalHeader = function ModalHeader(props) {
       titleClass = props.titleClass,
       attributes = _objectWithoutProperties(props, ["className", "children", "toggle", "tag", "closeAriaLabel", "titleClass"]);
 
-  var classes = classNames("modal-header", className);
-  var titleClasses = classNames("modal-title", titleClass);
+  var classes = classNames('modal-header', className);
+  var titleClasses = classNames('modal-title', titleClass);
 
   if (toggle) {
     closeButton = React.createElement("button", {
@@ -5171,7 +5239,9 @@ var ModalHeader = function ModalHeader(props) {
     }, String.fromCharCode(215)));
   }
 
-  return React.createElement("div", _extends({}, attributes, {
+  return React.createElement("div", _extends({
+    "data-test": "modal-header"
+  }, attributes, {
     className: classes
   }), React.createElement(Tag, {
     className: titleClasses
@@ -5186,8 +5256,8 @@ ModalHeader.propTypes = {
   closeAriaLabel: propTypes.string
 };
 ModalHeader.defaultProps = {
-  tag: "h4",
-  closeAriaLabel: "Close"
+  tag: 'h4',
+  closeAriaLabel: 'Close'
 };
 
 var Nav = function Nav(props) {
@@ -5201,8 +5271,10 @@ var Nav = function Nav(props) {
       header = props.header,
       attributes = _objectWithoutProperties(props, ["children", "className", "tag", "tabs", "color", "classicTabs", "pills", "header"]);
 
-  var classes = classNames("nav", tabs && "md-tabs", pills && "md-pills", header && "nav-pills card-header-pills", color && !tabs && !classicTabs && !pills ? color : false, pills && color ? "pills-" + color : false, (tabs || classicTabs) && color ? "tabs-" + color : false, className);
-  return React.createElement(Tag, _extends({}, attributes, {
+  var classes = classNames('nav', tabs && 'md-tabs', pills && 'md-pills', header && 'nav-pills card-header-pills', color && !tabs && !classicTabs && !pills ? color : false, pills && color ? 'pills-' + color : false, (tabs || classicTabs) && color ? 'tabs-' + color : false, className);
+  return React.createElement(Tag, _extends({
+    "data-test": "nav"
+  }, attributes, {
     className: classes
   }), children);
 };
@@ -5218,7 +5290,7 @@ Nav.propTypes = {
   header: propTypes.bool
 };
 Nav.defaultProps = {
-  tag: "ul",
+  tag: 'ul',
   classicTabs: false,
   pills: false,
   tabs: false,
@@ -5805,17 +5877,20 @@ var Progress = function Progress(_ref) {
       striped = _ref.striped,
       wrapperStyle = _ref.wrapperStyle,
       value = _ref.value,
-      attributes = _ref.attributes;
+      attributes = _objectWithoutProperties(_ref, ["animated", "barClassName", "children", "className", "color", "height", "material", "max", "min", "preloader", "striped", "wrapperStyle", "value"]);
+
   var percent = (value - min) / (max - min) * 100;
-  var progressClasses = classNames("progress", material && "md-progress", preloader && (color ? color + "-color" : "primary-color") + "-dark", className);
-  var progressBarClasses = classNames(preloader ? "indeterminate" : "progress-bar", barClassName ? barClassName : null, animated ? "progress-bar-animated" : null, color ? "bg-".concat(color) : null, striped || animated ? "progress-bar-striped" : null);
-  var computedHeight = height ? height : children && "1rem";
+  var progressClasses = classNames('progress', material && 'md-progress', preloader && (color ? color + '-color' : 'primary-color') + '-dark', className);
+  var progressBarClasses = classNames(preloader ? 'indeterminate' : 'progress-bar', barClassName ? barClassName : null, animated ? 'progress-bar-animated' : null, color ? "bg-".concat(color) : null, striped || animated ? 'progress-bar-striped' : null);
+  var computedHeight = height ? height : children && '1rem';
 
   var computedWrapperStyle = _objectSpread({}, wrapperStyle, {
     height: computedHeight
   });
 
-  return React.createElement("div", _extends({}, attributes, {
+  return React.createElement("div", _extends({
+    "data-test": "progress"
+  }, attributes, {
     className: progressClasses,
     style: computedWrapperStyle
   }), React.createElement("div", {
@@ -5848,10 +5923,10 @@ Progress.propTypes = {
 };
 Progress.defaultProps = {
   animated: false,
-  barClassName: "",
-  className: "",
-  color: "indigo",
-  height: "",
+  barClassName: '',
+  className: '',
+  color: 'indigo',
+  height: '',
   material: false,
   max: 100,
   min: 0,
@@ -5875,7 +5950,9 @@ var Row = function Row(props) {
       attributes = _objectWithoutProperties(props, ["className", "tag", "center", "start", "end", "around", "between", "top", "bottom", "middle"]);
 
   var classes = classNames("row", end && "justify-content-end", start && "justify-content-start", center && "justify-content-center", between && "justify-content-between", around && "justify-content-around", top && "align-self-start", middle && "align-self-center", bottom && "align-self-end", className);
-  return React.createElement(Tag, _extends({}, attributes, {
+  return React.createElement(Tag, _extends({
+    "data-test": "row"
+  }, attributes, {
     className: classes
   }));
 };
@@ -5932,7 +6009,9 @@ function (_React$Component) {
       var className = this.props.className;
       var attributes = omit(this.props, Object.keys(propTypes$2));
       var classes = classNames("tab-content", className);
-      return React.createElement("div", _extends({}, attributes, {
+      return React.createElement("div", _extends({
+        "data-test": "tabContent"
+      }, attributes, {
         className: classes
       }));
     }
@@ -5972,10 +6051,12 @@ function (_React$Component) {
           tabId = _this$props.tabId,
           attributes = _objectWithoutProperties(_this$props, ["className", "tabId"]);
 
-      var classes = classNames("tab-pane", {
+      var classes = classNames('tab-pane', {
         active: tabId === this.context.activeItemId
       }, className);
-      return React.createElement("div", _extends({}, attributes, {
+      return React.createElement("div", _extends({
+        "data-test": "tab-pane"
+      }, attributes, {
         className: classes,
         role: "tabpanel"
       }));
@@ -5994,21 +6075,26 @@ TabPane.propTypes = {
 };
 
 var TableHead = function TableHead(props) {
+  var _classNames;
+
   var children = props.children,
       color = props.color,
       columns = props.columns,
       textWhite = props.textWhite,
       attributes = _objectWithoutProperties(props, ["children", "color", "columns", "textWhite"]);
 
-  var classes = classNames(color !== "dark" && color !== "light" ? color : "thead-".concat(color), {
-    "text-white": textWhite
-  });
-  return React.createElement("thead", _extends({}, attributes, {
+  var isTheadColor = color === 'dark' || color === 'light';
+  var classes = classNames((_classNames = {
+    'text-white': textWhite
+  }, _defineProperty(_classNames, "thead-".concat(color), color && isTheadColor), _defineProperty(_classNames, "".concat(color), color && !isTheadColor), _classNames));
+  return React.createElement("thead", _extends({
+    "data-test": "table-head"
+  }, attributes, {
     className: classes
   }), columns && React.createElement("tr", null, columns.map(function (col) {
     return React.createElement("th", {
       key: col.field,
-      className: col.hasOwnProperty("minimal") ? "th-".concat(col.minimal) : ""
+      className: col.hasOwnProperty('minimal') ? "th-".concat(col.minimal) : ''
     }, col.label);
   })), children);
 };

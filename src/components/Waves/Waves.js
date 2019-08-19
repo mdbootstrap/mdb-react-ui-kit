@@ -57,6 +57,7 @@ class Waves extends React.Component {
   render() {
     return (
       <div
+        data-test="waves"
         className={
           'Ripple ' +
           (this.props.outline || this.props.flat || this.props.dark

@@ -7,7 +7,7 @@ const FreeBird = props => {
 
   const classes = classNames("container free-bird", className);
 
-  return <Tag {...attributes} className={classes} />;
+  return <Tag data-test="freebird" {...attributes} className={classes} />;
 };
 
 FreeBird.propTypes = {

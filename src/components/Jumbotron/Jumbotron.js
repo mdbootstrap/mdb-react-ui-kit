@@ -1,14 +1,18 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const Jumbotron = props => {
   const { className, children, fluid, ...attributes } = props;
 
-  const classes = classNames("jumbotron", fluid ? "jumbotron-fluid" : false, className);
+  const classes = classNames(
+    'jumbotron',
+    fluid ? 'jumbotron-fluid' : false,
+    className
+  );
 
   return (
-    <div {...attributes} className={classes}>
+    <div data-test='jumbotron' {...attributes} className={classes}>
       {children}
     </div>
   );

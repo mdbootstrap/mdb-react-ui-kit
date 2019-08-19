@@ -1,14 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const CarouselCaption = props => {
   let { children, className, tag: Tag, ...attributes } = props;
 
-  const classes = classNames("carousel-caption", className);
+  const classes = classNames('carousel-caption', className);
 
   return (
-    <Tag {...attributes} className={classes}>
+    <Tag data-test='carousel-caption' {...attributes} className={classes}>
       {children}
     </Tag>
   );
@@ -22,7 +22,7 @@ CarouselCaption.propTypes = {
 };
 
 CarouselCaption.defaultProps = {
-  tag: "div"
+  tag: 'div'
 };
 
 export default CarouselCaption;

@@ -45,7 +45,7 @@ const Fa = props => {
     className
   );
 
-  return <i {...attributes} className={classes} />;
+  return <i data-test="fa" {...attributes} className={classes} />;
 };
 
 Fa.propTypes = {
@@ -58,7 +58,7 @@ Fa.propTypes = {
   far: PropTypes.bool,
   fixed: PropTypes.bool,
   flip: PropTypes.string,
-  inverse: PropTypes.string,
+  inverse: PropTypes.bool,
   light: PropTypes.bool,
   list: PropTypes.bool,
   pull: PropTypes.string,
@@ -79,7 +79,7 @@ Fa.defaultProps = {
   far: false,
   fixed: false,
   flip: "",
-  inverse: "",
+  inverse: false,
   light: false,
   list: false,
   pull: "",

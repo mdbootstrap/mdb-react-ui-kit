@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const SHOW = "SHOW";
-const SHOWN = "SHOWN";
-const HIDE = "HIDE";
-const HIDDEN = "HIDDEN";
+const SHOW = 'SHOW';
+const SHOWN = 'SHOWN';
+const HIDE = 'HIDE';
+const HIDDEN = 'HIDDEN';
 
 const DEFAULT_DELAYS = {
   show: 350,
@@ -35,7 +35,7 @@ class Collapse extends Component {
   componentDidUpdate(prevProps, prevState) {
     const collapse = prevState.collapse;
     const willOpen =
-      typeof this.props.isOpen !== "boolean"
+      typeof this.props.isOpen !== 'boolean'
         ? this.props.isOpen === prevState.id
         : this.props.isOpen;
 
@@ -50,18 +50,22 @@ class Collapse extends Component {
     clearTimeout(this.transitionTag);
   }
 
+  setTransitionTag = (collapse, callback, delayType) => {
+    this.transitionTag = setTimeout(() => {
+      this.setState(
+        {
+          collapse,
+          height: null
+        },
+        callback()
+      );
+    }, this.getDelay(delayType));
+  };
+
   openCollapse = () => {
     this.setState({ collapse: SHOW }, () => {
       this.setState({ height: this.getHeight() });
-      this.transitionTag = setTimeout(() => {
-        this.setState(
-          {
-            collapse: SHOWN,
-            height: null
-          },
-          this.props.onOpened()
-        );
-      }, this.getDelay("show"));
+      this.setTransitionTag(SHOWN, this.props.onOpened, 'show');
     });
   };
 
@@ -78,20 +82,12 @@ class Collapse extends Component {
       );
     });
 
-    this.transitionTag = setTimeout(() => {
-      this.setState(
-        {
-          collapse: HIDDEN,
-          height: null
-        },
-        this.props.onClosed()
-      );
-    }, this.getDelay("hide"));
+    this.setTransitionTag(HIDDEN, this.props.onClosed, 'hide');
   };
 
   getDelay(key) {
     const { delay } = this.props;
-    if (typeof delay === "object") {
+    if (typeof delay === 'object') {
       return isNaN(delay[key]) ? DEFAULT_DELAYS[key] : delay[key];
     }
     return delay;
@@ -117,30 +113,33 @@ class Collapse extends Component {
     let collapseClass;
     switch (collapse) {
       case SHOW:
-        collapseClass = "collapsing";
+        collapseClass = 'collapsing';
         break;
       case SHOWN:
-        collapseClass = "collapse show";
+        collapseClass = 'collapse show';
         break;
       case HIDE:
-        collapseClass = "collapsing";
+        collapseClass = 'collapsing';
         break;
       case HIDDEN:
-        collapseClass = "collapse";
+        collapseClass = 'collapse';
         break;
       default:
         // HIDDEN
-        collapseClass = "collapse";
+        collapseClass = 'collapse';
     }
 
     const classes = classNames(
       collapseClass,
-      navbar ? "navbar-collapse" : false,
+      navbar ? 'navbar-collapse' : false,
       className
     );
+
     const style = height === null ? null : { height };
+
     return (
       <div
+        data-test='collapse'
         {...attributes}
         style={{ ...attributes.style, ...style }}
         className={classes}
@@ -169,7 +168,7 @@ Collapse.propTypes = {
 };
 
 Collapse.defaultProps = {
-  isOpen: "",
+  isOpen: '',
   delay: DEFAULT_DELAYS,
   onOpened: () => {},
   onClosed: () => {}

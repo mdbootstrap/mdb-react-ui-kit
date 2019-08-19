@@ -1,22 +1,26 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const CardText = props => {
-  const { className, tag: Tag, muted, small, ...attributes } = props;
+  const {
+    className,
+    tag: Tag,
+    children: textNode,
+    muted,
+    small,
+    ...attributes
+  } = props;
 
-  const classes = classNames("card-text", muted && "text-muted", className);
+  const classes = classNames('card-text', muted && 'text-muted', className);
 
-  let text = <Tag {...attributes} className={classes} />;
+  const children = small ? <small>{textNode}</small> : textNode;
 
-  if (small) {
-    text = (
-      <Tag {...attributes} className={classes}>
-        <small> {props.children} </small>
-      </Tag>
-    );
-  }
-  return text;
+  return (
+    <Tag data-test="card-text" {...attributes} className={classes}>
+      {children}
+    </Tag>
+  );
 };
 
 CardText.propTypes = {
@@ -27,7 +31,7 @@ CardText.propTypes = {
 };
 
 CardText.defaultProps = {
-  tag: "p"
+  tag: 'p',
 };
 
 export default CardText;

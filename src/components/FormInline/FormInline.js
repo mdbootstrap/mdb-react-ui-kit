@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import Waves from "../Waves";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import Waves from '../Waves';
 
 const FormInline = props => {
   const [cursorPos, setCursorPos] = useState({});
@@ -18,10 +18,20 @@ const FormInline = props => {
 
   const { className, waves, children, ...attributes } = props;
 
-  const classes = classNames("form-inline", props.waves && "Ripple-parent", className);
+  const classes = classNames(
+    'form-inline',
+    props.waves && 'Ripple-parent',
+    className
+  );
 
   return (
-    <form {...attributes} className={classes} onMouseDown={handleClick} onTouchStart={handleClick}>
+    <form
+      data-test='form-inline'
+      {...attributes}
+      className={classes}
+      onMouseDown={handleClick}
+      onTouchStart={handleClick}
+    >
       {props.children}
       {props.waves && <Waves cursorPos={cursorPos} />}
     </form>

@@ -1,43 +1,62 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import Fa from "../../Fa";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import Fa from '../../Fa';
 
 const Control = props => {
-  let { direction, className, onClick, tag: Tag, iconLeft, iconRight, testimonial, multiItem } = props;
+  let {
+    direction,
+    className,
+    onClick,
+    tag: Tag,
+    iconLeft,
+    iconRight,
+    testimonial,
+    multiItem
+  } = props;
 
   let text;
 
-  if (direction === "prev") {
-    text = "Previous";
-  } else if (direction === "next") {
-    text = "Next";
+  if (direction === 'prev') {
+    text = 'Previous';
+  } else if (direction === 'next') {
+    text = 'Next';
   }
 
-  let classes = classNames("carousel-control-" + direction, className);
+  let classes = classNames('carousel-control-' + direction, className);
 
-  let caretClasses = classNames("carousel-control-" + direction + "-icon");
+  let caretClasses = classNames('carousel-control-' + direction + '-icon');
 
   if (testimonial) {
-    const arrow = direction === "prev" ? "left" : "right";
-    classes = classNames("carousel-control-" + direction, arrow, "carousel-control", className);
-    caretClasses = classNames("icon-" + direction);
+    const arrow = direction === 'prev' ? 'left' : 'right';
+    classes = classNames(
+      'carousel-control-' + direction,
+      arrow,
+      'carousel-control',
+      className
+    );
+    caretClasses = classNames('icon-' + direction);
   }
 
   if (multiItem) {
-    classes = classNames("btn-floating");
+    classes = classNames('btn-floating');
   }
 
   return (
-    <Tag className={classes} data-slide={direction} onClick={onClick}>
+    <Tag
+      data-test='carousel-control'
+      className={classes}
+      data-slide={direction}
+      onClick={onClick}
+    >
       {iconLeft ? (
-        <Fa icon="chevron-left" />
+        <Fa icon='chevron-left' />
       ) : iconRight ? (
-        <Fa icon="chevron-right" />
+        <Fa icon='chevron-right' />
       ) : (
         <div>
-          <span className={caretClasses} aria-hidden="true" />
-          <span className="sr-only">{text}</span>
+          <span className={caretClasses} aria-hidden='true' />
+          <span className='sr-only'>{text}</span>
         </div>
       )}
     </Tag>
@@ -56,7 +75,7 @@ Control.propTypes = {
 };
 
 Control.defaultProps = {
-  tag: "a"
+  tag: 'a'
 };
 
 export default Control;

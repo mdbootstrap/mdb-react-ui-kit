@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const CardTitle = props => {
   const { className, tag: Tag, sub, ...attributes } = props;
 
-  const classes = classNames(sub ? "card-subtitle" : "card-title", className);
+  const classes = classNames(sub ? 'card-subtitle' : 'card-title', className);
 
-  return <Tag {...attributes} className={classes} />;
+  return <Tag data-test='card-title' {...attributes} className={classes} />;
 };
 
 CardTitle.propTypes = {
@@ -17,7 +17,7 @@ CardTitle.propTypes = {
 };
 
 CardTitle.defaultProps = {
-  tag: "h4",
+  tag: 'h4',
   sub: false
 };
 

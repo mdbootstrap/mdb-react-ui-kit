@@ -52,7 +52,7 @@ const BreadcrumbItem = props => {
   }
 
   return (
-    <li {...attributes} className={classes}>
+    <li data-test="breadcrumb-item" {...attributes} className={classes}>
       <WithBold>
         <WithIcon />
       </WithBold>

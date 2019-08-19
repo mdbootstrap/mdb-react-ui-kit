@@ -41,6 +41,7 @@ const View = props => {
 
   return (
     <Tag
+      data-test="view"
       {...attributes}
       className={classes}
       onMouseDown={handleClick}

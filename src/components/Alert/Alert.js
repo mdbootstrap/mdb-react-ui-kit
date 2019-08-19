@@ -34,7 +34,7 @@ const Alert = props => {
         onExit={node => handleOnExit(node)}
         onExited={node => handleOnExited(node)}
       >
-        <div className={alertClasses} role="alert">
+        <div data-test="alert" className={alertClasses} role="alert">
           {children}
           <button onClick={closeAlert} type="button" className="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -44,7 +44,7 @@ const Alert = props => {
     );
   } else {
     alertComponent = (
-      <div className={alertClasses} role="alert">
+      <div data-test="alert" className={alertClasses} role="alert">
         {children}
       </div>
     );

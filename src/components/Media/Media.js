@@ -80,7 +80,7 @@ const Media = props => {
       : false,
     className
   );
-  return <Tag {...attributes} className={classes} />;
+  return <Tag data-test="media" {...attributes} className={classes} />;
 };
 
 Media.propTypes = {

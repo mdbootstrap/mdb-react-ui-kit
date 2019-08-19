@@ -191,6 +191,7 @@ class Input extends React.Component {
           />
         )}
         <TagInput
+          data-test="input"
           {...attributes}
           className={classes}
           id={id}

@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import "./Table.css";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import './Table.css';
 
 const Table = props => {
   const {
@@ -28,28 +28,28 @@ const Table = props => {
   } = props;
 
   const tableClasses = classNames(
-    "table",
+    'table',
     {
-      "w-auto": autoWidth,
-      "table-bordered": bordered,
-      "table-borderless": borderless,
-      "btn-table": btn,
-      "table-fixed": fixed,
-      "table-hover": hover,
-      "table-sm": small,
-      "table-striped": striped
+      'w-auto': autoWidth,
+      'table-bordered': bordered,
+      'table-borderless': borderless,
+      'btn-table': btn,
+      'table-fixed': fixed,
+      'table-hover': hover,
+      'table-sm': small,
+      'table-striped': striped
     },
     className
   );
 
   const wrapperClasses = classNames({
-    "table-dark": dark,
-    "table-responsive": responsive,
-    "table-responsive-sm": responsiveSm,
-    "table-responsive-md": responsiveMd,
-    "table-responsive-lg": responsiveLg,
-    "table-responsive-xl": responsiveXl,
-    "table-wrapper-scroll-y": scrollY
+    'table-dark': dark,
+    'table-responsive': responsive,
+    'table-responsive-sm': responsiveSm,
+    'table-responsive-md': responsiveMd,
+    'table-responsive-lg': responsiveLg,
+    'table-responsive-xl': responsiveXl,
+    'table-wrapper-scroll-y': scrollY
   });
 
   const wrapperStyles = {
@@ -57,7 +57,7 @@ const Table = props => {
   };
 
   return (
-    <div className={wrapperClasses} style={wrapperStyles}>
+    <div data-test='table' className={wrapperClasses} style={wrapperStyles}>
       <table {...attributes} className={tableClasses}>
         {children}
       </table>

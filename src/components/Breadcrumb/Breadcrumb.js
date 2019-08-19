@@ -1,41 +1,40 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import { getColorClass } from "../utils";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { getColorClass } from '../utils';
 
-const Breadcrumb = props =>  {
-
-  const { className, color , light, uppercase, bold,  ...attributes } = props;
+const Breadcrumb = props => {
+  const { className, color, light, uppercase, bold, ...attributes } = props;
 
   let classes = classNames(
-    "breadcrumb",
-    uppercase && "text-uppercase",
-    bold && "font-up-bold",
-    light && "white-text",
+    'breadcrumb',
+    uppercase && 'text-uppercase',
+    bold && 'font-up-bold',
+    light && 'white-text',
     color && getColorClass(color),
     className
   );
 
   let children;
 
-  if(bold){
-    children = React.Children.map( props.children, child => {
-      return React.cloneElement( child, {
+  if (bold) {
+    children = React.Children.map(props.children, child => {
+      return React.cloneElement(child, {
         bold: true
       });
     });
   } else {
-    children = props.children
+    children = props.children;
   }
 
   return (
-    <nav>
-      <ol { ...attributes } className={ classes }>
-        { children }
+    <nav data-test='breadcrumb'>
+      <ol {...attributes} className={classes}>
+        {children}
       </ol>
     </nav>
   );
-}
+};
 
 Breadcrumb.propTypes = {
   children: PropTypes.node,

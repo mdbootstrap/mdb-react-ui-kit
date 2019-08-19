@@ -1,23 +1,33 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const Nav = props => {
-  const { children, className, tag: Tag, tabs, color, classicTabs, pills, header, ...attributes } = props;
+  const {
+    children,
+    className,
+    tag: Tag,
+    tabs,
+    color,
+    classicTabs,
+    pills,
+    header,
+    ...attributes
+  } = props;
 
   const classes = classNames(
-    "nav",
-    tabs && "md-tabs",
-    pills && "md-pills",
-    header && "nav-pills card-header-pills",
+    'nav',
+    tabs && 'md-tabs',
+    pills && 'md-pills',
+    header && 'nav-pills card-header-pills',
     color && !tabs && !classicTabs && !pills ? color : false,
-    pills && color ? "pills-" + color : false,
-    (tabs || classicTabs) && color ? "tabs-" + color : false,
+    pills && color ? 'pills-' + color : false,
+    (tabs || classicTabs) && color ? 'tabs-' + color : false,
     className
   );
 
   return (
-    <Tag {...attributes} className={classes}>
+    <Tag data-test='nav' {...attributes} className={classes}>
       {children}
     </Tag>
   );
@@ -35,7 +45,7 @@ Nav.propTypes = {
 };
 
 Nav.defaultProps = {
-  tag: "ul",
+  tag: 'ul',
   classicTabs: false,
   pills: false,
   tabs: false,

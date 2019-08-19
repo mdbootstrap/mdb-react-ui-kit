@@ -1,14 +1,28 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const PageItem = props => {
-  const { active, className, children, disabled, tag: Tag, ...attributes } = props;
+  const {
+    active,
+    className,
+    children,
+    disabled,
+    tag: Tag,
+    ...attributes
+  } = props;
 
-  const classes = classNames("page-item", disabled && "disabled", active && "active", className);
+  const classes = classNames(
+    {
+      'disabled': disabled,
+      'active': active
+    },
+    'page-item',
+    className
+  );
 
   return (
-    <Tag {...attributes} className={classes}>
+    <Tag data-test='page-item' {...attributes} className={classes}>
       {children}
     </Tag>
   );
@@ -24,9 +38,9 @@ PageItem.propTypes = {
 
 PageItem.defaultProps = {
   active: false,
-  className: "",
+  className: '',
   disabled: false,
-  tag: "li"
+  tag: 'li'
 };
 
 export default PageItem;

@@ -1,14 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const PageLink = props => {
   const { children, className, tag: Tag, ...attributes } = props;
 
-  const classes = classNames("page-link", className);
+  const classes = classNames('page-link', className);
 
   return (
-    <Tag {...attributes} className={classes}>
+    <Tag data-test='page-link' {...attributes} className={classes}>
       {children}
     </Tag>
   );
@@ -21,7 +21,7 @@ PageLink.propTypes = {
 };
 
 PageLink.defaultProps = {
-  tag: "a"
+  tag: 'a'
 };
 
 export default PageLink;

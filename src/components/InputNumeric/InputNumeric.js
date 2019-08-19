@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import NumericInput from "react-numeric-input";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import NumericInput from 'react-numeric-input';
 
 const InputNumeric = props => {
   const onChangeHandler = value => {
@@ -10,8 +10,15 @@ const InputNumeric = props => {
 
   const { className, getValue, ...attributes } = props;
 
-  const classes = classNames("form-control", className);
-  return <NumericInput {...attributes} onChange={onChangeHandler} className={classes} />;
+  const classes = classNames('form-control', className);
+  return (
+    <NumericInput
+      data-test='input-numeric'
+      {...attributes}
+      onChange={onChangeHandler}
+      className={classes}
+    />
+  );
 };
 
 InputNumeric.propTypes = {
