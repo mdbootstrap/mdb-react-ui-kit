@@ -19,7 +19,7 @@ const Alert = props => {
     props.onClosed && props.onClosed();
   };
 
-  const { className, color, children, dismiss } = props;
+  const { className, tag: Tag, color, children, dismiss } = props;
 
   const alertClasses = classNames("alert", color && `alert-${color}`, className);
 
@@ -34,19 +34,19 @@ const Alert = props => {
         onExit={node => handleOnExit(node)}
         onExited={node => handleOnExited(node)}
       >
-        <div data-test="alert" className={alertClasses} role="alert">
+        <Tag data-test="alert" className={alertClasses} role="alert">
           {children}
           <button onClick={closeAlert} type="button" className="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-        </div>
+        </Tag>
       </Transition>
     );
   } else {
     alertComponent = (
-      <div data-test="alert" className={alertClasses} role="alert">
+      <Tag data-test="alert" className={alertClasses} role="alert">
         {children}
-      </div>
+      </Tag>
     );
   }
 
@@ -54,14 +54,16 @@ const Alert = props => {
 };
 
 Alert.defaultProps = {
-  color: "primary"
+  color: "primary",
+  tag: "div"
 };
 
 Alert.propTypes = {
   className: PropTypes.string,
   color: PropTypes.oneOf(["primary", "secondary", "success", "danger", "warning", "info", "light", "dark"]),
   onClose: PropTypes.func,
-  onClosed: PropTypes.func
+  onClosed: PropTypes.func,
+  tag: PropTypes.string,
 };
 
 export default Alert;

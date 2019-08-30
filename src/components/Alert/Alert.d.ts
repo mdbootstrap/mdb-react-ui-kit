@@ -5,6 +5,7 @@ declare const MDBAlert: React.FunctionComponent<{
     className?: string;
     children?: React.ReactNode;
     dismiss?: boolean;
+    tag?: string;
     onClose?: () => void;
     onClosed?: () => void;
 }>;
