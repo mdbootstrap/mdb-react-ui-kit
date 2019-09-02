@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
-import DataTableHead from "../DataTableHead";
-import Table from "../../Table";
-import TableBody from "../../Table/TableBody";
-import TableFoot from "../../Table/TableFoot";
+import React from 'react';
+import PropTypes from 'prop-types';
+import DataTableHead from '../DataTableHead';
+import Table from '../../Table';
+import TableBody from '../../Table/TableBody';
+import TableFoot from '../../Table/TableFoot';
 
 const DataTableTable = props => {
   const {
@@ -35,7 +35,7 @@ const DataTableTable = props => {
   } = props;
 
   return (
-    <div className="col-sm-12">
+    <div data-test='datatable-table' className='col-sm-12'>
       <Table
         autoWidth={autoWidth}
         bordered={bordered}
@@ -51,7 +51,7 @@ const DataTableTable = props => {
         responsiveXl={responsiveXl}
         small={small}
         striped={striped}
-        className="dataTable"
+        className='dataTable'
         {...attributes}
       >
         <DataTableHead

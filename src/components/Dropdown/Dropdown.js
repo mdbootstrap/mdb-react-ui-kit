@@ -1,22 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import ReactDOM from "react-dom";
-import { Manager } from "react-popper";
-import classNames from "classnames";
-import { omit, keyCodes } from "../utils";
+import React from 'react';
+import PropTypes from 'prop-types';
+import ReactDOM from 'react-dom';
+import { Manager } from 'react-popper';
+import classNames from 'classnames';
+import { omit, keyCodes } from '../utils';
 
 class Dropdown extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpen: false
-    };
-
-    this.addEvents = this.addEvents.bind(this);
-    this.handleDocumentClick = this.handleDocumentClick.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.removeEvents = this.removeEvents.bind(this);
-  }
+  state = {
+    isOpen: false
+  };
 
   getChildContext() {
     return {
@@ -41,101 +33,58 @@ class Dropdown extends React.Component {
   }
 
   handleEventsBinding() {
-    if (this.state.isOpen) {
-      this.addEvents();
-    } else {
-      this.removeEvents();
-    }
+    this.state.isOpen ? this.addEvents() : this.removeEvents();
   }
 
-  getContainer() {
+  getContainer = () => {
     return ReactDOM.findDOMNode(this);
-  }
+  };
 
-  addEvents() {
-    ["click", "touchstart", "keyup"].forEach(event =>
+  addEvents = () => {
+    ['click', 'touchstart', 'keyup'].forEach(event =>
       document.addEventListener(event, this.handleDocumentClick, true)
     );
-  }
+  };
 
-  removeEvents() {
-    ["click", "touchstart", "keyup"].forEach(event =>
+  removeEvents = () => {
+    ['click', 'touchstart', 'keyup'].forEach(event =>
       document.removeEventListener(event, this.handleDocumentClick, true)
     );
-  }
+  };
 
-  handleDocumentClick(e) {
-    if (
-      e &&
-      (e.which === 3 || (e.type === "keyup" && e.which !== keyCodes.tab))
-    )
-      return;
-    const container = this.getContainer();
+  handleDocumentClick = e => {
+    const { which: keyCode, type, target } = e;
+    const { tab } = keyCodes;
 
-    if (
-      container.contains(e.target) &&
-      container !== e.target &&
-      (e.type !== "keyup" || e.which === keyCodes.tab)
-    ) {
-      return;
-    }
+    const MOUSE_RIGHT_CLICK = keyCode === 3;
+    const TAB = keyCode === tab;
+    const KEYUP = type === 'keyup';
 
-    this.toggle(e);
-  }
-
-  handleKeyDown(e) {
-    if (
-      [keyCodes.esc, keyCodes.up, keyCodes.down, keyCodes.space].indexOf(
-        e.which
-      ) === -1 ||
-      (/button/i.test(e.target.tagName) && e.which === keyCodes.space) ||
-      /input|textarea/i.test(e.target.tagName)
-    ) {
-      return;
-    }
-
-    e.preventDefault();
-    if (this.props.disabled) return;
+    if (MOUSE_RIGHT_CLICK || (KEYUP && !TAB)) return;
 
     const container = this.getContainer();
 
-    if (
-      e.which === keyCodes.space &&
-      this.state.isOpen &&
-      container !== e.target
-    ) {
-      e.target.click();
-    }
-
-    if (e.which === keyCodes.esc || !this.state.isOpen) {
-      this.toggle(e);
-      container.querySelector("[aria-expanded]").focus();
+    if (container.contains(target) && container !== target && (!KEYUP || TAB)) {
       return;
     }
 
-    const menuClass = "dropdown-menu";
-    const itemClass = "dropdown-item";
-    const disabledClass = "disabled";
+    this.toggle();
+  };
 
-    const items = container.querySelectorAll(
-      `.${menuClass} .${itemClass}:not(.${disabledClass})`
-    );
+  handleFocus = (e, items) => {
+    const { up, down } = keyCodes;
+    const { which: keyCode, target } = e;
 
-    if (!items.length) return;
+    const UP = keyCode === up;
+    const DOWN = keyCode === down;
 
-    let index = -1;
-    for (let i = 0; i < items.length; i += 1) {
-      if (items[i] === e.target) {
-        index = i;
-        break;
-      }
-    }
+    let index = [...items].findIndex(item => item === target);
 
-    if (e.which === keyCodes.up && index > 0) {
+    if (UP && index > 0) {
       index -= 1;
     }
 
-    if (e.which === keyCodes.down && index < items.length - 1) {
+    if (DOWN && index < items.length - 1) {
       index += 1;
     }
 
@@ -144,34 +93,84 @@ class Dropdown extends React.Component {
     }
 
     items[index].focus();
-  }
+  };
+
+  handleKeyDown = e => {
+    const { isOpen } = this.state;
+    const { disabled } = this.props;
+    const { which: keyCode, target } = e;
+    const { esc, up, down, space } = keyCodes;
+
+    const SPACE = keyCode === space;
+    const ESC = keyCode === esc;
+
+    if (
+      ![esc, up, down, space].includes(keyCode) ||
+      (/button/i.test(target.tagName) && SPACE) ||
+      /input|textarea/i.test(target.tagName)
+    ) {
+      return;
+    }
+
+    e.preventDefault();
+
+    if (disabled) return;
+
+    const container = this.getContainer();
+
+    if (SPACE && isOpen && container !== target) {
+      target.click();
+    }
+
+    if (ESC || !isOpen) {
+      this.toggle();
+      const btn = container.children[0];
+      btn.focus();
+
+      return;
+    }
+
+    const items = container.querySelectorAll(
+      `.dropdown-menu .dropdown-item:not(.disabled)`
+    );
+
+    items.length && this.handleFocus(e, items);
+  };
 
   toggle = () => {
     this.setState({ isOpen: !this.state.isOpen });
   };
 
   render() {
-    
-    const { className, children, dropup, group, size, dropright, dropleft } = omit(this.props, [
-      "toggle",
-      "disabled"
-    ]);
+    const {
+      className,
+      children,
+      dropup,
+      group,
+      size,
+      dropright,
+      dropleft
+    } = omit(this.props, ['toggle', 'disabled']);
 
     const classes = classNames(
       {
-        "btn-group": group,
+        'btn-group': group,
         [`btn-group-${size}`]: !!size,
         dropdown: !group,
         show: this.state.isOpen,
         dropup: dropup,
         dropright: dropright,
-        dropleft: dropleft,
+        dropleft: dropleft
       },
       className
     );
     return (
       <Manager>
-        <div className={classes} onKeyDown={this.handleKeyDown}>
+        <div
+          data-test='dropdown'
+          className={classes}
+          onKeyDown={this.handleKeyDown}
+        >
           {children}
         </div>
       </Manager>
@@ -195,8 +194,7 @@ Dropdown.defaultProps = {
   dropup: false,
   dropright: false,
   dropleft: false,
-  tag: "div"
-
+  tag: 'div'
 };
 Dropdown.childContextTypes = {
   toggle: PropTypes.func.isRequired,

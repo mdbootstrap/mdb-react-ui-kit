@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import Waves from "../../Waves";
-import { NavLink as Link } from "react-router-dom";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import Waves from '../../Waves';
+import { NavLink as Link } from 'react-router-dom';
 
 const NavLink = props => {
   const [cursorPos, setCursorPos] = useState({});
@@ -21,10 +21,21 @@ const NavLink = props => {
   };
 
   const { children, className, disabled, active, to, ...attributes } = props;
-
-  const classes = classNames("nav-link", disabled ? "disabled" : "Ripple-parent", active && "active", className);
+  const classes = classNames(
+    'nav-link',
+    disabled ? 'disabled' : 'Ripple-parent',
+    active && 'active',
+    className
+  );
   return (
-    <Link className={classes} onMouseUp={handleClick} onTouchStart={handleClick} to={to} {...attributes}>
+    <Link
+      data-test='nav-link'
+      className={classes}
+      onMouseUp={handleClick}
+      onTouchStart={handleClick}
+      to={to}
+      {...attributes}
+    >
       {children}
       {props.disabled ? false : <Waves cursorPos={cursorPos} />}
     </Link>
@@ -41,7 +52,7 @@ NavLink.propTypes = {
 
 NavLink.defaultProps = {
   active: false,
-  className: "",
+  className: '',
   disabled: false
 };
 

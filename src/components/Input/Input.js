@@ -144,7 +144,7 @@ class Input extends React.Component {
       type === "checkbox" || type === "radio"
         ? typeof label === "boolean" && label
           ? "d-flex"
-          : "form-check my-3"
+          : "form-check"
         : "md-form",
 
       group ? "form-group" : false,

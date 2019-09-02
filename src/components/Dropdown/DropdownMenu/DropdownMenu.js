@@ -21,21 +21,29 @@ class DropdownMenu extends Component {
     } = this.props;
 
     const classes = classNames(
-      'dropdown-menu',
-      color && `dropdown-${color}`,
       {
         'dropdown-menu-right': right,
+        [`dropdown-${color}`]: color,
         show: this.context.isOpen,
         basic: basic
       },
+      'dropdown-menu',
       className
     );
 
     let Tag = tag;
 
     if (this.context.isOpen) {
-      const position1 = this.context.dropup ? 'top' : this.context.dropright ? 'right' : this.context.dropleft ? 'left' : 'bottom';
+      const position1 = this.context.dropup
+        ? 'top'
+        : this.context.dropright
+        ? 'right'
+        : this.context.dropleft
+        ? 'left'
+        : 'bottom';
+
       const position2 = right ? 'end' : 'start';
+
       attrs.placement = `${position1}-${position2}`;
       attrs.component = tag;
       attrs.modifiers = !flip ? noFlipModifier : undefined;
@@ -47,25 +55,29 @@ class DropdownMenu extends Component {
         eventsEnabled={true}
         positionFixed={false}
         placement={attrs.placement}
+        data-test='dropdown-menu'
       >
-        {
-          ({ placement, ref, style }) => (
-            <Tag ref={ref} style={style} data-placement={placement} className={classes}>
-              <DropdownMenuComponent
-                isOpen={this.context.isOpen}
-                tag={Tag}
-                tabIndex="-1"
-                role="menu"
-                attributes={attrs}
-                aria={!this.context.isOpen}
-                d_key="dropDownMenu"
-                color={color}
-              >
-                {children}
-              </DropdownMenuComponent>
-            </Tag>
-          )
-        }
+        {({ placement, ref, style }) => (
+          <Tag
+            ref={ref}
+            style={style}
+            data-placement={placement}
+            className={classes}
+          >
+            <DropdownMenuComponent
+              isOpen={this.context.isOpen}
+              tag={Tag}
+              tabIndex='-1'
+              role='menu'
+              attributes={attrs}
+              aria={!this.context.isOpen}
+              d_key='dropDownMenu'
+              color={color}
+            >
+              {children}
+            </DropdownMenuComponent>
+          </Tag>
+        )}
       </Popper>
     );
   }

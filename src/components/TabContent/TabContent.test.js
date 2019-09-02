@@ -1,14 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import {
-  findByTestAttr,
-  checkProps,
-  checkClass,
-  checkTag
-} from '../../tests/utils';
+import { findByTestAttr, checkProps, checkClass } from '../../tests/utils';
 import TabContent from './TabContent';
-import PropTypes from 'prop-types';
+import { createLanguageService } from 'typescript';
 
 const setup = (props = {}) => shallow(<TabContent {...props} />);
 
@@ -54,6 +49,14 @@ describe('<TabContent />', () => {
     wrapper = setup({ activeItem: '3' });
 
     expect(wrapper.state('activeItem')).toBe('3');
+  });
+
+  test('return correct activeItem from getChildContext', () => {
+    wrapper = shallow(<TabContent activeItem='3' />, {
+      context: { activeItemId: '3' }
+    });
+
+    expect(wrapper.instance().getChildContext().activeItemId).toEqual('3');
   });
 
   describe('sets classes', () => {

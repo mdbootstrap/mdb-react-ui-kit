@@ -1,12 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import MDBCloseIcon from "../CloseIcon";
-import MDBIcon from "../Fa"
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import MDBCloseIcon from '../CloseIcon';
+import MDBIcon from '../Fa';
 
 class Notification extends React.Component {
   state = {
-    componentState: this.props.show ? "show" : "hide"
+    componentState: this.props.show ? 'show' : 'hide'
   };
 
   componentDidMount() {
@@ -14,11 +14,13 @@ class Notification extends React.Component {
   }
 
   hide = (time = 0) => {
+    if (typeof time === 'object') time = 0;
+
     setTimeout(() => {
-      this.setState({ componentState: "" }, () => {
+      this.setState({ componentState: '' }, () => {
         setTimeout(() => {
           this.setState({
-            componentState: "hide"
+            componentState: 'hide'
           });
         }, 150);
       });
@@ -43,24 +45,24 @@ class Notification extends React.Component {
     } = this.props;
 
     const classes = classNames(
-      "toast",
-      fade && "fade",
+      'toast',
+      fade && 'fade',
       this.state.componentState,
       className
     );
 
-    const headerClasses = classNames("toast-header", titleClassName);
-    const iconClassNames = classNames("mr-2", iconClassName)
-    const bodyClasses = classNames("toast-body", bodyClassName);
-    const closeClasses = classNames("ml-2", "mb-1", closeClassName);
+    const headerClasses = classNames('toast-header', titleClassName);
+    const iconClassNames = classNames('mr-2', iconClassName);
+    const bodyClasses = classNames('toast-body', bodyClassName);
+    const closeClasses = classNames('ml-2', 'mb-1', closeClassName);
 
     return (
-      <Tag {...attributes} className={classes}>
+      <Tag data-test='notification' {...attributes} className={classes}>
         <div className={headerClasses}>
-          <MDBIcon icon={icon} className={iconClassNames} size="lg"/>
-          <strong className="mr-auto">{title}</strong>
+          <MDBIcon icon={icon} className={iconClassNames} size='lg' />
+          <strong className='mr-auto'>{title}</strong>
           <small>{text}</small>
-          <MDBCloseIcon className={closeClasses} onClick={() => this.hide()} />
+          <MDBCloseIcon className={closeClasses} onClick={this.hide} />
         </div>
         <div className={bodyClasses}>{message}</div>
       </Tag>
@@ -86,9 +88,9 @@ Notification.propTypes = {
 };
 
 Notification.defaultProps = {
-  icon: "square",
-  tag: "div",
-  closeClassName: "text-dark"
+  icon: 'square',
+  tag: 'div',
+  closeClassName: 'text-dark'
 };
 
 export default Notification;

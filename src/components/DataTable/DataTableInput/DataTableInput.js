@@ -1,16 +1,16 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const DataTableInput = ({ value, onChange, label }) => (
-  <div className="dataTables_filter">
+  <div data-test='datatable-input' className='dataTables_filter'>
     <label>
-      {label || "Search"}
+      {label || 'Search'}
       <input
         value={value}
         onChange={onChange}
-        type="search"
-        className="form-control form-control-sm"
-        placeholder={label || "Search"}
+        type='search'
+        className='form-control form-control-sm'
+        placeholder={label || 'Search'}
       />
     </label>
   </div>
@@ -18,8 +18,8 @@ const DataTableInput = ({ value, onChange, label }) => (
 
 DataTableInput.propTypes = {
   label: PropTypes.oneOfType([
-    PropTypes.string, 
-    PropTypes.number, 
+    PropTypes.string,
+    PropTypes.number,
     PropTypes.object
   ]),
   onChange: PropTypes.func,

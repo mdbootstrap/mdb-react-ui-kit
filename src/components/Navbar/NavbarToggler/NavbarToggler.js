@@ -15,7 +15,7 @@ const NavbarToggler = props => {
   );
 
   return (
-    <Tag {...attributes} className={classes}>
+    <Tag data-test="navbar-toggler" {...attributes} className={classes}>
       {children ? (
         children
       ) : image ? (

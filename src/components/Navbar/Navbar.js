@@ -1,24 +1,21 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const getExpandClass = expand => {
   if (expand === false) {
     return false;
-  } else if (expand === true || expand === "xs") {
-    return "navbar-expand";
+  } else if (expand === true || expand === 'xs') {
+    return 'navbar-expand';
   }
 
   return `navbar-expand-${expand}`;
 };
 
 class Navbar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isCollapsed: false
-    };
-  }
+  state = {
+    isCollapsed: false
+  };
 
   handleScroll = () => {
     const scrollingNavbarOffset = this.props.scrollingNavbarOffset || 50;
@@ -31,13 +28,13 @@ class Navbar extends Component {
 
   componentDidMount() {
     if (this.props.scrolling || this.props.scrollingNavbarOffset) {
-      window.addEventListener("scroll", this.handleScroll);
+      window.addEventListener('scroll', this.handleScroll);
     }
   }
 
   componentWillUnmount() {
     if (this.props.scrolling || this.props.scrollingNavbarOffset) {
-      window.removeEventListener("scroll", this.handleScroll);
+      window.removeEventListener('scroll', this.handleScroll);
     }
   }
 
@@ -59,26 +56,29 @@ class Navbar extends Component {
     } = this.props;
 
     let classes = classNames(
-      "navbar",
-      light ? "navbar-light" : "",
-      dark ? "navbar-dark" : "",
-      sticky ? "sticky-" + sticky : "",
-      fixed ? "fixed-" + fixed : "",
+      {
+        'navbar-light': light,
+        'navbar-dark': dark,
+        [`sticky-${sticky}`]: sticky,
+        [`fixed-${fixed}`]: fixed,
+        'scrolling-navbar': scrolling || scrollingNavbarOffset,
+        'double-nav': double,
+        'top-nav-collapse': this.state.isCollapsed,
+        [`${color}`]: color && transparent ? this.state.isCollapsed : color
+      },
+      'navbar',
       getExpandClass(expand),
-      scrolling || scrollingNavbarOffset ? "scrolling-navbar" : "",
-      this.state.isCollapsed ? "top-nav-collapse" : "",
-      color
-        ? transparent
-          ? this.state.isCollapsed
-            ? color
-            : ""
-          : color
-        : "",
-      double ? "double-nav" : "",
       className
     );
 
-    return <Tag {...attributes} className={classes} role="navigation" />;
+    return (
+      <Tag
+        data-test='navbar'
+        {...attributes}
+        className={classes}
+        role='navigation'
+      />
+    );
   }
 }
 
@@ -98,7 +98,7 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
-  tag: "nav",
+  tag: 'nav',
   expand: false,
   scrolling: false
 };

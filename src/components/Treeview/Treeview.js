@@ -53,7 +53,7 @@ const Treeview = props => {
   );
 
   return (
-    <Tag {...attributes} className={classes}>
+    <Tag data-test='treeview' {...attributes} className={classes}>
       {head}
       <ul className={ulClasses}>
         <TreeviewContext.Provider

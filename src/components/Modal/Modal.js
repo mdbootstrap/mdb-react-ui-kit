@@ -198,7 +198,7 @@ Modal.defaultProps = {
   modalTransitionTimeout: 300,
   role: 'dialog',
   tabIndex: '-1',
-  zIndex: 1050,
+  zIndex: 1050
 };
 
 Modal.propTypes = {
@@ -224,7 +224,7 @@ Modal.propTypes = {
   side: PropTypes.bool,
   showModal: PropTypes.func,
   tabIndex: PropTypes.string,
-  wrapClassName: PropTypes.string,
+  wrapClassName: PropTypes.string
 };
 
 export default Modal;

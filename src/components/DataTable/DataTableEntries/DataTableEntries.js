@@ -3,10 +3,18 @@ import PropTypes from 'prop-types';
 import DataTableSelect from '../DataTableSelect';
 
 const DataTableEntries = props => {
-  const { handleEntriesChange, displayEntries, entries, entriesArr, paging, label, barReverse } = props;
+  const {
+    handleEntriesChange,
+    displayEntries,
+    entries,
+    entriesArr,
+    paging,
+    label,
+    barReverse
+  } = props;
 
   return (
-    <div className="col-sm-12 col-md-6">
+    <div data-test='datatable-entries' className='col-sm-12 col-md-6'>
       {paging && displayEntries && (
         <DataTableSelect
           value={entries}
@@ -28,8 +36,8 @@ DataTableEntries.propTypes = {
   entriesArr: PropTypes.arrayOf(PropTypes.number).isRequired,
   paging: PropTypes.bool.isRequired,
   label: PropTypes.oneOfType([
-    PropTypes.string, 
-    PropTypes.number, 
+    PropTypes.string,
+    PropTypes.number,
     PropTypes.object
   ]).isRequired
 };

@@ -34,7 +34,7 @@ const DataTableHead = props => {
           ))}
         </colgroup>
       )}
-      <thead className={theadClasses || undefined}>
+      <thead data-test="datatable-head" className={theadClasses || undefined}>
         <tr>
           {columns.map(col => (
             <th

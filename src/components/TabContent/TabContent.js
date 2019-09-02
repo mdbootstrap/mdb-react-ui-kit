@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import { omit } from "../utils";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { omit } from '../utils';
 
 const propTypes = {
   activeItem: PropTypes.any,
@@ -10,12 +10,9 @@ const propTypes = {
 };
 
 class TabContent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeItem: this.props.activeItem
-    };
-  }
+  state = {
+    activeItem: this.props.activeItem
+  };
 
   getChildContext() {
     return {
@@ -34,8 +31,8 @@ class TabContent extends React.Component {
 
     const attributes = omit(this.props, Object.keys(propTypes));
 
-    const classes = classNames("tab-content", className);
-    return <div data-test="tabContent" {...attributes} className={classes} />;
+    const classes = classNames('tab-content', className);
+    return <div data-test='tabContent' {...attributes} className={classes} />;
   }
 }
 

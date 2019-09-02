@@ -33,16 +33,19 @@ const TreeviewList = props => {
   const { theme } = useContext(TreeviewContext);
 
   const nestedClasses = classNames('nested', opened && 'active');
+
   const folder = classNames(
     theme && `closed treeview-${theme}-element d-block`,
     !children && 'ml-2',
     opened && 'opened',
     disabled && disabledClassName
   );
+
   const classes = classNames(
     theme && `treeview-${theme}-items px-0`,
     className
   );
+
   const iconClasses = classNames(theme ? 'mx-2' : 'mr-2');
 
   const child = children && (
@@ -53,7 +56,9 @@ const TreeviewList = props => {
       {children}
     </ul>
   );
+
   const collapse = theme && <MDBCollapse isOpen={opened}>{child}</MDBCollapse>;
+  
   const iconArrow =
     theme !== 'colorful'
       ? 'angle-right'
@@ -80,7 +85,7 @@ const TreeviewList = props => {
   );
 
   return (
-    <Tag {...attributes} className={classes}>
+    <Tag data-test='treeview-list' {...attributes} className={classes}>
       <span
         className={folder}
         onClick={!disabled && theme ? handleSwitch : null}

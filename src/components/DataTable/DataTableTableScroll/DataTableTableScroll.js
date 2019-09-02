@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Table from "../../Table";
-import TableBody from "../../Table/TableBody";
-import DataTableHead from "../DataTableHead";
+import React from 'react';
+import PropTypes from 'prop-types';
+import Table from '../../Table';
+import TableBody from '../../Table/TableBody';
+import DataTableHead from '../DataTableHead';
 
 const DataTableTableScroll = props => {
   const {
@@ -38,24 +38,23 @@ const DataTableTableScroll = props => {
     ...attributes
   } = props;
 
+  const minWidth = scrollX
+    ? columns.map(col => col.width).reduce((prev, curr) => prev + curr, 0) +
+      'px'
+    : 'auto';
+
   return (
-    <div className="col-sm-12">
-      <div className="dataTables_scroll">
-        <div className="dataTables_scrollHead" style={{ overflow: "hidden" }}>
+    <div data-test='datatable-table-scroll' className='col-sm-12'>
+      <div className='dataTables_scroll'>
+        <div className='dataTables_scrollHead' style={{ overflow: 'hidden' }}>
           <div
-            className="dataTables_scrollHeadInner"
+            className='dataTables_scrollHeadInner'
             style={{
-              position: "relative",
+              position: 'relative',
               transform: `translateX(-${translateScrollHead}px)`,
-              boxSizing: "content-box",
-              paddingRight: "15px",
-              minWidth: `${
-                scrollX
-                  ? columns
-                      .map(col => col.width)
-                      .reduce((prev, curr) => prev + curr, 0) + "px"
-                  : "auto"
-              }`
+              boxSizing: 'content-box',
+              paddingRight: scrollY ? '15px' : null,
+              minWidth
             }}
           >
             <Table
@@ -73,7 +72,7 @@ const DataTableTableScroll = props => {
               responsiveXl={responsiveXl}
               small={small}
               striped={striped}
-              className="dataTable"
+              className='dataTable'
               {...attributes}
             >
               <DataTableHead
@@ -91,19 +90,13 @@ const DataTableTableScroll = props => {
         </div>
 
         <div
-          className="dataTable_scrollBody"
-          style={{ overflow: "auto" }}
+          className='dataTable_scrollBody'
+          style={{ overflow: 'auto' }}
           onScroll={handleTableBodyScroll}
         >
           <Table
             style={{
-              minWidth: `${
-                scrollX
-                  ? columns
-                      .map(col => col.width)
-                      .reduce((prev, curr) => prev + curr, 0) + "px"
-                  : "auto"
-              }`
+              minWidth
             }}
             autoWidth={autoWidth}
             bordered={bordered}
@@ -121,7 +114,7 @@ const DataTableTableScroll = props => {
             scrollY={scrollY}
             small={small}
             striped={striped}
-            className="dataTable"
+            className='dataTable'
             {...attributes}
           >
             <colgroup>
@@ -129,8 +122,8 @@ const DataTableTableScroll = props => {
                 <col
                   key={col.field}
                   style={{
-                    width: `${col.width}px` || "auto",
-                    minWidth: `${col.width}px` || "auto"
+                    width: `${col.width}px` || 'auto',
+                    minWidth: `${col.width}px` || 'auto'
                   }}
                 />
               ))}

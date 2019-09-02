@@ -5,13 +5,10 @@ import PageItem from '../../Pagination/PageItem';
 import PageLink from '../../Pagination/PageLink';
 
 class DataTablePagination extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      pages: props.pages,
-      pGroups: []
-    };
-  }
+  state = {
+    pages: this.props.pages,
+    pGroups: []
+  };
 
   componentDidMount() {
     this.groupPages();
@@ -51,7 +48,7 @@ class DataTablePagination extends Component {
     const { activePage, changeActivePage, pages, label } = this.props;
 
     return (
-      <div className='col-sm-12 col-md-7'>
+      <div data-test='datatable-pagination' className='col-sm-12 col-md-7'>
         <div className='dataTables_paginate'>
           <Pagination>
             <PageItem disabled={activePage <= 0}>

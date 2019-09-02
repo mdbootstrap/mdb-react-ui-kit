@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import { MDBInput } from "../Input";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { MDBInput } from '../Input';
 
 const InputGroup = ({
   append,
@@ -26,26 +26,35 @@ const InputGroup = ({
   type,
   value,
   valueDefault,
+  getValue,
+  onChange,
   ...attributes
 }) => {
   const containerClassNames = classNames(
-    "input-group",
-    material && "md-form",
+    'input-group',
+    material && 'md-form',
     size && `input-group-${size}`,
     containerClassName
   );
 
   const inputClassNames = classNames(className);
 
-  const prependClassNames = classNames("input-group-prepend", prependClassName);
+  const prependClassNames = classNames('input-group-prepend', prependClassName);
 
-  const appendClassNames = classNames("input-group-append", appendClassName);
+  const appendClassNames = classNames('input-group-append', appendClassName);
 
   const textClassNames = classNames(
-    "input-group-text",
-    material && "md-addon",
+    'input-group-text',
+    material && 'md-addon',
     textClassName
   );
+
+  const handleChange = event => {
+    event.persist();
+    onChange && onChange(event);
+    getValue && getValue(event.target.value);
+  };
+
   return (
     <>
       {label && (
@@ -53,10 +62,15 @@ const InputGroup = ({
           {label}
         </label>
       )}
-      <Tag {...attributes} className={containerClassNames} id={containerId}>
+      <Tag
+        data-test='input-group'
+        {...attributes}
+        className={containerClassNames}
+        id={containerId}
+      >
         {prepend && (
           <div className={prependClassNames}>
-            {typeof prepend === "string" ? (
+            {typeof prepend === 'string' ? (
               <span className={textClassNames}>{prepend}</span>
             ) : (
               prepend
@@ -73,11 +87,12 @@ const InputGroup = ({
             valueDefault={valueDefault}
             hint={hint}
             aria-label={ariaLabel}
+            onChange={handleChange}
           />
         )}
         {append && (
           <div className={appendClassNames}>
-            {typeof append === "string" ? (
+            {typeof append === 'string' ? (
               <span className={textClassNames}>{append}</span>
             ) : (
               append
@@ -111,12 +126,14 @@ InputGroup.propTypes = {
   textClassName: PropTypes.string,
   type: PropTypes.string,
   value: PropTypes.string,
-  valueDefault: PropTypes.string
+  valueDefault: PropTypes.string,
+  getValue: PropTypes.func,
+  onChange: PropTypes.func
 };
 
 InputGroup.defaultProps = {
-  tag: "div",
-  type: "text"
+  tag: 'div',
+  type: 'text'
 };
 
 export default InputGroup;

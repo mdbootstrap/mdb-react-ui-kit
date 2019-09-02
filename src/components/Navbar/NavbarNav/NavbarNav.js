@@ -1,18 +1,18 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const NavbarNav = props => {
   const { children, className, right, left, tag: Tag, ...attributes } = props;
 
   const classes = classNames(
-    "navbar-nav",
-    right ? "ml-auto" : left ? "mr-auto" : "justify-content-around w-100",
+    'navbar-nav',
+    right ? 'ml-auto' : left ? 'mr-auto' : 'justify-content-around w-100',
     className
   );
 
   return (
-    <Tag {...attributes} className={classes}>
+    <Tag data-test='navbar-nav' {...attributes} className={classes}>
       {children}
     </Tag>
   );
@@ -27,7 +27,7 @@ NavbarNav.propTypes = {
 };
 
 NavbarNav.defaultProps = {
-  tag: "ul"
+  tag: 'ul'
 };
 
 export default NavbarNav;

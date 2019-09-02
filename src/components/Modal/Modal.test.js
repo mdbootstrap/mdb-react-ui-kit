@@ -67,6 +67,18 @@ describe('<Modal />', () => {
     expect(wrapper.state('isOpen')).toEqual(true);
   });
 
+  test('handleOnEntered method invokes node focus', () => {
+    wrapper = setup({ autoFocus: true });
+
+    const cb = jest.fn();
+
+    let div = document.createElement('div');
+    div.focus = cb;
+
+    wrapper.instance().handleOnEntered('backdrop', div);
+    expect(cb).toBeCalled();
+  });
+
   test('handleOnEntered method does not add "show" class if type===backdrop and fade===false', () => {
     wrapper = setup({ fade: false });
     let div = document.createElement('div');

@@ -16,13 +16,13 @@ class DataTable extends Component {
       columns: props.data.columns || [],
       entries: props.entries,
       filteredRows: props.data.rows || [],
+      order: props.order || [],
       pages: [],
       rows: props.data.rows || [],
-      search: "",
-      unsearchable: [],
+      search: '',
+      sorted: false,
       translateScrollHead: 0,
-      order: props.order || [],
-      sorted: false
+      unsearchable: []
     };
 
     if (this.props.paging) {
@@ -33,33 +33,40 @@ class DataTable extends Component {
   }
 
   componentDidMount() {
-    if (typeof this.props.data === "string") {
-      this.fetchData(this.props.data);
+    const { data } = this.props;
+    const { order, columns } = this.state;
+
+    if (typeof data === 'string') {
+      this.fetchData(data);
     }
 
-    this.state.order.length &&
-      this.handleSort(this.state.order[0], this.state.order[1]);
+    order.length && this.handleSort(order[0], order[1]);
 
-    this.setUnsearchable(this.state.columns);
+    this.setUnsearchable(columns);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.data !== this.props.data) {
-      if (typeof this.props.data === "string") {
-        this.fetchData(this.props.data);
-      } else {
-        this.setState(
-          {
-            columns: this.props.data.columns || [],
-            filteredRows: this.props.data.rows || [],
-            rows: this.props.data.rows || []
-          },
-          () => this.paginateRows()
-        );
-      }
+  componentDidUpdate(prevProps, _) {
+    const { data } = this.props;
+
+    if (prevProps.data !== data) {
+      typeof data === 'string'
+        ? this.fetchData(data)
+        : this.setData(data.rows, data.columns, this.paginateRows);
+
       this.setUnsearchable(this.state.columns);
     }
   }
+
+  setData = (rows = [], columns = [], callback) => {
+    this.setState(
+      () => ({
+        columns,
+        rows,
+        filteredRows: rows
+      }),
+      callback && typeof callback === 'function' && (() => callback())
+    );
+  };
 
   setUnsearchable = columns => {
     const unsearchable = [];
@@ -76,24 +83,22 @@ class DataTable extends Component {
   fetchData = link => {
     fetch(link)
       .then(res => res.json())
-      .then(json => {
-        this.setState({
-          columns: json.columns,
-          filteredRows: json.rows,
-          rows: json.rows
-        });
-      })
+      .then(json => this.setData(json.rows, json.columns))
       .catch(err => console.log(err));
   };
 
+  // findout how many pages there are need to be, then slice rows into pages
+  pagesAmount = () =>
+    Math.ceil(this.state.filteredRows.length / this.state.entries);
+
   paginateRowsInitialy = () => {
-    // findout how many pages there are need to be, then slice rows into pages
-    const pagesAmount = Math.ceil(this.state.rows.length / this.state.entries);
+    let { rows, entries, pages } = this.state;
+
+    const pagesAmount = this.pagesAmount();
+
     for (let i = 1; i <= pagesAmount; i++) {
-      const pageEndIndex = i * this.state.entries;
-      this.state.pages.push(
-        this.state.rows.slice(pageEndIndex - this.state.entries, pageEndIndex)
-      );
+      const pageEndIndex = i * entries;
+      pages.push(rows.slice(pageEndIndex - entries, pageEndIndex));
     }
   };
 
@@ -108,104 +113,96 @@ class DataTable extends Component {
   };
 
   checkFieldValue = (array, field) => {
-    return array[field] && typeof array[field] !== "string"
+    return array[field] && typeof array[field] !== 'string'
       ? array[field].props.searchValue
       : array[field];
   };
 
-  checkField = (field, a, b, direction = "desc") => {
+  checkField = (field, a, b, direction) => {
     let [aField, bField] = [
       this.checkFieldValue(a, field),
       this.checkFieldValue(b, field)
     ];
 
-    return direction === "desc" ? aField < bField : aField > bField;
+    return direction === 'desc' ? aField < bField : aField > bField;
+  };
+
+  sort = (rows, sortRows, field, direction) => {
+    rows.sort((a, b) => {
+      if (sortRows && sortRows.includes(field)) {
+        return this.checkField(field, a, b, direction);
+      }
+
+      return direction === 'asc'
+        ? a[field] < b[field]
+          ? -1
+          : 1
+        : a[field] > b[field]
+        ? -1
+        : 1;
+    });
   };
 
   handleSort = (field, sort) => {
-    if (sort !== "disabled") {
-      this.setState(
-        prevState => {
-          // asc by default
-          switch (sort) {
-            case "desc":
-              prevState.rows.sort((a, b) => {
-                if (
-                  this.props.sortRows &&
-                  this.props.sortRows.includes(field)
-                ) {
-                  return this.checkField(field, a, b);
-                }
+    if (sort === 'disabled') return;
 
-                return a[field] > b[field] ? -1 : 1;
-              });
-              break;
-            default:
-              prevState.rows.sort((a, b) => {
-                if (
-                  this.props.sortRows &&
-                  this.props.sortRows.includes(field)
-                ) {
-                  return this.checkField(field, a, b, "asc");
-                }
+    this.setState(
+      prevState => {
+        const { sortRows } = this.props;
+        const { rows, columns } = prevState;
+        const direction = sort === 'desc' ? 'desc' : 'asc';
 
-                return a[field] < b[field] ? -1 : 1;
-              });
-          }
+        this.sort(rows, sortRows, field, direction);
 
-          prevState.columns.forEach(col => {
-            if (col.sort === "disabled") return;
+        columns.forEach(col => {
+          if (col.sort === 'disabled') return;
 
-            col.sort =
-              col.field === field ? (col.sort === "desc" ? "asc" : "desc") : "";
-          });
+          col.sort =
+            col.field === field ? (col.sort === 'desc' ? 'asc' : 'desc') : '';
+        });
 
-          return {
-            rows: prevState.rows,
-            columns: prevState.columns,
-            sorted: true
-          };
-        },
-        () => this.filterRows()
-      );
-    } else return;
+        return {
+          rows,
+          columns,
+          sorted: true
+        };
+      },
+      () => this.filterRows()
+    );
   };
 
   filterRows = () => {
+    const { unsearchable, search } = this.state;
+    const { sortRows } = this.props;
+
     this.setState(
       prevState => {
         const filteredRows = prevState.rows.filter(row => {
           for (let key in row) {
-            if (Object.prototype.hasOwnProperty.call(row, key)) {
-              if (
-                (!this.state.unsearchable.length ||
-                  !this.state.unsearchable.includes(key)) &&
-                typeof row[key] !== "function"
-              ) {
-                let stringValue = "";
+            if (
+              (!unsearchable.length || !unsearchable.includes(key)) &&
+              typeof row[key] !== 'function'
+            ) {
+              let stringValue = '';
 
-                if (this.props.sortRows && typeof row[key] !== "string") {
-                  stringValue = row[key].props.searchValue;
-                } else {
-                  if (row[key]) {
-                    stringValue = row[key].toString();
-                  }
+              if (sortRows && typeof row[key] !== 'string') {
+                stringValue = row[key].props.searchValue;
+              } else {
+                if (row[key]) {
+                  stringValue = row[key].toString();
                 }
-
-                if (
-                  stringValue
-                    .toLowerCase()
-                    .match(this.state.search.toLowerCase())
-                )
-                  return true;
               }
+
+              if (stringValue.toLowerCase().includes(search.toLowerCase()))
+                return true;
             }
           }
           return false;
         });
+
         if (filteredRows.length === 0)
           filteredRows.push({
-            message: "No matching records found",
+            message: 'No matching records found',
             colspan: prevState.columns.length
           });
         return { filteredRows, activePage: 0 };
@@ -215,33 +212,30 @@ class DataTable extends Component {
   };
 
   paginateRows = () => {
-    // findout how many pages there are need to be, then slice rows into pages
-    const pagesAmount = Math.ceil(
-      this.state.filteredRows.length / this.state.entries
-    );
+    const pagesAmount = this.pagesAmount();
+
     this.setState(prevState => {
-      prevState.pages = [];
-      if (this.props.paging) {
+      let { pages, entries, filteredRows, activePage } = prevState;
+      const { paging } = this.props;
+
+      pages = [];
+
+      if (paging) {
         for (let i = 1; i <= pagesAmount; i++) {
-          const pageEndIndex = i * prevState.entries;
-          prevState.pages.push(
-            prevState.filteredRows.slice(
-              pageEndIndex - prevState.entries,
-              pageEndIndex
-            )
-          );
+          const pageEndIndex = i * entries;
+          pages.push(filteredRows.slice(pageEndIndex - entries, pageEndIndex));
         }
-        prevState.activePage =
-          prevState.activePage < prevState.pages.length ||
-          prevState.activePage === 0
-            ? prevState.activePage
-            : prevState.pages.length - 1;
+
+        activePage =
+          activePage < pages.length || activePage === 0
+            ? activePage
+            : pages.length - 1;
       } else {
-        prevState.pages.push(prevState.filteredRows);
-        prevState.activePage = 0;
+        pages.push(filteredRows);
+        activePage = 0;
       }
 
-      return { ...prevState };
+      return { pages, filteredRows, activePage };
     });
   };
 
@@ -308,13 +302,13 @@ class DataTable extends Component {
     } = this.state;
 
     const tableClasses = classnames(
-      className && `${className}`,
-      "dataTables_wrapper dt-bootstrap4"
+      'dataTables_wrapper dt-bootstrap4',
+      className
     );
 
     return (
-      <div className={tableClasses}>
-        <div className={`row${ barReverse ? ' flex-row-reverse' : ''}`}>
+      <div data-test='datatable' className={tableClasses}>
+        <div className={`row${barReverse ? ' flex-row-reverse' : ''}`}>
           <DataTableEntries
             paging={paging}
             displayEntries={displayEntries}
@@ -333,7 +327,7 @@ class DataTable extends Component {
           />
         </div>
         {!scrollY && !scrollX && (
-          <div className="row">
+          <div className='row'>
             <DataTableTable
               autoWidth={autoWidth}
               bordered={bordered}
@@ -363,7 +357,7 @@ class DataTable extends Component {
           </div>
         )}
         {(scrollY || scrollX) && (
-          <div className="row">
+          <div className='row'>
             <DataTableTableScroll
               autoWidth={autoWidth}
               bordered={bordered}
@@ -398,7 +392,7 @@ class DataTable extends Component {
           </div>
         )}
         {paging && (
-          <div className="row">
+          <div className='row'>
             <DataTableInfo
               activePage={activePage}
               entries={entries}
@@ -475,35 +469,38 @@ DataTable.defaultProps = {
   borderless: false,
   btn: false,
   dark: false,
-  data: {},
+  data: {
+    columns: [],
+    rows: []
+  },
   displayEntries: true,
   entries: 10,
-  entriesLabel: "Show entries",
+  entriesLabel: 'Show entries',
   entriesOptions: [10, 20, 50, 100],
   exportToCSV: false,
   fixed: false,
   hover: false,
   info: true,
-  infoLabel: ["Showing", "to", "of", "entries"],
+  infoLabel: ['Showing', 'to', 'of', 'entries'],
   order: [],
   pagesAmount: 8,
   paging: true,
-  paginationLabel: ["Previous", "Next"],
+  paginationLabel: ['Previous', 'Next'],
   responsive: false,
   responsiveSm: false,
   responsiveMd: false,
   responsiveLg: false,
   responsiveXl: false,
   searching: true,
-  searchLabel: "Search",
+  searchLabel: 'Search',
   scrollX: false,
   scrollY: false,
   sortable: true,
   small: false,
   striped: false,
-  theadColor: "",
+  theadColor: '',
   theadTextWhite: false,
-  tbodyColor: "",
+  tbodyColor: '',
   tbodyTextWhite: false
 };
 

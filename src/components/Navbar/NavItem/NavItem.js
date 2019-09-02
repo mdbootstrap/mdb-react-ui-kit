@@ -1,14 +1,19 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const NavItem = props => {
   const { children, className, active, text, tag: Tag, ...attributes } = props;
 
-  const classes = classNames("nav-item", active && "active", text && "navbar-text", className);
+  const classes = classNames(
+    'nav-item',
+    active && 'active',
+    text && 'navbar-text',
+    className
+  );
 
   return (
-    <Tag {...attributes} className={classes}>
+    <Tag data-test='nav-item' {...attributes} className={classes}>
       {children}
     </Tag>
   );
@@ -22,7 +27,7 @@ NavItem.propTypes = {
 };
 
 NavItem.defaultProps = {
-  tag: "li"
+  tag: 'li'
 };
 
 export default NavItem;

@@ -1,8 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const DropdownMenuComponent = ({ tag: Tag, tabIndex, role, attributes, aria, d_key, children }) => (
+const DropdownMenuComponent = ({
+  tag: Tag,
+  tabIndex,
+  role,
+  attributes,
+  aria,
+  d_key,
+  children
+}) => (
   <Tag
+    data-test='dropdown-menu-component'
     tabIndex={tabIndex}
     role={role}
     {...attributes}
@@ -20,7 +29,7 @@ DropdownMenuComponent.propTypes = {
   role: PropTypes.string.isRequired,
   tabIndex: PropTypes.string.isRequired,
   tag: PropTypes.any.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export default DropdownMenuComponent;

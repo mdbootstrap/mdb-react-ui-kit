@@ -6,7 +6,7 @@ const DataTableSearch = props => {
   const { handleSearchChange, search, searching, label, barReverse } = props;
 
   return (
-    <div className="col-sm-12 col-md-6">
+    <div data-test='datatable-search' className='col-sm-12 col-md-6'>
       {searching && (
         <DataTableInput
           value={search}

@@ -509,6 +509,11 @@ const DatatablePage = () => {
     ]
   });
 
+  const widerData = { columns: [...data().columns.map(col => {
+    col.width = 200;
+    return col;
+  })], rows: [...data().rows] } 
+
   return (
     <MDBContainer className="mt-3">
       <DocsLink title="Datatable" href="https://mdbootstrap.com/docs/react/tables/datatables/" />
@@ -622,7 +627,7 @@ const DatatablePage = () => {
           <SectionContainer title="With scrollX property" noBorder>
             <MDBCard>
               <MDBCardBody>
-                <MDBDataTable striped bordered hover scrollX data={new data()} />
+                <MDBDataTable striped bordered hover scrollX data={widerData} />
               </MDBCardBody>
             </MDBCard>
           </SectionContainer>
@@ -634,7 +639,7 @@ const DatatablePage = () => {
           <SectionContainer title="With scrollX and scrollY properties" noBorder>
             <MDBCard>
               <MDBCardBody>
-                <MDBDataTable striped bordered hover scrollX scrollY maxHeight="300xp" data={new data()} />
+                <MDBDataTable striped bordered hover scrollX scrollY maxHeight="300xp" data={widerData} />
               </MDBCardBody>
             </MDBCard>
           </SectionContainer>

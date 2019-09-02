@@ -26,12 +26,14 @@ const TreeviewItem = props => {
   useEffect(() => {
     if (targetRef && targetRef.current) {
       setTarget(targetRef.current);
-      opened && getActive(targetRef.current);
     }
   }, []);
 
-  const handleClick = () =>
-    target.classList.contains('opened') ? getActive(null) : getActive(target);
+  const handleClick = () => {
+    if (!disabled) {
+      target.classList.contains('opened') ? getActive(null) : getActive(target);
+    }
+  };
 
   const classes = classNames(
     disabled && disabledClassName,
@@ -41,10 +43,11 @@ const TreeviewItem = props => {
   );
   return (
     <Tag
+      data-test='treeview-item'
       {...attributes}
       className={classes}
       ref={targetRef}
-      onMouseDown={!disabled ? handleClick : null}
+      onMouseDown={handleClick}
       style={{ transform: 'translateY(0.3em)' }}
     >
       <MDBIcon className='mr-2' fab={fab} fal={fal} far={far} icon={icon} />

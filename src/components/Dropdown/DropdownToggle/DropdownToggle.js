@@ -1,82 +1,78 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import { Reference } from "react-popper";
-import Button from "../../Button";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { Reference } from 'react-popper';
+import Button from '../../Button';
 
 class DropdownToggle extends React.Component {
-  constructor(props) {
-    super(props);
+  onClick = e => {
+    const { disabled, nav, tag, onClick } = this.props;
 
-    this.onClick = this.onClick.bind(this);
-  }
-
-  onClick(e) {
-    if (this.props.disabled) {
+    if (disabled) {
       e.preventDefault();
       return;
     }
 
-    if (this.props.nav && !this.props.tag) {
+    if (nav && !tag) {
       e.preventDefault();
     }
 
-    if (this.props.onClick) {
-      this.props.onClick(e);
+    if (onClick) {
+      onClick(e);
     }
 
     this.context.toggle(e);
-  }
+  };
 
   render() {
     const { className, color, caret, nav, tag, ...props } = this.props;
-    const ariaLabel = props["aria-label"] || "Toggle Dropdown";
+    const ariaLabel = props['aria-label'] || 'Toggle Dropdown';
+
     const classes = classNames(
       {
-        "dropdown-toggle": caret,
-        "nav-link": nav
+        'dropdown-toggle': caret,
+        'nav-link': nav
       },
       className
     );
+
     const children = props.children || (
-      <span className="sr-only">{ariaLabel}</span>
+      <span className='sr-only'>{ariaLabel}</span>
     );
 
-    let Tag;
+    let Tag = tag;
 
     if (nav && !tag) {
-      Tag = "a";
-      props.href = "#";
+      Tag = 'a';
+      props.href = '#';
     } else if (!tag) {
       Tag = Button;
       props.color = color;
-    } else {
-      Tag = tag;
     }
 
     return (
-      <Reference>
-        {
-          ({ ref }) => (
-            tag || nav
-              ? <Tag
-                {...props}
-                className={classes}
-                onClick={this.onClick}
-                aria-expanded={this.context.isOpen}
-                ref={ref}
-              >
-                {children}
-              </Tag>
-              : <Tag
-                {...props}
-                className={classes}
-                onClick={this.onClick}
-                aria-expanded={this.context.isOpen}
-                innerRef={ref}
-              >
-                {children}
-              </Tag>
+      <Reference data-test='dropdown-toggle'>
+        {({ ref }) =>
+          tag || nav ? (
+            <Tag
+              {...props}
+              className={classes}
+              onClick={this.onClick}
+              aria-expanded={this.context.isOpen}
+              ref={ref}
+            >
+              {children}
+            </Tag>
+          ) : (
+            <Tag
+              {...props}
+              className={classes}
+              onClick={this.onClick}
+              aria-expanded={this.context.isOpen}
+              innerRef={ref}
+            >
+              {children}
+            </Tag>
           )
         }
       </Reference>
@@ -91,14 +87,14 @@ DropdownToggle.propTypes = {
   className: PropTypes.string,
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
-  "aria-haspopup": PropTypes.bool,
+  'aria-haspopup': PropTypes.bool,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   nav: PropTypes.bool
 };
 
 DropdownToggle.defaultProps = {
-  "aria-haspopup": true,
-  color: "secondary"
+  'aria-haspopup': true,
+  color: 'secondary'
 };
 
 DropdownToggle.contextTypes = {

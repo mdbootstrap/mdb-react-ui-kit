@@ -1,6 +1,6 @@
 Material Design for Bootstrap
 
-Version: MDB React Pro 4.19.1
+Version: MDB React Pro 4.19.2
 
 Documentation:
 https://mdbootstrap.com/docs/react/
