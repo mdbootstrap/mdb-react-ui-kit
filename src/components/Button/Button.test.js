@@ -5,7 +5,8 @@ import {
   findByTestAttr,
   checkProps,
   checkClass,
-  checkTag
+  checkTag,
+  checkCallBack
 } from '../../tests/utils';
 import Button from './Button';
 
@@ -64,10 +65,7 @@ describe('<Button />', () => {
   });
 
   test(`invokes callback function passed as a prop after clicking a button`, () => {
-    wrapper = setup({ onClick: mockCallback });
-    wrapper.simulate('click');
-
-    expect(mockCallback).toHaveBeenCalledTimes(1);
+    checkCallBack(wrapper, 'onClick')
   });
 
   test(`adds custom attributes passed as property`, () => {

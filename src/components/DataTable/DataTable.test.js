@@ -189,13 +189,6 @@ describe('<DataTable />', () => {
       expect(pagination).toHaveLength(1);
     });
 
-    test('ExportToCsvBtn if (!exportToCSV)', () => {
-      wrapper = setup({ customAttr: 'custom', exportToCSV: true });
-
-      const exportToCsvBtn = wrapper.find('ExportToCSV');
-
-      expect(exportToCsvBtn).toHaveLength(1);
-    });
   });
 
   describe('sorts correctly', () => {

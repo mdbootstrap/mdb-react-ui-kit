@@ -1,6 +1,6 @@
 {
   "name": "mdbreact",
-  "version": "4.19.2",
+  "version": "4.20.0",
   "author": "MDBootstrap",
   "repository": "https://git.mdbootstrap.com/mdb/react/re-pro",
   "main": "dist/mdbreact.js",
@@ -24,7 +24,7 @@
   "scripts": {
     "build": "yarn run sass-compile && rollup -c",
     "sass-compile": "node-sass dist/scss -o dist/css",
-    "webpack": "webpack-dev-server --watch",
+    "webpack": "concurrently \"webpack-dev-server --watch\" ",
     "start": "yarn run webpack",
     "test": "jest",
     "test:watch": "jest --watchAll"

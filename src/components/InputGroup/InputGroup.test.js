@@ -5,7 +5,8 @@ import {
   findByTestAttr,
   checkProps,
   checkClass,
-  checkTag
+  checkTag,
+  checkCallBack
 } from '../../tests/utils';
 import InputGroup from './InputGroup';
 
@@ -99,17 +100,10 @@ describe('<InputGroup />', () => {
   });
 
   test('invokes getValue() after input value changes', () => {
-    const getValue = jest.fn();
-    wrapper = setup({ getValue });
-
-    wrapper.find('Input').simulate('change', {
+    checkCallBack(wrapper, 'getValue', 'change', 'Input', {
       persist: () => {},
-      target: {
-        value: 'testValue'
-      }
+      target: { value: 'testValue' }
     });
-
-    expect(getValue).toBeCalled();
   });
 
   test('invokes onChange() after input value changes', () => {
