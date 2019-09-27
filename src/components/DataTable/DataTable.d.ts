@@ -1,4 +1,5 @@
 import * as React from "react";
+import { object } from 'prop-types';
 
 declare class MDBDataTable extends React.Component<
   {
@@ -33,7 +34,9 @@ declare class MDBDataTable extends React.Component<
     hover?: boolean;
     info?: boolean;
     infoLabel?: string[];
+    noRecordsFoundLabel?: string;
     maxHeight?: string;
+    noBottomColumns?: boolean;
     order?: string[];
     pagesAmount?: number;
     paging?: boolean;
@@ -54,8 +57,10 @@ declare class MDBDataTable extends React.Component<
     theadTextWhite?: boolean;
     tbodyColor?: string;
     tbodyTextWhite?: boolean;
-
     tag?: string;
+    onSearch?: (value: string) => string | void,
+    onSort?: (obj: { column: string, direction: string }) => object | void,
+    onPageChange?: (obj: { activePage: number , pagesAmount: number }) => object | void, 
     [rest: string]: any;
   },
   any

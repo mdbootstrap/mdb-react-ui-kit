@@ -12,7 +12,6 @@ class Carousel extends Component {
     this.state = {
       activeItem: this.props.activeItem,
       length: this.props.length,
-      slide: this.props.slide,
       srcArray: [],
       swipeAvailable: true,
       initialX: null,
@@ -126,7 +125,7 @@ class Carousel extends Component {
     return {
       activeItem: this.state.activeItem,
       length: this.state.length,
-      slide: this.state.slide
+      slide: this.props.slide
     };
   }
 

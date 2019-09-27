@@ -45,6 +45,18 @@ describe('<DataTableTable />', () => {
     expect(findByTestAttr(wrapper, 'datatable-table').length).toBe(1);
   });
 
+  test('should not render TableFoot when (noBottomColumns)', () => {
+    wrapper = setup({ noBottomColumns: true });
+
+    expect(wrapper.find('TableFoot')).toHaveLength(0);
+  });
+
+  test('should render TableFoot when (!noBottomColumns)', () => {
+    wrapper = setup({ noBottomColumns: false });
+
+    expect(wrapper.find('TableFoot')).toHaveLength(1);
+  });
+
   describe('sets classes', () => {
     test(`adds 'col-sm-12' class by default`, () => {
       checkClass(wrapper, 'col-sm-12');

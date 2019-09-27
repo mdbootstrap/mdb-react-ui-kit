@@ -344,6 +344,7 @@ var Alert = function Alert(props) {
   };
 
   var className = props.className,
+      Tag = props.tag,
       color = props.color,
       children = props.children,
       dismiss = props.dismiss;
@@ -359,9 +360,9 @@ var Alert = function Alert(props) {
         return handleOnExit(node);
       },
       onExited: function onExited(node) {
-        return handleOnExited(node);
+        return handleOnExited();
       }
-    }, React__default.createElement("div", {
+    }, React__default.createElement(Tag, {
       "data-test": "alert",
       className: alertClasses,
       role: "alert"
@@ -375,7 +376,7 @@ var Alert = function Alert(props) {
       "aria-hidden": "true"
     }, "\xD7"))));
   } else {
-    alertComponent = React__default.createElement("div", {
+    alertComponent = React__default.createElement(Tag, {
       "data-test": "alert",
       className: alertClasses,
       role: "alert"
@@ -386,13 +387,15 @@ var Alert = function Alert(props) {
 };
 
 Alert.defaultProps = {
-  color: "primary"
+  color: "primary",
+  tag: "div"
 };
 Alert.propTypes = {
   className: propTypes.string,
   color: propTypes.oneOf(["primary", "secondary", "success", "danger", "warning", "info", "light", "dark"]),
   onClose: propTypes.func,
-  onClosed: propTypes.func
+  onClosed: propTypes.func,
+  tag: propTypes.string
 };
 
 var Animation =
@@ -1712,7 +1715,6 @@ function (_Component) {
     _this.state = {
       activeItem: _this.props.activeItem,
       length: _this.props.length,
-      slide: _this.props.slide,
       srcArray: [],
       swipeAvailable: true,
       initialX: null,
@@ -1756,7 +1758,7 @@ function (_Component) {
       return {
         activeItem: this.state.activeItem,
         length: this.state.length,
-        slide: this.state.slide
+        slide: this.props.slide
       };
     }
   }, {
@@ -1983,7 +1985,7 @@ function (_Component) {
       itemId = parseInt(itemId, 10);
       var classes = classNames('carousel-item', {
         'active carousel-slide-item': this.context.slide,
-        'active': !this.context.slide && itemId === this.context.activeItem
+        active: !this.context.slide && itemId === this.context.activeItem
       }, className);
       var slideIndex = this.context.activeItem - itemId;
 
@@ -1995,6 +1997,8 @@ function (_Component) {
         } else {
           this.makeVisible();
         }
+      } else {
+        this.makeVisible();
       }
 
       return React__default.createElement(Tag, _extends({
@@ -2545,7 +2549,8 @@ var DataTableTable = function DataTableTable(props) {
       tbodyTextWhite = props.tbodyTextWhite,
       theadColor = props.theadColor,
       theadTextWhite = props.theadTextWhite,
-      attributes = _objectWithoutProperties(props, ["autoWidth", "bordered", "borderless", "btn", "children", "columns", "dark", "fixed", "hover", "handleSort", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "rows", "small", "sortable", "sorted", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite"]);
+      noBottomColumns = props.noBottomColumns,
+      attributes = _objectWithoutProperties(props, ["autoWidth", "bordered", "borderless", "btn", "children", "columns", "dark", "fixed", "hover", "handleSort", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "rows", "small", "sortable", "sorted", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite", "noBottomColumns"]);
 
   return React__default.createElement("div", {
     "data-test": "datatable-table",
@@ -2577,7 +2582,7 @@ var DataTableTable = function DataTableTable(props) {
     color: tbodyColor,
     textWhite: tbodyTextWhite,
     rows: rows
-  }), React__default.createElement(TableFoot, {
+  }), !noBottomColumns && React__default.createElement(TableFoot, {
     color: theadColor,
     textWhite: theadTextWhite,
     columns: columns
@@ -2608,7 +2613,8 @@ DataTableTable.propTypes = {
   tbodyTextWhite: propTypes.bool.isRequired,
   columns: propTypes.arrayOf(propTypes.object),
   rows: propTypes.arrayOf(propTypes.object),
-  children: propTypes.node
+  children: propTypes.node,
+  noBottomColumns: propTypes.bool
 };
 
 var DataTableTableScroll = function DataTableTableScroll(props) {
@@ -3166,11 +3172,11 @@ function (_Component) {
       });
     });
 
-    _defineProperty(_assertThisInitialized(_this), "fetchData", function (link) {
+    _defineProperty(_assertThisInitialized(_this), "fetchData", function (link, isPaginateRows) {
       fetch(link).then(function (res) {
         return res.json();
       }).then(function (json) {
-        return _this.setData(json.rows, json.columns);
+        return _this.setData(json.rows, json.columns, isPaginateRows ? _this.paginateRows : null);
       })["catch"](function (err) {
         return console.log(err);
       });
@@ -3207,7 +3213,7 @@ function (_Component) {
         search: e.target.value
       }, function () {
         return _this.filterRows();
-      });
+      }, _this.props.onSearch && typeof _this.props.onSearch === 'function' && _this.props.onSearch(e.target.value));
     });
 
     _defineProperty(_assertThisInitialized(_this), "checkFieldValue", function (array, field) {
@@ -3232,6 +3238,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleSort", function (field, sort) {
+      var onSort = _this.props.onSort;
       if (sort === 'disabled') return;
 
       _this.setState(function (prevState) {
@@ -3254,13 +3261,20 @@ function (_Component) {
       }, function () {
         return _this.filterRows();
       });
+
+      onSort && typeof onSort === 'function' && onSort({
+        column: field,
+        direction: sort === 'desc' ? 'desc' : 'asc'
+      });
     });
 
     _defineProperty(_assertThisInitialized(_this), "filterRows", function () {
       var _this$state2 = _this.state,
           unsearchable = _this$state2.unsearchable,
           search = _this$state2.search;
-      var sortRows = _this.props.sortRows;
+      var _this$props = _this.props,
+          sortRows = _this$props.sortRows,
+          noRecordsFoundLabel = _this$props.noRecordsFoundLabel;
 
       _this.setState(function (prevState) {
         var filteredRows = prevState.rows.filter(function (row) {
@@ -3283,7 +3297,7 @@ function (_Component) {
           return false;
         });
         if (filteredRows.length === 0) filteredRows.push({
-          message: 'No matching records found',
+          message: noRecordsFoundLabel,
           colspan: prevState.columns.length
         });
         return {
@@ -3327,8 +3341,15 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "changeActivePage", function (page) {
+      var onPageChange = _this.props.onPageChange;
+
       _this.setState({
         activePage: page
+      });
+
+      onPageChange && typeof onPageChange === 'function' && onPageChange({
+        activePage: page + 1,
+        pagesAmount: _this.pagesAmount()
       });
     });
 
@@ -3370,7 +3391,7 @@ function (_Component) {
           columns = _this$state3.columns;
 
       if (typeof data === 'string') {
-        this.fetchData(data);
+        this.fetchData(data, this.paginateRows);
       }
 
       order.length && this.handleSort(order[0], order[1]);
@@ -3389,47 +3410,52 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          autoWidth = _this$props.autoWidth,
-          bordered = _this$props.bordered,
-          borderless = _this$props.borderless,
-          barReverse = _this$props.barReverse,
-          btn = _this$props.btn,
-          className = _this$props.className,
-          children = _this$props.children,
-          dark = _this$props.dark,
-          data = _this$props.data,
-          displayEntries = _this$props.displayEntries,
-          entriesOptions = _this$props.entriesOptions,
-          entriesLabel = _this$props.entriesLabel,
-          exportToCSV = _this$props.exportToCSV,
-          fixed = _this$props.fixed,
-          hover = _this$props.hover,
-          info = _this$props.info,
-          infoLabel = _this$props.infoLabel,
-          maxHeight = _this$props.maxHeight,
-          order = _this$props.order,
-          pagesAmount = _this$props.pagesAmount,
-          paging = _this$props.paging,
-          paginationLabel = _this$props.paginationLabel,
-          responsive = _this$props.responsive,
-          responsiveSm = _this$props.responsiveSm,
-          responsiveMd = _this$props.responsiveMd,
-          responsiveLg = _this$props.responsiveLg,
-          responsiveXl = _this$props.responsiveXl,
-          searching = _this$props.searching,
-          searchLabel = _this$props.searchLabel,
-          scrollX = _this$props.scrollX,
-          scrollY = _this$props.scrollY,
-          small = _this$props.small,
-          sortable = _this$props.sortable,
-          striped = _this$props.striped,
-          tbodyColor = _this$props.tbodyColor,
-          tbodyTextWhite = _this$props.tbodyTextWhite,
-          theadColor = _this$props.theadColor,
-          theadTextWhite = _this$props.theadTextWhite,
-          sortRows = _this$props.sortRows,
-          attributes = _objectWithoutProperties(_this$props, ["autoWidth", "bordered", "borderless", "barReverse", "btn", "className", "children", "dark", "data", "displayEntries", "entriesOptions", "entriesLabel", "exportToCSV", "fixed", "hover", "info", "infoLabel", "maxHeight", "order", "pagesAmount", "paging", "paginationLabel", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "searching", "searchLabel", "scrollX", "scrollY", "small", "sortable", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite", "sortRows"]);
+      var _this$props2 = this.props,
+          autoWidth = _this$props2.autoWidth,
+          bordered = _this$props2.bordered,
+          borderless = _this$props2.borderless,
+          barReverse = _this$props2.barReverse,
+          btn = _this$props2.btn,
+          className = _this$props2.className,
+          children = _this$props2.children,
+          dark = _this$props2.dark,
+          data = _this$props2.data,
+          displayEntries = _this$props2.displayEntries,
+          entriesOptions = _this$props2.entriesOptions,
+          entriesLabel = _this$props2.entriesLabel,
+          exportToCSV = _this$props2.exportToCSV,
+          fixed = _this$props2.fixed,
+          hover = _this$props2.hover,
+          info = _this$props2.info,
+          infoLabel = _this$props2.infoLabel,
+          maxHeight = _this$props2.maxHeight,
+          noBottomColumns = _this$props2.noBottomColumns,
+          noRecordsFoundLabel = _this$props2.noRecordsFoundLabel,
+          order = _this$props2.order,
+          pagesAmount = _this$props2.pagesAmount,
+          paging = _this$props2.paging,
+          paginationLabel = _this$props2.paginationLabel,
+          responsive = _this$props2.responsive,
+          responsiveSm = _this$props2.responsiveSm,
+          responsiveMd = _this$props2.responsiveMd,
+          responsiveLg = _this$props2.responsiveLg,
+          responsiveXl = _this$props2.responsiveXl,
+          searching = _this$props2.searching,
+          searchLabel = _this$props2.searchLabel,
+          scrollX = _this$props2.scrollX,
+          scrollY = _this$props2.scrollY,
+          small = _this$props2.small,
+          sortable = _this$props2.sortable,
+          striped = _this$props2.striped,
+          tbodyColor = _this$props2.tbodyColor,
+          tbodyTextWhite = _this$props2.tbodyTextWhite,
+          theadColor = _this$props2.theadColor,
+          theadTextWhite = _this$props2.theadTextWhite,
+          sortRows = _this$props2.sortRows,
+          onSearch = _this$props2.onSearch,
+          onSort = _this$props2.onSort,
+          onPageChange = _this$props2.onPageChange,
+          attributes = _objectWithoutProperties(_this$props2, ["autoWidth", "bordered", "borderless", "barReverse", "btn", "className", "children", "dark", "data", "displayEntries", "entriesOptions", "entriesLabel", "exportToCSV", "fixed", "hover", "info", "infoLabel", "maxHeight", "noBottomColumns", "noRecordsFoundLabel", "order", "pagesAmount", "paging", "paginationLabel", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "searching", "searchLabel", "scrollX", "scrollY", "small", "sortable", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite", "sortRows", "onSearch", "onSort", "onPageChange"]);
 
       var _this$state4 = this.state,
           columns = _this$state4.columns,
@@ -3469,6 +3495,7 @@ function (_Component) {
         dark: dark,
         fixed: fixed,
         hover: hover,
+        noBottomColumns: noBottomColumns,
         responsive: responsive,
         responsiveSm: responsiveSm,
         responsiveMd: responsiveMd,
@@ -3558,6 +3585,7 @@ DataTable.propTypes = {
   info: propTypes.bool,
   infoLabel: propTypes.arrayOf(propTypes.string),
   maxHeight: propTypes.string,
+  noBottomColumns: propTypes.bool,
   order: propTypes.arrayOf(propTypes.string),
   pagesAmount: propTypes.number,
   paging: propTypes.bool,
@@ -3578,7 +3606,10 @@ DataTable.propTypes = {
   theadColor: propTypes.string,
   theadTextWhite: propTypes.bool,
   tbodyColor: propTypes.string,
-  tbodyTextWhite: propTypes.bool
+  tbodyTextWhite: propTypes.bool,
+  onSearch: propTypes.func,
+  onSort: propTypes.func,
+  onPageChange: propTypes.func
 };
 DataTable.defaultProps = {
   autoWidth: false,
@@ -3600,6 +3631,8 @@ DataTable.defaultProps = {
   hover: false,
   info: true,
   infoLabel: ['Showing', 'to', 'of', 'entries'],
+  noRecordsFoundLabel: 'No matching records found',
+  noBottomColumns: false,
   order: [],
   pagesAmount: 8,
   paging: true,
@@ -4619,7 +4652,7 @@ function (_React$Component) {
       var classes = classNames(formControlClass, size ? "form-control-".concat(size) : false, validate ? "validate" : false, filled ? "filled-in" : false, gap ? "with-gap" : false, type === "checkbox" ? gap ? false : "form-check-input" : false, type === "radio" ? "form-check-input" : false, className);
       var containerClassFix = classNames(type === "checkbox" || type === "radio" ? typeof label === "boolean" && label ? "d-flex" : "form-check" : "md-form", group ? "form-group" : false, size ? "form-".concat(size) : false, outline && "md-outline", background && "md-bg", containerClass);
       var iconClassFix = classNames(isNotEmpty && this.state.isFocused ? "active" : false, iconClass, "prefix");
-      var labelClassFix = classNames(isNotEmpty ? "active" : false, disabled ? "disabled" : false, type === "checkbox" ? typeof label === "boolean" && label ? "form-check-label" : "form-check-label mr-5" : false, type === "radio" ? typeof label === "boolean" && label ? "form-check-label" : "form-check-label mr-5" : false, labelClass);
+      var labelClassFix = classNames(isNotEmpty ? "active" : false, disabled ? "disabled" : false, type === "checkbox" ? "form-check-label" : false, type === "radio" ? "form-check-label" : false, labelClass);
 
       var renderFunction = function renderFunction() {
         return React__default.createElement(React__default.Fragment, null, icon && React__default.createElement(Fa, {
@@ -5120,7 +5153,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleEscape", function (e) {
-      if (e.keyCode === 27) {
+      if (_this.props.keyboard && e.keyCode === 27) {
         e.preventDefault();
 
         _this.props.toggle();
@@ -5234,6 +5267,7 @@ Modal.defaultProps = {
   backdropTransitionTimeout: 150,
   fade: true,
   isOpen: false,
+  keyboard: true,
   modalTransitionTimeout: 300,
   role: 'dialog',
   tabIndex: '-1',
@@ -5254,6 +5288,7 @@ Modal.propTypes = {
   hiddenModal: propTypes.func,
   hideModal: propTypes.func,
   id: propTypes.string,
+  keyboard: propTypes.bool,
   modalClassName: propTypes.string,
   modalStyle: propTypes.string,
   position: propTypes.string,
@@ -6480,8 +6515,6 @@ TreeviewList.defaultProps = {
 TreeviewList.contextTypes = {
   theme: propTypes.string
 };
-
-// FREE
 
 exports.Alert = Alert;
 exports.Animation = Animation;

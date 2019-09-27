@@ -37,7 +37,7 @@ class DataTable extends Component {
     const { order, columns } = this.state;
 
     if (typeof data === 'string') {
-      this.fetchData(data);
+      this.fetchData(data, this.paginateRows);
     }
 
     order.length && this.handleSort(order[0], order[1]);
@@ -80,10 +80,10 @@ class DataTable extends Component {
     this.setState({ unsearchable });
   };
 
-  fetchData = link => {
+  fetchData = (link, isPaginateRows) => {
     fetch(link)
       .then(res => res.json())
-      .then(json => this.setData(json.rows, json.columns))
+      .then(json => this.setData(json.rows, json.columns, isPaginateRows ? this.paginateRows : null))
       .catch(err => console.log(err));
   };
 
@@ -109,7 +109,13 @@ class DataTable extends Component {
   };
 
   handleSearchChange = e => {
-    this.setState({ search: e.target.value }, () => this.filterRows());
+    this.setState(
+      { search: e.target.value },
+      () => this.filterRows(),
+      this.props.onSearch &&
+        typeof this.props.onSearch === 'function' &&
+        this.props.onSearch(e.target.value)
+    );
   };
 
   checkFieldValue = (array, field) => {
@@ -138,12 +144,14 @@ class DataTable extends Component {
           ? -1
           : 1
         : a[field] > b[field]
-        ? -1
-        : 1;
+          ? -1
+          : 1;
     });
   };
 
   handleSort = (field, sort) => {
+    const { onSort } = this.props;
+
     if (sort === 'disabled') return;
 
     this.setState(
@@ -169,11 +177,15 @@ class DataTable extends Component {
       },
       () => this.filterRows()
     );
+
+    onSort &&
+      typeof onSort === 'function' &&
+      onSort({ column: field, direction: sort === 'desc' ? 'desc' : 'asc' });
   };
 
   filterRows = () => {
     const { unsearchable, search } = this.state;
-    const { sortRows } = this.props;
+    const { sortRows, noRecordsFoundLabel } = this.props;
 
     this.setState(
       prevState => {
@@ -202,7 +214,7 @@ class DataTable extends Component {
 
         if (filteredRows.length === 0)
           filteredRows.push({
-            message: 'No matching records found',
+            message: noRecordsFoundLabel,
             colspan: prevState.columns.length
           });
         return { filteredRows, activePage: 0 };
@@ -240,7 +252,12 @@ class DataTable extends Component {
   };
 
   changeActivePage = page => {
+    const { onPageChange } = this.props;
     this.setState({ activePage: page });
+
+    onPageChange &&
+      typeof onPageChange === 'function' &&
+      onPageChange({ activePage: page + 1, pagesAmount: this.pagesAmount() });
   };
 
   handleTableBodyScroll = e => {
@@ -267,6 +284,8 @@ class DataTable extends Component {
       info,
       infoLabel,
       maxHeight,
+      noBottomColumns,
+      noRecordsFoundLabel,
       order,
       pagesAmount,
       paging,
@@ -288,6 +307,9 @@ class DataTable extends Component {
       theadColor,
       theadTextWhite,
       sortRows,
+      onSearch,
+      onSort,
+      onPageChange,
       ...attributes
     } = this.props;
 
@@ -336,6 +358,7 @@ class DataTable extends Component {
               dark={dark}
               fixed={fixed}
               hover={hover}
+              noBottomColumns={noBottomColumns}
               responsive={responsive}
               responsiveSm={responsiveSm}
               responsiveMd={responsiveMd}
@@ -439,6 +462,7 @@ DataTable.propTypes = {
   info: PropTypes.bool,
   infoLabel: PropTypes.arrayOf(PropTypes.string),
   maxHeight: PropTypes.string,
+  noBottomColumns: PropTypes.bool,
   order: PropTypes.arrayOf(PropTypes.string),
   pagesAmount: PropTypes.number,
   paging: PropTypes.bool,
@@ -459,7 +483,10 @@ DataTable.propTypes = {
   theadColor: PropTypes.string,
   theadTextWhite: PropTypes.bool,
   tbodyColor: PropTypes.string,
-  tbodyTextWhite: PropTypes.bool
+  tbodyTextWhite: PropTypes.bool,
+  onSearch: PropTypes.func,
+  onSort: PropTypes.func,
+  onPageChange: PropTypes.func
 };
 
 DataTable.defaultProps = {
@@ -482,6 +509,8 @@ DataTable.defaultProps = {
   hover: false,
   info: true,
   infoLabel: ['Showing', 'to', 'of', 'entries'],
+  noRecordsFoundLabel: 'No matching records found',
+  noBottomColumns: false,
   order: [],
   pagesAmount: 8,
   paging: true,

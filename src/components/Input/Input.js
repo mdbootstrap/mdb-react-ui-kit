@@ -101,7 +101,7 @@ class Input extends React.Component {
       labelClass,
       size,
       success,
-      tag: Tag,  
+      tag: Tag,
       type,
       validate,
       value,
@@ -164,14 +164,10 @@ class Input extends React.Component {
       isNotEmpty ? "active" : false,
       disabled ? "disabled" : false,
       type === "checkbox"
-        ? typeof label === "boolean" && label
-          ? "form-check-label"
-          : "form-check-label mr-5"
+        ? "form-check-label"
         : false,
       type === "radio"
-        ? typeof label === "boolean" && label
-          ? "form-check-label"
-          : "form-check-label mr-5"
+        ? "form-check-label"
         : false,
       labelClass
     );
@@ -222,8 +218,8 @@ class Input extends React.Component {
     return noTag ? (
       renderFunction()
     ) : (
-      <Tag className={containerClassFix}>{renderFunction()}</Tag>
-    );
+        <Tag className={containerClassFix}>{renderFunction()}</Tag>
+      );
   }
 }
 
@@ -284,8 +280,8 @@ Input.defaultProps = {
   iconBrand: false,
   iconClass: "",
   iconLight: false,
-  onIconMouseEnter: () => {},
-  onIconMouseLeave: () => {},
+  onIconMouseEnter: () => { },
+  onIconMouseLeave: () => { },
   iconRegular: false,
   iconSize: undefined,
   id: undefined,

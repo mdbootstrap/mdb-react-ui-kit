@@ -31,6 +31,7 @@ const DataTableTable = props => {
     tbodyTextWhite,
     theadColor,
     theadTextWhite,
+    noBottomColumns,
     ...attributes
   } = props;
 
@@ -63,11 +64,13 @@ const DataTableTable = props => {
           sorted={sorted}
         />
         <TableBody color={tbodyColor} textWhite={tbodyTextWhite} rows={rows} />
-        <TableFoot
-          color={theadColor}
-          textWhite={theadTextWhite}
-          columns={columns}
-        />
+        {!noBottomColumns && (
+          <TableFoot
+            color={theadColor}
+            textWhite={theadTextWhite}
+            columns={columns}
+          />
+        )}
         {children}
       </Table>
     </div>
@@ -98,7 +101,8 @@ DataTableTable.propTypes = {
   tbodyTextWhite: PropTypes.bool.isRequired,
   columns: PropTypes.arrayOf(PropTypes.object),
   rows: PropTypes.arrayOf(PropTypes.object),
-  children: PropTypes.node
+  children: PropTypes.node,
+  noBottomColumns: PropTypes.bool
 };
 
 export default DataTableTable;

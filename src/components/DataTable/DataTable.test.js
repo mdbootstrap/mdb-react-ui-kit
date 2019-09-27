@@ -121,7 +121,8 @@ describe('<DataTable />', () => {
       theadColor: 'test',
       theadTextWhite: true,
       tbodyColor: 'test',
-      tbodyTextWhite: true
+      tbodyTextWhite: true,
+      noRecordsFoundLabel: 'test'
     };
 
     wrapper = setup(expectedProps);
@@ -466,6 +467,53 @@ describe('<DataTable />', () => {
     wrapper.instance().handleTableBodyScroll({ target: { scrollLeft: 255 } });
 
     expect(wrapper.state('translateScrollHead')).toEqual(255);
+  });
+
+  test('returns correct value from onSearch() method', () => {
+    const onSearchCb = jest.fn();
+    wrapper = setup({ onSearch: onSearchCb });
+
+    wrapper.instance().handleSearchChange({
+      target: {
+        value: 'testSearch'
+      }
+    });
+
+    expect(onSearchCb).toBeCalledWith('testSearch');
+  });
+
+  test('returns correct value from onSort() method', () => {
+    const onSortCb = jest.fn();
+    wrapper = setup({ onSort: onSortCb });
+
+    wrapper.instance().handleSort('age', 'desc');
+    expect(onSortCb).toBeCalledWith({ column: 'age', direction: 'desc' });
+
+    wrapper.instance().handleSort('age', 'asc');
+    expect(onSortCb).toBeCalledWith({ column: 'age', direction: 'asc' });
+  });
+
+  test('returns correct value from onPageChange() method', () => {
+    const onPageChangeCb = jest.fn();
+    wrapper = setup({ onPageChange: onPageChangeCb });
+
+    wrapper.instance().changeActivePage(5);
+    expect(onPageChangeCb).toBeCalledWith({
+      //returns 'page + 1' because page numbering starts from '1', not from '0'
+      activePage: 6,
+      pagesAmount: wrapper.instance().pagesAmount()
+    });
+  });
+
+  test('should not render bottom header with columns if (noBottomColumns)', () => {
+    wrapper = mount(<DataTable noBottomColumns />);
+    expect(wrapper.find('[data-test="table-foot"]')).toHaveLength(0);
+  });
+
+  test('should render bottom header with columns if (!noBottomColumns)', () => {
+    wrapper = mount(<DataTable noBottomColumns={false} />);
+
+    expect(wrapper.find('[data-test="table-foot"]')).toHaveLength(1);
   });
 
   describe('sortRows works correctly', () => {

@@ -79,6 +79,8 @@ import TreeviewList from './components/Treeview/TreeviewList';
 import View from './components/View';
 import Waves from './components/Waves';
 
+
+
 export {
   // FREE
   Alert,
@@ -161,6 +163,8 @@ export {
   TreeviewList,
   View,
   Waves,
+  
+  
 
   Alert as MDBAlert,
   Animation as MDBAnimation,
@@ -242,4 +246,6 @@ export {
   TreeviewList as MDBTreeviewList,
   View as MDBView,
   Waves as MDBWaves,
+  
+  
 };

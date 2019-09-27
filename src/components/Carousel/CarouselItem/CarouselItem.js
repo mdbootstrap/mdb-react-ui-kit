@@ -39,7 +39,7 @@ class CarouselItem extends Component {
       'carousel-item',
       {
         'active carousel-slide-item': this.context.slide,
-        'active': !this.context.slide && itemId === this.context.activeItem
+        active: !this.context.slide && itemId === this.context.activeItem
       },
       className
     );
@@ -54,6 +54,8 @@ class CarouselItem extends Component {
       } else {
         this.makeVisible();
       }
+    } else {
+      this.makeVisible();
     }
 
     return (

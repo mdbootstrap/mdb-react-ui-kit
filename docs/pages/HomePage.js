@@ -48,13 +48,31 @@ class HomePage extends React.Component {
                   </p>
                   <MDBRow className="d-flex flex-row justify-content-center row">
                     <a
-                      className="border nav-link border-light rounded mr-1"
+                      className="border nav-link border-light rounded mr-1 mx-2 mb-2"
                       href="https://mdbootstrap.com/react/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <MDBIcon icon="graduation-cap" className="mr-2" />
                       <span className="font-weight-bold">Official Documentation</span>
+                    </a>
+                    <a
+                      className="border nav-link border-light rounded mx-2 mb-2"
+                      href="https://mdbootstrap.com/products/react-ui-kit/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <MDBIcon far icon="gem" className="mr-2" />
+                      <span className="font-weight-bold">PRO</span>
+                    </a>
+                    <a
+                      className="border nav-link border-light rounded mx-2 mb-2"
+                      href="https://mdbootstrap.com/docs/react/getting-started/download/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <MDBIcon icon="download" className="mr-2" />
+                      <span className="font-weight-bold">FREE</span>
                     </a>
                   </MDBRow>
                 </MDBCardBody>
