@@ -1,10 +1,11 @@
-import * as React from "react";
+import * as React from 'react';
 
 declare class MDBCarousel extends React.Component<
   {
     activeItem?: number;
     className?: string;
     children?: React.ReactNode;
+    mobileGesture?: boolean;
     multiItem?: boolean;
     interval?: number;
     thumbnails?: boolean;

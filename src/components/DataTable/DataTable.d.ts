@@ -40,7 +40,7 @@ declare class MDBDataTable extends React.Component<
     order?: string[];
     pagesAmount?: number;
     paging?: boolean;
-    pagingLabel?: string[];
+    paginationLabel?: string[];
     responsive?: boolean;
     responsiveSm?: boolean;
     responsiveMd?: boolean;

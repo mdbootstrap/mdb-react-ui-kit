@@ -131,18 +131,6 @@ class App extends Component {
                     <strong>Addons</strong>
                   </MDBNavLink>
                 </MDBNavItem>
-                
-                {/* PRO-START */}
-                <MDBNavItem>
-                  <MDBNavLink
-                    onClick={this.closeCollapse('mainNavbarCollapse')}
-                    to='/sections'
-                  >
-                    <strong>Sections</strong>
-                  </MDBNavLink>
-                </MDBNavItem>
-                {/* PRO-END */}
-
                 <MDBNavItem>
                   <MDBTooltip placement='bottom' domElement style={{ display: "block" }}>
                     <a 

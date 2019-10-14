@@ -79,51 +79,7 @@ import MDBView from './components/View';
 import MDBWaves from './components/Waves';
 //FREE
 
-//PRO
-import MDBAutocomplete from './components/pro/Autocomplete';
-import MDBAvatar from './components/pro/Avatar';
-import MDBButtonFixed from './components/pro/ButtonFixed';
-import MDBButtonFixedItem from './components/pro/ButtonFixed/ButtonFixedItem';
-import MDBCardUp from './components/pro/CardUp';
-import MDBChip from './components/pro/Chip';
-import MDBChipsInput from './components/pro/ChipsInput';
-import MDBCollapseHeader from './components/pro/CollapseHeader';
-import MDBDatePicker from './components/pro/DatePicker';
-import MDBExportToCSV from './components/pro/DataTable/ExportToCSV';
-import MDBFileInput from './components/pro/InputFile';
-import MDBInputRange from './components/pro/InputRange';
-import MDBInputSwitch from './components/pro/InputSwitch';
-import MDBLightbox from './components/pro/Lightbox';
-import MDBPerfectScrollbar from './components/pro/PerfectScrollbar';
-import MDBRotatingCard from './components/pro/FlippingCard';
-import MDBScrollspyBox from './components/pro/ScrollSpy/ScrollSpyBox';
-import MDBScrollspyList from './components/pro/ScrollSpy/ScrollSpyList';
-import MDBScrollspyListItem from './components/pro/ScrollSpy/ScrollSpyListItem';
-import MDBSelect from './components/pro/Select';
-import MDBSelectInput from './components/pro/Select/SelectInput';
-import MDBSelectOption from './components/pro/Select/SelectOption';
-import MDBSelectOptions from './components/pro/Select/SelectOptions';
-import MDBSideNav from './components/pro/SideNav';
-import MDBSideNavCat from './components/pro/SideNav/SideNavCat';
-import MDBSideNavItem from './components/pro/SideNav/SideNavItem';
-import MDBSideNavLink from './components/pro/SideNav/SideNavLink';
-import MDBSideNavNav from './components/pro/SideNav/SideNavNav';
-import MDBSimpleChart from './components/pro/SimpleChart';
-import MDBSmoothScroll from './components/pro/SmoothScroll';
-import MDBSpinner from './components/pro/Spinner';
-import MDBStep from './components/pro/Step';
-import MDBStepper from './components/pro/Stepper';
-import MDBSticky from './components/pro/Sticky';
-import MDBStickyContainer from './components/pro/StickyContainer';
-import MDBStreak from './components/pro/Streak';
-import MDBScrollspyText from './components/pro/ScrollSpy/ScrollSpyText';
-import MDBTableEditable from './components/pro/TableEditable';
-import MDBTestimonial from './components/pro/Testimonial';
-import MDBTimeline from './components/pro/Timeline';
-import MDBTimelineStep from './components/pro/Timeline/TimelineStep';
-import MDBTimePicker from './components/pro/TimePicker/TimePicker';
-import { MDBToast, MDBToastContainer } from './components/pro/Toast/';
-//PRO
+
 
 export {
   //FREE
@@ -208,50 +164,5 @@ export {
   MDBWaves,
   //FREE
   
-  //PRO
-  MDBAutocomplete,
-  MDBAvatar,
-  MDBButtonFixed,
-  MDBButtonFixedItem,
-  MDBCardUp,
-  MDBChip,
-  MDBChipsInput,
-  MDBCollapseHeader,
-  MDBDatePicker,
-  MDBExportToCSV,
-  MDBRotatingCard,
-  MDBFileInput,
-  MDBLightbox,
-  MDBInputRange as MDBRangeInput,
-  MDBInputSwitch as MDBSwitch,
-  MDBPerfectScrollbar,
-  MDBScrollspyBox,
-  MDBScrollspyList,
-  MDBScrollspyListItem,
-  MDBScrollspyText,
-  MDBSelect,
-  MDBSelectInput,
-  MDBSelectOption,
-  MDBSelectOptions,
-  MDBSideNav,
-  MDBSideNavCat,
-  MDBSideNavItem,
-  MDBSideNavLink,
-  MDBSideNavNav,
-  MDBSimpleChart,
-  MDBSmoothScroll,
-  MDBSpinner,
-  MDBStep,
-  MDBStepper,
-  MDBSticky,
-  MDBStickyContainer as MDBStickyContent,
-  MDBStreak,
-  MDBTableEditable,
-  MDBTestimonial,
-  MDBTimeline,
-  MDBTimelineStep,
-  MDBTimePicker,
-  MDBToast,
-  MDBToastContainer
-  //PRO
+  
 };

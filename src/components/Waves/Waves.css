@@ -17,7 +17,7 @@
 .Ripple-parent {
   position: relative;
   overflow: hidden;
-  touch-action: none;
+  cursor: pointer;
 }
 
 @keyframes ripple {

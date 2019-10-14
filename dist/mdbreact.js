@@ -846,7 +846,7 @@ BreadcrumbItem.defaultProps = {
   iconSize: ""
 };
 
-var css$1 = ".Ripple {\n  position: absolute;\n  background: rgba(255, 255, 255, 0.3);\n  border-radius: 50%;\n  opacity: 1;\n  transform: scale(0);\n}\n\n.Ripple-outline {\n  background: rgba(0, 0, 0, 0.2);\n}\n\n.Ripple.is-reppling {\n  animation: ripple 0.5s linear;\n}\n\n.Ripple-parent {\n  position: relative;\n  overflow: hidden;\n  touch-action: none;\n}\n\n@keyframes ripple {\n  100% {\n    opacity: 0;\n    transform: scale(3);\n  }\n}\n";
+var css$1 = ".Ripple {\n  position: absolute;\n  background: rgba(255, 255, 255, 0.3);\n  border-radius: 50%;\n  opacity: 1;\n  transform: scale(0);\n}\n\n.Ripple-outline {\n  background: rgba(0, 0, 0, 0.2);\n}\n\n.Ripple.is-reppling {\n  animation: ripple 0.5s linear;\n}\n\n.Ripple-parent {\n  position: relative;\n  overflow: hidden;\n  cursor: pointer;\n}\n\n@keyframes ripple {\n  100% {\n    opacity: 0;\n    transform: scale(3);\n  }\n}\n";
 styleInject(css$1);
 
 var Waves =
@@ -1673,10 +1673,12 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "startTouch", function (e) {
-      _this.setState({
-        initialX: e.touches[0].clientX,
-        initialY: e.touches[0].clientY
-      });
+      if (_this.props.mobileGesture !== false) {
+        _this.setState({
+          initialX: e.touches[0].clientX,
+          initialY: e.touches[0].clientY
+        });
+      }
     });
 
     _defineProperty(_assertThisInitialized(_this), "moveTouch", function (e) {
@@ -1770,6 +1772,7 @@ function (_Component) {
           activeItem = _this$props.activeItem,
           children = _this$props.children,
           className = _this$props.className,
+          mobileGesture = _this$props.mobileGesture,
           multiItem = _this$props.multiItem,
           slide = _this$props.slide,
           thumbnails = _this$props.thumbnails,
@@ -1780,7 +1783,7 @@ function (_Component) {
           showControls = _this$props.showControls,
           showIndicators = _this$props.showIndicators,
           onHoverStop = _this$props.onHoverStop,
-          attributes = _objectWithoutProperties(_this$props, ["activeItem", "children", "className", "multiItem", "slide", "thumbnails", "interval", "testimonial", "tag", "length", "showControls", "showIndicators", "onHoverStop"]);
+          attributes = _objectWithoutProperties(_this$props, ["activeItem", "children", "className", "mobileGesture", "multiItem", "slide", "thumbnails", "interval", "testimonial", "tag", "length", "showControls", "showIndicators", "onHoverStop"]);
 
       var swipeAvailable = this.state.swipeAvailable;
       var ariaLabel = 'carousel';
@@ -1857,6 +1860,7 @@ Carousel.propTypes = {
   tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
   className: propTypes.string,
   children: propTypes.node,
+  mobileGesture: propTypes.bool,
   multiItem: propTypes.bool,
   interval: propTypes.oneOfType([propTypes.number, propTypes.bool]),
   thumbnails: propTypes.bool,
@@ -1868,6 +1872,7 @@ Carousel.propTypes = {
   onHoverStop: propTypes.bool
 };
 Carousel.defaultProps = {
+  mobileGesture: true,
   tag: 'div',
   interval: 6000,
   showControls: true,

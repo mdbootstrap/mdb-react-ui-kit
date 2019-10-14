@@ -83,10 +83,12 @@ class Carousel extends Component {
   };
 
   startTouch = e => {
-    this.setState({
-      initialX: e.touches[0].clientX,
-      initialY: e.touches[0].clientY
-    });
+    if (this.props.mobileGesture !== false) {
+      this.setState({
+        initialX: e.touches[0].clientX,
+        initialY: e.touches[0].clientY
+      });
+    }
   };
 
   moveTouch = e => {
@@ -134,6 +136,7 @@ class Carousel extends Component {
       activeItem,
       children,
       className,
+      mobileGesture,
       multiItem,
       slide,
       thumbnails,
@@ -240,6 +243,7 @@ Carousel.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
   children: PropTypes.node,
+  mobileGesture: PropTypes.bool,
   multiItem: PropTypes.bool,
   interval: PropTypes.oneOfType([PropTypes.number, PropTypes.bool]),
   thumbnails: PropTypes.bool,
@@ -252,6 +256,7 @@ Carousel.propTypes = {
 };
 
 Carousel.defaultProps = {
+  mobileGesture: true,
   tag: 'div',
   interval: 6000,
   showControls: true,
