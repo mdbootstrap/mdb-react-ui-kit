@@ -62,7 +62,7 @@ class DataTable extends Component {
       () => ({
         columns,
         rows,
-        filteredRows: rows
+        filteredRows: this.filterRows()
       }),
       callback && typeof callback === 'function' && (() => callback())
     );
@@ -217,7 +217,10 @@ class DataTable extends Component {
             message: noRecordsFoundLabel,
             colspan: prevState.columns.length
           });
-        return { filteredRows, activePage: 0 };
+        return { filteredRows, activePage: prevState.activePage =
+              prevState.activePage < prevState.pages.length || prevState.activePage === 0
+              ? prevState.activePage
+              : prevState.pages.length - 1 }
       },
       () => this.paginateRows()
     );
@@ -238,10 +241,10 @@ class DataTable extends Component {
           pages.push(filteredRows.slice(pageEndIndex - entries, pageEndIndex));
         }
 
-        activePage =
-          activePage < pages.length || activePage === 0
-            ? activePage
-            : pages.length - 1;
+        // activePage =
+        //   activePage < pages.length || activePage === 0
+        //     ? activePage
+        //     : pages.length - 1;
       } else {
         pages.push(filteredRows);
         activePage = 0;
