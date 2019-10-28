@@ -65,6 +65,7 @@ import Popover from './components/Popper';
 import PopoverBody from './components/Popper/PopoverBody';
 import PopoverHeader from './components/Popper/PopoverHeader';
 import Progress from './components/Progress';
+import Rating from './components/Rating';
 import Row from './components/Row';
 import TabContent from './components/TabContent';
 import TabPane from './components/TabPane';
@@ -150,6 +151,7 @@ export {
   PopoverBody,
   PopoverHeader,
   Progress,
+  Rating,
   Row,
   TabContent,
   TabPane,
@@ -163,7 +165,7 @@ export {
   TreeviewList,
   View,
   Waves,
-  
+
   
 
   Alert as MDBAlert,
@@ -233,6 +235,7 @@ export {
   PopoverBody as MDBPopoverBody,
   PopoverHeader as MDBPopoverHeader,
   Progress as MDBProgress,
+  Rating as MDBRating,
   Row as MDBRow,
   TabPane as MDBTabPane,
   TabContent as MDBTabContent,
@@ -246,6 +249,6 @@ export {
   TreeviewList as MDBTreeviewList,
   View as MDBView,
   Waves as MDBWaves,
-  
+
   
 };

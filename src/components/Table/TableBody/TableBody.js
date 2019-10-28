@@ -1,37 +1,60 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const TableBody = props => {
-  const { children, color, rows, textWhite, ...attributes } = props;
+  const { children, color, columns, rows, textWhite, ...attributes } = props;
 
   const classes = classNames(color, {
-    "text-white": textWhite
+    'text-white': textWhite
   });
+  const renderTD = (field, key, array, row) => {
+    if (field === 'clickEvent') return null;
+    if (field !== 'colspan') {
+      if (row.message) {
+        return (
+          key === 0 && (
+            <td key={key} colSpan={row.colspan}>
+              {row.message}
+            </td>
+          )
+        );
+      } else {
+        return (
+          array[key + 1] !== 'colspan' &&
+          row[field] && <td key={key}>{row[field]}</td>
+        );
+      }
+    } else {
+      return (
+        <td key={key} colSpan={row['colspan']}>
+          {row[array[key - 1]]}
+        </td>
+      );
+    }
+  };
 
   return (
-    <tbody data-test="table-body" {...attributes} className={classes || undefined}>
+    <tbody
+      data-test='table-body'
+      {...attributes}
+      className={classes || undefined}
+    >
       {rows &&
         rows.map((row, index) => (
-          <tr 
-            onClick={row.hasOwnProperty("clickEvent") ? row.clickEvent : undefined} 
+          <tr
+            onClick={
+              row.hasOwnProperty('clickEvent') ? row.clickEvent : undefined
+            }
             key={index}
           >
-            {Object.keys(row).map((key, index, array) => {
-              if(key === "clickEvent") return null;
-
-              if (key !== "colspan") {
-                return array[index + 1] !== "colspan" ? (
-                  <td key={key}>{row[key]}</td>
-                ) : null;
-              } else {
-                return (
-                  <td key={key} colSpan={row[key]}>
-                    {row[array[index - 1]]}
-                  </td>
-                );
-              }
-            })}
+            {columns
+              ? columns.map(({ field }, key, array) =>
+                  renderTD(field, key, array, row)
+                )
+              : Object.keys(row).map((field, key, array) =>
+                  renderTD(field, key, array, row)
+                )}
           </tr>
         ))}
       {children}

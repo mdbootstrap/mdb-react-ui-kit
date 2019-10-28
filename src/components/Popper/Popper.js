@@ -3,7 +3,7 @@ import { Popper as ReactPopper, Manager, Reference } from "react-popper";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-const Popper = ({ children, clickable, domElement, modifiers, id, isVisible, onChange, placement, popover, style, tag }) => {
+const Popper = ({ children, className, clickable, domElement, modifiers, id, isVisible, onChange, placement, popover, style, tag }) => {
   const [visible, setVisible] = useState(isVisible);
 
   useEffect(() => { setVisible(isVisible) }, [isVisible]);
@@ -31,6 +31,7 @@ const Popper = ({ children, clickable, domElement, modifiers, id, isVisible, onC
     "fade",
     popover ? `popover bs-popover-${placement} popover-enter-done` : `tooltip bs-tooltip-${placement}`,
     visible ? "show" : "",
+    className ? className : ""
   );
 
   const contentClasses = classNames(

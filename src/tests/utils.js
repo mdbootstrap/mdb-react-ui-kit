@@ -15,8 +15,8 @@ export const checkProps = (component, expectedProps) => {
   expect(result).toBeUndefined();
 };
 
-export const checkClass = (component, className) => {
-  return expect(component.find(`.${className}`).length).toBe(1);
+export const checkClass = (component, className, toBe = 1) => {
+  return expect(component.find(`.${className}`).length).toBe(toBe);
 };
 
 export const checkTag = (component, tag) => {

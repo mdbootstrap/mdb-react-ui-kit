@@ -24,6 +24,7 @@ declare class MDBInput extends React.Component<
     outline?: boolean;
     label?: string | boolean;
     labelClass?: string;
+    labelId?: string;
     noTag?: boolean;
     size?: "sm" | "lg";
     success?: string;

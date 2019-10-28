@@ -65,6 +65,7 @@ import MDBPopper from './components/Popper';
 import MDBPopoverBody from './components/Popper/PopoverBody';
 import MDBPopoverHeader from './components/Popper/PopoverHeader';
 import MDBProgress from './components/Progress';
+import MDBRating from './components/Rating';
 import MDBRow from './components/Row';
 import MDBTabContent from './components/TabContent';
 import MDBTabPane from './components/TabPane';
@@ -150,6 +151,7 @@ export {
   MDBPopoverBody,
   MDBPopoverHeader,
   MDBProgress,
+  MDBRating,
   MDBRow,
   MDBTabContent,
   MDBTabPane,
@@ -163,6 +165,6 @@ export {
   MDBView,
   MDBWaves,
   //FREE
-  
+
   
 };

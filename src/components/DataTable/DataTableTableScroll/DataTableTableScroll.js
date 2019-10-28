@@ -132,6 +132,7 @@ const DataTableTableScroll = props => {
               color={tbodyColor}
               textWhite={tbodyTextWhite}
               rows={rows}
+              columns={columns}
             />
             {children}
           </Table>

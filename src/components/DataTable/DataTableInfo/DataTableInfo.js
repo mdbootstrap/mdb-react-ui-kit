@@ -1,20 +1,38 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 const DataTableInfo = props => {
-  const { activePage, entries, filteredRows, info, pages, label } = props;
+  const {
+    activePage,
+    entries,
+    filteredRows,
+    info,
+    pages,
+    label,
+    noRecordsFoundLabel
+  } = props;
+
+  const SHOWING_LABEL = label[0];
+  const TO_LABEL = label[1];
+  const OF_LABEL = label[2];
+  const ENTRIES_LABEL = label[3];
+
+  const NO_RECORDS =
+    filteredRows.length > 0 && filteredRows[0].message === noRecordsFoundLabel;
+  const RECORDS = activePage > 0 ? activePage * entries + 1 : activePage + 1;
+  const RECORDS_ON_PAGE =
+    pages.length - 1 > activePage
+      ? pages[activePage].length * (activePage + 1)
+      : filteredRows.length;
+  const ENTRIES = filteredRows.length;
 
   return (
     <div data-test='datatable-info' className='col-sm-12 col-md-5'>
       {info && (
         <div className='dataTables_info' role='status' aria-live='polite'>
-          {label[0]}{' '}
-          {activePage > 0 ? activePage * entries + 1 : activePage + 1}{' '}
-          {label[1]}{' '}
-          {pages.length - 1 > activePage
-            ? pages[activePage].length * (activePage + 1)
-            : filteredRows.length}{' '}
-          {label[2]} {filteredRows.length} {label[3]}
+          {!NO_RECORDS
+            ? `${SHOWING_LABEL} ${RECORDS} ${TO_LABEL} ${RECORDS_ON_PAGE} ${OF_LABEL} ${ENTRIES} ${ENTRIES_LABEL}`
+            : `${SHOWING_LABEL} 0 ${ENTRIES_LABEL}`}
         </div>
       )}
     </div>
@@ -25,6 +43,7 @@ DataTableInfo.propTypes = {
   activePage: PropTypes.number.isRequired,
   entries: PropTypes.number.isRequired,
   filteredRows: PropTypes.array.isRequired,
+  noRecordsFoundLabel: PropTypes.string.isRequired,
   info: PropTypes.bool.isRequired,
   pages: PropTypes.array.isRequired,
   label: PropTypes.arrayOf(PropTypes.string)

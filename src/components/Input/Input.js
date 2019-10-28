@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import Fa from "../Fa";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import Fa from '../Fa';
 
 class Input extends React.Component {
   constructor(props) {
@@ -44,7 +44,7 @@ class Input extends React.Component {
 
   onChange = event => {
     event.stopPropagation();
-    if (this.props.type !== "checkbox" && this.props.type !== "radio") {
+    if (this.props.type !== 'checkbox' && this.props.type !== 'radio') {
       this.setState({
         innerValue: event.target.value,
         isPristine: false
@@ -57,7 +57,7 @@ class Input extends React.Component {
 
   onInput = event => {
     event.stopPropagation();
-    if (this.props.type !== "checkbox" && this.props.type !== "radio") {
+    if (this.props.type !== 'checkbox' && this.props.type !== 'radio') {
       this.setState({
         innerValue: event.target.value,
         isPristine: false
@@ -99,6 +99,7 @@ class Input extends React.Component {
       outline,
       label,
       labelClass,
+      labelId,
       size,
       success,
       tag: Tag,
@@ -114,16 +115,16 @@ class Input extends React.Component {
         !!hint ||
         this.state.isFocused ||
         this.state.innerValue === 0) &&
-      (type !== "checkbox" && type !== "radio");
-    let TagInput = "";
-    let formControlClass = "";
+      (type !== 'checkbox' && type !== 'radio');
+    let TagInput = '';
+    let formControlClass = '';
 
-    if (type === "textarea") {
-      formControlClass = outline ? "form-control" : "md-textarea form-control";
-      TagInput = "textarea";
+    if (type === 'textarea') {
+      formControlClass = outline ? 'form-control' : 'md-textarea form-control';
+      TagInput = 'textarea';
     } else {
-      formControlClass = "form-control";
-      TagInput = "input";
+      formControlClass = 'form-control';
+      TagInput = 'input';
       attributes.type = type;
     }
 
@@ -132,43 +133,39 @@ class Input extends React.Component {
     const classes = classNames(
       formControlClass,
       size ? `form-control-${size}` : false,
-      validate ? "validate" : false,
-      filled ? "filled-in" : false,
-      gap ? "with-gap" : false,
-      type === "checkbox" ? (gap ? false : "form-check-input") : false,
-      type === "radio" ? "form-check-input" : false,
+      validate ? 'validate' : false,
+      filled ? 'filled-in' : false,
+      gap ? 'with-gap' : false,
+      type === 'checkbox' ? (gap ? false : 'form-check-input') : false,
+      type === 'radio' ? 'form-check-input' : false,
       className
     );
 
     const containerClassFix = classNames(
-      type === "checkbox" || type === "radio"
-        ? typeof label === "boolean" && label
-          ? "d-flex"
-          : "form-check"
-        : "md-form",
+      type === 'checkbox' || type === 'radio'
+        ? typeof label === 'boolean' && label
+          ? 'd-flex'
+          : 'form-check'
+        : 'md-form',
 
-      group ? "form-group" : false,
+      group ? 'form-group' : false,
       size ? `form-${size}` : false,
-      outline && "md-outline",
-      background && "md-bg",
+      outline && 'md-outline',
+      background && 'md-bg',
       containerClass
     );
 
     const iconClassFix = classNames(
-      isNotEmpty && this.state.isFocused ? "active" : false,
+      isNotEmpty && this.state.isFocused ? 'active' : false,
       iconClass,
-      "prefix"
+      'prefix'
     );
 
     const labelClassFix = classNames(
-      isNotEmpty ? "active" : false,
-      disabled ? "disabled" : false,
-      type === "checkbox"
-        ? "form-check-label"
-        : false,
-      type === "radio"
-        ? "form-check-label"
-        : false,
+      isNotEmpty ? 'active' : false,
+      disabled ? 'disabled' : false,
+      type === 'checkbox' ? 'form-check-label' : false,
+      type === 'radio' ? 'form-check-label' : false,
       labelClass
     );
     const renderFunction = () => (
@@ -187,7 +184,7 @@ class Input extends React.Component {
           />
         )}
         <TagInput
-          data-test="input"
+          data-test='input'
           {...attributes}
           className={classes}
           id={id}
@@ -205,7 +202,7 @@ class Input extends React.Component {
             htmlFor={id}
             data-error={error}
             data-success={success}
-            id={id}
+            id={labelId}
             onClick={this.setFocus}
           >
             {label}
@@ -218,8 +215,8 @@ class Input extends React.Component {
     return noTag ? (
       renderFunction()
     ) : (
-        <Tag className={containerClassFix}>{renderFunction()}</Tag>
-      );
+      <Tag className={containerClassFix}>{renderFunction()}</Tag>
+    );
   }
 }
 
@@ -252,6 +249,7 @@ Input.propTypes = {
     PropTypes.bool
   ]),
   labelClass: PropTypes.string,
+  labelId: PropTypes.string,
   noTag: PropTypes.bool,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
@@ -268,33 +266,34 @@ Input.propTypes = {
 };
 
 Input.defaultProps = {
-  className: "",
-  containerClass: "",
+  className: '',
+  containerClass: '',
   disabled: false,
-  error: "",
+  error: '',
   filled: false,
   gap: false,
   group: false,
   hint: undefined,
-  icon: "",
+  icon: '',
   iconBrand: false,
-  iconClass: "",
+  iconClass: '',
   iconLight: false,
-  onIconMouseEnter: () => { },
-  onIconMouseLeave: () => { },
+  onIconMouseEnter: () => {},
+  onIconMouseLeave: () => {},
   iconRegular: false,
   iconSize: undefined,
   id: undefined,
   noTag: false,
   outline: false,
-  label: "",
-  labelClass: "",
-  size: "",
-  success: "",
-  tag: "div",
-  type: "text",
+  label: '',
+  labelClass: '',
+  labelId: '',
+  size: '',
+  success: '',
+  tag: 'div',
+  type: 'text',
   validate: false,
-  valueDefault: ""
+  valueDefault: ''
 };
 
 export default Input;

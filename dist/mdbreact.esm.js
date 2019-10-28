@@ -4,7 +4,8 @@ import { Transition } from 'react-transition-group';
 import ReactDOM from 'react-dom';
 import { Manager, Popper as Popper$1, Reference } from 'react-popper';
 import NumericInput from 'react-numeric-input';
-import { NavLink as NavLink$1 } from 'react-router-dom';
+import { NavLink as NavLink$1, Link } from 'react-router-dom';
+import { MDBPopoverHeader, MDBPopoverBody, MDBBtn, MDBTooltip, Fa as Fa$1 } from 'mdbreact';
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -766,7 +767,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css = ".bc-icons.breadcrumb-item::before,\n.bc-icons.breadcrumb-item::after {\n  content: none;\n}\n\n.bc-icons.breadcrumb-item + .active.breadcrumb-item::before,\n.bc-icons.breadcrumb-item + .active.breadcrumb-item::after{\n  content: none;\n}\n\n.bc-icons.breadcrumb-item.active {\n  color: #eeeeee;\n}\n";
+var css = ".bc-icons.breadcrumb-item::before,\r\n.bc-icons.breadcrumb-item::after {\r\n  content: none;\r\n}\r\n\r\n.bc-icons.breadcrumb-item + .active.breadcrumb-item::before,\r\n.bc-icons.breadcrumb-item + .active.breadcrumb-item::after{\r\n  content: none;\r\n}\r\n\r\n.bc-icons.breadcrumb-item.active {\r\n  color: #eeeeee;\r\n}\r\n";
 styleInject(css);
 
 var BreadcrumbItem = function BreadcrumbItem(props) {
@@ -839,7 +840,7 @@ BreadcrumbItem.defaultProps = {
   iconSize: ""
 };
 
-var css$1 = ".Ripple {\n  position: absolute;\n  background: rgba(255, 255, 255, 0.3);\n  border-radius: 50%;\n  opacity: 1;\n  transform: scale(0);\n}\n\n.Ripple-outline {\n  background: rgba(0, 0, 0, 0.2);\n}\n\n.Ripple.is-reppling {\n  animation: ripple 0.5s linear;\n}\n\n.Ripple-parent {\n  position: relative;\n  overflow: hidden;\n  cursor: pointer;\n}\n\n@keyframes ripple {\n  100% {\n    opacity: 0;\n    transform: scale(3);\n  }\n}\n";
+var css$1 = ".Ripple {\r\n  position: absolute;\r\n  background: rgba(255, 255, 255, 0.3);\r\n  border-radius: 50%;\r\n  opacity: 1;\r\n  transform: scale(0);\r\n}\r\n\r\n.Ripple-outline {\r\n  background: rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.Ripple.is-reppling {\r\n  animation: ripple 0.5s linear;\r\n}\r\n\r\n.Ripple-parent {\r\n  position: relative;\r\n  overflow: hidden;\r\n  cursor: pointer;\r\n}\r\n\r\n@keyframes ripple {\r\n  100% {\r\n    opacity: 0;\r\n    transform: scale(3);\r\n  }\r\n}\r\n";
 styleInject(css$1);
 
 var Waves =
@@ -1030,7 +1031,7 @@ Button.propTypes = {
   className: propTypes.string
 };
 
-var css$2 = ".btn-group-vertical>.btn,\n.btn-group-vertical>.btn+.btn-group,\n.btn-group-vertical>.btn-group+.btn,\n.btn-group-vertical>.btn-group+.btn-group {\n  margin-left: 0px;\n}\n\n.btn-group-lg>.btn {\n  font-size: 0.9rem;\n  padding: 1rem 2.4rem;\n}\n\n.btn-group-sm>.btn {\n  font-size: 0.6rem;\n  padding: 0.5rem 1.6rem;\n}\n\n.btn-floating.btn.btn-sm,\n.btn-floating.btn.btn-lg {\n  padding: 0;\n}\n";
+var css$2 = ".btn-group-vertical>.btn,\r\n.btn-group-vertical>.btn+.btn-group,\r\n.btn-group-vertical>.btn-group+.btn,\r\n.btn-group-vertical>.btn-group+.btn-group {\r\n  margin-left: 0px;\r\n}\r\n\r\n.btn-group-lg>.btn {\r\n  font-size: 0.9rem;\r\n  padding: 1rem 2.4rem;\r\n}\r\n\r\n.btn-group-sm>.btn {\r\n  font-size: 0.6rem;\r\n  padding: 0.5rem 1.6rem;\r\n}\r\n\r\n.btn-floating.btn.btn-sm,\r\n.btn-floating.btn.btn-lg {\r\n  padding: 0;\r\n}\r\n";
 styleInject(css$2);
 
 var ButtonGroup = function ButtonGroup(props) {
@@ -1610,7 +1611,7 @@ CarouselIndicators.defaultProps = {
   className: ""
 };
 
-var css$3 = ".carousel-inner {\n  position: relative;\n  overflow: hidden;\n  width: 100%;\n  height: 100%;\n}\n\n.carousel-fade .carousel-item {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  display: block !important;\n  opacity: 0;\n  z-index: 0;\n  transition: transform 0ms ease-in-out, opacity 0.8s ease-out;\n}\n\n.carousel-fade .carousel-item.active {\n  position: relative;\n  z-index: 1;\n  opacity: 1;\n}\n\n.carousel-multi-item .carousel-item {\n  display: inline-block !important;\n}\n\n.carousel .carousel-slide-item {\n  transition: left 0.5s;\n}\n\n.carousel-control-prev, .carousel-control-next, .carousel-item-prev, .carousel-item-next {\n  z-index: 2;\n}\n";
+var css$3 = ".carousel-inner {\r\n  position: relative;\r\n  overflow: hidden;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.carousel-fade .carousel-item {\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  display: block !important;\r\n  opacity: 0;\r\n  z-index: 0;\r\n  transition: transform 0ms ease-in-out, opacity 0.8s ease-out;\r\n}\r\n\r\n.carousel-fade .carousel-item.active {\r\n  position: relative;\r\n  z-index: 1;\r\n  opacity: 1;\r\n}\r\n\r\n.carousel-multi-item .carousel-item {\r\n  display: inline-block !important;\r\n}\r\n\r\n.carousel .carousel-slide-item {\r\n  transition: left 0.5s;\r\n}\r\n\r\n.carousel-control-prev, .carousel-control-next, .carousel-item-prev, .carousel-item-next {\r\n  z-index: 2;\r\n}\r\n";
 styleInject(css$3);
 
 var Carousel =
@@ -2364,7 +2365,7 @@ DataTableHead.defaultProps = {
   textWhite: false
 };
 
-var css$4 = ".table-wrapper-scroll-y {\n  display: block;\n  max-height: 200px;\n  overflow-y: auto;\n  -ms-overflow-style: -ms-autohiding-scrollbar;\n}\n";
+var css$4 = ".table-wrapper-scroll-y {\r\n  display: block;\r\n  max-height: 200px;\r\n  overflow-y: auto;\r\n  -ms-overflow-style: -ms-autohiding-scrollbar;\r\n}\r\n";
 styleInject(css$4);
 
 var Table = function Table(props) {
@@ -2445,34 +2446,50 @@ Table.propTypes = {
 var TableBody = function TableBody(props) {
   var children = props.children,
       color = props.color,
+      columns = props.columns,
       rows = props.rows,
       textWhite = props.textWhite,
-      attributes = _objectWithoutProperties(props, ["children", "color", "rows", "textWhite"]);
+      attributes = _objectWithoutProperties(props, ["children", "color", "columns", "rows", "textWhite"]);
 
   var classes = classNames(color, {
-    "text-white": textWhite
+    'text-white': textWhite
   });
+
+  var renderTD = function renderTD(field, key, array, row) {
+    if (field === 'clickEvent') return null;
+
+    if (field !== 'colspan') {
+      if (row.message) {
+        return key === 0 && React.createElement("td", {
+          key: key,
+          colSpan: row.colspan
+        }, row.message);
+      } else {
+        return array[key + 1] !== 'colspan' && row[field] && React.createElement("td", {
+          key: key
+        }, row[field]);
+      }
+    } else {
+      return React.createElement("td", {
+        key: key,
+        colSpan: row['colspan']
+      }, row[array[key - 1]]);
+    }
+  };
+
   return React.createElement("tbody", _extends({
     "data-test": "table-body"
   }, attributes, {
     className: classes || undefined
   }), rows && rows.map(function (row, index) {
     return React.createElement("tr", {
-      onClick: row.hasOwnProperty("clickEvent") ? row.clickEvent : undefined,
+      onClick: row.hasOwnProperty('clickEvent') ? row.clickEvent : undefined,
       key: index
-    }, Object.keys(row).map(function (key, index, array) {
-      if (key === "clickEvent") return null;
-
-      if (key !== "colspan") {
-        return array[index + 1] !== "colspan" ? React.createElement("td", {
-          key: key
-        }, row[key]) : null;
-      } else {
-        return React.createElement("td", {
-          key: key,
-          colSpan: row[key]
-        }, row[array[index - 1]]);
-      }
+    }, columns ? columns.map(function (_ref, key, array) {
+      var field = _ref.field;
+      return renderTD(field, key, array, row);
+    }) : Object.keys(row).map(function (field, key, array) {
+      return renderTD(field, key, array, row);
     }));
   }), children);
 };
@@ -2548,7 +2565,8 @@ var DataTableTable = function DataTableTable(props) {
       theadColor = props.theadColor,
       theadTextWhite = props.theadTextWhite,
       noBottomColumns = props.noBottomColumns,
-      attributes = _objectWithoutProperties(props, ["autoWidth", "bordered", "borderless", "btn", "children", "columns", "dark", "fixed", "hover", "handleSort", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "rows", "small", "sortable", "sorted", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite", "noBottomColumns"]);
+      noRecordsFoundLabel = props.noRecordsFoundLabel,
+      attributes = _objectWithoutProperties(props, ["autoWidth", "bordered", "borderless", "btn", "children", "columns", "dark", "fixed", "hover", "handleSort", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "rows", "small", "sortable", "sorted", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite", "noBottomColumns", "noRecordsFoundLabel"]);
 
   return React.createElement("div", {
     "data-test": "datatable-table",
@@ -2579,7 +2597,8 @@ var DataTableTable = function DataTableTable(props) {
   }), React.createElement(TableBody, {
     color: tbodyColor,
     textWhite: tbodyTextWhite,
-    rows: rows
+    rows: rows,
+    columns: columns
   }), !noBottomColumns && React.createElement(TableFoot, {
     color: theadColor,
     textWhite: theadTextWhite,
@@ -2596,6 +2615,7 @@ DataTableTable.propTypes = {
   fixed: propTypes.bool.isRequired,
   hover: propTypes.bool.isRequired,
   handleSort: propTypes.func.isRequired,
+  noBottomColumns: propTypes.bool,
   responsive: propTypes.bool.isRequired,
   responsiveSm: propTypes.bool.isRequired,
   responsiveMd: propTypes.bool.isRequired,
@@ -2611,8 +2631,7 @@ DataTableTable.propTypes = {
   tbodyTextWhite: propTypes.bool.isRequired,
   columns: propTypes.arrayOf(propTypes.object),
   rows: propTypes.arrayOf(propTypes.object),
-  children: propTypes.node,
-  noBottomColumns: propTypes.bool
+  children: propTypes.node
 };
 
 var DataTableTableScroll = function DataTableTableScroll(props) {
@@ -2734,7 +2753,8 @@ var DataTableTableScroll = function DataTableTableScroll(props) {
   })), React.createElement(TableBody, {
     color: tbodyColor,
     textWhite: tbodyTextWhite,
-    rows: rows
+    rows: rows,
+    columns: columns
   }), children))));
 };
 
@@ -2889,7 +2909,16 @@ var DataTableInfo = function DataTableInfo(props) {
       filteredRows = props.filteredRows,
       info = props.info,
       pages = props.pages,
-      label = props.label;
+      label = props.label,
+      noRecordsFoundLabel = props.noRecordsFoundLabel;
+  var SHOWING_LABEL = label[0];
+  var TO_LABEL = label[1];
+  var OF_LABEL = label[2];
+  var ENTRIES_LABEL = label[3];
+  var NO_RECORDS = filteredRows.length > 0 && filteredRows[0].message === noRecordsFoundLabel;
+  var RECORDS = activePage > 0 ? activePage * entries + 1 : activePage + 1;
+  var RECORDS_ON_PAGE = pages.length - 1 > activePage ? pages[activePage].length * (activePage + 1) : filteredRows.length;
+  var ENTRIES = filteredRows.length;
   return React.createElement("div", {
     "data-test": "datatable-info",
     className: "col-sm-12 col-md-5"
@@ -2897,13 +2926,14 @@ var DataTableInfo = function DataTableInfo(props) {
     className: "dataTables_info",
     role: "status",
     "aria-live": "polite"
-  }, label[0], ' ', activePage > 0 ? activePage * entries + 1 : activePage + 1, ' ', label[1], ' ', pages.length - 1 > activePage ? pages[activePage].length * (activePage + 1) : filteredRows.length, ' ', label[2], " ", filteredRows.length, " ", label[3]));
+  }, !NO_RECORDS ? "".concat(SHOWING_LABEL, " ").concat(RECORDS, " ").concat(TO_LABEL, " ").concat(RECORDS_ON_PAGE, " ").concat(OF_LABEL, " ").concat(ENTRIES, " ").concat(ENTRIES_LABEL) : "".concat(SHOWING_LABEL, " 0 ").concat(ENTRIES_LABEL)));
 };
 
 DataTableInfo.propTypes = {
   activePage: propTypes.number.isRequired,
   entries: propTypes.number.isRequired,
   filteredRows: propTypes.array.isRequired,
+  noRecordsFoundLabel: propTypes.string.isRequired,
   info: propTypes.bool.isRequired,
   pages: propTypes.array.isRequired,
   label: propTypes.arrayOf(propTypes.string)
@@ -3215,14 +3245,16 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "checkFieldValue", function (array, field) {
-      return array[field] && typeof array[field] !== 'string' ? array[field].props.searchValue : array[field];
+      return array[field] && typeof array[field] !== 'string' ? array[field].props.searchvalue : array[field];
     });
 
     _defineProperty(_assertThisInitialized(_this), "checkField", function (field, a, b, direction) {
       var _ref = [_this.checkFieldValue(a, field), _this.checkFieldValue(b, field)],
           aField = _ref[0],
           bField = _ref[1];
-      return direction === 'desc' ? aField < bField : aField > bField;
+      var comp = aField > bField ? -1 : 1;
+      if (direction === 'asc') comp *= -1;
+      return comp;
     });
 
     _defineProperty(_assertThisInitialized(_this), "sort", function (rows, sortRows, field, direction) {
@@ -3281,7 +3313,18 @@ function (_Component) {
               var stringValue = '';
 
               if (sortRows && typeof row[key] !== 'string') {
-                stringValue = row[key].props.searchValue;
+                (function () {
+                  var content = [];
+
+                  var getContent = function getContent(element) {
+                    return _typeof(element) === 'object' ? element.props.children && Array.from(element.props.children).map(function (el) {
+                      return getContent(el);
+                    }) : content.push(element);
+                  };
+
+                  getContent(row[key]);
+                  stringValue = content.join('');
+                })();
               } else {
                 if (row[key]) {
                   stringValue = row[key].toString();
@@ -3328,7 +3371,8 @@ function (_Component) {
         } else {
           pages.push(filteredRows);
           activePage = 0;
-        }
+        } // console.log(pages, filteredRows, activePage)
+
 
         return {
           pages: pages,
@@ -3392,17 +3436,44 @@ function (_Component) {
         this.fetchData(data, this.paginateRows);
       }
 
-      order.length && this.handleSort(order[0], order[1]);
+      order.length && this.handleSort(order[0], order[1]); // console.log(object)
+
       this.setUnsearchable(columns);
     }
   }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps, _) {
+    value: function componentDidUpdate(prevProps, prevState) {
+      var _this2 = this;
+
       var data = this.props.data;
+      var _this$state4 = this.state,
+          sorted = _this$state4.sorted,
+          columns = _this$state4.columns;
 
       if (prevProps.data !== data) {
         typeof data === 'string' ? this.fetchData(data) : this.setData(data.rows, data.columns, this.paginateRows);
         this.setUnsearchable(this.state.columns);
+        this.filterRows();
+      }
+
+      if (sorted && columns.filter(function (el) {
+        return el.sort;
+      }).length === 0) {
+        // console.log()
+        // console.log(this.state.activePage)
+        // this.setState({ columns: prevState.columns }, () => {
+        var col = prevState.columns.filter(function (el) {
+          return el.sort;
+        })[0];
+        var sort = col.sort === 'asc' ? 'desc' : 'asc';
+        console.log(prevState.columns, this.state.columns);
+        this.handleSort(col.field, sort);
+        setTimeout(function () {
+          _this2.setState({
+            activePage: prevState.activePage // columns: prevState.columns
+
+          });
+        }, 0);
       }
     }
   }, {
@@ -3455,14 +3526,14 @@ function (_Component) {
           onPageChange = _this$props2.onPageChange,
           attributes = _objectWithoutProperties(_this$props2, ["autoWidth", "bordered", "borderless", "barReverse", "btn", "className", "children", "dark", "data", "displayEntries", "entriesOptions", "entriesLabel", "exportToCSV", "fixed", "hover", "info", "infoLabel", "maxHeight", "noBottomColumns", "noRecordsFoundLabel", "order", "pagesAmount", "paging", "paginationLabel", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "searching", "searchLabel", "scrollX", "scrollY", "small", "sortable", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite", "sortRows", "onSearch", "onSort", "onPageChange"]);
 
-      var _this$state4 = this.state,
-          columns = _this$state4.columns,
-          entries = _this$state4.entries,
-          filteredRows = _this$state4.filteredRows,
-          pages = _this$state4.pages,
-          activePage = _this$state4.activePage,
-          search = _this$state4.search,
-          translateScrollHead = _this$state4.translateScrollHead;
+      var _this$state5 = this.state,
+          columns = _this$state5.columns,
+          entries = _this$state5.entries,
+          filteredRows = _this$state5.filteredRows,
+          pages = _this$state5.pages,
+          activePage = _this$state5.activePage,
+          search = _this$state5.search,
+          translateScrollHead = _this$state5.translateScrollHead;
       var tableClasses = classNames('dataTables_wrapper dt-bootstrap4', className);
       return React.createElement("div", {
         "data-test": "datatable",
@@ -3494,6 +3565,7 @@ function (_Component) {
         fixed: fixed,
         hover: hover,
         noBottomColumns: noBottomColumns,
+        noRecordsFoundLabel: noRecordsFoundLabel,
         responsive: responsive,
         responsiveSm: responsiveSm,
         responsiveMd: responsiveMd,
@@ -3549,7 +3621,8 @@ function (_Component) {
         filteredRows: filteredRows,
         info: info,
         pages: pages,
-        label: infoLabel
+        label: infoLabel,
+        noRecordsFoundLabel: noRecordsFoundLabel
       }), React.createElement(DataTablePagination, {
         activePage: activePage,
         changeActivePage: this.changeActivePage,
@@ -3584,6 +3657,7 @@ DataTable.propTypes = {
   infoLabel: propTypes.arrayOf(propTypes.string),
   maxHeight: propTypes.string,
   noBottomColumns: propTypes.bool,
+  noRecordsFoundLabel: propTypes.string,
   order: propTypes.arrayOf(propTypes.string),
   pagesAmount: propTypes.number,
   paging: propTypes.bool,
@@ -4019,7 +4093,7 @@ DropdownMenuComponent.propTypes = {
   children: propTypes.node.isRequired
 };
 
-var css$5 = ".dropup .dropdown-menu {\n  top: auto !important;\n  bottom: 100% !important;\n  transform: translate3d(5px, 5px, 0px) !important;\n}\n\n.dropdown-menu-right {\n  left: 0 !important;\n  right: auto !important;\n}\n";
+var css$5 = ".dropup .dropdown-menu {\r\n  top: auto !important;\r\n  bottom: 100% !important;\r\n  transform: translate3d(5px, 5px, 0px) !important;\r\n}\r\n\r\n.dropdown-menu-right {\r\n  left: 0 !important;\r\n  right: auto !important;\r\n}\r\n";
 styleInject(css$5);
 
 var noFlipModifier = {
@@ -4350,7 +4424,7 @@ FreeBird.defaultProps = {
   tag: "div"
 };
 
-var css$6 = ".hamburger-button__checkbox {\n  display: none;\n}\n\n.hamburger-button__button {\n  background-color: transparent;\n  height: 100%;\n  width: 100%;\n  text-align: center;\n  cursor: pointer;\n  top: -5px;\n}\n\nlabel.hamburger-button__button {\n  margin-bottom: 0;\n}\n\n#nav-icon1 {\n  width: 1.5em;\n  height: 1.5em;\n  position: relative;\n  -webkit-transform: rotate(0deg);\n  -moz-transform: rotate(0deg);\n  -o-transform: rotate(0deg);\n  transform: rotate(0deg);\n  -webkit-transition: .5s ease-in-out;\n  -moz-transition: .5s ease-in-out;\n  -o-transition: .5s ease-in-out;\n  transition: .5s ease-in-out;\n  cursor: pointer;\n}\n\n#nav-icon1 span {\n  display: block;\n  position: absolute;\n  height: 3px;\n  width: 100%;\n  border-radius: 1px;\n  background-color: #fff;\n  opacity: 1;\n  left: 0;\n  -webkit-transform: rotate(0deg);\n  -moz-transform: rotate(0deg);\n  -o-transform: rotate(0deg);\n  transform: rotate(0deg);\n  -webkit-transition: .25s ease-in-out;\n  -moz-transition: .25s ease-in-out;\n  -o-transition: .25s ease-in-out;\n  transition: .25s ease-in-out;\n}\n\n#nav-icon1 span:nth-child(1) {\n  top: 5px;\n}\n\n#nav-icon1 span:nth-child(2) {\n  top: 16px;\n}\n\n#nav-icon1 span:nth-child(3) {\n  top: 27px;\n}\n\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(1) {\n  top: 16px;\n  -webkit-transform: rotate(135deg);\n  -moz-transform: rotate(135deg);\n  -o-transform: rotate(135deg);\n  transform: rotate(135deg);\n}\n\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(2) {\n  opacity: 0;\n  left: -60px;\n}\n\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(3) {\n  top: 16px;\n  -webkit-transform: rotate(-135deg);\n  -moz-transform: rotate(-135deg);\n  -o-transform: rotate(-135deg);\n  transform: rotate(-135deg);\n}\n";
+var css$6 = ".hamburger-button__checkbox {\r\n  display: none;\r\n}\r\n\r\n.hamburger-button__button {\r\n  background-color: transparent;\r\n  height: 100%;\r\n  width: 100%;\r\n  text-align: center;\r\n  cursor: pointer;\r\n  top: -5px;\r\n}\r\n\r\nlabel.hamburger-button__button {\r\n  margin-bottom: 0;\r\n}\r\n\r\n#nav-icon1 {\r\n  width: 1.5em;\r\n  height: 1.5em;\r\n  position: relative;\r\n  -webkit-transform: rotate(0deg);\r\n  -moz-transform: rotate(0deg);\r\n  -o-transform: rotate(0deg);\r\n  transform: rotate(0deg);\r\n  -webkit-transition: .5s ease-in-out;\r\n  -moz-transition: .5s ease-in-out;\r\n  -o-transition: .5s ease-in-out;\r\n  transition: .5s ease-in-out;\r\n  cursor: pointer;\r\n}\r\n\r\n#nav-icon1 span {\r\n  display: block;\r\n  position: absolute;\r\n  height: 3px;\r\n  width: 100%;\r\n  border-radius: 1px;\r\n  background-color: #fff;\r\n  opacity: 1;\r\n  left: 0;\r\n  -webkit-transform: rotate(0deg);\r\n  -moz-transform: rotate(0deg);\r\n  -o-transform: rotate(0deg);\r\n  transform: rotate(0deg);\r\n  -webkit-transition: .25s ease-in-out;\r\n  -moz-transition: .25s ease-in-out;\r\n  -o-transition: .25s ease-in-out;\r\n  transition: .25s ease-in-out;\r\n}\r\n\r\n#nav-icon1 span:nth-child(1) {\r\n  top: 5px;\r\n}\r\n\r\n#nav-icon1 span:nth-child(2) {\r\n  top: 16px;\r\n}\r\n\r\n#nav-icon1 span:nth-child(3) {\r\n  top: 27px;\r\n}\r\n\r\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(1) {\r\n  top: 16px;\r\n  -webkit-transform: rotate(135deg);\r\n  -moz-transform: rotate(135deg);\r\n  -o-transform: rotate(135deg);\r\n  transform: rotate(135deg);\r\n}\r\n\r\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(2) {\r\n  opacity: 0;\r\n  left: -60px;\r\n}\r\n\r\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(3) {\r\n  top: 16px;\r\n  -webkit-transform: rotate(-135deg);\r\n  -moz-transform: rotate(-135deg);\r\n  -o-transform: rotate(-135deg);\r\n  transform: rotate(-135deg);\r\n}\r\n";
 styleInject(css$6);
 
 var HamburgerToggler = function HamburgerToggler(props) {
@@ -4547,7 +4621,7 @@ function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "onChange", function (event) {
       event.stopPropagation();
 
-      if (_this.props.type !== "checkbox" && _this.props.type !== "radio") {
+      if (_this.props.type !== 'checkbox' && _this.props.type !== 'radio') {
         _this.setState({
           innerValue: event.target.value,
           isPristine: false
@@ -4561,7 +4635,7 @@ function (_React$Component) {
     _defineProperty(_assertThisInitialized(_this), "onInput", function (event) {
       event.stopPropagation();
 
-      if (_this.props.type !== "checkbox" && _this.props.type !== "radio") {
+      if (_this.props.type !== 'checkbox' && _this.props.type !== 'radio') {
         _this.setState({
           innerValue: event.target.value,
           isPristine: false
@@ -4624,6 +4698,7 @@ function (_React$Component) {
           outline = _this$props.outline,
           label = _this$props.label,
           labelClass = _this$props.labelClass,
+          labelId = _this$props.labelId,
           size = _this$props.size,
           success = _this$props.success,
           Tag = _this$props.tag,
@@ -4631,26 +4706,26 @@ function (_React$Component) {
           validate = _this$props.validate,
           value = _this$props.value,
           valueDefault = _this$props.valueDefault,
-          attributes = _objectWithoutProperties(_this$props, ["background", "children", "className", "containerClass", "disabled", "error", "filled", "gap", "getValue", "group", "hint", "icon", "iconBrand", "iconClass", "iconLight", "onIconClick", "onIconMouseEnter", "onIconMouseLeave", "iconRegular", "iconSize", "id", "inputRef", "noTag", "outline", "label", "labelClass", "size", "success", "tag", "type", "validate", "value", "valueDefault"]);
+          attributes = _objectWithoutProperties(_this$props, ["background", "children", "className", "containerClass", "disabled", "error", "filled", "gap", "getValue", "group", "hint", "icon", "iconBrand", "iconClass", "iconLight", "onIconClick", "onIconMouseEnter", "onIconMouseLeave", "iconRegular", "iconSize", "id", "inputRef", "noTag", "outline", "label", "labelClass", "labelId", "size", "success", "tag", "type", "validate", "value", "valueDefault"]);
 
-      var isNotEmpty = (!!this.state.innerValue || !!hint || this.state.isFocused || this.state.innerValue === 0) && type !== "checkbox" && type !== "radio";
-      var TagInput = "";
-      var formControlClass = "";
+      var isNotEmpty = (!!this.state.innerValue || !!hint || this.state.isFocused || this.state.innerValue === 0) && type !== 'checkbox' && type !== 'radio';
+      var TagInput = '';
+      var formControlClass = '';
 
-      if (type === "textarea") {
-        formControlClass = outline ? "form-control" : "md-textarea form-control";
-        TagInput = "textarea";
+      if (type === 'textarea') {
+        formControlClass = outline ? 'form-control' : 'md-textarea form-control';
+        TagInput = 'textarea';
       } else {
-        formControlClass = "form-control";
-        TagInput = "input";
+        formControlClass = 'form-control';
+        TagInput = 'input';
         attributes.type = type;
       }
 
       attributes.disabled = disabled;
-      var classes = classNames(formControlClass, size ? "form-control-".concat(size) : false, validate ? "validate" : false, filled ? "filled-in" : false, gap ? "with-gap" : false, type === "checkbox" ? gap ? false : "form-check-input" : false, type === "radio" ? "form-check-input" : false, className);
-      var containerClassFix = classNames(type === "checkbox" || type === "radio" ? typeof label === "boolean" && label ? "d-flex" : "form-check" : "md-form", group ? "form-group" : false, size ? "form-".concat(size) : false, outline && "md-outline", background && "md-bg", containerClass);
-      var iconClassFix = classNames(isNotEmpty && this.state.isFocused ? "active" : false, iconClass, "prefix");
-      var labelClassFix = classNames(isNotEmpty ? "active" : false, disabled ? "disabled" : false, type === "checkbox" ? "form-check-label" : false, type === "radio" ? "form-check-label" : false, labelClass);
+      var classes = classNames(formControlClass, size ? "form-control-".concat(size) : false, validate ? 'validate' : false, filled ? 'filled-in' : false, gap ? 'with-gap' : false, type === 'checkbox' ? gap ? false : 'form-check-input' : false, type === 'radio' ? 'form-check-input' : false, className);
+      var containerClassFix = classNames(type === 'checkbox' || type === 'radio' ? typeof label === 'boolean' && label ? 'd-flex' : 'form-check' : 'md-form', group ? 'form-group' : false, size ? "form-".concat(size) : false, outline && 'md-outline', background && 'md-bg', containerClass);
+      var iconClassFix = classNames(isNotEmpty && this.state.isFocused ? 'active' : false, iconClass, 'prefix');
+      var labelClassFix = classNames(isNotEmpty ? 'active' : false, disabled ? 'disabled' : false, type === 'checkbox' ? 'form-check-label' : false, type === 'radio' ? 'form-check-label' : false, labelClass);
 
       var renderFunction = function renderFunction() {
         return React.createElement(React.Fragment, null, icon && React.createElement(Fa, {
@@ -4680,7 +4755,7 @@ function (_React$Component) {
           htmlFor: id,
           "data-error": error,
           "data-success": success,
-          id: id,
+          id: labelId,
           onClick: _this2.setFocus
         }, label), children);
       };
@@ -4729,6 +4804,7 @@ Input.propTypes = {
   inputRef: propTypes.oneOfType([propTypes.object, propTypes.func]),
   label: propTypes.oneOfType([propTypes.string, propTypes.number, propTypes.object, propTypes.bool]),
   labelClass: propTypes.string,
+  labelId: propTypes.string,
   noTag: propTypes.bool,
   onBlur: propTypes.func,
   onChange: propTypes.func,
@@ -4744,17 +4820,17 @@ Input.propTypes = {
   valueDefault: propTypes.oneOfType([propTypes.number, propTypes.string])
 };
 Input.defaultProps = {
-  className: "",
-  containerClass: "",
+  className: '',
+  containerClass: '',
   disabled: false,
-  error: "",
+  error: '',
   filled: false,
   gap: false,
   group: false,
   hint: undefined,
-  icon: "",
+  icon: '',
   iconBrand: false,
-  iconClass: "",
+  iconClass: '',
   iconLight: false,
   onIconMouseEnter: function onIconMouseEnter() {},
   onIconMouseLeave: function onIconMouseLeave() {},
@@ -4763,14 +4839,15 @@ Input.defaultProps = {
   id: undefined,
   noTag: false,
   outline: false,
-  label: "",
-  labelClass: "",
-  size: "",
-  success: "",
-  tag: "div",
-  type: "text",
+  label: '',
+  labelClass: '',
+  labelId: '',
+  size: '',
+  success: '',
+  tag: 'div',
+  type: 'text',
   validate: false,
-  valueDefault: ""
+  valueDefault: ''
 };
 
 var InputGroup = function InputGroup(_ref) {
@@ -5697,18 +5774,35 @@ var NavLink = function NavLink(props) {
       disabled = props.disabled,
       active = props.active,
       to = props.to,
-      attributes = _objectWithoutProperties(props, ["children", "className", "disabled", "active", "to"]);
+      link = props.link,
+      attributes = _objectWithoutProperties(props, ["children", "className", "disabled", "active", "to", "link"]);
 
-  var classes = classNames('nav-link', disabled ? 'disabled' : 'Ripple-parent', active && 'active', className);
-  return React.createElement(NavLink$1, _extends({
-    "data-test": "nav-link",
-    className: classes,
-    onMouseUp: handleClick,
-    onTouchStart: handleClick,
-    to: to
-  }, attributes), children, props.disabled ? false : React.createElement(Waves, {
-    cursorPos: cursorPos
-  }));
+  var classes = classNames("nav-link", disabled ? "disabled" : "Ripple-parent", active && "active", className);
+  var rednerLink;
+
+  if (link) {
+    rednerLink = React.createElement(Link, _extends({
+      "data-test": "nav-link",
+      className: classes,
+      onMouseUp: handleClick,
+      onTouchStart: handleClick,
+      to: to
+    }, attributes), children, props.disabled ? false : React.createElement(Waves, {
+      cursorPos: cursorPos
+    }));
+  } else {
+    rednerLink = React.createElement(NavLink$1, _extends({
+      "data-test": "nav-link",
+      className: classes,
+      onMouseUp: handleClick,
+      onTouchStart: handleClick,
+      to: to
+    }, attributes), children, props.disabled ? false : React.createElement(Waves, {
+      cursorPos: cursorPos
+    }));
+  }
+
+  return rednerLink;
 };
 
 NavLink.propTypes = {
@@ -5716,12 +5810,14 @@ NavLink.propTypes = {
   className: propTypes.string,
   disabled: propTypes.bool,
   to: propTypes.string,
-  active: propTypes.bool
+  active: propTypes.bool,
+  link: propTypes.bool
 };
 NavLink.defaultProps = {
   active: false,
-  className: '',
-  disabled: false
+  className: "",
+  disabled: false,
+  link: false
 };
 
 var Notification =
@@ -5841,6 +5937,7 @@ Notification.defaultProps = {
 
 var Popper = function Popper(_ref) {
   var children = _ref.children,
+      className = _ref.className,
       clickable = _ref.clickable,
       domElement = _ref.domElement,
       modifiers = _ref.modifiers,
@@ -5881,7 +5978,7 @@ var Popper = function Popper(_ref) {
   var Wrapper = children[0];
   var Content = children[1];
   var Tag = tag;
-  var tooltipClasses = classNames("fade", popover ? "popover bs-popover-".concat(placement, " popover-enter-done") : "tooltip bs-tooltip-".concat(placement), visible ? "show" : "");
+  var tooltipClasses = classNames("fade", popover ? "popover bs-popover-".concat(placement, " popover-enter-done") : "tooltip bs-tooltip-".concat(placement), visible ? "show" : "", className ? className : "");
   var contentClasses = classNames(!popover && "tooltip-inner");
   return React.createElement(Manager, {
     "data-test": "popper"
@@ -6094,6 +6191,306 @@ Progress.defaultProps = {
   striped: false,
   wrapperStyle: {},
   value: 0
+};
+
+var Rating = function Rating(props) {
+  var _useState = useState([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      data = _useState2[0],
+      setData = _useState2[1];
+
+  var _useState3 = useState(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      hovered = _useState4[0],
+      setHovered = _useState4[1];
+
+  var _useState5 = useState({
+    title: '',
+    index: null
+  }),
+      _useState6 = _slicedToArray(_useState5, 2),
+      choosed = _useState6[0],
+      setChoosed = _useState6[1];
+
+  var _useState7 = useState(''),
+      _useState8 = _slicedToArray(_useState7, 2),
+      feedbackValue = _useState8[0],
+      setFeedbackValue = _useState8[1];
+
+  var _useState9 = useState(null),
+      _useState10 = _slicedToArray(_useState9, 2),
+      openedForm = _useState10[0],
+      setOpenedForm = _useState10[1];
+
+  var onDocumentClick = function onDocumentClick(e) {
+    if (!e.target.closest('.popover')) {
+      setOpenedForm(null);
+    }
+  };
+
+  useEffect(function () {
+    window.addEventListener('click', onDocumentClick);
+    return function () {
+      return window.removeEventListener('click', onDocumentClick);
+    };
+  }, []);
+  useEffect(function () {
+    setData(props.data);
+  }, [props.data]);
+  useEffect(function () {
+    var choosedIndex = data.findIndex(function (item) {
+      return item.choosed;
+    });
+    if (choosedIndex !== -1) setChoosed({
+      title: data[choosedIndex].tooltip,
+      index: choosedIndex
+    });
+  }, [data]);
+  useEffect(function () {
+    if (props.getValue) {
+      var title = choosed.title,
+          index = choosed.index;
+      index = index !== null ? index + 1 : index;
+      props.getValue({
+        title: title,
+        value: index
+      });
+    }
+  }, [choosed, props]);
+
+  var handleMouseEnter = function handleMouseEnter(_, index) {
+    setHovered(index);
+  };
+
+  var handleMouseLeave = function handleMouseLeave() {
+    setHovered(null);
+  };
+
+  var handleClick = function handleClick(title, index, e) {
+    e.stopPropagation();
+
+    if (feedback) {
+      var unHoverPopper = document.createElement('div');
+      var size = 50;
+      unHoverPopper.classList.add('to-remove');
+      unHoverPopper.style.cssText = "\n      display: block;\n      height: ".concat(size, "px;\n      width: ").concat(size, "px;\n      position: absolute;\n      top: ").concat(e.pageY - size / 2, "px;\n      left: ").concat(e.pageX - size / 2, "px;\n      cursor: pointer\n    ");
+      e.target.closest('.mdb-rating').appendChild(unHoverPopper);
+      unHoverPopper.addEventListener('mouseout', function () {
+        return unHoverPopper.remove();
+      });
+      setTimeout(function () {
+        unHoverPopper.remove();
+      }, 100);
+    }
+
+    if (title === choosed.title && index === choosed.index) {
+      setChoosed({
+        title: '',
+        index: null
+      });
+      feedback && setOpenedForm(null);
+    } else {
+      setChoosed({
+        title: title,
+        index: index
+      });
+      feedback && setTimeout(function () {
+        setOpenedForm(index);
+      }, 1);
+    }
+  };
+
+  var onCloseHanlder = function onCloseHanlder() {
+    setFeedbackValue('');
+    setOpenedForm(null);
+  };
+
+  var feedbackValueHandler = function feedbackValueHandler(e) {
+    setFeedbackValue(e.target.value);
+  };
+
+  var Tag = props.tag,
+      containerClassName = props.containerClassName,
+      iconClassName = props.iconClassName,
+      iconFaces = props.iconFaces,
+      iconSize = props.iconSize,
+      iconRegular = props.iconRegular,
+      fillClassName = props.fillClassName,
+      fillColors = props.fillColors,
+      getValue = props.getValue,
+      feedback = props.feedback,
+      submitHandler = props.submitHandler,
+      commonAttributes = _objectWithoutProperties(props, ["tag", "containerClassName", "iconClassName", "iconFaces", "iconSize", "iconRegular", "fillClassName", "fillColors", "getValue", "feedback", "submitHandler"]);
+
+  var containerClasses = classNames('mdb-rating', 'd-flex', 'justify-content-start', 'align-items-center', containerClassName);
+  var renderedIcons = [];
+
+  if (data.length) {
+    renderedIcons = data.map(function (_ref, index) {
+      var _ref$icon = _ref.icon,
+          icon = _ref$icon === void 0 ? 'star' : _ref$icon,
+          tooltip = _ref.tooltip,
+          far = _ref.far,
+          size = _ref.size,
+          _ = _ref.choosed,
+          itemAttributes = _objectWithoutProperties(_ref, ["icon", "tooltip", "far", "size", "choosed"]);
+
+      var isChoosed = choosed.index !== null;
+      var isHovered = hovered !== null;
+      var isFormOpened = openedForm !== null;
+      var isFormActive = feedback && isFormOpened && openedForm === index;
+      var toFill = false;
+
+      if (isChoosed) {
+        toFill = index <= choosed.index;
+
+        if (isHovered && hovered > choosed.index) {
+          toFill = index <= hovered;
+        }
+      } else if (isHovered) {
+        toFill = index <= hovered;
+      }
+
+      var fillColor = '';
+
+      if (fillColors) {
+        var current = null;
+
+        if (isChoosed) {
+          current = choosed.index;
+          if (isHovered) current = hovered;
+        } else if (isHovered) current = hovered;
+
+        var isCustom = Array.isArray(fillColors);
+        var defaultFillColors = ['oneStar', 'twoStars', 'threeStars', 'fourStars', 'fiveStars'];
+
+        if (current !== null) {
+          fillColor = isCustom ? fillColors[current] : defaultFillColors[current];
+        }
+      }
+
+      var iconClasses = classNames('py-2 px-1 rate-popover', toFill && (fillColors ? fillColor : fillClassName), iconClassName);
+      var renderIcon = icon;
+
+      if (iconFaces) {
+        var faces = ['angry', 'frown', 'meh', 'smile', 'laugh'];
+        renderIcon = 'meh-blank';
+
+        if (isChoosed && index <= choosed.index) {
+          renderIcon = faces[choosed.index];
+          if (isHovered) renderIcon = faces[hovered];
+        } else if (isHovered && index <= hovered) {
+          renderIcon = faces[hovered];
+        }
+      }
+
+      var tooltipContent = tooltip;
+
+      if (isFormActive) {
+        tooltipContent = React.createElement("form", {
+          onSubmit: function onSubmit(e) {
+            submitHandler(e, tooltip, openedForm + 1, feedbackValue);
+            onCloseHanlder();
+          }
+        }, React.createElement(MDBPopoverHeader, null, tooltip), React.createElement(MDBPopoverBody, null, React.createElement("textarea", {
+          type: "text",
+          className: "md-textarea form-control py-0",
+          value: feedbackValue,
+          onChange: feedbackValueHandler,
+          style: {
+            resize: 'none'
+          }
+        }), React.createElement("div", {
+          className: "d-flex align-items-center justify-content-around mt-2"
+        }, React.createElement(MDBBtn, {
+          type: "submit",
+          color: "primary",
+          size: "sm"
+        }, "Submit!"), React.createElement("button", {
+          onMouseDown: onCloseHanlder,
+          style: {
+            backgroundColor: '#fff',
+            border: 'none',
+            padding: '0.5rem 1.6rem'
+          }
+        }, "Close"))));
+      }
+
+      return React.createElement(MDBTooltip, {
+        key: tooltip,
+        domElement: true,
+        placement: "top",
+        tag: "span",
+        popover: isFormActive,
+        isVisible: isFormActive,
+        clickable: isFormActive
+      }, React.createElement("span", null, React.createElement(Fa$1, _extends({
+        style: {
+          cursor: 'pointer'
+        }
+      }, commonAttributes, itemAttributes, {
+        icon: renderIcon,
+        size: size || iconSize,
+        far: far || iconRegular,
+        className: iconClasses,
+        "data-index": index,
+        "data-original-title": tooltip,
+        onMouseEnter: function onMouseEnter() {
+          return handleMouseEnter(tooltip, index);
+        },
+        onMouseLeave: handleMouseLeave,
+        onClick: function onClick(e) {
+          return handleClick(tooltip, index, e);
+        }
+      }))), React.createElement("div", null, tooltipContent));
+    });
+  }
+
+  return React.createElement(Tag, {
+    className: containerClasses
+  }, renderedIcons);
+};
+
+Rating.propTypes = {
+  containerClassName: propTypes.string,
+  data: propTypes.arrayOf(propTypes.shape({
+    icon: propTypes.string,
+    tooltip: propTypes.string,
+    choosed: propTypes.bool
+  })),
+  feedback: propTypes.bool,
+  fillClassName: propTypes.string,
+  fillColors: propTypes.oneOfType([propTypes.bool, propTypes.arrayOf(propTypes.string)]),
+  iconClassName: propTypes.string,
+  iconFaces: propTypes.bool,
+  iconSize: propTypes.string,
+  iconRegular: propTypes.bool,
+  tag: propTypes.string,
+  getValue: propTypes.func,
+  submitHandler: propTypes.func
+};
+Rating.defaultProps = {
+  containerClassName: '',
+  data: [{
+    tooltip: 'Very Bad'
+  }, {
+    tooltip: 'Poor'
+  }, {
+    tooltip: 'Ok'
+  }, {
+    tooltip: 'Good'
+  }, {
+    tooltip: 'Excellent'
+  }],
+  feedback: false,
+  fillClassName: 'fiveStars',
+  iconClassName: '',
+  iconSize: '1x',
+  iconRegular: false,
+  tag: 'div',
+  submitHandler: function submitHandler(e) {
+    return e.preventDefault();
+  }
 };
 
 var Row = function Row(props) {
@@ -6514,4 +6911,4 @@ TreeviewList.contextTypes = {
   theme: propTypes.string
 };
 
-export { Alert, Animation, Badge, Breadcrumb, BreadcrumbItem, Button, ButtonGroup, ButtonToolbar, Card, CardBody, CardFooter, CardGroup, CardHeader, CardImage, CardText, CardTitle, Carousel, CarouselCaption, Control as CarouselControl, CarouselIndicator, CarouselIndicators, CarouselInner, CarouselItem, MDBCloseIcon as CloseIcon, Col, Collapse, Container, DataTable, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, EdgeHeader, Fa, Footer, FormInline, FreeBird, HamburgerToggler, Iframe, Input, InputGroup, InputNumeric, Jumbotron, ListGroup, ListGroupItem, Alert as MDBAlert, Animation as MDBAnimation, Badge as MDBBadge, Breadcrumb as MDBBreadcrumb, BreadcrumbItem as MDBBreadcrumbItem, Button as MDBBtn, ButtonGroup as MDBBtnGroup, ButtonToolbar as MDBBtnToolbar, Card as MDBCard, CardBody as MDBCardBody, CardFooter as MDBCardFooter, CardGroup as MDBCardGroup, CardHeader as MDBCardHeader, CardImage as MDBCardImage, CardText as MDBCardText, CardTitle as MDBCardTitle, Carousel as MDBCarousel, CarouselCaption as MDBCarouselCaption, CarouselIndicator as MDBCarouselIndicator, CarouselIndicators as MDBCarouselIndicators, CarouselInner as MDBCarouselInner, CarouselItem as MDBCarouselItem, MDBCloseIcon, Col as MDBCol, Collapse as MDBCollapse, Container as MDBContainer, Control as MDBControl, DataTable as MDBDataTable, Dropdown as MDBDropdown, DropdownItem as MDBDropdownItem, DropdownMenu as MDBDropdownMenu, DropdownToggle as MDBDropdownToggle, EdgeHeader as MDBEdgeHeader, Footer as MDBFooter, FormInline as MDBFormInline, FreeBird as MDBFreeBird, HamburgerToggler as MDBHamburgerToggler, Fa as MDBIcon, Iframe as MDBIframe, Input as MDBInput, InputGroup as MDBInputGroup, InputNumeric as MDBInputSelect, Jumbotron as MDBJumbotron, ListGroup as MDBListGroup, ListGroupItem as MDBListGroupItem, Mask as MDBMask, Media as MDBMedia, Modal as MDBModal, ModalBody as MDBModalBody, ModalFooter as MDBModalFooter, ModalHeader as MDBModalHeader, Nav as MDBNav, NavItem as MDBNavItem, NavLink as MDBNavLink, Navbar as MDBNavbar, NavbarBrand as MDBNavbarBrand, NavbarNav as MDBNavbarNav, NavbarToggler as MDBNavbarToggler, Notification as MDBNotification, PageItem as MDBPageItem, PageLink as MDBPageNav, Pagination as MDBPagination, Popper as MDBPopover, PopoverBody as MDBPopoverBody, PopoverHeader as MDBPopoverHeader, Popper as MDBPopper, Progress as MDBProgress, Row as MDBRow, TabContent as MDBTabContent, TabPane as MDBTabPane, Table as MDBTable, TableBody as MDBTableBody, TableFoot as MDBTableFoot, TableHead as MDBTableHead, Popper as MDBTooltip, Treeview as MDBTreeview, TreeviewItem as MDBTreeviewItem, TreeviewList as MDBTreeviewList, View as MDBView, Waves as MDBWaves, Mask, Media, Modal, ModalBody, ModalFooter, ModalHeader, Nav, NavItem, NavLink, Navbar, NavbarBrand, NavbarNav, NavbarToggler, Notification, PageItem, PageLink, Pagination, Popper as Popover, PopoverBody, PopoverHeader, Popper, Progress, Row, TabContent, TabPane, Table, TableBody, TableFoot, TableHead, Popper as Tooltip, Treeview, TreeviewItem, TreeviewList, View, Waves };
+export { Alert, Animation, Badge, Breadcrumb, BreadcrumbItem, Button, ButtonGroup, ButtonToolbar, Card, CardBody, CardFooter, CardGroup, CardHeader, CardImage, CardText, CardTitle, Carousel, CarouselCaption, Control as CarouselControl, CarouselIndicator, CarouselIndicators, CarouselInner, CarouselItem, MDBCloseIcon as CloseIcon, Col, Collapse, Container, DataTable, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, EdgeHeader, Fa, Footer, FormInline, FreeBird, HamburgerToggler, Iframe, Input, InputGroup, InputNumeric, Jumbotron, ListGroup, ListGroupItem, Alert as MDBAlert, Animation as MDBAnimation, Badge as MDBBadge, Breadcrumb as MDBBreadcrumb, BreadcrumbItem as MDBBreadcrumbItem, Button as MDBBtn, ButtonGroup as MDBBtnGroup, ButtonToolbar as MDBBtnToolbar, Card as MDBCard, CardBody as MDBCardBody, CardFooter as MDBCardFooter, CardGroup as MDBCardGroup, CardHeader as MDBCardHeader, CardImage as MDBCardImage, CardText as MDBCardText, CardTitle as MDBCardTitle, Carousel as MDBCarousel, CarouselCaption as MDBCarouselCaption, CarouselIndicator as MDBCarouselIndicator, CarouselIndicators as MDBCarouselIndicators, CarouselInner as MDBCarouselInner, CarouselItem as MDBCarouselItem, MDBCloseIcon, Col as MDBCol, Collapse as MDBCollapse, Container as MDBContainer, Control as MDBControl, DataTable as MDBDataTable, Dropdown as MDBDropdown, DropdownItem as MDBDropdownItem, DropdownMenu as MDBDropdownMenu, DropdownToggle as MDBDropdownToggle, EdgeHeader as MDBEdgeHeader, Footer as MDBFooter, FormInline as MDBFormInline, FreeBird as MDBFreeBird, HamburgerToggler as MDBHamburgerToggler, Fa as MDBIcon, Iframe as MDBIframe, Input as MDBInput, InputGroup as MDBInputGroup, InputNumeric as MDBInputSelect, Jumbotron as MDBJumbotron, ListGroup as MDBListGroup, ListGroupItem as MDBListGroupItem, Mask as MDBMask, Media as MDBMedia, Modal as MDBModal, ModalBody as MDBModalBody, ModalFooter as MDBModalFooter, ModalHeader as MDBModalHeader, Nav as MDBNav, NavItem as MDBNavItem, NavLink as MDBNavLink, Navbar as MDBNavbar, NavbarBrand as MDBNavbarBrand, NavbarNav as MDBNavbarNav, NavbarToggler as MDBNavbarToggler, Notification as MDBNotification, PageItem as MDBPageItem, PageLink as MDBPageNav, Pagination as MDBPagination, Popper as MDBPopover, PopoverBody as MDBPopoverBody, PopoverHeader as MDBPopoverHeader, Popper as MDBPopper, Progress as MDBProgress, Rating as MDBRating, Row as MDBRow, TabContent as MDBTabContent, TabPane as MDBTabPane, Table as MDBTable, TableBody as MDBTableBody, TableFoot as MDBTableFoot, TableHead as MDBTableHead, Popper as MDBTooltip, Treeview as MDBTreeview, TreeviewItem as MDBTreeviewItem, TreeviewList as MDBTreeviewList, View as MDBView, Waves as MDBWaves, Mask, Media, Modal, ModalBody, ModalFooter, ModalHeader, Nav, NavItem, NavLink, Navbar, NavbarBrand, NavbarNav, NavbarToggler, Notification, PageItem, PageLink, Pagination, Popper as Popover, PopoverBody, PopoverHeader, Popper, Progress, Rating, Row, TabContent, TabPane, Table, TableBody, TableFoot, TableHead, Popper as Tooltip, Treeview, TreeviewItem, TreeviewList, View, Waves };

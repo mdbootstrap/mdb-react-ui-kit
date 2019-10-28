@@ -7,6 +7,7 @@ declare const MDBNavLink: React.FunctionComponent<{
   disabled?: boolean;
   to?: string;
   [rest: string]: any;
+  link?: boolean;
 }>;
 
 export default MDBNavLink;

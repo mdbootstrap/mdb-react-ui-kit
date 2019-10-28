@@ -204,7 +204,7 @@ const DropdownPage = () => {
           <MDBDropdownToggle caret color="primary">
             This dropdown&apos;s menu is left-aligned
           </MDBDropdownToggle>
-          <MDBDropdownMenu left>
+          <MDBDropdownMenu>
             <MDBDropdownItem>Action</MDBDropdownItem>
             <MDBDropdownItem>Another Action</MDBDropdownItem>
             <MDBDropdownItem>Something else here</MDBDropdownItem>

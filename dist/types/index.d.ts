@@ -647,6 +647,7 @@ declare class MDBInput extends Component<
     outline?: boolean;
     label?: string | boolean;
     labelClass?: string;
+    labelId?: string;
     noTag?: boolean;
     size?: "sm" | "lg";
     success?: string;
@@ -888,6 +889,7 @@ declare const MDBNavLink: FunctionComponent<{
   disabled?: boolean;
   to?: string;
   [rest: string]: any;
+  link?: boolean;
 }>;
 
 declare class MDBNotification extends Component<{
@@ -979,6 +981,53 @@ declare const MDBProgress: FunctionComponent<{
   id?: string;
   wrappedStyle?: {};
   value?: number;
+  [rest: string]: any;
+}>;
+
+declare const MDBRating: FunctionComponent<{
+  containerClassName?: string;
+  data?: {
+    icon?: string;
+    tooltip?: string;
+    choosed?: boolean;
+    [rest: string]: any;
+  };
+  feedback?: boolean;
+  fillClassName?: string;
+  fillColors?: boolean | string[];
+  iconClassName?: string;
+  iconFaces?: boolean;
+  iconSize?:
+    | 'lg'
+    | '1x'
+    | '2x'
+    | '3x'
+    | '4x'
+    | '5x'
+    | '6x'
+    | '7x'
+    | '8x'
+    | '9x'
+    | '10x';
+  iconRegular?: boolean;
+  tag?: string;
+  getValue?: (value: {
+    tooltip?: string;
+    icon?: string;
+    size?:
+      | 'lg'
+      | '1x'
+      | '2x'
+      | '3x'
+      | '4x'
+      | '5x'
+      | '6x'
+      | '7x'
+      | '8x'
+      | '9x'
+      | '10x';
+    [rest: string]: any;
+  }) => void;
   [rest: string]: any;
 }>;
 
@@ -1131,4 +1180,4 @@ declare class MDBWaves extends Component<
   any
 > {}
 
-export { MDBAlert, MDBAnimation, MDBBadge, MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBBtnGroup, MDBBtnToolbar, MDBCard, MDBCardBody, MDBCardFooter, MDBCardGroup, MDBCardHeader, MDBCardImage, MDBCardText, MDBCardTitle, MDBCarousel, MDBCarouselCaption, MDBCarouselControl, MDBCarouselIndicator, MDBCarouselIndicators, MDBCarouselInner, MDBCarouselItem, MDBCloseIcon, MDBCol, MDBCollapse, MDBContainer, MDBDataTable, MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBEdgeHeader, MDBFooter, MDBFormInline, MDBFreeBird, MDBHamburgerToggler, MDBIcon, MDBIframe, MDBInput, MDBInputGroup, MDBInputSelect as MDBInputNumeric, MDBJumbotron, MDBListGroup, MDBListGroupItem, MDBMask, MDBMedia, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader, MDBNav, MDBNavItem, MDBNavLink, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBNotification, MDBPageItem, MDBPageLink as MDBPageNav, MDBPagination, MDBPopper as MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBPopper, MDBProgress, MDBRow, MDBTabContent, MDBTabPane, MDBTable, MDBTableBody, MDBTableFoot, MDBTableHead, MDBTreeview, MDBTreeviewItem, MDBTreeviewList, MDBView, MDBWaves };
+export { MDBAlert, MDBAnimation, MDBBadge, MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBBtnGroup, MDBBtnToolbar, MDBCard, MDBCardBody, MDBCardFooter, MDBCardGroup, MDBCardHeader, MDBCardImage, MDBCardText, MDBCardTitle, MDBCarousel, MDBCarouselCaption, MDBCarouselControl, MDBCarouselIndicator, MDBCarouselIndicators, MDBCarouselInner, MDBCarouselItem, MDBCloseIcon, MDBCol, MDBCollapse, MDBContainer, MDBDataTable, MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBEdgeHeader, MDBFooter, MDBFormInline, MDBFreeBird, MDBHamburgerToggler, MDBIcon, MDBIframe, MDBInput, MDBInputGroup, MDBInputSelect as MDBInputNumeric, MDBJumbotron, MDBListGroup, MDBListGroupItem, MDBMask, MDBMedia, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader, MDBNav, MDBNavItem, MDBNavLink, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBNotification, MDBPageItem, MDBPageLink as MDBPageNav, MDBPagination, MDBPopper as MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBPopper, MDBProgress, MDBRating, MDBRow, MDBTabContent, MDBTabPane, MDBTable, MDBTableBody, MDBTableFoot, MDBTableHead, MDBTreeview, MDBTreeviewItem, MDBTreeviewList, MDBView, MDBWaves };
