@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { returnAttributes } from '../utils';
 import { Transition } from 'react-transition-group';
+import FocusTrap from 'focus-trap-react';
 
 class Modal extends Component {
   state = {
@@ -67,7 +68,7 @@ class Modal extends Component {
     }
   };
 
-  handleEscape = (e) => {
+  handleEscape = e => {
     if (this.props.keyboard && e.keyCode === 27) {
       e.preventDefault();
       this.props.toggle();
@@ -83,6 +84,7 @@ class Modal extends Component {
       className,
       size,
       side,
+      disableFocusTrap,
       fullHeight,
       frame,
       centered,
@@ -142,6 +144,24 @@ class Modal extends Component {
       'aria-hidden': 'true'
     });
 
+    const modal = (
+      <div
+        data-test='modal'
+        onKeyUp={this.handleEscape}
+        className={wrapperClasses}
+        {...modalAttributes}
+      >
+        <div className={modalDialogClasses} role='document'>
+          <div
+            ref={elem => (this.modalContent = elem)}
+            className={contentClasses}
+          >
+            {children}
+          </div>
+        </div>
+      </div>
+    );
+
     return (
       <Fragment>
         {backdrop && (
@@ -168,22 +188,7 @@ class Modal extends Component {
           onEntered={node => this.handleOnEntered('modal', node)}
           onExit={node => this.handleOnExit('modal', node)}
         >
-          <div
-            data-test='modal'
-            onKeyUp={this.handleEscape}
-            className={wrapperClasses}
-
-            {...modalAttributes}
-          >
-            <div className={modalDialogClasses} role='document'>
-              <div
-                ref={elem => (this.modalContent = elem)}
-                className={contentClasses}
-              >
-                {children}
-              </div>
-            </div>
-          </div>
+          {!disableFocusTrap ? <FocusTrap>{modal}</FocusTrap> : modal}
         </Transition>
       </Fragment>
     );
@@ -195,6 +200,7 @@ Modal.defaultProps = {
   backdrop: true,
   backdropTransitionTimeout: 150,
   fade: true,
+  disableFocusTrap: false,
   isOpen: false,
   keyboard: true,
   modalTransitionTimeout: 300,
@@ -213,6 +219,7 @@ Modal.propTypes = {
   className: PropTypes.string,
   contentClassName: PropTypes.string,
   fade: PropTypes.bool,
+  disableFocusTrap: PropTypes.bool,
   frame: PropTypes.bool,
   fullHeight: PropTypes.bool,
   hiddenModal: PropTypes.func,
@@ -227,7 +234,7 @@ Modal.propTypes = {
   side: PropTypes.bool,
   showModal: PropTypes.func,
   tabIndex: PropTypes.string,
-  wrapClassName: PropTypes.string,
+  wrapClassName: PropTypes.string
 };
 
 export default Modal;

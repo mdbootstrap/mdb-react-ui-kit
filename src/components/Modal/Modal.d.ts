@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 declare class MDBModal extends React.Component<
   {
     animation?: 'top' | 'bottom' | 'left' | 'right';
@@ -12,6 +11,7 @@ declare class MDBModal extends React.Component<
     contentClassName?: string;
     children?: React.ReactNode;
     fade?: boolean;
+    disableFocusTrap?: boolean;
     frame?: boolean;
     fullHeight?: boolean;
     isOpen?: boolean;

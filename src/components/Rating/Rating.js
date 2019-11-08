@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import {
   Fa,
@@ -7,7 +8,6 @@ import {
   MDBTooltip
 } from 'mdbreact';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
 
 const Rating = props => {
   const [data, setData] = useState([]);
@@ -60,27 +60,6 @@ const Rating = props => {
 
   const handleClick = (title, index, e) => {
     e.stopPropagation();
-    if (feedback) {
-      const unHoverPopper = document.createElement('div');
-      const size = 50;
-
-      unHoverPopper.classList.add('to-remove');
-      unHoverPopper.style.cssText = `
-      display: block;
-      height: ${size}px;
-      width: ${size}px;
-      position: absolute;
-      top: ${e.pageY - size / 2}px;
-      left: ${e.pageX - size / 2}px;
-      cursor: pointer
-    `;
-      e.target.closest('.mdb-rating').appendChild(unHoverPopper);
-      unHoverPopper.addEventListener('mouseout', () => unHoverPopper.remove());
-      setTimeout(() => {
-        unHoverPopper.remove();
-      }, 100);
-    }
-
     if (title === choosed.title && index === choosed.index) {
       setChoosed({ title: '', index: null });
       feedback && setOpenedForm(null);
@@ -215,7 +194,7 @@ const Rating = props => {
                   className='md-textarea form-control py-0'
                   value={feedbackValue}
                   onChange={feedbackValueHandler}
-                  style={{ resize: 'none' }}
+                  // style={{ resize: 'none' }}
                 />
                 <div className='d-flex align-items-center justify-content-around mt-2'>
                   <MDBBtn type='submit' color='primary' size='sm'>
@@ -263,7 +242,7 @@ const Rating = props => {
                 onClick={e => handleClick(tooltip, index, e)}
               />
             </span>
-            <div>{tooltipContent}</div>
+            <div style={{ userSelect: 'none' }}>{tooltipContent}</div>
           </MDBTooltip>
         );
       }

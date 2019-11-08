@@ -1,7 +1,7 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 
-import { findByTestAttr, checkClass, checkProps } from '../../tests/utils';
+import { checkClass, checkProps } from '../../tests/utils';
 import Popper from './Popper';
 
 const Wrapper = props => <button>{props.children}</button>;
@@ -26,7 +26,8 @@ describe('<Popper />', () => {
   });
 
   test(`renders`, () => {
-    expect(findByTestAttr(wrapper, 'popper').length).toBe(1);
+    wrapper = setup({ isVisible: true });
+    expect(wrapper.find('[data-popper="popper"]').length).toBe(2);
   });
 
   test('does not throw warnings with expected props', () => {
@@ -39,10 +40,15 @@ describe('<Popper />', () => {
       placement: 'test',
       popover: true,
       style: { display: 'inline-block' },
-      tag: 'test'
+      tag: 'span'
     };
 
-    wrapper = setup(expectedProps);
+    wrapper = mount(
+      <Popper {...expectedProps}>
+        <span />
+        <Content />
+      </Popper>
+    );
 
     checkProps(wrapper, expectedProps);
   });
@@ -81,8 +87,8 @@ describe('<Popper />', () => {
 
   test('sets custom wrapper tag when (state.visible) and Content.props.children', () => {
     const section = wrapper.find('section');
-    //Tag is used 2 times
-    expect(section).toHaveLength(2);
+
+    expect(section).toHaveLength(1);
   });
 
   test('renders Wrapper with `innerRef` if (!domElement)', () => {
@@ -92,9 +98,11 @@ describe('<Popper />', () => {
   });
 
   test('should not render Wrapper with `innerRef` if (domElement)', () => {
-    wrapper = setup({ domElement: true });
+    wrapper = setup({ domElement: false });
 
-    expect(wrapper.find('Wrapper').props()['innerRef']).not.toBeTruthy();
+    // console.log(wrapper.debug())
+
+    expect(wrapper.find('Wrapper').props()['innerRef']).toBeTruthy();
   });
 
   test('renders Content.props.children', () => {
@@ -102,43 +110,20 @@ describe('<Popper />', () => {
   });
 
   describe('sets classes', () => {
-    test(`adds 'fade' class by default to Tooltip`, () => {
-      checkClass(wrapper.find('section'), 'fade');
-    });
-
     test(`adds 'show' class to Tooltip if (state.visible)`, () => {
       checkClass(wrapper.find('section'), 'show');
     });
 
-    test(`adds 'popover bs-popover-top popover-enter-done' classes to Tooltip if (props.popover)`, () => {
+    test(`adds 'popover' classes to Tooltip if (props.popover)`, () => {
       wrapper = setup({ popover: true });
 
-      checkClass(
-        wrapper.find('section'),
-        'popover.bs-popover-top.popover-enter-done'
-      );
+      checkClass(wrapper.find('section'), 'popover');
     });
 
-    test(`adds 'tooltip bs-tooltip-top' classes to Tooltip if (!props.popover)`, () => {
+    test(`adds 'tooltip' classes to Tooltip if (!props.popover)`, () => {
       wrapper = setup({ popover: false });
 
-      checkClass(wrapper.find('section'), 'tooltip.bs-tooltip-top');
-    });
-
-    test(`adds 'bs-tooltip-left' class to Tooltip if (placement === left)`, () => {
-      wrapper = setup({ placement: 'left' });
-
-      checkClass(wrapper.find('section'), 'bs-tooltip-left');
-    });
-
-    test(`adds 'tooltip-inner' class to Content if (!popover)`, () => {
-      wrapper = setup({ popover: false });
-      checkClass(wrapper.find('Content'), 'tooltip-inner');
-    });
-
-    test(`should not add 'tooltip-inner' class to Content if (popover)`, () => {
-      wrapper = setup({ popover: true });
-      expect(wrapper.find('Content.tooltip-inner')).toHaveLength(0);
+      checkClass(wrapper.find('section'), 'tooltip');
     });
   });
 });

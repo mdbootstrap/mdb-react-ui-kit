@@ -774,6 +774,7 @@ declare class MDBModal extends Component<
     contentClassName?: string;
     children?: ReactNode;
     fade?: boolean;
+    disableFocusTrap?: boolean;
     frame?: boolean;
     fullHeight?: boolean;
     isOpen?: boolean;

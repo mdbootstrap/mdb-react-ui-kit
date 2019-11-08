@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import DataTableInput from '../DataTableInput';
+
 
 const DataTableSearch = props => {
   const { handleSearchChange, search, searching, label, barReverse } = props;

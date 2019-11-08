@@ -11,7 +11,9 @@ var reactTransitionGroup = require('react-transition-group');
 var ReactDOM = _interopDefault(require('react-dom'));
 var reactPopper = require('react-popper');
 var NumericInput = _interopDefault(require('react-numeric-input'));
+var FocusTrap = _interopDefault(require('focus-trap-react'));
 var reactRouterDom = require('react-router-dom');
+var Popper = _interopDefault(require('popper.js'));
 var mdbreact = require('mdbreact');
 
 function _typeof(obj) {
@@ -83,20 +85,35 @@ function _extends() {
   return _extends.apply(this, arguments);
 }
 
-function _objectSpread(target) {
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i] != null ? arguments[i] : {};
-    var ownKeys = Object.keys(source);
 
-    if (typeof Object.getOwnPropertySymbols === 'function') {
-      ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-        return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-      }));
+    if (i % 2) {
+      ownKeys(source, true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(source).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
     }
-
-    ownKeys.forEach(function (key) {
-      _defineProperty(target, key, source[key]);
-    });
   }
 
   return target;
@@ -210,6 +227,10 @@ function _iterableToArray(iter) {
 }
 
 function _iterableToArrayLimit(arr, i) {
+  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
+    return;
+  }
+
   var _arr = [];
   var _n = true;
   var _d = false;
@@ -774,7 +795,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css = ".bc-icons.breadcrumb-item::before,\r\n.bc-icons.breadcrumb-item::after {\r\n  content: none;\r\n}\r\n\r\n.bc-icons.breadcrumb-item + .active.breadcrumb-item::before,\r\n.bc-icons.breadcrumb-item + .active.breadcrumb-item::after{\r\n  content: none;\r\n}\r\n\r\n.bc-icons.breadcrumb-item.active {\r\n  color: #eeeeee;\r\n}\r\n";
+var css = ".bc-icons.breadcrumb-item::before,\n.bc-icons.breadcrumb-item::after {\n  content: none;\n}\n\n.bc-icons.breadcrumb-item + .active.breadcrumb-item::before,\n.bc-icons.breadcrumb-item + .active.breadcrumb-item::after{\n  content: none;\n}\n\n.bc-icons.breadcrumb-item.active {\n  color: #eeeeee;\n}\n";
 styleInject(css);
 
 var BreadcrumbItem = function BreadcrumbItem(props) {
@@ -847,7 +868,7 @@ BreadcrumbItem.defaultProps = {
   iconSize: ""
 };
 
-var css$1 = ".Ripple {\r\n  position: absolute;\r\n  background: rgba(255, 255, 255, 0.3);\r\n  border-radius: 50%;\r\n  opacity: 1;\r\n  transform: scale(0);\r\n}\r\n\r\n.Ripple-outline {\r\n  background: rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.Ripple.is-reppling {\r\n  animation: ripple 0.5s linear;\r\n}\r\n\r\n.Ripple-parent {\r\n  position: relative;\r\n  overflow: hidden;\r\n  cursor: pointer;\r\n}\r\n\r\n@keyframes ripple {\r\n  100% {\r\n    opacity: 0;\r\n    transform: scale(3);\r\n  }\r\n}\r\n";
+var css$1 = ".Ripple {\n  position: absolute;\n  background: rgba(255, 255, 255, 0.3);\n  border-radius: 50%;\n  opacity: 1;\n  transform: scale(0);\n}\n\n.Ripple-outline {\n  background: rgba(0, 0, 0, 0.2);\n}\n\n.Ripple.is-reppling {\n  animation: ripple 0.5s linear;\n}\n\n.Ripple-parent {\n  position: relative;\n  overflow: hidden;\n  cursor: pointer;\n}\n\n@keyframes ripple {\n  100% {\n    opacity: 0;\n    transform: scale(3);\n  }\n}\n";
 styleInject(css$1);
 
 var Waves =
@@ -1038,7 +1059,7 @@ Button.propTypes = {
   className: propTypes.string
 };
 
-var css$2 = ".btn-group-vertical>.btn,\r\n.btn-group-vertical>.btn+.btn-group,\r\n.btn-group-vertical>.btn-group+.btn,\r\n.btn-group-vertical>.btn-group+.btn-group {\r\n  margin-left: 0px;\r\n}\r\n\r\n.btn-group-lg>.btn {\r\n  font-size: 0.9rem;\r\n  padding: 1rem 2.4rem;\r\n}\r\n\r\n.btn-group-sm>.btn {\r\n  font-size: 0.6rem;\r\n  padding: 0.5rem 1.6rem;\r\n}\r\n\r\n.btn-floating.btn.btn-sm,\r\n.btn-floating.btn.btn-lg {\r\n  padding: 0;\r\n}\r\n";
+var css$2 = ".btn-group-vertical>.btn,\n.btn-group-vertical>.btn+.btn-group,\n.btn-group-vertical>.btn-group+.btn,\n.btn-group-vertical>.btn-group+.btn-group {\n  margin-left: 0px;\n}\n\n.btn-group-lg>.btn {\n  font-size: 0.9rem;\n  padding: 1rem 2.4rem;\n}\n\n.btn-group-sm>.btn {\n  font-size: 0.6rem;\n  padding: 0.5rem 1.6rem;\n}\n\n.btn-floating.btn.btn-sm,\n.btn-floating.btn.btn-lg {\n  padding: 0;\n}\n";
 styleInject(css$2);
 
 var ButtonGroup = function ButtonGroup(props) {
@@ -1618,7 +1639,7 @@ CarouselIndicators.defaultProps = {
   className: ""
 };
 
-var css$3 = ".carousel-inner {\r\n  position: relative;\r\n  overflow: hidden;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.carousel-fade .carousel-item {\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  display: block !important;\r\n  opacity: 0;\r\n  z-index: 0;\r\n  transition: transform 0ms ease-in-out, opacity 0.8s ease-out;\r\n}\r\n\r\n.carousel-fade .carousel-item.active {\r\n  position: relative;\r\n  z-index: 1;\r\n  opacity: 1;\r\n}\r\n\r\n.carousel-multi-item .carousel-item {\r\n  display: inline-block !important;\r\n}\r\n\r\n.carousel .carousel-slide-item {\r\n  transition: left 0.5s;\r\n}\r\n\r\n.carousel-control-prev, .carousel-control-next, .carousel-item-prev, .carousel-item-next {\r\n  z-index: 2;\r\n}\r\n";
+var css$3 = ".carousel-inner {\n  position: relative;\n  overflow: hidden;\n  width: 100%;\n  height: 100%;\n}\n\n.carousel-fade .carousel-item {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  display: block !important;\n  opacity: 0;\n  z-index: 0;\n  transition: transform 0ms ease-in-out, opacity 0.8s ease-out;\n}\n\n.carousel-fade .carousel-item.active {\n  position: relative;\n  z-index: 1;\n  opacity: 1;\n}\n\n.carousel-multi-item .carousel-item {\n  display: inline-block !important;\n}\n\n.carousel .carousel-slide-item {\n  transition: left 0.5s;\n}\n\n.carousel-control-prev, .carousel-control-next, .carousel-item-prev, .carousel-item-next {\n  z-index: 2;\n}\n";
 styleInject(css$3);
 
 var Carousel =
@@ -1666,7 +1687,7 @@ function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "goToIndex", function (item) {
-      _this.setState(_objectSpread({}, _this.state, {
+      _this.setState(_objectSpread2({}, _this.state, {
         activeItem: item
       }));
 
@@ -1741,7 +1762,7 @@ function (_Component) {
         var srcArray = Array.prototype.map.call(CarouselItemsArray, function (item) {
           return item.src;
         });
-        this.setState(_objectSpread({}, this.state, {
+        this.setState(_objectSpread2({}, this.state, {
           srcArray: srcArray
         }));
       }
@@ -2267,7 +2288,7 @@ function (_Component) {
       return React__default.createElement("div", _extends({
         "data-test": "collapse"
       }, attributes, {
-        style: _objectSpread({}, attributes.style, style),
+        style: _objectSpread2({}, attributes.style, {}, style),
         className: classes,
         ref: function ref(c) {
           _this2.element = c;
@@ -2372,7 +2393,7 @@ DataTableHead.defaultProps = {
   textWhite: false
 };
 
-var css$4 = ".table-wrapper-scroll-y {\r\n  display: block;\r\n  max-height: 200px;\r\n  overflow-y: auto;\r\n  -ms-overflow-style: -ms-autohiding-scrollbar;\r\n}\r\n";
+var css$4 = ".table-wrapper-scroll-y {\n  display: block;\n  max-height: 200px;\n  overflow-y: auto;\n  -ms-overflow-style: -ms-autohiding-scrollbar;\n}\n";
 styleInject(css$4);
 
 var Table = function Table(props) {
@@ -3187,9 +3208,9 @@ function (_Component) {
         return {
           columns: columns,
           rows: rows,
-          filteredRows: rows
+          filteredRows: _this.props.disableRetreatAfterSorting ? _this.filterRows() : rows
         };
-      }, callback && typeof callback === 'function' && function () {
+      }, callback && typeof callback === "function" && function () {
         return callback();
       });
     });
@@ -3248,11 +3269,11 @@ function (_Component) {
         search: e.target.value
       }, function () {
         return _this.filterRows();
-      }, _this.props.onSearch && typeof _this.props.onSearch === 'function' && _this.props.onSearch(e.target.value));
+      }, _this.props.onSearch && typeof _this.props.onSearch === "function" && _this.props.onSearch(e.target.value));
     });
 
     _defineProperty(_assertThisInitialized(_this), "checkFieldValue", function (array, field) {
-      return array[field] && typeof array[field] !== 'string' ? array[field].props.searchvalue : array[field];
+      return array[field] && typeof array[field] !== "string" ? array[field].props.searchvalue : array[field];
     });
 
     _defineProperty(_assertThisInitialized(_this), "checkField", function (field, a, b, direction) {
@@ -3260,7 +3281,7 @@ function (_Component) {
           aField = _ref[0],
           bField = _ref[1];
       var comp = aField > bField ? -1 : 1;
-      if (direction === 'asc') comp *= -1;
+      if (direction === "asc") comp *= -1;
       return comp;
     });
 
@@ -3270,25 +3291,25 @@ function (_Component) {
           return _this.checkField(field, a, b, direction);
         }
 
-        return direction === 'asc' ? a[field] < b[field] ? -1 : 1 : a[field] > b[field] ? -1 : 1;
+        return direction === "asc" ? a[field] < b[field] ? -1 : 1 : a[field] > b[field] ? -1 : 1;
       });
     });
 
     _defineProperty(_assertThisInitialized(_this), "handleSort", function (field, sort) {
       var onSort = _this.props.onSort;
-      if (sort === 'disabled') return;
+      if (sort === "disabled") return;
 
       _this.setState(function (prevState) {
         var sortRows = _this.props.sortRows;
         var rows = prevState.rows,
             columns = prevState.columns;
-        var direction = sort === 'desc' ? 'desc' : 'asc';
+        var direction = sort === "desc" ? "desc" : "asc";
 
         _this.sort(rows, sortRows, field, direction);
 
         columns.forEach(function (col) {
-          if (col.sort === 'disabled') return;
-          col.sort = col.field === field ? col.sort === 'desc' ? 'asc' : 'desc' : '';
+          if (col.sort === "disabled") return;
+          col.sort = col.field === field ? col.sort === "desc" ? "asc" : "desc" : "";
         });
         return {
           rows: rows,
@@ -3299,9 +3320,9 @@ function (_Component) {
         return _this.filterRows();
       });
 
-      onSort && typeof onSort === 'function' && onSort({
+      onSort && typeof onSort === "function" && onSort({
         column: field,
-        direction: sort === 'desc' ? 'desc' : 'asc'
+        direction: sort === "desc" ? "desc" : "asc"
       });
     });
 
@@ -3316,21 +3337,21 @@ function (_Component) {
       _this.setState(function (prevState) {
         var filteredRows = prevState.rows.filter(function (row) {
           for (var key in row) {
-            if ((!unsearchable.length || !unsearchable.includes(key)) && typeof row[key] !== 'function') {
-              var stringValue = '';
+            if ((!unsearchable.length || !unsearchable.includes(key)) && typeof row[key] !== "function") {
+              var stringValue = "";
 
-              if (sortRows && typeof row[key] !== 'string') {
+              if (sortRows && typeof row[key] !== "string") {
                 (function () {
                   var content = [];
 
                   var getContent = function getContent(element) {
-                    return _typeof(element) === 'object' ? element.props.children && Array.from(element.props.children).map(function (el) {
+                    return _typeof(element) === "object" ? element.props.children && Array.from(element.props.children).map(function (el) {
                       return getContent(el);
                     }) : content.push(element);
                   };
 
                   getContent(row[key]);
-                  stringValue = content.join('');
+                  stringValue = content.join("");
                 })();
               } else {
                 if (row[key]) {
@@ -3348,10 +3369,21 @@ function (_Component) {
           message: noRecordsFoundLabel,
           colspan: prevState.columns.length
         });
-        return {
-          filteredRows: filteredRows,
-          activePage: 0
-        };
+        var test = {};
+
+        if (_this.props.disableRetreatAfterSorting) {
+          test = {
+            filteredRows: filteredRows,
+            activePage: prevState.activePage = prevState.activePage < prevState.pages.length || prevState.activePage === 0 ? prevState.activePage : prevState.pages.length - 1
+          };
+        } else if (!_this.props.disableRetreatAfterSorting) {
+          test = {
+            filteredRows: filteredRows,
+            activePage: 0
+          };
+        }
+
+        return test;
       }, function () {
         return _this.paginateRows();
       });
@@ -3365,7 +3397,9 @@ function (_Component) {
             entries = prevState.entries,
             filteredRows = prevState.filteredRows,
             activePage = prevState.activePage;
-        var paging = _this.props.paging;
+        var _this$props2 = _this.props,
+            paging = _this$props2.paging,
+            disableRetreatAfterSorting = _this$props2.disableRetreatAfterSorting;
         pages = [];
 
         if (paging) {
@@ -3374,12 +3408,13 @@ function (_Component) {
             pages.push(filteredRows.slice(pageEndIndex - entries, pageEndIndex));
           }
 
-          activePage = activePage < pages.length || activePage === 0 ? activePage : pages.length - 1;
+          if (!disableRetreatAfterSorting) {
+            activePage = activePage < pages.length || activePage === 0 ? activePage : pages.length - 1;
+          }
         } else {
           pages.push(filteredRows);
           activePage = 0;
-        } // console.log(pages, filteredRows, activePage)
-
+        }
 
         return {
           pages: pages,
@@ -3396,7 +3431,7 @@ function (_Component) {
         activePage: page
       });
 
-      onPageChange && typeof onPageChange === 'function' && onPageChange({
+      onPageChange && typeof onPageChange === "function" && onPageChange({
         activePage: page + 1,
         pagesAmount: _this.pagesAmount()
       });
@@ -3416,7 +3451,7 @@ function (_Component) {
       order: props.order || [],
       pages: [],
       rows: props.data.rows || [],
-      search: '',
+      search: "",
       sorted: false,
       translateScrollHead: 0,
       unsearchable: []
@@ -3439,114 +3474,89 @@ function (_Component) {
           order = _this$state3.order,
           columns = _this$state3.columns;
 
-      if (typeof data === 'string') {
+      if (typeof data === "string") {
         this.fetchData(data, this.paginateRows);
       }
 
-      order.length && this.handleSort(order[0], order[1]); // console.log(object)
-
+      order.length && this.handleSort(order[0], order[1]);
       this.setUnsearchable(columns);
     }
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps, prevState) {
-      var _this2 = this;
-
       var data = this.props.data;
-      var _this$state4 = this.state,
-          sorted = _this$state4.sorted,
-          columns = _this$state4.columns;
 
       if (prevProps.data !== data) {
-        typeof data === 'string' ? this.fetchData(data) : this.setData(data.rows, data.columns, this.paginateRows);
+        typeof data === "string" ? this.fetchData(data) : this.setData(data.rows, data.columns, this.paginateRows);
         this.setUnsearchable(this.state.columns);
         this.filterRows();
-      }
-
-      if (sorted && columns.filter(function (el) {
-        return el.sort;
-      }).length === 0) {
-        // console.log()
-        // console.log(this.state.activePage)
-        // this.setState({ columns: prevState.columns }, () => {
-        var col = prevState.columns.filter(function (el) {
-          return el.sort;
-        })[0];
-        var sort = col.sort === 'asc' ? 'desc' : 'asc';
-        console.log(prevState.columns, this.state.columns);
-        this.handleSort(col.field, sort);
-        setTimeout(function () {
-          _this2.setState({
-            activePage: prevState.activePage // columns: prevState.columns
-
-          });
-        }, 0);
       }
     }
   }, {
     key: "render",
     value: function render() {
-      var _this$props2 = this.props,
-          autoWidth = _this$props2.autoWidth,
-          bordered = _this$props2.bordered,
-          borderless = _this$props2.borderless,
-          barReverse = _this$props2.barReverse,
-          btn = _this$props2.btn,
-          className = _this$props2.className,
-          children = _this$props2.children,
-          dark = _this$props2.dark,
-          data = _this$props2.data,
-          displayEntries = _this$props2.displayEntries,
-          entriesOptions = _this$props2.entriesOptions,
-          entriesLabel = _this$props2.entriesLabel,
-          exportToCSV = _this$props2.exportToCSV,
-          fixed = _this$props2.fixed,
-          hover = _this$props2.hover,
-          info = _this$props2.info,
-          infoLabel = _this$props2.infoLabel,
-          maxHeight = _this$props2.maxHeight,
-          noBottomColumns = _this$props2.noBottomColumns,
-          noRecordsFoundLabel = _this$props2.noRecordsFoundLabel,
-          order = _this$props2.order,
-          pagesAmount = _this$props2.pagesAmount,
-          paging = _this$props2.paging,
-          paginationLabel = _this$props2.paginationLabel,
-          responsive = _this$props2.responsive,
-          responsiveSm = _this$props2.responsiveSm,
-          responsiveMd = _this$props2.responsiveMd,
-          responsiveLg = _this$props2.responsiveLg,
-          responsiveXl = _this$props2.responsiveXl,
-          searching = _this$props2.searching,
-          searchLabel = _this$props2.searchLabel,
-          scrollX = _this$props2.scrollX,
-          scrollY = _this$props2.scrollY,
-          small = _this$props2.small,
-          sortable = _this$props2.sortable,
-          striped = _this$props2.striped,
-          tbodyColor = _this$props2.tbodyColor,
-          tbodyTextWhite = _this$props2.tbodyTextWhite,
-          theadColor = _this$props2.theadColor,
-          theadTextWhite = _this$props2.theadTextWhite,
-          sortRows = _this$props2.sortRows,
-          onSearch = _this$props2.onSearch,
-          onSort = _this$props2.onSort,
-          onPageChange = _this$props2.onPageChange,
-          attributes = _objectWithoutProperties(_this$props2, ["autoWidth", "bordered", "borderless", "barReverse", "btn", "className", "children", "dark", "data", "displayEntries", "entriesOptions", "entriesLabel", "exportToCSV", "fixed", "hover", "info", "infoLabel", "maxHeight", "noBottomColumns", "noRecordsFoundLabel", "order", "pagesAmount", "paging", "paginationLabel", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "searching", "searchLabel", "scrollX", "scrollY", "small", "sortable", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite", "sortRows", "onSearch", "onSort", "onPageChange"]);
+      var _this$props3 = this.props,
+          autoWidth = _this$props3.autoWidth,
+          bordered = _this$props3.bordered,
+          borderless = _this$props3.borderless,
+          barReverse = _this$props3.barReverse,
+          btn = _this$props3.btn,
+          className = _this$props3.className,
+          children = _this$props3.children,
+          dark = _this$props3.dark,
+          data = _this$props3.data,
+          disableRetreatAfterSorting = _this$props3.disableRetreatAfterSorting,
+          displayEntries = _this$props3.displayEntries,
+          entriesOptions = _this$props3.entriesOptions,
+          entriesLabel = _this$props3.entriesLabel,
+          exportToCSV = _this$props3.exportToCSV,
+          fixed = _this$props3.fixed,
+          hover = _this$props3.hover,
+          info = _this$props3.info,
+          infoLabel = _this$props3.infoLabel,
+          maxHeight = _this$props3.maxHeight,
+          noBottomColumns = _this$props3.noBottomColumns,
+          noRecordsFoundLabel = _this$props3.noRecordsFoundLabel,
+          order = _this$props3.order,
+          pagesAmount = _this$props3.pagesAmount,
+          paging = _this$props3.paging,
+          paginationLabel = _this$props3.paginationLabel,
+          responsive = _this$props3.responsive,
+          responsiveSm = _this$props3.responsiveSm,
+          responsiveMd = _this$props3.responsiveMd,
+          responsiveLg = _this$props3.responsiveLg,
+          responsiveXl = _this$props3.responsiveXl,
+          searching = _this$props3.searching,
+          searchLabel = _this$props3.searchLabel,
+          scrollX = _this$props3.scrollX,
+          scrollY = _this$props3.scrollY,
+          small = _this$props3.small,
+          sortable = _this$props3.sortable,
+          striped = _this$props3.striped,
+          tbodyColor = _this$props3.tbodyColor,
+          tbodyTextWhite = _this$props3.tbodyTextWhite,
+          theadColor = _this$props3.theadColor,
+          theadTextWhite = _this$props3.theadTextWhite,
+          sortRows = _this$props3.sortRows,
+          onSearch = _this$props3.onSearch,
+          onSort = _this$props3.onSort,
+          onPageChange = _this$props3.onPageChange,
+          attributes = _objectWithoutProperties(_this$props3, ["autoWidth", "bordered", "borderless", "barReverse", "btn", "className", "children", "dark", "data", "disableRetreatAfterSorting", "displayEntries", "entriesOptions", "entriesLabel", "exportToCSV", "fixed", "hover", "info", "infoLabel", "maxHeight", "noBottomColumns", "noRecordsFoundLabel", "order", "pagesAmount", "paging", "paginationLabel", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "searching", "searchLabel", "scrollX", "scrollY", "small", "sortable", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite", "sortRows", "onSearch", "onSort", "onPageChange"]);
 
-      var _this$state5 = this.state,
-          columns = _this$state5.columns,
-          entries = _this$state5.entries,
-          filteredRows = _this$state5.filteredRows,
-          pages = _this$state5.pages,
-          activePage = _this$state5.activePage,
-          search = _this$state5.search,
-          translateScrollHead = _this$state5.translateScrollHead;
-      var tableClasses = classNames('dataTables_wrapper dt-bootstrap4', className);
+      var _this$state4 = this.state,
+          columns = _this$state4.columns,
+          entries = _this$state4.entries,
+          filteredRows = _this$state4.filteredRows,
+          pages = _this$state4.pages,
+          activePage = _this$state4.activePage,
+          search = _this$state4.search,
+          translateScrollHead = _this$state4.translateScrollHead;
+      var tableClasses = classNames("dataTables_wrapper dt-bootstrap4", className);
       return React__default.createElement("div", {
         "data-test": "datatable",
         className: tableClasses
       }, React__default.createElement("div", {
-        className: "row".concat(barReverse ? ' flex-row-reverse' : '')
+        className: "row".concat(barReverse ? " flex-row-reverse" : "")
       }, React__default.createElement(DataTableEntries, {
         paging: paging,
         displayEntries: displayEntries,
@@ -3653,6 +3663,7 @@ DataTable.propTypes = {
   children: propTypes.node,
   dark: propTypes.bool,
   data: propTypes.oneOfType([propTypes.object, propTypes.string]),
+  disableRetreatAfterSorting: propTypes.bool,
   displayEntries: propTypes.bool,
   entries: propTypes.number,
   entriesLabel: propTypes.oneOfType([propTypes.string, propTypes.number, propTypes.object]),
@@ -3701,36 +3712,37 @@ DataTable.defaultProps = {
     columns: [],
     rows: []
   },
+  disableRetreatAfterSorting: false,
   displayEntries: true,
   entries: 10,
-  entriesLabel: 'Show entries',
+  entriesLabel: "Show entries",
   entriesOptions: [10, 20, 50, 100],
   exportToCSV: false,
   fixed: false,
   hover: false,
   info: true,
-  infoLabel: ['Showing', 'to', 'of', 'entries'],
-  noRecordsFoundLabel: 'No matching records found',
+  infoLabel: ["Showing", "to", "of", "entries"],
+  noRecordsFoundLabel: "No matching records found",
   noBottomColumns: false,
   order: [],
   pagesAmount: 8,
   paging: true,
-  paginationLabel: ['Previous', 'Next'],
+  paginationLabel: ["Previous", "Next"],
   responsive: false,
   responsiveSm: false,
   responsiveMd: false,
   responsiveLg: false,
   responsiveXl: false,
   searching: true,
-  searchLabel: 'Search',
+  searchLabel: "Search",
   scrollX: false,
   scrollY: false,
   sortable: true,
   small: false,
   striped: false,
-  theadColor: '',
+  theadColor: "",
   theadTextWhite: false,
-  tbodyColor: '',
+  tbodyColor: "",
   tbodyTextWhite: false
 };
 
@@ -4021,8 +4033,8 @@ function (_React$Component) {
           props = _objectWithoutProperties(_omit, ["className", "divider", "tag", "header", "href", "active", "disabled"]);
 
       var classes = classNames({
-        'active': active,
-        'disabled': disabled,
+        active: active,
+        disabled: disabled,
         'dropdown-item': !divider && !header,
         'dropdown-header': header,
         'dropdown-divider': divider
@@ -4045,7 +4057,8 @@ function (_React$Component) {
       }, props, {
         tabIndex: tabIndex,
         className: classes,
-        onClick: this.onClick
+        onClick: this.onClick,
+        href: href
       }));
     }
   }]);
@@ -4100,7 +4113,7 @@ DropdownMenuComponent.propTypes = {
   children: propTypes.node.isRequired
 };
 
-var css$5 = ".dropup .dropdown-menu {\r\n  top: auto !important;\r\n  bottom: 100% !important;\r\n  transform: translate3d(5px, 5px, 0px) !important;\r\n}\r\n\r\n.dropdown-menu-right {\r\n  left: 0 !important;\r\n  right: auto !important;\r\n}\r\n";
+var css$5 = ".dropup .dropdown-menu {\n  top: auto !important;\n  bottom: 100% !important;\n  transform: translate3d(5px, 5px, 0px) !important;\n}\n\n.dropdown-menu-right {\n  left: 0 !important;\n  right: auto !important;\n}\n";
 styleInject(css$5);
 
 var noFlipModifier = {
@@ -4431,7 +4444,7 @@ FreeBird.defaultProps = {
   tag: "div"
 };
 
-var css$6 = ".hamburger-button__checkbox {\r\n  display: none;\r\n}\r\n\r\n.hamburger-button__button {\r\n  background-color: transparent;\r\n  height: 100%;\r\n  width: 100%;\r\n  text-align: center;\r\n  cursor: pointer;\r\n  top: -5px;\r\n}\r\n\r\nlabel.hamburger-button__button {\r\n  margin-bottom: 0;\r\n}\r\n\r\n#nav-icon1 {\r\n  width: 1.5em;\r\n  height: 1.5em;\r\n  position: relative;\r\n  -webkit-transform: rotate(0deg);\r\n  -moz-transform: rotate(0deg);\r\n  -o-transform: rotate(0deg);\r\n  transform: rotate(0deg);\r\n  -webkit-transition: .5s ease-in-out;\r\n  -moz-transition: .5s ease-in-out;\r\n  -o-transition: .5s ease-in-out;\r\n  transition: .5s ease-in-out;\r\n  cursor: pointer;\r\n}\r\n\r\n#nav-icon1 span {\r\n  display: block;\r\n  position: absolute;\r\n  height: 3px;\r\n  width: 100%;\r\n  border-radius: 1px;\r\n  background-color: #fff;\r\n  opacity: 1;\r\n  left: 0;\r\n  -webkit-transform: rotate(0deg);\r\n  -moz-transform: rotate(0deg);\r\n  -o-transform: rotate(0deg);\r\n  transform: rotate(0deg);\r\n  -webkit-transition: .25s ease-in-out;\r\n  -moz-transition: .25s ease-in-out;\r\n  -o-transition: .25s ease-in-out;\r\n  transition: .25s ease-in-out;\r\n}\r\n\r\n#nav-icon1 span:nth-child(1) {\r\n  top: 5px;\r\n}\r\n\r\n#nav-icon1 span:nth-child(2) {\r\n  top: 16px;\r\n}\r\n\r\n#nav-icon1 span:nth-child(3) {\r\n  top: 27px;\r\n}\r\n\r\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(1) {\r\n  top: 16px;\r\n  -webkit-transform: rotate(135deg);\r\n  -moz-transform: rotate(135deg);\r\n  -o-transform: rotate(135deg);\r\n  transform: rotate(135deg);\r\n}\r\n\r\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(2) {\r\n  opacity: 0;\r\n  left: -60px;\r\n}\r\n\r\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(3) {\r\n  top: 16px;\r\n  -webkit-transform: rotate(-135deg);\r\n  -moz-transform: rotate(-135deg);\r\n  -o-transform: rotate(-135deg);\r\n  transform: rotate(-135deg);\r\n}\r\n";
+var css$6 = ".hamburger-button__checkbox {\n  display: none;\n}\n\n.hamburger-button__button {\n  background-color: transparent;\n  height: 100%;\n  width: 100%;\n  text-align: center;\n  cursor: pointer;\n  top: -5px;\n}\n\nlabel.hamburger-button__button {\n  margin-bottom: 0;\n}\n\n#nav-icon1 {\n  width: 1.5em;\n  height: 1.5em;\n  position: relative;\n  -webkit-transform: rotate(0deg);\n  -moz-transform: rotate(0deg);\n  -o-transform: rotate(0deg);\n  transform: rotate(0deg);\n  -webkit-transition: .5s ease-in-out;\n  -moz-transition: .5s ease-in-out;\n  -o-transition: .5s ease-in-out;\n  transition: .5s ease-in-out;\n  cursor: pointer;\n}\n\n#nav-icon1 span {\n  display: block;\n  position: absolute;\n  height: 3px;\n  width: 100%;\n  border-radius: 1px;\n  background-color: #fff;\n  opacity: 1;\n  left: 0;\n  -webkit-transform: rotate(0deg);\n  -moz-transform: rotate(0deg);\n  -o-transform: rotate(0deg);\n  transform: rotate(0deg);\n  -webkit-transition: .25s ease-in-out;\n  -moz-transition: .25s ease-in-out;\n  -o-transition: .25s ease-in-out;\n  transition: .25s ease-in-out;\n}\n\n#nav-icon1 span:nth-child(1) {\n  top: 5px;\n}\n\n#nav-icon1 span:nth-child(2) {\n  top: 16px;\n}\n\n#nav-icon1 span:nth-child(3) {\n  top: 27px;\n}\n\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(1) {\n  top: 16px;\n  -webkit-transform: rotate(135deg);\n  -moz-transform: rotate(135deg);\n  -o-transform: rotate(135deg);\n  transform: rotate(135deg);\n}\n\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(2) {\n  opacity: 0;\n  left: -60px;\n}\n\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(3) {\n  top: 16px;\n  -webkit-transform: rotate(-135deg);\n  -moz-transform: rotate(-135deg);\n  -o-transform: rotate(-135deg);\n  transform: rotate(-135deg);\n}\n";
 styleInject(css$6);
 
 var HamburgerToggler = function HamburgerToggler(props) {
@@ -4516,7 +4529,7 @@ function (_Component) {
         width = _this.props.height * (1 / ratio);
       }
 
-      _this.setState(_objectSpread({}, _this.state, {
+      _this.setState(_objectSpread2({}, _this.state, {
         width: width,
         height: height,
         ratio: ratio
@@ -5259,6 +5272,7 @@ function (_Component) {
           className = _this$props.className,
           size = _this$props.size,
           side = _this$props.side,
+          disableFocusTrap = _this$props.disableFocusTrap,
           fullHeight = _this$props.fullHeight,
           frame = _this$props.frame,
           centered = _this$props.centered,
@@ -5296,6 +5310,19 @@ function (_Component) {
         role: role,
         'aria-hidden': 'true'
       });
+      var modal = React__default.createElement("div", _extends({
+        "data-test": "modal",
+        onKeyUp: this.handleEscape,
+        className: wrapperClasses
+      }, modalAttributes), React__default.createElement("div", {
+        className: modalDialogClasses,
+        role: "document"
+      }, React__default.createElement("div", {
+        ref: function ref(elem) {
+          return _this2.modalContent = elem;
+        },
+        className: contentClasses
+      }, children)));
       return React__default.createElement(React.Fragment, null, backdrop && React__default.createElement(reactTransitionGroup.Transition, {
         timeout: timeout,
         "in": this.state.isOpen,
@@ -5324,19 +5351,7 @@ function (_Component) {
         onExit: function onExit(node) {
           return _this2.handleOnExit('modal', node);
         }
-      }, React__default.createElement("div", _extends({
-        "data-test": "modal",
-        onKeyUp: this.handleEscape,
-        className: wrapperClasses
-      }, modalAttributes), React__default.createElement("div", {
-        className: modalDialogClasses,
-        role: "document"
-      }, React__default.createElement("div", {
-        ref: function ref(elem) {
-          return _this2.modalContent = elem;
-        },
-        className: contentClasses
-      }, children)))));
+      }, !disableFocusTrap ? React__default.createElement(FocusTrap, null, modal) : modal));
     }
   }]);
 
@@ -5348,6 +5363,7 @@ Modal.defaultProps = {
   backdrop: true,
   backdropTransitionTimeout: 150,
   fade: true,
+  disableFocusTrap: false,
   isOpen: false,
   keyboard: true,
   modalTransitionTimeout: 300,
@@ -5365,6 +5381,7 @@ Modal.propTypes = {
   className: propTypes.string,
   contentClassName: propTypes.string,
   fade: propTypes.bool,
+  disableFocusTrap: propTypes.bool,
   frame: propTypes.bool,
   fullHeight: propTypes.bool,
   hiddenModal: propTypes.func,
@@ -5942,122 +5959,199 @@ Notification.defaultProps = {
   closeClassName: 'text-dark'
 };
 
-var Popper = function Popper(_ref) {
-  var children = _ref.children,
-      className = _ref.className,
-      clickable = _ref.clickable,
-      domElement = _ref.domElement,
-      modifiers = _ref.modifiers,
-      id = _ref.id,
-      isVisible = _ref.isVisible,
-      onChange = _ref.onChange,
-      placement = _ref.placement,
-      popover = _ref.popover,
-      style = _ref.style,
-      tag = _ref.tag;
+var css$7 = ".popover {\n  width: auto;\n  background-color: white;\n  color: #97999b;\n  text-align: center;\n  display: inline-block;\n  border-radius: 3px;\n  position: absolute;\n  font-size: 0.83em;\n  font-weight: normal;\n  border: 1px rgb(0, 0, 0) solid;\n  /* z-index: 200000; */\n  z-index: 10;\n  /* max-width: initial; */\n  max-width: 274px;\n  text-align: start;\n  background-color: #fff;\n  border: 1px solid rgba(0, 0, 0, 0.2);\n  border-radius: 0.3rem;\n  opacity: 0;\n  transition: opacity 0.3s, visibility 0.3s;\n  visibility: hidden;\n}\n\n.show.popover {\n  opacity: 1;\n  visibility: visible;\n}\n\n.popover-body {\n  color: #6c6e71;\n}\n\n.popover .popover_arrow {\n  width: 0;\n  height: 0;\n  border-style: solid;\n  position: absolute;\n  margin: 6px;\n  color: transparent;\n}\n\n.popover[x-placement^='top'] {\n  margin-bottom: 15px;\n}\n\n.popover[x-placement^='top'] .popover_arrow {\n  border-width: 8px 8px 0 8px;\n  border-color: #d6d6d6 transparent transparent transparent;\n  bottom: -8px;\n  margin-bottom: 0;\n}\n\n.popover[x-placement^='top'] .popover_arrow::before {\n  content: '';\n  display: inline-block;\n  position: absolute;\n  left: -8px;\n  bottom: 1.5px;\n  border: solid;\n  border-width: 8px 8px 0 8px;\n  border-color: white transparent transparent transparent;\n}\n\n.popover[x-placement^='bottom'] {\n  margin-top: 15px;\n}\n\n.popover[x-placement^='bottom'] .popover_arrow {\n  border-width: 0 8px 8px 8px;\n  border-color: transparent transparent #d6d6d6 transparent;\n  top: -8px;\n  margin-top: 0;\n}\n\n.popover[x-placement^='bottom'] .popover_arrow::before {\n  content: '';\n  display: inline-block;\n  position: absolute;\n  left: -8px;\n  top: 1.45px;\n  border: solid;\n  border-width: 0 8px 8px 8px;\n  border-color: transparent transparent white transparent;\n}\n\n.popover[x-placement^='right'] {\n  margin-left: 15px;\n}\n\n.popover[x-placement^='right'] .popover_arrow {\n  border-width: 8px 8px 8px 0;\n  border-color: transparent #d6d6d6 transparent transparent;\n  left: -8px;\n  margin-left: 0;\n}\n\n.popover[x-placement^='right'] .popover_arrow::before {\n  content: '';\n  display: inline-block;\n  position: absolute;\n  top: -8px;\n  left: 1.45px;\n  border: solid;\n  border-width: 8px 8px 8px 0;\n  border-color: transparent white transparent transparent;\n}\n\n.popover[x-placement^='left'] {\n  margin-right: 15px;\n}\n\n.popover[x-placement^='left'] .popover_arrow {\n  border-width: 8px 0 8px 8px;\n  border-color: transparent transparent transparent #d6d6d6;\n  right: -8px;\n  margin-right: 0;\n}\n\n.popover[x-placement^='left'] .popover_arrow::before {\n  content: '';\n  display: inline-block;\n  position: absolute;\n  top: -8px;\n  right: 1.45px;\n  border: solid;\n  border-width: 8px 0 8px 8px;\n  border-color: transparent transparent transparent white;\n}\n\n\n.tooltip {\n  width: auto;\n  background-color: black;\n  color: white;\n  text-align: center;\n  display: inline-block;\n  border-radius: 3px;\n  position: absolute;\n  /* font-size: 0.83em; */\n  font-weight: normal;\n  border: 1px rgb(0, 0, 0) solid;\n  /* z-index: 200000; */\n  z-index: 15;\n  /* max-width: initial; */\n  max-width: 274px;\n  text-align: start;\n  border: 1px solid rgba(0, 0, 0, 0.2);\n  border-radius: 0.3rem;\n  opacity: 0;\n  transition: opacity 0.3s, visibility 0.3s;\n  visibility: hidden;\n}\n\n.show.tooltip {\n  opacity: 1;\n  visibility: visible;\n}\n\n\n.tooltip .popover_arrow {\n  width: 0;\n  height: 0;\n  border-style: solid;\n  position: absolute;\n  margin: 6px;\n  color: transparent;\n}\n\n.tooltip[x-placement^='top'] {\n  margin-bottom: 5px;\n}\n\n.tooltip[x-placement^='top'] .popover_arrow {\n  border-width: 6px 6px 0 6px;\n  border-color: #131313 transparent transparent transparent;\n  bottom: -6px;\n  margin-bottom: 0;\n}\n\n.tooltip[x-placement^='top'] .popover_arrow::before {\n  content: '';\n  display: inline-block;\n  position: absolute;\n  left: -6px;\n  bottom: 1.5px;\n  border: solid;\n  border-width: 6px 6px 0 6px;\n  border-color: black transparent transparent transparent;\n}\n\n.tooltip[x-placement^='bottom'] {\n  margin-top: 5px;\n}\n\n.tooltip[x-placement^='bottom'] .popover_arrow {\n  border-width: 0 6px 6px 6px;\n  border-color: transparent transparent #131313 transparent;\n  top: -6px;\n  margin-top: 0;\n}\n\n.tooltip[x-placement^='bottom'] .popover_arrow::before {\n  content: '';\n  display: inline-block;\n  position: absolute;\n  left: -6px;\n  top: 1.45px;\n  border: solid;\n  border-width: 0 6px 6px 6px;\n  border-color: transparent transparent black transparent;\n}\n\n.tooltip[x-placement^='right'] {\n  margin-left: 5px;\n}\n\n.tooltip[x-placement^='right'] .popover_arrow {\n  border-width: 6px 6px 6px 0;\n  border-color: transparent #131313 transparent transparent;\n  left: -6px;\n  margin-left: 0;\n}\n\n.tooltip[x-placement^='right'] .popover_arrow::before {\n  content: '';\n  display: inline-block;\n  position: absolute;\n  top: -6px;\n  left: 1.45px;\n  border: solid;\n  border-width: 6px 6px 6px 0;\n  border-color: transparent black transparent transparent;\n}\n\n.tooltip[x-placement^='left'] {\n  margin-right: 5px;\n}\n\n.tooltip[x-placement^='left'] .popover_arrow {\n  border-width: 6px 0 6px 6px;\n  border-color: transparent transparent transparent #131313;\n  right: -6px;\n  margin-right: 0;\n}\n\n.tooltip[x-placement^='left'] .popover_arrow::before {\n  content: '';\n  display: inline-block;\n  position: absolute;\n  top: -6px;\n  right: 1.45px;\n  border: solid;\n  border-width: 6px 0 6px 6px;\n  border-color: transparent transparent transparent black;\n}\n\n";
+styleInject(css$7);
 
-  var _useState = React.useState(isVisible),
-      _useState2 = _slicedToArray(_useState, 2),
-      visible = _useState2[0],
-      setVisible = _useState2[1];
+var Popover =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Popover, _React$Component);
 
-  React.useEffect(function () {
-    setVisible(isVisible);
-  }, [isVisible]);
-  React.useEffect(function () {
-    onChange && onChange(visible);
-  }, [onChange, visible]);
-  React.useEffect(function () {
-    window.addEventListener('click', handleClick);
-    return function () {
-      return window.removeEventListener('click', handleClick);
-    };
-  });
+  function Popover(props) {
+    var _this;
 
-  function handleClick(e) {
-    var element = document.elementsFromPoint(e.clientX, e.clientY).find(function (el) {
-      return el.dataset.popper === id;
+    _classCallCheck(this, Popover);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Popover).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "setPopperJS", function () {
+      if (_this.state.showPopper) {
+        _this.state.popperJS ? _this.state.popperJS.scheduleUpdate() : _this.createPopper();
+        setTimeout(function () {
+          return clearInterval(_this.timer);
+        }, 1000);
+      }
     });
-    if (element) return;
-    setVisible(false);
+
+    _defineProperty(_assertThisInitialized(_this), "createPopper", function () {
+      if (_this.referenceElm && _this.popoverWrapperRef) _this.setState({
+        popperJS: new Popper(_this.referenceElm, _this.popoverWrapperRef, _objectSpread2({
+          placement: _this.props.placement
+        }, _this.props.modifiers), function () {
+          return setTimeout(function () {
+            _this.state.popperJS.scheduleUpdate();
+          }, 10);
+        })
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "doToggle", function (toggler) {
+      _this.setState({
+        showPopper: toggler && true
+      }, function () {
+        if (_this.state.showPopper) _this.setState({
+          visible: typeof toggler !== 'undefined' ? toggler : !_this.state.visible
+        }, function () {
+          _this.createPopper();
+
+          _this.state.popperJS.scheduleUpdate();
+        });
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleClick", function (e) {
+      var target = e.target;
+
+      if (_this.popoverWrapperRef && _this.state.showPopper) {
+        if (_this.popoverWrapperRef.contains(target) || _this.referenceElm.contains(target) || target === _this.referenceElm) return;
+
+        _this.doToggle(false);
+      }
+    });
+
+    _this.state = {
+      popperJS: null,
+      visible: props.isVisible,
+      showPopper: props.isVisible
+    };
+    _this.popoverWrapperRef = React__default.createRef();
+    _this.referenceElm = React__default.createRef();
+    return _this;
   }
 
-  var Wrapper = children[0];
-  var Content = children[1];
-  var Tag = tag;
-  var tooltipClasses = classNames("fade", popover ? "popover bs-popover-".concat(placement, " popover-enter-done") : "tooltip bs-tooltip-".concat(placement), visible ? "show" : "", className ? className : "");
-  var contentClasses = classNames(!popover && "tooltip-inner");
-  return React__default.createElement(reactPopper.Manager, {
-    "data-test": "popper"
-  }, React__default.createElement(reactPopper.Reference, null, function (_ref2) {
-    var ref = _ref2.ref;
-    return !domElement ? React__default.createElement(Wrapper.type, _extends({}, Wrapper.props, {
-      onMouseEnter: function onMouseEnter() {
-        return !clickable && setVisible(true);
-      },
-      onMouseLeave: function onMouseLeave() {
-        return !clickable && setVisible(false);
-      },
-      onTouchStart: function onTouchStart() {
-        return !clickable && setVisible(true);
-      },
-      onTouchEnd: function onTouchEnd() {
-        return !clickable && setVisible(false);
-      },
-      onMouseDown: function onMouseDown() {
-        return clickable && setVisible(!visible);
-      },
-      innerRef: ref,
-      "data-popper": id
-    })) : React__default.createElement(Wrapper.type, _extends({}, Wrapper.props, {
-      onMouseEnter: function onMouseEnter() {
-        return !clickable && setVisible(true);
-      },
-      onMouseLeave: function onMouseLeave() {
-        return !clickable && setVisible(false);
-      },
-      onTouchStart: function onTouchStart() {
-        return !clickable && setVisible(true);
-      },
-      onTouchEnd: function onTouchEnd() {
-        return !clickable && setVisible(false);
-      },
-      onMouseDown: function onMouseDown() {
-        return clickable && setVisible(!visible);
-      },
-      ref: ref,
-      "data-popper": id
-    }));
-  }), visible && Content.props.children && React__default.createElement(Tag, {
-    style: style
-  }, React__default.createElement(reactPopper.Popper, {
-    modifiers: modifiers,
-    eventsEnabled: true,
-    positionFixed: false,
-    placement: placement
-  }, function (_ref3) {
-    var placement = _ref3.placement,
-        ref = _ref3.ref,
-        style = _ref3.style,
-        arrowProps = _ref3.arrowProps;
-    return React__default.createElement(Tag, {
-      ref: ref,
-      style: style,
-      "data-placement": placement,
-      className: tooltipClasses,
-      "data-popper": id
-    }, React__default.createElement(Content.type, _extends({}, Content.props, {
-      className: contentClasses
-    }), Content.props.children), React__default.createElement("span", {
-      ref: arrowProps.ref,
-      style: arrowProps.style,
-      "data-placement": placement,
-      className: "arrow"
-    }));
-  })));
-};
+  _createClass(Popover, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      var showPopper = this.state.showPopper;
+      var _this$props = this.props,
+          isVisible = _this$props.isVisible,
+          onChange = _this$props.onChange;
+      this.setPopperJS();
+      if (prevProps.isVisible !== isVisible && isVisible !== showPopper && showPopper !== prevProps.showPopper) this.setState({
+        showPopper: isVisible
+      });
+      if (onChange && showPopper !== prevState.showPopper) onChange(showPopper);
+      if (showPopper && prevState.showPopper !== showPopper) this.createPopper();
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
 
-Popper.propTypes = {
+      this.timer = setInterval(function () {
+        return _this2.setPopperJS();
+      }, 3);
+      document.addEventListener('click', this.handleClick);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      var _this$props2 = this.props,
+          children = _this$props2.children,
+          className = _this$props2.className,
+          clickable = _this$props2.clickable,
+          domElement = _this$props2.domElement,
+          modifiers = _this$props2.modifiers,
+          id = _this$props2.id,
+          isVisible = _this$props2.isVisible,
+          onChange = _this$props2.onChange,
+          placement = _this$props2.placement,
+          popover = _this$props2.popover,
+          style = _this$props2.style,
+          Tag = _this$props2.tag,
+          attributes = _objectWithoutProperties(_this$props2, ["children", "className", "clickable", "domElement", "modifiers", "id", "isVisible", "onChange", "placement", "popover", "style", "tag"]);
+
+      var _this$state = this.state,
+          visible = _this$state.visible,
+          showPopper = _this$state.showPopper;
+      var popper = children[1];
+      var Wrapper = children[0];
+      return React__default.createElement(React__default.Fragment, null, !domElement ? React__default.createElement(Wrapper.type, _extends({}, Wrapper.props, {
+        onMouseEnter: function onMouseEnter() {
+          return !clickable && _this3.doToggle(true);
+        },
+        onMouseLeave: function onMouseLeave() {
+          return !clickable && !popover && setTimeout(function () {
+            return _this3.doToggle(false);
+          }, 0);
+        },
+        onTouchStart: function onTouchStart() {
+          return !clickable && _this3.doToggle(true);
+        },
+        onTouchEnd: function onTouchEnd() {
+          return !clickable && !popover && _this3.doToggle(false);
+        },
+        onMouseDown: function onMouseDown() {
+          clickable && _this3.doToggle(!showPopper);
+          setTimeout(function () {
+            return _this3.setPopperJS();
+          }, 100);
+        },
+        onMouseUp: function onMouseUp() {
+          return setTimeout(function () {
+            return _this3.setPopperJS();
+          }, 0);
+        },
+        innerRef: function innerRef(ref) {
+          return _this3.referenceElm = ref;
+        },
+        "data-popper": id
+      })) : React__default.createElement(Wrapper.type, _extends({}, Wrapper.props, {
+        onMouseEnter: function onMouseEnter() {
+          return !clickable && _this3.doToggle(true);
+        },
+        onMouseLeave: function onMouseLeave() {
+          return !clickable && !popover && setTimeout(function () {
+            return _this3.doToggle(false);
+          }, 0);
+        },
+        onTouchStart: function onTouchStart() {
+          return !clickable && _this3.doToggle(true);
+        },
+        onTouchEnd: function onTouchEnd() {
+          return !clickable && !popover && _this3.doToggle(false);
+        },
+        onMouseDown: function onMouseDown() {
+          return clickable && _this3.doToggle(!showPopper);
+        },
+        onMouseUp: function onMouseUp() {
+          return setTimeout(function () {
+            return _this3.setPopperJS();
+          }, 0);
+        },
+        ref: function ref(_ref) {
+          return _this3.referenceElm = _ref;
+        },
+        "data-popper": id
+      })), showPopper && React__default.createElement(Tag, _extends({
+        ref: function ref(_ref2) {
+          return _this3.popoverWrapperRef = _ref2;
+        },
+        className: classNames(visible && 'show', popover ? 'popover' : 'tooltip px-2', className),
+        "data-popper": id
+      }, attributes), popper, React__default.createElement("span", {
+        "x-arrow": "",
+        className: "popover_arrow"
+      })));
+    }
+  }]);
+
+  return Popover;
+}(React__default.Component);
+
+Popover.propTypes = {
   children: propTypes.node,
   clickable: propTypes.bool,
   domElement: propTypes.bool,
@@ -6069,7 +6163,7 @@ Popper.propTypes = {
   style: propTypes.objectOf(propTypes.string),
   tag: propTypes.string
 };
-Popper.defaultProps = {
+Popover.defaultProps = {
   clickable: false,
   domElement: false,
   id: 'popper',
@@ -6148,7 +6242,7 @@ var Progress = function Progress(_ref) {
   var progressBarClasses = classNames(preloader ? 'indeterminate' : 'progress-bar', barClassName ? barClassName : null, animated ? 'progress-bar-animated' : null, color ? "bg-".concat(color) : null, striped || animated ? 'progress-bar-striped' : null);
   var computedHeight = height ? height : children && '1rem';
 
-  var computedWrapperStyle = _objectSpread({}, wrapperStyle, {
+  var computedWrapperStyle = _objectSpread2({}, wrapperStyle, {
     height: computedHeight
   });
 
@@ -6276,20 +6370,6 @@ var Rating = function Rating(props) {
   var handleClick = function handleClick(title, index, e) {
     e.stopPropagation();
 
-    if (feedback) {
-      var unHoverPopper = document.createElement('div');
-      var size = 50;
-      unHoverPopper.classList.add('to-remove');
-      unHoverPopper.style.cssText = "\n      display: block;\n      height: ".concat(size, "px;\n      width: ").concat(size, "px;\n      position: absolute;\n      top: ").concat(e.pageY - size / 2, "px;\n      left: ").concat(e.pageX - size / 2, "px;\n      cursor: pointer\n    ");
-      e.target.closest('.mdb-rating').appendChild(unHoverPopper);
-      unHoverPopper.addEventListener('mouseout', function () {
-        return unHoverPopper.remove();
-      });
-      setTimeout(function () {
-        unHoverPopper.remove();
-      }, 100);
-    }
-
     if (title === choosed.title && index === choosed.index) {
       setChoosed({
         title: '',
@@ -6403,10 +6483,8 @@ var Rating = function Rating(props) {
           type: "text",
           className: "md-textarea form-control py-0",
           value: feedbackValue,
-          onChange: feedbackValueHandler,
-          style: {
-            resize: 'none'
-          }
+          onChange: feedbackValueHandler // style={{ resize: 'none' }}
+
         }), React__default.createElement("div", {
           className: "d-flex align-items-center justify-content-around mt-2"
         }, React__default.createElement(mdbreact.MDBBtn, {
@@ -6449,7 +6527,11 @@ var Rating = function Rating(props) {
         onClick: function onClick(e) {
           return handleClick(tooltip, index, e);
         }
-      }))), React__default.createElement("div", null, tooltipContent));
+      }))), React__default.createElement("div", {
+        style: {
+          userSelect: 'none'
+        }
+      }, tooltipContent));
     });
   }
 
@@ -7025,10 +7107,10 @@ exports.MDBNotification = Notification;
 exports.MDBPageItem = PageItem;
 exports.MDBPageNav = PageLink;
 exports.MDBPagination = Pagination;
-exports.MDBPopover = Popper;
+exports.MDBPopover = Popover;
 exports.MDBPopoverBody = PopoverBody;
 exports.MDBPopoverHeader = PopoverHeader;
-exports.MDBPopper = Popper;
+exports.MDBPopper = Popover;
 exports.MDBProgress = Progress;
 exports.MDBRating = Rating;
 exports.MDBRow = Row;
@@ -7038,7 +7120,7 @@ exports.MDBTable = Table;
 exports.MDBTableBody = TableBody;
 exports.MDBTableFoot = TableFoot;
 exports.MDBTableHead = TableHead;
-exports.MDBTooltip = Popper;
+exports.MDBTooltip = Popover;
 exports.MDBTreeview = Treeview;
 exports.MDBTreeviewItem = TreeviewItem;
 exports.MDBTreeviewList = TreeviewList;
@@ -7061,10 +7143,10 @@ exports.Notification = Notification;
 exports.PageItem = PageItem;
 exports.PageLink = PageLink;
 exports.Pagination = Pagination;
-exports.Popover = Popper;
+exports.Popover = Popover;
 exports.PopoverBody = PopoverBody;
 exports.PopoverHeader = PopoverHeader;
-exports.Popper = Popper;
+exports.Popper = Popover;
 exports.Progress = Progress;
 exports.Rating = Rating;
 exports.Row = Row;
@@ -7074,7 +7156,7 @@ exports.Table = Table;
 exports.TableBody = TableBody;
 exports.TableFoot = TableFoot;
 exports.TableHead = TableHead;
-exports.Tooltip = Popper;
+exports.Tooltip = Popover;
 exports.Treeview = Treeview;
 exports.TreeviewItem = TreeviewItem;
 exports.TreeviewList = TreeviewList;

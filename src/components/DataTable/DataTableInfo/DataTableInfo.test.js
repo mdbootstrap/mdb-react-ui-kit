@@ -8,7 +8,8 @@ const expectedProps = {
   entries: 10,
   filteredRows: [],
   info: true,
-  pages: []
+  pages: [],
+  noRecordsFoundLabel: 'test'
 };
 
 const setup = (props = {}) =>

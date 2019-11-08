@@ -1,99 +1,188 @@
-import React, { useState, useEffect } from "react";
-import { Popper as ReactPopper, Manager, Reference } from "react-popper";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import classNames from 'classnames';
+import Popper from 'popper.js';
+import PropTypes from 'prop-types';
+import React from 'react';
+import './Popper.css';
 
-const Popper = ({ children, className, clickable, domElement, modifiers, id, isVisible, onChange, placement, popover, style, tag }) => {
-  const [visible, setVisible] = useState(isVisible);
+class Popover extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      popperJS: null,
+      visible: props.isVisible,
+      showPopper: props.isVisible
+    };
 
-  useEffect(() => { setVisible(isVisible) }, [isVisible]);
-
-  useEffect(() => { onChange && onChange(visible) }, [onChange, visible]);
-
-  useEffect(() => {
-    window.addEventListener('click', handleClick);
-
-    return (() => window.removeEventListener('click', handleClick));
-  });
-
-  function handleClick(e) {
-    const element = document.elementsFromPoint(e.clientX, e.clientY).find(el => el.dataset.popper === id);
-    if (element) return;
-    
-    setVisible(false);
+    this.popoverWrapperRef = React.createRef();
+    this.referenceElm = React.createRef();
   }
 
-  const Wrapper = children[0];
-  const Content = children[1];
-  const Tag = tag;
+  componentDidUpdate(prevProps, prevState) {
+    const { showPopper } = this.state;
+    const { isVisible, onChange } = this.props;
 
-  const tooltipClasses = classNames(
-    "fade",
-    popover ? `popover bs-popover-${placement} popover-enter-done` : `tooltip bs-tooltip-${placement}`,
-    visible ? "show" : "",
-    className ? className : ""
-  );
+    this.setPopperJS();
 
-  const contentClasses = classNames(
-    !popover && "tooltip-inner"
-  );
-  
-  return (
-    <Manager data-test="popper">
-      <Reference>
-        {
-          ({ ref }) => (
-            !domElement
-              ? <Wrapper.type
-                {...Wrapper.props}
-                onMouseEnter={() => !clickable && setVisible(true)}
-                onMouseLeave={() => !clickable && setVisible(false)}
-                onTouchStart={() => !clickable && setVisible(true)}
-                onTouchEnd={() => !clickable && setVisible(false)}
-                onMouseDown={() => clickable && setVisible(!visible)}
-                innerRef={ref}
-                data-popper={id}
-              />
-              : <Wrapper.type
-                {...Wrapper.props}
-                onMouseEnter={() => !clickable && setVisible(true)}
-                onMouseLeave={() => !clickable && setVisible(false)}
-                onTouchStart={() => !clickable && setVisible(true)}
-                onTouchEnd={() => !clickable && setVisible(false)}
-                onMouseDown={() => clickable && setVisible(!visible)}
-                ref={ref}
-                data-popper={id}
-              />
-          )
-        }
-      </Reference>
+    if (
+      prevProps.isVisible !== isVisible &&
+      isVisible !== showPopper &&
+      showPopper !== prevProps.showPopper
+    )
+      this.setState({ showPopper: isVisible });
+
+    if (onChange && showPopper !== prevState.showPopper) onChange(showPopper);
+
+    if (showPopper && prevState.showPopper !== showPopper) this.createPopper();
+  }
+
+  componentDidMount() {
+    this.timer = setInterval(() => this.setPopperJS(), 3);
+
+    document.addEventListener('click', this.handleClick);
+  }
+
+  setPopperJS = () => {
+    if (this.state.showPopper) {
+      this.state.popperJS
+        ? this.state.popperJS.scheduleUpdate()
+        : this.createPopper();
+      setTimeout(() => clearInterval(this.timer), 1000);
+    }
+  };
+
+  createPopper = () => {
+    if (this.referenceElm && this.popoverWrapperRef)
+      this.setState({
+        popperJS: new Popper(
+          this.referenceElm,
+          this.popoverWrapperRef,
+          {
+            placement: this.props.placement,
+            ...this.props.modifiers
+          },
+          () =>
+            setTimeout(() => {
+              this.state.popperJS.scheduleUpdate();
+            }, 10)
+        )
+      });
+  };
+
+  doToggle = toggler => {
+    this.setState(
       {
-        visible && Content.props.children &&
-        <Tag style={style}>
-          <ReactPopper
-            modifiers={modifiers}
-            eventsEnabled={true}
-            positionFixed={false}
-            placement={placement}
-          >
+        showPopper: toggler && true
+      },
+      () => {
+        if (this.state.showPopper)
+          this.setState(
             {
-              ({ placement, ref, style, arrowProps }) => (
-                <Tag ref={ref} style={style} data-placement={placement} className={tooltipClasses} data-popper={id}>
-                  <Content.type {...Content.props} className={contentClasses}>
-                    {Content.props.children}
-                  </Content.type>
-                  <span ref={arrowProps.ref} style={arrowProps.style} data-placement={placement} className="arrow" />
-                </Tag>
-              )
+              visible:
+                typeof toggler !== 'undefined' ? toggler : !this.state.visible
+            },
+            () => {
+              this.createPopper();
+              this.state.popperJS.scheduleUpdate();
             }
-          </ReactPopper>
-        </Tag>
+          );
       }
-    </Manager>
-  );
+    );
+  };
+
+  handleClick = e => {
+    const { target } = e;
+    if (this.popoverWrapperRef && this.state.showPopper) {
+      if (
+        this.popoverWrapperRef.contains(target) ||
+        this.referenceElm.contains(target) ||
+        target === this.referenceElm
+      )
+        return;
+
+      this.doToggle(false);
+    }
+  };
+
+  render() {
+    const {
+      children,
+      className,
+      clickable,
+      domElement,
+      modifiers,
+      id,
+      isVisible,
+      onChange,
+      placement,
+      popover,
+      style,
+      tag: Tag,
+      ...attributes
+    } = this.props;
+
+    const { visible, showPopper } = this.state;
+
+    const popper = children[1];
+    const Wrapper = children[0];
+    return (
+      <>
+        {!domElement ? (
+          <Wrapper.type
+            {...Wrapper.props}
+            onMouseEnter={() => !clickable && this.doToggle(true)}
+            onMouseLeave={() =>
+              !clickable &&
+              !popover &&
+              setTimeout(() => this.doToggle(false), 0)
+            }
+            onTouchStart={() => !clickable && this.doToggle(true)}
+            onTouchEnd={() => !clickable && !popover && this.doToggle(false)}
+            onMouseDown={() => {
+              clickable && this.doToggle(!showPopper);
+              setTimeout(() => this.setPopperJS(), 100);
+            }}
+            onMouseUp={() => setTimeout(() => this.setPopperJS(), 0)}
+            innerRef={ref => (this.referenceElm = ref)}
+            data-popper={id}
+          />
+        ) : (
+          <Wrapper.type
+            {...Wrapper.props}
+            onMouseEnter={() => !clickable && this.doToggle(true)}
+            onMouseLeave={() =>
+              !clickable &&
+              !popover &&
+              setTimeout(() => this.doToggle(false), 0)
+            }
+            onTouchStart={() => !clickable && this.doToggle(true)}
+            onTouchEnd={() => !clickable && !popover && this.doToggle(false)}
+            onMouseDown={() => clickable && this.doToggle(!showPopper)}
+            onMouseUp={() => setTimeout(() => this.setPopperJS(), 0)}
+            ref={ref => (this.referenceElm = ref)}
+            data-popper={id}
+          />
+        )}
+        {showPopper && (
+          <Tag
+            ref={ref => (this.popoverWrapperRef = ref)}
+            className={classNames(
+              visible && 'show',
+              popover ? 'popover' : 'tooltip px-2',
+              className
+            )}
+            data-popper={id}
+            {...attributes}
+          >
+            {popper}
+            <span x-arrow='' className='popover_arrow'></span>
+          </Tag>
+        )}
+      </>
+    );
+  }
 }
 
-Popper.propTypes = {
+Popover.propTypes = {
   children: PropTypes.node,
   clickable: PropTypes.bool,
   domElement: PropTypes.bool,
@@ -103,10 +192,10 @@ Popper.propTypes = {
   placement: PropTypes.string,
   popover: PropTypes.bool,
   style: PropTypes.objectOf(PropTypes.string),
-  tag: PropTypes.string,
+  tag: PropTypes.string
 };
 
-Popper.defaultProps = {
+Popover.defaultProps = {
   clickable: false,
   domElement: false,
   id: 'popper',
@@ -115,11 +204,10 @@ Popper.defaultProps = {
   popover: false,
   style: { display: 'inline-block' },
   tag: 'div'
-}
+};
 
-export default Popper;
-export { Popper as MDBPopper };
-export { Popper as MDBTooltip };
-export { Popper as Tooltip };
-export { Popper as MDBPopover };
-export { Popper as Popover };
+export default Popover;
+export { Popover as MDBPopper };
+export { Popover as MDBTooltip };
+export { Popover as Tooltip };
+export { Popover as MDBPopover };

@@ -46,8 +46,8 @@ class DropdownItem extends React.Component {
 
     const classes = classNames(
       {
-        'active': active,
-        'disabled': disabled,
+        active: active,
+        disabled: disabled,
         'dropdown-item': !divider && !header,
         'dropdown-header': header,
         'dropdown-divider': divider
@@ -78,6 +78,7 @@ class DropdownItem extends React.Component {
         tabIndex={tabIndex}
         className={classes}
         onClick={this.onClick}
+        href={href}
       />
     );
   }

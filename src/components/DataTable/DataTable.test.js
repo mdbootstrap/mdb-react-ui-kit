@@ -101,7 +101,9 @@ describe('<DataTable />', () => {
       info: true,
       infoLabel: ['test'],
       maxHeight: 'test',
-      order: ['desc'],
+      noRecordsFoundLabel: 'test',
+      noBottomColumns: true,
+      // order: ['asc'],
       pagesAmount: 3,
       paging: true,
       paginationLabel: ['test'],
@@ -122,7 +124,10 @@ describe('<DataTable />', () => {
       theadTextWhite: true,
       tbodyColor: 'test',
       tbodyTextWhite: true,
-      noRecordsFoundLabel: 'test'
+      
+      onSearch: ()=>{},
+      onSort: ()=>{},
+      onPageChange: ()=>{}
     };
 
     wrapper = setup(expectedProps);
@@ -517,7 +522,7 @@ describe('<DataTable />', () => {
   });
 
   describe('sortRows works correctly', () => {
-    const Fields = ({ searchValue }) => <a href='!#'>{searchValue}</a>;
+    const Fields = ({ searchvalue }) => <a href='!#'>{searchvalue}</a>;
 
     const sortRows = {
       columns: [
@@ -528,16 +533,16 @@ describe('<DataTable />', () => {
       ],
       rows: [
         {
-          link: <Fields searchValue='Cedric_' />
+          link: <Fields searchvalue='Cedric_' />
         },
         {
-          link: <Fields searchValue='Ashton_' />
+          link: <Fields searchvalue='Ashton_' />
         },
         {
-          link: <Fields searchValue='Garrett_' />
+          link: <Fields searchvalue='Garrett_' />
         },
         {
-          link: <Fields searchValue='Airic_' />
+          link: <Fields searchvalue='Airic_' />
         }
       ]
     };
@@ -553,7 +558,7 @@ describe('<DataTable />', () => {
       wrapper.unmount();
     });
 
-    test('`checkFieldValue()`returns `searchValue` instead of value', () => {
+    test('`checkFieldValue()`returns `searchvalue` instead of value', () => {
       expect(
         wrapper.instance().checkFieldValue(sortRows.rows[0], 'link')
       ).toEqual('Cedric_');
@@ -564,13 +569,13 @@ describe('<DataTable />', () => {
         wrapper
           .instance()
           .checkField('link', sortRows.rows[0], sortRows.rows[1], 'asc')
-      ).toEqual(true);
+      ).toEqual(1);
 
       expect(
         wrapper
           .instance()
           .checkField('link', sortRows.rows[0], sortRows.rows[1], 'desc')
-      ).toEqual(false);
+      ).toEqual(-1);
     });
 
     test('`sort()` invokes `checkField()` instead of regular comparison', () => {
