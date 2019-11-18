@@ -24,7 +24,7 @@ declare class MDBModal extends React.Component<
     size?: 'sm' | 'md' | 'lg' | 'fluid';
     role?: string;
     tabIndex?: string;
-    wrapClassName?: boolean;
+    wrapClassName?: string;
     keyboard?: boolean;
     toggle?: () => void;
     hiddenModal?: () => void;
