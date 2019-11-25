@@ -1,6 +1,6 @@
 {
   "name": "mdbreact",
-  "version": "4.22.1",
+  "version": "4.23.0",
   "author": "MDBootstrap",
   "repository": "https://git.mdbootstrap.com/mdb/react/re-pro",
   "main": "dist/mdbreact.js",
@@ -37,6 +37,7 @@
     "chart.js": "2.8.0",
     "classnames": "2.2.6",
     "focus-trap-react": "^6.0.0",
+    "jarallax": "^1.12.0",
     "material-ui-pickers": "2.2.4",
     "moment": "2.24.0",
     "perfect-scrollbar": "1.4.0",

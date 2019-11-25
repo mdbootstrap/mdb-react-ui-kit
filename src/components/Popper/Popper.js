@@ -1,8 +1,8 @@
-import classNames from 'classnames';
-import Popper from 'popper.js';
-import PropTypes from 'prop-types';
-import React from 'react';
-import './Popper.css';
+import classNames from "classnames";
+import Popper from "popper.js";
+import PropTypes from "prop-types";
+import React from "react";
+import "./Popper.css";
 
 class Popover extends React.Component {
   constructor(props) {
@@ -38,7 +38,7 @@ class Popover extends React.Component {
   componentDidMount() {
     this.timer = setInterval(() => this.setPopperJS(), 3);
 
-    document.addEventListener('click', this.handleClick);
+    document.addEventListener("click", this.handleClick);
   }
 
   setPopperJS = () => {
@@ -78,7 +78,7 @@ class Popover extends React.Component {
           this.setState(
             {
               visible:
-                typeof toggler !== 'undefined' ? toggler : !this.state.visible
+                typeof toggler !== "undefined" ? toggler : !this.state.visible
             },
             () => {
               this.createPopper();
@@ -109,21 +109,37 @@ class Popover extends React.Component {
       className,
       clickable,
       domElement,
-      modifiers,
+      email,
       id,
       isVisible,
-      onChange,
+      material,
+      modifiers,
       placement,
       popover,
+      sm,
       style,
+      onChange,
       tag: Tag,
       ...attributes
     } = this.props;
 
     const { visible, showPopper } = this.state;
 
-    const popper = children[1];
+    const Popper = children[1];
     const Wrapper = children[0];
+
+    const classes = classNames(
+      visible && "show",
+      popover ? "popover" : !material && !email && "tooltip px-2",
+      className
+    );
+
+    const popperClasses = classNames(
+      (material || email) && "tooltip-inner",
+      material && (sm ? "md-inner" : "md-inner-main"),
+      email && (sm ? "md-inner" : "md-inner-email")
+    );
+
     return (
       <>
         {!domElement ? (
@@ -165,16 +181,17 @@ class Popover extends React.Component {
         {showPopper && (
           <Tag
             ref={ref => (this.popoverWrapperRef = ref)}
-            className={classNames(
-              visible && 'show',
-              popover ? 'popover' : 'tooltip px-2',
-              className
-            )}
+            className={classes}
             data-popper={id}
             {...attributes}
           >
-            {popper}
-            <span x-arrow='' className='popover_arrow'></span>
+            <Popper.type
+              className={classNames(popperClasses, Popper.props.className)}
+            >
+              {Popper.props.children}
+            </Popper.type>
+
+            <span x-arrow="" className={classNames("popover_arrow")}></span>
           </Tag>
         )}
       </>
@@ -186,11 +203,14 @@ Popover.propTypes = {
   children: PropTypes.node,
   clickable: PropTypes.bool,
   domElement: PropTypes.bool,
-  modifiers: PropTypes.object,
+  email: PropTypes.bool,
   id: PropTypes.string,
   isVisible: PropTypes.bool,
+  material: PropTypes.bool,
+  modifiers: PropTypes.object,
   placement: PropTypes.string,
   popover: PropTypes.bool,
+  sm: PropTypes.bool,
   style: PropTypes.objectOf(PropTypes.string),
   tag: PropTypes.string
 };
@@ -198,12 +218,12 @@ Popover.propTypes = {
 Popover.defaultProps = {
   clickable: false,
   domElement: false,
-  id: 'popper',
+  id: "popper",
   isVisible: false,
-  placement: 'top',
+  placement: "top",
   popover: false,
-  style: { display: 'inline-block' },
-  tag: 'div'
+  style: { display: "inline-block" },
+  tag: "div"
 };
 
 export default Popover;

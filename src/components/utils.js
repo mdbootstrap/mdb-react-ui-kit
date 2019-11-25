@@ -130,14 +130,23 @@ export function isBodyOverflowing() {
 }
 
 export function getOriginalBodyPadding() {
-  return parseInt(window.getComputedStyle(document.body, null).getPropertyValue("padding-right") || 0, 10);
+  return parseInt(
+    window
+    .getComputedStyle(document.body, null)
+    .getPropertyValue("padding-right") || 0,
+    10
+  );
 }
 
 export function conditionallyUpdateScrollbar() {
   const scrollbarWidth = getScrollbarWidth();
   // https://github.com/twbs/bootstrap/blob/v4.0.0-alpha.4/js/src/modal.js#L420
-  const fixedContent = document.querySelectorAll(".navbar-fixed-top, .navbar-fixed-bottom, .is-fixed")[0];
-  const bodyPadding = fixedContent ? parseInt(fixedContent.style.paddingRight || 0, 10) : 0;
+  const fixedContent = document.querySelectorAll(
+    ".navbar-fixed-top, .navbar-fixed-bottom, .is-fixed"
+  )[0];
+  const bodyPadding = fixedContent ?
+    parseInt(fixedContent.style.paddingRight || 0, 10) :
+    0;
 
   if (isBodyOverflowing()) {
     setScrollbarWidth(bodyPadding + scrollbarWidth);
@@ -173,35 +182,26 @@ export const keyCodes = {
 };
 
 export const returnAttributes = attributes => {
-  const newAttributesObject = Object.keys(attributes).reduce((previousValue, currentElement) => {
-    if (attributes[currentElement]) previousValue[currentElement] = attributes[currentElement];
-    return previousValue;
-  }, {});
+  const newAttributesObject = Object.keys(attributes).reduce(
+    (previousValue, currentElement) => {
+      if (attributes[currentElement])
+        previousValue[currentElement] = attributes[currentElement];
+      return previousValue;
+    }, {}
+  );
 
   return newAttributesObject;
 };
 
 export const getColorClass = color => {
   const colorArray = color.split(" ");
-  const specialColors = [
-    "danger",
-    "warning",
-    "success",
-    "info",
-    "default",
-    "primary",
-    "secondary",
-    "elegant",
-    "stylish",
-    "unique",
-    "special"
-  ];
+  const specialColors = ["danger", "warning", "success", "info", "default", "primary", "secondary", "elegant", "stylish", "unique", "special"];
   let colorClasses = "";
 
   colorArray.forEach(color => {
     if (specialColors.includes(color)) {
-      if (color.includes("dark")) {
-        color.replace("-", "-color-");
+      if (color.includes('dark')) {
+        color.replace('-', '-color-');
         colorClasses += `${color} `;
       } else {
         colorClasses += `${color}-color`;
@@ -212,4 +212,23 @@ export const getColorClass = color => {
   });
 
   return colorClasses;
-};
+}
+
+export function debounce(fn, time = 166) {
+  let timeout;
+
+  function debounced(...args) {
+    const that = this;
+    const later = () => {
+      fn.apply(that, args);
+    };
+    clearTimeout(timeout);
+    timeout = setTimeout(later, time);
+  }
+
+  debounced.clear = () => {
+    clearTimeout(timeout);
+  };
+
+  return debounced;
+}

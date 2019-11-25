@@ -1,0 +1,34 @@
+.note-dark {
+  background-color: #000;
+  color: #fff;
+  border-color: #58595a;
+}
+
+.note-default {
+  background-color: rgb(164, 243, 235);
+  border-color: #00695c;
+}
+
+.note-elegant {
+  background-color: #2E2E2E;
+  border-color: #212121;
+  color: #fff;
+}
+
+.note-stylish {
+  background-color: #4B515D;
+  border-color: #3E4551;
+  color: #fff;
+}
+
+.note-unique {
+  background-color: #3F729B;
+  border-color: #1C2331;
+  color: #fff;
+}
+
+.note-special {
+  background-color: #37474F;
+  border-color: #263238;
+  color: #fff;
+}

@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 declare class MDBInput extends React.Component<
   {
@@ -18,15 +18,29 @@ declare class MDBInput extends React.Component<
     iconClass?: string;
     iconLight?: boolean;
     iconRegular?: boolean;
-    iconSize?: "lg" | '1x' | '2x' | '3x' | '4x' | '5x' | '6x' | '7x' | '8x' | '9x' | '10x';
+    iconSize?:
+      | 'lg'
+      | '1x'
+      | '2x'
+      | '3x'
+      | '4x'
+      | '5x'
+      | '6x'
+      | '7x'
+      | '8x'
+      | '9x'
+      | '10x';
     id?: string;
-    inputRef?: React.RefObject<HTMLInputElement> | ((ref: React.RefObject<HTMLInputElement>) => void) | null;
+    inputRef?:
+      | React.RefObject<HTMLInputElement>
+      | ((ref: React.RefObject<HTMLInputElement>) => void)
+      | null;
     outline?: boolean;
     label?: string | boolean;
     labelClass?: string;
     labelId?: string;
     noTag?: boolean;
-    size?: "sm" | "lg";
+    size?: 'sm' | 'lg';
     success?: string;
     tag?: string;
     type?: string;

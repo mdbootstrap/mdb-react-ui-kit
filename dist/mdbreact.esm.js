@@ -1,13 +1,22 @@
-import React, { useState, Component, Fragment, useEffect, useRef, useContext } from 'react';
+import React, { useState, Component, Fragment, useRef, useEffect, useContext, PureComponent } from 'react';
 import classNames from 'classnames';
 import { Transition } from 'react-transition-group';
 import ReactDOM from 'react-dom';
+import { MDBSelect, MDBBox, MDBPopoverHeader, MDBPopoverBody, MDBBtn, MDBTooltip, Fa as Fa$1 } from 'mdbreact';
 import { Manager, Popper, Reference } from 'react-popper';
 import NumericInput from 'react-numeric-input';
 import FocusTrap from 'focus-trap-react';
 import { NavLink as NavLink$1, Link } from 'react-router-dom';
 import Popper$1 from 'popper.js';
-import { MDBPopoverHeader, MDBPopoverBody, MDBBtn, MDBTooltip, Fa as Fa$1 } from 'mdbreact';
+import MomentUtils from '@date-io/moment';
+import { MuiPickersUtilsProvider, DatePicker as DatePicker$1 } from 'material-ui-pickers';
+import moment from 'moment';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
+import { jarallax, jarallaxVideo, jarallaxElement } from 'jarallax';
+import PerfectScrollbar from 'perfect-scrollbar';
+import { Link as Link$1 } from 'react-scroll';
+import raf from 'raf';
+export { toast as MDBToast, ToastContainer as MDBToastContainer, cssTransition as MDBcssTransition, ToastContainer, cssTransition, toast } from 'react-toastify';
 
 function _typeof(obj) {
   if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
@@ -609,6 +618,56 @@ Badge.propTypes = {
   className: propTypes.string
 };
 
+var Box = function Box(props) {
+  var Tag = props.tag,
+      className = props.className,
+      children = props.children,
+      display = props.display,
+      justifyContent = props.justifyContent,
+      flex = props.flex,
+      alignItems = props.alignItems,
+      alignContent = props.alignContent,
+      alignSelf = props.alignSelf,
+      color = props.color,
+      bgColor = props.bgColor,
+      m = props.m,
+      mt = props.mt,
+      mtsm = props.mtsm,
+      mr = props.mr,
+      mb = props.mb,
+      ml = props.ml,
+      mx = props.mx,
+      my = props.my,
+      p = props.p,
+      pt = props.pt,
+      pr = props.pr,
+      pb = props.pb,
+      pl = props.pl,
+      px = props.px,
+      py = props.py,
+      attributes = _objectWithoutProperties(props, ["tag", "className", "children", "display", "justifyContent", "flex", "alignItems", "alignContent", "alignSelf", "color", "bgColor", "m", "mt", "mtsm", "mr", "mb", "ml", "mx", "my", "p", "pt", "pr", "pb", "pl", "px", "py"]);
+
+  var marginOrPadding = function marginOrPadding(props, suffix) {
+    if (props !== undefined) {
+      return "".concat(suffix, "-").concat(props);
+    }
+  };
+
+  var classes = classNames(display && "d-".concat(display), justifyContent && "justify-content-".concat(justifyContent), flex && "flex-".concat(flex), alignItems && "align-items-".concat(alignItems), alignContent && "align-content-".concat(alignContent), alignSelf && "align-self-".concat(alignSelf), color && "".concat(color, "-text"), bgColor && "bg-".concat(bgColor), marginOrPadding(m, 'm'), marginOrPadding(mt, 'mt'), marginOrPadding(mr, 'mr'), marginOrPadding(mb, 'mb'), marginOrPadding(ml, 'ml'), marginOrPadding(mx, 'mx'), marginOrPadding(my, 'my'), marginOrPadding(p, 'p'), marginOrPadding(pt, 'pt'), marginOrPadding(pr, 'pr'), marginOrPadding(pb, 'pb'), marginOrPadding(pl, 'pl'), marginOrPadding(px, 'px'), marginOrPadding(py, 'py'), className);
+  var isEmptyClass = classes !== '' ? classes : null;
+  return React.createElement(Tag, _extends({}, attributes, {
+    className: isEmptyClass
+  }), children);
+};
+
+Box.defaultProps = {
+  tag: 'div'
+};
+Box.propTypes = {
+  children: propTypes.node,
+  className: propTypes.string
+};
+
 function omit(obj, omitKeys) {
   var result = {};
   Object.keys(obj).forEach(function (key) {
@@ -650,6 +709,31 @@ var getColorClass = function getColorClass(color) {
   });
   return colorClasses;
 };
+function debounce(fn) {
+  var time = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 166;
+  var timeout;
+
+  function debounced() {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    var that = this;
+
+    var later = function later() {
+      fn.apply(that, args);
+    };
+
+    clearTimeout(timeout);
+    timeout = setTimeout(later, time);
+  }
+
+  debounced.clear = function () {
+    clearTimeout(timeout);
+  };
+
+  return debounced;
+}
 
 var Breadcrumb = function Breadcrumb(props) {
   var className = props.className,
@@ -788,7 +872,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css = ".bc-icons.breadcrumb-item::before,\n.bc-icons.breadcrumb-item::after {\n  content: none;\n}\n\n.bc-icons.breadcrumb-item + .active.breadcrumb-item::before,\n.bc-icons.breadcrumb-item + .active.breadcrumb-item::after{\n  content: none;\n}\n\n.bc-icons.breadcrumb-item.active {\n  color: #eeeeee;\n}\n";
+var css = ".bc-icons.breadcrumb-item::before,\r\n.bc-icons.breadcrumb-item::after {\r\n  content: none;\r\n}\r\n\r\n.bc-icons.breadcrumb-item + .active.breadcrumb-item::before,\r\n.bc-icons.breadcrumb-item + .active.breadcrumb-item::after{\r\n  content: none;\r\n}\r\n\r\n.bc-icons.breadcrumb-item.active {\r\n  color: #eeeeee;\r\n}\r\n";
 styleInject(css);
 
 var BreadcrumbItem = function BreadcrumbItem(props) {
@@ -861,7 +945,7 @@ BreadcrumbItem.defaultProps = {
   iconSize: ""
 };
 
-var css$1 = ".Ripple {\n  position: absolute;\n  background: rgba(255, 255, 255, 0.3);\n  border-radius: 50%;\n  opacity: 1;\n  transform: scale(0);\n}\n\n.Ripple-outline {\n  background: rgba(0, 0, 0, 0.2);\n}\n\n.Ripple.is-reppling {\n  animation: ripple 0.5s linear;\n}\n\n.Ripple-parent {\n  position: relative;\n  overflow: hidden;\n  cursor: pointer;\n}\n\n@keyframes ripple {\n  100% {\n    opacity: 0;\n    transform: scale(3);\n  }\n}\n";
+var css$1 = ".Ripple {\r\n  position: absolute;\r\n  background: rgba(255, 255, 255, 0.3);\r\n  border-radius: 50%;\r\n  opacity: 1;\r\n  transform: scale(0);\r\n}\r\n\r\n.Ripple-outline {\r\n  background: rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.Ripple.is-reppling {\r\n  animation: ripple 0.5s linear;\r\n}\r\n\r\n.Ripple-parent {\r\n  position: relative;\r\n  overflow: hidden;\r\n  cursor: pointer;\r\n}\r\n\r\n@keyframes ripple {\r\n  100% {\r\n    opacity: 0;\r\n    transform: scale(3);\r\n  }\r\n}\r\n";
 styleInject(css$1);
 
 var Waves =
@@ -1052,7 +1136,7 @@ Button.propTypes = {
   className: propTypes.string
 };
 
-var css$2 = ".btn-group-vertical>.btn,\n.btn-group-vertical>.btn+.btn-group,\n.btn-group-vertical>.btn-group+.btn,\n.btn-group-vertical>.btn-group+.btn-group {\n  margin-left: 0px;\n}\n\n.btn-group-lg>.btn {\n  font-size: 0.9rem;\n  padding: 1rem 2.4rem;\n}\n\n.btn-group-sm>.btn {\n  font-size: 0.6rem;\n  padding: 0.5rem 1.6rem;\n}\n\n.btn-floating.btn.btn-sm,\n.btn-floating.btn.btn-lg {\n  padding: 0;\n}\n";
+var css$2 = ".btn-group-vertical>.btn,\r\n.btn-group-vertical>.btn+.btn-group,\r\n.btn-group-vertical>.btn-group+.btn,\r\n.btn-group-vertical>.btn-group+.btn-group {\r\n  margin-left: 0px;\r\n}\r\n\r\n.btn-group-lg>.btn {\r\n  font-size: 0.9rem;\r\n  padding: 1rem 2.4rem;\r\n}\r\n\r\n.btn-group-sm>.btn {\r\n  font-size: 0.6rem;\r\n  padding: 0.5rem 1.6rem;\r\n}\r\n\r\n.btn-floating.btn.btn-sm,\r\n.btn-floating.btn.btn-lg {\r\n  padding: 0;\r\n}\r\n";
 styleInject(css$2);
 
 var ButtonGroup = function ButtonGroup(props) {
@@ -1632,7 +1716,7 @@ CarouselIndicators.defaultProps = {
   className: ""
 };
 
-var css$3 = ".carousel-inner {\n  position: relative;\n  overflow: hidden;\n  width: 100%;\n  height: 100%;\n}\n\n.carousel-fade .carousel-item {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  display: block !important;\n  opacity: 0;\n  z-index: 0;\n  transition: transform 0ms ease-in-out, opacity 0.8s ease-out;\n}\n\n.carousel-fade .carousel-item.active {\n  position: relative;\n  z-index: 1;\n  opacity: 1;\n}\n\n.carousel-multi-item .carousel-item {\n  display: inline-block !important;\n}\n\n.carousel .carousel-slide-item {\n  transition: left 0.5s;\n}\n\n.carousel-control-prev, .carousel-control-next, .carousel-item-prev, .carousel-item-next {\n  z-index: 2;\n}\n";
+var css$3 = ".carousel-inner {\r\n  position: relative;\r\n  overflow: hidden;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.carousel-fade .carousel-item {\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  display: block !important;\r\n  opacity: 0;\r\n  z-index: 0;\r\n  transition: transform 0ms ease-in-out, opacity 0.8s ease-out;\r\n}\r\n\r\n.carousel-fade .carousel-item.active {\r\n  position: relative;\r\n  z-index: 1;\r\n  opacity: 1;\r\n}\r\n\r\n.carousel-multi-item .carousel-item {\r\n  display: inline-block !important;\r\n}\r\n\r\n.carousel .carousel-slide-item {\r\n  transition: left 0.5s;\r\n}\r\n\r\n.carousel-control-prev, .carousel-control-next, .carousel-item-prev, .carousel-item-next {\r\n  z-index: 2;\r\n}\r\n";
 styleInject(css$3);
 
 var Carousel =
@@ -2386,7 +2470,7 @@ DataTableHead.defaultProps = {
   textWhite: false
 };
 
-var css$4 = ".table-wrapper-scroll-y {\n  display: block;\n  max-height: 200px;\n  overflow-y: auto;\n  -ms-overflow-style: -ms-autohiding-scrollbar;\n}\n";
+var css$4 = ".table-wrapper-scroll-y {\r\n  display: block;\r\n  max-height: 200px;\r\n  overflow-y: auto;\r\n  -ms-overflow-style: -ms-autohiding-scrollbar;\r\n}\r\n";
 styleInject(css$4);
 
 var Table = function Table(props) {
@@ -3477,7 +3561,76 @@ function (_Component) {
   }, {
     key: "componentDidUpdate",
     value: function componentDidUpdate(prevProps, prevState) {
-      var data = this.props.data;
+      if (prevProps.context.state.isEmpty !== this.props.context.state.isEmpty) {
+        this.props.selected && this.props.context.setSelected(this.props.selected);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var classes = classNames("select-dropdown", this.props.className);
+      var _this$props = this.props,
+          attributes = _this$props.attributes,
+          context = _this$props.context;
+      var value = context.state.isEmpty ? this.props.selected && !context.label ? this.props.selected : "" : context.state.selectTextContent;
+      return React.createElement("input", _extends({
+        type: "text",
+        readOnly: true,
+        onClick: function onClick(e) {
+          return context.onInputClick(e);
+        },
+        value: value
+      }, attributes, {
+        className: classes
+      }));
+    }
+  }]);
+
+  return SelectInput;
+}(React.Component);
+
+SelectInput.propTypes = {
+  context: propTypes.object.isRequired,
+  className: propTypes.string,
+  selected: propTypes.oneOfType([propTypes.string, propTypes.number])
+};
+SelectInput.defaultProps = {
+  className: ""
+};
+var SelectInput$1 = SelectInput = selectContextHOC(SelectInput);
+
+var css$5 = ".fadeElement {\r\n  -webkit-transition: 0.5s;\r\n  -moz-transition: 0.5s;\r\n  -o-transition: 0.5s;\r\n  transition: 0.5s;\r\n  display: block;\r\n  width: 100%;\r\n  top: 0;\r\n  opacity: 0;\r\n  transform-origin:top;\r\n  transform:scaleY(0.7);\r\n  visibility: hidden;\r\n  pointer-events: none;\r\n}\r\n.fadeElement.fadeIn {\r\n  transform:scaleY(1);\r\n  opacity: 1;\r\n  visibility: visible;\r\n  pointer-events: auto;\r\n}\r\n";
+styleInject(css$5);
+
+var Options =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Options, _React$Component);
+
+  function Options(props) {
+    var _this;
+
+    _classCallCheck(this, Options);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Options).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "search", function (value) {
+      _this.state.options.forEach(function (option) {
+        if (!option.children[0].innerText.toLowerCase().includes(value.toLowerCase())) {
+          option.style.display = 'none';
+        } else {
+          option.style.display = 'flex';
+        }
+      });
+    });
+
+    _this.state = {
+      options: [],
+      searchValue: ""
+    };
+    _this.optionsRef = React.createRef();
+    return _this;
+  }
 
       if (prevProps.data !== data) {
         typeof data === "string" ? this.fetchData(data) : this.setData(data.rows, data.columns, this.paginateRows);
@@ -3654,6 +3807,830 @@ DataTable.propTypes = {
   btn: propTypes.bool,
   className: propTypes.string,
   children: propTypes.node,
+  disabled: propTypes.bool,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string])
+};
+PageItem.defaultProps = {
+  active: false,
+  className: '',
+  disabled: false,
+  tag: 'li'
+};
+
+var PageLink = function PageLink(props) {
+  var children = props.children,
+      className = props.className,
+      Tag = props.tag,
+      attributes = _objectWithoutProperties(props, ["children", "className", "tag"]);
+
+  var classes = classNames('page-link', className);
+  return React.createElement(Tag, _extends({
+    "data-test": "page-link"
+  }, attributes, {
+    className: classes
+  }), children);
+};
+
+PageLink.propTypes = {
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  children: propTypes.node
+};
+PageLink.defaultProps = {
+  tag: 'a'
+};
+
+var DataTablePagination =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(DataTablePagination, _Component);
+
+  function DataTablePagination() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, DataTablePagination);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(DataTablePagination)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      pages: _this.props.pages,
+      pGroups: []
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function (prevProps) {
+      if (prevProps.pages !== _this.props.pages) {
+        _this.setState({
+          pages: _this.props.pages
+        }, function () {
+          return _this.groupPages();
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "pagesIndexify", function () {
+      var mutablePages = _toConsumableArray(_this.state.pages);
+
+      mutablePages.forEach(function (page, index) {
+        return page.index = index;
+      });
+      return mutablePages;
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "groupPages", function () {
+      var pGroups = [];
+
+      var pages = _this.pagesIndexify();
+
+      while (pages.length > 0) {
+        pGroups.push(pages.splice(0, _this.props.pagesAmount));
+      }
+
+      _this.setState({
+        pGroups: pGroups
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "choosePagesGroup", function () {
+      var pGroupNumber = Math.floor(_this.props.activePage / _this.props.pagesAmount);
+      return _this.state.pGroups.length ? _this.state.pGroups[pGroupNumber] : [];
+    });
+
+    return _this;
+  }
+
+  _createClass(DataTablePagination, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.groupPages();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          activePage = _this$props.activePage,
+          changeActivePage = _this$props.changeActivePage,
+          pages = _this$props.pages,
+          label = _this$props.label;
+      return React.createElement("div", {
+        "data-test": "datatable-pagination",
+        className: "col-sm-12 col-md-7"
+      }, React.createElement("div", {
+        className: "dataTables_paginate"
+      }, React.createElement(Pagination, null, React.createElement(PageItem, {
+        disabled: activePage <= 0
+      }, React.createElement(PageLink, {
+        className: "page-link",
+        "aria-label": label[0],
+        onClick: function onClick() {
+          return changeActivePage(activePage - 1);
+        }
+      }, React.createElement("span", null, label[0]))), this.choosePagesGroup().map(function (page) {
+        return React.createElement(PageItem, {
+          key: Object.keys(page[0])[0] + page.index,
+          active: page.index === activePage
+        }, React.createElement(PageLink, {
+          className: "page-link",
+          onClick: function onClick() {
+            return changeActivePage(page.index);
+          }
+        }, page.index + 1, page.index === activePage && React.createElement("span", {
+          className: "sr-only"
+        }, "(current)")));
+      }), React.createElement(PageItem, {
+        disabled: !pages.length || activePage === pages.length - 1
+      }, React.createElement(PageLink, {
+        className: "page-link",
+        "aria-label": label[1],
+        onClick: function onClick() {
+          return changeActivePage(activePage + 1);
+        }
+      }, React.createElement("span", null, label[1]))))));
+    }
+  }]);
+
+  return DataTablePagination;
+}(Component);
+
+DataTablePagination.propTypes = {
+  activePage: propTypes.number.isRequired,
+  changeActivePage: propTypes.func.isRequired,
+  pages: propTypes.array.isRequired,
+  pagesAmount: propTypes.number.isRequired,
+  label: propTypes.arrayOf(propTypes.string).isRequired
+};
+
+var ExportToCSV =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(ExportToCSV, _Component);
+
+  function ExportToCSV(props) {
+    var _this;
+
+    _classCallCheck(this, ExportToCSV);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ExportToCSV).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "computeDataToLink", function () {
+      _this.setState(function (prevState) {
+        return {
+          href: encodeURI("data:text/csv;charset=utf-8," + [prevState.columns.map(function (col) {
+            return col.field;
+          }).join(","), [].concat.apply([], prevState.data).map(function (row) {
+            return Object.values(row).join(",");
+          }).join("\n")].join("\n"))
+        };
+      });
+    });
+
+    _this.state = {
+      columns: _this.props.columns,
+      data: _this.props.data,
+      href: ""
+    };
+    return _this;
+  }
+
+  _createClass(ExportToCSV, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.computeDataToLink();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (prevState.data !== this.props.data || prevState.columns !== this.props.columns) {
+        this.setState({
+          columns: this.props.columns,
+          data: this.props.data
+        }, this.computeDataToLink());
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          active = _this$props.active,
+          block = _this$props.block,
+          circle = _this$props.circle,
+          className = _this$props.className,
+          color = _this$props.color,
+          children = _this$props.children,
+          outline = _this$props.outline,
+          size = _this$props.size,
+          rounded = _this$props.rounded,
+          gradient = _this$props.gradient,
+          floating = _this$props.floating,
+          flat = _this$props.flat,
+          attributes = _objectWithoutProperties(_this$props, ["active", "block", "circle", "className", "color", "children", "outline", "size", "rounded", "gradient", "floating", "flat"]);
+
+      return React.createElement(Button, _extends({
+        active: active,
+        block: block,
+        circle: circle,
+        className: className,
+        color: color,
+        outline: outline,
+        size: size,
+        rounded: rounded,
+        gradient: gradient,
+        floating: floating,
+        flat: flat,
+        role: "button",
+        type: "link"
+      }, attributes, {
+        href: this.state.href,
+        download: "export.csv",
+        "data-test": "export-to-csv"
+      }), children);
+    }
+  }]);
+
+  return ExportToCSV;
+}(Component);
+
+ExportToCSV.propTypes = {
+  columns: propTypes.arrayOf(propTypes.object).isRequired,
+  data: propTypes.array.isRequired,
+  active: propTypes.bool,
+  block: propTypes.bool,
+  color: propTypes.string,
+  gradient: propTypes.string,
+  disabled: propTypes.bool,
+  outline: propTypes.bool,
+  rounded: propTypes.bool,
+  circle: propTypes.bool,
+  floating: propTypes.bool,
+  flat: propTypes.bool,
+  size: propTypes.string,
+  children: propTypes.node,
+  className: propTypes.string
+};
+
+var DataTable =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(DataTable, _Component);
+
+  function DataTable(props) {
+    var _this;
+
+    _classCallCheck(this, DataTable);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(DataTable).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "setData", function () {
+      var rows = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+      var columns = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+      var callback = arguments.length > 2 ? arguments[2] : undefined;
+
+      _this.setState(function () {
+        return {
+          columns: columns,
+          rows: rows,
+          filteredRows: _this.props.disableRetreatAfterSorting ? _this.filterRows() : rows
+        };
+      }, callback && typeof callback === "function" && function () {
+        return callback();
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "setUnsearchable", function (columns) {
+      var unsearchable = [];
+      columns.forEach(function (column) {
+        if (column.searchable !== undefined && column.searchable === false) {
+          unsearchable.push(column.field);
+        }
+      });
+
+      _this.setState({
+        unsearchable: unsearchable
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "fetchData", function (link, isPaginateRows) {
+      fetch(link).then(function (res) {
+        return res.json();
+      }).then(function (json) {
+        return _this.setData(json.rows, json.columns, isPaginateRows ? _this.paginateRows : null);
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "pagesAmount", function () {
+      return Math.ceil(_this.state.filteredRows.length / _this.state.entries);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "paginateRowsInitialy", function () {
+      var _this$state = _this.state,
+          rows = _this$state.rows,
+          entries = _this$state.entries,
+          pages = _this$state.pages;
+
+      var pagesAmount = _this.pagesAmount();
+
+      for (var i = 1; i <= pagesAmount; i++) {
+        var pageEndIndex = i * entries;
+        pages.push(rows.slice(pageEndIndex - entries, pageEndIndex));
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleEntriesChange", function (value) {
+      _this.setState({
+        entries: Array.isArray(value) ? value[0] : value
+      }, function () {
+        return _this.paginateRows();
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleSearchChange", function (e) {
+      _this.setState({
+        search: e.target.value
+      }, function () {
+        return _this.filterRows();
+      }, _this.props.onSearch && typeof _this.props.onSearch === "function" && _this.props.onSearch(e.target.value));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "checkFieldValue", function (array, field) {
+      return array[field] && typeof array[field] !== "string" ? array[field].props.searchvalue : array[field];
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "checkField", function (field, a, b, direction) {
+      var _ref = [_this.checkFieldValue(a, field), _this.checkFieldValue(b, field)],
+          aField = _ref[0],
+          bField = _ref[1];
+      var comp = aField > bField ? -1 : 1;
+      if (direction === "asc") comp *= -1;
+      return comp;
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "sort", function (rows, sortRows, field, direction) {
+      rows.sort(function (a, b) {
+        if (sortRows && sortRows.includes(field)) {
+          return _this.checkField(field, a, b, direction);
+        }
+
+        return direction === "asc" ? a[field] < b[field] ? -1 : 1 : a[field] > b[field] ? -1 : 1;
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleSort", function (field, sort) {
+      var onSort = _this.props.onSort;
+      if (sort === "disabled") return;
+
+      _this.setState(function (prevState) {
+        var sortRows = _this.props.sortRows;
+        var rows = prevState.rows,
+            columns = prevState.columns;
+        var direction = sort === "desc" ? "desc" : "asc";
+
+        _this.sort(rows, sortRows, field, direction);
+
+        columns.forEach(function (col) {
+          if (col.sort === "disabled") return;
+          col.sort = col.field === field ? col.sort === "desc" ? "asc" : "desc" : "";
+        });
+        return {
+          rows: rows,
+          columns: columns,
+          sorted: true
+        };
+      }, function () {
+        return _this.filterRows();
+      });
+
+      onSort && typeof onSort === "function" && onSort({
+        column: field,
+        direction: sort === "desc" ? "desc" : "asc"
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "filterRows", function () {
+      var search = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _this.state.search;
+      var unsearchable = _this.state.unsearchable;
+      var _this$props = _this.props,
+          sortRows = _this$props.sortRows,
+          noRecordsFoundLabel = _this$props.noRecordsFoundLabel;
+
+      _this.setState(function (prevState) {
+        var filteredRows = prevState.rows.filter(function (row) {
+          for (var key in row) {
+            if ((!unsearchable.length || !unsearchable.includes(key)) && typeof row[key] !== "function") {
+              var stringValue = "";
+
+              if (sortRows && typeof row[key] !== "string") {
+                (function () {
+                  var content = [];
+
+                  var getContent = function getContent(element) {
+                    return _typeof(element) === "object" ? element.props.children && Array.from(element.props.children).map(function (el) {
+                      return getContent(el);
+                    }) : content.push(element);
+                  };
+
+                  getContent(row[key]);
+                  stringValue = content.join("");
+                })();
+              } else {
+                if (row[key]) {
+                  stringValue = row[key].toString();
+                }
+              }
+
+              if (stringValue.toLowerCase().includes(search.toLowerCase())) return true;
+            }
+          }
+
+          return false;
+        });
+        if (filteredRows.length === 0) filteredRows.push({
+          message: noRecordsFoundLabel,
+          colspan: prevState.columns.length
+        });
+        var test = {};
+
+        if (_this.props.disableRetreatAfterSorting) {
+          test = {
+            filteredRows: filteredRows,
+            activePage: prevState.activePage = prevState.activePage < prevState.pages.length || prevState.activePage === 0 ? prevState.activePage : prevState.pages.length - 1
+          };
+        } else if (!_this.props.disableRetreatAfterSorting) {
+          test = {
+            filteredRows: filteredRows,
+            activePage: 0
+          };
+        }
+
+        return test;
+      }, function () {
+        return _this.paginateRows();
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "paginateRows", function () {
+      var pagesAmount = _this.pagesAmount();
+
+      _this.setState(function (prevState) {
+        var pages = prevState.pages,
+            entries = prevState.entries,
+            filteredRows = prevState.filteredRows,
+            activePage = prevState.activePage;
+        var _this$props2 = _this.props,
+            paging = _this$props2.paging,
+            disableRetreatAfterSorting = _this$props2.disableRetreatAfterSorting;
+        pages = [];
+
+        if (paging) {
+          for (var i = 1; i <= pagesAmount; i++) {
+            var pageEndIndex = i * entries;
+            pages.push(filteredRows.slice(pageEndIndex - entries, pageEndIndex));
+          }
+
+          if (!disableRetreatAfterSorting) {
+            activePage = activePage < pages.length || activePage === 0 ? activePage : pages.length - 1;
+          }
+        } else {
+          pages.push(filteredRows);
+          activePage = 0;
+        }
+
+        return {
+          pages: pages,
+          filteredRows: filteredRows,
+          activePage: activePage
+        };
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "changeActivePage", function (page) {
+      var onPageChange = _this.props.onPageChange;
+
+      _this.setState({
+        activePage: page
+      });
+
+      onPageChange && typeof onPageChange === "function" && onPageChange({
+        activePage: page + 1,
+        pagesAmount: _this.pagesAmount()
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleTableBodyScroll", function (e) {
+      _this.setState({
+        translateScrollHead: e.target.scrollLeft
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "getLabelForFilter", function (field) {
+      if (_this.props.filter) {
+        var arr = _this.props.data.columns;
+        return arr.filter(function (el) {
+          return el.field === field;
+        })[0].label || null;
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "filterOptions", function () {
+      if (_this.props.filter) {
+        var filter = _this.props.filter;
+        var arr = [];
+
+        _this.props.data.rows.map(function (el) {
+          return arr.push(el[filter]);
+        });
+
+        arr = _toConsumableArray(new Set(arr)).sort(function (a, b) {
+          return a.localeCompare(b);
+        });
+        arr = arr.map(function (text, value) {
+          return {
+            text: text,
+            value: "".concat(value)
+          };
+        });
+
+        _this.setState({
+          filterOptions: arr
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "useFilterSelect", function (content) {
+      var filter = _this.props.filter;
+
+      if (filter) {
+        if (content !== "") {
+          var filteredRows = _this.props.data.rows.filter(function (el) {
+            return el[filter] === content;
+          });
+
+          _this.setState({
+            searchSelect: content,
+            rows: filteredRows
+          }, function () {
+            _this.filterRows(_this.state.searchSelect);
+
+            _this.filterRows();
+          });
+        } else {
+          _this.setState({
+            searchSelect: content,
+            rows: _this.props.data.rows
+          }, function () {
+            _this.filterRows(_this.state.searchSelect);
+
+            _this.filterRows();
+          });
+        }
+      }
+    });
+
+    _this.state = {
+      activePage: 0,
+      columns: props.data.columns || [],
+      entries: props.entries,
+      filteredRows: props.data.rows || [],
+      filterOptions: [],
+      order: props.order || [],
+      pages: [],
+      rows: props.data.rows || [],
+      search: "",
+      searchSelect: "",
+      sorted: false,
+      translateScrollHead: 0,
+      unsearchable: []
+    };
+
+    if (_this.props.paging) {
+      _this.paginateRowsInitialy();
+    } else {
+      _this.state.pages.push(_this.state.rows);
+    }
+
+    return _this;
+  }
+
+  _createClass(DataTable, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var data = this.props.data;
+      var _this$state2 = this.state,
+          order = _this$state2.order,
+          columns = _this$state2.columns;
+
+      if (typeof data === "string") {
+        this.fetchData(data, this.paginateRows);
+      }
+
+      this.filterOptions();
+      order.length && this.handleSort(order[0], order[1]);
+      this.setUnsearchable(columns);
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      var data = this.props.data;
+
+      if (prevProps.data !== data) {
+        typeof data === "string" ? this.fetchData(data) : this.setData(data.rows, data.columns, this.paginateRows);
+        this.setUnsearchable(this.state.columns);
+        this.filterRows();
+      }
+    }
+  }, {
+    key: "render",
+    // PRO-END
+    value: function render() {
+      var _this$props3 = this.props,
+          autoWidth = _this$props3.autoWidth,
+          bordered = _this$props3.bordered,
+          borderless = _this$props3.borderless,
+          barReverse = _this$props3.barReverse,
+          btn = _this$props3.btn,
+          className = _this$props3.className,
+          children = _this$props3.children,
+          dark = _this$props3.dark,
+          data = _this$props3.data,
+          disableRetreatAfterSorting = _this$props3.disableRetreatAfterSorting,
+          displayEntries = _this$props3.displayEntries,
+          entriesOptions = _this$props3.entriesOptions,
+          entriesLabel = _this$props3.entriesLabel,
+          exportToCSV = _this$props3.exportToCSV,
+          filter = _this$props3.filter,
+          fixed = _this$props3.fixed,
+          hover = _this$props3.hover,
+          info = _this$props3.info,
+          infoLabel = _this$props3.infoLabel,
+          maxHeight = _this$props3.maxHeight,
+          noBottomColumns = _this$props3.noBottomColumns,
+          noRecordsFoundLabel = _this$props3.noRecordsFoundLabel,
+          order = _this$props3.order,
+          pagesAmount = _this$props3.pagesAmount,
+          paging = _this$props3.paging,
+          paginationLabel = _this$props3.paginationLabel,
+          responsive = _this$props3.responsive,
+          responsiveSm = _this$props3.responsiveSm,
+          responsiveMd = _this$props3.responsiveMd,
+          responsiveLg = _this$props3.responsiveLg,
+          responsiveXl = _this$props3.responsiveXl,
+          searching = _this$props3.searching,
+          searchLabel = _this$props3.searchLabel,
+          scrollX = _this$props3.scrollX,
+          scrollY = _this$props3.scrollY,
+          small = _this$props3.small,
+          sortable = _this$props3.sortable,
+          striped = _this$props3.striped,
+          tbodyColor = _this$props3.tbodyColor,
+          tbodyTextWhite = _this$props3.tbodyTextWhite,
+          theadColor = _this$props3.theadColor,
+          theadTextWhite = _this$props3.theadTextWhite,
+          sortRows = _this$props3.sortRows,
+          onSearch = _this$props3.onSearch,
+          onSort = _this$props3.onSort,
+          onPageChange = _this$props3.onPageChange,
+          attributes = _objectWithoutProperties(_this$props3, ["autoWidth", "bordered", "borderless", "barReverse", "btn", "className", "children", "dark", "data", "disableRetreatAfterSorting", "displayEntries", "entriesOptions", "entriesLabel", "exportToCSV", "filter", "fixed", "hover", "info", "infoLabel", "maxHeight", "noBottomColumns", "noRecordsFoundLabel", "order", "pagesAmount", "paging", "paginationLabel", "responsive", "responsiveSm", "responsiveMd", "responsiveLg", "responsiveXl", "searching", "searchLabel", "scrollX", "scrollY", "small", "sortable", "striped", "tbodyColor", "tbodyTextWhite", "theadColor", "theadTextWhite", "sortRows", "onSearch", "onSort", "onPageChange"]);
+
+      var _this$state3 = this.state,
+          columns = _this$state3.columns,
+          entries = _this$state3.entries,
+          filteredRows = _this$state3.filteredRows,
+          filterOptions = _this$state3.filterOptions,
+          pages = _this$state3.pages,
+          activePage = _this$state3.activePage,
+          search = _this$state3.search,
+          translateScrollHead = _this$state3.translateScrollHead;
+      var tableClasses = classNames("dataTables_wrapper dt-bootstrap4", className);
+      return React.createElement("div", {
+        "data-test": "datatable",
+        className: tableClasses
+      }, React.createElement("div", {
+        className: "row".concat(barReverse ? " flex-row-reverse" : "")
+      }, React.createElement(DataTableEntries, {
+        paging: paging,
+        displayEntries: displayEntries,
+        entries: entries,
+        handleEntriesChange: this.handleEntriesChange,
+        entriesArr: entriesOptions,
+        label: entriesLabel,
+        barReverse: barReverse
+      }), React.createElement(DataTableSearch, {
+        handleSearchChange: this.handleSearchChange,
+        search: search,
+        searching: searching,
+        label: searchLabel,
+        barReverse: barReverse
+      })), !scrollY && !scrollX && React.createElement("div", {
+        className: "row"
+      }, React.createElement(DataTableTable, _extends({
+        autoWidth: autoWidth,
+        bordered: bordered,
+        borderless: borderless,
+        btn: btn,
+        dark: dark,
+        fixed: fixed,
+        hover: hover,
+        noBottomColumns: noBottomColumns,
+        noRecordsFoundLabel: noRecordsFoundLabel,
+        responsive: responsive,
+        responsiveSm: responsiveSm,
+        responsiveMd: responsiveMd,
+        responsiveLg: responsiveLg,
+        responsiveXl: responsiveXl,
+        small: small,
+        striped: striped,
+        theadColor: theadColor,
+        theadTextWhite: theadTextWhite,
+        columns: columns,
+        handleSort: this.handleSort,
+        sortable: sortable,
+        tbodyColor: tbodyColor,
+        tbodyTextWhite: tbodyTextWhite,
+        rows: pages[activePage],
+        sorted: this.state.sorted
+      }, attributes))), (scrollY || scrollX) && React.createElement("div", {
+        className: "row"
+      }, React.createElement(DataTableTableScroll, _extends({
+        autoWidth: autoWidth,
+        bordered: bordered,
+        borderless: borderless,
+        btn: btn,
+        dark: dark,
+        fixed: fixed,
+        handleTableBodyScroll: this.handleTableBodyScroll,
+        hover: hover,
+        maxHeight: maxHeight,
+        responsive: responsive,
+        responsiveSm: responsiveSm,
+        responsiveMd: responsiveMd,
+        responsiveLg: responsiveLg,
+        responsiveXl: responsiveXl,
+        scrollX: scrollX,
+        scrollY: scrollY,
+        small: small,
+        striped: striped,
+        theadColor: theadColor,
+        theadTextWhite: theadTextWhite,
+        columns: columns,
+        handleSort: this.handleSort,
+        sortable: sortable,
+        sorted: this.state.sorted,
+        tbodyColor: tbodyColor,
+        tbodyTextWhite: tbodyTextWhite,
+        rows: pages[activePage],
+        translateScrollHead: translateScrollHead
+      }, attributes))), paging && React.createElement("div", {
+        className: "row"
+      }, React.createElement(DataTableInfo, {
+        activePage: activePage,
+        entries: entries,
+        filteredRows: filteredRows,
+        info: info,
+        pages: pages,
+        label: infoLabel,
+        noRecordsFoundLabel: noRecordsFoundLabel
+      }), React.createElement(DataTablePagination, {
+        activePage: activePage,
+        changeActivePage: this.changeActivePage,
+        pages: pages,
+        pagesAmount: pagesAmount,
+        label: paginationLabel
+      })), (filter || exportToCSV) && React.createElement("div", {
+        className: "row justify-content-between"
+      }, React.createElement("div", {
+        className: "pl-3"
+      }, filter && React.createElement(MDBSelect, {
+        options: filterOptions,
+        label: "Filter ".concat(this.getLabelForFilter(filter)),
+        getTextContent: this.useFilterSelect,
+        className: "m-0 pt-2"
+      })), React.createElement("div", {
+        className: "mr-2"
+      }, exportToCSV && React.createElement(ExportToCSV, {
+        columns: columns,
+        data: pages,
+        color: "primary"
+      }, "Download CSV"))));
+    }
+  }]);
+
+  return DataTable;
+}(Component);
+
+DataTable.propTypes = {
+  autoWidth: propTypes.bool,
+  barReverse: propTypes.bool,
+  bordered: propTypes.bool,
+  borderless: propTypes.bool,
+  btn: propTypes.bool,
+  className: propTypes.string,
+  children: propTypes.node,
   dark: propTypes.bool,
   data: propTypes.oneOfType([propTypes.object, propTypes.string]),
   disableRetreatAfterSorting: propTypes.bool,
@@ -3662,6 +4639,7 @@ DataTable.propTypes = {
   entriesLabel: propTypes.oneOfType([propTypes.string, propTypes.number, propTypes.object]),
   entriesOptions: propTypes.arrayOf(propTypes.number),
   exportToCSV: propTypes.bool,
+  filter: propTypes.string,
   fixed: propTypes.bool,
   hover: propTypes.bool,
   info: propTypes.bool,
@@ -4078,36 +5056,54 @@ DropdownItem.contextTypes = {
   toggle: propTypes.func
 };
 
-var DropdownMenuComponent = function DropdownMenuComponent(_ref) {
-  var Tag = _ref.tag,
+var css$6 = ".dropup .dropdown-menu {\r\n  top: auto !important;\r\n  bottom: 100% !important;\r\n  transform: translate3d(5px, 5px, 0px) !important;\r\n}\r\n\r\n.dropdown-menu-right {\r\n  left: 0 !important;\r\n  right: auto !important;\r\n}\r\n";
+styleInject(css$6);
+
+var DropdownMenuProComponent = function DropdownMenuProComponent(_ref) {
+  var isOpen = _ref.isOpen,
+      Tag = _ref.tag,
       tabIndex = _ref.tabIndex,
       role = _ref.role,
       attributes = _ref.attributes,
       aria = _ref.aria,
       d_key = _ref.d_key,
       children = _ref.children;
-  return React.createElement(Tag, _extends({
-    "data-test": "dropdown-menu-component",
+  return React.createElement(CSSTransition, {
+    "in": isOpen,
+    appear: isOpen,
+    classNames: "popover",
+    unmountOnExit: true,
+    timeout: {
+      enter: 300,
+      exit: 300
+    }
+  }, React.createElement(Tag, _extends({
     tabIndex: tabIndex,
     role: role
   }, attributes, {
     "aria-hidden": aria,
     key: d_key
-  }), children);
+  }), children));
 };
 
-DropdownMenuComponent.propTypes = {
+DropdownMenuProComponent.propTypes = {
   aria: propTypes.bool.isRequired,
   attributes: propTypes.object.isRequired,
   d_key: propTypes.string.isRequired,
   role: propTypes.string.isRequired,
   tabIndex: propTypes.string.isRequired,
   tag: propTypes.any.isRequired,
+  isOpen: propTypes.bool.isRequired,
   children: propTypes.node.isRequired
 };
 
-var css$5 = ".dropup .dropdown-menu {\n  top: auto !important;\n  bottom: 100% !important;\n  transform: translate3d(5px, 5px, 0px) !important;\n}\n\n.dropdown-menu-right {\n  left: 0 !important;\n  right: auto !important;\n}\n";
-styleInject(css$5);
+/*
+// PRO-END
+import DropdownMenuComponent from './DropdownMenuComponent';
+// PRO-START
+*/
+// FREE-END
+// PRO-END
 
 var noFlipModifier = {
   flip: {
@@ -4170,7 +5166,7 @@ function (_Component) {
           style: style,
           "data-placement": placement,
           className: classes
-        }, React.createElement(DropdownMenuComponent, {
+        }, React.createElement(DropdownMenuProComponent, {
           isOpen: _this.context.isOpen,
           tag: Tag,
           tabIndex: "-1",
@@ -4437,8 +5433,156 @@ FreeBird.defaultProps = {
   tag: "div"
 };
 
-var css$6 = ".hamburger-button__checkbox {\n  display: none;\n}\n\n.hamburger-button__button {\n  background-color: transparent;\n  height: 100%;\n  width: 100%;\n  text-align: center;\n  cursor: pointer;\n  top: -5px;\n}\n\nlabel.hamburger-button__button {\n  margin-bottom: 0;\n}\n\n#nav-icon1 {\n  width: 1.5em;\n  height: 1.5em;\n  position: relative;\n  -webkit-transform: rotate(0deg);\n  -moz-transform: rotate(0deg);\n  -o-transform: rotate(0deg);\n  transform: rotate(0deg);\n  -webkit-transition: .5s ease-in-out;\n  -moz-transition: .5s ease-in-out;\n  -o-transition: .5s ease-in-out;\n  transition: .5s ease-in-out;\n  cursor: pointer;\n}\n\n#nav-icon1 span {\n  display: block;\n  position: absolute;\n  height: 3px;\n  width: 100%;\n  border-radius: 1px;\n  background-color: #fff;\n  opacity: 1;\n  left: 0;\n  -webkit-transform: rotate(0deg);\n  -moz-transform: rotate(0deg);\n  -o-transform: rotate(0deg);\n  transform: rotate(0deg);\n  -webkit-transition: .25s ease-in-out;\n  -moz-transition: .25s ease-in-out;\n  -o-transition: .25s ease-in-out;\n  transition: .25s ease-in-out;\n}\n\n#nav-icon1 span:nth-child(1) {\n  top: 5px;\n}\n\n#nav-icon1 span:nth-child(2) {\n  top: 16px;\n}\n\n#nav-icon1 span:nth-child(3) {\n  top: 27px;\n}\n\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(1) {\n  top: 16px;\n  -webkit-transform: rotate(135deg);\n  -moz-transform: rotate(135deg);\n  -o-transform: rotate(135deg);\n  transform: rotate(135deg);\n}\n\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(2) {\n  opacity: 0;\n  left: -60px;\n}\n\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(3) {\n  top: 16px;\n  -webkit-transform: rotate(-135deg);\n  -moz-transform: rotate(-135deg);\n  -o-transform: rotate(-135deg);\n  transform: rotate(-135deg);\n}\n";
-styleInject(css$6);
+var css$7 = ".mdb-gallery {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  overflow-y: auto;\r\n  list-style: none;\r\n  padding: 0;\r\n}\r\n";
+styleInject(css$7);
+
+var Gallery = React.forwardRef(function Gallery(props, ref) {
+  var _props$cellHeight = props.cellHeight,
+      cellHeight = _props$cellHeight === void 0 ? 180 : _props$cellHeight,
+      children = props.children,
+      className = props.className,
+      _props$cols = props.cols,
+      cols = _props$cols === void 0 ? 2 : _props$cols,
+      tag = props.tag,
+      _props$spacing = props.spacing,
+      spacing = _props$spacing === void 0 ? 4 : _props$spacing,
+      style = props.style,
+      attributes = _objectWithoutProperties(props, ["cellHeight", "children", "className", "cols", "tag", "spacing", "style"]);
+
+  var classes = classNames('mdb-gallery', className);
+  return React.createElement(MDBBox, _extends({
+    tag: tag
+  }, attributes, {
+    style: _objectSpread2({
+      margin: -spacing / 2
+    }, style),
+    className: classes,
+    ref: ref
+  }), React.Children.map(children, function (child) {
+    if (!React.isValidElement(child)) {
+      return null;
+    }
+
+    var childCols = child.props.cols || 1;
+    var childRows = child.props.rows || 1;
+    return React.cloneElement(child, {
+      style: Object.assign({
+        width: "".concat(100 / cols * childCols, "%"),
+        height: cellHeight === 'auto' ? 'auto' : cellHeight * childRows + spacing,
+        padding: spacing / 2
+      }, child.props.style)
+    });
+  }));
+});
+Gallery.propTypes = {
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  children: propTypes.node,
+  cellHeight: propTypes.number,
+  cols: propTypes.number,
+  spacing: propTypes.number,
+  style: propTypes.object
+};
+Gallery.defaultProps = {
+  tag: 'ul'
+};
+
+var css$8 = ".mdb-gallery-element {\r\n  box-sizing: border-box;\r\n  flex-shrink: 0;\r\n}\r\n\r\n.mdb-gallery-title {\r\n  height: 100%;\r\n  display: block;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.img-full-height {\r\n  height: 100%;\r\n  transform: translateX(-50%);\r\n  position: relative;\r\n  left: 50%;\r\n}\r\n\r\n.img-full-width {\r\n  width: 100%;\r\n  transform: translateY(-50%);\r\n  position: relative;\r\n  top: 50%;\r\n}\r\n";
+styleInject(css$8);
+
+var imgClass = function imgClass(img) {
+  if (!img || !img.complete) {
+    return;
+  }
+
+  if (img.width / img.height > img.parentElement.offsetWidth / img.parentElement.offsetHeight) {
+    img.classList.remove('img-full-width');
+    img.classList.add('img-full-height');
+  } else {
+    img.classList.remove('img-full-height');
+    img.classList.add('img-full-width');
+  }
+};
+
+function ensureImageCover(img) {
+  if (!img) {
+    return;
+  }
+
+  if (img.complete) {
+    imgClass(img);
+  } else {
+    img.addEventListener('load', function () {
+      imgClass(img);
+    });
+  }
+}
+
+var GalleryList = React.forwardRef(function GalleryList(props, ref) {
+  var children = props.children,
+      className = props.className,
+      cols = props.cols,
+      tag = props.tag,
+      rows = props.rows,
+      titleClasses = props.titleClasses,
+      elementClasses = props.elementClasses,
+      styles = props.styles,
+      attributes = _objectWithoutProperties(props, ["children", "className", "cols", "tag", "rows", "titleClasses", "elementClasses", "styles"]);
+
+  var imgRef = useRef(null);
+  var ec = classNames('mdb-gallery-element', elementClasses);
+  var tc = classNames('mdb-gallery-title', titleClasses);
+  useEffect(function () {
+    ensureImageCover(imgRef.current);
+  });
+  useEffect(function () {
+    var handleResize = debounce(function () {
+      imgClass(imgRef.current);
+    });
+    window.addEventListener('resize', handleResize);
+    return function () {
+      handleResize.clear();
+      window.removeEventListener('resive', handleResize);
+    };
+  }, []);
+  return React.createElement(MDBBox, _extends({
+    tag: tag,
+    ref: ref
+  }, attributes, {
+    className: ec
+  }), React.createElement(MDBBox, {
+    style: _objectSpread2({}, styles),
+    className: tc
+  }, React.Children.map(children, function (child) {
+    if (!React.isValidElement) {
+      return null;
+    }
+
+    if (child.type === 'img') {
+      return React.cloneElement(child, {
+        ref: imgRef
+      });
+    }
+
+    return child;
+  })));
+});
+GalleryList.propTypes = {
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  children: propTypes.node,
+  cols: propTypes.number,
+  rows: propTypes.number,
+  style: propTypes.object,
+  titleClasses: propTypes.string,
+  elementClasses: propTypes.string
+};
+GalleryList.defaultProps = {
+  tag: 'li'
+};
+
+var css$9 = ".hamburger-button__checkbox {\r\n  display: none;\r\n}\r\n\r\n.hamburger-button__button {\r\n  background-color: transparent;\r\n  height: 100%;\r\n  width: 100%;\r\n  text-align: center;\r\n  cursor: pointer;\r\n  top: -5px;\r\n}\r\n\r\nlabel.hamburger-button__button {\r\n  margin-bottom: 0;\r\n}\r\n\r\n#nav-icon1 {\r\n  width: 1.5em;\r\n  height: 1.5em;\r\n  position: relative;\r\n  -webkit-transform: rotate(0deg);\r\n  -moz-transform: rotate(0deg);\r\n  -o-transform: rotate(0deg);\r\n  transform: rotate(0deg);\r\n  -webkit-transition: .5s ease-in-out;\r\n  -moz-transition: .5s ease-in-out;\r\n  -o-transition: .5s ease-in-out;\r\n  transition: .5s ease-in-out;\r\n  cursor: pointer;\r\n}\r\n\r\n#nav-icon1 span {\r\n  display: block;\r\n  position: absolute;\r\n  height: 3px;\r\n  width: 100%;\r\n  border-radius: 1px;\r\n  background-color: #fff;\r\n  opacity: 1;\r\n  left: 0;\r\n  -webkit-transform: rotate(0deg);\r\n  -moz-transform: rotate(0deg);\r\n  -o-transform: rotate(0deg);\r\n  transform: rotate(0deg);\r\n  -webkit-transition: .25s ease-in-out;\r\n  -moz-transition: .25s ease-in-out;\r\n  -o-transition: .25s ease-in-out;\r\n  transition: .25s ease-in-out;\r\n}\r\n\r\n#nav-icon1 span:nth-child(1) {\r\n  top: 5px;\r\n}\r\n\r\n#nav-icon1 span:nth-child(2) {\r\n  top: 16px;\r\n}\r\n\r\n#nav-icon1 span:nth-child(3) {\r\n  top: 27px;\r\n}\r\n\r\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(1) {\r\n  top: 16px;\r\n  -webkit-transform: rotate(135deg);\r\n  -moz-transform: rotate(135deg);\r\n  -o-transform: rotate(135deg);\r\n  transform: rotate(135deg);\r\n}\r\n\r\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(2) {\r\n  opacity: 0;\r\n  left: -60px;\r\n}\r\n\r\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(3) {\r\n  top: 16px;\r\n  -webkit-transform: rotate(-135deg);\r\n  -moz-transform: rotate(-135deg);\r\n  -o-transform: rotate(-135deg);\r\n  transform: rotate(-135deg);\r\n}\r\n";
+styleInject(css$9);
 
 var HamburgerToggler = function HamburgerToggler(props) {
   var id = props.id,
@@ -4597,270 +5741,6 @@ Iframe.propTypes = {
   styles: propTypes.object,
   width: propTypes.number,
   title: propTypes.string
-};
-
-var Input =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(Input, _React$Component);
-
-  function Input(props) {
-    var _this;
-
-    _classCallCheck(this, Input);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Input).call(this, props));
-
-    _defineProperty(_assertThisInitialized(_this), "onBlur", function (event) {
-      event.stopPropagation();
-
-      _this.setState({
-        isFocused: false
-      });
-
-      _this.props.onBlur && _this.props.onBlur(event);
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onFocus", function (event) {
-      event.stopPropagation();
-
-      _this.setState({
-        isFocused: true
-      });
-
-      _this.props.onFocus && _this.props.onFocus(event);
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onChange", function (event) {
-      event.stopPropagation();
-
-      if (_this.props.type !== 'checkbox' && _this.props.type !== 'radio') {
-        _this.setState({
-          innerValue: event.target.value,
-          isPristine: false
-        });
-      }
-
-      _this.props.onChange && _this.props.onChange(event);
-      _this.props.getValue && _this.props.getValue(event.target.value);
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onInput", function (event) {
-      event.stopPropagation();
-
-      if (_this.props.type !== 'checkbox' && _this.props.type !== 'radio') {
-        _this.setState({
-          innerValue: event.target.value,
-          isPristine: false
-        });
-      }
-
-      _this.props.onInput && _this.props.onInput(event);
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "setFocus", function () {
-      _this.inputElementRef.current.focus();
-    });
-
-    _this.state = {
-      innerValue: props.value || props.valueDefault,
-      isFocused: false,
-      isPristine: true
-    };
-    _this.inputElementRef = React.createRef();
-    return _this;
-  }
-
-  _createClass(Input, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      // User wants to access the input ref, but we have to use it intenrally to.
-      // Return Ref instance to share ref with parent
-      // then user sets ref as a callback -> inputRef={ref => this.myInputRef = ref}
-      this.props.inputRef && this.props.inputRef(this.inputElementRef.current);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
-
-      var _this$props = this.props,
-          background = _this$props.background,
-          children = _this$props.children,
-          className = _this$props.className,
-          containerClass = _this$props.containerClass,
-          disabled = _this$props.disabled,
-          error = _this$props.error,
-          filled = _this$props.filled,
-          gap = _this$props.gap,
-          getValue = _this$props.getValue,
-          group = _this$props.group,
-          hint = _this$props.hint,
-          icon = _this$props.icon,
-          iconBrand = _this$props.iconBrand,
-          iconClass = _this$props.iconClass,
-          iconLight = _this$props.iconLight,
-          onIconClick = _this$props.onIconClick,
-          onIconMouseEnter = _this$props.onIconMouseEnter,
-          onIconMouseLeave = _this$props.onIconMouseLeave,
-          iconRegular = _this$props.iconRegular,
-          iconSize = _this$props.iconSize,
-          id = _this$props.id,
-          inputRef = _this$props.inputRef,
-          noTag = _this$props.noTag,
-          outline = _this$props.outline,
-          label = _this$props.label,
-          labelClass = _this$props.labelClass,
-          labelId = _this$props.labelId,
-          size = _this$props.size,
-          success = _this$props.success,
-          Tag = _this$props.tag,
-          type = _this$props.type,
-          validate = _this$props.validate,
-          value = _this$props.value,
-          valueDefault = _this$props.valueDefault,
-          attributes = _objectWithoutProperties(_this$props, ["background", "children", "className", "containerClass", "disabled", "error", "filled", "gap", "getValue", "group", "hint", "icon", "iconBrand", "iconClass", "iconLight", "onIconClick", "onIconMouseEnter", "onIconMouseLeave", "iconRegular", "iconSize", "id", "inputRef", "noTag", "outline", "label", "labelClass", "labelId", "size", "success", "tag", "type", "validate", "value", "valueDefault"]);
-
-      var isNotEmpty = (!!this.state.innerValue || !!hint || this.state.isFocused || this.state.innerValue === 0) && type !== 'checkbox' && type !== 'radio';
-      var TagInput = '';
-      var formControlClass = '';
-
-      if (type === 'textarea') {
-        formControlClass = outline ? 'form-control' : 'md-textarea form-control';
-        TagInput = 'textarea';
-      } else {
-        formControlClass = 'form-control';
-        TagInput = 'input';
-        attributes.type = type;
-      }
-
-      attributes.disabled = disabled;
-      var classes = classNames(formControlClass, size ? "form-control-".concat(size) : false, validate ? 'validate' : false, filled ? 'filled-in' : false, gap ? 'with-gap' : false, type === 'checkbox' ? gap ? false : 'form-check-input' : false, type === 'radio' ? 'form-check-input' : false, className);
-      var containerClassFix = classNames(type === 'checkbox' || type === 'radio' ? typeof label === 'boolean' && label ? 'd-flex' : 'form-check' : 'md-form', group ? 'form-group' : false, size ? "form-".concat(size) : false, outline && 'md-outline', background && 'md-bg', containerClass);
-      var iconClassFix = classNames(isNotEmpty && this.state.isFocused ? 'active' : false, iconClass, 'prefix');
-      var labelClassFix = classNames(isNotEmpty ? 'active' : false, disabled ? 'disabled' : false, type === 'checkbox' ? 'form-check-label' : false, type === 'radio' ? 'form-check-label' : false, labelClass);
-
-      var renderFunction = function renderFunction() {
-        return React.createElement(React.Fragment, null, icon && React.createElement(Fa, {
-          icon: icon,
-          size: iconSize,
-          brand: iconBrand,
-          light: iconLight,
-          regular: iconRegular,
-          className: iconClassFix,
-          onClick: onIconClick ? onIconClick : _this2.setFocus,
-          onMouseEnter: onIconMouseEnter,
-          onMouseLeave: onIconMouseLeave
-        }), React.createElement(TagInput, _extends({
-          "data-test": "input"
-        }, attributes, {
-          className: classes,
-          id: id,
-          placeholder: hint,
-          ref: _this2.inputElementRef,
-          value: _this2.state.innerValue,
-          onBlur: _this2.onBlur,
-          onChange: _this2.onChange,
-          onInput: _this2.onInput,
-          onFocus: _this2.onFocus
-        })), label && React.createElement("label", {
-          className: labelClassFix,
-          htmlFor: id,
-          "data-error": error,
-          "data-success": success,
-          id: labelId,
-          onClick: _this2.setFocus
-        }, label), children);
-      };
-
-      return noTag ? renderFunction() : React.createElement(Tag, {
-        className: containerClassFix
-      }, renderFunction());
-    }
-  }], [{
-    key: "getDerivedStateFromProps",
-    value: function getDerivedStateFromProps(nextProps, prevState) {
-      if (nextProps.value !== prevState.value) {
-        return {
-          innerValue: nextProps.value
-        };
-      }
-
-      return null;
-    }
-  }]);
-
-  return Input;
-}(React.Component);
-
-Input.propTypes = {
-  className: propTypes.string,
-  children: propTypes.node,
-  containerClass: propTypes.string,
-  disabled: propTypes.bool,
-  error: propTypes.string,
-  filled: propTypes.bool,
-  gap: propTypes.bool,
-  getValue: propTypes.func,
-  group: propTypes.bool,
-  hint: propTypes.string,
-  icon: propTypes.string,
-  iconBrand: propTypes.bool,
-  iconClass: propTypes.string,
-  iconLight: propTypes.bool,
-  onIconClick: propTypes.func,
-  onIconMouseEnter: propTypes.func,
-  onIconMouseLeave: propTypes.func,
-  iconRegular: propTypes.bool,
-  iconSize: propTypes.string,
-  id: propTypes.string,
-  inputRef: propTypes.oneOfType([propTypes.object, propTypes.func]),
-  label: propTypes.oneOfType([propTypes.string, propTypes.number, propTypes.object, propTypes.bool]),
-  labelClass: propTypes.string,
-  labelId: propTypes.string,
-  noTag: propTypes.bool,
-  onBlur: propTypes.func,
-  onChange: propTypes.func,
-  onFocus: propTypes.func,
-  onInput: propTypes.func,
-  outline: propTypes.bool,
-  size: propTypes.string,
-  success: propTypes.string,
-  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
-  type: propTypes.string,
-  validate: propTypes.bool,
-  value: propTypes.oneOfType([propTypes.number, propTypes.string]),
-  valueDefault: propTypes.oneOfType([propTypes.number, propTypes.string])
-};
-Input.defaultProps = {
-  className: '',
-  containerClass: '',
-  disabled: false,
-  error: '',
-  filled: false,
-  gap: false,
-  group: false,
-  hint: undefined,
-  icon: '',
-  iconBrand: false,
-  iconClass: '',
-  iconLight: false,
-  onIconMouseEnter: function onIconMouseEnter() {},
-  onIconMouseLeave: function onIconMouseLeave() {},
-  iconRegular: false,
-  iconSize: undefined,
-  id: undefined,
-  noTag: false,
-  outline: false,
-  label: '',
-  labelClass: '',
-  labelId: '',
-  size: '',
-  success: '',
-  tag: 'div',
-  type: 'text',
-  validate: false,
-  valueDefault: ''
 };
 
 var InputGroup = function InputGroup(_ref) {
@@ -5952,8 +6832,8 @@ Notification.defaultProps = {
   closeClassName: 'text-dark'
 };
 
-var css$7 = ".popover {\n  width: auto;\n  background-color: white;\n  color: #97999b;\n  text-align: center;\n  display: inline-block;\n  border-radius: 3px;\n  position: absolute;\n  font-size: 0.83em;\n  font-weight: normal;\n  border: 1px rgb(0, 0, 0) solid;\n  /* z-index: 200000; */\n  z-index: 10;\n  /* max-width: initial; */\n  max-width: 274px;\n  text-align: start;\n  background-color: #fff;\n  border: 1px solid rgba(0, 0, 0, 0.2);\n  border-radius: 0.3rem;\n  opacity: 0;\n  transition: opacity 0.3s, visibility 0.3s;\n  visibility: hidden;\n}\n\n.show.popover {\n  opacity: 1;\n  visibility: visible;\n}\n\n.popover-body {\n  color: #6c6e71;\n}\n\n.popover .popover_arrow {\n  width: 0;\n  height: 0;\n  border-style: solid;\n  position: absolute;\n  margin: 6px;\n  color: transparent;\n}\n\n.popover[x-placement^='top'] {\n  margin-bottom: 15px;\n}\n\n.popover[x-placement^='top'] .popover_arrow {\n  border-width: 8px 8px 0 8px;\n  border-color: #d6d6d6 transparent transparent transparent;\n  bottom: -8px;\n  margin-bottom: 0;\n}\n\n.popover[x-placement^='top'] .popover_arrow::before {\n  content: '';\n  display: inline-block;\n  position: absolute;\n  left: -8px;\n  bottom: 1.5px;\n  border: solid;\n  border-width: 8px 8px 0 8px;\n  border-color: white transparent transparent transparent;\n}\n\n.popover[x-placement^='bottom'] {\n  margin-top: 15px;\n}\n\n.popover[x-placement^='bottom'] .popover_arrow {\n  border-width: 0 8px 8px 8px;\n  border-color: transparent transparent #d6d6d6 transparent;\n  top: -8px;\n  margin-top: 0;\n}\n\n.popover[x-placement^='bottom'] .popover_arrow::before {\n  content: '';\n  display: inline-block;\n  position: absolute;\n  left: -8px;\n  top: 1.45px;\n  border: solid;\n  border-width: 0 8px 8px 8px;\n  border-color: transparent transparent white transparent;\n}\n\n.popover[x-placement^='right'] {\n  margin-left: 15px;\n}\n\n.popover[x-placement^='right'] .popover_arrow {\n  border-width: 8px 8px 8px 0;\n  border-color: transparent #d6d6d6 transparent transparent;\n  left: -8px;\n  margin-left: 0;\n}\n\n.popover[x-placement^='right'] .popover_arrow::before {\n  content: '';\n  display: inline-block;\n  position: absolute;\n  top: -8px;\n  left: 1.45px;\n  border: solid;\n  border-width: 8px 8px 8px 0;\n  border-color: transparent white transparent transparent;\n}\n\n.popover[x-placement^='left'] {\n  margin-right: 15px;\n}\n\n.popover[x-placement^='left'] .popover_arrow {\n  border-width: 8px 0 8px 8px;\n  border-color: transparent transparent transparent #d6d6d6;\n  right: -8px;\n  margin-right: 0;\n}\n\n.popover[x-placement^='left'] .popover_arrow::before {\n  content: '';\n  display: inline-block;\n  position: absolute;\n  top: -8px;\n  right: 1.45px;\n  border: solid;\n  border-width: 8px 0 8px 8px;\n  border-color: transparent transparent transparent white;\n}\n\n\n.tooltip {\n  width: auto;\n  background-color: black;\n  color: white;\n  text-align: center;\n  display: inline-block;\n  border-radius: 3px;\n  position: absolute;\n  /* font-size: 0.83em; */\n  font-weight: normal;\n  border: 1px rgb(0, 0, 0) solid;\n  /* z-index: 200000; */\n  z-index: 15;\n  /* max-width: initial; */\n  max-width: 274px;\n  text-align: start;\n  border: 1px solid rgba(0, 0, 0, 0.2);\n  border-radius: 0.3rem;\n  opacity: 0;\n  transition: opacity 0.3s, visibility 0.3s;\n  visibility: hidden;\n}\n\n.show.tooltip {\n  opacity: 1;\n  visibility: visible;\n}\n\n\n.tooltip .popover_arrow {\n  width: 0;\n  height: 0;\n  border-style: solid;\n  position: absolute;\n  margin: 6px;\n  color: transparent;\n}\n\n.tooltip[x-placement^='top'] {\n  margin-bottom: 5px;\n}\n\n.tooltip[x-placement^='top'] .popover_arrow {\n  border-width: 6px 6px 0 6px;\n  border-color: #131313 transparent transparent transparent;\n  bottom: -6px;\n  margin-bottom: 0;\n}\n\n.tooltip[x-placement^='top'] .popover_arrow::before {\n  content: '';\n  display: inline-block;\n  position: absolute;\n  left: -6px;\n  bottom: 1.5px;\n  border: solid;\n  border-width: 6px 6px 0 6px;\n  border-color: black transparent transparent transparent;\n}\n\n.tooltip[x-placement^='bottom'] {\n  margin-top: 5px;\n}\n\n.tooltip[x-placement^='bottom'] .popover_arrow {\n  border-width: 0 6px 6px 6px;\n  border-color: transparent transparent #131313 transparent;\n  top: -6px;\n  margin-top: 0;\n}\n\n.tooltip[x-placement^='bottom'] .popover_arrow::before {\n  content: '';\n  display: inline-block;\n  position: absolute;\n  left: -6px;\n  top: 1.45px;\n  border: solid;\n  border-width: 0 6px 6px 6px;\n  border-color: transparent transparent black transparent;\n}\n\n.tooltip[x-placement^='right'] {\n  margin-left: 5px;\n}\n\n.tooltip[x-placement^='right'] .popover_arrow {\n  border-width: 6px 6px 6px 0;\n  border-color: transparent #131313 transparent transparent;\n  left: -6px;\n  margin-left: 0;\n}\n\n.tooltip[x-placement^='right'] .popover_arrow::before {\n  content: '';\n  display: inline-block;\n  position: absolute;\n  top: -6px;\n  left: 1.45px;\n  border: solid;\n  border-width: 6px 6px 6px 0;\n  border-color: transparent black transparent transparent;\n}\n\n.tooltip[x-placement^='left'] {\n  margin-right: 5px;\n}\n\n.tooltip[x-placement^='left'] .popover_arrow {\n  border-width: 6px 0 6px 6px;\n  border-color: transparent transparent transparent #131313;\n  right: -6px;\n  margin-right: 0;\n}\n\n.tooltip[x-placement^='left'] .popover_arrow::before {\n  content: '';\n  display: inline-block;\n  position: absolute;\n  top: -6px;\n  right: 1.45px;\n  border: solid;\n  border-width: 6px 0 6px 6px;\n  border-color: transparent transparent transparent black;\n}\n\n";
-styleInject(css$7);
+var css$a = ".popover {\r\n  width: auto;\r\n  background-color: white;\r\n  color: #97999b;\r\n  text-align: center;\r\n  display: inline-block;\r\n  border-radius: 3px;\r\n  position: absolute;\r\n  font-size: 0.83em;\r\n  font-weight: normal;\r\n  border: 1px rgb(0, 0, 0) solid;\r\n  /* z-index: 200000; */\r\n  z-index: 10;\r\n  /* max-width: initial; */\r\n  max-width: 274px;\r\n  text-align: start;\r\n  background-color: #fff;\r\n  border: 1px solid rgba(0, 0, 0, 0.2);\r\n  border-radius: 0.3rem;\r\n  opacity: 0;\r\n  transition: opacity 0.3s, visibility 0.3s;\r\n  visibility: hidden;\r\n}\r\n\r\n.show.popover {\r\n  opacity: 1;\r\n  visibility: visible;\r\n}\r\n\r\n.popover-body {\r\n  color: #6c6e71;\r\n}\r\n\r\n.popover .popover_arrow {\r\n  width: 0;\r\n  height: 0;\r\n  border-style: solid;\r\n  position: absolute;\r\n  margin: 6px;\r\n  color: transparent;\r\n}\r\n\r\n.popover[x-placement^=\"top\"] {\r\n  margin-bottom: 15px;\r\n}\r\n\r\n.popover[x-placement^=\"top\"] .popover_arrow {\r\n  border-width: 8px 8px 0 8px;\r\n  border-color: #d6d6d6 transparent transparent transparent;\r\n  bottom: -8px;\r\n  margin-bottom: 0;\r\n}\r\n\r\n.popover[x-placement^=\"top\"] .popover_arrow::before {\r\n  content: \"\";\r\n  display: inline-block;\r\n  position: absolute;\r\n  left: -8px;\r\n  bottom: 1.5px;\r\n  border: solid;\r\n  border-width: 8px 8px 0 8px;\r\n  border-color: white transparent transparent transparent;\r\n}\r\n\r\n.popover[x-placement^=\"bottom\"] {\r\n  margin-top: 15px;\r\n}\r\n\r\n.popover[x-placement^=\"bottom\"] .popover_arrow {\r\n  border-width: 0 8px 8px 8px;\r\n  border-color: transparent transparent #d6d6d6 transparent;\r\n  top: -8px;\r\n  margin-top: 0;\r\n}\r\n\r\n.popover[x-placement^=\"bottom\"] .popover_arrow::before {\r\n  content: \"\";\r\n  display: inline-block;\r\n  position: absolute;\r\n  left: -8px;\r\n  top: 1.45px;\r\n  border: solid;\r\n  border-width: 0 8px 8px 8px;\r\n  border-color: transparent transparent white transparent;\r\n}\r\n\r\n.popover[x-placement^=\"right\"] {\r\n  margin-left: 15px;\r\n}\r\n\r\n.popover[x-placement^=\"right\"] .popover_arrow {\r\n  border-width: 8px 8px 8px 0;\r\n  border-color: transparent #d6d6d6 transparent transparent;\r\n  left: -8px;\r\n  margin-left: 0;\r\n}\r\n\r\n.popover[x-placement^=\"right\"] .popover_arrow::before {\r\n  content: \"\";\r\n  display: inline-block;\r\n  position: absolute;\r\n  top: -8px;\r\n  left: 1.45px;\r\n  border: solid;\r\n  border-width: 8px 8px 8px 0;\r\n  border-color: transparent white transparent transparent;\r\n}\r\n\r\n.popover[x-placement^=\"left\"] {\r\n  margin-right: 15px;\r\n}\r\n\r\n.popover[x-placement^=\"left\"] .popover_arrow {\r\n  border-width: 8px 0 8px 8px;\r\n  border-color: transparent transparent transparent #d6d6d6;\r\n  right: -8px;\r\n  margin-right: 0;\r\n}\r\n\r\n.popover[x-placement^=\"left\"] .popover_arrow::before {\r\n  content: \"\";\r\n  display: inline-block;\r\n  position: absolute;\r\n  top: -8px;\r\n  right: 1.45px;\r\n  border: solid;\r\n  border-width: 8px 0 8px 8px;\r\n  border-color: transparent transparent transparent white;\r\n}\r\n\r\n.tooltip {\r\n  width: auto;\r\n  background-color: black;\r\n  color: white;\r\n  text-align: center;\r\n  display: inline-block;\r\n  border-radius: 3px;\r\n  position: absolute;\r\n  /* font-size: 0.83em; */\r\n  font-weight: normal;\r\n  border: 1px rgb(0, 0, 0) solid;\r\n  /* z-index: 200000; */\r\n  z-index: 15;\r\n  /* max-width: initial; */\r\n  max-width: 274px;\r\n  text-align: start;\r\n  border: 1px solid rgba(0, 0, 0, 0.2);\r\n  border-radius: 0.3rem;\r\n  opacity: 0;\r\n  transition: opacity 0.3s, visibility 0.3s;\r\n  visibility: hidden;\r\n}\r\n\r\n.show {\r\n  z-index: 15;\r\n}\r\n.tooltip-inner {\r\n  display: block;\r\n}\r\n\r\n.show.tooltip {\r\n  opacity: 1;\r\n  visibility: visible;\r\n}\r\n\r\n.tooltip .popover_arrow {\r\n  width: 0;\r\n  height: 0;\r\n  border-style: solid;\r\n  position: absolute;\r\n  margin: 6px;\r\n  color: transparent;\r\n}\r\n\r\n.tooltip[x-placement^=\"top\"],\r\n.show[x-placement^=\"top\"]:not(.tooltip) {\r\n  margin-bottom: 5px;\r\n}\r\n\r\n.tooltip[x-placement^=\"top\"] .popover_arrow {\r\n  border-width: 6px 6px 0 6px;\r\n  border-color: #131313 transparent transparent transparent;\r\n  bottom: -6px;\r\n  margin-bottom: 0;\r\n}\r\n\r\n.tooltip[x-placement^=\"top\"] .popover_arrow::before {\r\n  content: \"\";\r\n  display: inline-block;\r\n  position: absolute;\r\n  left: -6px;\r\n  bottom: 1.5px;\r\n  border: solid;\r\n  border-width: 6px 6px 0 6px;\r\n  border-color: black transparent transparent transparent;\r\n}\r\n\r\n.tooltip[x-placement^=\"bottom\"],\r\n.show[x-placement^=\"bottom\"]:not(.tooltip) {\r\n  margin-top: 5px;\r\n}\r\n\r\n.tooltip[x-placement^=\"bottom\"] .popover_arrow {\r\n  border-width: 0 6px 6px 6px;\r\n  border-color: transparent transparent #131313 transparent;\r\n  top: -6px;\r\n  margin-top: 0;\r\n}\r\n\r\n.tooltip[x-placement^=\"bottom\"] .popover_arrow::before {\r\n  content: \"\";\r\n  display: inline-block;\r\n  position: absolute;\r\n  left: -6px;\r\n  top: 1.45px;\r\n  border: solid;\r\n  border-width: 0 6px 6px 6px;\r\n  border-color: transparent transparent black transparent;\r\n}\r\n\r\n.tooltip[x-placement^=\"right\"],\r\n.show[x-placement^=\"right\"]:not(.tooltip) {\r\n  margin-left: 5px;\r\n}\r\n\r\n.tooltip[x-placement^=\"right\"] .popover_arrow {\r\n  border-width: 6px 6px 6px 0;\r\n  border-color: transparent #131313 transparent transparent;\r\n  left: -6px;\r\n  margin-left: 0;\r\n}\r\n\r\n.tooltip[x-placement^=\"right\"] .popover_arrow::before {\r\n  content: \"\";\r\n  display: inline-block;\r\n  position: absolute;\r\n  top: -6px;\r\n  left: 1.45px;\r\n  border: solid;\r\n  border-width: 6px 6px 6px 0;\r\n  border-color: transparent black transparent transparent;\r\n}\r\n\r\n.tooltip[x-placement^=\"left\"],\r\n.show[x-placement^=\"left\"]:not(.tooltip) {\r\n  margin-right: 5px;\r\n}\r\n\r\n.tooltip[x-placement^=\"left\"] .popover_arrow {\r\n  border-width: 6px 0 6px 6px;\r\n  border-color: transparent transparent transparent #131313;\r\n  right: -6px;\r\n  margin-right: 0;\r\n}\r\n\r\n.tooltip[x-placement^=\"left\"] .popover_arrow::before {\r\n  content: \"\";\r\n  display: inline-block;\r\n  position: absolute;\r\n  top: -6px;\r\n  right: 1.45px;\r\n  border: solid;\r\n  border-width: 6px 0 6px 6px;\r\n  border-color: transparent transparent transparent black;\r\n}\r\n";
+styleInject(css$a);
 
 var Popover =
 /*#__PURE__*/
@@ -5993,7 +6873,7 @@ function (_React$Component) {
         showPopper: toggler && true
       }, function () {
         if (_this.state.showPopper) _this.setState({
-          visible: typeof toggler !== 'undefined' ? toggler : !_this.state.visible
+          visible: typeof toggler !== "undefined" ? toggler : !_this.state.visible
         }, function () {
           _this.createPopper();
 
@@ -6044,7 +6924,7 @@ function (_React$Component) {
       this.timer = setInterval(function () {
         return _this2.setPopperJS();
       }, 3);
-      document.addEventListener('click', this.handleClick);
+      document.addEventListener("click", this.handleClick);
     }
   }, {
     key: "render",
@@ -6056,21 +6936,26 @@ function (_React$Component) {
           className = _this$props2.className,
           clickable = _this$props2.clickable,
           domElement = _this$props2.domElement,
-          modifiers = _this$props2.modifiers,
+          email = _this$props2.email,
           id = _this$props2.id,
           isVisible = _this$props2.isVisible,
-          onChange = _this$props2.onChange,
+          material = _this$props2.material,
+          modifiers = _this$props2.modifiers,
           placement = _this$props2.placement,
           popover = _this$props2.popover,
+          sm = _this$props2.sm,
           style = _this$props2.style,
+          onChange = _this$props2.onChange,
           Tag = _this$props2.tag,
-          attributes = _objectWithoutProperties(_this$props2, ["children", "className", "clickable", "domElement", "modifiers", "id", "isVisible", "onChange", "placement", "popover", "style", "tag"]);
+          attributes = _objectWithoutProperties(_this$props2, ["children", "className", "clickable", "domElement", "email", "id", "isVisible", "material", "modifiers", "placement", "popover", "sm", "style", "onChange", "tag"]);
 
       var _this$state = this.state,
           visible = _this$state.visible,
           showPopper = _this$state.showPopper;
-      var popper = children[1];
+      var Popper = children[1];
       var Wrapper = children[0];
+      var classes = classNames(visible && "show", popover ? "popover" : !material && !email && "tooltip px-2", className);
+      var popperClasses = classNames((material || email) && "tooltip-inner", material && (sm ? "md-inner" : "md-inner-main"), email && (sm ? "md-inner" : "md-inner-email"));
       return React.createElement(React.Fragment, null, !domElement ? React.createElement(Wrapper.type, _extends({}, Wrapper.props, {
         onMouseEnter: function onMouseEnter() {
           return !clickable && _this3.doToggle(true);
@@ -6132,11 +7017,13 @@ function (_React$Component) {
         ref: function ref(_ref2) {
           return _this3.popoverWrapperRef = _ref2;
         },
-        className: classNames(visible && 'show', popover ? 'popover' : 'tooltip px-2', className),
+        className: classes,
         "data-popper": id
-      }, attributes), popper, React.createElement("span", {
+      }, attributes), React.createElement(Popper.type, {
+        className: classNames(popperClasses, Popper.props.className)
+      }, Popper.props.children), React.createElement("span", {
         "x-arrow": "",
-        className: "popover_arrow"
+        className: classNames("popover_arrow")
       })));
     }
   }]);
@@ -6148,25 +7035,28 @@ Popover.propTypes = {
   children: propTypes.node,
   clickable: propTypes.bool,
   domElement: propTypes.bool,
-  modifiers: propTypes.object,
+  email: propTypes.bool,
   id: propTypes.string,
   isVisible: propTypes.bool,
+  material: propTypes.bool,
+  modifiers: propTypes.object,
   placement: propTypes.string,
   popover: propTypes.bool,
+  sm: propTypes.bool,
   style: propTypes.objectOf(propTypes.string),
   tag: propTypes.string
 };
 Popover.defaultProps = {
   clickable: false,
   domElement: false,
-  id: 'popper',
+  id: "popper",
   isVisible: false,
-  placement: 'top',
+  placement: "top",
   popover: false,
   style: {
-    display: 'inline-block'
+    display: "inline-block"
   },
-  tag: 'div'
+  tag: "div"
 };
 
 var PopoverBody = function PopoverBody(_ref) {
@@ -6989,8 +7879,4548 @@ TreeviewList.defaultProps = {
   opened: false,
   tag: 'li'
 };
-TreeviewList.contextTypes = {
-  theme: propTypes.string
+DataTable.defaultProps = {
+  autoWidth: false,
+  barReverse: false,
+  bordered: false,
+  borderless: false,
+  btn: false,
+  dark: false,
+  data: {
+    columns: [],
+    rows: []
+  },
+  disableRetreatAfterSorting: false,
+  displayEntries: true,
+  entries: 10,
+  entriesLabel: "Show entries",
+  entriesOptions: [10, 20, 50, 100],
+  exportToCSV: false,
+  fixed: false,
+  hover: false,
+  info: true,
+  infoLabel: ["Showing", "to", "of", "entries"],
+  noRecordsFoundLabel: "No matching records found",
+  noBottomColumns: false,
+  order: [],
+  pagesAmount: 8,
+  paging: true,
+  paginationLabel: ["Previous", "Next"],
+  responsive: false,
+  responsiveSm: false,
+  responsiveMd: false,
+  responsiveLg: false,
+  responsiveXl: false,
+  searching: true,
+  searchLabel: "Search",
+  scrollX: false,
+  scrollY: false,
+  sortable: true,
+  small: false,
+  striped: false,
+  theadColor: "",
+  theadTextWhite: false,
+  tbodyColor: "",
+  tbodyTextWhite: false
 };
 
-export { Alert, Animation, Badge, Breadcrumb, BreadcrumbItem, Button, ButtonGroup, ButtonToolbar, Card, CardBody, CardFooter, CardGroup, CardHeader, CardImage, CardText, CardTitle, Carousel, CarouselCaption, Control as CarouselControl, CarouselIndicator, CarouselIndicators, CarouselInner, CarouselItem, MDBCloseIcon as CloseIcon, Col, Collapse, Container, DataTable, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, EdgeHeader, Fa, Footer, FormInline, FreeBird, HamburgerToggler, Iframe, Input, InputGroup, InputNumeric, Jumbotron, ListGroup, ListGroupItem, Alert as MDBAlert, Animation as MDBAnimation, Badge as MDBBadge, Breadcrumb as MDBBreadcrumb, BreadcrumbItem as MDBBreadcrumbItem, Button as MDBBtn, ButtonGroup as MDBBtnGroup, ButtonToolbar as MDBBtnToolbar, Card as MDBCard, CardBody as MDBCardBody, CardFooter as MDBCardFooter, CardGroup as MDBCardGroup, CardHeader as MDBCardHeader, CardImage as MDBCardImage, CardText as MDBCardText, CardTitle as MDBCardTitle, Carousel as MDBCarousel, CarouselCaption as MDBCarouselCaption, CarouselIndicator as MDBCarouselIndicator, CarouselIndicators as MDBCarouselIndicators, CarouselInner as MDBCarouselInner, CarouselItem as MDBCarouselItem, MDBCloseIcon, Col as MDBCol, Collapse as MDBCollapse, Container as MDBContainer, Control as MDBControl, DataTable as MDBDataTable, Dropdown as MDBDropdown, DropdownItem as MDBDropdownItem, DropdownMenu as MDBDropdownMenu, DropdownToggle as MDBDropdownToggle, EdgeHeader as MDBEdgeHeader, Footer as MDBFooter, FormInline as MDBFormInline, FreeBird as MDBFreeBird, HamburgerToggler as MDBHamburgerToggler, Fa as MDBIcon, Iframe as MDBIframe, Input as MDBInput, InputGroup as MDBInputGroup, InputNumeric as MDBInputSelect, Jumbotron as MDBJumbotron, ListGroup as MDBListGroup, ListGroupItem as MDBListGroupItem, Mask as MDBMask, Media as MDBMedia, Modal as MDBModal, ModalBody as MDBModalBody, ModalFooter as MDBModalFooter, ModalHeader as MDBModalHeader, Nav as MDBNav, NavItem as MDBNavItem, NavLink as MDBNavLink, Navbar as MDBNavbar, NavbarBrand as MDBNavbarBrand, NavbarNav as MDBNavbarNav, NavbarToggler as MDBNavbarToggler, Notification as MDBNotification, PageItem as MDBPageItem, PageLink as MDBPageNav, Pagination as MDBPagination, Popover as MDBPopover, PopoverBody as MDBPopoverBody, PopoverHeader as MDBPopoverHeader, Popover as MDBPopper, Progress as MDBProgress, Rating as MDBRating, Row as MDBRow, TabContent as MDBTabContent, TabPane as MDBTabPane, Table as MDBTable, TableBody as MDBTableBody, TableFoot as MDBTableFoot, TableHead as MDBTableHead, Popover as MDBTooltip, Treeview as MDBTreeview, TreeviewItem as MDBTreeviewItem, TreeviewList as MDBTreeviewList, View as MDBView, Waves as MDBWaves, Mask, Media, Modal, ModalBody, ModalFooter, ModalHeader, Nav, NavItem, NavLink, Navbar, NavbarBrand, NavbarNav, NavbarToggler, Notification, PageItem, PageLink, Pagination, Popover, PopoverBody, PopoverHeader, Popover as Popper, Progress, Rating, Row, TabContent, TabPane, Table, TableBody, TableFoot, TableHead, Popover as Tooltip, Treeview, TreeviewItem, TreeviewList, View, Waves };
+var css$b = ".note-dark {\r\n  background-color: #000;\r\n  color: #fff;\r\n  border-color: #58595a;\r\n}\r\n\r\n.note-default {\r\n  background-color: rgb(164, 243, 235);\r\n  border-color: #00695c;\r\n}\r\n\r\n.note-elegant {\r\n  background-color: #2E2E2E;\r\n  border-color: #212121;\r\n  color: #fff;\r\n}\r\n\r\n.note-stylish {\r\n  background-color: #4B515D;\r\n  border-color: #3E4551;\r\n  color: #fff;\r\n}\r\n\r\n.note-unique {\r\n  background-color: #3F729B;\r\n  border-color: #1C2331;\r\n  color: #fff;\r\n}\r\n\r\n.note-special {\r\n  background-color: #37474F;\r\n  border-color: #263238;\r\n  color: #fff;\r\n}\r\n";
+styleInject(css$b);
+
+var Typogrphy =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Typogrphy, _React$Component);
+
+  function Typogrphy() {
+    _classCallCheck(this, Typogrphy);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Typogrphy).apply(this, arguments));
+  }
+
+  _createClass(Typogrphy, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          className = _this$props.className,
+          Tag = _this$props.tag,
+          children = _this$props.children,
+          variant = _this$props.variant,
+          blockquote = _this$props.blockquote,
+          bqColor = _this$props.bqColor,
+          bqTitle = _this$props.bqTitle,
+          bqFooter = _this$props.bqFooter,
+          bqText = _this$props.bqText,
+          listUnStyled = _this$props.listUnStyled,
+          listInLine = _this$props.listInLine,
+          colorText = _this$props.colorText,
+          text = _this$props.text,
+          note = _this$props.note,
+          noteColor = _this$props.noteColor,
+          noteTitle = _this$props.noteTitle,
+          attributes = _objectWithoutProperties(_this$props, ["className", "tag", "children", "variant", "blockquote", "bqColor", "bqTitle", "bqFooter", "bqText", "listUnStyled", "listInLine", "colorText", "text", "note", "noteColor", "noteTitle"]);
+
+      var classes = classNames(variant && variant, colorText && "".concat(colorText.toLowerCase(), "-text"), text && "text-".concat(text), className);
+      var bc = classNames('blockquote', bqColor && "bq-".concat(bqColor), className);
+      var notes = classNames('note', noteColor && "note-".concat(noteColor), className);
+      var isEmptyClass = classes !== '' ? classes : null;
+
+      if (blockquote) {
+        return React.createElement(MDBBox, {
+          tag: "blockquote",
+          className: bc
+        }, children);
+      } else if (listUnStyled) {
+        return React.createElement(MDBBox, {
+          tag: "ul",
+          className: "list-unstyled"
+        }, children);
+      } else if (listInLine) {
+        return React.createElement(MDBBox, {
+          tag: "ul",
+          className: "list-inline"
+        }, children);
+      } else if (note) {
+        return React.createElement(MDBBox, {
+          tag: "p",
+          className: notes
+        }, React.createElement("strong", null, noteTitle), children);
+      } else {
+        return React.createElement(Tag, _extends({}, attributes, {
+          className: isEmptyClass
+        }), children);
+      }
+    }
+  }]);
+
+  return Typogrphy;
+}(React.Component);
+
+Typogrphy.propTypes = {
+  className: propTypes.string,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  variant: propTypes.string,
+  blockquote: propTypes.bool,
+  bqColor: propTypes.string,
+  bqTitle: propTypes.string,
+  listUnStyled: propTypes.bool,
+  listInLine: propTypes.bool,
+  colorText: propTypes.string,
+  note: propTypes.bool,
+  noteColor: propTypes.string,
+  noteTitle: propTypes.string
+};
+Typogrphy.defaultProps = {
+  tag: 'p',
+  abbr: false,
+  abbrLeftText: true,
+  blockquote: false,
+  listUnStyled: false,
+  listInLine: false,
+  noteColor: 'primary'
+};
+
+var Autocomplete =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Dropdown, _React$Component);
+
+  function Dropdown() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, Dropdown);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Dropdown)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      isOpen: false
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "getContainer", function () {
+      return ReactDOM.findDOMNode(_assertThisInitialized(_this));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "addEvents", function () {
+      ['click', 'touchstart', 'keyup'].forEach(function (event) {
+        return document.addEventListener(event, _this.handleDocumentClick, true);
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "removeEvents", function () {
+      ['click', 'touchstart', 'keyup'].forEach(function (event) {
+        return document.removeEventListener(event, _this.handleDocumentClick, true);
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleDocumentClick", function (e) {
+      var keyCode = e.which,
+          type = e.type,
+          target = e.target;
+      var tab = keyCodes.tab;
+      var MOUSE_RIGHT_CLICK = keyCode === 3;
+      var TAB = keyCode === tab;
+      var KEYUP = type === 'keyup';
+      if (MOUSE_RIGHT_CLICK || KEYUP && !TAB) return;
+
+      var container = _this.getContainer();
+
+      if (container.contains(target) && container !== target && (!KEYUP || TAB)) {
+        return;
+      }
+
+      _this.toggle();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleFocus", function (e, items) {
+      var up = keyCodes.up,
+          down = keyCodes.down;
+      var keyCode = e.which,
+          target = e.target;
+      var UP = keyCode === up;
+      var DOWN = keyCode === down;
+
+      var index = _toConsumableArray(items).findIndex(function (item) {
+        return item === target;
+      });
+
+      if (UP && index > 0) {
+        index -= 1;
+      }
+
+      if (DOWN && index < items.length - 1) {
+        index += 1;
+      }
+
+      if (index < 0) {
+        index = 0;
+      }
+
+      items[index].focus();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleKeyDown", function (e) {
+      var isOpen = _this.state.isOpen;
+      var disabled = _this.props.disabled;
+      var keyCode = e.which,
+          target = e.target;
+      var esc = keyCodes.esc,
+          up = keyCodes.up,
+          down = keyCodes.down,
+          space = keyCodes.space;
+      var SPACE = keyCode === space;
+      var ESC = keyCode === esc;
+
+      if (![esc, up, down, space].includes(keyCode) || /button/i.test(target.tagName) && SPACE || /input|textarea/i.test(target.tagName)) {
+        return;
+      }
+
+      e.preventDefault();
+      if (disabled) return;
+
+var Avatar = function Avatar(props) {
+  var background = props.background,
+      className = props.className,
+      circle = props.circle,
+      children = props.children,
+      round = props.round,
+      src = props.src,
+      size = props.size,
+      style = props.style,
+      Tag = props.tag,
+      attributes = _objectWithoutProperties(props, ["background", "className", "circle", "children", "round", "src", "size", "style", "tag"]);
+
+  var TagType;
+  var objectSize;
+  src ? TagType = "img" : TagType = Tag;
+  size ? objectSize = size : src ? objectSize = "48px" : objectSize = "40px";
+  var classes = classNames("avatar", !src && background, round && "rounded", circle && "rounded-circle", "d-table-cell align-middle text-center font-weight-bool", className);
+  var defaultStyles = {
+    height: objectSize,
+    width: objectSize,
+    color: "white"
+  };
+  return React.createElement(TagType, _extends({
+    "data-test": "avatar"
+  }, attributes, {
+    className: classes,
+    style: _objectSpread2({}, defaultStyles, {}, style),
+    src: src
+  }), children && typeof children === "string" ? React.createElement("strong", null, children) : children);
+};
+
+Avatar.propTypes = {
+  background: propTypes.string,
+  circle: propTypes.bool,
+  className: propTypes.string,
+  children: propTypes.oneOfType([propTypes.string, propTypes.node, propTypes.func]),
+  round: propTypes.bool,
+  size: propTypes.oneOfType([propTypes.string, propTypes.number]),
+  src: propTypes.string,
+  style: propTypes.object,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string])
+};
+Avatar.defaultProps = {
+  background: "grey",
+  circle: false,
+  round: false,
+  tag: "div"
+};
+
+        var btn = container.children[0];
+        btn.focus();
+        return;
+      }
+
+      var items = container.querySelectorAll(".dropdown-menu .dropdown-item:not(.disabled)");
+      items.length && _this.handleFocus(e, items);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "toggle", function () {
+      _this.setState({
+        isOpen: !_this.state.isOpen
+      });
+    });
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ButtonFixed).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "showUl", function () {
+      return _this.setState({
+        ulDisplay: true
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "hideUl", function () {
+      return _this.setState({
+        ulDisplay: false
+      });
+    });
+
+    _this.state = {
+      cursorPos: {},
+      ulDisplay: false
+    };
+    _this.onClick = _this.onClick.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Dropdown, [{
+    key: "getChildContext",
+    value: function getChildContext() {
+      return {
+        isOpen: this.state.isOpen,
+        dropup: this.props.dropup,
+        dropright: this.props.dropright,
+        dropleft: this.props.dropleft,
+        toggle: this.toggle
+      };
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.handleEventsBinding();
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.removeEvents();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.handleEventsBinding();
+    }
+  }, {
+    key: "handleEventsBinding",
+    value: function handleEventsBinding() {
+      this.state.isOpen ? this.addEvents() : this.removeEvents();
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$props = this.props,
+          active = _this$props.active,
+          block = _this$props.block,
+          className = _this$props.className,
+          children = _this$props.children,
+          color = _this$props.color,
+          outline = _this$props.outline,
+          size = _this$props.size,
+          rounded = _this$props.rounded,
+          gradient = _this$props.gradient,
+          floating = _this$props.floating,
+          flat = _this$props.flat,
+          role = _this$props.role,
+          type = _this$props.type,
+          icon = _this$props.icon,
+          iconBrand = _this$props.iconBrand,
+          iconClass = _this$props.iconClass,
+          iconLight = _this$props.iconLight,
+          iconRegular = _this$props.iconRegular,
+          iconSize = _this$props.iconSize,
+          innerRef = _this$props.innerRef,
+          topSection = _this$props.topSection,
+          attributes = _objectWithoutProperties(_this$props, ["active", "block", "className", "children", "color", "outline", "size", "rounded", "gradient", "floating", "flat", "role", "type", "icon", "iconBrand", "iconClass", "iconLight", "iconRegular", "iconSize", "innerRef", "topSection"]);
+
+      var ulDisplay = this.state.ulDisplay;
+      var buttonFixedClasses = classNames("fixed-action-btn", !!ulDisplay && "active");
+      var classes = classNames(floating ? 'btn-floating' : 'btn', flat ? 'btn-flat' : gradient ? "".concat(gradient, "-gradient") : "".concat(color), size ? "btn-".concat(size) : false, rounded ? 'btn-rounded' : false, block ? 'btn-block' : false, 'Ripple-parent', className, {
+        active: active,
+        disabled: this.props.disabled
+      });
+      return React.createElement("div", _extends({
+        "data-test": "button-fixed",
+        className: buttonFixedClasses,
+        ref: innerRef,
+        style: {
+          bottom: '45px',
+          right: '24px'
+        }
+      }, attributes, {
+        onMouseOver: function onMouseOver() {
+          return _this2.showUl();
+        },
+        onMouseOut: function onMouseOut() {
+          return _this2.hideUl();
+        }
+      }), React.createElement("a", {
+        href: this.props.topSection ? this.props.topSection : '#',
+        className: classes,
+        onClick: this.onClick,
+        onMouseDown: this.handleClick.bind(this),
+        onTouchStart: this.handleClick.bind(this)
+      }, icon && React.createElement(Fa, {
+        icon: icon,
+        size: iconSize,
+        brand: iconBrand,
+        light: iconLight,
+        regular: iconRegular,
+        className: iconClass
+      }), this.props.disabled ? false : React.createElement(Waves, {
+        cursorPos: this.state.cursorPos,
+        outline: outline,
+        flat: flat
+      })), children && React.createElement("ul", {
+        className: classNames( !ulDisplay && "disabled")
+      }, children));
+    }
+  }]);
+
+  return Dropdown;
+}(React.Component);
+
+Dropdown.propTypes = {
+  disabled: propTypes.bool,
+  dropup: propTypes.bool,
+  dropright: propTypes.bool,
+  dropleft: propTypes.bool,
+  group: propTypes.bool,
+  size: propTypes.string,
+  tag: propTypes.string,
+  toggle: propTypes.func,
+  children: propTypes.node,
+  className: propTypes.string
+};
+Dropdown.defaultProps = {
+  dropup: false,
+  dropright: false,
+  dropleft: false,
+  tag: 'div'
+};
+Dropdown.childContextTypes = {
+  toggle: propTypes.func.isRequired,
+  isOpen: propTypes.bool.isRequired,
+  dropup: propTypes.bool.isRequired,
+  dropright: propTypes.bool.isRequired,
+  dropleft: propTypes.bool.isRequired
+};
+
+var DropdownItem =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(DropdownItem, _React$Component);
+
+  function DropdownItem() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, DropdownItem);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(DropdownItem)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "onClick", function (e) {
+      var _this$props = _this.props,
+          disabled = _this$props.disabled,
+          header = _this$props.header,
+          divider = _this$props.divider,
+          onClick = _this$props.onClick,
+          toggle = _this$props.toggle;
+
+      if (disabled || header || divider) {
+        e.preventDefault();
+        return;
+      }
+
+      if (onClick) {
+        onClick(e);
+      }
+
+      if (toggle) {
+        _this.context.toggle(e);
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "getTabIndex", function () {
+      var _this$props2 = _this.props,
+          disabled = _this$props2.disabled,
+          header = _this$props2.header,
+          divider = _this$props2.divider;
+
+      if (disabled || header || divider) {
+        return '-1';
+      }
+
+      return '0';
+    });
+
+    return _this;
+  }
+
+  _createClass(DropdownItem, [{
+    key: "render",
+    value: function render() {
+      var tabIndex = this.getTabIndex();
+
+      var _omit = omit(this.props, ['toggle']),
+          className = _omit.className,
+          divider = _omit.divider,
+          Tag = _omit.tag,
+          header = _omit.header,
+          href = _omit.href,
+          active = _omit.active,
+          disabled = _omit.disabled,
+          props = _objectWithoutProperties(_omit, ["className", "divider", "tag", "header", "href", "active", "disabled"]);
+
+      var classes = classNames({
+        active: active,
+        disabled: disabled,
+        'dropdown-item': !divider && !header,
+        'dropdown-header': header,
+        'dropdown-divider': divider
+      }, className);
+
+      if (Tag === 'button') {
+        if (header) {
+          Tag = 'h6';
+        } else if (divider) {
+          Tag = 'div';
+        } else if (href) {
+          Tag = 'a';
+        }
+      }
+
+      var type = Tag === 'button' && (props.onClick || this.props.toggle) ? 'button' : undefined;
+      return React.createElement(Tag, _extends({
+        "data-test": "dropdown-item",
+        type: type
+      }, props, {
+        tabIndex: tabIndex,
+        className: classes,
+        onClick: this.onClick,
+        href: href
+      }));
+    }
+  }]);
+
+  return DropdownItem;
+}(React.Component);
+
+DropdownItem.propTypes = {
+  children: propTypes.node,
+  active: propTypes.bool,
+  disabled: propTypes.bool,
+  divider: propTypes.bool,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  header: propTypes.bool,
+  onClick: propTypes.func,
+  className: propTypes.string,
+  toggle: propTypes.bool
+};
+DropdownItem.defaultProps = {
+  tag: 'button',
+  toggle: true
+};
+DropdownItem.contextTypes = {
+  toggle: propTypes.func
+};
+
+var css$c = ".chip.chip-md {\r\n  height: 42px;\r\n  line-height: 42px;\r\n  border-radius: 21px;\r\n}\r\n.chip.chip-md img {\r\n  height: 42px;\r\n  width: 42px;\r\n}\r\n.chip.chip-md .close {\r\n  height: 42px;\r\n  line-height: 42px;\r\n  border-radius: 21px;\r\n}\r\n.chip.chip-lg {\r\n  height: 52px;\r\n  line-height: 52px;\r\n  border-radius: 26px;\r\n}\r\n.chip.chip-lg img {\r\n  height: 52px;\r\n  width: 52px;\r\n}\r\n.chip.chip-lg .close {\r\n  height: 52px;\r\n  line-height: 52px;\r\n  border-radius: 26px;\r\n}\r\n";
+styleInject(css$c);
+
+var Chip = function Chip(props) {
+  var _useState = useState({}),
+      _useState2 = _slicedToArray(_useState, 2),
+      cursorPos = _useState2[0],
+      setCursorPos = _useState2[1];
+
+  var handleClick = function handleClick(e) {
+    // Get Cursor Position
+    e.stopPropagation();
+    var cursorPos = {
+      top: e.clientY,
+      left: e.clientX,
+      time: Date.now()
+    };
+    setCursorPos(cursorPos);
+  };
+
+  var handleCloseClick = function handleCloseClick(e) {
+    if (props.handleClose) {
+      props.handleClose(e);
+    }
+  };
+
+  var className = props.className,
+      Tag = props.tag,
+      size = props.size,
+      bgColor = props.bgColor,
+      text = props.text,
+      gradient = props.gradient,
+      src = props.src,
+      alt = props.alt,
+      close = props.close,
+      waves = props.waves,
+      handleClose = props.handleClose,
+      attributes = _objectWithoutProperties(props, ["className", "tag", "size", "bgColor", "text", "gradient", "src", "alt", "close", "waves", "handleClose"]);
+
+  var classes = classNames('chip', size && 'chip-' + size, bgColor && bgColor, text && text + '-text', gradient && gradient + '-gradient', waves && 'Ripple-parent', className);
+  return React.createElement(Tag, _extends({
+    "data-test": "dropdown-menu-component",
+    tabIndex: tabIndex,
+    role: role
+  }, attributes, {
+    "aria-hidden": aria,
+    key: d_key
+  }), children);
+};
+
+DropdownMenuComponent.propTypes = {
+  aria: propTypes.bool.isRequired,
+  attributes: propTypes.object.isRequired,
+  d_key: propTypes.string.isRequired,
+  role: propTypes.string.isRequired,
+  tabIndex: propTypes.string.isRequired,
+  tag: propTypes.any.isRequired,
+  children: propTypes.node.isRequired
+};
+
+var css$5 = ".dropup .dropdown-menu {\n  top: auto !important;\n  bottom: 100% !important;\n  transform: translate3d(5px, 5px, 0px) !important;\n}\n\n.dropdown-menu-right {\n  left: 0 !important;\n  right: auto !important;\n}\n";
+styleInject(css$5);
+
+var noFlipModifier = {
+  flip: {
+    enabled: false
+  }
+};
+
+var DropdownMenu =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(DropdownMenu, _Component);
+
+  function DropdownMenu() {
+    _classCallCheck(this, DropdownMenu);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(DropdownMenu).apply(this, arguments));
+  }
+
+  _createClass(DropdownMenu, [{
+    key: "render",
+    value: function render() {
+      var _classNames,
+          _this = this;
+
+      var _this$props = this.props,
+          basic = _this$props.basic,
+          className = _this$props.className,
+          right = _this$props.right,
+          children = _this$props.children,
+          tag = _this$props.tag,
+          flip = _this$props.flip,
+          color = _this$props.color,
+          attrs = _objectWithoutProperties(_this$props, ["basic", "className", "right", "children", "tag", "flip", "color"]);
+
+      var classes = classNames((_classNames = {
+        'dropdown-menu-right': right
+      }, _defineProperty(_classNames, "dropdown-".concat(color), color), _defineProperty(_classNames, "show", this.context.isOpen), _defineProperty(_classNames, "basic", basic), _classNames), 'dropdown-menu', className);
+      var Tag = tag;
+
+      if (this.context.isOpen) {
+        var position1 = this.context.dropup ? 'top' : this.context.dropright ? 'right' : this.context.dropleft ? 'left' : 'bottom';
+        var position2 = right ? 'end' : 'start';
+        attrs.placement = "".concat(position1, "-").concat(position2);
+        attrs.component = tag;
+        attrs.modifiers = !flip ? noFlipModifier : undefined;
+      }
+
+      return React.createElement(Popper, {
+        modifires: attrs.modifiers,
+        eventsEnabled: true,
+        positionFixed: false,
+        placement: attrs.placement,
+        "data-test": "dropdown-menu"
+      }, function (_ref) {
+        var placement = _ref.placement,
+            ref = _ref.ref,
+            style = _ref.style;
+        return React.createElement(Tag, {
+          ref: ref,
+          style: style,
+          "data-placement": placement,
+          className: classes
+        }, React.createElement(DropdownMenuComponent, {
+          isOpen: _this.context.isOpen,
+          tag: Tag,
+          tabIndex: "-1",
+          role: "menu",
+          attributes: attrs,
+          aria: !_this.context.isOpen,
+          d_key: "dropDownMenu",
+          color: color
+        }, children));
+      });
+    }
+  }]);
+
+  return DropdownMenu;
+}(Component);
+
+DropdownMenu.propTypes = {
+  children: propTypes.node.isRequired,
+  basic: propTypes.bool,
+  className: propTypes.string,
+  flip: propTypes.bool,
+  right: propTypes.bool,
+  tag: propTypes.string
+};
+DropdownMenu.defaultProps = {
+  basic: false,
+  className: '',
+  flip: false,
+  right: false,
+  tag: 'div',
+  color: false
+};
+DropdownMenu.contextTypes = {
+  isOpen: propTypes.bool.isRequired,
+  dropup: propTypes.bool.isRequired,
+  dropright: propTypes.bool.isRequired,
+  dropleft: propTypes.bool.isRequired,
+  color: propTypes.oneOfType([propTypes.oneOf(['primary', 'default', 'secondary', 'success', 'dark', 'danger', 'info', 'warning', 'ins']), propTypes.bool])
+};
+
+var DropdownToggle =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(DropdownToggle, _React$Component);
+
+  function DropdownToggle() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, DropdownToggle);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(DropdownToggle)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "onClick", function (e) {
+      var _this$props = _this.props,
+          disabled = _this$props.disabled,
+          nav = _this$props.nav,
+          tag = _this$props.tag,
+          onClick = _this$props.onClick;
+
+      if (disabled) {
+        e.preventDefault();
+        return;
+      }
+
+      if (nav && !tag) {
+        e.preventDefault();
+      }
+
+      if (onClick) {
+        onClick(e);
+      }
+
+      _this.context.toggle(e);
+    });
+
+    return _this;
+  }
+
+  _createClass(DropdownToggle, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$props2 = this.props,
+          className = _this$props2.className,
+          color = _this$props2.color,
+          caret = _this$props2.caret,
+          nav = _this$props2.nav,
+          tag = _this$props2.tag,
+          props = _objectWithoutProperties(_this$props2, ["className", "color", "caret", "nav", "tag"]);
+
+      var ariaLabel = props['aria-label'] || 'Toggle Dropdown';
+      var classes = classNames({
+        'dropdown-toggle': caret,
+        'nav-link': nav
+      }, className);
+      var children = props.children || React.createElement("span", {
+        className: "sr-only"
+      }, ariaLabel);
+      var Tag = tag;
+
+      if (nav && !tag) {
+        Tag = 'a';
+        props.href = '#';
+      } else if (!tag) {
+        Tag = Button;
+        props.color = color;
+      }
+
+      return React.createElement(Reference, {
+        "data-test": "dropdown-toggle"
+      }, function (_ref) {
+        var ref = _ref.ref;
+        return tag || nav ? React.createElement(Tag, _extends({}, props, {
+          className: classes,
+          onClick: _this2.onClick,
+          "aria-expanded": _this2.context.isOpen,
+          ref: ref
+        }), children) : React.createElement(Tag, _extends({}, props, {
+          className: classes,
+          onClick: _this2.onClick,
+          "aria-expanded": _this2.context.isOpen,
+          innerRef: ref
+        }), children);
+      });
+    }
+  }]);
+
+  return DropdownToggle;
+}(React.Component);
+
+DropdownToggle.propTypes = {
+  caret: propTypes.bool,
+  color: propTypes.string,
+  children: propTypes.node,
+  className: propTypes.string,
+  disabled: propTypes.bool,
+  onClick: propTypes.func,
+  'aria-haspopup': propTypes.bool,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  nav: propTypes.bool
+};
+DropdownToggle.defaultProps = {
+  'aria-haspopup': true,
+  color: 'secondary'
+};
+DropdownToggle.contextTypes = {
+  isOpen: propTypes.bool.isRequired,
+  toggle: propTypes.func.isRequired
+};
+
+var EdgeHeader = function EdgeHeader(props) {
+  var color = props.color,
+      className = props.className,
+      Tag = props.tag,
+      attributes = _objectWithoutProperties(props, ["color", "className", "tag"]);
+
+  var classes = classNames("edge-header", color, className);
+  return React.createElement(Tag, _extends({
+    "data-test": "edgeHeader"
+  }, attributes, {
+    className: classes
+  }));
+};
+
+EdgeHeader.propTypes = {
+  color: propTypes.string,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string
+};
+EdgeHeader.defaultProps = {
+  color: "deep-purple",
+  tag: "div"
+};
+
+var css$d = "/* fallback */\r\n@font-face {\r\n  font-family: 'Material Icons';\r\n  font-style: normal;\r\n  font-weight: 400;\r\n  src: url(https://fonts.gstatic.com/s/materialicons/v41/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');\r\n}\r\n\r\n.material-icons {\r\n  font-family: 'Material Icons';\r\n  font-weight: normal;\r\n  font-style: normal;\r\n  font-size: 24px;\r\n  line-height: 1;\r\n  letter-spacing: normal;\r\n  text-transform: none;\r\n  display: inline-block;\r\n  white-space: nowrap;\r\n  word-wrap: normal;\r\n  direction: ltr;\r\n  -webkit-font-feature-settings: 'liga';\r\n  -webkit-font-smoothing: antialiased;\r\n}\r\n";
+styleInject(css$d);
+
+var DatePicker =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(DatePicker, _Component);
+
+  function DatePicker(props) {
+    var _this;
+
+  var classes = classNames("page-footer", color && color, className);
+  return React.createElement(Tag, _extends({
+    "data-test": "footer"
+  }, attributes, {
+    className: classes
+  }), children);
+};
+
+Footer.propTypes = {
+  color: propTypes.string,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  children: propTypes.node
+};
+Footer.defaultProps = {
+  tag: "footer"
+};
+
+var FormInline = function FormInline(props) {
+  var _useState = useState({}),
+      _useState2 = _slicedToArray(_useState, 2),
+      cursorPos = _useState2[0],
+      setCursorPos = _useState2[1];
+
+  var handleClick = function handleClick(e) {
+    // Get Cursor Position
+    var cursorPos = {
+      top: e.clientY,
+      left: e.clientX,
+      time: Date.now()
+    };
+    setCursorPos(cursorPos);
+  };
+
+  var className = props.className,
+      waves = props.waves,
+      children = props.children,
+      attributes = _objectWithoutProperties(props, ["className", "waves", "children"]);
+
+  var classes = classNames('form-inline', props.waves && 'Ripple-parent', className);
+  return React.createElement("form", _extends({
+    "data-test": "form-inline"
+  }, attributes, {
+    className: classes,
+    onMouseDown: handleClick,
+    onTouchStart: handleClick
+  }), props.children, props.waves && React.createElement(Waves, {
+    cursorPos: cursorPos
+  }));
+};
+
+FormInline.propTypes = {
+  children: propTypes.node,
+  className: propTypes.string,
+  waves: propTypes.bool
+};
+
+var FreeBird = function FreeBird(props) {
+  var className = props.className,
+      Tag = props.tag,
+      attributes = _objectWithoutProperties(props, ["className", "tag"]);
+
+  var classes = classNames("container free-bird", className);
+  return React.createElement(Tag, _extends({
+    "data-test": "freebird"
+  }, attributes, {
+    className: classes
+  }));
+};
+
+FreeBird.propTypes = {
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string
+};
+FreeBird.defaultProps = {
+  tag: "div"
+};
+
+var css$e = ".file-field .file-field-right .file-path-wrapper {\r\n  padding-left: 0;\r\n  padding-right: 10px;\r\n}\r\n";
+styleInject(css$e);
+
+var InputFile = function InputFile(props) {
+  var _useState = useState(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      files = _useState2[0],
+      setFiles = _useState2[1];
+
+  var fileChange = function fileChange(files) {
+    if (files.length > 0) {
+      if (files.length > 1) {
+        var filesNames = [];
+
+        for (var i = 0; i < files.length; i++) {
+          filesNames.push(files[i].name);
+        }
+
+var HamburgerToggler = function HamburgerToggler(props) {
+  var id = props.id,
+      color = props.color,
+      className = props.className,
+      isOpen = props.isOpen,
+      onClick = props.onClick;
+  var classes = classNames('hamburger-button__button', className);
+  return React.createElement(React.Fragment, null, React.createElement("input", {
+    "data-test": "hamburger-toggler",
+    type: "checkbox",
+    defaultChecked: isOpen || false,
+    onChange: onClick,
+    className: "hamburger-button__checkbox",
+    id: id
+  }), React.createElement("label", {
+    id: "nav-icon1",
+    className: classes,
+    htmlFor: id
+  }, React.createElement("span", {
+    style: {
+      background: color
+    }
+  }), React.createElement("span", {
+    style: {
+      background: color
+    }
+  }), React.createElement("span", {
+    style: {
+      background: color
+    }
+  })));
+};
+
+InputFile.propTypes = {
+  className: propTypes.string,
+  btnTitle: propTypes.string,
+  btnColor: propTypes.string,
+  textFieldTitle: propTypes.string,
+  multiple: propTypes.bool,
+  reset: propTypes.bool,
+  resetClassName: propTypes.string,
+  resetAriaLabel: propTypes.string,
+  reverse: propTypes.bool
+};
+InputFile.defaultProps = {
+  btnTitle: 'Choose file',
+  textFieldTitle: 'Upload your file',
+  btnColor: 'primary',
+  reset: false,
+  reverse: false
+};
+
+var css$f = ".thumb {\r\n  transition: top .2s, height .2s, width .2s, margin-left .2s;\r\n}\r\n\r\ninput[type=\"range\"] {\r\n  -webkit-appearance: none;\r\n}\r\n\r\n/* thumb */\r\n\r\ninput[type=range]::-webkit-slider-thumb {\r\n  -webkit-appearance: none;\r\n  border: none;\r\n  height: 14px;\r\n  width: 14px;\r\n  border-radius: 50%;\r\n  background-color: #4285f4;\r\n  transform-origin: 50% 50%;\r\n  margin: -5px 0 0 0;\r\n  transition: 0.3s; }\r\n  input[type=range]:focus::-webkit-slider-runnable-track {\r\n    background: #ccc; }\r\n  input[type=range]::-moz-range-track {\r\n    /*required for proper track sizing in FF*/\r\n    height: 3px;\r\n    background: #c2c0c2;\r\n    border: none; }\r\n  input[type=range]::-moz-range-thumb {\r\n    border: none;\r\n    height: 14px;\r\n    width: 14px;\r\n    border-radius: 50%;\r\n    background: #4285f4;\r\n    margin-top: -5px; }\r\n  input[type=range]:-moz-focusring {\r\n    /*hide the outline behind the border*/\r\n    outline: 1px solid #ffffff;\r\n    outline-offset: -1px; }\r\n  input[type=range]:focus::-moz-range-track {\r\n    background: #c2c0c2; }\r\n  input[type=range]::-ms-track {\r\n    height: 3px;\r\n    background: transparent;\r\n    /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */\r\n    border-color: transparent;\r\n    /*leave room for the larger thumb to overflow with a transparent border */\r\n    border-width: 6px 0;\r\n    color: transparent;\r\n    /*remove default tick marks*/ }\r\n  input[type=range]::-ms-fill-lower {\r\n    background: #c2c0c2; }\r\n  input[type=range]::-ms-fill-upper {\r\n    background: #c2c0c2; }\r\n  input[type=range]::-ms-thumb {\r\n    border: none;\r\n    height: 14px;\r\n    width: 14px;\r\n    border-radius: 50%;\r\n    background: #4285f4; }\r\n  input[type=range]:focus::-ms-fill-lower {\r\n    background: #c2c0c2; }\r\n  input[type=range]:focus::-ms-fill-upper {\r\n    background: #c2c0c2; }";
+styleInject(css$f);
+
+var InputRange =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(InputRange, _React$Component);
+
+  function InputRange(props) {
+    var _this;
+
+    _classCallCheck(this, InputRange);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(InputRange).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
+      var input = _this.inputRef.current;
+      var inputWidth = input.offsetWidth;
+      var oneStep = inputWidth / (_this.props.max - _this.props.min);
+
+var Iframe =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Iframe, _Component);
+
+  function Iframe() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, Iframe);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Iframe)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      width: '',
+      height: '',
+      ratio: ''
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
+      var width = _this.props.width;
+      var height = _this.props.height;
+      var ratio = 9 / 16;
+
+      if (_this.props.ratio) {
+        var newRatio = _this.props.ratio.split('by')[0] / _this.props.ratio.split('by')[1];
+
+        if (typeof ratio === 'number') ratio = newRatio;
+      }
+
+      if (_this.props.width && _this.props.height) {
+        return;
+      } else if (_this.props.width) {
+        height = _this.props.width * ratio;
+      } else if (_this.props.height) {
+        width = _this.props.height * (1 / ratio);
+      }
+
+      _this.setState(_objectSpread2({}, _this.state, {
+        width: width,
+        height: height,
+        ratio: ratio
+      }));
+    });
+
+    return _this;
+  }
+
+  _createClass(Iframe, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          allowFullScreen = _this$props.allowFullScreen,
+          className = _this$props.className,
+          id = _this$props.id,
+          name = _this$props.name,
+          onMouseOver = _this$props.onMouseOver,
+          onMouseOut = _this$props.onMouseOut,
+          onLoad = _this$props.onLoad,
+          sandbox = _this$props.sandbox,
+          src = _this$props.src,
+          style = _this$props.style,
+          _this$props$title = _this$props.title,
+          title = _this$props$title === void 0 ? "" : _this$props$title,
+          ratio = _this$props.ratio,
+          height = _this$props.height,
+          width = _this$props.width;
+      var classes = classNames('embed-responsive-item', className);
+      var wrapperClasses = classNames(!(height || width) && 'embed-responsive', ratio ? "embed-responsive-".concat(ratio) : "embed-responsive-16by9");
+      var iframeAttributes = {
+        src: src,
+        id: id || false,
+        frameBorder: '0',
+        target: '_parent',
+        allowFullScreen: allowFullScreen || true,
+        height: this.state.height || '100%',
+        name: name || undefined,
+        width: this.state.width || '100%',
+        onLoad: onLoad || undefined,
+        onMouseOver: onMouseOver || undefined,
+        onMouseOut: onMouseOut || undefined,
+        sandbox: sandbox || undefined,
+        style: style || undefined
+      };
+      iframeAttributes = returnAttributes(iframeAttributes);
+      return React.createElement("div", {
+        "data-test": "iframe",
+        className: wrapperClasses
+      }, React.createElement("iframe", _extends({
+        title: title,
+        className: classes
+      }, iframeAttributes)));
+    }
+  }]);
+
+  return Iframe;
+}(Component);
+
+Iframe.propTypes = {
+  allowFullScreen: propTypes.bool,
+  className: propTypes.string,
+  height: propTypes.number,
+  id: propTypes.string,
+  name: propTypes.string,
+  onMouseOver: propTypes.func,
+  onMouseOut: propTypes.func,
+  onLoad: propTypes.func,
+  ratio: propTypes.string,
+  sandbox: propTypes.string,
+  src: propTypes.string.isRequired,
+  styles: propTypes.object,
+  width: propTypes.number,
+  title: propTypes.string
+};
+
+var css$g = ".mdb-lightbox .overlay {\r\n  height: 150vh;\r\n  width: 150vw;\r\n  position: fixed;\r\n  top: 0;\r\n  left: 0;\r\n  z-index: -100;\r\n}\r\n.mdb-lightbox .ui-controls {\r\n  width: 99vw;\r\n  height: 100vh;\r\n  top: 0;\r\n  left: 0;\r\n  bottom: 0;\r\n  right: 0;\r\n  position: fixed;\r\n  z-index: 10000;\r\n}\r\n\r\n.mdb-lightbox .ui-controls > * {\r\n  position: fixed;\r\n  z-index: 999999;\r\n}\r\n.mdb-lightbox .overlay.active {\r\n  z-index: 9999;\r\n  background-color: black;\r\n}\r\n\r\n.mdb-lightbox .next-img,\r\n.mdb-lightbox .prev-img {\r\n  transform-origin: center;\r\n}\r\n.mdb-lightbox .next-img {\r\n  left: 150% !important;\r\n}\r\n.mdb-lightbox .prev-img {\r\n  left: -50% !important;\r\n}\r\n\r\n.mdb-lightbox img:not(.zoom) {\r\n  transform-origin: top left;\r\n}\r\n/* transform: translate(-50%,-50%) scale(1) translate3d(0,0,0); */\r\n.mdb-lightbox img.zoom {\r\n  z-index: 10001;\r\n  position: fixed;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%) scale(1) translate3d(0, 0, 0);\r\n  -webkit-user-select: none;\r\n  -khtml-user-select: none;\r\n  -moz-user-select: none;\r\n  -o-user-select: none;\r\n  user-select: text;\r\n  /* pointer-events: none; */\r\n  transform-origin: center;\r\n  outline: none;\r\n}\r\n\r\n.mdb-lightbox .mdb-lightbox figure img.zoom:hover {\r\n  opacity: 1;\r\n}\r\n\r\n.mdb-lightbox .block {\r\n  display: block;\r\n}\r\n\r\n.mdb-lightbox .pswp__button.lb-zoom-out {\r\n  background-position: -132px 0;\r\n}\r\n.mdb-lightbox .pswp__button.pswp__button--fs.fullscreen {\r\n  background-position: -44px 0;\r\n}\r\n\r\n.mdb-lightbox .arrow-container {\r\n  top: 50%;\r\n  transform: translateY(-50%);\r\n}\r\n\r\n.mdb-lightbox .pswp__button--left,\r\n.mdb-lightbox .pswp__button--right {\r\n  width: 0px;\r\n  height: 0px;\r\n  margin-top: -100px;\r\n}\r\n";
+styleInject(css$g);
+
+var Lightbox =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Input, _React$Component);
+
+  function Input(props) {
+    var _this;
+
+    _classCallCheck(this, Lightbox);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Lightbox).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "componentWillUnmount", function () {
+      _this.setState(_this.reset());
+
+      document.removeEventListener('keydown', _this.keyEvents);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "keyEvents", function (e) {
+      var _this$state = _this.state,
+          changeSlide = _this$state.changeSlide,
+          imgSrc = _this$state.imgSrc,
+          sliderOpened = _this$state.sliderOpened;
+
+      var active = _this.slideRefs.filter(function (el) {
+        return el === document.activeElement;
+      })[0];
+
+      var key = e.key;
+      if (key === 'Enter' && active) _this.zoom(e);
+
+      if (sliderOpened && !changeSlide) {
+        if (key === 'Escape' || key === 'ArrowUp' || key === 'ArrowDown') _this.closeZoom();
+        if (key === 'ArrowLeft') _this.changeSlide('prev');
+        if (key === 'ArrowRight') _this.changeSlide('next');
+        if (key === 'Tab') _this.setFocus(imgSrc);
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "setFocus", function (target) {
+      return setTimeout(function () {
+        return target.focus();
+      }, 0);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "setScreenSize", function () {
+      _this.setState({
+        screenSize: {
+          x: window.innerWidth,
+          y: window.innerHeight
+        }
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "reset", function () {
+      return {
+        activeKey: null,
+        changeSlide: false,
+        dragImg: false,
+        dragImgPos: {},
+        dragPercent: 0,
+        galleryImagesData: [],
+        imgSrc: null,
+        imgSrcData: null,
+        resize: false,
+        resizePos: {
+          x: 0,
+          y: 0
+        },
+        scale: 0,
+        scaleWheel: false,
+        screenSize: {
+          x: window.innerWidth,
+          y: window.innerHeight
+        },
+        showLeft: false,
+        showRight: false,
+        sliderOpened: false,
+        zoomedScale: 0
+      };
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "updateGalleryData", function () {
+      var gallery = [];
+      if (_this.slideRefs) _this.slideRefs.map(function (el) {
+        return gallery.push(_this.setData(el));
+      });
+
+      _this.setState({
+        galleryImagesData: gallery
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "setScale", function (e) {
+      var screenSize = _this.state.screenSize;
+      var _e$size = e.size,
+          height = _e$size.height,
+          width = _e$size.width;
+      var margin = _this.props.marginSpace;
+      var scale = 1;
+
+      if (screenSize.x > screenSize.y) {
+        if (e.realH > height) {
+          if (height === width && screenSize.y > screenSize.x) {
+            scale = (screenSize.x - margin) / width;
+          } else if (height === width && screenSize.y < screenSize.x) {
+            scale = (screenSize.y - margin) / height;
+          } else if (height > width) {
+            scale = (screenSize.y - margin) / height;
+
+            if (scale * width > screenSize.x) {
+              scale = (screenSize.x - margin) / width;
+            }
+          } else if (height < width) {
+            scale = (screenSize.x - margin) / width;
+
+            if (scale * height > screenSize.y) {
+              scale = (screenSize.y - margin) / height;
+            }
+          }
+        }
+
+        return scale * (height / e.realH);
+      } else {
+        return scale;
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "setData", function (img) {
+      var screenSize = _this.state.screenSize;
+      var data = {
+        activeKey: _this.slideRefs.indexOf(img),
+        imgSrc: img,
+        imgSrcData: {
+          realW: img.naturalWidth,
+          realH: img.naturalHeight,
+          size: img.getBoundingClientRect()
+        },
+        scale: screenSize.x > screenSize.y ? img.getBoundingClientRect().width / img.naturalWidth : img.getBoundingClientRect().width / screenSize.x
+      };
+      data.zoomedScale = _this.setScale(data.imgSrcData);
+      return data;
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "zoom", function (_ref) {
+      var target = _ref.target;
+      var imgSrc = _this.state.imgSrc;
+      var transition = _this.props.transition;
+      var img = target;
+
+      if (!imgSrc) {
+        _this.updateGalleryData();
+
+        var dataOfImage = _this.setData(img);
+
+        var _dataOfImage$imgSrcDa = dataOfImage.imgSrcData.size,
+            left = _dataOfImage$imgSrcDa.left,
+            top = _dataOfImage$imgSrcDa.top;
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Input).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "closeZoom", function () {
+      var _this$state2 = _this.state,
+          imgSrc = _this$state2.imgSrc,
+          galleryImagesData = _this$state2.galleryImagesData,
+          activeKey = _this$state2.activeKey,
+          changeSlide = _this$state2.changeSlide;
+
+      if (!changeSlide) {
+        _this.setState({
+          sliderOpened: false
+        });
+
+        _this.setFocus(imgSrc);
+
+        var PREV_IMG = _this.slideRefs[activeKey - 1] || _this.slideRefs[_this.slideRefs.length - 1];
+        var NEXT_IMG = _this.slideRefs[activeKey + 1] || _this.slideRefs[0];
+        PREV_IMG.style.cssText = '';
+        NEXT_IMG.style.cssText = '';
+        document.body.classList.remove('overflow-hidden');
+        imgSrc.classList.remove('zoom');
+        imgSrc.style.cssText = "\n          transition: ".concat(_this.props.transition, "ms;\n          z-index: 9999;\n          top: 0;\n          left: 0;\n          transform: translate(").concat(galleryImagesData[activeKey].imgSrcData.size.left, "px, ").concat(galleryImagesData[activeKey].imgSrcData.size.top, "px) translate3d(0,0,0) scale(").concat(galleryImagesData[activeKey].scale, ");\n          position: fixed;\n        ");
+
+        _this.overlay.current.classList.remove('active');
+
+        setTimeout(function () {
+          imgSrc.style.cssText = '';
+
+          _this.setState(_this.reset());
+        }, _this.props.transition);
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "scrollZoom", function (e) {
+      if (_this.slideRefs[_this.state.activeKey] === _this.state.imgSrc && _this.state.sliderOpened && !e.target.classList.contains('next-img') && !e.target.classList.contains('prev-img')) {
+        var SCALE_RATIO = _this.props.scale || 0.1;
+        var SCALE_UP = 1 + SCALE_RATIO;
+        var SCALE_DOWN = 1 - SCALE_RATIO;
+        var WHEEL_UP = e.deltaY < 0;
+        var WHEEL_DOWN = e.deltaY > 0;
+        var IMG_DATA = _this.state.zoomedScale;
+        var target;
+        e.target.tagName === 'BUTTON' ? target = _this.slideRefs[_this.state.activeKey] : target = e.target;
+        var scaleTransform = target.style.transform.split(' ');
+        var scaleValue = Number(scaleTransform.filter(function (el) {
+          return !el.search('scale');
+        })[0].replace('scale(', '').replace(')', ''));
+
+        var trans3d = _this.slideRefs[_this.state.activeKey].style.transform.split(') ').filter(function (el) {
+          return !el.search('translate3d');
+        }).map(function (el) {
+          return el.replace('translate3d(', '');
+        }).map(function (el) {
+          return el.replace(',', '');
+        })[0].split(' ').map(function (el) {
+          return Number(el.replace('px', '').replace(',', ''));
+        });
+
+        target.style.transition = "".concat(0, "ms");
+
+        if (WHEEL_UP || e.button === 0 && !e.target.classList.contains('lb-zoom-out') && e.target.tagName === 'BUTTON') {
+          if (scaleValue * SCALE_UP < IMG_DATA * 4) {
+            scaleValue *= SCALE_UP;
+          }
+
+          _this.setState({
+            resize: true
+          });
+        }
+
+        if (WHEEL_DOWN || e.button === 0 && e.target.classList.contains('lb-zoom-out')) {
+          if (scaleValue * SCALE_DOWN >= IMG_DATA) {
+            scaleValue *= SCALE_DOWN;
+            trans3d[0] *= SCALE_DOWN / 1.15;
+            trans3d[1] *= SCALE_DOWN / 1.15;
+          } else {
+            scaleValue = IMG_DATA;
+
+            _this.setState({
+              resize: false
+            });
+
+            trans3d[0] = 0;
+            trans3d[1] = 0;
+
+            _this.setState({
+              resizePos: {
+                x: 0,
+                y: 0
+              }
+            });
+          }
+        }
+
+        target.style.transform = "\n        translate(-50%, -50%) \n        translate3d(".concat(trans3d[0], "px,").concat(trans3d[1], "px, 0px)\n        scale(").concat(scaleValue, ") \n      ");
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "toggleFullscreen", function (e) {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+        e.target.classList.remove('fullscreen');
+      } else {
+        document.documentElement.requestFullscreen();
+        e.target.classList.add('fullscreen');
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "changeSlide", function (direction) {
+      var _this$state3 = _this.state,
+          activeKey = _this$state3.activeKey,
+          changeSlide = _this$state3.changeSlide,
+          imgSrc = _this$state3.imgSrc,
+          galleryImagesData = _this$state3.galleryImagesData;
+      var transition = _this.props.transition;
+
+      if (!changeSlide) {
+        var _assertThisInitialize = _assertThisInitialized(_this),
+            slideRefs = _assertThisInitialize.slideRefs;
+
+        var CURRENT_IMG = imgSrc;
+        var PREV_IMG = slideRefs[activeKey - 1] || slideRefs[slideRefs.length - 1];
+        var NEXT_IMG = slideRefs[activeKey + 1] || slideRefs[0];
+        var actual_key;
+
+        var trans3d_Unset = function trans3d_Unset(index) {
+          return "\n        translate(-50%, -50%) \n        translate3d(0px, 0px, 0px) \n        scale(".concat(galleryImagesData[index].zoomedScale, ")\n      ");
+        };
+
+        var change = function change() {
+          setTimeout(function () {
+            PREV_IMG.style.transition = CURRENT_IMG.style.transition = NEXT_IMG.style.transition = "".concat(0, "ms");
+            var CURRENT = _this.state.imgSrc;
+
+            var dataOfImage = _this.setData(CURRENT);
+
+            _this.setState(dataOfImage, function () {
+              CURRENT.classList.add('zoom');
+              CURRENT.style.cssText = "\n              transform: \n                translate(-50%,-50%)\n                translate3d(0,0,0)\n                scale(".concat(_this.setScale(dataOfImage.imgSrcData), ")\n            ");
+
+              _this.setState({
+                showRight: _this.checkSiblings('next'),
+                showLeft: _this.checkSiblings('prev')
+              }, function () {
+                return setTimeout(function () {
+                  _this.setState({
+                    changeSlide: false
+                  });
+                }, 100);
+              });
+            });
+          }, transition);
+        };
+
+        PREV_IMG.style.transition = CURRENT_IMG.style.transition = NEXT_IMG.style.transition = "".concat(transition, "ms");
+        CURRENT_IMG.style.transform = trans3d_Unset(activeKey);
+        PREV_IMG.style.transform = trans3d_Unset(_this.slideRefs.indexOf(PREV_IMG));
+        NEXT_IMG.style.transform = trans3d_Unset(_this.slideRefs.indexOf(NEXT_IMG));
+
+        if (!changeSlide) {
+          _this.setState({
+            changeSlide: true
+          });
+
+          if (direction === 'prev') {
+            actual_key = _this.slideRefs.indexOf(PREV_IMG);
+            CURRENT_IMG.classList.add('next-img');
+            PREV_IMG.classList.remove('prev-img');
+
+            _this.setState({
+              imgSrc: PREV_IMG
+            });
+
+            change(actual_key);
+          } else if (direction === 'next') {
+            actual_key = _this.slideRefs.indexOf(NEXT_IMG);
+            CURRENT_IMG.classList.add('prev-img');
+            NEXT_IMG.classList.remove('next-img');
+
+            _this.setState({
+              imgSrc: NEXT_IMG
+            });
+
+            change(actual_key);
+          } else {
+            _this.setState({
+              dragImg: false,
+              changeSlide: false
+            });
+          }
+        }
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "onChange", function (event) {
+      event.stopPropagation();
+
+      if (_this.props.type !== 'checkbox' && _this.props.type !== 'radio') {
+        _this.setState({
+          innerValue: event.target.value,
+          isPristine: false
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "dragMoveSlide", function (e) {
+      var _this$state4 = _this.state,
+          activeKey = _this$state4.activeKey,
+          galleryImagesData = _this$state4.galleryImagesData,
+          resize = _this$state4.resize;
+
+      var _assertThisInitialize2 = _assertThisInitialized(_this),
+          slideRefs = _assertThisInitialize2.slideRefs;
+
+      if (_this.state.dragImg && !resize) {
+        var CURRENT_IMG = e.target;
+        var PREV_IMG = slideRefs[activeKey - 1] || slideRefs[slideRefs.length - 1];
+        var NEXT_IMG = slideRefs[activeKey + 1] || slideRefs[0];
+        var dragPos = {
+          x: e.clientX || e.touches[0].clientX,
+          y: e.clientY || e.touches[0].clientY
+        };
+        var diffX = dragPos.x - _this.state.dragImgPos.x;
+        var diffY = dragPos.y - _this.state.dragImgPos.y;
+
+        if (Math.abs(diffX) > Math.abs(diffY)) {
+          _this.setState({
+            dragPercent: diffX / window.innerWidth * 100
+          });
+
+      _this.props.onChange && _this.props.onChange(event);
+      _this.props.getValue && _this.props.getValue(event.target.value);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "dragStop", function () {
+      if (_this.state.dragImg) {
+        var _this$state5 = _this.state,
+            activeKey = _this$state5.activeKey,
+            dragPercent = _this$state5.dragPercent;
+        var dragPercentScale = 20;
+
+        if (!_this.state.resize) {
+          if (dragPercent > dragPercentScale) {
+            _this.checkSiblings('prev') ? _this.changeSlide('prev') : _this.changeSlide(null);
+          } else if (dragPercent < -dragPercentScale) {
+            _this.checkSiblings('next') ? _this.changeSlide('next') : _this.changeSlide(null);
+          } else {
+            _this.changeSlide(null);
+          }
+        } else {
+          var trans3d = _this.slideRefs[activeKey].style.transform.split(') ').filter(function (el) {
+            return !el.search('translate3d');
+          }).map(function (el) {
+            return el.replace('translate3d(', '');
+          }).map(function (el) {
+            return el.replace(',', '');
+          })[0].split(' ').map(function (el) {
+            return Number(el.replace('px', '').replace(',', ''));
+          });
+
+          _this.setState({
+            resizePos: {
+              x: trans3d[0],
+              y: trans3d[1]
+            }
+          });
+        }
+
+      if (_this.props.type !== 'checkbox' && _this.props.type !== 'radio') {
+        _this.setState({
+          innerValue: event.target.value,
+          isPristine: false
+        });
+      }
+
+      _this.props.onInput && _this.props.onInput(event);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "setFocus", function () {
+      _this.inputElementRef.current.focus();
+    });
+
+    _this.state = {
+      innerValue: props.value || props.valueDefault,
+      isFocused: false,
+      isPristine: true
+    };
+    _this.inputElementRef = React.createRef();
+    return _this;
+  }
+
+  _createClass(Lightbox, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      document.addEventListener('keydown', this.keyEvents);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$props = this.props,
+          background = _this$props.background,
+          children = _this$props.children,
+          className = _this$props.className,
+          containerClass = _this$props.containerClass,
+          disabled = _this$props.disabled,
+          error = _this$props.error,
+          filled = _this$props.filled,
+          gap = _this$props.gap,
+          getValue = _this$props.getValue,
+          group = _this$props.group,
+          hint = _this$props.hint,
+          icon = _this$props.icon,
+          iconBrand = _this$props.iconBrand,
+          iconClass = _this$props.iconClass,
+          iconLight = _this$props.iconLight,
+          onIconClick = _this$props.onIconClick,
+          onIconMouseEnter = _this$props.onIconMouseEnter,
+          onIconMouseLeave = _this$props.onIconMouseLeave,
+          iconRegular = _this$props.iconRegular,
+          iconSize = _this$props.iconSize,
+          id = _this$props.id,
+          inputRef = _this$props.inputRef,
+          noTag = _this$props.noTag,
+          outline = _this$props.outline,
+          label = _this$props.label,
+          labelClass = _this$props.labelClass,
+          labelId = _this$props.labelId,
+          size = _this$props.size,
+          xl = _this$props.xl,
+          xs = _this$props.xs,
+          transition = _this$props.transition;
+      var _this$state6 = this.state,
+          activeKey = _this$state6.activeKey,
+          galleryImagesData = _this$state6.galleryImagesData,
+          imgSrc = _this$state6.imgSrc,
+          sliderOpened = _this$state6.sliderOpened;
+      var lightboxClasses = classNames('mdb-lightbox d-flex flex-wrap', !noMargins && 'no-margin', className);
+      var descriptionClasses = classNames('text-uppercase font-weight-bold mt-4', descriptionClassName);
+
+      var pswp__button = function pswp__button(button) {
+        return classNames("pswp__button d-block z-depth-0 pswp__button--".concat(button));
+      };
+
+      if (type === 'textarea') {
+        formControlClass = outline ? 'form-control' : 'md-textarea form-control';
+        TagInput = 'textarea';
+      } else {
+        formControlClass = 'form-control';
+        TagInput = 'input';
+        attributes.type = type;
+      }
+
+      attributes.disabled = disabled;
+      var classes = classNames(formControlClass, size ? "form-control-".concat(size) : false, validate ? 'validate' : false, filled ? 'filled-in' : false, gap ? 'with-gap' : false, type === 'checkbox' ? gap ? false : 'form-check-input' : false, type === 'radio' ? 'form-check-input' : false, className);
+      var containerClassFix = classNames(type === 'checkbox' || type === 'radio' ? typeof label === 'boolean' && label ? 'd-flex' : 'form-check' : 'md-form', group ? 'form-group' : false, size ? "form-".concat(size) : false, outline && 'md-outline', background && 'md-bg', containerClass);
+      var iconClassFix = classNames(isNotEmpty && this.state.isFocused ? 'active' : false, iconClass, 'prefix');
+      var labelClassFix = classNames(isNotEmpty ? 'active' : false, disabled ? 'disabled' : false, type === 'checkbox' ? 'form-check-label' : false, type === 'radio' ? 'form-check-label' : false, labelClass);
+
+      var renderFunction = function renderFunction() {
+        return React.createElement(React.Fragment, null, icon && React.createElement(Fa, {
+          icon: icon,
+          size: iconSize,
+          brand: iconBrand,
+          light: iconLight,
+          regular: iconRegular,
+          className: iconClassFix,
+          onClick: onIconClick ? onIconClick : _this2.setFocus,
+          onMouseEnter: onIconMouseEnter,
+          onMouseLeave: onIconMouseLeave
+        }), React.createElement(TagInput, _extends({
+          "data-test": "input"
+        }, attributes, {
+          className: classes,
+          id: id,
+          placeholder: hint,
+          ref: _this2.inputElementRef,
+          value: _this2.state.innerValue,
+          onBlur: _this2.onBlur,
+          onChange: _this2.onChange,
+          onInput: _this2.onInput,
+          onFocus: _this2.onFocus
+        })), label && React.createElement("label", {
+          className: labelClassFix,
+          htmlFor: id,
+          "data-error": error,
+          "data-success": success,
+          id: labelId,
+          onClick: _this2.setFocus
+        }, label), children);
+      };
+
+      return noTag ? renderFunction() : React.createElement(Tag, {
+        className: containerClassFix
+      }, renderFunction());
+    }
+  }], [{
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(nextProps, prevState) {
+      if (nextProps.value !== prevState.value) {
+        return {
+          innerValue: nextProps.value
+        };
+      }
+
+      return null;
+    }
+  }]);
+
+  return Input;
+}(React.Component);
+
+Input.propTypes = {
+  className: propTypes.string,
+  children: propTypes.node,
+  containerClass: propTypes.string,
+  disabled: propTypes.bool,
+  error: propTypes.string,
+  filled: propTypes.bool,
+  gap: propTypes.bool,
+  getValue: propTypes.func,
+  group: propTypes.bool,
+  hint: propTypes.string,
+  icon: propTypes.string,
+  iconBrand: propTypes.bool,
+  iconClass: propTypes.string,
+  iconLight: propTypes.bool,
+  onIconClick: propTypes.func,
+  onIconMouseEnter: propTypes.func,
+  onIconMouseLeave: propTypes.func,
+  iconRegular: propTypes.bool,
+  iconSize: propTypes.string,
+  id: propTypes.string,
+  inputRef: propTypes.oneOfType([propTypes.object, propTypes.func]),
+  label: propTypes.oneOfType([propTypes.string, propTypes.number, propTypes.object, propTypes.bool]),
+  labelClass: propTypes.string,
+  labelId: propTypes.string,
+  noTag: propTypes.bool,
+  onBlur: propTypes.func,
+  onChange: propTypes.func,
+  onFocus: propTypes.func,
+  onInput: propTypes.func,
+  outline: propTypes.bool,
+  size: propTypes.string,
+  success: propTypes.string,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  type: propTypes.string,
+  validate: propTypes.bool,
+  value: propTypes.oneOfType([propTypes.number, propTypes.string]),
+  valueDefault: propTypes.oneOfType([propTypes.number, propTypes.string])
+};
+Input.defaultProps = {
+  className: '',
+  containerClass: '',
+  disabled: false,
+  error: '',
+  filled: false,
+  gap: false,
+  group: false,
+  hint: undefined,
+  icon: '',
+  iconBrand: false,
+  iconClass: '',
+  iconLight: false,
+  onIconMouseEnter: function onIconMouseEnter() {},
+  onIconMouseLeave: function onIconMouseLeave() {},
+  iconRegular: false,
+  iconSize: undefined,
+  id: undefined,
+  noTag: false,
+  outline: false,
+  label: '',
+  labelClass: '',
+  labelId: '',
+  size: '',
+  success: '',
+  tag: 'div',
+  type: 'text',
+  validate: false,
+  valueDefault: ''
+};
+
+var InputGroup = function InputGroup(_ref) {
+  var append = _ref.append,
+      appendClassName = _ref.appendClassName,
+      ariaLabel = _ref.ariaLabel,
+      children = _ref.children,
+      className = _ref.className,
+      containerClassName = _ref.containerClassName,
+      containerId = _ref.containerId,
+      hint = _ref.hint,
+      id = _ref.id,
+      inputs = _ref.inputs,
+      inputTag = _ref.inputTag,
+      label = _ref.label,
+      labelClassName = _ref.labelClassName,
+      material = _ref.material,
+      prepend = _ref.prepend,
+      prependClassName = _ref.prependClassName,
+      size = _ref.size,
+      Tag = _ref.tag,
+      textClassName = _ref.textClassName,
+      type = _ref.type,
+      value = _ref.value,
+      valueDefault = _ref.valueDefault,
+      getValue = _ref.getValue,
+      onChange = _ref.onChange,
+      attributes = _objectWithoutProperties(_ref, ["append", "appendClassName", "ariaLabel", "children", "className", "containerClassName", "containerId", "hint", "id", "inputs", "inputTag", "label", "labelClassName", "material", "prepend", "prependClassName", "size", "tag", "textClassName", "type", "value", "valueDefault", "getValue", "onChange"]);
+
+  var containerClassNames = classNames('input-group', material && 'md-form', size && "input-group-".concat(size), containerClassName);
+  var inputClassNames = classNames(className);
+  var prependClassNames = classNames('input-group-prepend', prependClassName);
+  var appendClassNames = classNames('input-group-append', appendClassName);
+  var textClassNames = classNames('input-group-text', material && 'md-addon', textClassName);
+
+      var items = images.map(function (image, id) {
+        return React.createElement(Col, {
+          tag: "figure",
+          lg: image.lg || lg,
+          md: image.md || md,
+          sm: image.sm || sm,
+          xl: image.xl || xl,
+          xs: image.xs || xs,
+          size: size || image.size,
+          className: image.className || itemClassName,
+          key: id
+        }, React.createElement("img", {
+          src: image.src,
+          className: galleryClassNames(id),
+          alt: image.alt || "image ".concat(id + 1),
+          ref: function ref(img) {
+            return _this2.slideRefs[id] = img;
+          },
+          style: galleryStyles(id),
+          draggable: !imgSrc,
+          onClick: _this2.zoom,
+          onDragStart: function onDragStart(e) {
+            return e.preventDefault();
+          },
+          onMouseDown: _this2.dragStart,
+          onTouchStart: _this2.dragStart,
+          onMouseMove: _this2.dragMoveSlide,
+          onTouchMove: _this2.dragMoveSlide,
+          onMouseLeave: _this2.dragStop,
+          onMouseUp: _this2.dragStop,
+          onTouchEnd: _this2.dragStop,
+          onWheel: _this2.scrollZoom,
+          tabIndex: image.tabIndex || "0"
+        }), _this2.slideRefs[id] === imgSrc && React.createElement("div", {
+          className: "block",
+          style: {
+            height: "".concat(galleryImagesData[activeKey].imgSrcData.size.height, "px"),
+            width: "".concat(galleryImagesData[activeKey].imgSrcData.size.width, "px")
+          }
+        }), image.description && React.createElement("p", {
+          className: descriptionClasses
+        }, image.description));
+      });
+      return React.createElement(Container, {
+        "data-test": "light-box",
+        className: "mdb-lightbox"
+      }, imgSrc && React.createElement("div", {
+        className: "ui-controls",
+        onClick: function onClick(e) {
+          e.target.classList.contains('ui-controls') && _this2.closeZoom();
+        }
+      }, React.createElement("p", {
+        className: "float-left text-white-50 mt-3 ml-3"
+      }, activeKey + 1, "/", images.length), React.createElement(ButtonGroup, {
+        style: {
+          transition: "".concat(transition / 2, "ms"),
+          right: '0'
+        }
+      }, React.createElement(Button, {
+        className: pswp__button('zoom'),
+        color: "transparent",
+        onClick: this.scrollZoom
+      }), React.createElement(Button, {
+        className: pswp__button('zoom lb-zoom-out'),
+        color: "transparent",
+        onClick: this.scrollZoom
+      }), React.createElement(Button, {
+        className: pswp__button('fs'),
+        color: "transparent",
+        onClick: this.toggleFullscreen
+      }), React.createElement(Button, {
+        className: pswp__button('close'),
+        color: "transparent",
+        onClick: this.closeZoom
+      })), React.createElement("div", {
+        className: "d-flex justify-content-between w-100 arrow-container",
+        style: {
+          transition: "".concat(transition, "ms")
+        }
+      }, this.state.showLeft && React.createElement("div", {
+        className: pswp__button('arrow--left prev'),
+        onClick: function onClick() {
+          return _this2.changeSlide('prev');
+        }
+      }), this.state.showRight && React.createElement("div", {
+        className: pswp__button('arrow--right next'),
+        onClick: function onClick() {
+          return _this2.changeSlide('next');
+        }
+      }))), React.createElement("div", {
+        className: "overlay",
+        ref: this.overlay,
+        style: {
+          transition: "".concat(transition, "ms")
+        },
+        onClick: this.closeZoom
+      }), React.createElement("div", {
+        className: lightboxClasses
+      }, items));
+    }
+  }]);
+
+  return React.createElement(React.Fragment, null, label && React.createElement("label", {
+    htmlFor: id,
+    className: labelClassName
+  }, label), React.createElement(Tag, _extends({
+    "data-test": "input-group"
+  }, attributes, {
+    className: containerClassNames,
+    id: containerId
+  }), prepend && React.createElement("div", {
+    className: prependClassNames
+  }, typeof prepend === 'string' ? React.createElement("span", {
+    className: textClassNames
+  }, prepend) : prepend), inputs || React.createElement(Input, {
+    noTag: true,
+    type: type,
+    className: inputClassNames,
+    id: id,
+    value: value,
+    valueDefault: valueDefault,
+    hint: hint,
+    "aria-label": ariaLabel,
+    onChange: handleChange
+  }), append && React.createElement("div", {
+    className: appendClassNames
+  }, typeof append === 'string' ? React.createElement("span", {
+    className: textClassNames
+  }, append) : append), children));
+};
+
+Lightbox.propTypes = {
+  images: propTypes.arrayOf(propTypes.shape({
+    src: propTypes.string,
+    description: propTypes.oneOfType([propTypes.node, propTypes.string]),
+    alt: propTypes.string,
+    lg: propTypes.string,
+    md: propTypes.string,
+    sm: propTypes.string,
+    xl: propTypes.string,
+    xs: propTypes.string,
+    size: propTypes.string,
+    tabIndex: propTypes.string
+  })),
+  itemClassName: propTypes.string,
+  noMargins: propTypes.bool,
+  marginSpace: propTypes.number,
+  lg: propTypes.string,
+  md: propTypes.string,
+  sm: propTypes.string,
+  size: propTypes.string,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  textClassName: propTypes.string,
+  type: propTypes.string,
+  value: propTypes.string,
+  valueDefault: propTypes.string,
+  getValue: propTypes.func,
+  onChange: propTypes.func
+};
+
+var Parallax =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Parallax, _Component);
+
+  function Parallax(props) {
+    var _this;
+
+    _classCallCheck(this, Parallax);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Parallax).call(this, props));
+    _this.jarallax = React.createRef();
+    var _this$props = _this.props,
+        disableParallax = _this$props.disableParallax,
+        disableVideo = _this$props.disableVideo,
+        disableVideoLazyLoading = _this$props.disableVideoLazyLoading,
+        disableVideoLoop = _this$props.disableVideoLoop,
+        disableVideoPlayOnlyVisible = _this$props.disableVideoPlayOnlyVisible,
+        elementInViewport = _this$props.elementInViewport,
+        height = _this$props.height,
+        imgElement = _this$props.imgElement,
+        imgPosition = _this$props.imgPosition,
+        imgRepeat = _this$props.imgRepeat,
+        imgSize = _this$props.imgSize,
+        imgSrc = _this$props.imgSrc,
+        videoEndTime = _this$props.videoEndTime,
+        videoStartTime = _this$props.videoStartTime,
+        videoVolume = _this$props.videoVolume,
+        width = _this$props.width,
+        zIndex = _this$props.zIndex;
+    _this.imageOptions = {
+      disableParallax: disableParallax,
+      elementInViewport: elementInViewport,
+      imgElement: imgElement,
+      imgPosition: imgPosition,
+      imgRepeat: imgRepeat,
+      imgSize: imgSize,
+      imgSrc: imgSrc,
+      zIndex: zIndex
+    };
+    _this.videoOptions = {
+      disableVideo: disableVideo,
+      videoEndTime: videoEndTime,
+      videoLazyLoading: !disableVideoLazyLoading,
+      videoLoop: !disableVideoLoop,
+      videoPlayOnlyVisible: !disableVideoPlayOnlyVisible,
+      videoStartTime: videoStartTime,
+      videoVolume: videoVolume
+    };
+    _this.parentStyle = {
+      height: height,
+      width: width
+    };
+    return _this;
+  }
+
+  _createClass(Parallax, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      jarallax(this.jarallax.current, this.props.image ? this.imageOptions : this.props.video ? this.videoOptions : this.props.element ? this.props.elementOptions : null);
+      jarallaxVideo(this.jarallax.current);
+      jarallaxElement(this.jarallax.current);
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      jarallax(this.jarallax.current, 'destroy');
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props2 = this.props,
+          alt = _this$props2.alt,
+          children = _this$props2.children,
+          className = _this$props2.className,
+          element = _this$props2.element,
+          image = _this$props2.image,
+          keepImg = _this$props2.keepImg,
+          speed = _this$props2.speed,
+          Tag = _this$props2.tag,
+          threshold = _this$props2.threshold,
+          type = _this$props2.type,
+          video = _this$props2.video;
+      var parentClasses = classNames(keepImg ? 'jarallax-keep-img' : 'jarallax', className);
+      var elementClasses = classNames(Tag === 'span' ? 'd-inline-block' : null);
+      return React.createElement(React.Fragment, null, image && React.createElement(Tag, {
+        ref: this.jarallax,
+        className: parentClasses,
+        style: this.parentStyle,
+        "data-jarallax": true,
+        "data-type": type,
+        "data-speed": speed
+      }, React.createElement("img", {
+        className: "jarallax-img ",
+        src: image,
+        alt: alt
+      }), children), video && React.createElement(Tag, {
+        ref: this.jarallax,
+        className: parentClasses,
+        style: this.parentStyle,
+        "data-jarallax": true,
+        "data-type": type,
+        "data-speed": speed,
+        "data-video-src": video
+      }, children), element && React.createElement(Tag, {
+        className: elementClasses,
+        ref: this.jarallax,
+        "data-jarallax-element": speed,
+        "data-threshold": threshold
+      }, children));
+    }
+  }]);
+
+  return Parallax;
+}(Component);
+
+Parallax.propTypes = {
+  alt: propTypes.string.isRequired,
+  className: propTypes.string,
+  disableParallax: propTypes.func,
+  disableVideo: propTypes.func,
+  elementInViewport: propTypes.node,
+  height: propTypes.string,
+  image: propTypes.string,
+  imgElement: propTypes.string,
+  imgPosition: propTypes.string,
+  imgRepeat: propTypes.string,
+  imgSize: propTypes.string,
+  keepImg: propTypes.bool,
+  speed: propTypes.oneOfType([propTypes.node, propTypes.string]),
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  threshold: propTypes.node,
+  type: propTypes.string,
+  videoEndTime: propTypes.number,
+  videoLazyLoading: propTypes.bool,
+  videoLoop: propTypes.bool,
+  videoPlayOnlyVisible: propTypes.bool,
+  video: propTypes.string,
+  videoStartTime: propTypes.number,
+  videoVolume: propTypes.number,
+  width: propTypes.string,
+  zIndex: propTypes.number
+};
+Parallax.defaultProps = {
+  alt: 'MDBParallax image',
+  disableParallax: null,
+  disableVideo: null,
+  elementInViewport: null,
+  height: '600px',
+  imgElement: '.jarallax-img',
+  imgPosition: '50% 50%',
+  imgRepeat: 'no-repeat',
+  imgSize: 'cover',
+  keepImg: false,
+  speed: 0.5,
+  tag: 'div',
+  threshold: 'null null',
+  type: 'scroll',
+  videoEndTime: 0,
+  videoLazyLoading: true,
+  videoLoop: true,
+  videoPlayOnlyVisible: true,
+  videoStartTime: 0,
+  videoVolume: 0,
+  width: '100%',
+  zIndex: -100
+};
+
+var css$h = "\r\n/*\r\n * Container style\r\n */\r\n .ps {\r\n  overflow: hidden !important;\r\n  overflow-anchor: none;\r\n  -ms-overflow-style: none;\r\n  touch-action: auto;\r\n  -ms-touch-action: auto;\r\n}\r\n\r\n/*\r\n * Scrollbar rail styles\r\n */\r\n.ps__rail-x {\r\n  display: none;\r\n  opacity: 0;\r\n  transition: background-color .2s linear, opacity .2s linear;\r\n  -webkit-transition: background-color .2s linear, opacity .2s linear;\r\n  height: 15px;\r\n  /* there must be 'bottom' or 'top' for ps__rail-x */\r\n  bottom: 0px;\r\n  /* please don't change 'position' */\r\n  position: absolute;\r\n}\r\n\r\n.ps__rail-y {\r\n  display: none;\r\n  opacity: 0;\r\n  transition: background-color .2s linear, opacity .2s linear;\r\n  -webkit-transition: background-color .2s linear, opacity .2s linear;\r\n  width: 15px;\r\n  /* there must be 'right' or 'left' for ps__rail-y */\r\n  right: 0;\r\n  /* please don't change 'position' */\r\n  position: absolute;\r\n}\r\n\r\n.ps--active-x > .ps__rail-x,\r\n.ps--active-y > .ps__rail-y {\r\n  display: block;\r\n  background-color: transparent;\r\n}\r\n\r\n.ps:hover > .ps__rail-x,\r\n.ps:hover > .ps__rail-y,\r\n.ps--focus > .ps__rail-x,\r\n.ps--focus > .ps__rail-y,\r\n.ps--scrolling-x > .ps__rail-x,\r\n.ps--scrolling-y > .ps__rail-y {\r\n  opacity: 0.6;\r\n}\r\n\r\n.ps__rail-x:hover,\r\n.ps__rail-y:hover,\r\n.ps__rail-x:focus,\r\n.ps__rail-y:focus {\r\n  background-color: #eee;\r\n  opacity: 0.9;\r\n}\r\n\r\n/*\r\n * Scrollbar thumb styles\r\n */\r\n.ps__thumb-x {\r\n  background-color: #aaa;\r\n  border-radius: 6px;\r\n  transition: background-color .2s linear, height .2s ease-in-out;\r\n  -webkit-transition: background-color .2s linear, height .2s ease-in-out;\r\n  height: 6px;\r\n  /* there must be 'bottom' for ps__thumb-x */\r\n  bottom: 2px;\r\n  /* please don't change 'position' */\r\n  position: absolute;\r\n}\r\n\r\n.ps__thumb-y {\r\n  background-color: #aaa;\r\n  border-radius: 6px;\r\n  transition: background-color .2s linear, width .2s ease-in-out;\r\n  -webkit-transition: background-color .2s linear, width .2s ease-in-out;\r\n  width: 6px;\r\n  /* there must be 'right' for ps__thumb-y */\r\n  right: 2px;\r\n  /* please don't change 'position' */\r\n  position: absolute;\r\n}\r\n\r\n.ps__rail-x:hover > .ps__thumb-x,\r\n.ps__rail-x:focus > .ps__thumb-x {\r\n  background-color: #999;\r\n  height: 11px;\r\n}\r\n\r\n.ps__rail-y:hover > .ps__thumb-y,\r\n.ps__rail-y:focus > .ps__thumb-y {\r\n  background-color: #999;\r\n  width: 11px;\r\n}\r\n\r\n/* MS supports */\r\n@supports (-ms-overflow-style: none) {\r\n  .ps {\r\n    overflow: auto !important;\r\n  }\r\n}\r\n\r\n@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {\r\n  .ps {\r\n    overflow: auto !important;\r\n  }\r\n}\r\n\r\n.scrollbar-container {\r\n  position: relative;\r\n  height: 100%;\r\n}\r\n";
+styleInject(css$h);
+
+var handlerNameByEvent = {
+  'ps-scroll-y': 'onScrollY',
+  'ps-scroll-x': 'onScrollX',
+  'ps-scroll-up': 'onScrollUp',
+  'ps-scroll-down': 'onScrollDown',
+  'ps-scroll-left': 'onScrollLeft',
+  'ps-scroll-right': 'onScrollRight',
+  'ps-y-reach-start': 'onYReachStart',
+  'ps-y-reach-end': 'onYReachEnd',
+  'ps-x-reach-start': 'onXReachStart',
+  'ps-x-reach-end': 'onXReachEnd'
+};
+
+var InputNumeric = function InputNumeric(props) {
+  var onChangeHandler = function onChangeHandler(value) {
+    props.getValue && props.getValue(value);
+  };
+
+  var className = props.className,
+      getValue = props.getValue,
+      attributes = _objectWithoutProperties(props, ["className", "getValue"]);
+
+  var classes = classNames('form-control', className);
+  return React.createElement(NumericInput, _extends({
+    "data-test": "input-numeric"
+  }, attributes, {
+    onChange: onChangeHandler,
+    className: classes
+  }));
+};
+
+InputNumeric.propTypes = {
+  className: propTypes.string,
+  getValue: propTypes.func
+};
+
+var Jumbotron = function Jumbotron(props) {
+  var className = props.className,
+      children = props.children,
+      fluid = props.fluid,
+      attributes = _objectWithoutProperties(props, ["className", "children", "fluid"]);
+
+  var classes = classNames('jumbotron', fluid ? 'jumbotron-fluid' : false, className);
+  return React.createElement("div", _extends({
+    "data-test": "jumbotron"
+  }, attributes, {
+    className: classes
+  }), children);
+};
+
+Jumbotron.propTypes = {
+  fluid: propTypes.bool,
+  children: propTypes.node,
+  className: propTypes.string
+};
+
+var ListGroup = function ListGroup(props) {
+  var children = props.children,
+      className = props.className,
+      Tag = props.tag,
+      attributes = _objectWithoutProperties(props, ["children", "className", "tag"]);
+
+  var classes = classNames("list-group", className);
+  return React.createElement(Tag, _extends({
+    "data-test": "list-group"
+  }, attributes, {
+    className: classes
+  }), children);
+};
+
+ListGroup.propTypes = {
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  children: propTypes.node
+};
+ListGroup.defaultProps = {
+  tag: "ul"
+};
+
+var ListGroupItem = function ListGroupItem(props) {
+  var _classNames;
+
+  var active = props.active,
+      children = props.children,
+      className = props.className,
+      color = props.color,
+      disabled = props.disabled,
+      hover = props.hover,
+      success = props.success,
+      info = props.info,
+      warning = props.warning,
+      danger = props.danger,
+      Tag = props.tag,
+      attributes = _objectWithoutProperties(props, ["active", "children", "className", "color", "disabled", "hover", "success", "info", "warning", "danger", "tag"]);
+
+  var classes = classNames('list-group-item', className, (_classNames = {
+    active: active,
+    disabled: disabled
+  }, _defineProperty(_classNames, "list-group-item-".concat(color), ' color'), _defineProperty(_classNames, 'list-group-item-action', hover), _classNames));
+
+  if (attributes.href && Tag === 'li') {
+    Tag = 'a';
+  }
+
+  return React.createElement(Tag, _extends({
+    "data-test": "list-group-item"
+  }, attributes, {
+    className: classes
+  }), children);
+};
+
+ListGroupItem.propTypes = {
+  active: propTypes.bool,
+  disabled: propTypes.bool,
+  hover: propTypes.bool,
+  success: propTypes.bool,
+  info: propTypes.bool,
+  warning: propTypes.bool,
+  danger: propTypes.bool,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  children: propTypes.node,
+  color: propTypes.oneOf(['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'])
+};
+ListGroupItem.defaultProps = {
+  tag: 'li'
+};
+
+var Media = function Media(props) {
+  var body = props.body,
+      bottom = props.bottom,
+      className = props.className,
+      heading = props.heading,
+      left = props.left,
+      list = props.list,
+      middle = props.middle,
+      object = props.object,
+      right = props.right,
+      round = props.round,
+      thumbnail = props.thumbnail,
+      figure = props.figure,
+      figImg = props.figImg,
+      figCap = props.figCap,
+      figCapRight = props.figCapRight,
+      figCapLeft = props.figCapLeft,
+      tag = props.tag,
+      top = props.top,
+      attributes = _objectWithoutProperties(props, ["body", "bottom", "className", "heading", "left", "list", "middle", "object", "right", "round", "thumbnail", "figure", "figImg", "figCap", "figCapRight", "figCapLeft", "tag", "top"]);
+
+  var defaultTag;
+
+  if (heading) {
+    defaultTag = "h4";
+  } else if (left || right) {
+    defaultTag = "a";
+  } else if (object || figImg) {
+    defaultTag = "img";
+  } else if (list) {
+    defaultTag = "ul";
+  } else if (figure) {
+    defaultTag = "figure";
+  } else if (figCap || figCapRight || figCapLeft) {
+    defaultTag = "figcaption";
+  } else {
+    defaultTag = "div";
+  }
+
+  var Tag = tag || defaultTag;
+  var classes = classNames({
+    "media-body": body,
+    "mt-0": heading,
+    "media-left": left,
+    "media-right": right,
+    "align-self-start": top,
+    "align-self-center": middle,
+    "align-self-end": bottom,
+    "media-object": object,
+    "img-thumbnail": thumbnail,
+    "media-list": list,
+    figure: figure,
+    "figure-img": figImg,
+    "figure-caption text-center": figCap,
+    "figure-caption text-right": figCapRight,
+    "figure-caption text-left": figCapLeft,
+    "rounded-circle z-depth-1-half": round
+  }, !body && !heading && !left && !right && !top && !bottom && !middle && !object && !list && !figCap && !figCapRight && !figCapRight && !figImg && !figure ? "media" : false, className);
+  return React.createElement(Tag, _extends({
+    "data-test": "media"
+  }, attributes, {
+    className: classes
+  }));
+};
+
+Media.propTypes = {
+  body: propTypes.bool,
+  bottom: propTypes.bool,
+  children: propTypes.node,
+  scrollSpyRef: propTypes.oneOfType([propTypes.func, propTypes.object])
+};
+
+var css$i = ".popover-enter {\r\n  opacity: 0.01;\r\n  transform: scale(0.9) translateY(50%);\r\n}\r\n\r\n.popover-enter-active {\r\n  opacity: 1;\r\n  transform: scale(1);\r\n  transition: scale 300ms ease-out, opacity 300ms ease;\r\n}\r\n\r\n.popover-enter-done {\r\n  opacity: 1;\r\n  transform: scale(1);\r\n}\r\n\r\n.popover-exit {\r\n  opacity: 1;\r\n  transform: scale(0.8);\r\n  transition: all 300ms ease-out;\r\n}\r\n\r\n.popover-exit-active {\r\n  opacity: 0;\r\n  transform: scale(0.8);\r\n  transition: all 300ms ease-out;\r\n}\r\n\r\n/* slide from side */\r\n\r\n.side-slide-enter, .side-slide-appear {\r\n  opacity: 0.2;\r\n  transform: translateX(-100%);\r\n}\r\n\r\n.side-slide-enter-active, .side-slide-appear-active {\r\n  opacity: 1;\r\n  transform: translateX(0%);\r\n  transition: transform 300ms ease-out, opacity 300ms ease;\r\n}\r\n\r\n.side-slide-enter-done {\r\n  opacity: 1;\r\n  transform: translateX(0);\r\n}\r\n\r\n.side-slide-exit {\r\n  opacity: 1;\r\n  transform: translateX(0%);\r\n  transition: all 300ms ease-out;\r\n}\r\n\r\n.side-slide-exit-active {\r\n  opacity: 0.2;\r\n  transform: translateX(-100%);\r\n  transition: all 300ms ease-out;\r\n}\r\n\r\n.right-side-slide-enter, .right-side-slide-appear {\r\n  opacity: 0.2;\r\n  transform: translateX(100%);\r\n}\r\n\r\n.right-side-slide-enter-active, .right-side-slide-appear-active {\r\n  opacity: 1;\r\n  transform: translateX(0%) !important;\r\n  transition: transform 300ms ease-out, opacity 300ms ease;\r\n}\r\n\r\n.right-side-slide-enter-done {\r\n  opacity: 1;\r\n  transform: translateX(0%) !important;\r\n}\r\n\r\n.right-side-slide-exit {\r\n  opacity: 1;\r\n  transform: translateX(0%);\r\n  transition: all 300ms ease-out;\r\n}\r\n\r\n.right-side-slide-exit-active {\r\n  opacity: 0.2;\r\n  transform: translateX(100%);\r\n  transition: all 300ms ease-out;\r\n}\r\n\r\n.side-nav[data-animate=\"false\"]{\r\n  transform: translateX(0%);\r\n}\r\n\r\n\r\n.side-nav.wide {\r\n    transition-property: all;\r\n    transition-duration: 300ms;\r\n    transition-timing-function: ease-out;\r\n}\r\n\r\n\r\n.side-nav.wide.slim {\r\n    width: 3.75rem;\r\n    transition-property: all;\r\n    transition-duration: 300ms;\r\n    transition-timing-function: ease-out;\r\n    right: 3.75rem;\r\n}\r\n\r\n.right-aligned.side-nav.wide.slim {\r\n    right: 0;\r\n}\r\n\r\n\r\n";
+styleInject(css$i);
+
+var defaultValue = {
+  slim: false
+};
+
+var Modal =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Modal, _Component);
+
+  function Modal() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, Modal);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Modal)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      isOpen: _this.props.isOpen || false
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "modalContent", React.createRef());
+
+    _defineProperty(_assertThisInitialized(_this), "componentDidMount", function () {
+      document.body.classList.add('modal-open');
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "componentWillUnmount", function () {
+      document.body.classList.remove('modal-open');
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "componentDidUpdate", function (prevProps, prevState) {
+      if (prevState.isOpen !== _this.props.isOpen) {
+        _this.setState({
+          isOpen: _this.props.isOpen
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleOnEntered", function (type, node) {
+      if (type === 'backdrop' && _this.props.fade === false) {
+        return;
+      }
+
+      node.classList.add('show');
+      _this.props.autoFocus && node.focus();
+
+      if (type === 'modal') {
+        _this.props.showModal && _this.props.showModal();
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleOnExit", function (type, node) {
+      if (type === 'backdrop' && _this.props.fade === false) {
+        return;
+      }
+
+      node.classList.remove('show');
+
+      if (type === 'modal') {
+        _this.props.hideModal && _this.props.hideModal();
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleOnExited", function (node) {
+      _this.props.hiddenModal && _this.props.hiddenModal();
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleBackdropClick", function (e) {
+      if (!_this.props.backdrop || e.target.closest('[role="dialog"]') && !e.target.classList.contains('modal')) return;
+
+      if (!_this.modalContent.contains(e.target)) {
+        _this.props.toggle();
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleEscape", function (e) {
+      if (_this.props.keyboard && e.keyCode === 27) {
+        e.preventDefault();
+
+        _this.props.toggle();
+      }
+    });
+
+    return _this;
+  }
+
+  _createClass(Modal, [{
+    key: "render",
+    value: function render() {
+      var _classNames,
+          _this2 = this;
+
+      var _this$props = this.props,
+          children = _this$props.children,
+          backdrop = _this$props.backdrop,
+          backdropClassName = _this$props.backdropClassName,
+          contentClassName = _this$props.contentClassName,
+          className = _this$props.className,
+          size = _this$props.size,
+          side = _this$props.side,
+          disableFocusTrap = _this$props.disableFocusTrap,
+          fullHeight = _this$props.fullHeight,
+          frame = _this$props.frame,
+          centered = _this$props.centered,
+          position = _this$props.position,
+          cascading = _this$props.cascading,
+          modalStyle = _this$props.modalStyle,
+          wrapClassName = _this$props.wrapClassName,
+          animation = _this$props.animation,
+          fade = _this$props.fade,
+          tabIndex = _this$props.tabIndex,
+          role = _this$props.role,
+          id = _this$props.id,
+          inline = _this$props.inline;
+      var timeout = fade ? 300 : 0;
+      var modalDialogClasses = classNames((_classNames = {
+        'cascading-modal': cascading,
+        'modal-side': side,
+        'modal-full-height': fullHeight,
+        'modal-frame': frame,
+        'modal-dialog-centered': centered
+      }, _defineProperty(_classNames, "modal-".concat(size), size), _defineProperty(_classNames, "modal-".concat(position), position), _defineProperty(_classNames, "modal-notify white-text modal-".concat(modalStyle), modalStyle), _classNames), 'modal-dialog', className);
+      var wrapperClasses = classNames(_defineProperty({
+        modal: !inline,
+        fade: fade,
+        top: fade && !animation && !position
+      }, "".concat(animation), fade && animation), fade && position && position.split('-')[1], wrapClassName);
+      var backdropClasses = classNames('modal-backdrop', fade ? 'fade' : 'show', backdropClassName);
+      var contentClasses = classNames('modal-content', contentClassName);
+      var modalAttributes = returnAttributes({
+        style: {
+          display: 'block'
+        },
+        id: id,
+        tabIndex: tabIndex,
+        role: role,
+        'aria-hidden': 'true'
+      });
+      var modal = React.createElement("div", _extends({
+        "data-test": "modal",
+        onKeyUp: this.handleEscape,
+        className: wrapperClasses
+      }, modalAttributes), React.createElement("div", {
+        className: modalDialogClasses,
+        role: "document"
+      }, React.createElement("div", {
+        ref: function ref(elem) {
+          return _this2.modalContent = elem;
+        },
+        className: contentClasses
+      }, children)));
+      return React.createElement(Fragment, null, backdrop && React.createElement(Transition, {
+        timeout: timeout,
+        "in": this.state.isOpen,
+        appear: this.state.isOpen,
+        mountOnEnter: true,
+        unmountOnExit: true,
+        onEntered: function onEntered(node) {
+          return _this2.handleOnEntered('backdrop', node);
+        },
+        onExit: function onExit(node) {
+          return _this2.handleOnExit('backdrop', node);
+        },
+        onExited: this.handleOnExited
+      }, React.createElement("div", {
+        className: backdropClasses
+      })), React.createElement(Transition, {
+        timeout: timeout,
+        "in": this.state.isOpen,
+        appear: this.state.isOpen,
+        mountOnEnter: true,
+        unmountOnExit: true,
+        onMouseDown: this.handleBackdropClick,
+        onEntered: function onEntered(node) {
+          return _this2.handleOnEntered('modal', node);
+        },
+        onExit: function onExit(node) {
+          return _this2.handleOnExit('modal', node);
+        }
+      }, !disableFocusTrap ? React.createElement(FocusTrap, null, modal) : modal));
+    }
+  }]);
+
+  return Modal;
+}(Component);
+
+Modal.defaultProps = {
+  autoFocus: true,
+  backdrop: true,
+  backdropTransitionTimeout: 150,
+  fade: true,
+  disableFocusTrap: false,
+  isOpen: false,
+  keyboard: true,
+  modalTransitionTimeout: 300,
+  role: 'dialog',
+  tabIndex: '-1',
+  zIndex: 1050
+};
+Modal.propTypes = {
+  animation: propTypes.string,
+  backdrop: propTypes.bool,
+  backdropClassName: propTypes.string,
+  cascading: propTypes.bool,
+  centered: propTypes.bool,
+  children: propTypes.node,
+  className: propTypes.string,
+  contentClassName: propTypes.string,
+  fade: propTypes.bool,
+  disableFocusTrap: propTypes.bool,
+  frame: propTypes.bool,
+  fullHeight: propTypes.bool,
+  hiddenModal: propTypes.func,
+  hideModal: propTypes.func,
+  id: propTypes.string,
+  keyboard: propTypes.bool,
+  modalClassName: propTypes.string,
+  modalStyle: propTypes.string,
+  position: propTypes.string,
+  role: propTypes.string,
+  size: propTypes.string,
+  side: propTypes.bool,
+  showModal: propTypes.func,
+  tabIndex: propTypes.string,
+  wrapClassName: propTypes.string
+};
+
+var ModalBody = function ModalBody(props) {
+  var className = props.className,
+      children = props.children,
+      attributes = _objectWithoutProperties(props, ["className", "children"]);
+
+  var classes = classNames('modal-body', className);
+  return React.createElement("div", _extends({
+    "data-test": "modal-body"
+  }, attributes, {
+    className: classes
+  }), children);
+};
+
+ModalBody.propTypes = {
+  className: propTypes.string,
+  children: propTypes.node
+};
+
+var ModalFooter = function ModalFooter(props) {
+  var className = props.className,
+      children = props.children,
+      center = props.center,
+      start = props.start,
+      end = props.end,
+      around = props.around,
+      between = props.between,
+      attributes = _objectWithoutProperties(props, ["className", "children", "center", "start", "end", "around", "between"]);
+
+  var classes = classNames('modal-footer', className, {
+    'justify-content-start': start,
+    'justify-content-end': end,
+    'justify-content-center': center,
+    'justify-content-between': between,
+    'justify-content-around': around
+  });
+  return React.createElement("div", _extends({
+    "data-test": "modal-footer"
+  }, attributes, {
+    className: classes
+  }), children);
+};
+
+ModalFooter.propTypes = {
+  className: propTypes.string,
+  children: propTypes.node
+};
+
+var ModalHeader = function ModalHeader(props) {
+  var closeButton;
+
+  var className = props.className,
+      children = props.children,
+      toggle = props.toggle,
+      Tag = props.tag,
+      closeAriaLabel = props.closeAriaLabel,
+      titleClass = props.titleClass,
+      attributes = _objectWithoutProperties(props, ["className", "children", "toggle", "tag", "closeAriaLabel", "titleClass"]);
+
+  var classes = classNames('modal-header', className);
+  var titleClasses = classNames('modal-title', titleClass);
+
+  if (toggle) {
+    closeButton = React.createElement("button", {
+      type: "button",
+      onClick: toggle,
+      className: "close",
+      "aria-label": closeAriaLabel
+    }, React.createElement("span", {
+      "aria-hidden": "true"
+    }, String.fromCharCode(215)));
+  }
+
+  return React.createElement("div", _extends({
+    "data-test": "modal-header"
+  }, attributes, {
+    className: classes
+  }), React.createElement(Tag, {
+    className: titleClasses
+  }, children), closeButton);
+};
+
+ModalHeader.propTypes = {
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  toggle: propTypes.func,
+  className: propTypes.string,
+  children: propTypes.node,
+  closeAriaLabel: propTypes.string
+};
+ModalHeader.defaultProps = {
+  tag: 'h4',
+  closeAriaLabel: 'Close'
+};
+
+var Nav = function Nav(props) {
+  var children = props.children,
+      className = props.className,
+      Tag = props.tag,
+      tabs = props.tabs,
+      color = props.color,
+      classicTabs = props.classicTabs,
+      pills = props.pills,
+      header = props.header,
+      attributes = _objectWithoutProperties(props, ["children", "className", "tag", "tabs", "color", "classicTabs", "pills", "header"]);
+
+  var classes = classNames('nav', tabs && 'md-tabs', pills && 'md-pills', header && 'nav-pills card-header-pills', color && !tabs && !classicTabs && !pills ? color : false, pills && color ? 'pills-' + color : false, (tabs || classicTabs) && color ? 'tabs-' + color : false, className);
+  return React.createElement(Tag, _extends({
+    "data-test": "nav"
+  }, attributes, {
+    className: classes
+  }), children);
+};
+
+Nav.propTypes = {
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  children: propTypes.node,
+  color: propTypes.string,
+  classicTabs: propTypes.bool,
+  pills: propTypes.bool,
+  tabs: propTypes.bool,
+  header: propTypes.bool
+};
+Nav.defaultProps = {
+  tag: 'ul',
+  classicTabs: false,
+  pills: false,
+  tabs: false,
+  header: false
+};
+
+var getExpandClass = function getExpandClass(expand) {
+  if (expand === false) {
+    return false;
+  } else if (expand === true || expand === 'xs') {
+    return 'navbar-expand';
+  }
+
+  return "navbar-expand-".concat(expand);
+};
+
+var Navbar =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Navbar, _Component);
+
+  function Navbar() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, Navbar);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Navbar)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      isCollapsed: false
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleScroll", function () {
+      var scrollingNavbarOffset = _this.props.scrollingNavbarOffset || 50;
+
+      if (window.pageYOffset > scrollingNavbarOffset) {
+        _this.setState({
+          isCollapsed: true
+        });
+      } else {
+        _this.setState({
+          isCollapsed: false
+        });
+      }
+    });
+
+    return _this;
+  }
+
+  _createClass(Navbar, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.scrolling || this.props.scrollingNavbarOffset) {
+        window.addEventListener('scroll', this.handleScroll);
+      }
+    }
+  }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      if (this.props.scrolling || this.props.scrollingNavbarOffset) {
+        window.removeEventListener('scroll', this.handleScroll);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _classNames;
+
+      var _this$props = this.props,
+          expand = _this$props.expand,
+          light = _this$props.light,
+          dark = _this$props.dark,
+          sticky = _this$props.sticky,
+          fixed = _this$props.fixed,
+          scrolling = _this$props.scrolling,
+          color = _this$props.color,
+          className = _this$props.className,
+          scrollingNavbarOffset = _this$props.scrollingNavbarOffset,
+          Tag = _this$props.tag,
+          _double = _this$props["double"],
+          transparent = _this$props.transparent,
+          attributes = _objectWithoutProperties(_this$props, ["expand", "light", "dark", "sticky", "fixed", "scrolling", "color", "className", "scrollingNavbarOffset", "tag", "double", "transparent"]);
+
+      var classes = classNames((_classNames = {
+        'navbar-light': light,
+        'navbar-dark': dark
+      }, _defineProperty(_classNames, "sticky-".concat(sticky), sticky), _defineProperty(_classNames, "fixed-".concat(fixed), fixed), _defineProperty(_classNames, 'scrolling-navbar', scrolling || scrollingNavbarOffset), _defineProperty(_classNames, 'double-nav', _double), _defineProperty(_classNames, 'top-nav-collapse', this.state.isCollapsed), _defineProperty(_classNames, "".concat(color), color && transparent ? this.state.isCollapsed : color), _classNames), 'navbar', getExpandClass(expand), className);
+      return React.createElement(Tag, _extends({
+        "data-test": "navbar"
+      }, attributes, {
+        className: classes,
+        role: "navigation"
+      }));
+    }
+  }]);
+
+  return Navbar;
+}(Component);
+
+Navbar.propTypes = {
+  light: propTypes.bool,
+  dark: propTypes.bool,
+  "double": propTypes.bool,
+  fixed: propTypes.string,
+  sticky: propTypes.string,
+  scrolling: propTypes.bool,
+  scrollingNavbarOffset: propTypes.number,
+  color: propTypes.string,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  expand: propTypes.oneOfType([propTypes.bool, propTypes.string]),
+  transparent: propTypes.bool
+};
+Navbar.defaultProps = {
+  tag: 'nav',
+  expand: false,
+  scrolling: false
+};
+
+var NavbarBrand = function NavbarBrand(_ref) {
+  var className = _ref.className,
+      href = _ref.href,
+      attributes = _objectWithoutProperties(_ref, ["className", "href"]);
+
+  var classes = classNames('navbar-brand', className);
+
+  var navbarBrand = function navbarBrand() {
+    if (href) {
+      return React.createElement(NavLink$1, _extends({
+        "data-test": "navbar-brand",
+        to: href
+      }, attributes, {
+        className: classes
+      }));
+    } else {
+      return React.createElement("div", _extends({
+        "data-test": "navbar-brand"
+      }, attributes, {
+        className: classes
+      }));
+    }
+  };
+
+  return navbarBrand();
+};
+
+NavbarBrand.propTypes = {
+  className: propTypes.string,
+  href: propTypes.string
+};
+
+var NavbarNav = function NavbarNav(props) {
+  var children = props.children,
+      className = props.className,
+      right = props.right,
+      left = props.left,
+      Tag = props.tag,
+      attributes = _objectWithoutProperties(props, ["children", "className", "right", "left", "tag"]);
+
+  var classes = classNames('navbar-nav', right ? 'ml-auto' : left ? 'mr-auto' : 'justify-content-around w-100', className);
+  return React.createElement(Tag, _extends({
+    "data-test": "navbar-nav"
+  }, attributes, {
+    className: classes
+  }), children);
+};
+
+NavbarNav.propTypes = {
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  children: propTypes.node,
+  right: propTypes.bool,
+  left: propTypes.bool
+};
+NavbarNav.defaultProps = {
+  tag: 'ul'
+};
+
+var NavbarToggler = function NavbarToggler(props) {
+  var right = props.right,
+      left = props.left,
+      children = props.children,
+      className = props.className,
+      Tag = props.tag,
+      image = props.image,
+      attributes = _objectWithoutProperties(props, ["right", "left", "children", "className", "tag", "image"]);
+
+  var classes = classNames({
+    "navbar-toggler-right": right,
+    "navbar-toggler-left": left
+  }, "navbar-toggler", className);
+  return React.createElement(Tag, _extends({
+    "data-test": "navbar-toggler"
+  }, attributes, {
+    className: classes
+  }), children ? children : image ? React.createElement("span", {
+    className: "navbar-toggler-icon",
+    style: {
+      backgroundImage: "url(\"".concat(image, "\")")
+    }
+  }) : React.createElement("span", {
+    className: "navbar-toggler-icon"
+  }));
+};
+
+NavbarToggler.propTypes = {
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  type: propTypes.string,
+  className: propTypes.string,
+  children: propTypes.node,
+  right: propTypes.bool,
+  left: propTypes.bool,
+  image: propTypes.string
+};
+NavbarToggler.defaultProps = {
+  tag: "button",
+  type: "button"
+};
+
+var NavItem = function NavItem(props) {
+  var children = props.children,
+      className = props.className,
+      active = props.active,
+      text = props.text,
+      Tag = props.tag,
+      attributes = _objectWithoutProperties(props, ["children", "className", "active", "text", "tag"]);
+
+  var classes = classNames('nav-item', active && 'active', text && 'navbar-text', className);
+  return React.createElement(Tag, _extends({
+    "data-test": "nav-item"
+  }, attributes, {
+    className: classes
+  }), children);
+};
+
+NavItem.propTypes = {
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  children: propTypes.node,
+  active: propTypes.bool
+};
+NavItem.defaultProps = {
+  tag: 'li'
+};
+
+var NavLink = function NavLink(props) {
+  var _useState = useState({}),
+      _useState2 = _slicedToArray(_useState, 2),
+      cursorPos = _useState2[0],
+      setCursorPos = _useState2[1];
+
+  var handleClick = function handleClick(e) {
+    if (!props.disabled) {
+      e.stopPropagation(); // Waves - Get Cursor Position
+
+      var _cursorPos = {
+        top: e.clientY,
+        left: e.clientX,
+        time: Date.now()
+      };
+      setCursorPos(_cursorPos);
+    }
+  };
+
+  var children = props.children,
+      className = props.className,
+      disabled = props.disabled,
+      active = props.active,
+      to = props.to,
+      link = props.link,
+      attributes = _objectWithoutProperties(props, ["children", "className", "disabled", "active", "to", "link"]);
+
+  var classes = classNames("nav-link", disabled ? "disabled" : "Ripple-parent", active && "active", className);
+  var rednerLink;
+
+  if (link) {
+    rednerLink = React.createElement(Link, _extends({
+      "data-test": "nav-link",
+      className: classes,
+      onMouseUp: handleClick,
+      onTouchStart: handleClick,
+      to: to
+    }, attributes), children, props.disabled ? false : React.createElement(Waves, {
+      cursorPos: cursorPos
+    }));
+  } else {
+    rednerLink = React.createElement(NavLink$1, _extends({
+      "data-test": "nav-link",
+      className: classes,
+      onMouseUp: handleClick,
+      onTouchStart: handleClick,
+      to: to
+    }, attributes), children, props.disabled ? false : React.createElement(Waves, {
+      cursorPos: cursorPos
+    }));
+  }
+
+  return rednerLink;
+};
+
+NavLink.propTypes = {
+  children: propTypes.node,
+  className: propTypes.string,
+  disabled: propTypes.bool,
+  to: propTypes.string,
+  active: propTypes.bool,
+  link: propTypes.bool
+};
+NavLink.defaultProps = {
+  active: false,
+  className: "",
+  disabled: false,
+  spy: true,
+  smooth: true,
+  offset: -70,
+  duration: 500
+};
+
+var Spinner = function Spinner(props) {
+  var theChosenColorSpinner = function theChosenColorSpinner(spinnerClasses) {
+    if (props.multicolor) {
+      var theSpinnerItself = React.createElement("div", null, React.createElement("div", {
+        className: "spinner-layer spinner-blue"
+      }, React.createElement("div", {
+        className: "circle-clipper left"
+      }, React.createElement("div", {
+        className: "circle"
+      })), React.createElement("div", {
+        className: "gap-patch"
+      }, React.createElement("div", {
+        className: "circle"
+      })), React.createElement("div", {
+        className: "circle-clipper right"
+      }, React.createElement("div", {
+        className: "circle"
+      }))), React.createElement("div", {
+        className: "spinner-layer spinner-red"
+      }, React.createElement("div", {
+        className: "circle-clipper left"
+      }, React.createElement("div", {
+        className: "circle"
+      })), React.createElement("div", {
+        className: "gap-patch"
+      }, React.createElement("div", {
+        className: "circle"
+      })), React.createElement("div", {
+        className: "circle-clipper right"
+      }, React.createElement("div", {
+        className: "circle"
+      }))), React.createElement("div", {
+        className: "spinner-layer spinner-yellow"
+      }, React.createElement("div", {
+        className: "circle-clipper left"
+      }, React.createElement("div", {
+        className: "circle"
+      })), React.createElement("div", {
+        className: "gap-patch"
+      }, React.createElement("div", {
+        className: "circle"
+      })), React.createElement("div", {
+        className: "circle-clipper right"
+      }, React.createElement("div", {
+        className: "circle"
+      }))), React.createElement("div", {
+        className: "spinner-layer spinner-green"
+      }, React.createElement("div", {
+        className: "circle-clipper left"
+      }, React.createElement("div", {
+        className: "circle"
+      })), React.createElement("div", {
+        className: "gap-patch"
+      }, React.createElement("div", {
+        className: "circle"
+      })), React.createElement("div", {
+        className: "circle-clipper right"
+      }, React.createElement("div", {
+        className: "circle"
+      }))));
+      return theSpinnerItself;
+    } else {
+      var _theSpinnerItself = React.createElement("div", {
+        className: spinnerClasses
+      }, React.createElement("div", {
+        className: "circle-clipper left"
+      }, React.createElement("div", {
+        className: "circle"
+      })), React.createElement("div", {
+        className: "gap-patch"
+      }, React.createElement("div", {
+        className: "circle"
+      })), React.createElement("div", {
+        className: "circle-clipper right"
+      }, React.createElement("div", {
+        className: "circle"
+      })));
+
+      return _theSpinnerItself;
+    }
+  };
+
+  var className = props.className,
+      big = props.big,
+      small = props.small,
+      red = props.red,
+      green = props.green,
+      yellow = props.yellow;
+  var wrapperClasses = classNames("preloader-wrapper", "active", big ? "big" : false, small ? "small" : false, className);
+  var spinnerClasses = classNames("spinner-layer", red ? "spinner-red-only" : false, green ? "spinner-green-only" : false, yellow ? "spinner-yellow-only" : "spinner-blue-only", className);
+
+  if (props.crazy) {
+    return React.createElement("div", {
+      className: wrapperClasses
+    }, React.createElement("div", {
+      className: wrapperClasses
+    }, React.createElement("div", {
+      className: wrapperClasses
+    }, React.createElement("div", {
+      className: wrapperClasses
+    }, theChosenColorSpinner(spinnerClasses)))));
+  } else {
+    return React.createElement("div", {
+      className: wrapperClasses
+    }, theChosenColorSpinner(spinnerClasses));
+  }
+};
+
+Spinner.propTypes = {
+  className: propTypes.string,
+  big: propTypes.bool,
+  small: propTypes.bool,
+  crazy: propTypes.bool,
+  red: propTypes.bool,
+  green: propTypes.bool,
+  yellow: propTypes.bool,
+  multicolor: propTypes.bool
+};
+Spinner.defaultProps = {
+  tag: "div"
+};
+
+var Step = function Step(props) {
+  var brand = props.brand,
+      duotone = props.duotone,
+      fab = props.fab,
+      fad = props.fad,
+      fal = props.fal,
+      far = props.far,
+      form = props.form,
+      icon = props.icon,
+      light = props.light,
+      regular = props.regular,
+      stepName = props.stepName,
+      Tag = props.tag,
+      vertical = props.vertical;
+  var iconPrefix = regular || far ? 'far' : light || fal ? 'fal' : duotone || fad ? 'fad' : brand || fab ? 'fab' : 'fa';
+  var iconClass = classNames(iconPrefix + ' fa-' + icon, 'Ripple-parent');
+  var stepClass = classNames(form ? 'steps-step' : icon && vertical ? 'steps-step-3' : icon && !vertical ? 'steps-step-2' : null, props.className);
+  var step;
+
+  if (form) {
+    step = React.createElement(Tag, {
+      className: stepClass
+    }, props.children);
+  } else if (icon && !vertical) {
+    step = React.createElement(Tag, {
+      className: stepClass,
+      onClick: props.onClick
+    }, React.createElement(Popover, {
+      placement: "top"
+    }, React.createElement(Button, {
+      className: "btn-circle-2 btn-blue-grey"
+    }, React.createElement("i", {
+      className: iconClass
+    })), React.createElement("div", null, stepName)));
+  } else if (icon && vertical) {
+    step = React.createElement(Tag, {
+      className: stepClass,
+      onClick: props.onClick
+    }, React.createElement(Popover, {
+      placement: "top"
+    }, React.createElement(Button, {
+      className: "btn-circle-3 btn-blue-grey"
+    }, React.createElement("i", {
+      className: iconClass
+    })), React.createElement("div", null, stepName)));
+  } else {
+    step = React.createElement("li", {
+      className: stepClass
+    }, props.children);
+  }
+
+  return step;
+};
+
+Step.defaultProps = {
+  form: false,
+  iconPrefix: 'fas',
+  tag: 'div',
+  vertical: false
+};
+
+var css$j = "/* Stepper Form */\r\n\r\n/* Stepper v.2 (Form) */\r\n.steps-form {\r\n  display: table;\r\n  width: 100%;\r\n  position: relative;\r\n}\r\n\r\n.steps-form .steps-row {\r\n  display: table-row;\r\n}\r\n\r\n.steps-form .steps-row:before {\r\n  top: 14px;\r\n  bottom: 0;\r\n  position: absolute;\r\n  content: ' ';\r\n  width: 100%;\r\n  height: 1px;\r\n  background-color: #ccc;\r\n}\r\n\r\n.steps-form .steps-row .steps-step {\r\n  display: table-cell;\r\n  text-align: center;\r\n  position: relative;\r\n}\r\n\r\n.steps-form .steps-row .steps-step p {\r\n  margin-top: 0.5rem;\r\n}\r\n\r\n.steps-form .steps-row .steps-step button[disabled] {\r\n  opacity: 1 !important;\r\n  filter: alpha(opacity=100) !important;\r\n}\r\n\r\n.steps-form .steps-row .steps-step .btn-circle {\r\n  width: 30px;\r\n  height: 30px;\r\n  text-align: center;\r\n  padding: 6px 0;\r\n  font-size: 12px;\r\n  line-height: 1.428571429;\r\n  border-radius: 15px;\r\n  margin-top: 0;\r\n}\r\n\r\n/* Stepper v.3 (Icons) */\r\n.steps-form-2 {\r\n  display: table;\r\n  width: 100%;\r\n  position: relative;\r\n}\r\n\r\n.steps-form-2 .steps-row-2 {\r\n  display: table-row;\r\n}\r\n\r\n.steps-form-2 .steps-row-2:before {\r\n  top: 14px;\r\n  bottom: 0;\r\n  position: absolute;\r\n  content: ' ';\r\n  width: 99%;\r\n  height: 2px;\r\n  background-color: #7283a7;\r\n}\r\n\r\n.steps-form-2 .steps-row-2 .steps-step-2 {\r\n  display: table-cell;\r\n  text-align: center;\r\n  position: relative;\r\n}\r\n\r\n.steps-form-2 .steps-row-2 .steps-step-2 p {\r\n  margin-top: 0.5rem;\r\n}\r\n\r\n.steps-form-2 .steps-row-2 .steps-step-2 button[disabled] {\r\n  opacity: 1 !important;\r\n  filter: alpha(opacity=100) !important;\r\n}\r\n\r\n.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 {\r\n  width: 70px;\r\n  height: 70px;\r\n  border: 2px solid #59698d;\r\n  background-color: white !important;\r\n  color: #59698d !important;\r\n  border-radius: 50%;\r\n  padding: 20px 20px 20px 20px;\r\n  margin-top: -22px;\r\n}\r\n\r\n.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2:hover {\r\n  border: 2px solid #4285f4;\r\n  color: #4285f4 !important;\r\n  background-color: white !important;\r\n}\r\n\r\n.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 .fa,\r\n.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 .fas,\r\n.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 .far,\r\n.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 .fal,\r\n.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 .fad,\r\n.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2 .fab {\r\n  font-size: 1.7rem;\r\n}\r\n\r\n.steps-row-2:first-child .btn {\r\n  margin-left: 0;\r\n}\r\n\r\n.steps-row-2:last-child .btn {\r\n  margin-right: 0;\r\n}\r\n\r\n/* Stepper v.4 (Icon-vertical) */\r\n\r\n.steps-form-3 {\r\n  width: 2px;\r\n  height: 470px;\r\n  position: relative;\r\n}\r\n\r\n.steps-form-3 .steps-row-3 {\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -webkit-box-align: center;\r\n  -webkit-align-items: center;\r\n  -ms-flex-align: center;\r\n  align-items: center;\r\n  -webkit-box-orient: vertical;\r\n  -webkit-box-direction: normal;\r\n  -webkit-flex-direction: column;\r\n  -ms-flex-direction: column;\r\n  flex-direction: column;\r\n}\r\n\r\n.steps-form-3 .steps-row-3:before {\r\n  top: 14px;\r\n  bottom: 0;\r\n  position: absolute;\r\n  content: '';\r\n  width: 2px;\r\n  height: 100%;\r\n  background-color: #7283a7;\r\n}\r\n\r\n.steps-form-3 .steps-row-3 .steps-step-3 {\r\n  height: 150px;\r\n  display: -webkit-box;\r\n  display: -webkit-flex;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  text-align: center;\r\n  position: relative;\r\n}\r\n\r\n.steps-form-3 .steps-row-3 .steps-step-3.no-height {\r\n  height: 50px;\r\n}\r\n\r\n.steps-form-3 .steps-row-3 .steps-step-3 p {\r\n  margin-top: 0.5rem;\r\n}\r\n\r\n.steps-form-3 .steps-row-3 .steps-step-3 button[disabled] {\r\n  opacity: 1 !important;\r\n  filter: alpha(opacity=100) !important;\r\n}\r\n\r\n.steps-form-3 .steps-row-3 .steps-step-3 .btn-circle-3 {\r\n  width: 60px;\r\n  height: 60px;\r\n  border: 2px solid #59698d;\r\n  background-color: white !important;\r\n  color: #59698d !important;\r\n  border-radius: 50%;\r\n  padding: 15px 15px 15px 15px;\r\n  margin-top: -22px;\r\n}\r\n\r\n.steps-form-3 .steps-row-3 .steps-step-3 .btn-circle-3:hover {\r\n  border: 2px solid #4285f4;\r\n  color: #4285f4 !important;\r\n  background-color: white !important;\r\n}\r\n\r\n.steps-form-3 .steps-row-3 .steps-step-3 .btn-circle-3 .fa,\r\n.steps-form-3 .steps-row-3 .steps-step-3 .btn-circle-3 .fas,\r\n.steps-form-3 .steps-row-3 .steps-step-3 .btn-circle-3 .far,\r\n.steps-form-3 .steps-row-3 .steps-step-3 .btn-circle-3 .fal,\r\n.steps-form-3 .steps-row-3 .steps-step-3 .btn-circle-3 .fad,\r\n.steps-form-3 .steps-row-3 .steps-step-3 .btn-circle-3 .fab {\r\n  font-size: 1.7rem;\r\n}\r\n";
+styleInject(css$j);
+
+var Stepper = function Stepper(props) {
+  var vertical = props.vertical,
+      form = props.form,
+      icon = props.icon;
+  var stepperClass = classNames(form ? "steps-form" : icon && vertical ? "steps-form-3" : icon && !vertical ? "steps-form-2" : "stepper", vertical && !icon ? "stepper-vertical" : form || icon ? null : "stepper-horizontal", props.className);
+  var wrapperFix = classNames(form ? "steps-row" : icon && vertical ? "steps-row-3 d-flex justify-content-between" : icon && !vertical ? "steps-row-2 d-flex justify-content-between" : null); // wrapper shim in case props.form
+
+  var stepper;
+
+  if (form || icon) {
+    stepper = React.createElement("div", {
+      className: stepperClass
+    }, React.createElement("div", {
+      className: wrapperFix
+    }, props.children));
+  } else {
+    stepper = React.createElement("ul", {
+      className: stepperClass
+    }, props.children);
+  }
+
+  return stepper;
+};
+
+Stepper.propTypes = {
+  vertical: propTypes.bool,
+  form: propTypes.bool,
+  icon: propTypes.bool,
+  children: propTypes.node,
+  className: propTypes.string
+};
+Stepper.defaultProps = {
+  form: false
+};
+
+var Notification =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Notification, _React$Component);
+
+  function Notification() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, Notification);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Notification)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      componentState: _this.props.show ? 'show' : 'hide'
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "hide", function () {
+      var time = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+      if (_typeof(time) === 'object') time = 0;
+      setTimeout(function () {
+        _this.setState({
+          componentState: ''
+        }, function () {
+          setTimeout(function () {
+            _this.setState({
+              componentState: 'hide'
+            });
+          }, 150);
+        });
+      }, time);
+    });
+
+    return _this;
+  }
+
+  _createClass(Notification, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      if (this.props.autohide > 0) this.hide(this.props.autohide);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          Tag = _this$props.tag,
+          className = _this$props.className,
+          show = _this$props.show,
+          fade = _this$props.fade,
+          message = _this$props.message,
+          bodyClassName = _this$props.bodyClassName,
+          icon = _this$props.icon,
+          iconClassName = _this$props.iconClassName,
+          title = _this$props.title,
+          titleClassName = _this$props.titleClassName,
+          text = _this$props.text,
+          closeClassName = _this$props.closeClassName,
+          attributes = _objectWithoutProperties(_this$props, ["tag", "className", "show", "fade", "message", "bodyClassName", "icon", "iconClassName", "title", "titleClassName", "text", "closeClassName"]);
+
+      var classes = classNames('toast', fade && 'fade', this.state.componentState, className);
+      var headerClasses = classNames('toast-header', titleClassName);
+      var iconClassNames = classNames('mr-2', iconClassName);
+      var bodyClasses = classNames('toast-body', bodyClassName);
+      var closeClasses = classNames('ml-2', 'mb-1', closeClassName);
+      return React.createElement(Tag, _extends({
+        "data-test": "notification"
+      }, attributes, {
+        className: classes
+      }), React.createElement("div", {
+        className: headerClasses
+      }, React.createElement(Fa, {
+        icon: icon,
+        className: iconClassNames,
+        size: "lg"
+      }), React.createElement("strong", {
+        className: "mr-auto"
+      }, title), React.createElement("small", null, text), React.createElement(MDBCloseIcon, {
+        className: closeClasses,
+        onClick: this.hide
+      })), React.createElement("div", {
+        className: bodyClasses
+      }, message));
+    }
+  }]);
+
+  return Notification;
+}(React.Component);
+
+Notification.propTypes = {
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  show: propTypes.bool,
+  fade: propTypes.bool,
+  autohide: propTypes.number,
+  iconClassName: propTypes.string,
+  title: propTypes.string,
+  text: propTypes.string,
+  titleColor: propTypes.string,
+  titleClassName: propTypes.string,
+  closeClassName: propTypes.string,
+  bodyClassName: propTypes.string,
+  bodyColor: propTypes.string,
+  message: propTypes.string
+};
+Notification.defaultProps = {
+  icon: 'square',
+  tag: 'div',
+  closeClassName: 'text-dark'
+};
+
+var MDBStreak = function MDBStreak(_ref) {
+  var children = _ref.children,
+      by = _ref.by,
+      byClass = _ref.byClass,
+      wrapperClass = _ref.wrapperClass,
+      size = _ref.size,
+      quoteClass = _ref.quoteClass,
+      photo = _ref.photo,
+      overlayClass = _ref.overlayClass;
+  var byClasses = classNames("text-center", "font-italic", "mb-0", byClass);
+  var wrapperClasses = classNames("streak", photo && "streak-photo", size && "streak-".concat(size), wrapperClass);
+  var quoteClasses = classNames("h2-responsive", quoteClass);
+  var overlayClasses = classNames("flex-center", overlayClass);
+  return React.createElement("div", {
+    className: wrapperClasses,
+    style: {
+      backgroundImage: "url(\"".concat(photo, "\")"),
+      backgroundAttachment: "fixed"
+    }
+  }, React.createElement("div", {
+    className: overlayClasses
+  }, React.createElement("ul", {
+    className: "mb-0 list-unstyled"
+  }, React.createElement("li", null, React.createElement("h2", {
+    className: quoteClasses
+  }, React.createElement(Fa, {
+    icon: "quote-left"
+  }), " ", children, " ", React.createElement(Fa, {
+    icon: "quote-right"
+  }))), React.createElement("li", {
+    className: "mb-0"
+  }, React.createElement("h5", {
+    className: byClasses
+  }, "~ ", by)))));
+};
+
+MDBStreak.propTypes = {
+  size: propTypes.oneOf(['lg', 'md']),
+  by: propTypes.string,
+  wrapperClass: propTypes.string,
+  byClass: propTypes.string,
+  quoteClass: propTypes.string,
+  photo: propTypes.string,
+  overlayClass: propTypes.string
+};
+MDBStreak.defaultProps = {
+  wrapperClass: "grey lighten-3"
+};
+
+var css$k = ".react-bootstrap-table {\r\n  padding-top: 65px;\r\n}\r\n\r\n.react-bootstrap-table .caret {\r\n  display: inline-block;\r\n  width: 0;\r\n  height: 0;\r\n  margin-left: 2px;\r\n  vertical-align: middle;\r\n  border-top: 4px dashed;\r\n  border-top: 4px solid\\9;\r\n  border-right: 4px solid transparent;\r\n  border-left: 4px solid transparent;\r\n}\r\n\r\n.react-bootstrap-table .dropup .caret {\r\n  content: \"\";\r\n  border-top: 0;\r\n  border-bottom: 4px dashed;\r\n  border-bottom: 4px solid\\9;\r\n}\r\n\r\n.react-bootstrap-table-pagination .pagination {\r\n  float: right;\r\n}\r\n\r\n.react-bootstrap-table-pagination .pagination .page-item.active .page-link {\r\n  background-color: #09c;\r\n}\r\n\r\n.react-bootstrap-table-pagination .select-wrapper {\r\n  display: inline-block;\r\n  width: 100px;\r\n  margin: 0 15px;\r\n}\r\n\r\n.react-bootstrap-table-pagination .dropdown-item {\r\n  padding: 0;\r\n}\r\n\r\n.react-bootstrap-table-pagination-total {\r\n  display: block;\r\n}\r\n\r\n.react-bootstrap-table .md-form {\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  margin: 0;\r\n  width: 200px;\r\n}\r\n\r\n.react-bootstrap-table-pagination > * {\r\n  position: inherit;\r\n}\r\n\r\n.react-bs-table-sizePerPage-dropdown {\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n}";
+styleInject(css$k);
+
+var TableEditable =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Popover, _React$Component);
+
+  function Popover(props) {
+    var _this;
+
+    _classCallCheck(this, Popover);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Popover).call(this, props));
+
+    _defineProperty(_assertThisInitialized(_this), "setPopperJS", function () {
+      if (_this.state.showPopper) {
+        _this.state.popperJS ? _this.state.popperJS.scheduleUpdate() : _this.createPopper();
+        setTimeout(function () {
+          return clearInterval(_this.timer);
+        }, 1000);
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "createPopper", function () {
+      if (_this.referenceElm && _this.popoverWrapperRef) _this.setState({
+        popperJS: new Popper$1(_this.referenceElm, _this.popoverWrapperRef, _objectSpread2({
+          placement: _this.props.placement
+        }, _this.props.modifiers), function () {
+          return setTimeout(function () {
+            _this.state.popperJS.scheduleUpdate();
+          }, 10);
+        })
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "doToggle", function (toggler) {
+      _this.setState({
+        showPopper: toggler && true
+      }, function () {
+        if (_this.state.showPopper) _this.setState({
+          visible: typeof toggler !== 'undefined' ? toggler : !_this.state.visible
+        }, function () {
+          _this.createPopper();
+
+          _this.state.popperJS.scheduleUpdate();
+        });
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleClick", function (e) {
+      var target = e.target;
+
+      if (_this.popoverWrapperRef && _this.state.showPopper) {
+        if (_this.popoverWrapperRef.contains(target) || _this.referenceElm.contains(target) || target === _this.referenceElm) return;
+
+        _this.doToggle(false);
+      }
+    });
+
+    _this.state = {
+      popperJS: null,
+      visible: props.isVisible,
+      showPopper: props.isVisible
+    };
+    _this.popoverWrapperRef = React.createRef();
+    _this.referenceElm = React.createRef();
+    return _this;
+  }
+
+  _createClass(Popover, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      var showPopper = this.state.showPopper;
+      var _this$props = this.props,
+          isVisible = _this$props.isVisible,
+          onChange = _this$props.onChange;
+      this.setPopperJS();
+      if (prevProps.isVisible !== isVisible && isVisible !== showPopper && showPopper !== prevProps.showPopper) this.setState({
+        showPopper: isVisible
+      });
+      if (onChange && showPopper !== prevState.showPopper) onChange(showPopper);
+      if (showPopper && prevState.showPopper !== showPopper) this.createPopper();
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.timer = setInterval(function () {
+        return _this2.setPopperJS();
+      }, 3);
+      document.addEventListener('click', this.handleClick);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      var _this$props2 = this.props,
+          children = _this$props2.children,
+          className = _this$props2.className,
+          clickable = _this$props2.clickable,
+          domElement = _this$props2.domElement,
+          modifiers = _this$props2.modifiers,
+          id = _this$props2.id,
+          isVisible = _this$props2.isVisible,
+          onChange = _this$props2.onChange,
+          placement = _this$props2.placement,
+          popover = _this$props2.popover,
+          style = _this$props2.style,
+          Tag = _this$props2.tag,
+          attributes = _objectWithoutProperties(_this$props2, ["children", "className", "clickable", "domElement", "modifiers", "id", "isVisible", "onChange", "placement", "popover", "style", "tag"]);
+
+      var _this$state = this.state,
+          visible = _this$state.visible,
+          showPopper = _this$state.showPopper;
+      var popper = children[1];
+      var Wrapper = children[0];
+      return React.createElement(React.Fragment, null, !domElement ? React.createElement(Wrapper.type, _extends({}, Wrapper.props, {
+        onMouseEnter: function onMouseEnter() {
+          return !clickable && _this3.doToggle(true);
+        },
+        onMouseLeave: function onMouseLeave() {
+          return !clickable && !popover && setTimeout(function () {
+            return _this3.doToggle(false);
+          }, 0);
+        },
+        onTouchStart: function onTouchStart() {
+          return !clickable && _this3.doToggle(true);
+        },
+        onTouchEnd: function onTouchEnd() {
+          return !clickable && !popover && _this3.doToggle(false);
+        },
+        onMouseDown: function onMouseDown() {
+          clickable && _this3.doToggle(!showPopper);
+          setTimeout(function () {
+            return _this3.setPopperJS();
+          }, 100);
+        },
+        onMouseUp: function onMouseUp() {
+          return setTimeout(function () {
+            return _this3.setPopperJS();
+          }, 0);
+        },
+        innerRef: function innerRef(ref) {
+          return _this3.referenceElm = ref;
+        },
+        "data-popper": id
+      })) : React.createElement(Wrapper.type, _extends({}, Wrapper.props, {
+        onMouseEnter: function onMouseEnter() {
+          return !clickable && _this3.doToggle(true);
+        },
+        onMouseLeave: function onMouseLeave() {
+          return !clickable && !popover && setTimeout(function () {
+            return _this3.doToggle(false);
+          }, 0);
+        },
+        onTouchStart: function onTouchStart() {
+          return !clickable && _this3.doToggle(true);
+        },
+        onTouchEnd: function onTouchEnd() {
+          return !clickable && !popover && _this3.doToggle(false);
+        },
+        onMouseDown: function onMouseDown() {
+          return clickable && _this3.doToggle(!showPopper);
+        },
+        onMouseUp: function onMouseUp() {
+          return setTimeout(function () {
+            return _this3.setPopperJS();
+          }, 0);
+        },
+        ref: function ref(_ref) {
+          return _this3.referenceElm = _ref;
+        },
+        "data-popper": id
+      })), showPopper && React.createElement(Tag, _extends({
+        ref: function ref(_ref2) {
+          return _this3.popoverWrapperRef = _ref2;
+        },
+        className: classNames(visible && 'show', popover ? 'popover' : 'tooltip px-2', className),
+        "data-popper": id
+      }, attributes), popper, React.createElement("span", {
+        "x-arrow": "",
+        className: "popover_arrow"
+      })));
+    }
+  }]);
+
+  return Popover;
+}(React.Component);
+
+Popover.propTypes = {
+  children: propTypes.node,
+  clickable: propTypes.bool,
+  domElement: propTypes.bool,
+  modifiers: propTypes.object,
+  id: propTypes.string,
+  isVisible: propTypes.bool,
+  placement: propTypes.string,
+  popover: propTypes.bool,
+  style: propTypes.objectOf(propTypes.string),
+  tag: propTypes.string
+};
+Popover.defaultProps = {
+  clickable: false,
+  domElement: false,
+  id: 'popper',
+  isVisible: false,
+  placement: 'top',
+  popover: false,
+  style: {
+    display: 'inline-block'
+  },
+  tag: 'div'
+};
+
+var PopoverBody = function PopoverBody(_ref) {
+  var attributes = _ref.attributes,
+      children = _ref.children,
+      className = _ref.className,
+      Tag = _ref.tag;
+  var classes = classNames('popover-body', className);
+  return React.createElement(Tag, _extends({
+    "data-test": "popover-body"
+  }, attributes, {
+    className: classes
+  }), children);
+};
+
+PopoverBody.propTypes = {
+  children: propTypes.node,
+  className: propTypes.string,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string])
+};
+
+var css$l = "@media (max-width: 1025px) {\r\n  .stepper.timeline li {\r\n    -webkit-box-align: end;\r\n    -webkit-align-items: flex-end;\r\n    -ms-flex-align: end;\r\n    align-items: flex-end;\r\n  }\r\n}\r\n\r\n.stepper.timeline li a {\r\n  padding: 0px 24px;\r\n  left: 50%;\r\n}\r\n@media (max-width: 450px) {\r\n  .stepper.timeline li a {\r\n    left: 6%;\r\n  }\r\n}\r\n@media (min-width: 451px) and (max-width: 1025px) {\r\n  .stepper.timeline li a {\r\n    left: 6%;\r\n  }\r\n}\r\n.stepper.timeline li a .circle {\r\n  width: 50px;\r\n  height: 50px;\r\n  line-height: 50px;\r\n  font-size: 1.4em;\r\n  text-align: center;\r\n  position: absolute;\r\n  top: 16px;\r\n  margin-left: -50px;\r\n  background-color: #fff;\r\n  z-index: 2;\r\n}\r\n\r\n.stepper.timeline li .step-content {\r\n  width: 45%;\r\n  float: left;\r\n  border-radius: 2px;\r\n  position: relative;\r\n  background-color: #fff;\r\n}\r\n.stepper.timeline li .step-content:before {\r\n  position: absolute;\r\n  top: 26px;\r\n  right: -15px;\r\n  display: inline-block;\r\n  border-top: 15px solid transparent;\r\n  border-left: 15px solid #e0e0e0;\r\n  border-right: 0 solid #e0e0e0;\r\n  border-bottom: 15px solid transparent;\r\n  content: \" \";\r\n}\r\n.stepper.timeline li .step-content:after {\r\n  position: absolute;\r\n  top: 27px;\r\n  right: -14px;\r\n  display: inline-block;\r\n  border-top: 14px solid transparent;\r\n  border-left: 14px solid #fff;\r\n  border-right: 0 solid #fff;\r\n  border-bottom: 14px solid transparent;\r\n  content: \" \";\r\n}\r\n@media (max-width: 450px) {\r\n  .stepper.timeline li .step-content {\r\n    width: 80%;\r\n    left: 3rem;\r\n    margin-right: 3rem;\r\n    margin-bottom: 2rem;\r\n    float: right;\r\n  }\r\n  .stepper.timeline li .step-content:before {\r\n    border-left-width: 0;\r\n    border-right-width: 15px;\r\n    left: -15px;\r\n    right: auto;\r\n  }\r\n  .stepper.timeline li .step-content:after {\r\n    border-left-width: 0;\r\n    border-right-width: 14px;\r\n    left: -14px;\r\n    right: auto;\r\n  }\r\n}\r\n@media (min-width: 451px) and (max-width: 1025px) {\r\n  .stepper.timeline li .step-content {\r\n    width: 85%;\r\n    left: 3rem;\r\n    margin-right: 3rem;\r\n    margin-bottom: 2rem;\r\n    float: right;\r\n  }\r\n  .stepper.timeline li .step-content:before {\r\n    border-left-width: 0;\r\n    border-right-width: 15px;\r\n    left: -15px;\r\n    right: auto;\r\n  }\r\n  .stepper.timeline li .step-content:after {\r\n    border-left-width: 0;\r\n    border-right-width: 14px;\r\n    left: -14px;\r\n    right: auto;\r\n  }\r\n}\r\n\r\n.stepper.timeline li.timeline-inverted {\r\n  -webkit-box-align: end;\r\n  -webkit-align-items: flex-end;\r\n  -ms-flex-align: end;\r\n  align-items: flex-end;\r\n}\r\n.stepper.timeline li.timeline-inverted .step-content {\r\n  float: right;\r\n}\r\n.stepper.timeline li.timeline-inverted .step-content:before {\r\n  border-left-width: 0;\r\n  border-right-width: 15px;\r\n  left: -15px;\r\n  right: auto;\r\n}\r\n.stepper.timeline li.timeline-inverted .step-content:after {\r\n  border-left-width: 0;\r\n  border-right-width: 14px;\r\n  left: -14px;\r\n  right: auto;\r\n}\r\n\r\n.stepper.timeline.stepper-vertical li:not(:last-child):after {\r\n  content: \" \";\r\n  position: absolute;\r\n  width: 3px;\r\n  background-color: #e0e0e0;\r\n  left: 50%;\r\n  top: 57px;\r\n  margin-left: -1.5px;\r\n}\r\n@media (max-width: 450px) {\r\n  .stepper.timeline.stepper-vertical li:not(:last-child):after {\r\n    left: 6%;\r\n  }\r\n}\r\n@media (min-width: 451px) and (max-width: 1025px) {\r\n  .stepper.timeline.stepper-vertical li:not(:last-child):after {\r\n    left: 6%;\r\n  }\r\n}\r\n";
+styleInject(css$l);
+
+var Timeline = function Timeline(props) {
+  var children = props.children;
+  return React.createElement("ul", {
+    className: "stepper stepper-vertical timeline pl-0"
+  }, children);
+};
+
+var PopoverHeader = function PopoverHeader(_ref) {
+  var attributes = _ref.attributes,
+      children = _ref.children,
+      className = _ref.className,
+      Tag = _ref.tag;
+  var classes = classNames('popover-header', className);
+  return React.createElement(Tag, _extends({
+    "data-test": "popover-header"
+  }, attributes, {
+    className: classes
+  }), children);
+};
+
+PopoverHeader.propTypes = {
+  children: propTypes.node,
+  className: propTypes.string,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string])
+};
+TimelineStep.defaultProps = {
+  href: "#"
+};
+
+var css$m = ".time-picker-clock {\r\n  border-radius: 100%;\r\n  position: relative;\r\n  /* transition: 0.3s cubic-bezier(.25,.8,.50,1); */\r\n  user-select: none;\r\n  background: #f0f0f0;\r\n  animation: show-up-clock 0.2s linear;\r\n}\r\n@keyframes show-up-clock {\r\n  0% {\r\n    opacity: 0;\r\n    transform: scale(0.7);\r\n  }\r\n  100% {\r\n    opacity: 1;\r\n    transform: scale(1);\r\n  }\r\n}\r\n.time-picker-clock__container {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  padding: 10px;\r\n}\r\n.time-picker-clock__hand {\r\n  height: calc(50% - 28px);\r\n  width: 2px;\r\n  bottom: 50%;\r\n  left: calc(50% - 1px);\r\n  transform-origin: center bottom;\r\n  position: absolute;\r\n  will-change: transform;\r\n  z-index: 1;\r\n  background-color: rgba(0, 150, 136, 0.25);\r\n}\r\n\r\n.time-picker-clock__hand.between .time-picker-clock__hand--ring {\r\n  background-color: rgba(0, 150, 136, 0.25);\r\n  border-color: inherit;\r\n  border-radius: 100%;\r\n  width: 2.5rem;\r\n  height: 2.5rem;\r\n  content: \"\";\r\n  position: absolute;\r\n  top: -3%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.time-picker-clock__hand.between .time-picker-clock__hand--ring:before {\r\n  background-color: rgba(0, 77, 64, 0.75);\r\n  border-color: inherit;\r\n  border-radius: 100%;\r\n  width: 10px;\r\n  height: 10px;\r\n  content: \"\";\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  transform: translate(-50%, -50%);\r\n}\r\n\r\n.time-picker-clock__hand:after {\r\n  content: \"\";\r\n  position: absolute;\r\n  height: 6px;\r\n  width: 6px;\r\n  top: 100%;\r\n  left: 50%;\r\n  border-radius: 50%;\r\n  background-color: rgba(0, 77, 64, 0.75);\r\n  opacity: 0.75;\r\n  transform: translate(-50%, -50%);\r\n}\r\n.time-picker-clock > span {\r\n  align-items: center;\r\n  border-radius: 100%;\r\n  cursor: default;\r\n  display: flex;\r\n  font-size: 1rem;\r\n  line-height: 1.2;\r\n  justify-content: center;\r\n  left: calc(50% - 40px / 2);\r\n  height: 40px;\r\n  position: absolute;\r\n  text-align: center;\r\n  top: calc(50% - 40px / 2);\r\n  width: 40px;\r\n  user-select: none;\r\n}\r\n.time-picker-clock > span:hover,\r\n.time-picker-clock > span.active:hover {\r\n  cursor: pointer;\r\n}\r\n.time-picker-clock > span:active:hover,\r\n.time-picker-clock > span.active:active:hover {\r\n  cursor: move;\r\n}\r\n.time-picker-clock:active:hover {\r\n  cursor: move;\r\n}\r\n.time-picker-clock > span > span {\r\n  z-index: 1;\r\n}\r\n\r\n.time-picker-clock > span:before,\r\n.time-picker-clock > span:after {\r\n  content: \"\";\r\n  border-radius: 100%;\r\n  position: absolute;\r\n  top: 50%;\r\n  left: 50%;\r\n  height: 14px;\r\n  width: 14px;\r\n  transform: translate(-50%, -50%);\r\n}\r\n.time-picker-clock > span > span:after,\r\n.time-picker-clock > span > span:before {\r\n  height: 40px;\r\n  width: 40px;\r\n}\r\n.time-picker-clock > span.active {\r\n  color: #fff;\r\n  cursor: default;\r\n  z-index: 2;\r\n  background: blue;\r\n}\r\n.time-picker-clock > span > span.disabled {\r\n  pointer-events: none;\r\n}\r\n\r\n.picker__footer .clockpicker-button {\r\n  padding-left: 10px;\r\n  padding-right: 10px;\r\n}\r\n";
+styleInject(css$m);
+
+var propTypes$2 = {
+  color: propTypes.string.isRequired,
+  hours: propTypes.string.isRequired,
+  minutes: propTypes.string.isRequired,
+  dayTime: propTypes.string.isRequired,
+  unitsMode: propTypes.string.isRequired,
+  handleModeChange: propTypes.func.isRequired,
+  hoursFormat: propTypes.number.isRequired
+};
+
+var TimePickerDisplay = function TimePickerDisplay(_ref) {
+  var color = _ref.color,
+      hours = _ref.hours,
+      minutes = _ref.minutes,
+      dayTime = _ref.dayTime,
+      unitsMode = _ref.unitsMode,
+      handleModeChange = _ref.handleModeChange,
+      hoursFormat = _ref.hoursFormat;
+  var displayClasses = classNames('picker__date-display', "btn-".concat(color));
+  var hourClasses = classNames('clockpicker-span-hours', unitsMode === 'h' && 'text-primary');
+  var minuteClasses = classNames('clockpicker-span-minutes', unitsMode === 'm' && 'text-primary');
+  return React.createElement("div", {
+    className: displayClasses
+  }, React.createElement("div", {
+    className: "clockpicker-display"
+  }, React.createElement("div", {
+    className: "clockpicker-display-column"
+  }, React.createElement("span", {
+    className: hourClasses,
+    onClick: function onClick() {
+      return handleModeChange('h');
+    }
+  }, hours !== '' ? hours : "--"), ":", React.createElement("span", {
+    className: minuteClasses,
+    onClick: function onClick() {
+      return handleModeChange('m');
+    }
+  }, minutes !== '' ? minutes : "--")), hoursFormat === 12 && React.createElement("div", {
+    className: "clockpicker-display-column clockpicker-display-am-pm"
+  }, React.createElement("div", {
+    className: "clockpicker-span-am-pm"
+  }, dayTime.toUpperCase()))));
+};
+
+var Progress = function Progress(_ref) {
+  var animated = _ref.animated,
+      barClassName = _ref.barClassName,
+      children = _ref.children,
+      className = _ref.className,
+      color = _ref.color,
+      height = _ref.height,
+      material = _ref.material,
+      max = _ref.max,
+      min = _ref.min,
+      preloader = _ref.preloader,
+      striped = _ref.striped,
+      wrapperStyle = _ref.wrapperStyle,
+      value = _ref.value,
+      attributes = _objectWithoutProperties(_ref, ["animated", "barClassName", "children", "className", "color", "height", "material", "max", "min", "preloader", "striped", "wrapperStyle", "value"]);
+
+  var percent = (value - min) / (max - min) * 100;
+  var progressClasses = classNames('progress', material && 'md-progress', preloader && (color ? color + '-color' : 'primary-color') + '-dark', className);
+  var progressBarClasses = classNames(preloader ? 'indeterminate' : 'progress-bar', barClassName ? barClassName : null, animated ? 'progress-bar-animated' : null, color ? "bg-".concat(color) : null, striped || animated ? 'progress-bar-striped' : null);
+  var computedHeight = height ? height : children && '1rem';
+
+  var computedWrapperStyle = _objectSpread2({}, wrapperStyle, {
+    height: computedHeight
+  });
+
+  return React.createElement("div", _extends({
+    "data-test": "progress"
+  }, attributes, {
+    className: progressClasses,
+    style: computedWrapperStyle
+  }), React.createElement("div", {
+    className: progressBarClasses,
+    style: {
+      width: "".concat(percent, "%"),
+      height: computedHeight
+    },
+    role: "progressbar",
+    "aria-valuenow": value,
+    "aria-valuemin": min,
+    "aria-valuemax": max
+  }, children));
+};
+
+Progress.propTypes = {
+  animated: propTypes.bool,
+  barClassName: propTypes.string,
+  children: propTypes.node,
+  className: propTypes.string,
+  color: propTypes.string,
+  height: propTypes.string,
+  material: propTypes.bool,
+  max: propTypes.number,
+  min: propTypes.number,
+  preloader: propTypes.bool,
+  striped: propTypes.bool,
+  wrapperStyle: propTypes.object,
+  value: propTypes.number
+};
+Progress.defaultProps = {
+  animated: false,
+  barClassName: '',
+  className: '',
+  color: 'indigo',
+  height: '',
+  material: false,
+  max: 100,
+  min: 0,
+  preloader: false,
+  striped: false,
+  wrapperStyle: {},
+  value: 0
+};
+
+var Rating = function Rating(props) {
+  var _useState = useState([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      data = _useState2[0],
+      setData = _useState2[1];
+
+  var _useState3 = useState(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      hovered = _useState4[0],
+      setHovered = _useState4[1];
+
+  var _useState5 = useState({
+    title: '',
+    index: null
+  }),
+      _useState6 = _slicedToArray(_useState5, 2),
+      choosed = _useState6[0],
+      setChoosed = _useState6[1];
+
+  var _useState7 = useState(''),
+      _useState8 = _slicedToArray(_useState7, 2),
+      feedbackValue = _useState8[0],
+      setFeedbackValue = _useState8[1];
+
+  var _useState9 = useState(null),
+      _useState10 = _slicedToArray(_useState9, 2),
+      openedForm = _useState10[0],
+      setOpenedForm = _useState10[1];
+
+  var onDocumentClick = function onDocumentClick(e) {
+    if (!e.target.closest('.popover')) {
+      setOpenedForm(null);
+    }
+  };
+
+  useEffect(function () {
+    window.addEventListener('click', onDocumentClick);
+    return function () {
+      return window.removeEventListener('click', onDocumentClick);
+    };
+  }, []);
+  useEffect(function () {
+    setData(props.data);
+  }, [props.data]);
+  useEffect(function () {
+    var choosedIndex = data.findIndex(function (item) {
+      return item.choosed;
+    });
+    if (choosedIndex !== -1) setChoosed({
+      title: data[choosedIndex].tooltip,
+      index: choosedIndex
+    });
+  }, [data]);
+  useEffect(function () {
+    if (props.getValue) {
+      var title = choosed.title,
+          index = choosed.index;
+      index = index !== null ? index + 1 : index;
+      props.getValue({
+        title: title,
+        value: index
+      });
+    }
+  }, [choosed, props]);
+
+  var handleMouseEnter = function handleMouseEnter(_, index) {
+    setHovered(index);
+  };
+
+  var handleMouseLeave = function handleMouseLeave() {
+    setHovered(null);
+  };
+
+  var handleClick = function handleClick(title, index, e) {
+    e.stopPropagation();
+
+    if (title === choosed.title && index === choosed.index) {
+      setChoosed({
+        title: '',
+        index: null
+      });
+      feedback && setOpenedForm(null);
+    } else {
+      setChoosed({
+        title: title,
+        index: index
+      });
+      feedback && setTimeout(function () {
+        setOpenedForm(index);
+      }, 1);
+    }
+  };
+
+  var onCloseHanlder = function onCloseHanlder() {
+    setFeedbackValue('');
+    setOpenedForm(null);
+  };
+
+  var feedbackValueHandler = function feedbackValueHandler(e) {
+    setFeedbackValue(e.target.value);
+  };
+
+  var Tag = props.tag,
+      containerClassName = props.containerClassName,
+      iconClassName = props.iconClassName,
+      iconFaces = props.iconFaces,
+      iconSize = props.iconSize,
+      iconRegular = props.iconRegular,
+      fillClassName = props.fillClassName,
+      fillColors = props.fillColors,
+      getValue = props.getValue,
+      feedback = props.feedback,
+      submitHandler = props.submitHandler,
+      commonAttributes = _objectWithoutProperties(props, ["tag", "containerClassName", "iconClassName", "iconFaces", "iconSize", "iconRegular", "fillClassName", "fillColors", "getValue", "feedback", "submitHandler"]);
+
+  var containerClasses = classNames('mdb-rating', 'd-flex', 'justify-content-start', 'align-items-center', containerClassName);
+  var renderedIcons = [];
+
+  if (data.length) {
+    renderedIcons = data.map(function (_ref, index) {
+      var _ref$icon = _ref.icon,
+          icon = _ref$icon === void 0 ? 'star' : _ref$icon,
+          tooltip = _ref.tooltip,
+          far = _ref.far,
+          size = _ref.size,
+          _ = _ref.choosed,
+          itemAttributes = _objectWithoutProperties(_ref, ["icon", "tooltip", "far", "size", "choosed"]);
+
+      var isChoosed = choosed.index !== null;
+      var isHovered = hovered !== null;
+      var isFormOpened = openedForm !== null;
+      var isFormActive = feedback && isFormOpened && openedForm === index;
+      var toFill = false;
+
+      if (isChoosed) {
+        toFill = index <= choosed.index;
+
+        if (isHovered && hovered > choosed.index) {
+          toFill = index <= hovered;
+        }
+      } else if (isHovered) {
+        toFill = index <= hovered;
+      }
+
+      var fillColor = '';
+
+      if (fillColors) {
+        var current = null;
+
+        if (isChoosed) {
+          current = choosed.index;
+          if (isHovered) current = hovered;
+        } else if (isHovered) current = hovered;
+
+        var isCustom = Array.isArray(fillColors);
+        var defaultFillColors = ['oneStar', 'twoStars', 'threeStars', 'fourStars', 'fiveStars'];
+
+        if (current !== null) {
+          fillColor = isCustom ? fillColors[current] : defaultFillColors[current];
+        }
+      }
+
+      var iconClasses = classNames('py-2 px-1 rate-popover', toFill && (fillColors ? fillColor : fillClassName), iconClassName);
+      var renderIcon = icon;
+
+      if (iconFaces) {
+        var faces = ['angry', 'frown', 'meh', 'smile', 'laugh'];
+        renderIcon = 'meh-blank';
+
+        if (isChoosed && index <= choosed.index) {
+          renderIcon = faces[choosed.index];
+          if (isHovered) renderIcon = faces[hovered];
+        } else if (isHovered && index <= hovered) {
+          renderIcon = faces[hovered];
+        }
+      }
+
+      var tooltipContent = tooltip;
+
+      if (isFormActive) {
+        tooltipContent = React.createElement("form", {
+          onSubmit: function onSubmit(e) {
+            submitHandler(e, tooltip, openedForm + 1, feedbackValue);
+            onCloseHanlder();
+          }
+        }, React.createElement(MDBPopoverHeader, null, tooltip), React.createElement(MDBPopoverBody, null, React.createElement("textarea", {
+          type: "text",
+          className: "md-textarea form-control py-0",
+          value: feedbackValue,
+          onChange: feedbackValueHandler // style={{ resize: 'none' }}
+
+        }), React.createElement("div", {
+          className: "d-flex align-items-center justify-content-around mt-2"
+        }, React.createElement(MDBBtn, {
+          type: "submit",
+          color: "primary",
+          size: "sm"
+        }, "Submit!"), React.createElement("button", {
+          onMouseDown: onCloseHanlder,
+          style: {
+            backgroundColor: '#fff',
+            border: 'none',
+            padding: '0.5rem 1.6rem'
+          }
+        }, "Close"))));
+      }
+
+      return React.createElement(MDBTooltip, {
+        key: tooltip,
+        domElement: true,
+        placement: "top",
+        tag: "span",
+        popover: isFormActive,
+        isVisible: isFormActive,
+        clickable: isFormActive
+      }, React.createElement("span", null, React.createElement(Fa$1, _extends({
+        style: {
+          cursor: 'pointer'
+        }
+      }, commonAttributes, itemAttributes, {
+        icon: renderIcon,
+        size: size || iconSize,
+        far: far || iconRegular,
+        className: iconClasses,
+        "data-index": index,
+        "data-original-title": tooltip,
+        onMouseEnter: function onMouseEnter() {
+          return handleMouseEnter(tooltip, index);
+        },
+        onMouseLeave: handleMouseLeave,
+        onClick: function onClick(e) {
+          return handleClick(tooltip, index, e);
+        }
+      }))), React.createElement("div", {
+        style: {
+          userSelect: 'none'
+        }
+      }, tooltipContent));
+    });
+  }
+
+  return React.createElement(Tag, {
+    className: containerClasses
+  }, renderedIcons);
+};
+
+Rating.propTypes = {
+  containerClassName: propTypes.string,
+  data: propTypes.arrayOf(propTypes.shape({
+    icon: propTypes.string,
+    tooltip: propTypes.string,
+    choosed: propTypes.bool
+  })),
+  feedback: propTypes.bool,
+  fillClassName: propTypes.string,
+  fillColors: propTypes.oneOfType([propTypes.bool, propTypes.arrayOf(propTypes.string)]),
+  iconClassName: propTypes.string,
+  iconFaces: propTypes.bool,
+  iconSize: propTypes.string,
+  iconRegular: propTypes.bool,
+  tag: propTypes.string,
+  getValue: propTypes.func,
+  submitHandler: propTypes.func
+};
+Rating.defaultProps = {
+  containerClassName: '',
+  data: [{
+    tooltip: 'Very Bad'
+  }, {
+    tooltip: 'Poor'
+  }, {
+    tooltip: 'Ok'
+  }, {
+    tooltip: 'Good'
+  }, {
+    tooltip: 'Excellent'
+  }],
+  feedback: false,
+  fillClassName: 'fiveStars',
+  iconClassName: '',
+  iconSize: '1x',
+  iconRegular: false,
+  tag: 'div',
+  submitHandler: function submitHandler(e) {
+    return e.preventDefault();
+  }
+};
+
+var Row = function Row(props) {
+  var className = props.className,
+      Tag = props.tag,
+      center = props.center,
+      start = props.start,
+      end = props.end,
+      around = props.around,
+      between = props.between,
+      top = props.top,
+      bottom = props.bottom,
+      middle = props.middle,
+      attributes = _objectWithoutProperties(props, ["className", "tag", "center", "start", "end", "around", "between", "top", "bottom", "middle"]);
+
+  var classes = classNames("row", end && "justify-content-end", start && "justify-content-start", center && "justify-content-center", between && "justify-content-between", around && "justify-content-around", top && "align-self-start", middle && "align-self-center", bottom && "align-self-end", className);
+  return React.createElement(Tag, _extends({
+    "data-test": "row"
+  }, attributes, {
+    className: classes
+  }));
+};
+
+Row.propTypes = {
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  className: propTypes.string,
+  top: propTypes.bool,
+  bottom: propTypes.bool,
+  middle: propTypes.bool,
+  end: propTypes.bool,
+  start: propTypes.bool,
+  center: propTypes.bool,
+  between: propTypes.bool,
+  around: propTypes.bool
+};
+Row.defaultProps = {
+  tag: "div"
+};
+
+var propTypes$1 = {
+  activeItem: propTypes.any,
+  tabId: propTypes.any,
+  className: propTypes.string
+};
+
+var TabContent =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(TabContent, _React$Component);
+
+  function TabContent() {
+    var _getPrototypeOf2;
+
+    var _this;
+
+    _classCallCheck(this, TabContent);
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(TabContent)).call.apply(_getPrototypeOf2, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      activeItem: _this.props.activeItem
+    });
+
+    return _this;
+  }
+
+  _createClass(TabContent, [{
+    key: "getChildContext",
+    value: function getChildContext() {
+      return {
+        activeItemId: this.state.activeItem
+      };
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var className = this.props.className;
+      var attributes = omit(this.props, Object.keys(propTypes$1));
+      var classes = classNames('tab-content', className);
+      return React.createElement("div", _extends({
+        "data-test": "tabContent"
+      }, attributes, {
+        className: classes
+      }));
+    }
+  }], [{
+    key: "getDerivedStateFromProps",
+    value: function getDerivedStateFromProps(nextProps, prevState) {
+      return prevState.activeItem !== nextProps.activeItem ? {
+        activeItem: nextProps.activeItem
+      } : null;
+    }
+  }]);
+
+  return TabContent;
+}(React.Component);
+
+TabContent.childContextTypes = {
+  activeItemId: propTypes.any
+};
+TabContent.propTypes = propTypes$1;
+
+var TabPane =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(TabPane, _React$Component);
+
+  function TabPane() {
+    _classCallCheck(this, TabPane);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(TabPane).apply(this, arguments));
+  }
+
+  _createClass(TabPane, [{
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          className = _this$props.className,
+          tabId = _this$props.tabId,
+          attributes = _objectWithoutProperties(_this$props, ["className", "tabId"]);
+
+      var classes = classNames('tab-pane', {
+        active: tabId === this.context.activeItemId
+      }, className);
+      return React.createElement("div", _extends({
+        "data-test": "tab-pane"
+      }, attributes, {
+        className: classes,
+        role: "tabpanel"
+      }));
+    }
+  }]);
+
+  return TabPane;
+}(React.Component);
+
+TabPane.contextTypes = {
+  activeItemId: propTypes.any
+};
+TabPane.propTypes = {
+  tabId: propTypes.any,
+  className: propTypes.string
+};
+
+var TableHead = function TableHead(props) {
+  var _classNames;
+
+  var children = props.children,
+      color = props.color,
+      columns = props.columns,
+      textWhite = props.textWhite,
+      attributes = _objectWithoutProperties(props, ["children", "color", "columns", "textWhite"]);
+
+  var isTheadColor = color === 'dark' || color === 'light';
+  var classes = classNames((_classNames = {
+    'text-white': textWhite
+  }, _defineProperty(_classNames, "thead-".concat(color), color && isTheadColor), _defineProperty(_classNames, "".concat(color), color && !isTheadColor), _classNames));
+  return React.createElement("thead", _extends({
+    "data-test": "table-head"
+  }, attributes, {
+    className: classes
+  }), columns && React.createElement("tr", null, columns.map(function (col) {
+    return React.createElement("th", {
+      key: col.field,
+      className: col.hasOwnProperty('minimal') ? "th-".concat(col.minimal) : ''
+    }, col.label);
+  })), children);
+};
+
+TableHead.propTypes = {
+  children: propTypes.node,
+  color: propTypes.string,
+  columns: propTypes.arrayOf(propTypes.object),
+  textWhite: propTypes.bool
+};
+TableHead.defaultProps = {
+  textWhite: false
+};
+
+var TreeviewContext = React.createContext();
+
+var Treeview = function Treeview(props) {
+  var _useState = useState(null),
+      _useState2 = _slicedToArray(_useState, 2),
+      active = _useState2[0],
+      setActive = _useState2[1];
+
+  useEffect(function () {
+    if (props.getValue) {
+      props.getValue({
+        item: active ? active.closest('li') : active,
+        value: active ? active.closest('li').childNodes[1].textContent : active
+      });
+    }
+  }, [active, props]);
+
+  var getActive = function getActive(target) {
+    setActive(target);
+    return target;
+  };
+
+  var theme = props.theme,
+      children = props.children,
+      className = props.className,
+      getValue = props.getValue,
+      header = props.header,
+      listClassName = props.listClassName,
+      Tag = props.tag,
+      attributes = _objectWithoutProperties(props, ["theme", "children", "className", "getValue", "header", "listClassName", "tag"]);
+
+  var classes = classNames('border', theme ? "treeview-".concat(theme) : 'treeview', className);
+  var ulClasses = classNames('list-unstyled', header ? 'pb-2 mb-1' : 'py-2 my-1', theme && "treeview-".concat(theme, "-list"), theme === 'animated' || !theme && 'pl-3', listClassName);
+  var head = header && React.createElement(React.Fragment, null, React.createElement("h6", {
+    className: "pt-3 pl-3"
+  }, header), React.createElement("hr", null));
+  return React.createElement(Tag, _extends({
+    "data-test": "treeview"
+  }, attributes, {
+    className: classes
+  }), head, React.createElement("ul", {
+    className: ulClasses
+  }, React.createElement(TreeviewContext.Provider, {
+    value: {
+      active: active,
+      theme: theme,
+      getActive: getActive
+    }
+  }, children)));
+};
+
+Treeview.propTypes = {
+  className: propTypes.string,
+  header: propTypes.string,
+  listClassName: propTypes.string,
+  tag: propTypes.string,
+  theme: propTypes.string,
+  getValue: propTypes.func
+};
+Treeview.defaultProps = {
+  tag: 'div',
+  theme: '',
+  getValue: function getValue() {}
+};
+
+var TreeviewItem = function TreeviewItem(props) {
+  var _useState = useState(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      target = _useState2[0],
+      setTarget = _useState2[1];
+
+  var targetRef = useRef(null);
+
+  var className = props.className,
+      disabled = props.disabled,
+      disabledClassName = props.disabledClassName,
+      fab = props.fab,
+      fal = props.fal,
+      far = props.far,
+      icon = props.icon,
+      opened = props.opened,
+      Tag = props.tag,
+      title = props.title,
+      attributes = _objectWithoutProperties(props, ["className", "disabled", "disabledClassName", "fab", "fal", "far", "icon", "opened", "tag", "title"]);
+
+  var _useContext = useContext(TreeviewContext),
+      theme = _useContext.theme,
+      active = _useContext.active,
+      getActive = _useContext.getActive;
+
+  useEffect(function () {
+    if (targetRef && targetRef.current) {
+      setTarget(targetRef.current);
+    }
+  }, []);
+
+  var handleClick = function handleClick() {
+    if (!disabled) {
+      target.classList.contains('opened') ? getActive(null) : getActive(target);
+    }
+  };
+
+  var classes = classNames(disabled && disabledClassName, theme && "treeview-".concat(theme, "-items treeview-").concat(theme, "-element closed mb-1"), active === target && !active.classList.contains('opened') ? 'opened' : '', className);
+  return React.createElement(Tag, _extends({
+    "data-test": "treeview-item"
+  }, attributes, {
+    className: classes,
+    ref: targetRef,
+    onMouseDown: handleClick,
+    style: {
+      transform: 'translateY(0.3em)'
+    }
+  }), React.createElement(Fa, {
+    className: "mr-2",
+    fab: fab,
+    fal: fal,
+    far: far,
+    icon: icon
+  }), React.createElement("span", null, title));
+};
+
+TreeviewItem.propTypes = {
+  className: propTypes.string,
+  disabled: propTypes.bool,
+  disabledClassName: propTypes.string,
+  fab: propTypes.bool,
+  fal: propTypes.bool,
+  far: propTypes.bool,
+  icon: propTypes.string,
+  opened: propTypes.bool,
+  tag: propTypes.oneOfType([propTypes.func, propTypes.string])
+};
+TreeviewItem.defaultProps = {
+  disabled: false,
+  fab: false,
+  fal: false,
+  far: false,
+  icon: 'folder-open',
+  opened: false,
+  tag: 'li'
+};
+
+var TreeviewList = function TreeviewList(props) {
+  var _useState = useState(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      opened = _useState2[0],
+      setOpen = _useState2[1];
+
+  useEffect(function () {
+    setOpen(props.opened);
+  }, [props.opened]);
+
+  var handleSwitch = function handleSwitch() {
+    return setOpen(!opened);
+  };
+
+  var children = props.children,
+      className = props.className,
+      disabled = props.disabled,
+      disabledClassName = props.disabledClassName,
+      fab = props.fab,
+      fal = props.fal,
+      far = props.far,
+      icon = props.icon,
+      _ = props.opened,
+      Tag = props.tag,
+      title = props.title,
+      attributes = _objectWithoutProperties(props, ["children", "className", "disabled", "disabledClassName", "fab", "fal", "far", "icon", "opened", "tag", "title"]);
+
+  var _useContext = useContext(TreeviewContext),
+      theme = _useContext.theme;
+
+  var nestedClasses = classNames('nested', opened && 'active');
+  var folder = classNames(theme && "closed treeview-".concat(theme, "-element d-block"), !children && 'ml-2', opened && 'opened', disabled && disabledClassName);
+  var classes = classNames(theme && "treeview-".concat(theme, "-items px-0"), className);
+  var iconClasses = classNames(theme ? 'mx-2' : 'mr-2');
+  var child = children && React.createElement("ul", {
+    className: nestedClasses,
+    style: {
+      height: 'calc(100% + 0.6rem)',
+      marginLeft: '2px'
+    }
+  }, children);
+  var collapse = theme && React.createElement(Collapse, {
+    isOpen: opened
+  }, child);
+  var iconArrow = theme !== 'colorful' ? 'angle-right' : opened ? 'minus-circle' : 'plus-circle';
+  var arrow = children && React.createElement(Fa, {
+    icon: iconArrow,
+    rotate: theme !== 'colorful' ? opened ? '90 down' : '0' : '',
+    className: "rotate"
+  });
+  var btn = children && React.createElement(Button, {
+    flat: true,
+    className: "m-0 py-0 px-1 mr-1 z-depth-0",
+    onClick: handleSwitch
+  }, arrow);
+  return React.createElement(Tag, _extends({
+    "data-test": "treeview-list"
+  }, attributes, {
+    className: classes
+  }), React.createElement("span", {
+    className: folder,
+    onClick: !disabled && theme ? handleSwitch : null
+  }, theme ? arrow : btn, React.createElement("span", null, React.createElement(Fa, {
+    className: iconClasses,
+    fab: fab,
+    fal: fal,
+    far: far,
+    icon: icon
+  }), title)), collapse || child);
+};
+
+var css$n = ".Toastify__toast-container {\r\n  z-index: 9999;\r\n  position: fixed;\r\n  padding: 4px;\r\n  width: 320px;\r\n  box-sizing: border-box;\r\n  color: #fff;\r\n}\r\n.Toastify__toast-container--top-left {\r\n  top: 1em;\r\n  left: 1em;\r\n}\r\n.Toastify__toast-container--top-center {\r\n  top: 1em;\r\n  left: 50%;\r\n  margin-left: -160px;\r\n}\r\n.Toastify__toast-container--top-right {\r\n  top: 1em;\r\n  right: 1em;\r\n}\r\n.Toastify__toast-container--bottom-left {\r\n  bottom: 1em;\r\n  left: 1em;\r\n}\r\n.Toastify__toast-container--bottom-center {\r\n  bottom: 1em;\r\n  left: 50%;\r\n  margin-left: -160px;\r\n}\r\n.Toastify__toast-container--bottom-right {\r\n  bottom: 1em;\r\n  right: 1em;\r\n}\r\n\r\n@media only screen and (max-width: 480px) {\r\n  .Toastify__toast-container {\r\n    width: 100vw;\r\n    padding: 0;\r\n    left: 0;\r\n    margin: 0;\r\n  }\r\n  .Toastify__toast-container--top-left,\r\n  .Toastify__toast-container--top-center,\r\n  .Toastify__toast-container--top-right {\r\n    top: 0;\r\n  }\r\n  .Toastify__toast-container--bottom-left,\r\n  .Toastify__toast-container--bottom-center,\r\n  .Toastify__toast-container--bottom-right {\r\n    bottom: 0;\r\n  }\r\n  .Toastify__toast-container--rtl {\r\n    right: 0;\r\n    left: initial;\r\n  }\r\n}\r\n\r\n.Toastify__toast {\r\n  position: relative;\r\n  min-height: 64px;\r\n  box-sizing: border-box;\r\n  margin-bottom: 1rem;\r\n  padding: 8px;\r\n  border-radius: 1px;\r\n  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1), 0 2px 15px 0 rgba(0, 0, 0, 0.05);\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-pack: justify;\r\n  justify-content: space-between;\r\n  max-height: 800px;\r\n  overflow: hidden;\r\n  font-family: sans-serif;\r\n  cursor: pointer;\r\n  direction: ltr;\r\n}\r\n.Toastify__toast--rtl {\r\n  direction: rtl;\r\n}\r\n.Toastify__toast--default {\r\n  background: #fff;\r\n  color: #aaa;\r\n}\r\n.Toastify__toast--info {\r\n  background: #3498db;\r\n}\r\n.Toastify__toast--success {\r\n  background: #07bc0c;\r\n}\r\n.Toastify__toast--warning {\r\n  background: #f1c40f;\r\n}\r\n.Toastify__toast--error {\r\n  background: #e74c3c;\r\n}\r\n.Toastify__toast-body {\r\n  margin: auto 0;\r\n  -ms-flex: 1;\r\n  flex: 1;\r\n}\r\n\r\n@media only screen and (max-width: 480px) {\r\n  .Toastify__toast {\r\n    margin-bottom: 0;\r\n  }\r\n}\r\n\r\n.Toastify__close-button {\r\n  color: #fff;\r\n  font-weight: bold;\r\n  font-size: 14px;\r\n  background: transparent;\r\n  outline: none;\r\n  border: none;\r\n  padding: 0;\r\n  cursor: pointer;\r\n  opacity: 0.7;\r\n  transition: 0.3s ease;\r\n  -ms-flex-item-align: start;\r\n  align-self: flex-start;\r\n}\r\n.Toastify__close-button--default {\r\n  color: #000;\r\n  opacity: 0.3;\r\n}\r\n.Toastify__close-button:hover,\r\n.Toastify__close-button:focus {\r\n  opacity: 1;\r\n}\r\n\r\n@keyframes Toastify__trackProgress {\r\n  0% {\r\n    transform: scaleX(1);\r\n  }\r\n  100% {\r\n    transform: scaleX(0);\r\n  }\r\n}\r\n\r\n.Toastify__progress-bar {\r\n  position: absolute;\r\n  bottom: 0;\r\n  left: 0;\r\n  width: 100%;\r\n  height: 5px;\r\n  z-index: 9999;\r\n  opacity: 0.7;\r\n  background-color: rgba(255, 255, 255, 0.7);\r\n  transform-origin: left;\r\n}\r\n.Toastify__progress-bar--animated {\r\n  animation: Toastify__trackProgress linear 1 forwards;\r\n}\r\n.Toastify__progress-bar--controlled {\r\n  transition: transform 0.2s;\r\n}\r\n.Toastify__progress-bar--rtl {\r\n  right: 0;\r\n  left: initial;\r\n  transform-origin: right;\r\n}\r\n.Toastify__progress-bar--default {\r\n  background: linear-gradient(\r\n    to right,\r\n    #4cd964,\r\n    #5ac8fa,\r\n    #007aff,\r\n    #34aadc,\r\n    #5856d6,\r\n    #ff2d55\r\n  );\r\n}\r\n\r\n@keyframes Toastify__bounceInRight {\r\n  from,\r\n  60%,\r\n  75%,\r\n  90%,\r\n  to {\r\n    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\r\n  }\r\n  from {\r\n    opacity: 0;\r\n    transform: translate3d(3000px, 0, 0);\r\n  }\r\n  60% {\r\n    opacity: 1;\r\n    transform: translate3d(-25px, 0, 0);\r\n  }\r\n  75% {\r\n    transform: translate3d(10px, 0, 0);\r\n  }\r\n  90% {\r\n    transform: translate3d(-5px, 0, 0);\r\n  }\r\n  to {\r\n    transform: none;\r\n  }\r\n}\r\n\r\n@keyframes Toastify__bounceOutRight {\r\n  20% {\r\n    opacity: 1;\r\n    transform: translate3d(-20px, 0, 0);\r\n  }\r\n  to {\r\n    opacity: 0;\r\n    transform: translate3d(2000px, 0, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__bounceInLeft {\r\n  from,\r\n  60%,\r\n  75%,\r\n  90%,\r\n  to {\r\n    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\r\n  }\r\n  0% {\r\n    opacity: 0;\r\n    transform: translate3d(-3000px, 0, 0);\r\n  }\r\n  60% {\r\n    opacity: 1;\r\n    transform: translate3d(25px, 0, 0);\r\n  }\r\n  75% {\r\n    transform: translate3d(-10px, 0, 0);\r\n  }\r\n  90% {\r\n    transform: translate3d(5px, 0, 0);\r\n  }\r\n  to {\r\n    transform: none;\r\n  }\r\n}\r\n\r\n@keyframes Toastify__bounceOutLeft {\r\n  20% {\r\n    opacity: 1;\r\n    transform: translate3d(20px, 0, 0);\r\n  }\r\n  to {\r\n    opacity: 0;\r\n    transform: translate3d(-2000px, 0, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__bounceInUp {\r\n  from,\r\n  60%,\r\n  75%,\r\n  90%,\r\n  to {\r\n    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\r\n  }\r\n  from {\r\n    opacity: 0;\r\n    transform: translate3d(0, 3000px, 0);\r\n  }\r\n  60% {\r\n    opacity: 1;\r\n    transform: translate3d(0, -20px, 0);\r\n  }\r\n  75% {\r\n    transform: translate3d(0, 10px, 0);\r\n  }\r\n  90% {\r\n    transform: translate3d(0, -5px, 0);\r\n  }\r\n  to {\r\n    transform: translate3d(0, 0, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__bounceOutUp {\r\n  20% {\r\n    transform: translate3d(0, -10px, 0);\r\n  }\r\n  40%,\r\n  45% {\r\n    opacity: 1;\r\n    transform: translate3d(0, 20px, 0);\r\n  }\r\n  to {\r\n    opacity: 0;\r\n    transform: translate3d(0, -2000px, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__bounceInDown {\r\n  from,\r\n  60%,\r\n  75%,\r\n  90%,\r\n  to {\r\n    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);\r\n  }\r\n  0% {\r\n    opacity: 0;\r\n    transform: translate3d(0, -3000px, 0);\r\n  }\r\n  60% {\r\n    opacity: 1;\r\n    transform: translate3d(0, 25px, 0);\r\n  }\r\n  75% {\r\n    transform: translate3d(0, -10px, 0);\r\n  }\r\n  90% {\r\n    transform: translate3d(0, 5px, 0);\r\n  }\r\n  to {\r\n    transform: none;\r\n  }\r\n}\r\n\r\n@keyframes Toastify__bounceOutDown {\r\n  20% {\r\n    transform: translate3d(0, 10px, 0);\r\n  }\r\n  40%,\r\n  45% {\r\n    opacity: 1;\r\n    transform: translate3d(0, -20px, 0);\r\n  }\r\n  to {\r\n    opacity: 0;\r\n    transform: translate3d(0, 2000px, 0);\r\n  }\r\n}\r\n\r\n.Toastify__bounce-enter--top-left,\r\n.Toastify__bounce-enter--bottom-left {\r\n  animation-name: Toastify__bounceInLeft;\r\n}\r\n\r\n.Toastify__bounce-enter--top-right,\r\n.Toastify__bounce-enter--bottom-right {\r\n  animation-name: Toastify__bounceInRight;\r\n}\r\n\r\n.Toastify__bounce-enter--top-center {\r\n  animation-name: Toastify__bounceInDown;\r\n}\r\n\r\n.Toastify__bounce-enter--bottom-center {\r\n  animation-name: Toastify__bounceInUp;\r\n}\r\n\r\n.Toastify__bounce-exit--top-left,\r\n.Toastify__bounce-exit--bottom-left {\r\n  animation-name: Toastify__bounceOutLeft;\r\n}\r\n\r\n.Toastify__bounce-exit--top-right,\r\n.Toastify__bounce-exit--bottom-right {\r\n  animation-name: Toastify__bounceOutRight;\r\n}\r\n\r\n.Toastify__bounce-exit--top-center {\r\n  animation-name: Toastify__bounceOutUp;\r\n}\r\n\r\n.Toastify__bounce-exit--bottom-center {\r\n  animation-name: Toastify__bounceOutDown;\r\n}\r\n\r\n@keyframes Toastify__zoomIn {\r\n  from {\r\n    opacity: 0;\r\n    transform: scale3d(0.3, 0.3, 0.3);\r\n  }\r\n  50% {\r\n    opacity: 1;\r\n  }\r\n}\r\n\r\n@keyframes Toastify__zoomOut {\r\n  from {\r\n    opacity: 1;\r\n  }\r\n  50% {\r\n    opacity: 0;\r\n    transform: scale3d(0.3, 0.3, 0.3);\r\n  }\r\n  to {\r\n    opacity: 0;\r\n  }\r\n}\r\n\r\n.Toastify__zoom-enter {\r\n  animation-name: Toastify__zoomIn;\r\n}\r\n\r\n.Toastify__zoom-exit {\r\n  animation-name: Toastify__zoomOut;\r\n}\r\n\r\n@keyframes Toastify__flipIn {\r\n  from {\r\n    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);\r\n    animation-timing-function: ease-in;\r\n    opacity: 0;\r\n  }\r\n  40% {\r\n    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);\r\n    animation-timing-function: ease-in;\r\n  }\r\n  60% {\r\n    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);\r\n    opacity: 1;\r\n  }\r\n  80% {\r\n    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);\r\n  }\r\n  to {\r\n    transform: perspective(400px);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__flipOut {\r\n  from {\r\n    transform: perspective(400px);\r\n  }\r\n  30% {\r\n    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);\r\n    opacity: 1;\r\n  }\r\n  to {\r\n    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);\r\n    opacity: 0;\r\n  }\r\n}\r\n\r\n.Toastify__flip-enter {\r\n  animation-name: Toastify__flipIn;\r\n}\r\n\r\n.Toastify__flip-exit {\r\n  animation-name: Toastify__flipOut;\r\n}\r\n\r\n@keyframes Toastify__slideInRight {\r\n  from {\r\n    transform: translate3d(110%, 0, 0);\r\n    visibility: visible;\r\n  }\r\n  to {\r\n    transform: translate3d(0, 0, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__slideInLeft {\r\n  from {\r\n    transform: translate3d(-110%, 0, 0);\r\n    visibility: visible;\r\n  }\r\n  to {\r\n    transform: translate3d(0, 0, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__slideInUp {\r\n  from {\r\n    transform: translate3d(0, 110%, 0);\r\n    visibility: visible;\r\n  }\r\n  to {\r\n    transform: translate3d(0, 0, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__slideInDown {\r\n  from {\r\n    transform: translate3d(0, -110%, 0);\r\n    visibility: visible;\r\n  }\r\n  to {\r\n    transform: translate3d(0, 0, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__slideOutRight {\r\n  from {\r\n    transform: translate3d(0, 0, 0);\r\n  }\r\n  to {\r\n    visibility: hidden;\r\n    transform: translate3d(110%, 0, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__slideOutLeft {\r\n  from {\r\n    transform: translate3d(0, 0, 0);\r\n  }\r\n  to {\r\n    visibility: hidden;\r\n    transform: translate3d(-110%, 0, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__slideOutDown {\r\n  from {\r\n    transform: translate3d(0, 0, 0);\r\n  }\r\n  to {\r\n    visibility: hidden;\r\n    transform: translate3d(0, 500px, 0);\r\n  }\r\n}\r\n\r\n@keyframes Toastify__slideOutUp {\r\n  from {\r\n    transform: translate3d(0, 0, 0);\r\n  }\r\n  to {\r\n    visibility: hidden;\r\n    transform: translate3d(0, -500px, 0);\r\n  }\r\n}\r\n\r\n.Toastify__slide-enter--top-left,\r\n.Toastify__slide-enter--bottom-left {\r\n  animation-name: Toastify__slideInLeft;\r\n}\r\n\r\n.Toastify__slide-enter--top-right,\r\n.Toastify__slide-enter--bottom-right {\r\n  animation-name: Toastify__slideInRight;\r\n}\r\n\r\n.Toastify__slide-enter--top-center {\r\n  animation-name: Toastify__slideInDown;\r\n}\r\n\r\n.Toastify__slide-enter--bottom-center {\r\n  animation-name: Toastify__slideInUp;\r\n}\r\n\r\n.Toastify__slide-exit--top-left,\r\n.Toastify__slide-exit--bottom-left {\r\n  animation-name: Toastify__slideOutLeft;\r\n}\r\n\r\n.Toastify__slide-exit--top-right,\r\n.Toastify__slide-exit--bottom-right {\r\n  animation-name: Toastify__slideOutRight;\r\n}\r\n\r\n.Toastify__slide-exit--top-center {\r\n  animation-name: Toastify__slideOutUp;\r\n}\r\n\r\n.Toastify__slide-exit--bottom-center {\r\n  animation-name: Toastify__slideOutDown;\r\n}\r\n";
+styleInject(css$n);
+
+export { Alert, Animation, Autocomplete, Avatar, Badge, Box, Breadcrumb, BreadcrumbItem, Button, ButtonFixed, ButtonFixed$1 as ButtonFixedItem, ButtonGroup, ButtonToolbar, Card, CardBody, CardFooter, CardGroup, CardHeader, CardImage, CardText, CardTitle, CardUp, Carousel, CarouselCaption, Control as CarouselControl, CarouselIndicator, CarouselIndicators, CarouselInner, CarouselItem, Chip, ChipsInput, MDBCloseIcon as CloseIcon, Col, Collapse, CollapseHeader, Container, DataTable, DatePicker, Dropdown, DropdownItem, DropdownMenu, DropdownToggle, EdgeHeader, ExportToCSV, Fa, RotatingCard as FlippingCard, Footer, FormInline, FreeBird, Gallery, GalleryList, HamburgerToggler, Iframe, Input, InputFile, InputGroup, InputNumeric, InputRange, InputSwitch, Jumbotron, Lightbox, ListGroup, ListGroupItem, Alert as MDBAlert, Animation as MDBAnimation, Autocomplete as MDBAutocomplete, Avatar as MDBAvatar, Badge as MDBBadge, Box as MDBBox, Breadcrumb as MDBBreadcrumb, BreadcrumbItem as MDBBreadcrumbItem, Button as MDBBtn, ButtonFixed as MDBBtnFixed, ButtonFixed$1 as MDBBtnFixedItem, ButtonGroup as MDBBtnGroup, ButtonToolbar as MDBBtnToolbar, Card as MDBCard, CardBody as MDBCardBody, CardFooter as MDBCardFooter, CardGroup as MDBCardGroup, CardHeader as MDBCardHeader, CardImage as MDBCardImage, CardText as MDBCardText, CardTitle as MDBCardTitle, CardUp as MDBCardUp, Carousel as MDBCarousel, CarouselCaption as MDBCarouselCaption, CarouselIndicator as MDBCarouselIndicator, CarouselIndicators as MDBCarouselIndicators, CarouselInner as MDBCarouselInner, CarouselItem as MDBCarouselItem, Chip as MDBChip, ChipsInput as MDBChipsInput, MDBCloseIcon, Col as MDBCol, Collapse as MDBCollapse, CollapseHeader as MDBCollapseHeader, Container as MDBContainer, Control as MDBControl, DataTable as MDBDataTable, DatePicker as MDBDatePicker, Dropdown as MDBDropdown, DropdownItem as MDBDropdownItem, DropdownMenu as MDBDropdownMenu, DropdownToggle as MDBDropdownToggle, EdgeHeader as MDBEdgeHeader, ExportToCSV as MDBExportToCSV, InputFile as MDBFileInput, Footer as MDBFooter, FormInline as MDBFormInline, FreeBird as MDBFreeBird, Gallery as MDBGallery, GalleryList as MDBGalleryList, HamburgerToggler as MDBHamburgerToggler, Fa as MDBIcon, Iframe as MDBIframe, Input as MDBInput, InputGroup as MDBInputGroup, InputNumeric as MDBInputSelect, Jumbotron as MDBJumbotron, Lightbox as MDBLightbox, ListGroup as MDBListGroup, ListGroupItem as MDBListGroupItem, Mask as MDBMask, Media as MDBMedia, Modal as MDBModal, ModalBody as MDBModalBody, ModalFooter as MDBModalFooter, ModalHeader as MDBModalHeader, Nav as MDBNav, NavItem as MDBNavItem, NavLink as MDBNavLink, Navbar as MDBNavbar, NavbarBrand as MDBNavbarBrand, NavbarNav as MDBNavbarNav, NavbarToggler as MDBNavbarToggler, Notification as MDBNotification, PageItem as MDBPageItem, PageLink as MDBPageNav, Pagination as MDBPagination, Parallax as MDBParallax, Popover as MDBPopover, PopoverBody as MDBPopoverBody, PopoverHeader as MDBPopoverHeader, Popover as MDBPopper, Progress as MDBProgress, InputRange as MDBRangeInput, Rating as MDBRating, RotatingCard as MDBRotatingCard, Row as MDBRow, ScrollBar as MDBScrollbar, ScrollBox as MDBScrollspyBox, ScrollSpyList as MDBScrollspyList, ScrollSpyListItem as MDBScrollspyListItem, ScrollSpyText as MDBScrollspyText, Select as MDBSelect, SelectInput$1 as MDBSelectInput, SelectOption as MDBSelectOption, Options as MDBSelectOptions, SideNav as MDBSideNav, SideNavCat as MDBSideNavCat, SideNavItem as MDBSideNavItem, SideNavLink as MDBSideNavLink, SideNavNav as MDBSideNavNav, SimpleChart as MDBSimpleChart, SmoothScroll as MDBSmoothScroll, Spinner as MDBSpinner, Step as MDBStep, Stepper as MDBStepper, Sticky as MDBSticky, Container$1 as MDBStickyContent, MDBStreak, InputSwitch as MDBSwitch, TabContent as MDBTabContent, TabPane as MDBTabPane, Table as MDBTable, TableBody as MDBTableBody, TableEditable as MDBTableEditable, TableFoot as MDBTableFoot, TableHead as MDBTableHead, Testimonial as MDBTestimonial, TimePicker as MDBTimePicker, Timeline as MDBTimeline, TimelineStep as MDBTimelineStep, Popover as MDBTooltip, Treeview as MDBTreeview, TreeviewItem as MDBTreeviewItem, TreeviewList as MDBTreeviewList, Typogrphy as MDBTypo, Typogrphy as MDBTypography, View as MDBView, Waves as MDBWaves, Mask, Media, Modal, ModalBody, ModalFooter, ModalHeader, Nav, NavItem, NavLink, Navbar, NavbarBrand, NavbarNav, NavbarToggler, Notification, PageItem, PageLink, Pagination, Parallax, ScrollBar as PerfectScrollbar, Popover, PopoverBody, PopoverHeader, Popover as Popper, Progress, Rating, Row, ScrollBox as ScrollSpyBox, ScrollSpyList, ScrollSpyListItem, ScrollSpyText, Select, SelectInput$1 as SelectInput, SelectOption, Options as SelectOptions, SideNav, SideNavCat, SideNavItem, SideNavLink, SideNavNav, SimpleChart, SmoothScroll, Spinner, Step, Stepper, Sticky, Container$1 as StickyContainer, MDBStreak as Streak, TabContent, TabPane, Table, TableBody, TableEditable, TableFoot, TableHead, Testimonial, TimePicker, Timeline, TimelineStep, Popover as Tooltip, Treeview, TreeviewItem, TreeviewList, Typogrphy as Typo, Typogrphy as Typography, View, Waves };

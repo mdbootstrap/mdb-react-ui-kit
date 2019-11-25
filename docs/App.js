@@ -135,27 +135,39 @@ class App extends Component {
                 
 
                 <MDBNavItem>
-                  <MDBTooltip placement='bottom' domElement style={{ display: "block" }}>
+                  <MDBTooltip
+                    placement='bottom'
+                    domElement
+                    style={{ display: 'block' }}
+                  >
                     <a
                       className='nav-link Ripple-parent'
                       href='https://mdbootstrap.com/products/react-ui-kit/'
                       target='_blank'
-                      rel="noopener noreferrer"
+                      rel='noopener noreferrer'
                     >
-                      <strong><MDBIcon far icon="gem" /></strong>
+                      <strong>
+                        <MDBIcon far icon='gem' />
+                      </strong>
                     </a>
                     <span>PRO</span>
                   </MDBTooltip>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBTooltip placement='bottom' domElement style={{ display: "block" }}>
+                  <MDBTooltip
+                    placement='bottom'
+                    domElement
+                    style={{ display: 'block' }}
+                  >
                     <a
                       className='nav-link Ripple-parent'
                       href='https://mdbootstrap.com/docs/react/getting-started/download/'
                       target='_blank'
-                      rel="noopener noreferrer"
+                      rel='noopener noreferrer'
                     >
-                      <strong><MDBIcon icon="download" /></strong>
+                      <strong>
+                        <MDBIcon icon='download' />
+                      </strong>
                     </a>
                     <span>FREE</span>
                   </MDBTooltip>

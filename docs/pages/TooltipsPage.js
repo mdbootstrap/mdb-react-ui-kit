@@ -12,65 +12,86 @@ const TooltipsPage = () => {
         href="https://mdbootstrap.com/docs/react/advanced/tooltips/"
       />
 
-      <SectionContainer header="Positioning" className="text-center p-5">
+      <SectionContainer header="Basic">
+        Tight pants next level keffiyeh{" "}
+        <MDBTooltip
+          domElement
+          tag="span"
+          style={{ display: "inline" }}
+          placement="top"
+        >
+          <span className="blue-text"> you probably </span>
+          <span>Default tooltip</span>
+        </MDBTooltip>
+        haven't heard of them. Photo booth beard raw denim letterpress vegan
+        messenger bag stumptown. Farm-to-table seitan, mcsweeney's fixie
+        sustainable quinoa 8-bit american apparel{" "}
+        <MDBTooltip
+          domElement
+          tag="span"
+          style={{ display: "inline" }}
+          placement="top"
+        >
+          <span className="blue-text"> have a </span>
+          <span>Another tooltip</span>
+        </MDBTooltip>{" "}
+        terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo
+        thundercats. Tofu biodiesel williamsburg marfa, four loko mcsweeney's
+        cleanse vegan chambray. A really ironic artisan
+        <MDBTooltip
+          domElement
+          tag="span"
+          style={{ display: "inline" }}
+          placement="top"
+        >
+          <span className="blue-text"> whatever keytar </span>
+          <span>Another one here too</span>
+        </MDBTooltip>
+        , scenester farm-to-table banksy Austin{" "}
+        <MDBTooltip
+          domElement
+          tag="span"
+          style={{ display: "inline" }}
+          placement="top"
+        >
+          <span className="blue-text"> twitter handle </span>
+          <span>The last tip!</span>
+        </MDBTooltip>
+        freegan cred raw denim single-origin coffee viral.
+      </SectionContainer>
+
+      <SectionContainer header="Four tooltips" className="text-center p-5">
         <MDBTooltip placement="top">
-          <MDBBtn>Top tooltip</MDBBtn>
+          <MDBBtn color="primary">Top tooltip</MDBBtn>
           <div>MDBTooltip on top</div>
         </MDBTooltip>
 
         <div>
           <div style={style} className="text-right">
             <MDBTooltip placement="left">
-              <MDBBtn>Left tooltip</MDBBtn>
+              <MDBBtn color="primary">Left tooltip</MDBBtn>
               <div>MDBTooltip on left</div>
             </MDBTooltip>
           </div>
 
           <div style={style} className="text-left">
             <MDBTooltip placement="right">
-              <MDBBtn>Right tooltip</MDBBtn>
+              <MDBBtn color="primary">Right tooltip</MDBBtn>
               <div>MDBTooltip on right</div>
             </MDBTooltip>
           </div>
         </div>
 
         <MDBTooltip placement="bottom">
-          <MDBBtn>Top tooltip</MDBBtn>
+          <MDBBtn color="primary">Bottom tooltip</MDBBtn>
           <div>MDBTooltip on bottom</div>
         </MDBTooltip>
       </SectionContainer>
 
-      <SectionContainer header="On text">
-        <p className="mt-4">
-          Lorem ipsum dolor sit amet,
-          <MDBTooltip
-            domElement
-            tag="span"
-            style={{ display: "inline" }}
-            placement="top"
-          >
-            <span className="blue-text"> consectetur adipiscing </span>
-            <span>Tooltip within text paragraph</span>
-          </MDBTooltip>
-          elit. Phasellus id dictum lectus. Cras vitae nibh enim. Curabitur
-          scelerisque tortor eget eros accumsan aliquam. Aliquam a luctus leo,
-          vitae rhoncus purus. Etiam iaculis lacus massa, sit amet placerat
-          risus dictum at. Nullam venenatis sed lacus eget congue. Maecenas
-          auctor augue et ex fermentum porttitor. Interdum et malesuada fames ac
-          ante ipsum primis in faucibus. Mauris nec convallis velit. Nullam non
-          libero efficitur lacus aliquet pretium eget eget lorem. Cras at odio
-          nulla. Duis molestie magna a rhoncus ultricies.
-        </p>
-      </SectionContainer>
-
-      <SectionContainer header="On click" flexCenter>
-        <MDBTooltip placement="top" clickable>
-          <MDBBtn
-            color="indigo"
-          >
-            Tooltip on click
-          </MDBBtn>
-          <div>MDBTooltip on click</div>
+      <SectionContainer header="Custom HTML" className="text-center p-5">
+        <MDBTooltip placement="bottom" clickable>
+          <MDBBtn color="primary" >Tooltip with HTML</MDBBtn>
+          <span><em>Tooltip</em> <u>with</u> <b>HTML</b></span>
         </MDBTooltip>
       </SectionContainer>
     </MDBContainer>

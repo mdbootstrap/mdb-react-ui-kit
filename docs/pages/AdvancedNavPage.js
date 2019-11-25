@@ -26,6 +26,7 @@ const AdvancedNavPage = () => {
                   <MenuLink to="/advanced/scrollbar" title="ScrollBar" />
                   <MenuLink to="/advanced/tooltips" title="Tooltips" />
                   <MenuLink to="/advanced/videocarousel" title="Video Carousel" />
+                  
                 </ul>
               </MDBJumbotron>
             </MDBCol>

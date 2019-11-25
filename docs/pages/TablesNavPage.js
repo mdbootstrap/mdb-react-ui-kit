@@ -23,6 +23,7 @@ const TablesNavPage = () => {
                   <MenuLink to="/tables/table-responsive" title="Table Responsive" />
                   <MenuLink to="/tables/table-scroll" title="Table Scroll" />
                   <MenuLink to="/tables/table-styles" title="Table Styles" />
+                  
                 </ul>
               </MDBJumbotron>
             </MDBCol>

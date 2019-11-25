@@ -1,0 +1,25 @@
+.mdb-gallery-element {
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.mdb-gallery-title {
+  height: 100%;
+  display: block;
+  overflow: hidden;
+  position: relative;
+}
+
+.img-full-height {
+  height: 100%;
+  transform: translateX(-50%);
+  position: relative;
+  left: 50%;
+}
+
+.img-full-width {
+  width: 100%;
+  transform: translateY(-50%);
+  position: relative;
+  top: 50%;
+}
