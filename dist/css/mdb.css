@@ -1,30 +1,4 @@
 @charset "UTF-8";
-/*!
- * Material Design for Bootstrap 4
- * Version: MDB FREE 4.8.11
- *
- *
- * Copyright: Material Design for Bootstrap
- * https://mdbootstrap.com/
- *
- * Read the license: https://mdbootstrap.com/general/license/
- *
- *
- * Documentation: https://mdbootstrap.com/
- *
- * Getting started: https://mdbootstrap.com/docs/jquery/getting-started/download/
- *
- * Tutorials: https://mdbootstrap.com/education/bootstrap/
- *
- * Templates: https://mdbootstrap.com/templates/
- *
- * Support: https://mdbootstrap.com/support/
- *
- * Contact: office@mdbootstrap.com
- *
- * Attribution: Animate CSS, Twitter Bootstrap, Materialize CSS, Normalize CSS, Waves JS, WOW JS, Toastr, Chart.js
- *
- */
 .mdb-color.lighten-5 {
   background-color: #d0d6e2 !important; }
 
@@ -1356,6 +1330,9 @@ a:not([href]):not([tabindex]), a:not([href]):not([tabindex]):focus, a:not([href]
     .w-responsive {
       width: 100%; } }
 
+.w-header {
+  width: 3.2rem; }
+
 .collapsible-body {
   display: none; }
 
@@ -1552,6 +1529,69 @@ h1, h2, h3, h4, h5, h6 {
   border-left: 3px solid #33b5e5 !important; }
   .bq-info .bq-title {
     color: #33b5e5 !important; }
+
+.h1-responsive {
+  font-size: 150%; }
+
+.h2-responsive {
+  font-size: 145%; }
+
+.h3-responsive {
+  font-size: 135%; }
+
+.h4-responsive {
+  font-size: 135%; }
+
+.h5-responsive {
+  font-size: 135%; }
+
+@media (min-width: 576px) {
+  .h1-responsive {
+    font-size: 170%; }
+  .h2-responsive {
+    font-size: 140%; }
+  .h3-responsive {
+    font-size: 125%; }
+  .h4-responsive {
+    font-size: 125%; }
+  .h5-responsive {
+    font-size: 125%; } }
+
+@media (min-width: 768px) {
+  .h1-responsive {
+    font-size: 200%; }
+  .h2-responsive {
+    font-size: 170%; }
+  .h3-responsive {
+    font-size: 140%; }
+  .h4-responsive {
+    font-size: 125%; }
+  .h5-responsive {
+    font-size: 125%; } }
+
+@media (min-width: 992px) {
+  .h1-responsive {
+    font-size: 200%; }
+  .h2-responsive {
+    font-size: 170%; }
+  .h3-responsive {
+    font-size: 140%; }
+  .h4-responsive {
+    font-size: 125%; }
+  .h5-responsive {
+    font-size: 125%; } }
+
+@media (min-width: 1200px) {
+  .h1-responsive {
+    font-size: 250%; }
+  .h2-responsive {
+    font-size: 200%; }
+  .h3-responsive {
+    font-size: 170%; }
+  .h4-responsive {
+    font-size: 140%; }
+  .h5-responsive {
+    font-size: 125%; } }
 
 .text-primary {
   color: #4285f4 !important; }
@@ -4883,8 +4923,9 @@ table.table a.btn.btn-black {
     .navbar .dropdown-menu a {
       padding: 10px;
       font-size: 0.9375rem;
-      font-weight: 300;
-      color: #000; }
+      font-weight: 300; }
+      .navbar .dropdown-menu a:not(.active) {
+        color: #000; }
     @media (max-width: 600px) {
       .navbar .dropdown-menu form {
         width: 17rem; } }
