@@ -97,13 +97,13 @@ function _objectSpread2(target) {
     var source = arguments[i] != null ? arguments[i] : {};
 
     if (i % 2) {
-      ownKeys(source, true).forEach(function (key) {
+      ownKeys(Object(source), true).forEach(function (key) {
         _defineProperty(target, key, source[key]);
       });
     } else if (Object.getOwnPropertyDescriptors) {
       Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
     } else {
-      ownKeys(source).forEach(function (key) {
+      ownKeys(Object(source)).forEach(function (key) {
         Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
       });
     }
@@ -863,7 +863,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css = ".bc-icons.breadcrumb-item::before,\n.bc-icons.breadcrumb-item::after {\n  content: none;\n}\n\n.bc-icons.breadcrumb-item + .active.breadcrumb-item::before,\n.bc-icons.breadcrumb-item + .active.breadcrumb-item::after{\n  content: none;\n}\n\n.bc-icons.breadcrumb-item.active {\n  color: #eeeeee;\n}\n";
+var css = ".bc-icons.breadcrumb-item::before,\r\n.bc-icons.breadcrumb-item::after {\r\n  content: none;\r\n}\r\n\r\n.bc-icons.breadcrumb-item + .active.breadcrumb-item::before,\r\n.bc-icons.breadcrumb-item + .active.breadcrumb-item::after{\r\n  content: none;\r\n}\r\n\r\n.bc-icons.breadcrumb-item.active {\r\n  color: #eeeeee;\r\n}\r\n";
 styleInject(css);
 
 var BreadcrumbItem = function BreadcrumbItem(props) {
@@ -936,199 +936,8 @@ BreadcrumbItem.defaultProps = {
   iconSize: ""
 };
 
-var css$1 = ".Ripple {\n  position: absolute;\n  background: rgba(255, 255, 255, 0.3);\n  border-radius: 50%;\n  opacity: 1;\n  transform: scale(0);\n}\n\n.Ripple-outline {\n  background: rgba(0, 0, 0, 0.2);\n}\n\n.Ripple.is-reppling {\n  animation: ripple 0.5s linear;\n}\n\n.Ripple-parent {\n  position: relative;\n  overflow: hidden;\n  cursor: pointer;\n}\n\n@keyframes ripple {\n  100% {\n    opacity: 0;\n    transform: scale(3);\n  }\n}\n";
+var css$1 = ".btn-group-vertical>.btn,\r\n.btn-group-vertical>.btn+.btn-group,\r\n.btn-group-vertical>.btn-group+.btn,\r\n.btn-group-vertical>.btn-group+.btn-group {\r\n  margin-left: 0px;\r\n}\r\n\r\n.btn-group-lg>.btn {\r\n  font-size: 0.9rem;\r\n  padding: 1rem 2.4rem;\r\n}\r\n\r\n.btn-group-sm>.btn {\r\n  font-size: 0.6rem;\r\n  padding: 0.5rem 1.6rem;\r\n}\r\n\r\n.btn-floating.btn.btn-sm,\r\n.btn-floating.btn.btn-lg {\r\n  padding: 0;\r\n}\r\n";
 styleInject(css$1);
-
-var Waves =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(Waves, _React$Component);
-
-  function Waves(props) {
-    var _this;
-
-    _classCallCheck(this, Waves);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Waves).call(this, props));
-    _this.state = {
-      animate: false,
-      width: 0,
-      height: 0,
-      top: 0,
-      left: 0,
-      cursorPos: props.cursorPos
-    };
-    return _this;
-  }
-
-  _createClass(Waves, [{
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps, prevState) {
-      var _this2 = this;
-
-      if (prevState.cursorPos.time !== this.props.cursorPos.time) {
-        if (prevState.animate) {
-          this.setState({
-            animate: false,
-            cursorPos: this.props.cursorPos
-          }, function () {
-            _this2.reppling();
-          });
-        } else this.reppling();
-      }
-    }
-  }, {
-    key: "reppling",
-    value: function reppling() {
-      // Get the element
-      var $ripple = ReactDOM.findDOMNode(this);
-      var $button = $ripple.parentNode;
-      var buttonPos = $button.getBoundingClientRect();
-      var buttonWidth = $button.offsetWidth;
-      var buttonHeight = $button.offsetHeight; // Make a Square Ripple
-
-      var rippleWidthShouldBe = Math.max(buttonHeight, buttonWidth); // Make Ripple Position to be center
-
-      var centerize = rippleWidthShouldBe / 2;
-      this.setState({
-        animate: true,
-        width: rippleWidthShouldBe,
-        height: rippleWidthShouldBe,
-        top: this.state.cursorPos.top - buttonPos.top - centerize,
-        left: this.state.cursorPos.left - buttonPos.left - centerize
-      });
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return React.createElement("div", {
-        "data-test": "waves",
-        className: 'Ripple ' + (this.props.outline || this.props.flat || this.props.dark ? 'Ripple-outline ' : '') + (this.state.animate ? 'is-reppling' : ''),
-        style: {
-          top: this.state.top + 'px',
-          left: this.state.left + 'px',
-          width: this.state.width + 'px',
-          height: this.state.height + 'px'
-        }
-      });
-    }
-  }]);
-
-  return Waves;
-}(React.Component);
-
-Waves.propTypes = {
-  outline: propTypes.bool,
-  flat: propTypes.bool,
-  animate: propTypes.bool,
-  cursorPos: propTypes.object,
-  children: propTypes.node
-};
-
-var Button = function Button(props) {
-  var _classNames;
-
-  var _useState = useState({}),
-      _useState2 = _slicedToArray(_useState, 2),
-      cursorPos = _useState2[0],
-      setCursorPos = _useState2[1];
-
-  var handleClick = function handleClick(e) {
-    e.stopPropagation(); // Waves - Get Cursor Position
-
-    var cursorPos = {
-      top: e.clientY,
-      left: e.clientX,
-      time: Date.now()
-    };
-    setCursorPos(cursorPos);
-  };
-
-  var active = props.active,
-      block = props.block,
-      circle = props.circle,
-      className = props.className,
-      color = props.color,
-      disabled = props.disabled,
-      download = props.download,
-      outline = props.outline,
-      size = props.size,
-      rounded = props.rounded,
-      gradient = props.gradient,
-      floating = props.floating,
-      flat = props.flat,
-      role = props.role,
-      type = props.type,
-      social = props.social,
-      action = props.action,
-      Tag = props.tag,
-      target = props.target,
-      innerRef = props.innerRef,
-      attributes = _objectWithoutProperties(props, ["active", "block", "circle", "className", "color", "disabled", "download", "outline", "size", "rounded", "gradient", "floating", "flat", "role", "type", "social", "action", "tag", "target", "innerRef"]);
-
-  var classes = classNames(flat ? 'btn-flat' : gradient ? "".concat(gradient, "-gradient") : "btn".concat(outline ? '-outline' : '', "-").concat(color), 'btn', 'Ripple-parent', className, (_classNames = {
-    active: active,
-    'btn-floating': floating,
-    'btn-rounded': rounded,
-    'btn-circle': circle,
-    'btn-block': block,
-    'btn-action': action
-  }, _defineProperty(_classNames, "btn-".concat(social), social), _defineProperty(_classNames, "btn-".concat(size), size), _defineProperty(_classNames, "disabled", disabled), _classNames));
-
-  if (attributes.href && Tag === 'button') {
-    Tag = 'a';
-  }
-
-  return React.createElement(Tag, _extends({
-    "data-test": "button",
-    type: Tag === 'button' && !type ? 'button' : type,
-    target: target,
-    role: Tag === 'a' && !role ? 'button' : role,
-    className: classes,
-    ref: innerRef,
-    onMouseUp: handleClick,
-    onTouchStart: handleClick
-  }, attributes, {
-    download: download,
-    disabled: disabled
-  }), props.children, !disabled && React.createElement(Waves, {
-    cursorPos: cursorPos,
-    outline: outline,
-    flat: flat
-  }));
-};
-
-Button.defaultProps = {
-  color: 'default',
-  tag: 'button'
-};
-Button.propTypes = {
-  active: propTypes.bool,
-  action: propTypes.bool,
-  block: propTypes.bool,
-  color: propTypes.string,
-  disabled: propTypes.bool,
-  download: propTypes.string,
-  gradient: propTypes.string,
-  role: propTypes.string,
-  type: propTypes.string,
-  outline: propTypes.bool,
-  rounded: propTypes.bool,
-  circle: propTypes.bool,
-  floating: propTypes.bool,
-  flat: propTypes.bool,
-  innerRef: propTypes.oneOfType([propTypes.func, propTypes.string]),
-  onClick: propTypes.func,
-  size: propTypes.string,
-  social: propTypes.string,
-  children: propTypes.node,
-  tag: propTypes.string,
-  target: propTypes.string,
-  className: propTypes.string
-};
-
-var css$2 = ".btn-group-vertical>.btn,\n.btn-group-vertical>.btn+.btn-group,\n.btn-group-vertical>.btn-group+.btn,\n.btn-group-vertical>.btn-group+.btn-group {\n  margin-left: 0px;\n}\n\n.btn-group-lg>.btn {\n  font-size: 0.9rem;\n  padding: 1rem 2.4rem;\n}\n\n.btn-group-sm>.btn {\n  font-size: 0.6rem;\n  padding: 0.5rem 1.6rem;\n}\n\n.btn-floating.btn.btn-sm,\n.btn-floating.btn.btn-lg {\n  padding: 0;\n}\n";
-styleInject(css$2);
 
 var ButtonGroup = function ButtonGroup(props) {
   var className = props.className,
@@ -1362,6 +1171,95 @@ CardHeader.propTypes = {
 };
 CardHeader.defaultProps = {
   tag: 'div'
+};
+
+var css$2 = ".Ripple {\r\n  position: absolute;\r\n  background: rgba(255, 255, 255, 0.3);\r\n  border-radius: 50%;\r\n  opacity: 1;\r\n  transform: scale(0);\r\n}\r\n\r\n.Ripple-outline {\r\n  background: rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.Ripple.is-reppling {\r\n  animation: ripple 0.5s linear;\r\n}\r\n\r\n.Ripple-parent {\r\n  position: relative;\r\n  overflow: hidden;\r\n  cursor: pointer;\r\n}\r\n\r\n@keyframes ripple {\r\n  100% {\r\n    opacity: 0;\r\n    transform: scale(3);\r\n  }\r\n}\r\n";
+styleInject(css$2);
+
+var Waves =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Waves, _React$Component);
+
+  function Waves(props) {
+    var _this;
+
+    _classCallCheck(this, Waves);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Waves).call(this, props));
+    _this.state = {
+      animate: false,
+      width: 0,
+      height: 0,
+      top: 0,
+      left: 0,
+      cursorPos: props.cursorPos
+    };
+    return _this;
+  }
+
+  _createClass(Waves, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps, prevState) {
+      var _this2 = this;
+
+      if (prevState.cursorPos.time !== this.props.cursorPos.time) {
+        if (prevState.animate) {
+          this.setState({
+            animate: false,
+            cursorPos: this.props.cursorPos
+          }, function () {
+            _this2.reppling();
+          });
+        } else this.reppling();
+      }
+    }
+  }, {
+    key: "reppling",
+    value: function reppling() {
+      // Get the element
+      var $ripple = ReactDOM.findDOMNode(this);
+      var $button = $ripple.parentNode;
+      var buttonPos = $button.getBoundingClientRect();
+      var buttonWidth = $button.offsetWidth;
+      var buttonHeight = $button.offsetHeight; // Make a Square Ripple
+
+      var rippleWidthShouldBe = Math.max(buttonHeight, buttonWidth); // Make Ripple Position to be center
+
+      var centerize = rippleWidthShouldBe / 2;
+      this.setState({
+        animate: true,
+        width: rippleWidthShouldBe,
+        height: rippleWidthShouldBe,
+        top: this.state.cursorPos.top - buttonPos.top - centerize,
+        left: this.state.cursorPos.left - buttonPos.left - centerize
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return React.createElement("div", {
+        "data-test": "waves",
+        className: 'Ripple ' + (this.props.outline || this.props.flat || this.props.dark ? 'Ripple-outline ' : '') + (this.state.animate ? 'is-reppling' : ''),
+        style: {
+          top: this.state.top + 'px',
+          left: this.state.left + 'px',
+          width: this.state.width + 'px',
+          height: this.state.height + 'px'
+        }
+      });
+    }
+  }]);
+
+  return Waves;
+}(React.Component);
+
+Waves.propTypes = {
+  outline: propTypes.bool,
+  flat: propTypes.bool,
+  animate: propTypes.bool,
+  cursorPos: propTypes.object,
+  children: propTypes.node
 };
 
 var Mask = function Mask(props) {
@@ -1728,7 +1626,7 @@ CarouselIndicators.defaultProps = {
   className: ""
 };
 
-var css$3 = ".carousel-inner {\n  position: relative;\n  overflow: hidden;\n  width: 100%;\n  height: 100%;\n}\n\n.carousel-fade .carousel-item {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  display: block !important;\n  opacity: 0;\n  z-index: 0;\n  transition: transform 0ms ease-in-out, opacity 0.8s ease-out;\n}\n\n.carousel-fade .carousel-item.active {\n  position: relative;\n  z-index: 1;\n  opacity: 1;\n}\n\n.carousel-multi-item .carousel-item {\n  display: inline-block !important;\n}\n\n.carousel .carousel-slide-item {\n  transition: left 0.5s;\n}\n\n.carousel-control-prev, .carousel-control-next, .carousel-item-prev, .carousel-item-next {\n  z-index: 2;\n}\n";
+var css$3 = ".carousel-inner {\r\n  position: relative;\r\n  overflow: hidden;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n.carousel-fade .carousel-item {\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  width: 100%;\r\n  height: 100%;\r\n  display: block !important;\r\n  opacity: 0;\r\n  z-index: 0;\r\n  transition: transform 0ms ease-in-out, opacity 0.8s ease-out;\r\n}\r\n\r\n.carousel-fade .carousel-item.active {\r\n  position: relative;\r\n  z-index: 1;\r\n  opacity: 1;\r\n}\r\n\r\n.carousel-multi-item .carousel-item {\r\n  display: inline-block !important;\r\n}\r\n\r\n.carousel .carousel-slide-item {\r\n  transition: left 0.5s;\r\n}\r\n\r\n.carousel-control-prev, .carousel-control-next, .carousel-item-prev, .carousel-item-next {\r\n  z-index: 2;\r\n}\r\n";
 styleInject(css$3);
 
 var Carousel =
@@ -1857,6 +1755,17 @@ function (_Component) {
       }
     }
   }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var length = this.state.length;
+
+      if (length !== this.props.length) {
+        this.setState({
+          length: this.props.length
+        });
+      }
+    }
+  }, {
     key: "componentWillUnmount",
     value: function componentWillUnmount() {
       if (this.props.interval === false) {
@@ -1927,8 +1836,8 @@ function (_Component) {
         onTouchStart: this.startTouch,
         onTouchMove: swipeAvailable ? this.moveTouch : null,
         onTouchEnd: this.swipeAvailableHandler,
-        onMouseEnter: onHoverStop ? this.clearCycleIntervalHandler : false,
-        onMouseLeave: onHoverStop ? this.restartInterval : false
+        onMouseEnter: onHoverStop ? this.clearCycleIntervalHandler : null,
+        onMouseLeave: onHoverStop ? this.restartInterval : null
       }), showControls && multiItem && React.createElement("div", {
         className: "controls-top"
       }, React.createElement(Control, {
@@ -2482,7 +2391,7 @@ DataTableHead.defaultProps = {
   textWhite: false
 };
 
-var css$4 = ".table-wrapper-scroll-y {\n  display: block;\n  max-height: 200px;\n  overflow-y: auto;\n  -ms-overflow-style: -ms-autohiding-scrollbar;\n}\n";
+var css$4 = ".table-wrapper-scroll-y {\r\n  display: block;\r\n  max-height: 200px;\r\n  overflow-y: auto;\r\n  -ms-overflow-style: -ms-autohiding-scrollbar;\r\n}\r\n";
 styleInject(css$4);
 
 var Table = function Table(props) {
@@ -2582,9 +2491,11 @@ var TableBody = function TableBody(props) {
           colSpan: row.colspan
         }, row.message);
       } else {
-        return array[key + 1] !== 'colspan' && row[field] && React.createElement("td", {
+        return array[key + 1] !== 'colspan' && row[field] !== null && React.createElement("td", {
           key: key
-        }, row[field]);
+        }, row[field]) || React.createElement("td", {
+          key: key
+        });
       }
     } else {
       return React.createElement("td", {
@@ -4206,7 +4117,7 @@ DropdownMenuComponent.propTypes = {
   children: propTypes.node.isRequired
 };
 
-var css$5 = ".dropup .dropdown-menu {\n  top: auto !important;\n  bottom: 100% !important;\n  transform: translate3d(5px, 5px, 0px) !important;\n}\n\n.dropdown-menu-right {\n  left: 0 !important;\n  right: auto !important;\n}\n";
+var css$5 = ".dropup .dropdown-menu {\r\n  top: auto !important;\r\n  bottom: 100% !important;\r\n  transform: translate3d(5px, 5px, 0px) !important;\r\n}\r\n\r\n.dropdown-menu-right {\r\n  left: 0 !important;\r\n  right: auto !important;\r\n}\r\n";
 styleInject(css$5);
 
 var noFlipModifier = {
@@ -4309,6 +4220,100 @@ DropdownMenu.contextTypes = {
   dropright: propTypes.bool.isRequired,
   dropleft: propTypes.bool.isRequired,
   color: propTypes.oneOfType([propTypes.oneOf(['primary', 'default', 'secondary', 'success', 'dark', 'danger', 'info', 'warning', 'ins']), propTypes.bool])
+};
+
+var Button = function Button(props) {
+  var _classNames;
+
+  var _useState = useState({}),
+      _useState2 = _slicedToArray(_useState, 2),
+      cursorPos = _useState2[0],
+      setCursorPos = _useState2[1];
+
+  var handleClick = function handleClick(e) {
+    e.stopPropagation(); // Waves - Get Cursor Position
+
+    var cursorPos = {
+      top: e.clientY,
+      left: e.clientX,
+      time: Date.now()
+    };
+    setCursorPos(cursorPos);
+  };
+
+  var action = props.action,
+      active = props.active,
+      block = props.block,
+      circle = props.circle,
+      className = props.className,
+      color = props.color,
+      disabled = props.disabled,
+      download = props.download,
+      flat = props.flat,
+      innerRef = props.innerRef,
+      outline = props.outline,
+      role = props.role,
+      size = props.size,
+      social = props.social,
+      Tag = props.tag,
+      target = props.target,
+      type = props.type,
+      rounded = props.rounded,
+      attributes = _objectWithoutProperties(props, ["action", "active", "block", "circle", "className", "color", "disabled", "download", "flat", "innerRef", "outline", "role", "size", "social", "tag", "target", "type", "rounded"]);
+
+  var classes = classNames(color !== '' && "btn-".concat(color), 'btn', 'Ripple-parent', className, (_classNames = {
+    active: active,
+    'btn-circle': circle,
+    'btn-block': block,
+    'btn-action': action
+  }, _defineProperty(_classNames, "btn-".concat(social), social), _defineProperty(_classNames, "btn-".concat(size), size), _defineProperty(_classNames, "disabled", disabled), _classNames));
+
+  if (attributes.href && Tag === 'button') {
+    Tag = 'a';
+  }
+
+  return React.createElement(Tag, _extends({
+    "data-test": "button",
+    type: Tag === 'button' && !type ? 'button' : type,
+    target: target,
+    role: Tag === 'a' && !role ? 'button' : role,
+    className: classes,
+    ref: innerRef,
+    onMouseUp: handleClick,
+    onTouchStart: handleClick
+  }, attributes, {
+    download: download,
+    disabled: disabled
+  }), props.children, !disabled && React.createElement(Waves, {
+    cursorPos: cursorPos,
+    outline: outline,
+    flat: flat || rounded
+  }));
+};
+
+Button.defaultProps = {
+  color: 'default',
+  tag: 'button'
+};
+Button.propTypes = {
+  action: propTypes.bool,
+  active: propTypes.bool,
+  block: propTypes.bool,
+  children: propTypes.node,
+  circle: propTypes.bool,
+  className: propTypes.string,
+  color: propTypes.string,
+  disabled: propTypes.bool,
+  download: propTypes.string,
+  flat: propTypes.bool,
+  innerRef: propTypes.oneOfType([propTypes.func, propTypes.string]),
+  onClick: propTypes.func,
+  role: propTypes.string,
+  size: propTypes.string,
+  social: propTypes.string,
+  tag: propTypes.string,
+  target: propTypes.string,
+  type: propTypes.string
 };
 
 var DropdownToggle =
@@ -4537,7 +4542,7 @@ FreeBird.defaultProps = {
   tag: "div"
 };
 
-var css$6 = ".mdb-gallery {\n  display: flex;\n  flex-wrap: wrap;\n  overflow-y: auto;\n  list-style: none;\n  padding: 0;\n}\n";
+var css$6 = ".mdb-gallery {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  overflow-y: auto;\r\n  list-style: none;\r\n  padding: 0;\r\n}\r\n";
 styleInject(css$6);
 
 var Gallery = React.forwardRef(function Gallery(props, ref) {
@@ -4591,7 +4596,7 @@ Gallery.defaultProps = {
   tag: 'ul'
 };
 
-var css$7 = ".mdb-gallery-element {\n  box-sizing: border-box;\n  flex-shrink: 0;\n}\n\n.mdb-gallery-title {\n  height: 100%;\n  display: block;\n  overflow: hidden;\n  position: relative;\n}\n\n.img-full-height {\n  height: 100%;\n  transform: translateX(-50%);\n  position: relative;\n  left: 50%;\n}\n\n.img-full-width {\n  width: 100%;\n  transform: translateY(-50%);\n  position: relative;\n  top: 50%;\n}\n";
+var css$7 = ".mdb-gallery-element {\r\n  box-sizing: border-box;\r\n  flex-shrink: 0;\r\n}\r\n\r\n.mdb-gallery-title {\r\n  height: 100%;\r\n  display: block;\r\n  overflow: hidden;\r\n  position: relative;\r\n}\r\n\r\n.img-full-height {\r\n  height: 100%;\r\n  transform: translateX(-50%);\r\n  position: relative;\r\n  left: 50%;\r\n}\r\n\r\n.img-full-width {\r\n  width: 100%;\r\n  transform: translateY(-50%);\r\n  position: relative;\r\n  top: 50%;\r\n}\r\n";
 styleInject(css$7);
 
 var imgClass = function imgClass(img) {
@@ -4685,7 +4690,7 @@ GalleryList.defaultProps = {
   tag: 'li'
 };
 
-var css$8 = ".hamburger-button__checkbox {\n  display: none;\n}\n\n.hamburger-button__button {\n  background-color: transparent;\n  height: 100%;\n  width: 100%;\n  text-align: center;\n  cursor: pointer;\n  top: -5px;\n}\n\nlabel.hamburger-button__button {\n  margin-bottom: 0;\n}\n\n#nav-icon1 {\n  width: 1.5em;\n  height: 1.5em;\n  position: relative;\n  -webkit-transform: rotate(0deg);\n  -moz-transform: rotate(0deg);\n  -o-transform: rotate(0deg);\n  transform: rotate(0deg);\n  -webkit-transition: .5s ease-in-out;\n  -moz-transition: .5s ease-in-out;\n  -o-transition: .5s ease-in-out;\n  transition: .5s ease-in-out;\n  cursor: pointer;\n}\n\n#nav-icon1 span {\n  display: block;\n  position: absolute;\n  height: 3px;\n  width: 100%;\n  border-radius: 1px;\n  background-color: #fff;\n  opacity: 1;\n  left: 0;\n  -webkit-transform: rotate(0deg);\n  -moz-transform: rotate(0deg);\n  -o-transform: rotate(0deg);\n  transform: rotate(0deg);\n  -webkit-transition: .25s ease-in-out;\n  -moz-transition: .25s ease-in-out;\n  -o-transition: .25s ease-in-out;\n  transition: .25s ease-in-out;\n}\n\n#nav-icon1 span:nth-child(1) {\n  top: 5px;\n}\n\n#nav-icon1 span:nth-child(2) {\n  top: 16px;\n}\n\n#nav-icon1 span:nth-child(3) {\n  top: 27px;\n}\n\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(1) {\n  top: 16px;\n  -webkit-transform: rotate(135deg);\n  -moz-transform: rotate(135deg);\n  -o-transform: rotate(135deg);\n  transform: rotate(135deg);\n}\n\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(2) {\n  opacity: 0;\n  left: -60px;\n}\n\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(3) {\n  top: 16px;\n  -webkit-transform: rotate(-135deg);\n  -moz-transform: rotate(-135deg);\n  -o-transform: rotate(-135deg);\n  transform: rotate(-135deg);\n}\n";
+var css$8 = ".hamburger-button__checkbox {\r\n  display: none;\r\n}\r\n\r\n.hamburger-button__button {\r\n  background-color: transparent;\r\n  height: 100%;\r\n  width: 100%;\r\n  text-align: center;\r\n  cursor: pointer;\r\n  top: -5px;\r\n}\r\n\r\nlabel.hamburger-button__button {\r\n  margin-bottom: 0;\r\n}\r\n\r\n#nav-icon1 {\r\n  width: 1.5em;\r\n  height: 1.5em;\r\n  position: relative;\r\n  -webkit-transform: rotate(0deg);\r\n  -moz-transform: rotate(0deg);\r\n  -o-transform: rotate(0deg);\r\n  transform: rotate(0deg);\r\n  -webkit-transition: .5s ease-in-out;\r\n  -moz-transition: .5s ease-in-out;\r\n  -o-transition: .5s ease-in-out;\r\n  transition: .5s ease-in-out;\r\n  cursor: pointer;\r\n}\r\n\r\n#nav-icon1 span {\r\n  display: block;\r\n  position: absolute;\r\n  height: 3px;\r\n  width: 100%;\r\n  border-radius: 1px;\r\n  background-color: #fff;\r\n  opacity: 1;\r\n  left: 0;\r\n  -webkit-transform: rotate(0deg);\r\n  -moz-transform: rotate(0deg);\r\n  -o-transform: rotate(0deg);\r\n  transform: rotate(0deg);\r\n  -webkit-transition: .25s ease-in-out;\r\n  -moz-transition: .25s ease-in-out;\r\n  -o-transition: .25s ease-in-out;\r\n  transition: .25s ease-in-out;\r\n}\r\n\r\n#nav-icon1 span:nth-child(1) {\r\n  top: 5px;\r\n}\r\n\r\n#nav-icon1 span:nth-child(2) {\r\n  top: 16px;\r\n}\r\n\r\n#nav-icon1 span:nth-child(3) {\r\n  top: 27px;\r\n}\r\n\r\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(1) {\r\n  top: 16px;\r\n  -webkit-transform: rotate(135deg);\r\n  -moz-transform: rotate(135deg);\r\n  -o-transform: rotate(135deg);\r\n  transform: rotate(135deg);\r\n}\r\n\r\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(2) {\r\n  opacity: 0;\r\n  left: -60px;\r\n}\r\n\r\n.hamburger-button__checkbox:checked+#nav-icon1 span:nth-child(3) {\r\n  top: 16px;\r\n  -webkit-transform: rotate(-135deg);\r\n  -moz-transform: rotate(-135deg);\r\n  -o-transform: rotate(-135deg);\r\n  transform: rotate(-135deg);\r\n}\r\n";
 styleInject(css$8);
 
 var HamburgerToggler = function HamburgerToggler(props) {
@@ -6200,7 +6205,7 @@ Notification.defaultProps = {
   closeClassName: 'text-dark'
 };
 
-var css$9 = ".popover {\n  width: auto;\n  background-color: white;\n  color: #97999b;\n  text-align: center;\n  display: inline-block;\n  border-radius: 3px;\n  position: absolute;\n  font-size: 0.83em;\n  font-weight: normal;\n  border: 1px rgb(0, 0, 0) solid;\n  /* z-index: 200000; */\n  z-index: 10;\n  /* max-width: initial; */\n  max-width: 274px;\n  text-align: start;\n  background-color: #fff;\n  border: 1px solid rgba(0, 0, 0, 0.2);\n  border-radius: 0.3rem;\n  opacity: 0;\n  transition: opacity 0.3s, visibility 0.3s;\n  visibility: hidden;\n}\n\n.show.popover {\n  opacity: 1;\n  visibility: visible;\n}\n\n.popover-body {\n  color: #6c6e71;\n}\n\n.popover .popover_arrow {\n  width: 0;\n  height: 0;\n  border-style: solid;\n  position: absolute;\n  margin: 6px;\n  color: transparent;\n}\n\n.popover[x-placement^=\"top\"] {\n  margin-bottom: 15px;\n}\n\n.popover[x-placement^=\"top\"] .popover_arrow {\n  border-width: 8px 8px 0 8px;\n  border-color: #d6d6d6 transparent transparent transparent;\n  bottom: -8px;\n  margin-bottom: 0;\n}\n\n.popover[x-placement^=\"top\"] .popover_arrow::before {\n  content: \"\";\n  display: inline-block;\n  position: absolute;\n  left: -8px;\n  bottom: 1.5px;\n  border: solid;\n  border-width: 8px 8px 0 8px;\n  border-color: white transparent transparent transparent;\n}\n\n.popover[x-placement^=\"bottom\"] {\n  margin-top: 15px;\n}\n\n.popover[x-placement^=\"bottom\"] .popover_arrow {\n  border-width: 0 8px 8px 8px;\n  border-color: transparent transparent #d6d6d6 transparent;\n  top: -8px;\n  margin-top: 0;\n}\n\n.popover[x-placement^=\"bottom\"] .popover_arrow::before {\n  content: \"\";\n  display: inline-block;\n  position: absolute;\n  left: -8px;\n  top: 1.45px;\n  border: solid;\n  border-width: 0 8px 8px 8px;\n  border-color: transparent transparent white transparent;\n}\n\n.popover[x-placement^=\"right\"] {\n  margin-left: 15px;\n}\n\n.popover[x-placement^=\"right\"] .popover_arrow {\n  border-width: 8px 8px 8px 0;\n  border-color: transparent #d6d6d6 transparent transparent;\n  left: -8px;\n  margin-left: 0;\n}\n\n.popover[x-placement^=\"right\"] .popover_arrow::before {\n  content: \"\";\n  display: inline-block;\n  position: absolute;\n  top: -8px;\n  left: 1.45px;\n  border: solid;\n  border-width: 8px 8px 8px 0;\n  border-color: transparent white transparent transparent;\n}\n\n.popover[x-placement^=\"left\"] {\n  margin-right: 15px;\n}\n\n.popover[x-placement^=\"left\"] .popover_arrow {\n  border-width: 8px 0 8px 8px;\n  border-color: transparent transparent transparent #d6d6d6;\n  right: -8px;\n  margin-right: 0;\n}\n\n.popover[x-placement^=\"left\"] .popover_arrow::before {\n  content: \"\";\n  display: inline-block;\n  position: absolute;\n  top: -8px;\n  right: 1.45px;\n  border: solid;\n  border-width: 8px 0 8px 8px;\n  border-color: transparent transparent transparent white;\n}\n\n.tooltip {\n  width: auto;\n  background-color: black;\n  color: white;\n  text-align: center;\n  display: inline-block;\n  border-radius: 3px;\n  position: absolute;\n  /* font-size: 0.83em; */\n  font-weight: normal;\n  border: 1px rgb(0, 0, 0) solid;\n  /* z-index: 200000; */\n  z-index: 15;\n  /* max-width: initial; */\n  max-width: 274px;\n  text-align: start;\n  border: 1px solid rgba(0, 0, 0, 0.2);\n  border-radius: 0.3rem;\n  opacity: 0;\n  transition: opacity 0.3s, visibility 0.3s;\n  visibility: hidden;\n}\n\n.show {\n  z-index: 15;\n}\n.tooltip-inner {\n  display: block;\n}\n\n.show.tooltip {\n  opacity: 1;\n  visibility: visible;\n}\n\n.tooltip .popover_arrow {\n  width: 0;\n  height: 0;\n  border-style: solid;\n  position: absolute;\n  margin: 6px;\n  color: transparent;\n}\n\n.tooltip[x-placement^=\"top\"],\n.show[x-placement^=\"top\"]:not(.tooltip) {\n  margin-bottom: 5px;\n}\n\n.tooltip[x-placement^=\"top\"] .popover_arrow {\n  border-width: 6px 6px 0 6px;\n  border-color: #131313 transparent transparent transparent;\n  bottom: -6px;\n  margin-bottom: 0;\n}\n\n.tooltip[x-placement^=\"top\"] .popover_arrow::before {\n  content: \"\";\n  display: inline-block;\n  position: absolute;\n  left: -6px;\n  bottom: 1.5px;\n  border: solid;\n  border-width: 6px 6px 0 6px;\n  border-color: black transparent transparent transparent;\n}\n\n.tooltip[x-placement^=\"bottom\"],\n.show[x-placement^=\"bottom\"]:not(.tooltip) {\n  margin-top: 5px;\n}\n\n.tooltip[x-placement^=\"bottom\"] .popover_arrow {\n  border-width: 0 6px 6px 6px;\n  border-color: transparent transparent #131313 transparent;\n  top: -6px;\n  margin-top: 0;\n}\n\n.tooltip[x-placement^=\"bottom\"] .popover_arrow::before {\n  content: \"\";\n  display: inline-block;\n  position: absolute;\n  left: -6px;\n  top: 1.45px;\n  border: solid;\n  border-width: 0 6px 6px 6px;\n  border-color: transparent transparent black transparent;\n}\n\n.tooltip[x-placement^=\"right\"],\n.show[x-placement^=\"right\"]:not(.tooltip) {\n  margin-left: 5px;\n}\n\n.tooltip[x-placement^=\"right\"] .popover_arrow {\n  border-width: 6px 6px 6px 0;\n  border-color: transparent #131313 transparent transparent;\n  left: -6px;\n  margin-left: 0;\n}\n\n.tooltip[x-placement^=\"right\"] .popover_arrow::before {\n  content: \"\";\n  display: inline-block;\n  position: absolute;\n  top: -6px;\n  left: 1.45px;\n  border: solid;\n  border-width: 6px 6px 6px 0;\n  border-color: transparent black transparent transparent;\n}\n\n.tooltip[x-placement^=\"left\"],\n.show[x-placement^=\"left\"]:not(.tooltip) {\n  margin-right: 5px;\n}\n\n.tooltip[x-placement^=\"left\"] .popover_arrow {\n  border-width: 6px 0 6px 6px;\n  border-color: transparent transparent transparent #131313;\n  right: -6px;\n  margin-right: 0;\n}\n\n.tooltip[x-placement^=\"left\"] .popover_arrow::before {\n  content: \"\";\n  display: inline-block;\n  position: absolute;\n  top: -6px;\n  right: 1.45px;\n  border: solid;\n  border-width: 6px 0 6px 6px;\n  border-color: transparent transparent transparent black;\n}\n";
+var css$9 = ".popover {\r\n  width: auto;\r\n  background-color: white;\r\n  color: #97999b;\r\n  text-align: center;\r\n  display: inline-block;\r\n  border-radius: 3px;\r\n  position: absolute;\r\n  font-size: 0.83em;\r\n  font-weight: normal;\r\n  border: 1px rgb(0, 0, 0) solid;\r\n  /* z-index: 200000; */\r\n  z-index: 10;\r\n  /* max-width: initial; */\r\n  max-width: 274px;\r\n  text-align: start;\r\n  background-color: #fff;\r\n  border: 1px solid rgba(0, 0, 0, 0.2);\r\n  border-radius: 0.3rem;\r\n  opacity: 0;\r\n  transition: opacity 0.3s, visibility 0.3s;\r\n  visibility: hidden;\r\n}\r\n\r\n.show.popover {\r\n  z-index: 999;\r\n  opacity: 1;\r\n  visibility: visible;\r\n}\r\n\r\n.popover-body {\r\n  color: #6c6e71;\r\n}\r\n\r\n.popover .popover_arrow {\r\n  width: 0;\r\n  height: 0;\r\n  border-style: solid;\r\n  position: absolute;\r\n  margin: 6px;\r\n  color: transparent;\r\n}\r\n\r\n.popover[x-placement^=\"top\"] {\r\n  margin-bottom: 15px;\r\n}\r\n\r\n.popover[x-placement^=\"top\"] .popover_arrow {\r\n  border-width: 8px 8px 0 8px;\r\n  border-color: #d6d6d6 transparent transparent transparent;\r\n  bottom: -8px;\r\n  margin-bottom: 0;\r\n}\r\n\r\n.popover[x-placement^=\"top\"] .popover_arrow::before {\r\n  content: \"\";\r\n  display: inline-block;\r\n  position: absolute;\r\n  left: -8px;\r\n  bottom: 1.5px;\r\n  border: solid;\r\n  border-width: 8px 8px 0 8px;\r\n  border-color: white transparent transparent transparent;\r\n}\r\n\r\n.popover[x-placement^=\"bottom\"] {\r\n  margin-top: 15px;\r\n}\r\n\r\n.popover[x-placement^=\"bottom\"] .popover_arrow {\r\n  border-width: 0 8px 8px 8px;\r\n  border-color: transparent transparent #d6d6d6 transparent;\r\n  top: -8px;\r\n  margin-top: 0;\r\n}\r\n\r\n.popover[x-placement^=\"bottom\"] .popover_arrow::before {\r\n  content: \"\";\r\n  display: inline-block;\r\n  position: absolute;\r\n  left: -8px;\r\n  top: 1.45px;\r\n  border: solid;\r\n  border-width: 0 8px 8px 8px;\r\n  border-color: transparent transparent white transparent;\r\n}\r\n\r\n.popover[x-placement^=\"right\"] {\r\n  margin-left: 15px;\r\n}\r\n\r\n.popover[x-placement^=\"right\"] .popover_arrow {\r\n  border-width: 8px 8px 8px 0;\r\n  border-color: transparent #d6d6d6 transparent transparent;\r\n  left: -8px;\r\n  margin-left: 0;\r\n}\r\n\r\n.popover[x-placement^=\"right\"] .popover_arrow::before {\r\n  content: \"\";\r\n  display: inline-block;\r\n  position: absolute;\r\n  top: -8px;\r\n  left: 1.45px;\r\n  border: solid;\r\n  border-width: 8px 8px 8px 0;\r\n  border-color: transparent white transparent transparent;\r\n}\r\n\r\n.popover[x-placement^=\"left\"] {\r\n  margin-right: 15px;\r\n}\r\n\r\n.popover[x-placement^=\"left\"] .popover_arrow {\r\n  border-width: 8px 0 8px 8px;\r\n  border-color: transparent transparent transparent #d6d6d6;\r\n  right: -8px;\r\n  margin-right: 0;\r\n}\r\n\r\n.popover[x-placement^=\"left\"] .popover_arrow::before {\r\n  content: \"\";\r\n  display: inline-block;\r\n  position: absolute;\r\n  top: -8px;\r\n  right: 1.45px;\r\n  border: solid;\r\n  border-width: 8px 0 8px 8px;\r\n  border-color: transparent transparent transparent white;\r\n}\r\n\r\n.tooltip {\r\n  width: auto;\r\n  background-color: black;\r\n  color: white;\r\n  text-align: center;\r\n  display: inline-block;\r\n  border-radius: 3px;\r\n  position: absolute;\r\n  /* font-size: 0.83em; */\r\n  font-weight: normal;\r\n  border: 1px rgb(0, 0, 0) solid;\r\n  /* z-index: 200000; */\r\n  z-index: 15;\r\n  /* max-width: initial; */\r\n  max-width: 274px;\r\n  text-align: start;\r\n  border: 1px solid rgba(0, 0, 0, 0.2);\r\n  border-radius: 0.3rem;\r\n  opacity: 0;\r\n  transition: opacity 0.3s, visibility 0.3s;\r\n  visibility: hidden;\r\n}\r\n\r\n.tooltip-inner {\r\n  display: block;\r\n}\r\n\r\n.show.tooltip {\r\n  z-index: 999;\r\n\r\n  opacity: 1;\r\n  visibility: visible;\r\n}\r\n\r\n.tooltip .popover_arrow {\r\n  width: 0;\r\n  height: 0;\r\n  border-style: solid;\r\n  position: absolute;\r\n  margin: 6px;\r\n  color: transparent;\r\n}\r\n\r\n.tooltip[x-placement^=\"top\"],\r\n.show[x-placement^=\"top\"]:not(.tooltip) {\r\n  margin-bottom: 5px;\r\n}\r\n\r\n.tooltip[x-placement^=\"top\"] .popover_arrow {\r\n  border-width: 6px 6px 0 6px;\r\n  border-color: #131313 transparent transparent transparent;\r\n  bottom: -6px;\r\n  margin-bottom: 0;\r\n}\r\n\r\n.tooltip[x-placement^=\"top\"] .popover_arrow::before {\r\n  content: \"\";\r\n  display: inline-block;\r\n  position: absolute;\r\n  left: -6px;\r\n  bottom: 1.5px;\r\n  border: solid;\r\n  border-width: 6px 6px 0 6px;\r\n  border-color: black transparent transparent transparent;\r\n}\r\n\r\n.tooltip[x-placement^=\"bottom\"],\r\n.show[x-placement^=\"bottom\"]:not(.tooltip) {\r\n  margin-top: 5px;\r\n}\r\n\r\n.tooltip[x-placement^=\"bottom\"] .popover_arrow {\r\n  border-width: 0 6px 6px 6px;\r\n  border-color: transparent transparent #131313 transparent;\r\n  top: -6px;\r\n  margin-top: 0;\r\n}\r\n\r\n.tooltip[x-placement^=\"bottom\"] .popover_arrow::before {\r\n  content: \"\";\r\n  display: inline-block;\r\n  position: absolute;\r\n  left: -6px;\r\n  top: 1.45px;\r\n  border: solid;\r\n  border-width: 0 6px 6px 6px;\r\n  border-color: transparent transparent black transparent;\r\n}\r\n\r\n.tooltip[x-placement^=\"right\"],\r\n.show[x-placement^=\"right\"]:not(.tooltip) {\r\n  margin-left: 5px;\r\n}\r\n\r\n.tooltip[x-placement^=\"right\"] .popover_arrow {\r\n  border-width: 6px 6px 6px 0;\r\n  border-color: transparent #131313 transparent transparent;\r\n  left: -6px;\r\n  margin-left: 0;\r\n}\r\n\r\n.tooltip[x-placement^=\"right\"] .popover_arrow::before {\r\n  content: \"\";\r\n  display: inline-block;\r\n  position: absolute;\r\n  top: -6px;\r\n  left: 1.45px;\r\n  border: solid;\r\n  border-width: 6px 6px 6px 0;\r\n  border-color: transparent black transparent transparent;\r\n}\r\n\r\n.tooltip[x-placement^=\"left\"],\r\n.show[x-placement^=\"left\"]:not(.tooltip) {\r\n  margin-right: 5px;\r\n}\r\n\r\n.tooltip[x-placement^=\"left\"] .popover_arrow {\r\n  border-width: 6px 0 6px 6px;\r\n  border-color: transparent transparent transparent #131313;\r\n  right: -6px;\r\n  margin-right: 0;\r\n}\r\n\r\n.tooltip[x-placement^=\"left\"] .popover_arrow::before {\r\n  content: \"\";\r\n  display: inline-block;\r\n  position: absolute;\r\n  top: -6px;\r\n  right: 1.45px;\r\n  border: solid;\r\n  border-width: 6px 0 6px 6px;\r\n  border-color: transparent transparent transparent black;\r\n}\r\n";
 styleInject(css$9);
 
 var Popover =
@@ -7251,7 +7256,7 @@ TreeviewList.contextTypes = {
   theme: propTypes.string
 };
 
-var css$a = ".note-dark {\n  background-color: #000;\n  color: #fff;\n  border-color: #58595a;\n}\n\n.note-default {\n  background-color: rgb(164, 243, 235);\n  border-color: #00695c;\n}\n\n.note-elegant {\n  background-color: #2E2E2E;\n  border-color: #212121;\n  color: #fff;\n}\n\n.note-stylish {\n  background-color: #4B515D;\n  border-color: #3E4551;\n  color: #fff;\n}\n\n.note-unique {\n  background-color: #3F729B;\n  border-color: #1C2331;\n  color: #fff;\n}\n\n.note-special {\n  background-color: #37474F;\n  border-color: #263238;\n  color: #fff;\n}\n";
+var css$a = ".note-dark {\r\n  background-color: #000;\r\n  color: #fff;\r\n  border-color: #58595a;\r\n}\r\n\r\n.note-default {\r\n  background-color: rgb(164, 243, 235);\r\n  border-color: #00695c;\r\n}\r\n\r\n.note-elegant {\r\n  background-color: #2E2E2E;\r\n  border-color: #212121;\r\n  color: #fff;\r\n}\r\n\r\n.note-stylish {\r\n  background-color: #4B515D;\r\n  border-color: #3E4551;\r\n  color: #fff;\r\n}\r\n\r\n.note-unique {\r\n  background-color: #3F729B;\r\n  border-color: #1C2331;\r\n  color: #fff;\r\n}\r\n\r\n.note-special {\r\n  background-color: #37474F;\r\n  border-color: #263238;\r\n  color: #fff;\r\n}\r\n";
 styleInject(css$a);
 
 var Typogrphy =

@@ -23,6 +23,7 @@
 }
 
 .show.popover {
+  z-index: 999;
   opacity: 1;
   visibility: visible;
 }
@@ -151,14 +152,13 @@
   visibility: hidden;
 }
 
-.show {
-  z-index: 15;
-}
 .tooltip-inner {
   display: block;
 }
 
 .show.tooltip {
+  z-index: 999;
+
   opacity: 1;
   visibility: visible;
 }

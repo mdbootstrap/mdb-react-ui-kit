@@ -41,6 +41,15 @@ class Carousel extends Component {
     }
   }
 
+  componentDidUpdate() {
+    const { length } = this.state;
+    if (length !== this.props.length) {
+      this.setState({
+        length: this.props.length
+      });
+    }
+  }
+
   componentWillUnmount() {
     if (this.props.interval === false) {
       return;
@@ -186,8 +195,8 @@ class Carousel extends Component {
         onTouchStart={this.startTouch}
         onTouchMove={swipeAvailable ? this.moveTouch : null}
         onTouchEnd={this.swipeAvailableHandler}
-        onMouseEnter={onHoverStop ? this.clearCycleIntervalHandler : false}
-        onMouseLeave={onHoverStop ? this.restartInterval : false}
+        onMouseEnter={onHoverStop ? this.clearCycleIntervalHandler : null}
+        onMouseLeave={onHoverStop ? this.restartInterval : null}
       >
         {showControls && multiItem && (
           <div className='controls-top'>

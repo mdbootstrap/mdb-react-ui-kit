@@ -18,6 +18,7 @@ const Button = props => {
   };
 
   let {
+    action,
     active,
     block,
     circle,
@@ -25,35 +26,26 @@ const Button = props => {
     color,
     disabled,
     download,
-    outline,
-    size,
-    rounded,
-    gradient,
-    floating,
     flat,
+    innerRef,
+    outline,
     role,
-    type,
+    size,
     social,
-    action,
     tag: Tag,
     target,
-    innerRef,
+    type,
+    rounded,
     ...attributes
   } = props;
 
   const classes = classNames(
-    flat
-      ? 'btn-flat'
-      : gradient
-      ? `${gradient}-gradient`
-      : `btn${outline ? '-outline' : ''}-${color}`,
+    color !== '' && `btn-${color}`,
     'btn',
     'Ripple-parent',
     className,
     {
       active,
-      'btn-floating': floating,
-      'btn-rounded': rounded,
       'btn-circle': circle,
       'btn-block': block,
       'btn-action': action,
@@ -83,7 +75,7 @@ const Button = props => {
     >
       {props.children}
       {!disabled && (
-        <Waves cursorPos={cursorPos} outline={outline} flat={flat} />
+        <Waves cursorPos={cursorPos} outline={outline} flat={flat || rounded} />
       )}
     </Tag>
   );
@@ -95,28 +87,24 @@ Button.defaultProps = {
 };
 
 Button.propTypes = {
-  active: PropTypes.bool,
   action: PropTypes.bool,
+  active: PropTypes.bool,
   block: PropTypes.bool,
+  children: PropTypes.node,
+  circle: PropTypes.bool,
+  className: PropTypes.string,
   color: PropTypes.string,
   disabled: PropTypes.bool,
   download: PropTypes.string,
-  gradient: PropTypes.string,
-  role: PropTypes.string,
-  type: PropTypes.string,
-  outline: PropTypes.bool,
-  rounded: PropTypes.bool,
-  circle: PropTypes.bool,
-  floating: PropTypes.bool,
   flat: PropTypes.bool,
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   onClick: PropTypes.func,
+  role: PropTypes.string,
   size: PropTypes.string,
   social: PropTypes.string,
-  children: PropTypes.node,
   tag: PropTypes.string,
   target: PropTypes.string,
-  className: PropTypes.string
+  type: PropTypes.string
 };
 
 export default Button;

@@ -5,7 +5,6 @@ import Badge from './components/Badge';
 import Box from './components/Box';
 import Breadcrumb from './components/Breadcrumb';
 import BreadcrumbItem from './components/Breadcrumb/BreadcrumbItem';
-import Button from './components/Button';
 import ButtonGroup from './components/ButtonGroup';
 import ButtonToolbar from './components/ButtonToolbar';
 import Card from './components/Card';
@@ -42,7 +41,6 @@ import Gallery from './components/Gallery';
 import GalleryList from './components/Gallery/GalleryList';
 import HamburgerToggler from './components/HamburgerToggler';
 import Iframe from './components/Iframe';
-import Input from './components/Input';
 import InputGroup from './components/InputGroup';
 import InputNumeric from './components/InputNumeric';
 import Jumbotron from './components/Jumbotron';
@@ -85,6 +83,11 @@ import Typography from './components/Typography/Typography';
 import View from './components/View';
 import Waves from './components/Waves';
 
+
+
+ //! Free components
+import Button from './components/Button';
+import Input from './components/Input';
 
 
 export {
@@ -177,6 +180,8 @@ export {
   View,
   Waves,
   
+  
+
   
 
   Alert as MDBAlert,

@@ -29,21 +29,14 @@ const PopoverPage = () => {
           isVisible={visible}
           id='popper1'
           modifiers={{
-            placement: 'top'
+            placement: 'left'
           }}
-          onChange={val => {setVisibility(val); console.log(val)}}
+          onChange={val => setVisibility(val)}
         >
-          <MDBBtn>popover on top</MDBBtn>
+          <MDBBtn>popover on left</MDBBtn>
           <div>
             <MDBPopoverHeader className='d-flex justify-content-between align-items-center'>
-              popover on top{' '}
-              <MDBBtn
-                size='sm'
-                className='py-1 px-2'
-                onClick={() => setVisibility(false)}
-              >
-                X
-              </MDBBtn>
+              popover on left
             </MDBPopoverHeader>
             <MDBPopoverBody>
               Sed posuere consectetur est at lobortis. Aenean eu leo quam.
@@ -74,10 +67,10 @@ const PopoverPage = () => {
           </div>
         </MDBPopover>
 
-        <MDBPopover placement='left' popover clickable id='popper4'>
-          <MDBBtn>popover on left</MDBBtn>
+        <MDBPopover placement='top' popover clickable id='popper4'>
+          <MDBBtn>popover on top</MDBBtn>
           <div>
-            <MDBPopoverHeader>popover on left</MDBPopoverHeader>
+            <MDBPopoverHeader>popover on top</MDBPopoverHeader>
             <MDBPopoverBody>
               Sed posuere consectetur est at lobortis. Aenean eu leo quam.
               Pellentesque ornare sem lacinia quam venenatis vestibulum.

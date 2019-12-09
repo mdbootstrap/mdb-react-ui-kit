@@ -5,7 +5,6 @@ import MDBBadge from './components/Badge';
 import MDBBox from './components/Box';
 import MDBBreadcrumb from './components/Breadcrumb';
 import MDBBreadcrumbItem from './components/Breadcrumb/BreadcrumbItem';
-import MDBBtn from './components/Button';
 import MDBBtnGroup from './components/ButtonGroup';
 import MDBBtnToolbar from './components/ButtonToolbar';
 import MDBIcon from './components/Fa';
@@ -42,7 +41,6 @@ import MDBGallery from './components/Gallery';
 import MDBGalleryList from './components/Gallery/GalleryList';
 import MDBHamburgerToggler from './components/HamburgerToggler';
 import MDBIframe from './components/Iframe';
-import MDBInput from './components/Input';
 import MDBInputGroup from './components/InputGroup';
 import MDBInputNumeric from './components/InputNumeric';
 import MDBJumbotron from './components/Jumbotron';
@@ -86,6 +84,11 @@ import MDBView from './components/View';
 import MDBWaves from './components/Waves';
 //FREE
 
+
+
+ //! Free components
+import MDBBtn from './components/Button';
+import MDBInput from './components/Input';
 
 
 export {

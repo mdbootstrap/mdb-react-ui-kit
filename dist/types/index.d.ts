@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactNode, Component, ElementType, RefObject, SyntheticEvent, ReactChild, FormEvent } from 'react';
+import { FunctionComponent, ReactNode, Component, ElementType, SyntheticEvent, ReactChild, RefObject, FormEvent } from 'react';
 
 declare const MDBAlert: FunctionComponent<{
   color?:
@@ -234,57 +234,6 @@ declare const MDBBreadcrumbItem: FunctionComponent<{
   iconRegular?: boolean;
   iconSize?:  "lg" | '1x' | '2x' | '3x' | '4x' | '5x' | '6x' | '7x' | '8x' | '9x' | '10x';
   [rest: string]: any;
-}>
-
-declare const MDBBtn: FunctionComponent<{
-  active?: boolean;
-  action?: boolean;
-  block?: boolean;
-  circle?: boolean;
-  className?: string;
-  color?: string;
-  disabled?: boolean;
-  download?: string;
-  flat?: boolean;
-  floating?: boolean;
-  gradient?:
-    | "purple"
-    | "blue"
-    | "aqua"
-    | "peach"
-    | "warm-flame"
-    | "night-fade"
-    | "spring-warmth"
-    | "juicy-peach"
-    | "young-passion"
-    | "rainy-ashville"
-    | "sunny-morning"
-    | "lady-lips"
-    | "winter-neva"
-    | "frozen-dreams"
-    | "dusty-grass"
-    | "tempting-azure"
-    | "heavy-rain"
-    | "amy-crisp"
-    | "mean-fruit"
-    | "deep-blue"
-    | "ripe-malinka"
-    | "cloudy-knoxville"
-    | "morpheus-den"
-    | "rare-wind"
-    | "near-moon";
-    href?: string;
-    innerRef?: RefObject<HTMLButtonElement> | ((ref: RefObject<HTMLButtonElement>) => void) | null;
-    outline?: boolean;
-    role?: string;
-    rounded?: boolean;
-    size?: 'sm' | 'lg';
-    social?: string;
-    tag?: string;
-    target?: string;
-    type?: 'reset' | 'submit' | 'button';
-    onClick?: (event: SyntheticEvent<HTMLButtonElement>) => void;
-    [rest: string]: any;
 }>
 
 declare const MDBBtnGroup: FunctionComponent<{
@@ -733,66 +682,6 @@ declare class MDBIframe extends Component<
     onMouseOver?: () => void;
     onMouseOut?: () => void;
     onLoad?: () => void;
-    [rest: string]: any;
-  },
-  any
-> {}
-
-declare class MDBInput extends Component<
-  {
-    background?: boolean;
-    className?: string;
-    children?: ReactNode;
-    checked?: boolean;
-    containerClass?: string;
-    disabled?: boolean;
-    error?: string;
-    filled?: boolean;
-    gap?: boolean;
-    group?: boolean;
-    hint?: string;
-    icon?: string;
-    iconBrand?: boolean;
-    iconClass?: string;
-    iconLight?: boolean;
-    iconRegular?: boolean;
-    iconSize?:
-      | 'lg'
-      | '1x'
-      | '2x'
-      | '3x'
-      | '4x'
-      | '5x'
-      | '6x'
-      | '7x'
-      | '8x'
-      | '9x'
-      | '10x';
-    id?: string;
-    inputRef?:
-      | RefObject<HTMLInputElement>
-      | ((ref: RefObject<HTMLInputElement>) => void)
-      | null;
-    outline?: boolean;
-    label?: string | boolean;
-    labelClass?: string;
-    labelId?: string;
-    noTag?: boolean;
-    size?: 'sm' | 'lg';
-    success?: string;
-    tag?: string;
-    type?: string;
-    validate?: boolean;
-    value?: number | string;
-    valueDefault?: number | string;
-    getValue?: (value: number | string) => void;
-    onBlur?: (e: FormEvent<HTMLInputElement>) => void;
-    onChange?: (e: FormEvent<HTMLInputElement>) => void;
-    onFocus?: (e: FormEvent<HTMLInputElement>) => void;
-    onInput?: (e: FormEvent<HTMLInputElement>) => void;
-    onIconClick?: (e: SyntheticEvent<MouseEvent>) => void;
-    onIconMouseEnter?: (e: SyntheticEvent<MouseEvent>) => void;
-    onIconMouseLeave?: (e: SyntheticEvent<MouseEvent>) => void;
     [rest: string]: any;
   },
   any
@@ -1384,5 +1273,124 @@ declare class MDBWaves extends Component<
   },
   any
 > {}
+
+type buttonColor = 
+  | 'amber'
+  | 'blue-grey'
+  | 'blue'
+  | 'brown'
+  | 'cyan'
+  | 'danger'
+  | 'dark-green'
+  | 'dark'
+  | 'deep-orange'
+  | 'deep-purple'
+  | 'default'
+  | 'elegant'
+  | 'green'
+  | 'grey'
+  | 'indigo'
+  | 'info'
+  | 'light-blue'
+  | 'light-green'
+  | 'light'
+  | 'lime'
+  | 'mdb-color'
+  | 'orange'
+  | 'pink'
+  | 'primary'
+  | 'purple'
+  | 'secondary'
+  | 'success'
+  | 'unique'
+  | 'warning'
+  | 'red'
+  | 'yellow';
+
+type classNameType = { className?: string };
+type iconSize =
+  | 'lg'
+  | '1x'
+  | '2x'
+  | '3x'
+  | '4x'
+  | '5x'
+  | '6x'
+  | '7x'
+  | '8x'
+  | '9x'
+  | '10x';
+
+interface TypesFree extends classNameType {
+  action?: boolean;
+  active?: boolean;
+  block?: boolean;
+  circle?: boolean;
+  color?: buttonColor;
+  disabled?: boolean;
+  download?: string;
+  href?: string;
+  innerRef?:
+    | RefObject<HTMLButtonElement>
+    | ((ref: RefObject<HTMLButtonElement>) => void)
+    | null;
+  role?: string;
+  size?: 'sm' | 'lg';
+  social?: string;
+  tag?: string;
+  target?: string;
+  type?: 'reset' | 'submit' | 'button';
+  onClick?: (event: SyntheticEvent<HTMLButtonElement>) => void;
+  [rest: string]: any;
+}
+
+declare const MDBBtn: FunctionComponent<TypesFree>;
+
+interface TypesFree$1 extends classNameType {
+  background?: boolean;
+  children?: ReactNode;
+  checked?: boolean;
+  containerClass?: string;
+  disabled?: boolean;
+  error?: string;
+  filled?: boolean;
+  gap?: boolean;
+  group?: boolean;
+  hint?: string;
+  icon?: string;
+  iconBrand?: boolean;
+  iconClass?: string;
+  iconLight?: boolean;
+  iconRegular?: boolean;
+  id?: string;
+  iconSize?: iconSize;
+  inputRef?:
+    | RefObject<HTMLInputElement>
+    | ((ref: RefObject<HTMLInputElement>) => void)
+    | null;
+  outline?: boolean;
+  label?: string | boolean;
+  labelClass?: string;
+  labelId?: string;
+  noTag?: boolean;
+  size?: "sm" | "lg";
+  success?: string;
+  tag?: string;
+  type?: string;
+  validate?: boolean;
+  value?: number | string;
+  valueDefault?: number | string;
+  getValue?: (value: number | string) => void;
+  onBlur?: (e: FormEvent<HTMLInputElement>) => void;
+  onChange?: (e: FormEvent<HTMLInputElement>) => void;
+  onFocus?: (e: FormEvent<HTMLInputElement>) => void;
+  onInput?: (e: FormEvent<HTMLInputElement>) => void;
+  onIconClick?: (e: SyntheticEvent<MouseEvent>) => void;
+  onIconMouseEnter?: (e: SyntheticEvent<MouseEvent>) => void;
+  onIconMouseLeave?: (e: SyntheticEvent<MouseEvent>) => void;
+  [rest: string]: any;
+}
+
+declare class MDBInput extends Component<TypesFree$1, any> {}
 
 export { MDBAlert, MDBAnimation, MDBBadge, MDBBox, MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBBtnGroup, MDBBtnToolbar, MDBCard, MDBCardBody, MDBCardFooter, MDBCardGroup, MDBCardHeader, MDBCardImage, MDBCardText, MDBCardTitle, MDBCardImage$1 as MDBCardVideo, MDBCarousel, MDBCarouselCaption, MDBCarouselControl, MDBCarouselIndicator, MDBCarouselIndicators, MDBCarouselInner, MDBCarouselItem, MDBCloseIcon, MDBCol, MDBCollapse, MDBContainer, MDBDataTable, MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBEdgeHeader, MDBFooter, MDBFormInline, MDBFreeBird, MDBGallery, MDBGalleryList, MDBHamburgerToggler, MDBIcon, MDBIframe, MDBInput, MDBInputGroup, MDBInputSelect as MDBInputNumeric, MDBJumbotron, MDBListGroup, MDBListGroupItem, MDBMask, MDBMedia, MDBModal, MDBModalBody, MDBModalFooter, MDBModalHeader, MDBNav, MDBNavItem, MDBNavLink, MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavbarToggler, MDBNotification, MDBPageItem, MDBPageLink as MDBPageNav, MDBPagination, MDBPopper as MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBPopper, MDBProgress, MDBRating, MDBRow, MDBTabContent, MDBTabPane, MDBTable, MDBTableBody, MDBTableFoot, MDBTableHead, MDBPopper as MDBTooltip, MDBTreeview, MDBTreeviewItem, MDBTreeviewList, MDBTypogrphy as MDBTypo, MDBTypogrphy as MDBTypography, MDBView, MDBWaves };
