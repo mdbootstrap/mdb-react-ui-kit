@@ -19,11 +19,11 @@ describe('<PageLink />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'page-link').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<PageLink />, div);
   });
@@ -43,7 +43,7 @@ describe('<PageLink />', () => {
     checkProps(wrapper, {});
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ customAttr: 'custom' });
 
     expect(wrapper.find('[customAttr="custom"]').length).toBe(1);
@@ -61,7 +61,7 @@ describe('<PageLink />', () => {
       expect(wrapper.hasClass('page-link')).toBe(true);
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

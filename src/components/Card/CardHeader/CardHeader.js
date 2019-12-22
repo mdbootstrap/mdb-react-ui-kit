@@ -4,11 +4,11 @@ import classNames from 'classnames';
 
 const CardHeader = props => {
   const {
-    className,
-    tag: Tag,
-    color,
-    text,
     border,
+    className,
+    color,
+    tag: Tag,
+    text,
     transparent,
     ...attributes
   } = props;
@@ -29,16 +29,16 @@ const CardHeader = props => {
 };
 
 CardHeader.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  border: PropTypes.string,
   className: PropTypes.string,
   color: PropTypes.string,
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   text: PropTypes.string,
-  border: PropTypes.string,
   transparent: PropTypes.bool
 };
 
 CardHeader.defaultProps = {
-  tag: 'div',
+  tag: 'div'
 };
 
 export default CardHeader;

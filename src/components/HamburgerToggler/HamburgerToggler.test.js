@@ -15,11 +15,11 @@ describe('<HamburgerToggler />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'hamburger-toggler').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<HamburgerToggler />, div);
   });
@@ -54,7 +54,7 @@ describe('<HamburgerToggler />', () => {
       checkClass(wrapper, 'hamburger-button__button');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

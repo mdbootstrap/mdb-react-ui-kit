@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const CardTitle = props => {
-  const { className, tag: Tag, sub, ...attributes } = props;
+  const { className, sub, tag: Tag, ...attributes } = props;
 
   const classes = classNames(sub ? 'card-subtitle' : 'card-title', className);
 
@@ -11,9 +11,9 @@ const CardTitle = props => {
 };
 
 CardTitle.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  className: PropTypes.string,
   sub: PropTypes.bool,
-  className: PropTypes.string
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 CardTitle.defaultProps = {

@@ -18,6 +18,7 @@ import './HomePage.css';
 
 class HomePage extends React.Component {
   scrollToTop = () => window.scrollTo(0, 0);
+
   render() {
     return (
       <>
@@ -33,7 +34,7 @@ class HomePage extends React.Component {
                   <h2 className='h2-responsive mb-4'>
                     <strong className='font-weight-bold'>
                       <img
-                        src='https://mdbootstrap.com/img/Marketing/general/logo/small/mdb-react.png'
+                        src='https://mdbootstrap.com/img/Marketing/other/logo/logo-mdb-react-small.png'
                         alt='mdbreact-logo'
                         className='pr-2'
                       />

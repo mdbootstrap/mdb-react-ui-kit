@@ -8,7 +8,7 @@ import {
   MDBCardBody,
   MDBBadge
 } from 'mdbreact';
-import DocsLink from './../components/docsLink';
+import DocsLink from '../components/docsLink';
 import SectionContainer from '../components/sectionContainer';
 
 const DatatablePage = () => {

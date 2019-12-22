@@ -19,11 +19,11 @@ describe('<FreeBird />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'freebird').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<FreeBird />, div);
   });
@@ -42,7 +42,7 @@ describe('<FreeBird />', () => {
     checkProps(wrapper, {});
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ customAttr: 'custom' });
 
     expect(wrapper.find('[customAttr="custom"]').length).toBe(1);
@@ -58,7 +58,7 @@ describe('<FreeBird />', () => {
       checkClass(wrapper, 'container.free-bird');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

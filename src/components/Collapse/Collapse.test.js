@@ -18,11 +18,11 @@ describe('<Collapse />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'collapse').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Collapse />, div);
   });
@@ -46,25 +46,25 @@ describe('<Collapse />', () => {
     checkProps(wrapper, {});
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ customAttr: 'custom' });
 
     expect(wrapper.find('[customAttr="custom"]').length).toBe(1);
   });
 
-  test(`expect ref to not be null`, () => {
+  test('expect ref to not be null', () => {
     wrapper = mounted();
     expect(wrapper.find('div')).toHaveLength(1);
     expect(wrapper.instance().element).toBeTruthy();
   });
 
-  test(`set 'collapse' state to 'SHOW' when 'isOpen = true' property is passed`, () => {
+  test('set \'collapse\' state to \'SHOW\' when \'isOpen = true\' property is passed', () => {
     wrapper = mounted({ isOpen: true });
 
-    expect(wrapper.instance().state['collapse']).toBe('SHOW');
+    expect(wrapper.instance().state.collapse).toBe('SHOW');
   });
 
-  test(`invokes 'onOpened' when 'isOpened = true' property is passed`, () => {
+  test('invokes \'onOpened\' when \'isOpened = true\' property is passed', () => {
     wrapper = mounted({ isOpen: true, onOpened: mockFn });
 
     jest.runAllTimers();
@@ -72,7 +72,7 @@ describe('<Collapse />', () => {
     expect(mockFn).toBeCalled();
   });
 
-  test(`closes collapse by componentDidUpdate method`, () => {
+  test('closes collapse by componentDidUpdate method', () => {
     const onClosed = jest.fn();
     wrapper = mounted({ isOpen: true, onClosed });
 
@@ -84,7 +84,7 @@ describe('<Collapse />', () => {
     expect(onClosed).toBeCalled();
   });
 
-  test(`opens collapse by componentDidUpdate method`, () => {
+  test('opens collapse by componentDidUpdate method', () => {
     const onOpened = jest.fn();
     wrapper = mounted({ onOpened });
 
@@ -96,7 +96,7 @@ describe('<Collapse />', () => {
     expect(onOpened).toBeCalled();
   });
 
-  test(`invokes 'onOpened' callback `, () => {
+  test('invokes \'onOpened\' callback ', () => {
     wrapper = mounted({ onOpened: mockFn });
 
     wrapper.instance().openCollapse();
@@ -106,7 +106,7 @@ describe('<Collapse />', () => {
     expect(mockFn).toHaveBeenCalled();
   });
 
-  test(`invokes 'onClosed' callback `, () => {
+  test('invokes \'onClosed\' callback ', () => {
     wrapper = mounted({ onClosed: mockFn });
 
     wrapper.instance().closeCollapse();
@@ -160,7 +160,7 @@ describe('<Collapse />', () => {
       expect(wrapper.find('.show')).toHaveLength(0);
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

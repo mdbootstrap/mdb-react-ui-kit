@@ -5,40 +5,41 @@ import { Popper } from 'react-popper';
 import DropdownMenuComponent from '../DropdownMenuComponent';
 import './DropdownMenu.css';
 
-const noFlipModifier = { flip: { enabled: false } };
-
 class DropdownMenu extends Component {
   render() {
     const {
       basic,
-      className,
-      right,
       children,
-      tag,
-      flip,
+      className,
       color,
+      flip,
+      modifiers,
+      right,
+      tag,
       ...attrs
     } = this.props;
+
+    const { isOpen, dropup, dropright, dropleft } = this.context;
 
     const classes = classNames(
       {
         'dropdown-menu-right': right,
         [`dropdown-${color}`]: color,
-        show: this.context.isOpen,
-        basic: basic
+        show: isOpen,
+        basic
       },
       'dropdown-menu',
       className
     );
 
-    let Tag = tag;
+    const Tag = tag;
 
-    if (this.context.isOpen) {
-      const position1 = this.context.dropup
+    if (isOpen) {
+      const position1 = dropup
         ? 'top'
-        : this.context.dropright
+        : dropright
         ? 'right'
-        : this.context.dropleft
+        : dropleft
         ? 'left'
         : 'bottom';
 
@@ -46,13 +47,12 @@ class DropdownMenu extends Component {
 
       attrs.placement = `${position1}-${position2}`;
       attrs.component = tag;
-      attrs.modifiers = !flip ? noFlipModifier : undefined;
     }
 
     return (
       <Popper
-        modifires={attrs.modifiers}
-        eventsEnabled={true}
+        modifiers={modifiers || (!flip && { flip: { enabled: false } })}
+        eventsEnabled
         positionFixed={false}
         placement={attrs.placement}
         data-test='dropdown-menu'
@@ -65,12 +65,12 @@ class DropdownMenu extends Component {
             className={classes}
           >
             <DropdownMenuComponent
-              isOpen={this.context.isOpen}
+              isOpen={isOpen}
               tag={Tag}
               tabIndex='-1'
               role='menu'
               attributes={attrs}
-              aria={!this.context.isOpen}
+              aria={!isOpen}
               d_key='dropDownMenu'
               color={color}
             >
@@ -88,6 +88,7 @@ DropdownMenu.propTypes = {
   basic: PropTypes.bool,
   className: PropTypes.string,
   flip: PropTypes.bool,
+  modifiers: PropTypes.object,
   right: PropTypes.bool,
   tag: PropTypes.string
 };
@@ -95,7 +96,7 @@ DropdownMenu.propTypes = {
 DropdownMenu.defaultProps = {
   basic: false,
   className: '',
-  flip: false,
+  flip: true,
   right: false,
   tag: 'div',
   color: false

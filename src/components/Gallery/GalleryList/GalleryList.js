@@ -87,14 +87,14 @@ const GalleryList = React.forwardRef(function GalleryList(props, ref) {
 });
 
 GalleryList.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
   children: PropTypes.node,
+  className: PropTypes.string,
   cols: PropTypes.number,
+  elementClasses: PropTypes.string,
   rows: PropTypes.number,
   style: PropTypes.object,
-  titleClasses: PropTypes.string,
-  elementClasses: PropTypes.string
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  titleClasses: PropTypes.string
 };
 
 GalleryList.defaultProps = {

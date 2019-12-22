@@ -1,12 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import {
-  findByTestAttr,
-  checkProps,
-  checkClass,
-  checkTag
-} from '../../tests/utils';
+import { findByTestAttr, checkProps, checkClass } from '../../tests/utils';
 import Progress from './Progress';
 
 const setup = (props = {}) => shallow(<Progress {...props} />);
@@ -18,11 +13,11 @@ describe('<Progress />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'progress').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Progress />, div);
   });
@@ -43,10 +38,10 @@ describe('<Progress />', () => {
     checkProps(wrapper, {});
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ customAttr: 'custom' });
 
-    expect(wrapper.props()['customAttr']).toBe('custom');
+    expect(wrapper.props().customAttr).toBe('custom');
     expect(wrapper.find('[customAttr="custom"]').length).toBe(1);
   });
 
@@ -116,7 +111,7 @@ describe('<Progress />', () => {
       expect(inner.find('.progress-bar-striped').length).toBe(0);
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

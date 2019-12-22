@@ -14,11 +14,11 @@ describe('<Modal />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'modal').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Modal />, div);
   });
@@ -72,7 +72,7 @@ describe('<Modal />', () => {
 
     const cb = jest.fn();
 
-    let div = document.createElement('div');
+    const div = document.createElement('div');
     div.focus = cb;
 
     wrapper.instance().handleOnEntered('backdrop', div);
@@ -81,14 +81,14 @@ describe('<Modal />', () => {
 
   test('handleOnEntered method does not add "show" class if type===backdrop and fade===false', () => {
     wrapper = setup({ fade: false });
-    let div = document.createElement('div');
+    const div = document.createElement('div');
 
     wrapper.instance().handleOnEntered('backdrop', div);
     expect(div.classList.contains('show')).toEqual(false);
   });
 
   test('handleOnEntered method adds "show" class if type!==backdrop and fade!==false', () => {
-    let div = document.createElement('div');
+    const div = document.createElement('div');
 
     wrapper.instance().handleOnEntered('modal', div);
 
@@ -98,7 +98,7 @@ describe('<Modal />', () => {
   test('handleOnEntered method invokes callback if type!==backdrop and fade!==false', () => {
     const callback = jest.fn();
     wrapper = setup({ showModal: callback });
-    let div = document.createElement('div');
+    const div = document.createElement('div');
 
     wrapper.instance().handleOnEntered('modal', div);
     expect(callback).toBeCalled();
@@ -106,14 +106,14 @@ describe('<Modal />', () => {
 
   test('handleOnExit method does not add "show" class if type===backdrop and fade===false', () => {
     wrapper = setup({ fade: false });
-    let div = document.createElement('div');
+    const div = document.createElement('div');
 
     wrapper.instance().handleOnExit('backdrop', div);
     expect(div.classList.contains('show')).toEqual(false);
   });
 
   test('handleOnExit removes "show" class if type!==backdrop and fade!==false', () => {
-    let div = document.createElement('div');
+    const div = document.createElement('div');
 
     wrapper.instance().handleOnEntered('modal', div);
     expect(div.classList.contains('show')).toEqual(true);
@@ -126,7 +126,7 @@ describe('<Modal />', () => {
   test('handleOnExit invokes callback if type!==backdrop and fade!==false', () => {
     const callback = jest.fn();
     wrapper = setup({ hideModal: callback });
-    let div = document.createElement('div');
+    const div = document.createElement('div');
 
     wrapper.instance().handleOnExit('modal', div);
     expect(callback).toBeCalled();
@@ -140,7 +140,7 @@ describe('<Modal />', () => {
     expect(callback).toBeCalled();
   });
 
-  test(`handleBackdropClick does not close modal if clicking on the datepicker`, () => {
+  test('handleBackdropClick does not close modal if clicking on the datepicker', () => {
     const callback = jest.fn();
     wrapper = setup({ toggle: callback });
 
@@ -162,7 +162,7 @@ describe('<Modal />', () => {
     expect(callback).not.toBeCalled();
   });
 
-  test(`handleBackdropClick does not close modal if 'backdrop' property is not passed`, () => {
+  test('handleBackdropClick does not close modal if \'backdrop\' property is not passed', () => {
     const callback = jest.fn();
     wrapper = setup({ toggle: callback, backdrop: false });
 
@@ -186,7 +186,7 @@ describe('<Modal />', () => {
     expect(callback).not.toBeCalled();
   });
 
-  test(`handleBackdropClick closes modal if clicking on the document`, () => {
+  test('handleBackdropClick closes modal if clicking on the document', () => {
     const callback = jest.fn();
     wrapper = setup({ toggle: callback });
 
@@ -208,7 +208,7 @@ describe('<Modal />', () => {
     expect(callback).toBeCalled();
   });
 
-  test(`handleEscape closes modal if "ESC" is pressed`, () => {
+  test('handleEscape closes modal if "ESC" is pressed', () => {
     const callback = jest.fn();
     wrapper = setup({ toggle: callback });
 
@@ -222,7 +222,7 @@ describe('<Modal />', () => {
     expect(callback).toBeCalled();
   });
 
-  test(`handleEscape does not close modal if pressed button is not "ESC"`, () => {
+  test('handleEscape does not close modal if pressed button is not "ESC"', () => {
     const callback = jest.fn();
     wrapper = setup({ toggle: callback });
 
@@ -237,7 +237,7 @@ describe('<Modal />', () => {
   });
 
   describe('sets classes', () => {
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');
@@ -256,100 +256,100 @@ describe('<Modal />', () => {
     });
 
     describe('sets modal-dialog classes', () => {
-      test(`adds 'modal-dialog' class by default`, () => {
+      test('adds \'modal-dialog\' class by default', () => {
         checkClass(wrapper, 'modal-dialog');
       });
 
-      test(`adds 'cascading-modal' class`, () => {
+      test('adds \'cascading-modal\' class', () => {
         wrapper = setup({ cascading: true });
         checkClass(wrapper, 'cascading-modal');
       });
 
-      test(`adds 'modal-side' class`, () => {
+      test('adds \'modal-side\' class', () => {
         wrapper = setup({ side: true });
         checkClass(wrapper, 'modal-side');
       });
 
-      test(`adds 'modal-full-height' class`, () => {
+      test('adds \'modal-full-height\' class', () => {
         wrapper = setup({ fullHeight: true });
         checkClass(wrapper, 'modal-full-height');
       });
 
-      test(`adds 'modal-frame' class`, () => {
+      test('adds \'modal-frame\' class', () => {
         wrapper = setup({ frame: true });
         checkClass(wrapper, 'modal-frame');
       });
 
-      test(`adds 'modal-dialog-centered' class`, () => {
+      test('adds \'modal-dialog-centered\' class', () => {
         wrapper = setup({ centered: true });
         checkClass(wrapper, 'modal-dialog-centered');
       });
 
-      test(`adds 'modal-dialog-centered' class`, () => {
+      test('adds \'modal-dialog-centered\' class', () => {
         wrapper = setup({ centered: true });
         checkClass(wrapper, 'modal-dialog-centered');
       });
 
-      test(`adds 'modal-sm' class`, () => {
+      test('adds \'modal-sm\' class', () => {
         wrapper = setup({ size: 'sm' });
         checkClass(wrapper, 'modal-sm');
       });
 
-      test(`adds 'modal-bottom-left' class`, () => {
+      test('adds \'modal-bottom-left\' class', () => {
         wrapper = setup({ position: 'bottom-left' });
         checkClass(wrapper, 'modal-bottom-left');
       });
 
-      test(`adds 'modal-notify white-text modal-danger' classes`, () => {
+      test('adds \'modal-notify white-text modal-danger\' classes', () => {
         wrapper = setup({ modalStyle: 'danger' });
         checkClass(wrapper, 'modal-notify.white-text.modal-danger');
       });
     });
 
     describe('sets wrapper classes', () => {
-      test(`adds 'modal' class`, () => {
+      test('adds \'modal\' class', () => {
         wrapper = setup({ backdrop: false });
         wrapper = wrapper.find('div').first();
 
         checkClass(wrapper, 'modal');
       });
 
-      test(`adds 'fade' class`, () => {
+      test('adds \'fade\' class', () => {
         wrapper = setup({ backdrop: false, fade: true });
         wrapper = wrapper.find('div').first();
 
         checkClass(wrapper, 'fade');
       });
 
-      test(`adds custom class`, () => {
+      test('adds custom class', () => {
         wrapper = setup({ backdrop: false, wrapClassName: 'wrapTest' });
         wrapper = wrapper.find('div').first();
 
         checkClass(wrapper, 'wrapTest');
       });
 
-      test(`adds 'modal' class`, () => {
+      test('adds \'modal\' class', () => {
         wrapper = setup({ backdrop: false, wrapClassName: 'wrapTest' });
         wrapper = wrapper.find('div').first();
 
         checkClass(wrapper, 'wrapTest');
       });
 
-      test(`adds 'top' class when 'animation' and 'posotion' properties are not passed`, () => {
+      test('adds \'top\' class when \'animation\' and \'posotion\' properties are not passed', () => {
         wrapper = setup({ backdrop: false });
         wrapper = wrapper.find('div').first();
 
         checkClass(wrapper, 'top');
       });
 
-      test(`adds 'left' class when 'animation=left' property is  passed`, () => {
+      test('adds \'left\' class when \'animation=left\' property is  passed', () => {
         wrapper = setup({ backdrop: false, animation: 'left' });
         wrapper = wrapper.find('div').first();
 
         checkClass(wrapper, 'left');
       });
 
-      test(`adds 'right' class when 'position=top-right' property is  passed`, () => {
+      test('adds \'right\' class when \'position=top-right\' property is  passed', () => {
         wrapper = setup({ backdrop: false, position: 'top-right' });
         wrapper = wrapper.find('div').first();
 
@@ -358,27 +358,27 @@ describe('<Modal />', () => {
     });
 
     describe('sets backdrop classes', () => {
-      test(`adds 'modal-backdrop' class by default`, () => {
+      test('adds \'modal-backdrop\' class by default', () => {
         const backdropDiv = wrapper.find('div').first();
 
         checkClass(backdropDiv, 'modal-backdrop');
       });
 
-      test(`adds 'fade' class`, () => {
+      test('adds \'fade\' class', () => {
         wrapper = setup({ fade: true });
         const backdropDiv = wrapper.find('div').first();
 
         checkClass(backdropDiv, 'fade');
       });
 
-      test(`adds 'show' class when 'fade' property is not passed`, () => {
+      test('adds \'show\' class when \'fade\' property is not passed', () => {
         wrapper = setup({ fade: false });
         const backdropDiv = wrapper.find('div').first();
 
         checkClass(backdropDiv, 'show');
       });
 
-      test(`adds custom backdrop class`, () => {
+      test('adds custom backdrop class', () => {
         wrapper = setup({ backdropClassName: 'backdropTest' });
         wrapper = wrapper.find('div').first();
 
@@ -387,13 +387,13 @@ describe('<Modal />', () => {
     });
 
     describe('sets content classes', () => {
-      test(`adds 'modal-content' class by default`, () => {
+      test('adds \'modal-content\' class by default', () => {
         const content = wrapper.find('div').at(3);
 
         checkClass(content, 'modal-content');
       });
 
-      test(`adds custom content class`, () => {
+      test('adds custom content class', () => {
         wrapper = setup({ contentClassName: 'contentTest' });
         const content = wrapper.find('div').at(3);
 

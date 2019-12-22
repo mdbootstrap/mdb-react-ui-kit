@@ -14,8 +14,8 @@ const PageItem = props => {
 
   const classes = classNames(
     {
-      'disabled': disabled,
-      'active': active
+      disabled: disabled,
+      active: active
     },
     'page-item',
     className
@@ -30,8 +30,8 @@ const PageItem = props => {
 
 PageItem.propTypes = {
   active: PropTypes.bool,
-  className: PropTypes.string,
   children: PropTypes.node,
+  className: PropTypes.string,
   disabled: PropTypes.bool,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };

@@ -1,16 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { MDBContainer } from "mdbreact";
-import DocsLink from "../components/docsLink";
-import SectionContainer from "../components/sectionContainer";
-import './Masonry.css'; 
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { MDBContainer } from 'mdbreact';
+import DocsLink from '../components/docsLink';
+import SectionContainer from '../components/sectionContainer';
+import './Masonry.css';
 
 class MasonryPage extends React.Component {
-  constructor() {
-    super();
-    this.MasonryRef = React.createRef();
-  }
-
+  MasonryRef = React.createRef();
   componentDidMount() {
     this.arrangeMasonry();
   }
@@ -25,16 +21,19 @@ class MasonryPage extends React.Component {
       child.style.order = order;
       colHeights[order] += parseFloat(child.clientHeight);
     });
-    container.style.height = Math.max(...colHeights) + "px";
+    container.style.height = `${Math.max(...colHeights)}px`;
   };
 
   render() {
     return (
-      <MDBContainer className="mt-5">
-        <DocsLink title="Masks" href="https://mdbootstrap.com/docs/react/css/masks/" />
+      <MDBContainer className='mt-5'>
+        <DocsLink
+          title='Masks'
+          href='https://mdbootstrap.com/docs/react/css/masks/'
+        />
 
-        <SectionContainer noBorder header="Column layout">
-          <div className="masonry-with-columns mx-0" ref={this.MasonryRef}>
+        <SectionContainer noBorder header='Column layout'>
+          <div className='masonry-with-columns mx-0' ref={this.MasonryRef}>
             <div style={{ order: 0 }}>1</div>
             <div style={{ order: 1 }}>2</div>
             <div style={{ order: 2 }}>3</div>
@@ -55,8 +54,8 @@ class MasonryPage extends React.Component {
 
         <hr />
 
-        <SectionContainer noBorder header="Horizontal layout">
-          <div className="masonry-with-columns-2 mx-0">
+        <SectionContainer noBorder header='Horizontal layout'>
+          <div className='masonry-with-columns-2 mx-0'>
             <div>1</div>
             <div>2</div>
             <div>3</div>
@@ -77,8 +76,8 @@ class MasonryPage extends React.Component {
 
         <hr />
 
-        <SectionContainer noBorder header="Flex layout">
-          <div className="masonry-with-flex mx-0">
+        <SectionContainer noBorder header='Flex layout'>
+          <div className='masonry-with-flex mx-0'>
             <div>1</div>
             <div>2</div>
             <div>3</div>

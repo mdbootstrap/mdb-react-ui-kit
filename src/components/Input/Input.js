@@ -4,22 +4,20 @@ import classNames from 'classnames';
 import Fa from '../Fa';
 
 class Input extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      innerValue: props.value || props.valueDefault,
-      isFocused: false,
-      isPristine: true
-    };
+  state = {
+    innerValue: this.props.value || this.props.valueDefault,
+    isFocused: false,
+    isPristine: true
+  };
 
-    this.inputElementRef = React.createRef();
-  }
+  inputElementRef = React.createRef();
 
   componentDidMount() {
     // User wants to access the input ref, but we have to use it intenrally to.
     // Return Ref instance to share ref with parent
     // then user sets ref as a callback -> inputRef={ref => this.myInputRef = ref}
-    this.props.inputRef && this.props.inputRef(this.inputElementRef.current);
+    const { inputRef } = this.props;
+    inputRef && inputRef(this.inputElementRef.current);
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -32,39 +30,44 @@ class Input extends React.Component {
 
   onBlur = event => {
     event.stopPropagation();
+    const { onBlur } = this.props;
     this.setState({ isFocused: false });
-    this.props.onBlur && this.props.onBlur(event);
+    onBlur && onBlur(event);
   };
 
   onFocus = event => {
     event.stopPropagation();
+    const { onFocus } = this.props;
     this.setState({ isFocused: true });
-    this.props.onFocus && this.props.onFocus(event);
+    onFocus && onFocus(event);
   };
 
   onChange = event => {
     event.stopPropagation();
-    if (this.props.type !== 'checkbox' && this.props.type !== 'radio') {
+    const { type, onChange, getValue } = this.props;
+
+    if (type !== 'checkbox' && type !== 'radio') {
       this.setState({
         innerValue: event.target.value,
         isPristine: false
       });
     }
 
-    this.props.onChange && this.props.onChange(event);
-    this.props.getValue && this.props.getValue(event.target.value);
+    onChange && onChange(event);
+    getValue && getValue(event.target.value);
   };
 
   onInput = event => {
     event.stopPropagation();
-    if (this.props.type !== 'checkbox' && this.props.type !== 'radio') {
+    const { type, onInput } = this.props;
+    if (type !== 'checkbox' && type !== 'radio') {
       this.setState({
         innerValue: event.target.value,
         isPristine: false
       });
     }
 
-    this.props.onInput && this.props.onInput(event);
+    onInput && onInput(event);
   };
 
   setFocus = () => {
@@ -109,13 +112,11 @@ class Input extends React.Component {
       valueDefault,
       ...attributes
     } = this.props;
-
-    let isNotEmpty =
-      (!!this.state.innerValue ||
-        !!hint ||
-        this.state.isFocused ||
-        this.state.innerValue === 0) &&
-      (type !== 'checkbox' && type !== 'radio');
+    const { innerValue, isFocused } = this.state;
+    const isNotEmpty =
+      (!!innerValue || !!hint || isFocused || innerValue === 0) &&
+      type !== 'checkbox' &&
+      type !== 'radio';
     let TagInput = '';
     let formControlClass = '';
 
@@ -156,7 +157,7 @@ class Input extends React.Component {
     );
 
     const iconClassFix = classNames(
-      isNotEmpty && this.state.isFocused ? 'active' : false,
+      isNotEmpty && isFocused ? 'active' : false,
       iconClass,
       'prefix'
     );
@@ -178,7 +179,7 @@ class Input extends React.Component {
             light={iconLight}
             regular={iconRegular}
             className={iconClassFix}
-            onClick={onIconClick ? onIconClick : this.setFocus}
+            onClick={onIconClick || this.setFocus}
             onMouseEnter={onIconMouseEnter}
             onMouseLeave={onIconMouseLeave}
           />
@@ -190,7 +191,7 @@ class Input extends React.Component {
           id={id}
           placeholder={hint}
           ref={this.inputElementRef}
-          value={this.state.innerValue}
+          value={innerValue}
           onBlur={this.onBlur}
           onChange={this.onChange}
           onInput={this.onInput}
@@ -221,8 +222,8 @@ class Input extends React.Component {
 }
 
 Input.propTypes = {
-  className: PropTypes.string,
   children: PropTypes.node,
+  className: PropTypes.string,
   containerClass: PropTypes.string,
   disabled: PropTypes.bool,
   error: PropTypes.string,
@@ -235,9 +236,6 @@ Input.propTypes = {
   iconBrand: PropTypes.bool,
   iconClass: PropTypes.string,
   iconLight: PropTypes.bool,
-  onIconClick: PropTypes.func,
-  onIconMouseEnter: PropTypes.func,
-  onIconMouseLeave: PropTypes.func,
   iconRegular: PropTypes.bool,
   iconSize: PropTypes.string,
   id: PropTypes.string,
@@ -254,6 +252,9 @@ Input.propTypes = {
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
+  onIconClick: PropTypes.func,
+  onIconMouseEnter: PropTypes.func,
+  onIconMouseLeave: PropTypes.func,
   onInput: PropTypes.func,
   outline: PropTypes.bool,
   size: PropTypes.string,

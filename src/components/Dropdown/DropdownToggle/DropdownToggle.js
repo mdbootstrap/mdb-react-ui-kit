@@ -7,6 +7,7 @@ import Button from '../../Button';
 class DropdownToggle extends React.Component {
   onClick = e => {
     const { disabled, nav, tag, onClick } = this.props;
+    const { toggle } = this.context;
 
     if (disabled) {
       e.preventDefault();
@@ -21,11 +22,12 @@ class DropdownToggle extends React.Component {
       onClick(e);
     }
 
-    this.context.toggle(e);
+    toggle(e);
   };
 
   render() {
     const { className, color, caret, nav, tag, ...props } = this.props;
+    const { isOpen } = this.context;
     const ariaLabel = props['aria-label'] || 'Toggle Dropdown';
 
     const classes = classNames(
@@ -58,7 +60,7 @@ class DropdownToggle extends React.Component {
               {...props}
               className={classes}
               onClick={this.onClick}
-              aria-expanded={this.context.isOpen}
+              aria-expanded={isOpen}
               ref={ref}
             >
               {children}
@@ -68,7 +70,7 @@ class DropdownToggle extends React.Component {
               {...props}
               className={classes}
               onClick={this.onClick}
-              aria-expanded={this.context.isOpen}
+              aria-expanded={isOpen}
               innerRef={ref}
             >
               {children}
@@ -81,15 +83,15 @@ class DropdownToggle extends React.Component {
 }
 
 DropdownToggle.propTypes = {
+  'aria-haspopup': PropTypes.bool,
   caret: PropTypes.bool,
-  color: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
+  color: PropTypes.string,
   disabled: PropTypes.bool,
+  nav: PropTypes.bool,
   onClick: PropTypes.func,
-  'aria-haspopup': PropTypes.bool,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  nav: PropTypes.bool
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 DropdownToggle.defaultProps = {

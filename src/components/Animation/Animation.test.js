@@ -18,11 +18,11 @@ describe('<Animation />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'animation').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Animation />, div);
   });
@@ -46,16 +46,16 @@ describe('<Animation />', () => {
     checkProps(wrapper, {});
   });
 
-  test(`adds custom class passed as property`, () => {
+  test('adds custom class passed as property', () => {
     wrapper = setup({ className: 'testClassName' });
 
     checkClass(wrapper, 'testClassName');
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ customAttr: 'custom' });
 
-    expect(wrapper.props()['customAttr']).toBe('custom');
+    expect(wrapper.props().customAttr).toBe('custom');
     expect(wrapper.find('[customAttr="custom"]').length).toBe(1);
   });
 
@@ -68,19 +68,19 @@ describe('<Animation />', () => {
     test('adds bounce class', () => {
       wrapper = setup({ type: 'bounce' });
 
-      expect(wrapper.find(`[className*="bounce"]`).length).toBe(1);
+      expect(wrapper.find('[className*="bounce"]').length).toBe(1);
     });
 
     test('adds infinite class', () => {
       wrapper = setup({ infinite: true });
 
-      expect(wrapper.find(`[className*="infinite"]`).length).toBe(1);
+      expect(wrapper.find('[className*="infinite"]').length).toBe(1);
     });
 
     test('adds animated class', () => {
       wrapper.setState({ isVisible: true });
 
-      expect(wrapper.find(`[className*="animated"]`).length).toBe(1);
+      expect(wrapper.find('[className*="animated"]').length).toBe(1);
     });
   });
 

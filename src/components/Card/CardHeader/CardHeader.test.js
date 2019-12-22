@@ -18,11 +18,11 @@ describe('<CardHeader />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'card-header').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<CardHeader />, div);
   });
@@ -45,10 +45,10 @@ describe('<CardHeader />', () => {
     checkProps(wrapper, {});
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ customAttr: 'custom' });
 
-    expect(wrapper.props()['customAttr']).toBe('custom');
+    expect(wrapper.props().customAttr).toBe('custom');
     expect(wrapper.find('[customAttr="custom"]').length).toBe(1);
   });
 
@@ -87,7 +87,7 @@ describe('<CardHeader />', () => {
       expect(wrapper.find('white-text').length).toBe(0);
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

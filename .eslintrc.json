@@ -1,0 +1,77 @@
+{
+  "extends": ["react-app", "plugin:jsx-a11y/recommended", "prettier", "prettier/react"],
+  "plugins": ["jsx-a11y", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "settings": {
+    "import/resolver": "webpack"
+  },
+  "rules": {
+    "quotes": [
+      2,
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
+    "import/no-unresolved": [
+      2,
+      {
+        "caseSensitive": false
+      }
+    ],
+    "jsx-quotes": ["error", "prefer-single"],
+    "jsx-a11y/label-has-for": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "jsx-a11y/no-autofocus": "off",
+    "jsx-a11y/media-has-caption": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "jsx-a11y/no-onchange": "off",
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx", ".d.ts"]
+      }
+    ],
+    "react/destructuring-assignment": [
+      "error",
+      "always",
+      {
+        "ignoreClassFields": true
+      }
+    ],
+    "react/state-in-constructor": ["error", "never"],
+    "react/require-default-props": [
+      0,
+      {
+        "forbidDefaultForRequired": true
+      }
+    ],
+    "react/sort-prop-types": [
+      1,
+      {
+        "callbacksLast": false,
+        "ignoreCase": true,
+        "requiredFirst": true,
+        "sortShapeProp": true,
+        "noSortAlphabetically": false
+      }
+    ],
+    "react/jsx-props-no-spreading": [
+      0,
+      {
+        "html": true,
+        "custom": true
+      }
+    ],
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": false
+      }
+    ],
+    "curly": "warn"
+  }
+}

@@ -1,6 +1,6 @@
-import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const DataTableHead = props => {
   const {
@@ -15,34 +15,38 @@ const DataTableHead = props => {
   } = props;
 
   const theadClasses = classNames(
-    color && (color !== "dark" && color !== "light" ? color : `thead-${color}`),
-    textWhite && "text-white"
+    color && (color !== 'dark' && color !== 'light' ? color : `thead-${color}`),
+    textWhite && 'text-white'
   );
 
   return (
-    <Fragment>
+    <>
       {(scrollY || scrollX) && (
         <colgroup>
           {columns.map(col => (
             <col
               key={col.field}
               style={{
-                width: `${col.width}px` || "auto",
-                minWidth: `${col.width}px` || "auto"
+                width: `${col.width}px` || 'auto',
+                minWidth: `${col.width}px` || 'auto'
               }}
             />
           ))}
         </colgroup>
       )}
-      <thead data-test="datatable-head" className={theadClasses || undefined}>
+      <thead data-test='datatable-head' className={theadClasses || undefined}>
         <tr>
           {columns.map(col => (
             <th
               onClick={() => sortable && handleSort(col.field, col.sort)}
               key={col.field}
               className={classNames(
-                col.hasOwnProperty("minimal") ? `th-${col.minimal}` : null, 
-                sortable && col.sort !== 'disabled' && ( sorted && col.sort ? `sorting_${col.sort === 'asc' ? 'desc' : 'asc'}` : 'sorting' )
+                col.hasOwnProperty('minimal') ? `th-${col.minimal}` : null,
+                sortable &&
+                  col.sort !== 'disabled' &&
+                  (sorted && col.sort
+                    ? `sorting_${col.sort === 'asc' ? 'desc' : 'asc'}`
+                    : 'sorting')
               )}
               {...col.attributes}
             >
@@ -51,7 +55,7 @@ const DataTableHead = props => {
           ))}
         </tr>
       </thead>
-    </Fragment>
+    </>
   );
 };
 

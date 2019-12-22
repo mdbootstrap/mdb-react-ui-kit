@@ -5,13 +5,20 @@ import classNames from 'classnames';
 class TabPane extends React.Component {
   render() {
     const { className, tabId, ...attributes } = this.props;
-
+    const { activeItemId } = this.context;
     const classes = classNames(
       'tab-pane',
-      { active: tabId === this.context.activeItemId },
+      { active: tabId === activeItemId },
       className
     );
-    return <div data-test="tab-pane" {...attributes} className={classes} role='tabpanel' />;
+    return (
+      <div
+        data-test='tab-pane'
+        {...attributes}
+        className={classes}
+        role='tabpanel'
+      />
+    );
   }
 }
 
@@ -20,8 +27,8 @@ TabPane.contextTypes = {
 };
 
 TabPane.propTypes = {
-  tabId: PropTypes.any,
-  className: PropTypes.string
+  className: PropTypes.string,
+  tabId: PropTypes.any
 };
 
 export default TabPane;

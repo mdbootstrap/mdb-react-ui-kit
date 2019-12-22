@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import { findByTestAttr, checkProps, checkClass } from '../../tests/utils';
 import checkPropTypes from 'check-prop-types';
+import { checkProps, checkClass } from '../../tests/utils';
 import ButtonToolbar from './ButtonToolbar';
 
+// eslint-disable-next-line react/jsx-props-no-spreading
 const setup = (props = {}) => shallow(<ButtonToolbar {...props} />);
 
 describe('<ButtonToolbar />', () => {
@@ -14,9 +15,9 @@ describe('<ButtonToolbar />', () => {
     wrapper = setup();
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<ButtonToolbar children='children text node' />, div);
+    ReactDOM.render(<ButtonToolbar>children text node</ButtonToolbar>, div);
   });
 
   test('does not throw warnings with expected props', () => {
@@ -34,10 +35,10 @@ describe('<ButtonToolbar />', () => {
     checkPropTypes(wrapper);
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ 'data-custom-attr': 'custom' });
 
-    expect(wrapper.find(`[data-custom-attr="custom"]`).length).toBe(1);
+    expect(wrapper.find('[data-custom-attr="custom"]').length).toBe(1);
   });
 
   describe('sets classes', () => {
@@ -45,7 +46,7 @@ describe('<ButtonToolbar />', () => {
       checkClass(wrapper, 'btn-toolbar');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
       checkClass(wrapper, 'testClassName');
     });

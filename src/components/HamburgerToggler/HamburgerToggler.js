@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import './HamburgerToggler.css';
 
 const HamburgerToggler = props => {
-  let { id, color, className, isOpen, onClick } = props;
+  const { id, color, className, isOpen, onClick } = props;
 
   const classes = classNames('hamburger-button__button', className);
 
@@ -28,9 +28,9 @@ const HamburgerToggler = props => {
 };
 
 HamburgerToggler.propTypes = {
-  id: PropTypes.string,
+  className: PropTypes.string,
   color: PropTypes.string,
-  className: PropTypes.string
+  id: PropTypes.string
 };
 
 export default HamburgerToggler;

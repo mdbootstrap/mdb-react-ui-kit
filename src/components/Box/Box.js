@@ -17,7 +17,6 @@ const Box = props => {
     bgColor,
     m,
     mt,
-    mtsm,
     mr,
     mb,
     ml,
@@ -72,14 +71,36 @@ const Box = props => {
     </Tag>
   );
 };
+Box.propTypes = {
+  alignContent: PropTypes.string,
+  alignItems: PropTypes.string,
+  alignSelf: PropTypes.string,
+  bgColor: PropTypes.string,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  color: PropTypes.string,
+  display: PropTypes.string,
+  flex: PropTypes.string,
+  justifyContent: PropTypes.string,
+  m: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  mb: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  ml: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  mr: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  mt: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  mx: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  my: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  p: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  pb: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  pl: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  pr: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  pt: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  px: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  py: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  tag: PropTypes.string
+};
 
 Box.defaultProps = {
   tag: 'div'
-};
-
-Box.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string
 };
 
 export default Box;

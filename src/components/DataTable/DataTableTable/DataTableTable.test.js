@@ -41,7 +41,7 @@ describe('<DataTableTable />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'datatable-table').length).toBe(1);
   });
 
@@ -58,11 +58,11 @@ describe('<DataTableTable />', () => {
   });
 
   describe('sets classes', () => {
-    test(`adds 'col-sm-12' class by default`, () => {
+    test('adds \'col-sm-12\' class by default', () => {
       checkClass(wrapper, 'col-sm-12');
     });
 
-    test(`adds 'dataTable' to  class 'Table' by default`, () => {
+    test('adds \'dataTable\' to  class \'Table\' by default', () => {
       checkClass(wrapper.find('Table'), 'dataTable');
     });
   });

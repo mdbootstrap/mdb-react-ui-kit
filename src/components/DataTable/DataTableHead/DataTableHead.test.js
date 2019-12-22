@@ -1,11 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import {
   findByTestAttr,
   checkProps,
   checkClass,
-  checkTag
+
 } from '../../../tests/utils';
 import DataTableHead from './DataTableHead';
 
@@ -19,14 +18,14 @@ describe('<DataTableHead />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'datatable-head').length).toBe(1);
   });
 
   test('does not throw warnings with expected props', () => {
     const expectedProps = {
       color: 'string',
-      handleSort: () => {},
+      handleSort: () => { },
       scrollX: true,
       scrollY: true,
       sortable: true,

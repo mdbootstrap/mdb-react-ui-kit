@@ -16,11 +16,11 @@ const NavbarBrand = ({ className, href, ...attributes }) => {
           className={classes}
         />
       );
-    } else {
+    } 
       return (
         <div data-test='navbar-brand' {...attributes} className={classes} />
       );
-    }
+    
   };
 
   return navbarBrand();

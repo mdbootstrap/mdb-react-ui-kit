@@ -13,12 +13,12 @@ describe('<Treeview />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     const Treeview = findByTestAttr(wrapper, 'treeview');
     expect(Treeview.length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Treeview />, div);
   });
@@ -49,10 +49,10 @@ describe('<Treeview />', () => {
     );
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ lang: 'En' });
 
-    expect(wrapper.props()['lang']).toBe('En');
+    expect(wrapper.props().lang).toBe('En');
     expect(wrapper.find('[lang="En"]').length).toBeTruthy();
   });
 
@@ -76,30 +76,30 @@ describe('<Treeview />', () => {
       checkClass(wrapper.find('div'), 'treeview');
     });
 
-    test(`adds custom class to Tag passed as property`, () => {
+    test('adds custom class to Tag passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
       expect(wrapper.find('.testClassName').length).toBeTruthy();
     });
 
-    test(`adds 'list-unstyled' class to Ul by default`, () => {
+    test('adds \'list-unstyled\' class to Ul by default', () => {
       checkClass(wrapper.find('ul'), 'list-unstyled');
     });
 
-    test(`adds 'pb-2 mb-1' class to Ul if (header)`, () => {
+    test('adds \'pb-2 mb-1\' class to Ul if (header)', () => {
       wrapper = setup({ header: 'test' });
       checkClass(wrapper.find('ul'), 'pb-2.mb-1');
     });
 
-    test(`adds 'py-2 my-1' class to Ul if (!header)`, () => {
+    test('adds \'py-2 my-1\' class to Ul if (!header)', () => {
       checkClass(wrapper.find('ul'), 'py-2.my-1');
     });
 
-    test(`adds 'treeview-test-list' class to Ul if (theme===test)`, () => {
+    test('adds \'treeview-test-list\' class to Ul if (theme===test)', () => {
       wrapper = setup({ theme: 'test' })
       checkClass(wrapper.find('ul'), 'treeview-test-list');
     });
 
-    test(`adds custom class to Ul passed as property`, () => {
+    test('adds custom class to Ul passed as property', () => {
       wrapper = setup({ listClassName: 'testClassName' });
       expect(wrapper.find('ul.testClassName').length).toBeTruthy();
     });

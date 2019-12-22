@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import classNames from "classnames";
-import PropTypes from "prop-types";
-import { Transition } from "react-transition-group";
+import React, { useState } from 'react';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import { Transition } from 'react-transition-group';
 
 const Alert = props => {
   const [isOpen, setIsOpen] = useState(true);
@@ -11,17 +11,21 @@ const Alert = props => {
   };
 
   const handleOnExit = node => {
-    node.classList.add("fade");
-    props.onClose && props.onClose();
+    node.classList.add('fade');
+    return props.onClose && props.onClose();
   };
 
-  const handleOnExited = node => {
-    props.onClosed && props.onClosed();
+  const handleOnExited = () => {
+    return props.onClosed && props.onClosed();
   };
 
   const { className, tag: Tag, color, children, dismiss } = props;
 
-  const alertClasses = classNames("alert", color && `alert-${color}`, className);
+  const alertClasses = classNames(
+    'alert',
+    color && `alert-${color}`,
+    className
+  );
 
   let alertComponent;
 
@@ -34,17 +38,23 @@ const Alert = props => {
         onExit={node => handleOnExit(node)}
         onExited={node => handleOnExited(node)}
       >
-        <Tag data-test="alert" className={alertClasses} role="alert">
+        <Tag data-test='alert' className={alertClasses} role='alert'>
           {children}
-          <button onClick={closeAlert} type="button" className="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+          <button
+            onClick={closeAlert}
+            type='button'
+            className='close'
+            data-dismiss='alert'
+            aria-label='Close'
+          >
+            <span aria-hidden='true'>&times;</span>
           </button>
         </Tag>
       </Transition>
     );
   } else {
     alertComponent = (
-      <Tag data-test="alert" className={alertClasses} role="alert">
+      <Tag data-test='alert' className={alertClasses} role='alert'>
         {children}
       </Tag>
     );
@@ -54,16 +64,25 @@ const Alert = props => {
 };
 
 Alert.defaultProps = {
-  color: "primary",
-  tag: "div"
+  color: 'primary',
+  tag: 'div'
 };
 
 Alert.propTypes = {
   className: PropTypes.string,
-  color: PropTypes.oneOf(["primary", "secondary", "success", "danger", "warning", "info", "light", "dark"]),
+  color: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'success',
+    'danger',
+    'warning',
+    'info',
+    'light',
+    'dark'
+  ]),
   onClose: PropTypes.func,
   onClosed: PropTypes.func,
-  tag: PropTypes.string,
+  tag: PropTypes.string
 };
 
 export default Alert;

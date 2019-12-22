@@ -18,7 +18,7 @@ describe('<PopoverHeader />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'popover-header').length).toBe(1);
   });
 
@@ -37,10 +37,10 @@ describe('<PopoverHeader />', () => {
     checkProps(wrapper, {});
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ attributes: { customAttr: 'custom' } });
 
-    expect(wrapper.props()['customAttr']).toEqual('custom');
+    expect(wrapper.props().customAttr).toEqual('custom');
   });
 
   test('sets custom wrapper tag', () => {
@@ -49,11 +49,11 @@ describe('<PopoverHeader />', () => {
   });
 
   describe('sets classes', () => {
-    test(`adds 'popover-header' class by default`, () => {
+    test('adds \'popover-header\' class by default', () => {
       checkClass(wrapper, 'popover-header');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

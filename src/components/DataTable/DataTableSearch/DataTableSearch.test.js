@@ -19,7 +19,7 @@ describe('<DataTableSearch />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'datatable-search').length).toBe(1);
   });
 

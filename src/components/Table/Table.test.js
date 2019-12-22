@@ -1,13 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-
-import {
-  findByTestAttr,
-  checkProps,
-  checkClass,
-  checkTag
-} from '../../tests/utils';
+import { findByTestAttr, checkProps, checkClass } from '../../tests/utils';
 import Table from './Table';
 
 const setup = (props = {}) => shallow(<Table {...props} />);
@@ -19,11 +13,11 @@ describe('<Table />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'table').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Table />, div);
   });
@@ -45,7 +39,7 @@ describe('<Table />', () => {
     checkProps(wrapper, {});
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ customAttr: 'custom' });
     const table = wrapper.find('table');
 
@@ -57,7 +51,7 @@ describe('<Table />', () => {
       checkClass(wrapper, 'table');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

@@ -40,11 +40,11 @@ const ModalHeader = props => {
 };
 
 ModalHeader.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  toggle: PropTypes.func,
-  className: PropTypes.string,
   children: PropTypes.node,
-  closeAriaLabel: PropTypes.string
+  className: PropTypes.string,
+  closeAriaLabel: PropTypes.string,
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  toggle: PropTypes.func
 };
 
 ModalHeader.defaultProps = {

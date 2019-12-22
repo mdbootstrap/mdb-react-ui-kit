@@ -46,28 +46,28 @@ describe('<DataTableTableScroll />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'datatable-table-scroll').length).toBe(1);
   });
 
   describe('sets classes', () => {
-    test(`adds 'col-sm-12' class by default`, () => {
+    test('adds \'col-sm-12\' class by default', () => {
       checkClass(wrapper, 'col-sm-12');
     });
 
-    test(`adds 'dataTables_scroll' by default`, () => {
+    test('adds \'dataTables_scroll\' by default', () => {
       checkClass(wrapper, 'dataTables_scroll');
     });
 
-    test(`adds 'dataTables_scrollHead' by default`, () => {
+    test('adds \'dataTables_scrollHead\' by default', () => {
       checkClass(wrapper, 'dataTables_scrollHead');
     });
 
-    test(`adds 'dataTable_scrollBody' by default`, () => {
+    test('adds \'dataTable_scrollBody\' by default', () => {
       checkClass(wrapper, 'dataTable_scrollBody');
     });
 
-    test(`adds 'dataTable' to  class 'Table' by default`, () => {
+    test('adds \'dataTable\' to  class \'Table\' by default', () => {
       checkClass(wrapper.find('Table').first(), 'dataTable');
     });
   });

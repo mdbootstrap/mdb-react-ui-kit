@@ -26,7 +26,7 @@ describe('<DropdownToggle />', () => {
     wrapper = setup({});
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'dropdown-toggle').length).toBe(1);
   });
 
@@ -57,7 +57,7 @@ describe('<DropdownToggle />', () => {
     expect(tag.prop('aria-haspopup')).toEqual(true);
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = mounted({ disabled: true });
 
     const toggle = wrapper.find('DropdownToggle');
@@ -124,21 +124,21 @@ describe('<DropdownToggle />', () => {
   });
 
   describe('sets classes', () => {
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = mounted({ className: 'testClassName' });
 
       const inner = wrapper.find('InnerReference');
       expect(inner.find('.testClassName').length).toBeTruthy();
     });
 
-    test(`adds 'dropdown-toggle' class passed as property`, () => {
+    test('adds \'dropdown-toggle\' class passed as property', () => {
       wrapper = mounted({ caret: true });
 
       const inner = wrapper.find('InnerReference');
       expect(inner.find('.dropdown-toggle').length).toBeTruthy();
     });
 
-    test(`adds nav-link' class passed as property`, () => {
+    test('adds nav-link\' class passed as property', () => {
       wrapper = mounted({ nav: true });
 
       const inner = wrapper.find('InnerReference');

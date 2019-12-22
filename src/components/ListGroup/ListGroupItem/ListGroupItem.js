@@ -38,15 +38,8 @@ const ListGroupItem = props => {
 
 ListGroupItem.propTypes = {
   active: PropTypes.bool,
-  disabled: PropTypes.bool,
-  hover: PropTypes.bool,
-  success: PropTypes.bool,
-  info: PropTypes.bool,
-  warning: PropTypes.bool,
-  danger: PropTypes.bool,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
   children: PropTypes.node,
+  className: PropTypes.string,
   color: PropTypes.oneOf([
     'primary',
     'secondary',
@@ -56,7 +49,14 @@ ListGroupItem.propTypes = {
     'info',
     'light',
     'dark'
-  ])
+  ]),
+  danger: PropTypes.bool,
+  disabled: PropTypes.bool,
+  hover: PropTypes.bool,
+  info: PropTypes.bool,
+  success: PropTypes.bool,
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  warning: PropTypes.bool
 };
 
 ListGroupItem.defaultProps = {

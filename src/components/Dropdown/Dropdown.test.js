@@ -15,11 +15,11 @@ describe('<Dropdown />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'dropdown').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Dropdown />, div);
   });
@@ -78,14 +78,14 @@ describe('<Dropdown />', () => {
     
     toggle();
     expect(document.addEventListener).toHaveBeenCalledTimes(3);
-    //for the first time it was invoked 3 times after mounting(isOpen === false)
+    // for the first time it was invoked 3 times after mounting(isOpen === false)
     expect(document.removeEventListener).toHaveBeenCalledTimes(6);
   });
 
   test('handleDocumentClick method should not be fired if keycode === 3(mouse`s right click)', () => {
     wrapper = mount(<Dropdown />);
 
-    let { handleDocumentClick } = wrapper.instance();
+    const { handleDocumentClick } = wrapper.instance();
 
     expect(wrapper.state('isOpen')).toEqual(false);
 
@@ -101,7 +101,7 @@ describe('<Dropdown />', () => {
   test('handleDocumentClick method should not be fired if e.type === keyup && e.type !== `tab`', () => {
     wrapper = mount(<Dropdown />);
 
-    let { handleDocumentClick } = wrapper.instance();
+    const { handleDocumentClick } = wrapper.instance();
 
     expect(wrapper.state('isOpen')).toEqual(false);
 
@@ -121,7 +121,7 @@ describe('<Dropdown />', () => {
         e.type !== keyup || e.type === 'tab'`, () => {
     wrapper = mount(<Dropdown />);
 
-    let { handleDocumentClick } = wrapper.instance();
+    const { handleDocumentClick } = wrapper.instance();
 
     wrapper.instance().getContainer = () => ({
       contains: () => true
@@ -144,7 +144,7 @@ describe('<Dropdown />', () => {
         if (esc || keyUp || keyDown || space) was pressed`, () => {
     wrapper = mount(<Dropdown />);
 
-    let { handleKeyDown } = wrapper.instance();
+    const { handleKeyDown } = wrapper.instance();
     const cb = callback();
 
     wrapper.instance().getContainer = () => ({
@@ -195,10 +195,10 @@ describe('<Dropdown />', () => {
         if (esc || keyUp || keyDown || space) wasn't pressed`, () => {
     wrapper = mount(<Dropdown />);
 
-    let { handleKeyDown } = wrapper.instance();
+    const { handleKeyDown } = wrapper.instance();
     const cb = callback();
 
-    let event = {
+    const event = {
       which: 1,
       target: {
         tagName: ''
@@ -215,13 +215,13 @@ describe('<Dropdown />', () => {
         if disabled property was passed`, () => {
     wrapper = mount(<Dropdown disabled />);
 
-    let { handleKeyDown } = wrapper.instance();
+    const { handleKeyDown } = wrapper.instance();
     const cb = callback();
     const getContainerCb = callback();
 
     wrapper.instance().getContainer = getContainerCb;
 
-    let event = {
+    const event = {
       which: 38,
       target: {
         tagName: ''
@@ -238,10 +238,10 @@ describe('<Dropdown />', () => {
     wrapper = mount(<Dropdown />);
     wrapper.setState({ isOpen: true });
 
-    let { handleKeyDown } = wrapper.instance();
+    const { handleKeyDown } = wrapper.instance();
     const clickCb = callback();
 
-    let event = {
+    const event = {
       which: 32,
       target: {
         tagName: '',
@@ -254,10 +254,10 @@ describe('<Dropdown />', () => {
     expect(clickCb).toBeCalled();
   });
 
-  test(`handleKeyDown's "focus()" method should be fired if ESC || isOpen===false`, () => {
+  test('handleKeyDown\'s "focus()" method should be fired if ESC || isOpen===false', () => {
     wrapper = mount(<Dropdown />);
 
-    let { handleKeyDown } = wrapper.instance();
+    const { handleKeyDown } = wrapper.instance();
     const focusCb = callback();
 
     wrapper.instance().getContainer = () => ({
@@ -269,7 +269,7 @@ describe('<Dropdown />', () => {
       querySelectorAll: () => []
     });
 
-    let event = {
+    const event = {
       which: 27,
       target: {
         tagName: '',
@@ -282,7 +282,7 @@ describe('<Dropdown />', () => {
     expect(focusCb).toBeCalled();
   });
 
-  test(`handleKeyDown's "handleFocus()" method should be fired if items.length>0`, () => {
+  test('handleKeyDown\'s "handleFocus()" method should be fired if items.length>0', () => {
     wrapper = mount(<Dropdown />);
     wrapper.setState({ isOpen: true });
 
@@ -298,7 +298,7 @@ describe('<Dropdown />', () => {
     wrapper.instance().getContainer = () => menu;
     wrapper.instance().handleFocus = focusCb;
 
-    let event = {
+    const event = {
       which: 40,
       target: {
         tagName: '',
@@ -311,7 +311,7 @@ describe('<Dropdown />', () => {
     expect(focusCb).toBeCalled();
   });
 
-  test(`handleKeyDown's "handleFocus()" method should not be fired if items.length===0`, () => {
+  test('handleKeyDown\'s "handleFocus()" method should not be fired if items.length===0', () => {
     wrapper = mount(<Dropdown />);
     wrapper.setState({ isOpen: true });
 
@@ -324,7 +324,7 @@ describe('<Dropdown />', () => {
     wrapper.instance().getContainer = () => menu;
     wrapper.instance().handleFocus = focusCb;
 
-    let event = {
+    const event = {
       which: 40,
       target: {
         tagName: '',
@@ -382,7 +382,7 @@ describe('<Dropdown />', () => {
       checkClass(wrapper, 'dropleft');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

@@ -1,14 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const CarouselIndicators = props => {
-  let { children, className, ...attributes } = props;
+  const { children, className, ...attributes } = props;
 
-  let classes = classNames("carousel-indicators", className);
+  const classes = classNames('carousel-indicators', className);
 
   return (
-    <ol data-test="carousel-indicators" {...attributes} className={classes}>
+    <ol data-test='carousel-indicators' {...attributes} className={classes}>
       {children}
     </ol>
   );
@@ -20,7 +20,7 @@ CarouselIndicators.propTypes = {
 };
 
 CarouselIndicators.defaultProps = {
-  className: ""
+  className: ''
 };
 
 export default CarouselIndicators;

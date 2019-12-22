@@ -19,11 +19,11 @@ const NavbarNav = props => {
 };
 
 NavbarNav.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
   children: PropTypes.node,
+  className: PropTypes.string,
+  left: PropTypes.bool,
   right: PropTypes.bool,
-  left: PropTypes.bool
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 NavbarNav.defaultProps = {

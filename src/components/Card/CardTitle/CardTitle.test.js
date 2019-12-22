@@ -19,11 +19,11 @@ describe('<CardTitle />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'card-title').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<CardTitle />, div);
   });
@@ -43,7 +43,7 @@ describe('<CardTitle />', () => {
     checkProps(wrapper, {});
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ customAttr: 'custom' });
 
     expect(wrapper.find('[customAttr="custom"]').length).toBe(1);
@@ -62,14 +62,14 @@ describe('<CardTitle />', () => {
     });
 
     test('should not add card-subtitle class when sub property is not passed', () => {
-      expect(wrapper.find(`.card-subtitle`).length).toBe(0);
+      expect(wrapper.find('.card-subtitle').length).toBe(0);
     });
 
     test('add card-title class when sub property is not passed', () => {
       checkClass(wrapper, 'card-title');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

@@ -113,12 +113,14 @@ InputGroup.propTypes = {
   className: PropTypes.string,
   containerClassName: PropTypes.string,
   containerId: PropTypes.string,
+  getValue: PropTypes.func,
   hint: PropTypes.string,
   id: PropTypes.string,
   inputs: PropTypes.node,
   label: PropTypes.string,
   labelClassName: PropTypes.string,
   material: PropTypes.bool,
+  onChange: PropTypes.func,
   prepend: PropTypes.any,
   prependClassName: PropTypes.string,
   size: PropTypes.string,
@@ -126,9 +128,7 @@ InputGroup.propTypes = {
   textClassName: PropTypes.string,
   type: PropTypes.string,
   value: PropTypes.string,
-  valueDefault: PropTypes.string,
-  getValue: PropTypes.func,
-  onChange: PropTypes.func
+  valueDefault: PropTypes.string
 };
 
 InputGroup.defaultProps = {

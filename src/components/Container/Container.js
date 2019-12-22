@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const Container = props => {
-  const { fluid, className, tag: Tag, ...attributes } = props;
+  const { className, fluid, tag: Tag, ...attributes } = props;
 
   const classes = classNames(
     fluid ? 'container-fluid' : 'container',
@@ -14,9 +14,9 @@ const Container = props => {
 };
 
 Container.propTypes = {
+  className: PropTypes.string,
   fluid: PropTypes.bool,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 Container.defaultProps = {

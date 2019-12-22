@@ -25,11 +25,11 @@ const DropdownMenuComponent = ({
 DropdownMenuComponent.propTypes = {
   aria: PropTypes.bool.isRequired,
   attributes: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
   d_key: PropTypes.string.isRequired,
   role: PropTypes.string.isRequired,
   tabIndex: PropTypes.string.isRequired,
-  tag: PropTypes.any.isRequired,
-  children: PropTypes.node.isRequired
+  tag: PropTypes.any.isRequired
 };
 
 export default DropdownMenuComponent;

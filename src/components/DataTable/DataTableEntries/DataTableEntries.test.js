@@ -1,18 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import {
   findByTestAttr,
   checkProps,
   checkClass,
-  checkTag
 } from '../../../tests/utils';
 import DataTableEntries from './DataTableEntries';
 
 const expectedProps = {
   className: 'testClassname',
   barReverse: true,
-  handleEntriesChange: () => {},
+  handleEntriesChange: () => { },
   displayEntries: true,
   entries: 0,
   entriesArr: [0],
@@ -30,7 +28,7 @@ describe('<DataTableEntries />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'datatable-entries').length).toBe(1);
   });
 

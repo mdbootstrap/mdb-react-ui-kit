@@ -1,28 +1,26 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const ButtonToolbar = props => {
-  const { className, ...attributes } = props;
-
-  const classes = classNames(className, "btn-toolbar");
+const ButtonToolbar = ({ className, children, ...attributes }) => {
+  const classes = classNames(className, 'btn-toolbar');
 
   return (
-    <div data-test="button-toolbar" {...attributes} className={classes}>
-      {props.children}
+    <div data-test='button-toolbar' {...attributes} className={classes}>
+      {children}
     </div>
   );
 };
 
 ButtonToolbar.propTypes = {
-  "aria-label": PropTypes.string,
-  className: PropTypes.string,
+  'aria-label': PropTypes.string,
   children: PropTypes.node,
+  className: PropTypes.string,
   role: PropTypes.string
 };
 
 ButtonToolbar.defaultProps = {
-  role: "toolbar"
+  role: 'toolbar'
 };
 
 export default ButtonToolbar;

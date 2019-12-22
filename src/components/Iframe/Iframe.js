@@ -5,35 +5,35 @@ import { returnAttributes } from '../utils';
 
 class Iframe extends Component {
   state = {
-    width: '',
-    height: '',
+    stateWidth: '',
+    stateHeight: '',
     ratio: ''
   };
 
   componentDidMount = () => {
-    let width = this.props.width;
-    let height = this.props.height;
-    let ratio = 9 / 16;
+    const { ratio } = this.props;
+    let { width, height } = this.props;
+    let ratioNumber = 9 / 16;
 
-    if (this.props.ratio) {
-      const newRatio =
-        this.props.ratio.split('by')[0] / this.props.ratio.split('by')[1];
-      if (typeof ratio === 'number') ratio = newRatio;
+    if (ratio) {
+      const newRatio = ratio.split('by')[0] / ratio.split('by')[1];
+      if (typeof ratioNumber === 'number') {ratioNumber = newRatio;}
     }
 
-    if (this.props.width && this.props.height) {
+    if (width && height) {
       return;
-    } else if (this.props.width) {
-      height = this.props.width * ratio;
-    } else if (this.props.height) {
-      width = this.props.height * (1 / ratio);
+    }
+    if (width) {
+      height = width * ratioNumber;
+    } else if (height) {
+      width = height * (1 / ratioNumber);
     }
 
     this.setState({
       ...this.state,
-      width: width,
-      height: height,
-      ratio: ratio
+      width,
+      height,
+      ratio
     });
   };
 
@@ -49,16 +49,18 @@ class Iframe extends Component {
       sandbox,
       src,
       style,
-      title = "",
+      title = '',
       ratio,
       height,
       width
     } = this.props;
 
+    const { stateWidth, stateHeight } = this.state
+
     const classes = classNames('embed-responsive-item', className);
     const wrapperClasses = classNames(
       !(height || width) && 'embed-responsive',
-      ratio ? `embed-responsive-${ratio}` : `embed-responsive-16by9`
+      ratio ? `embed-responsive-${ratio}` : 'embed-responsive-16by9'
     );
 
     let iframeAttributes = {
@@ -67,9 +69,9 @@ class Iframe extends Component {
       frameBorder: '0',
       target: '_parent',
       allowFullScreen: allowFullScreen || true,
-      height: this.state.height || '100%',
+      height: stateHeight || '100%',
       name: name || undefined,
-      width: this.state.width || '100%',
+      width: stateWidth || '100%',
       onLoad: onLoad || undefined,
       onMouseOver: onMouseOver || undefined,
       onMouseOut: onMouseOut || undefined,
@@ -88,20 +90,20 @@ class Iframe extends Component {
 }
 
 Iframe.propTypes = {
+  src: PropTypes.string.isRequired,
   allowFullScreen: PropTypes.bool,
   className: PropTypes.string,
   height: PropTypes.number,
   id: PropTypes.string,
   name: PropTypes.string,
-  onMouseOver: PropTypes.func,
-  onMouseOut: PropTypes.func,
   onLoad: PropTypes.func,
+  onMouseOut: PropTypes.func,
+  onMouseOver: PropTypes.func,
   ratio: PropTypes.string,
   sandbox: PropTypes.string,
-  src: PropTypes.string.isRequired,
   styles: PropTypes.object,
-  width: PropTypes.number,
-  title: PropTypes.string
+  title: PropTypes.string,
+  width: PropTypes.number
 };
 
 export default Iframe;

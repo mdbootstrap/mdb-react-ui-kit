@@ -10,8 +10,10 @@ const TreeviewList = props => {
   const [opened, setOpen] = useState(false);
 
   useEffect(() => {
-    setOpen(props.opened);
-  }, [props.opened]);
+    const { opened } = props;
+    setOpen(opened);
+    // eslint-disable-next-line react/destructuring-assignment
+  }, [props, props.opened]);
 
   const handleSwitch = () => setOpen(!opened);
 
@@ -58,7 +60,7 @@ const TreeviewList = props => {
   );
 
   const collapse = theme && <MDBCollapse isOpen={opened}>{child}</MDBCollapse>;
-  
+
   const iconArrow =
     theme !== 'colorful'
       ? 'angle-right'

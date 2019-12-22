@@ -1,13 +1,20 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ni = require('os').networkInterfaces();
+const ip = Object.keys(ni)
+  .map(interf =>
+    ni[interf].map(o => !o.internal && o.family === 'IPv4' && o.address)
+  )
+  .reduce((a, b) => a.concat(b))
+  .filter(o => o)[0];
 
 const config = {
   mode: 'development',
   entry: './docs/index.js',
   output: {
-    path: path.resolve(__dirname, "temp"),
-    filename: "main.js",
-    publicPath: "/"
+    path: path.resolve(__dirname, 'temp'),
+    filename: 'main.js',
+    publicPath: '/'
   },
   resolve: {
     alias: {
@@ -53,7 +60,9 @@ const config = {
     historyApiFallback: true,
     open: true,
     compress: true,
-    port: 8080
+    port: 8080,
+    host: `${ip}`,
+    hot: true
   },
   plugins: [
     new HtmlWebpackPlugin({

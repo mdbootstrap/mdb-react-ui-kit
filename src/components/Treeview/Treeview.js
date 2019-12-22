@@ -72,11 +72,11 @@ const Treeview = props => {
 
 Treeview.propTypes = {
   className: PropTypes.string,
+  getValue: PropTypes.func,
   header: PropTypes.string,
   listClassName: PropTypes.string,
   tag: PropTypes.string,
-  theme: PropTypes.string,
-  getValue: PropTypes.func
+  theme: PropTypes.string
 };
 
 Treeview.defaultProps = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { findByTestAttr, checkClass, checkProps } from '../../../tests/utils';
+import { findByTestAttr, checkClass } from '../../../tests/utils';
 import DataTablePagination from './DataTablePagination';
 
 const expectedProps = {
@@ -8,7 +8,7 @@ const expectedProps = {
   pages: [[{}, {}], [{}, {}], [{}, {}], [{}]],
   pagesAmount: 4,
   label: ['prev', 'next'],
-  changeActivePage: () => {}
+  changeActivePage: () => { }
 };
 
 const setup = (props = {}) =>
@@ -21,13 +21,13 @@ describe('<DataTablePagination />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'datatable-pagination').length).toBe(1);
   });
 
-  test(`sets active property for PageItem`, () => {
+  test('sets active property for PageItem', () => {
     wrapper = setup({ activePage: 2 });
-    let node = wrapper.find('PageItem').at(3);
+    const node = wrapper.find('PageItem').at(3);
     expect(node.prop('active')).toEqual(true);
 
     const active = wrapper
@@ -37,27 +37,27 @@ describe('<DataTablePagination />', () => {
     expect(active.length).toEqual(1);
   });
 
-  describe(`sets disabled property`, () => {
-    test(`sets disabled property for prev & next buttons`, () => {
+  describe('sets disabled property', () => {
+    test('sets disabled property for prev & next buttons', () => {
       wrapper = setup({ activePage: 0 });
-      let prev = wrapper
+      const prev = wrapper
         .find('PageItem')
         .first()
         .prop('disabled');
       expect(prev).toEqual(true);
 
       wrapper = setup({ activePage: expectedProps.pagesAmount - 1 });
-      let next = wrapper
+      const next = wrapper
         .find('PageItem')
         .last()
         .prop('disabled');
       expect(next).toEqual(true);
     });
 
-    test(`unset disabled property for prev & next buttons`, () => {
+    test('unset disabled property for prev & next buttons', () => {
       wrapper = setup({ activePage: 1 }).find('PageItem');
-      let prev = wrapper.first().prop('disabled');
-      let next = wrapper.last().prop('disabled');
+      const prev = wrapper.first().prop('disabled');
+      const next = wrapper.last().prop('disabled');
 
       expect(prev).toEqual(false);
       expect(next).toEqual(false);
@@ -74,15 +74,15 @@ describe('<DataTablePagination />', () => {
     expect(cb).toHaveBeenCalledTimes(6);
   });
 
-  describe(`calls functions of component`, () => {
-    test(`calls pagesIndexify`, () => {
+  describe('calls functions of component', () => {
+    test('calls pagesIndexify', () => {
       wrapper.setState({ pages: [[], [], [], [], [], []] });
-      let amount = wrapper.instance().pagesIndexify();
+      const amount = wrapper.instance().pagesIndexify();
       expect(amount.length).toBe(6);
     });
 
-    test(`calls groupPages`, () => {
-      wrapper = setup({ pagesAmount: 2 }); //how many pages for 1 tab
+    test('calls groupPages', () => {
+      wrapper = setup({ pagesAmount: 2 }); // how many pages for 1 tab
       wrapper.setState({
         pages: [[{}], [{}], [{}], [{}], [{}], [{}], [{}], [{}], [{}]]
       });
@@ -90,12 +90,12 @@ describe('<DataTablePagination />', () => {
       expect(wrapper.instance().state.pGroups.length).toBe(5);
     });
 
-    test(`calls choosePagesGroup`, () => {
-      wrapper = setup({ pagesAmount: 1, activePage: 3 }); //how many pages for 1 tab
+    test('calls choosePagesGroup', () => {
+      wrapper = setup({ pagesAmount: 1, activePage: 3 }); // how many pages for 1 tab
       wrapper.setState({
         pages: [[{}], [{}], [{}], [{}], [{}], [{}], [{}], [{}], [{}]]
       });
-      let pagesGroup = wrapper.instance().choosePagesGroup();
+      const pagesGroup = wrapper.instance().choosePagesGroup();
       expect(pagesGroup[0].length).toBe(1);
     });
   });
@@ -111,7 +111,7 @@ describe('<DataTablePagination />', () => {
 
     test('adds page-link class by default for PageLink', () => {
       wrapper.find('PageLink').map(node => {
-        checkClass(node, 'page-link');
+        return checkClass(node, 'page-link');
       });
     });
   });

@@ -1,45 +1,55 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const NavbarToggler = props => {
-  const { right, left, children, className, tag: Tag, image, ...attributes } = props;
+  const {
+    right,
+    left,
+    children,
+    className,
+    tag: Tag,
+    image,
+    ...attributes
+  } = props;
 
   const classes = classNames(
     {
-      "navbar-toggler-right": right,
-      "navbar-toggler-left": left
+      'navbar-toggler-right': right,
+      'navbar-toggler-left': left
     },
-    "navbar-toggler",
+    'navbar-toggler',
     className
   );
 
   return (
-    <Tag data-test="navbar-toggler" {...attributes} className={classes}>
-      {children ? (
-        children
-      ) : image ? (
-        <span className="navbar-toggler-icon" style={{ backgroundImage: `url("${image}")` }} />
-      ) : (
-        <span className="navbar-toggler-icon" />
-      )}
+    <Tag data-test='navbar-toggler' {...attributes} className={classes}>
+      {children ||
+        (image ? (
+          <span
+            className='navbar-toggler-icon'
+            style={{ backgroundImage: `url("${image}")` }}
+          />
+        ) : (
+          <span className='navbar-toggler-icon' />
+        ))}
     </Tag>
   );
 };
 
 NavbarToggler.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  type: PropTypes.string,
-  className: PropTypes.string,
   children: PropTypes.node,
-  right: PropTypes.bool,
+  className: PropTypes.string,
+  image: PropTypes.string,
   left: PropTypes.bool,
-  image: PropTypes.string
+  right: PropTypes.bool,
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  type: PropTypes.string
 };
 
 NavbarToggler.defaultProps = {
-  tag: "button",
-  type: "button"
+  tag: 'button',
+  type: 'button'
 };
 
 export default NavbarToggler;

@@ -24,12 +24,12 @@ describe('<TreeviewList />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     const TreeviewList = findByTestAttr(wrapper, 'treeview-list');
     expect(TreeviewList.length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(
       <TreeviewContext.Provider value={context}>
@@ -68,10 +68,10 @@ describe('<TreeviewList />', () => {
     ).toHaveLength(1);
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ lang: 'En' });
 
-    expect(wrapper.props()['lang']).toBe('En');
+    expect(wrapper.props().lang).toBe('En');
     expect(wrapper.find('[lang="En"]').length).toBeTruthy();
   });
 
@@ -109,22 +109,22 @@ describe('<TreeviewList />', () => {
       checkClass(wrapper.find('ul'), 'active');
     });
 
-    test(`adds 'closed treeview-test-element d-block' class to folder if (theme === 'test') property is passed `, () => {
+    test('adds \'closed treeview-test-element d-block\' class to folder if (theme === \'test\') property is passed ', () => {
       expect(
         wrapper.find('.closed.treeview-test-element.d-block').length
       ).toBeTruthy();
     });
 
-    test(`adds 'ml-2' class to Folder if (!children) `, () => {
+    test('adds \'ml-2\' class to Folder if (!children) ', () => {
       expect(wrapper.find('span.ml-2').length).toBeTruthy();
     });
 
-    test(`adds 'opened' class to Folder if (opened) `, () => {
+    test('adds \'opened\' class to Folder if (opened) ', () => {
       wrapper = setup({ opened: true });
       expect(wrapper.find('span.opened').length).toBeTruthy();
     });
 
-    test(`adds 'disabledTestClass' class to Folder if (disabledClassName) property is passed and item is (disabled)`, () => {
+    test('adds \'disabledTestClass\' class to Folder if (disabledClassName) property is passed and item is (disabled)', () => {
       wrapper = setup({
         disabledClassName: 'disabledTestClass',
         disabled: true
@@ -132,7 +132,7 @@ describe('<TreeviewList />', () => {
       expect(wrapper.find('.disabledTestClass').length).toBeTruthy();
     });
 
-    test(`should not add 'disabledTestClass' class if (disabledClassName) property is passed and item is (!disabled)`, () => {
+    test('should not add \'disabledTestClass\' class if (disabledClassName) property is passed and item is (!disabled)', () => {
       wrapper = setup({
         disabledClassName: 'disabledTestClass',
         disabled: false
@@ -140,15 +140,15 @@ describe('<TreeviewList />', () => {
       expect(wrapper.find('.disabledTestClass').length).toBeFalsy();
     });
 
-    test(`adds 'closed treeview-test-items px-0' class to Tag if context:(theme === 'test') `, () => {
+    test('adds \'closed treeview-test-items px-0\' class to Tag if context:(theme === \'test\') ', () => {
       expect(wrapper.find('.treeview-test-items.px-0').length).toBeTruthy();
     });
 
-    test(`adds 'closed treeview-test-items px-0' class to Tag if context:(theme === 'test') `, () => {
+    test('adds \'closed treeview-test-items px-0\' class to Tag if context:(theme === \'test\') ', () => {
       expect(wrapper.find('.treeview-test-items.px-0').length).toBeTruthy();
     });
 
-    test(`adds custom class to passed as property`, () => {
+    test('adds custom class to passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
       expect(wrapper.find('.testClassName').length).toBeTruthy();
     });

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   MDBBtn,
   MDBContainer,
@@ -10,31 +10,31 @@ import {
   MDBTableBody,
   MDBTableHead,
   MDBIcon
-} from "mdbreact";
-import DocsLink from "./../components/docsLink";
-import SectionContainer from "../components/sectionContainer";
+} from 'mdbreact';
+import DocsLink from '../components/docsLink';
+import SectionContainer from '../components/sectionContainer';
 
 const TableStylesPage = props => {
   const columns = [
     {
-      label: "#",
-      field: "id",
-      sort: "asc"
+      label: '#',
+      field: 'id',
+      sort: 'asc'
     },
     {
-      label: "First",
-      field: "first",
-      sort: "asc"
+      label: 'First',
+      field: 'first',
+      sort: 'asc'
     },
     {
-      label: "Last",
-      field: "last",
-      sort: "asc"
+      label: 'Last',
+      field: 'last',
+      sort: 'asc'
     },
     {
-      label: "Handle",
-      field: "handle",
-      sort: "asc"
+      label: 'Handle',
+      field: 'handle',
+      sort: 'asc'
     }
   ];
 
@@ -42,29 +42,29 @@ const TableStylesPage = props => {
     {
       id: 1,
       first: (
-        <MDBBtn color="purple" size="sm">
+        <MDBBtn color='purple' size='sm'>
           Button
         </MDBBtn>
       ),
-      last: "Otto",
-      handle: "@mdo"
+      last: 'Otto',
+      handle: '@mdo'
     },
     {
       id: 2,
-      first: "Jacob",
+      first: 'Jacob',
       last: (
-        <MDBBtn color="purple" size="sm">
+        <MDBBtn color='purple' size='sm'>
           Button
         </MDBBtn>
       ),
-      handle: "@fat"
+      handle: '@fat'
     },
     {
       id: 3,
-      first: "Larry",
-      last: "the Bird",
+      first: 'Larry',
+      last: 'the Bird',
       handle: (
-        <MDBBtn color="purple" size="sm">
+        <MDBBtn color='purple' size='sm'>
           Button
         </MDBBtn>
       )
@@ -75,29 +75,29 @@ const TableStylesPage = props => {
     {
       id: 1,
       first: (
-        <MDBBtn color="purple" outline size="sm">
+        <MDBBtn color='purple' outline size='sm'>
           Button
         </MDBBtn>
       ),
-      last: "Otto",
-      handle: "@mdo"
+      last: 'Otto',
+      handle: '@mdo'
     },
     {
       id: 2,
-      first: "Jacob",
+      first: 'Jacob',
       last: (
-        <MDBBtn color="purple" outline size="sm">
+        <MDBBtn color='purple' outline size='sm'>
           Button
         </MDBBtn>
       ),
-      handle: "@fat"
+      handle: '@fat'
     },
     {
       id: 3,
-      first: "Larry",
-      last: "the Bird",
+      first: 'Larry',
+      last: 'the Bird',
       handle: (
-        <MDBBtn color="purple" outline size="sm">
+        <MDBBtn color='purple' outline size='sm'>
           Button
         </MDBBtn>
       )
@@ -108,29 +108,29 @@ const TableStylesPage = props => {
     {
       id: 1,
       first: (
-        <MDBBtn color="default" rounded size="sm">
+        <MDBBtn color='default' rounded size='sm'>
           Button
         </MDBBtn>
       ),
-      last: "Otto",
-      handle: "@mdo"
+      last: 'Otto',
+      handle: '@mdo'
     },
     {
       id: 2,
-      first: "Jacob",
+      first: 'Jacob',
       last: (
-        <MDBBtn color="default" rounded size="sm">
+        <MDBBtn color='default' rounded size='sm'>
           Button
         </MDBBtn>
       ),
-      handle: "@fat"
+      handle: '@fat'
     },
     {
       id: 3,
-      first: "Larry",
-      last: "the Bird",
+      first: 'Larry',
+      last: 'the Bird',
       handle: (
-        <MDBBtn color="default" rounded size="sm">
+        <MDBBtn color='default' rounded size='sm'>
           Button
         </MDBBtn>
       )
@@ -140,60 +140,60 @@ const TableStylesPage = props => {
   const data_icons = {
     columns: [
       {
-        label: "#",
-        field: "id",
-        sort: "asc"
+        label: '#',
+        field: 'id',
+        sort: 'asc'
       },
       {
-        label: [<MDBIcon key="Lorem" icon="leaf" className="mr-2 blue-text" aria-hidden="true" />, "Lorem"],
-        field: "lorem",
-        sort: "asc"
+        label: [<MDBIcon key='Lorem' icon='leaf' className='mr-2 blue-text' aria-hidden='true' />, 'Lorem'],
+        field: 'lorem',
+        sort: 'asc'
       },
       {
-        label: [<MDBIcon key="Ipsum" icon="leaf" className="mr-2 teal-text" aria-hidden="true" />, "Ipsum"],
-        field: "ipsum",
-        sort: "asc"
+        label: [<MDBIcon key='Ipsum' icon='leaf' className='mr-2 teal-text' aria-hidden='true' />, 'Ipsum'],
+        field: 'ipsum',
+        sort: 'asc'
       },
       {
-        label: [<MDBIcon key="Dolor" icon="leaf" className="mr-2 indigo-text" aria-hidden="true" />, "Dolor"],
-        field: "dolor",
-        sort: "asc"
+        label: [<MDBIcon key='Dolor' icon='leaf' className='mr-2 indigo-text' aria-hidden='true' />, 'Dolor'],
+        field: 'dolor',
+        sort: 'asc'
       }
     ],
     rows: [
       {
         id: 1,
-        lorem: [<MDBIcon key="cell1" icon="gem" className="mr-2 grey-text" aria-hidden="true" />, "Cell1"],
-        ipsum: [<MDBIcon key="cell2" icon="download" className="mr-2 grey-text" aria-hidden="true" />, "Cell2"],
-        dolor: [<MDBIcon key="cell3" icon="book" className="mr-2 grey-text" aria-hidden="true" />, "Cell3"]
+        lorem: [<MDBIcon key='cell1' icon='gem' className='mr-2 grey-text' aria-hidden='true' />, 'Cell1'],
+        ipsum: [<MDBIcon key='cell2' icon='download' className='mr-2 grey-text' aria-hidden='true' />, 'Cell2'],
+        dolor: [<MDBIcon key='cell3' icon='book' className='mr-2 grey-text' aria-hidden='true' />, 'Cell3']
       },
       {
         id: 2,
         lorem: [
-          <MDBIcon key="cell1" icon="graduation-cap" className="mr-2 grey-text" aria-hidden="true" />,
-          "Cell1"
+          <MDBIcon key='cell1' icon='graduation-cap' className='mr-2 grey-text' aria-hidden='true' />,
+          'Cell1'
         ],
-        ipsum: [<MDBIcon key="cell2" icon="gift" className="mr-2 grey-text" aria-hidden="true" />, "Cell2"],
-        dolor: [<MDBIcon key="cell3" icon="image" className="mr-2 grey-text" aria-hidden="true" />, "Cell3"]
+        ipsum: [<MDBIcon key='cell2' icon='gift' className='mr-2 grey-text' aria-hidden='true' />, 'Cell2'],
+        dolor: [<MDBIcon key='cell3' icon='image' className='mr-2 grey-text' aria-hidden='true' />, 'Cell3']
       },
       {
         id: 3,
-        lorem: [<MDBIcon key="cell1" icon="magic" className="mr-2 grey-text" aria-hidden="true" />, "Cell1"],
-        ipsum: [<MDBIcon key="cell2" icon="table" className="mr-2 grey-text" aria-hidden="true" />, "Cell2"],
-        dolor: [<MDBIcon key="cell3" icon="edit" className="mr-2 grey-text" aria-hidden="true" />, "Cell3"]
+        lorem: [<MDBIcon key='cell1' icon='magic' className='mr-2 grey-text' aria-hidden='true' />, 'Cell1'],
+        ipsum: [<MDBIcon key='cell2' icon='table' className='mr-2 grey-text' aria-hidden='true' />, 'Cell2'],
+        dolor: [<MDBIcon key='cell3' icon='edit' className='mr-2 grey-text' aria-hidden='true' />, 'Cell3']
       }
     ]
   };
 
   return (
-    <MDBContainer className="mt-3">
+    <MDBContainer className='mt-3'>
       <DocsLink
-        title="Tables with additional elements"
-        href="https://mdbootstrap.com/docs/react/tables/additional/"
+        title='Tables with additional elements'
+        href='https://mdbootstrap.com/docs/react/tables/additional/'
       />
-      <MDBRow className="py-3">
-        <MDBCol md="12">
-          <SectionContainer header="With regular buttons" noBorder>
+      <MDBRow className='py-3'>
+        <MDBCol md='12'>
+          <SectionContainer header='With regular buttons' noBorder>
             <MDBCard>
               <MDBCardBody>
                 <MDBTable btn>
@@ -206,9 +206,9 @@ const TableStylesPage = props => {
         </MDBCol>
       </MDBRow>
 
-      <MDBRow className="py-3">
-        <MDBCol md="12">
-          <SectionContainer header="With outline buttons" noBorder>
+      <MDBRow className='py-3'>
+        <MDBCol md='12'>
+          <SectionContainer header='With outline buttons' noBorder>
             <MDBCard>
               <MDBCardBody>
                 <MDBTable btn>
@@ -221,9 +221,9 @@ const TableStylesPage = props => {
         </MDBCol>
       </MDBRow>
 
-      <MDBRow className="py-3">
-        <MDBCol md="12">
-          <SectionContainer header="With rounded buttons" noBorder>
+      <MDBRow className='py-3'>
+        <MDBCol md='12'>
+          <SectionContainer header='With rounded buttons' noBorder>
             <MDBCard>
               <MDBCardBody>
                 <MDBTable btn>
@@ -236,9 +236,9 @@ const TableStylesPage = props => {
         </MDBCol>
       </MDBRow>
 
-      <MDBRow className="py-3">
-        <MDBCol md="12">
-          <SectionContainer header="With icons" noBorder>
+      <MDBRow className='py-3'>
+        <MDBCol md='12'>
+          <SectionContainer header='With icons' noBorder>
             <MDBCard>
               <MDBCardBody>
                 <MDBTable btn fixed>

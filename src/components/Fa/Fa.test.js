@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import { findByTestAttr, checkProps, checkClass } from '../../tests/utils';
 import checkPropTypes from 'check-prop-types';
+import { findByTestAttr, checkProps, checkClass } from '../../tests/utils';
 import Fa from './Fa';
 
 const setup = (props = {}) => shallow(<Fa {...props} icon='star' />);
@@ -14,12 +14,12 @@ describe('<Fa />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     const fa = findByTestAttr(wrapper, 'fa');
     expect(fa.length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Fa icon='star' />, div);
   });
@@ -55,10 +55,10 @@ describe('<Fa />', () => {
     checkPropTypes(wrapper);
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ icon: 'star', customAttr: 'custom' });
 
-    expect(wrapper.props()['customAttr']).toBe('custom');
+    expect(wrapper.props().customAttr).toBe('custom');
     expect(wrapper.find('[customAttr="custom"]').length).toBe(1);
   });
 
@@ -123,7 +123,7 @@ describe('<Fa />', () => {
       checkClass(wrapper, 'fa-1x');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

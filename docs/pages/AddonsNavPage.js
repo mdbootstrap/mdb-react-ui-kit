@@ -8,7 +8,7 @@ import {
   MDBIcon,
   MDBAnimation
 } from 'mdbreact';
-import MenuLink from './../components/menuLink';
+import MenuLink from '../components/menuLink';
 
 const AddonsNavPage = () => {
   return (

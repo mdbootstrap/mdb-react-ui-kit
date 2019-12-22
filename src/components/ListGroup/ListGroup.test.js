@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import { findByTestAttr, checkProps, checkClass } from '../../tests/utils';
 import checkPropTypes from 'check-prop-types';
+import { findByTestAttr, checkProps, checkClass } from '../../tests/utils';
 import ListGroup from './ListGroup';
 
 const setup = (props = {}) => shallow(<ListGroup {...props} />);
@@ -14,12 +14,12 @@ describe('<ListGroup />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     const ListGroup = findByTestAttr(wrapper, 'list-group');
     expect(ListGroup.length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<ListGroup />, div);
   });
@@ -39,10 +39,10 @@ describe('<ListGroup />', () => {
   });
 
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ customAttr: 'custom' });
 
-    expect(wrapper.props()['customAttr']).toBe('custom');
+    expect(wrapper.props().customAttr).toBe('custom');
     expect(wrapper.find('[customAttr="custom"]').length).toBe(1);
   });
 
@@ -51,7 +51,7 @@ describe('<ListGroup />', () => {
       checkClass(wrapper, 'list-group');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

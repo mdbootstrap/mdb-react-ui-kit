@@ -1,17 +1,20 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
-import Waves from "../../Waves";
-import { NavLink as Link, Link as NormalLink } from "react-router-dom";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { NavLink as NavLinkRouter } from 'react-router-dom';
+import Waves from '../../Waves';
+import { MDBLink } from '../../Link';
 
 const NavLink = props => {
   const [cursorPos, setCursorPos] = useState({});
+  const { children, className, disabled, active, to, link, ...attributes } = props;
+  const classes = classNames('nav-link', disabled ? 'disabled' : 'Ripple-parent', active && 'active', className);
 
   const handleClick = e => {
-    if (!props.disabled) {
+    if (!disabled) {
       e.stopPropagation();
       // Waves - Get Cursor Position
-      let cursorPos = {
+      const cursorPos = {
         top: e.clientY,
         left: e.clientX,
         time: Date.now()
@@ -20,55 +23,28 @@ const NavLink = props => {
     }
   };
 
-  const { children, className, disabled, active, to, link, ...attributes } = props;
-  const classes = classNames("nav-link", disabled ? "disabled" : "Ripple-parent", active && "active", className);
-  let rednerLink;
+  const Tag = link ? MDBLink : NavLinkRouter;
 
-  if (link) {
-    rednerLink = (
-      <NormalLink
-        data-test="nav-link"
-        className={classes}
-        onMouseUp={handleClick}
-        onTouchStart={handleClick}
-        to={to}
-        {...attributes}
-      >
-        {children}
-        {props.disabled ? false : <Waves cursorPos={cursorPos} />}
-      </NormalLink>
-    );
-  } else {
-    rednerLink = (
-      <Link
-        data-test="nav-link"
-        className={classes}
-        onMouseUp={handleClick}
-        onTouchStart={handleClick}
-        to={to}
-        {...attributes}
-      >
-        {children}
-        {props.disabled ? false : <Waves cursorPos={cursorPos} />}
-      </Link>
-    );
-  }
-
-  return rednerLink;
+  return (
+    <Tag data-test='nav-link' className={classes} onMouseUp={handleClick} onTouchStart={handleClick} to={to} {...attributes}>
+      {children}
+      {disabled ? false : <Waves cursorPos={cursorPos} />}
+    </Tag>
+  );
 };
 
 NavLink.propTypes = {
+  active: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
   disabled: PropTypes.bool,
-  to: PropTypes.string,
-  active: PropTypes.bool,
-  link: PropTypes.bool
+  link: PropTypes.bool,
+  to: PropTypes.string
 };
 
 NavLink.defaultProps = {
   active: false,
-  className: "",
+  className: '',
   disabled: false,
   link: false
 };

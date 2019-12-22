@@ -21,9 +21,9 @@ const CardVideo = props => {
 };
 
 CardVideo.propTypes = {
-  className: PropTypes.string,
   src: PropTypes.string.isRequired,
-  children: PropTypes.node
+  children: PropTypes.node,
+  className: PropTypes.string
 };
 
 export default CardVideo;

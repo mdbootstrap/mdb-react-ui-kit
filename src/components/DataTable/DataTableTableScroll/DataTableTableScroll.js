@@ -14,14 +14,14 @@ const DataTableTableScroll = props => {
     columns,
     dark,
     fixed,
-    hover,
     handleSort,
     handleTableBodyScroll,
+    hover,
     maxHeight,
     responsive,
-    responsiveSm,
-    responsiveMd,
     responsiveLg,
+    responsiveMd,
+    responsiveSm,
     responsiveXl,
     rows,
     scrollX,
@@ -39,8 +39,9 @@ const DataTableTableScroll = props => {
   } = props;
 
   const minWidth = scrollX
-    ? columns.map(col => col.width).reduce((prev, curr) => prev + curr, 0) +
-      'px'
+    ? `${columns
+        .map(col => col.width)
+        .reduce((prev, curr) => prev + curr, 0)}px`
     : 'auto';
 
   return (
@@ -149,27 +150,27 @@ DataTableTableScroll.propTypes = {
   btn: PropTypes.bool.isRequired,
   dark: PropTypes.bool.isRequired,
   fixed: PropTypes.bool.isRequired,
-  hover: PropTypes.bool.isRequired,
   handleSort: PropTypes.func.isRequired,
   handleTableBodyScroll: PropTypes.func.isRequired,
+  hover: PropTypes.bool.isRequired,
   responsive: PropTypes.bool.isRequired,
-  responsiveSm: PropTypes.bool.isRequired,
-  responsiveMd: PropTypes.bool.isRequired,
   responsiveLg: PropTypes.bool.isRequired,
+  responsiveMd: PropTypes.bool.isRequired,
+  responsiveSm: PropTypes.bool.isRequired,
   responsiveXl: PropTypes.bool.isRequired,
+  small: PropTypes.bool.isRequired,
   sortable: PropTypes.bool.isRequired,
   sorted: PropTypes.bool.isRequired,
-  small: PropTypes.bool.isRequired,
   striped: PropTypes.bool.isRequired,
-  theadColor: PropTypes.string.isRequired,
-  theadTextWhite: PropTypes.bool.isRequired,
   tbodyColor: PropTypes.string.isRequired,
   tbodyTextWhite: PropTypes.bool.isRequired,
+  theadColor: PropTypes.string.isRequired,
+  theadTextWhite: PropTypes.bool.isRequired,
   translateScrollHead: PropTypes.number.isRequired,
-  columns: PropTypes.arrayOf(PropTypes.object),
-  rows: PropTypes.arrayOf(PropTypes.object),
   children: PropTypes.node,
+  columns: PropTypes.arrayOf(PropTypes.object),
   maxHeight: PropTypes.string,
+  rows: PropTypes.arrayOf(PropTypes.object),
   scrollX: PropTypes.bool,
   scrollY: PropTypes.bool
 };

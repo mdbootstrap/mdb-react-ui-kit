@@ -10,11 +10,12 @@ class Notification extends React.Component {
   };
 
   componentDidMount() {
-    if (this.props.autohide > 0) this.hide(this.props.autohide);
+    const { autohide } = this.props;
+    if (autohide > 0) {this.hide(autohide);}
   }
 
   hide = (time = 0) => {
-    if (typeof time === 'object') time = 0;
+    if (typeof time === 'object') {time = 0;}
 
     setTimeout(() => {
       this.setState({ componentState: '' }, () => {
@@ -44,10 +45,12 @@ class Notification extends React.Component {
       ...attributes
     } = this.props;
 
+    const { componentState } = this.state;
+
     const classes = classNames(
       'toast',
       fade && 'fade',
-      this.state.componentState,
+      componentState,
       className
     );
 
@@ -71,20 +74,20 @@ class Notification extends React.Component {
 }
 
 Notification.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  show: PropTypes.bool,
-  fade: PropTypes.bool,
   autohide: PropTypes.number,
-  iconClassName: PropTypes.string,
-  title: PropTypes.string,
-  text: PropTypes.string,
-  titleColor: PropTypes.string,
-  titleClassName: PropTypes.string,
-  closeClassName: PropTypes.string,
   bodyClassName: PropTypes.string,
   bodyColor: PropTypes.string,
-  message: PropTypes.string
+  className: PropTypes.string,
+  closeClassName: PropTypes.string,
+  fade: PropTypes.bool,
+  iconClassName: PropTypes.string,
+  message: PropTypes.string,
+  show: PropTypes.bool,
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  text: PropTypes.string,
+  title: PropTypes.string,
+  titleClassName: PropTypes.string,
+  titleColor: PropTypes.string
 };
 
 Notification.defaultProps = {

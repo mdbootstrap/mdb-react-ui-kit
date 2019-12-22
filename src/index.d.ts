@@ -44,6 +44,7 @@ import MDBIframe from './components/Iframe';
 import MDBInputGroup from './components/InputGroup';
 import MDBInputNumeric from './components/InputNumeric';
 import MDBJumbotron from './components/Jumbotron';
+import MDBLink from './components/Link';
 import MDBListGroup from './components/ListGroup';
 import MDBListGroupItem from './components/ListGroup/ListGroupItem';
 import MDBMask from './components/Mask';
@@ -140,6 +141,7 @@ export {
   MDBInputGroup,
   MDBInputNumeric,
   MDBJumbotron,
+  MDBLink,
   MDBListGroup,
   MDBListGroupItem,
   MDBMask,

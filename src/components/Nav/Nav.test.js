@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-
 import {
   findByTestAttr,
   checkProps,
@@ -14,17 +13,16 @@ const setup = (props = {}) => shallow(<Nav {...props} />);
 
 describe('<Nav />', () => {
   let wrapper;
-  const mockFn = jest.fn();
 
   beforeEach(() => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'nav').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Nav />, div);
   });
@@ -49,10 +47,10 @@ describe('<Nav />', () => {
     checkTag(wrapper, 'a');
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ customAttr: 'custom' });
 
-    expect(wrapper.props()['customAttr']).toBe('custom');
+    expect(wrapper.props().customAttr).toBe('custom');
     expect(wrapper.find('[customAttr="custom"]').length).toBe(1);
   });
 
@@ -91,7 +89,7 @@ describe('<Nav />', () => {
       expect(wrapper.find('.primary')).toHaveLength(0);
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

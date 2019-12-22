@@ -21,12 +21,12 @@ describe('<Button />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     const button = findByTestAttr(wrapper, 'button');
     expect(button.length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Button />, div);
   });
@@ -64,14 +64,14 @@ describe('<Button />', () => {
     checkProps(wrapper, {});
   });
 
-  test(`invokes callback function passed as a prop after clicking a button`, () => {
-    checkCallBack(wrapper, 'onClick')
+  test('invokes callback function passed as a prop after clicking a button', () => {
+    checkCallBack(wrapper, 'onClick');
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ 'data-custom-attr': 'custom' });
 
-    expect(wrapper.find(`[data-custom-attr="custom"]`).length).toBe(1);
+    expect(wrapper.find('[data-custom-attr="custom"]').length).toBe(1);
   });
 
   test('sets href', () => {
@@ -96,93 +96,69 @@ describe('<Button />', () => {
   });
 
   describe('sets classes', () => {
-    test(`adds btn class by default`, () => {
+    test('adds btn class by default', () => {
       checkClass(wrapper, 'btn');
     });
 
-    test(`adds Ripple-parent class by default`, () => {
+    test('adds Ripple-parent class by default', () => {
       checkClass(wrapper, 'Ripple-parent');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');
     });
 
-    test(`adds peach-gradient class`, () => {
+    test('adds peach-gradient class', () => {
       wrapper = setup({ gradient: 'peach' });
 
       checkClass(wrapper, 'peach-gradient');
     });
 
-    test(`adds btn-flat class`, () => {
-      wrapper = setup({ flat: true });
-
-      checkClass(wrapper, 'btn-flat');
-    });
-
-    test(`adds btn-outline-default class when color is not passed`, () => {
+    test('adds btn-outline-default class when color is not passed', () => {
       wrapper = setup({ outline: true });
 
       checkClass(wrapper, 'btn-outline-default');
     });
 
-    test(`adds btn-outline-primary class when color passed as primary`, () => {
+    test('adds btn-outline-primary class when color passed as primary', () => {
       wrapper = setup({ outline: true, color: 'primary' });
 
       checkClass(wrapper, 'btn-outline-primary');
     });
 
-    test(`should not add gradient class when flat propety is passed`, () => {
-      wrapper = setup({ gradient: 'peach', flat: true });
-
-      expect(wrapper.find(`[className*="peach-gradient"]`).length).toBe(0);
-    });
-
-    test(`adds btn-floating class`, () => {
-      wrapper = setup({ floating: true });
-
-      checkClass(wrapper, 'btn-floating');
-    });
-
-    test(`adds btn-rounded class`, () => {
-      wrapper = setup({ rounded: true });
-
-      checkClass(wrapper, 'btn-rounded');
-    });
-
-    test(`adds btn-circle class`, () => {
+    test('adds btn-circle class', () => {
       wrapper = setup({ circle: true });
 
       checkClass(wrapper, 'btn-circle');
     });
 
-    test(`adds btn-block class`, () => {
+    test('adds btn-block class', () => {
       wrapper = setup({ block: true });
 
       checkClass(wrapper, 'btn-block');
     });
 
-    test(`adds btn-action class`, () => {
+    test('adds btn-action class', () => {
       wrapper = setup({ action: true });
 
       checkClass(wrapper, 'btn-action');
     });
 
-    test(`adds btn-fb class`, () => {
+    test('adds btn-fb class', () => {
       wrapper = setup({ social: 'fb' });
 
       checkClass(wrapper, 'btn-fb');
     });
 
-    test(`adds btn-lg class`, () => {
+    test('adds btn-lg class', () => {
       wrapper = setup({ size: 'lg' });
 
       checkClass(wrapper, 'btn-lg');
     });
 
-    test(`adds active class`, () => {
+    test('adds active class', () => {
       wrapper = setup({ active: true });
 
       checkClass(wrapper, 'active');

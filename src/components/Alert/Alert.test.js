@@ -13,12 +13,12 @@ describe('<Alert />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     const alert = findByTestAttr(wrapper, 'alert');
     expect(alert.length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Alert />, div);
   });
@@ -46,17 +46,17 @@ describe('<Alert />', () => {
   });
 
   describe('sets classes', () => {
-    test(`adds alert class by default`, () => {
+    test('adds alert class by default', () => {
       checkClass(wrapper, 'alert');
     });
 
     test('adds color class', () => {
       wrapper = setup({ color: 'secondary' });
 
-      expect(wrapper.find(`[className*="alert-secondary"]`).length).toBe(1);
+      expect(wrapper.find('[className*="alert-secondary"]').length).toBe(1);
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

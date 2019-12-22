@@ -21,7 +21,7 @@ const TreeviewItem = props => {
     title,
     ...attributes
   } = props;
-  const { theme, active, getActive } = useContext(TreeviewContext);
+  const { active, getActive, theme } = useContext(TreeviewContext);
 
   useEffect(() => {
     if (targetRef && targetRef.current) {

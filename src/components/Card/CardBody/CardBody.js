@@ -15,9 +15,9 @@ const CardBody = props => {
 };
 
 CardBody.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  cascade: PropTypes.bool,
   className: PropTypes.string,
-  cascade: PropTypes.bool
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 CardBody.defaultProps = {

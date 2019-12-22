@@ -7,6 +7,7 @@ const CardFooter = props => {
     className,
     tag: Tag,
     color,
+    children,
     text,
     border,
     transparent,
@@ -21,19 +22,21 @@ const CardFooter = props => {
       [`border-${border}`]: border,
       'bg-transparent': transparent,
       'text-muted': muted,
-      [`${text}-text`]: text,
+      [`${text}-text`]: text
     },
     'card-footer',
     color,
     className
   );
 
-  let component = <Tag data-test="card-footer" {...attributes} className={classes} />;
+  let component = (
+    <Tag data-test='card-footer' {...attributes} className={classes} />
+  );
 
   if (small) {
     component = (
       <Tag {...attributes} className={classes}>
-        <small> {props.children} </small>
+        <small> {children} </small>
       </Tag>
     );
   }
@@ -41,14 +44,14 @@ const CardFooter = props => {
 };
 
 CardFooter.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  border: PropTypes.string,
   className: PropTypes.string,
   color: PropTypes.string,
-  text: PropTypes.string,
-  border: PropTypes.string,
-  transparent: PropTypes.bool,
+  muted: PropTypes.bool,
   small: PropTypes.bool,
-  muted: PropTypes.bool
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  text: PropTypes.string,
+  transparent: PropTypes.bool
 };
 
 CardFooter.defaultProps = {

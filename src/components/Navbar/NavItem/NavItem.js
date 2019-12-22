@@ -20,10 +20,10 @@ const NavItem = props => {
 };
 
 NavItem.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
+  active: PropTypes.bool,
   children: PropTypes.node,
-  active: PropTypes.bool
+  className: PropTypes.string,
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 NavItem.defaultProps = {

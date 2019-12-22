@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const CarouselIndicator = props => {
-  let { active, children, className, img, alt, ...attributes } = props;
+  const { active, alt, children, className, img, ...attributes } = props;
 
-  let classes = classNames(active && 'active', className);
+  const classes = classNames(active && 'active', className);
 
   return (
     <li data-test='carousel-indicator' {...attributes} className={classes}>

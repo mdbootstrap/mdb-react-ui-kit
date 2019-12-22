@@ -4,15 +4,15 @@ import classNames from 'classnames';
 import Fa from '../../Fa';
 
 const Control = props => {
-  let {
-    direction,
+  const {
     className,
-    onClick,
-    tag: Tag,
+    direction,
     iconLeft,
     iconRight,
-    testimonial,
-    multiItem
+    multiItem,
+    onClick,
+    tag: Tag,
+    testimonial
   } = props;
 
   let text;
@@ -23,19 +23,19 @@ const Control = props => {
     text = 'Next';
   }
 
-  let classes = classNames('carousel-control-' + direction, className);
+  let classes = classNames(`carousel-control-${direction}`, className);
 
-  let caretClasses = classNames('carousel-control-' + direction + '-icon');
+  let caretClasses = classNames(`carousel-control-${direction}-icon`);
 
   if (testimonial) {
     const arrow = direction === 'prev' ? 'left' : 'right';
     classes = classNames(
-      'carousel-control-' + direction,
+      `carousel-control-${direction}`,
       arrow,
       'carousel-control',
       className
     );
-    caretClasses = classNames('icon-' + direction);
+    caretClasses = classNames(`icon-${direction}`);
   }
 
   if (multiItem) {
@@ -64,14 +64,14 @@ const Control = props => {
 };
 
 Control.propTypes = {
-  onClick: PropTypes.any,
-  direction: PropTypes.string,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
+  direction: PropTypes.string,
   iconLeft: PropTypes.bool,
   iconRight: PropTypes.bool,
-  testimonial: PropTypes.bool,
-  multiItem: PropTypes.bool
+  multiItem: PropTypes.bool,
+  onClick: PropTypes.any,
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  testimonial: PropTypes.bool
 };
 
 Control.defaultProps = {

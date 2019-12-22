@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
-import DocsLink from './../components/docsLink';
-import SectionContainer from './../components/sectionContainer';
+import DocsLink from '../components/docsLink';
+import SectionContainer from '../components/sectionContainer';
 
 class ValidationPage extends Component {
   state = {
@@ -23,6 +23,8 @@ class ValidationPage extends Component {
   };
 
   render() {
+    const { fname, lname, email, city, state, zip } = this.state
+
     return (
       <MDBContainer>
         <DocsLink
@@ -45,7 +47,7 @@ class ValidationPage extends Component {
                   First name
                 </label>
                 <input
-                  value={this.state.fname}
+                  value={fname}
                   name='fname'
                   onChange={this.changeHandler}
                   type='text'
@@ -64,7 +66,7 @@ class ValidationPage extends Component {
                   Last name
                 </label>
                 <input
-                  value={this.state.lname}
+                  value={lname}
                   name='lname'
                   onChange={this.changeHandler}
                   type='text'
@@ -83,7 +85,7 @@ class ValidationPage extends Component {
                   Email
                 </label>
                 <input
-                  value={this.state.email}
+                  value={email}
                   onChange={this.changeHandler}
                   type='email'
                   id='defaultFormRegisterConfirmEx3'
@@ -105,7 +107,7 @@ class ValidationPage extends Component {
                   City
                 </label>
                 <input
-                  value={this.state.city}
+                  value={city}
                   onChange={this.changeHandler}
                   type='text'
                   id='defaultFormRegisterPasswordEx4'
@@ -127,7 +129,7 @@ class ValidationPage extends Component {
                   State
                 </label>
                 <input
-                  value={this.state.state}
+                  value={state}
                   onChange={this.changeHandler}
                   type='text'
                   id='defaultFormRegisterPasswordEx4'
@@ -149,7 +151,7 @@ class ValidationPage extends Component {
                   Zip
                 </label>
                 <input
-                  value={this.state.zip}
+                  value={zip}
                   onChange={this.changeHandler}
                   type='text'
                   id='defaultFormRegisterPasswordEx4'
@@ -192,7 +194,7 @@ class ValidationPage extends Component {
             <MDBRow>
               <MDBCol md='4'>
                 <MDBInput
-                  value={this.state.fname}
+                  value={fname}
                   name='fname'
                   onChange={this.changeHandler}
                   type='text'
@@ -203,7 +205,7 @@ class ValidationPage extends Component {
               </MDBCol>
               <MDBCol md='4'>
                 <MDBInput
-                  value={this.state.lname}
+                  value={lname}
                   name='lname'
                   onChange={this.changeHandler}
                   type='text'
@@ -214,7 +216,7 @@ class ValidationPage extends Component {
               </MDBCol>
               <MDBCol md='4'>
                 <MDBInput
-                  value={this.state.email}
+                  value={email}
                   onChange={this.changeHandler}
                   type='email'
                   id='browserFormRegisterConfirmEx3'
@@ -226,7 +228,7 @@ class ValidationPage extends Component {
             <MDBRow>
               <MDBCol md='4'>
                 <MDBInput
-                  value={this.state.city}
+                  value={city}
                   onChange={this.changeHandler}
                   type='text'
                   id='browserFormRegisterPasswordEx4'
@@ -237,7 +239,7 @@ class ValidationPage extends Component {
               </MDBCol>
               <MDBCol md='4'>
                 <MDBInput
-                  value={this.state.state}
+                  value={state}
                   onChange={this.changeHandler}
                   type='text'
                   id='browserFormRegisterPasswordEx4'
@@ -248,7 +250,7 @@ class ValidationPage extends Component {
               </MDBCol>
               <MDBCol md='4'>
                 <MDBInput
-                  value={this.state.zip}
+                  value={zip}
                   onChange={this.changeHandler}
                   type='text'
                   id='browserFormRegisterPasswordEx4'
@@ -390,7 +392,7 @@ class ValidationPage extends Component {
                     First name
                   </label>
                   <input
-                    value={this.state.fname}
+                    value={fname}
                     name='fname'
                     onChange={this.changeHandler}
                     type='text'
@@ -411,7 +413,7 @@ class ValidationPage extends Component {
                     Last name
                   </label>
                   <input
-                    value={this.state.lname}
+                    value={lname}
                     name='lname'
                     onChange={this.changeHandler}
                     type='text'
@@ -432,7 +434,7 @@ class ValidationPage extends Component {
                     Email
                   </label>
                   <input
-                    value={this.state.email}
+                    value={email}
                     onChange={this.changeHandler}
                     type='email'
                     id='defaultFormRegisterConfirmEx3'
@@ -454,7 +456,7 @@ class ValidationPage extends Component {
                     City
                   </label>
                   <input
-                    value={this.state.city}
+                    value={city}
                     onChange={this.changeHandler}
                     type='text'
                     id='defaultFormRegisterPasswordEx4'
@@ -478,7 +480,7 @@ class ValidationPage extends Component {
                     State
                   </label>
                   <input
-                    value={this.state.state}
+                    value={state}
                     onChange={this.changeHandler}
                     type='text'
                     id='defaultFormRegisterPasswordEx4'
@@ -502,7 +504,7 @@ class ValidationPage extends Component {
                     Zip
                   </label>
                   <input
-                    value={this.state.zip}
+                    value={zip}
                     onChange={this.changeHandler}
                     type='text'
                     id='defaultFormRegisterPasswordEx4'

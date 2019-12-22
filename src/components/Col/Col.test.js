@@ -13,12 +13,12 @@ describe('<Col />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     const col = findByTestAttr(wrapper, 'col');
     expect(col.length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Col />, div);
   });
@@ -50,28 +50,28 @@ describe('<Col />', () => {
     test('adds col size class', () => {
       wrapper = setup({ size: '1' });
 
-      expect(wrapper.find(`[className*="col-1"]`).length).toBe(1);
+      expect(wrapper.find('[className*="col-1"]').length).toBe(1);
     });
 
     test('adds top class', () => {
       wrapper = setup({ top: true });
 
-      expect(wrapper.find(`[className*="align-self-start"]`).length).toBe(1);
+      expect(wrapper.find('[className*="align-self-start"]').length).toBe(1);
     });
 
     test('adds middle class', () => {
       wrapper = setup({ middle: true });
 
-      expect(wrapper.find(`[className*="align-self-center"]`).length).toBe(1);
+      expect(wrapper.find('[className*="align-self-center"]').length).toBe(1);
     });
 
     test('adds bottom class', () => {
       wrapper = setup({ bottom: true });
 
-      expect(wrapper.find(`[className*="align-self-end"]`).length).toBe(1);
+      expect(wrapper.find('[className*="align-self-end"]').length).toBe(1);
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

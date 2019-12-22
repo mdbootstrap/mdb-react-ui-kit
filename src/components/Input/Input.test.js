@@ -50,22 +50,22 @@ describe('<Input />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     const input = findByTestAttr(wrapper, 'input');
     expect(input.length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Input />, div);
   });
 
-  test(`does not throw warnings with expected props`, () => {
+  test('does not throw warnings with expected props', () => {
     wrapper = setup(expectedProps);
     checkProps(wrapper, expectedProps);
   });
 
-  test(`does not throw warnings without props`, () => {
+  test('does not throw warnings without props', () => {
     checkProps(wrapper, {});
   });
 
@@ -85,16 +85,16 @@ describe('<Input />', () => {
     expect(wrapper.state('innerValue')).toBe(expectedProps.value);
   });
 
-  test(`adds custom class passed as property`, () => {
+  test('adds custom class passed as property', () => {
     wrapper = setup({ className: expectedProps.className });
 
     checkClass(wrapper, expectedProps.className);
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ customAttr: 'custom' });
 
-    expect(wrapper.instance().props['customAttr']).toBe('custom');
+    expect(wrapper.instance().props.customAttr).toBe('custom');
     expect(wrapper.find('[customAttr="custom"]').length).toBe(1);
   });
 

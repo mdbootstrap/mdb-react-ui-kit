@@ -10,7 +10,7 @@ const CardImage = props => {
 
   const handleClick = e => {
     // Get Cursor Position
-    let cursorPos = {
+    const cursorPos = {
       top: e.clientY,
       left: e.clientX,
       time: Date.now()
@@ -19,13 +19,14 @@ const CardImage = props => {
   };
 
   const {
+    cascade,
     className,
+    hover,
     overlay,
+    src,
+    tag,
     top,
     waves,
-    hover,
-    cascade,
-    tag,
     zoom,
     ...attributes
   } = props;
@@ -35,12 +36,10 @@ const CardImage = props => {
   const Tag = tag;
 
   const innerContent = (
-    <Tag data-test="card-image" {...attributes} className={classes}>
-      {props.children}
-    </Tag>
+    <Tag data-test='card-image' src={src} {...attributes} className={classes} />
   );
 
-  if (props.src) {
+  if (src) {
     return (
       <View zoom={zoom} hover={hover} cascade={cascade}>
         <div
@@ -54,22 +53,21 @@ const CardImage = props => {
         </div>
       </View>
     );
-  } else {
-    return <div>{innerContent}</div>;
   }
+  return <div>{innerContent}</div>;
 };
 
 CardImage.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  zoom: PropTypes.bool,
-  waves: PropTypes.bool,
-  className: PropTypes.string,
   cascade: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
   hover: PropTypes.bool,
   overlay: PropTypes.string,
-  top: PropTypes.bool,
   src: PropTypes.string,
-  children: PropTypes.node
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  top: PropTypes.bool,
+  waves: PropTypes.bool,
+  zoom: PropTypes.bool
 };
 
 CardImage.defaultProps = {

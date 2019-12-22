@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import { Manager } from 'react-popper';
 import classNames from 'classnames';
 import { omit, keyCodes } from '../utils';
 
-class Dropdown extends React.Component {
+class Dropdown extends Component {
   state = {
     isOpen: false
   };
 
   getChildContext() {
+    const { isOpen } = this.state;
+    const { dropup, dropright, dropleft } = this.props;
     return {
-      isOpen: this.state.isOpen,
-      dropup: this.props.dropup,
-      dropright: this.props.dropright,
-      dropleft: this.props.dropleft,
+      isOpen: isOpen,
+      dropup: dropup,
+      dropright: dropright,
+      dropleft: dropleft,
       toggle: this.toggle
     };
   }
@@ -33,7 +35,8 @@ class Dropdown extends React.Component {
   }
 
   handleEventsBinding() {
-    this.state.isOpen ? this.addEvents() : this.removeEvents();
+    const { isOpen } = this.state;
+    isOpen ? this.addEvents() : this.removeEvents();
   }
 
   getContainer = () => {
@@ -60,7 +63,7 @@ class Dropdown extends React.Component {
     const TAB = keyCode === tab;
     const KEYUP = type === 'keyup';
 
-    if (MOUSE_RIGHT_CLICK || (KEYUP && !TAB)) return;
+    if (MOUSE_RIGHT_CLICK || (KEYUP && !TAB)) {return;}
 
     const container = this.getContainer();
 
@@ -114,7 +117,7 @@ class Dropdown extends React.Component {
 
     e.preventDefault();
 
-    if (disabled) return;
+    if (disabled) {return;}
 
     const container = this.getContainer();
 
@@ -131,14 +134,15 @@ class Dropdown extends React.Component {
     }
 
     const items = container.querySelectorAll(
-      `.dropdown-menu .dropdown-item:not(.disabled)`
+      '.dropdown-menu .dropdown-item:not(.disabled)'
     );
 
     items.length && this.handleFocus(e, items);
   };
 
   toggle = () => {
-    this.setState({ isOpen: !this.state.isOpen });
+    const { isOpen } = this.state;
+    this.setState({ isOpen: !isOpen });
   };
 
   render() {
@@ -152,15 +156,17 @@ class Dropdown extends React.Component {
       dropleft
     } = omit(this.props, ['toggle', 'disabled']);
 
+    const { isOpen } = this.state;
+
     const classes = classNames(
       {
         'btn-group': group,
         [`btn-group-${size}`]: !!size,
         dropdown: !group,
-        show: this.state.isOpen,
-        dropup: dropup,
-        dropright: dropright,
-        dropleft: dropleft
+        show: isOpen,
+        dropup,
+        dropright,
+        dropleft
       },
       className
     );
@@ -179,29 +185,29 @@ class Dropdown extends React.Component {
 }
 
 Dropdown.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
   disabled: PropTypes.bool,
-  dropup: PropTypes.bool,
-  dropright: PropTypes.bool,
   dropleft: PropTypes.bool,
+  dropright: PropTypes.bool,
+  dropup: PropTypes.bool,
   group: PropTypes.bool,
   size: PropTypes.string,
   tag: PropTypes.string,
-  toggle: PropTypes.func,
-  children: PropTypes.node,
-  className: PropTypes.string
+  toggle: PropTypes.func
 };
 Dropdown.defaultProps = {
-  dropup: false,
-  dropright: false,
   dropleft: false,
+  dropright: false,
+  dropup: false,
   tag: 'div'
 };
 Dropdown.childContextTypes = {
-  toggle: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  dropup: PropTypes.bool.isRequired,
+  dropleft: PropTypes.bool.isRequired,
   dropright: PropTypes.bool.isRequired,
-  dropleft: PropTypes.bool.isRequired
+  dropup: PropTypes.bool.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  toggle: PropTypes.func.isRequired
 };
 
 export default Dropdown;

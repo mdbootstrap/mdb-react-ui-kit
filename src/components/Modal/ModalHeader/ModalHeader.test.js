@@ -14,19 +14,19 @@ describe('<ModalHeader />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'modal-header').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<ModalHeader />, div);
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ customAttr: 'custom' });
 
-    expect(wrapper.props()['customAttr']).toBe('custom');
+    expect(wrapper.props().customAttr).toBe('custom');
     expect(wrapper.find('[customAttr="custom"]').length).toBe(1);
   });
 
@@ -71,21 +71,21 @@ describe('<ModalHeader />', () => {
   });
 
   describe('sets classes', () => {
-    test(`adds 'modal-header' class by default`, () => {
+    test('adds \'modal-header\' class by default', () => {
       checkClass(wrapper, 'modal-header');
     });
 
-    test(`adds 'modal-title' class to title by default`, () => {
+    test('adds \'modal-title\' class to title by default', () => {
       checkClass(wrapper, 'modal-title');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');
     });
 
-    test(`adds custom class to title passed as property`, () => {
+    test('adds custom class to title passed as property', () => {
       wrapper = setup({ titleClass: 'testTitleClassName' });
 
       checkClass(wrapper, 'testTitleClassName');

@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import checkPropTypes from 'check-prop-types';
 
 export const findByTestAttr = (component, testAttr) => {
@@ -6,6 +7,7 @@ export const findByTestAttr = (component, testAttr) => {
 
 export const checkProps = (component, expectedProps) => {
   const result = checkPropTypes(
+    // eslint-disable-next-line react/forbid-foreign-prop-types
     component.propTypes,
     expectedProps,
     'props',
@@ -23,31 +25,40 @@ export const checkTag = (component, tag) => {
   return expect(component.is(tag)).toBe(true);
 };
 
-//Shallow is only for wrapper
-//Mount is if you want pass method to child
+// Shallow is only for wrapper
+// Mount is if you want pass method to child
 export const checkCallBack = (
   component,
   method = '',
   simulate = 'click',
-  ...find_and_simulate_options
+  ...findAndSimulateOptions
 ) => {
-  let options = {},
-    find;
+  let options = {};
+  let find;
   const cb = jest.fn();
   const set = { [method]: cb };
-  const FASO = find_and_simulate_options;
+  const FASO = findAndSimulateOptions;
+  let parmComponent = component;
+  parmComponent = component.setProps(set);
 
-  component = component.setProps(set);
+  function faso(element) {
+    if (element) {
+      if (typeof element === 'string') {
+        find = element;
+      } else {
+        options = element;
+      }
+    }
+  }
+  faso(FASO[0]);
+  faso(FASO[1]);
+  parmComponent.update();
 
-  if (FASO[0])
-    typeof FASO[0] === 'string' ? (find = FASO[0]) : (options = FASO[0]);
+  if (find) {
+    parmComponent.find(find).simulate(simulate, options);
+  } else {
+    parmComponent.simulate(simulate, options);
+  }
 
-  if (FASO[1])
-    typeof FASO[1] === 'string' ? (find = FASO[1]) : (options = FASO[1]);
-
-  component.update();
-  find
-    ? component.find(find).simulate(simulate, options)
-    : component.simulate(simulate, options);
   return expect(cb).toHaveBeenCalledTimes(1);
 };

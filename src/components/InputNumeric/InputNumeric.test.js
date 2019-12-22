@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import { findByTestAttr, checkProps, checkClass } from '../../tests/utils';
 import checkPropTypes from 'check-prop-types';
+import { findByTestAttr, checkProps, checkClass } from '../../tests/utils';
 import InputNumeric from './InputNumeric';
 
 const setup = (props = {}) => shallow(<InputNumeric {...props} />);
@@ -15,12 +15,12 @@ describe('<InputNumeric />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     const InputNumeric = findByTestAttr(wrapper, 'input-numeric');
     expect(InputNumeric.length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<InputNumeric />, div);
   });
@@ -60,7 +60,7 @@ describe('<InputNumeric />', () => {
       checkClass(wrapper, 'form-control');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

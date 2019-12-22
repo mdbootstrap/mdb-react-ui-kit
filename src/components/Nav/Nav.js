@@ -21,8 +21,8 @@ const Nav = props => {
     pills && 'md-pills',
     header && 'nav-pills card-header-pills',
     color && !tabs && !classicTabs && !pills ? color : false,
-    pills && color ? 'pills-' + color : false,
-    (tabs || classicTabs) && color ? 'tabs-' + color : false,
+    pills && color ? `pills-${color}` : false,
+    (tabs || classicTabs) && color ? `tabs-${color}` : false,
     className
   );
 
@@ -34,14 +34,14 @@ const Nav = props => {
 };
 
 Nav.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
   children: PropTypes.node,
-  color: PropTypes.string,
   classicTabs: PropTypes.bool,
+  className: PropTypes.string,
+  color: PropTypes.string,
+  header: PropTypes.bool,
   pills: PropTypes.bool,
   tabs: PropTypes.bool,
-  header: PropTypes.bool
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 Nav.defaultProps = {

@@ -19,9 +19,9 @@ const Jumbotron = props => {
 };
 
 Jumbotron.propTypes = {
-  fluid: PropTypes.bool,
   children: PropTypes.node,
-  className: PropTypes.string
+  className: PropTypes.string,
+  fluid: PropTypes.bool
 };
 
 export default Jumbotron;

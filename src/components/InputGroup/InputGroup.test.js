@@ -19,16 +19,16 @@ describe('<InputGroup />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'input-group').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<InputGroup />, div);
   });
 
-  test(`does not throw warnings with expected props`, () => {
+  test('does not throw warnings with expected props', () => {
     const expectedProps = {
       append: 'append test',
       appendClassNames: 'string',
@@ -59,13 +59,13 @@ describe('<InputGroup />', () => {
     checkProps(wrapper, expectedProps);
   });
 
-  test(`does not throw warnings without props`, () => {
+  test('does not throw warnings without props', () => {
     checkProps(wrapper, {});
   });
 
   test('sets correct value after receiving a `value` property', () => {
     wrapper = setup({ value: 'string' });
-    let input = wrapper.find('Input');
+    const input = wrapper.find('Input');
     expect(input.prop('value')).toBe('string');
   });
 
@@ -74,7 +74,7 @@ describe('<InputGroup />', () => {
     checkTag(wrapper, 'section');
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ customAttr: 'custom' }).find('[data-test="input-group"]');
 
     expect(wrapper.prop('customAttr')).toBe('custom');
@@ -149,12 +149,12 @@ describe('<InputGroup />', () => {
   });
 
   describe('Renders elements', () => {
-    test(`render label`, () => {
+    test('render label', () => {
       const label = setup({ label: 'label' }).find('label');
       expect(label.length).toBe(1);
     });
 
-    test(`render prepend`, () => {
+    test('render prepend', () => {
       wrapper = setup({ prepend: 'prepend' });
       const prepend = wrapper
         .find('[data-test="input-group"]')
@@ -165,7 +165,7 @@ describe('<InputGroup />', () => {
       checkClass(prepend, 'input-group-prepend');
     });
 
-    test(`render append`, () => {
+    test('render append', () => {
       wrapper = setup({ append: 'append' });
       const append = wrapper
         .find('[data-test="input-group"]')
@@ -176,14 +176,14 @@ describe('<InputGroup />', () => {
       checkClass(append, 'input-group-append');
     });
 
-    test(`render prepend node`, () => {
+    test('render prepend node', () => {
       wrapper = setup({ prepend: <div data-test='prepend-node' /> });
       const prepend = wrapper.find('div[data-test="prepend-node"]');
 
       expect(prepend.length).toBe(1);
     });
 
-    test(`render append node`, () => {
+    test('render append node', () => {
       wrapper = setup({ prepend: <div data-test='append-node' /> });
       const append = wrapper.find('div[data-test="append-node"]');
 
@@ -191,7 +191,7 @@ describe('<InputGroup />', () => {
     });
 
     test('custom input(s)', () => {
-      let input = <input data-test='inputs' />;
+      const input = <input data-test='inputs' />;
 
       wrapper = setup({ inputs: input });
       let inputs = wrapper.find('[data-test="input-group"]').find('input');
@@ -209,33 +209,33 @@ describe('<InputGroup />', () => {
       expect(inputs.length).toBe(2);
     });
 
-    test(`render children`, () => {
+    test('render children', () => {
       wrapper = setup({ children: <span data-test='children' /> });
       const children = wrapper.find('[data-test="children"]');
       expect(children.length).toBe(1);
     });
 
-    test(`does not render label`, () => {
+    test('does not render label', () => {
       const label = wrapper.find('label');
       expect(label.length).toBe(0);
     });
 
-    test(`does not render prepend`, () => {
+    test('does not render prepend', () => {
       const prepend = wrapper
         .find('[data-test="input-group"]')
         .find('.input-group-prepend');
       expect(prepend.length).toBe(0);
     });
 
-    test(`does not render append`, () => {
+    test('does not render append', () => {
       const append = wrapper
         .find('[data-test="input-group"]')
         .find('.input-group-append');
       expect(append.length).toBe(0);
     });
 
-    test(`does not render children`, () => {
-      let children = wrapper.find('[data-test="input-group"]').children();
+    test('does not render children', () => {
+      const children = wrapper.find('[data-test="input-group"]').children();
       expect(children.length).toBe(1);
     });
   });
@@ -256,13 +256,13 @@ describe('<InputGroup />', () => {
 
   describe('sets classes', () => {
     test('sets input-group class by default to conainer', () => {
-      let container = wrapper.find('[data-test="input-group"]');
+      const container = wrapper.find('[data-test="input-group"]');
       checkClass(container, 'input-group');
     });
 
     test('sets input-group-prepend class by default to prepend', () => {
       wrapper = setup({ prepend: 'test' });
-      let container = wrapper
+      const container = wrapper
         .find('[data-test="input-group"]')
         .children()
         .first();
@@ -272,7 +272,7 @@ describe('<InputGroup />', () => {
 
     test('sets input-group-append class by default to append', () => {
       wrapper = setup({ append: 'test' });
-      let container = wrapper
+      const container = wrapper
         .find('[data-test="input-group"]')
         .children()
         .last();
@@ -285,7 +285,7 @@ describe('<InputGroup />', () => {
         prepend: 'test',
         prependClassName: 'prependTestClass'
       });
-      let container = wrapper
+      const container = wrapper
         .find('[data-test="input-group"]')
         .children()
         .first();
@@ -295,7 +295,7 @@ describe('<InputGroup />', () => {
 
     test('sets custom classnames to append', () => {
       wrapper = setup({ append: 'test', appendClassName: 'appendTestClass' });
-      let container = wrapper
+      const container = wrapper
         .find('[data-test="input-group"]')
         .children()
         .last();
@@ -304,7 +304,7 @@ describe('<InputGroup />', () => {
     });
 
     test('sets custom classnames to conainer', () => {
-      let container = setup({ containerClassName: 'testClassName' }).find(
+      const container = setup({ containerClassName: 'testClassName' }).find(
         '[data-test="input-group"]'
       );
       checkClass(container, 'testClassName');
@@ -312,7 +312,7 @@ describe('<InputGroup />', () => {
 
     test('sets custom classnames to input', () => {
       wrapper = setup({ className: 'test' });
-      let input = wrapper.find('Input');
+      const input = wrapper.find('Input');
 
       checkClass(input, 'test');
     });
@@ -322,7 +322,7 @@ describe('<InputGroup />', () => {
         label: 'label test',
         labelClassName: 'labelClassTest'
       });
-      let container = wrapper.find('label');
+      const container = wrapper.find('label');
       checkClass(container, 'labelClassTest');
     });
   });

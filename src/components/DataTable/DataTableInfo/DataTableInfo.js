@@ -7,9 +7,9 @@ const DataTableInfo = props => {
     entries,
     filteredRows,
     info,
-    pages,
     label,
-    noRecordsFoundLabel
+    noRecordsFoundLabel,
+    pages
   } = props;
 
   const SHOWING_LABEL = label[0];
@@ -43,8 +43,8 @@ DataTableInfo.propTypes = {
   activePage: PropTypes.number.isRequired,
   entries: PropTypes.number.isRequired,
   filteredRows: PropTypes.array.isRequired,
-  noRecordsFoundLabel: PropTypes.string.isRequired,
   info: PropTypes.bool.isRequired,
+  noRecordsFoundLabel: PropTypes.string.isRequired,
   pages: PropTypes.array.isRequired,
   label: PropTypes.arrayOf(PropTypes.string)
 };

@@ -13,35 +13,33 @@ const DEFAULT_DELAYS = {
 };
 
 class Collapse extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      id: props.id,
-      collapse: HIDDEN,
-      height: null
-    };
-    this.element = null;
-  }
+  state = {
+    id: this.props.id,
+    collapse: HIDDEN,
+    height: null
+  };
+
+  element = null;
 
   componentDidMount() {
-    if (
-      (this.props.isOpen === this.state.id || this.props.isOpen === true) &&
-      this.state.collapse === HIDDEN
-    ) {
+    const { isOpen } = this.props;
+    const { collapse, id } = this.state;
+
+    if ((isOpen === id || isOpen === true) && collapse === HIDDEN) {
       this.openCollapse();
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const collapse = prevState.collapse;
-    const willOpen =
-      typeof this.props.isOpen !== 'boolean'
-        ? this.props.isOpen === prevState.id
-        : this.props.isOpen;
+    const { isOpen } = this.props;
+    const { collapse } = this.state;
 
-    if (willOpen && this.state.collapse === HIDDEN) {
+    const willOpen =
+      typeof isOpen !== 'boolean' ? isOpen === prevState.id : isOpen;
+
+    if (willOpen && collapse === HIDDEN) {
       this.openCollapse();
-    } else if (!willOpen && collapse === SHOWN) {
+    } else if (!willOpen && prevState.collapse === SHOWN) {
       this.closeCollapse();
     }
   }
@@ -63,13 +61,16 @@ class Collapse extends Component {
   };
 
   openCollapse = () => {
+    const { onOpened } = this.props;
+
     this.setState({ collapse: SHOW }, () => {
       this.setState({ height: this.getHeight() });
-      this.setTransitionTag(SHOWN, this.props.onOpened, 'show');
+      this.setTransitionTag(SHOWN, onOpened, 'show');
     });
   };
 
   closeCollapse = () => {
+    const { onClosed } = this.props;
     this.setState({ height: this.getHeight() }, () => {
       this.setState(
         {
@@ -82,7 +83,7 @@ class Collapse extends Component {
       );
     });
 
-    this.setTransitionTag(HIDDEN, this.props.onClosed, 'hide');
+    this.setTransitionTag(HIDDEN, onClosed, 'hide');
   };
 
   getDelay(key) {
@@ -154,17 +155,17 @@ class Collapse extends Component {
 }
 
 Collapse.propTypes = {
-  isOpen: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-  id: PropTypes.string,
-  className: PropTypes.node,
   children: PropTypes.node,
-  navbar: PropTypes.bool,
+  className: PropTypes.node,
   delay: PropTypes.oneOfType([
-    PropTypes.shape({ show: PropTypes.number, hide: PropTypes.number }),
-    PropTypes.number
+    PropTypes.number,
+    PropTypes.shape({ hide: PropTypes.number, show: PropTypes.number })
   ]),
-  onOpened: PropTypes.func,
-  onClosed: PropTypes.func
+  id: PropTypes.string,
+  isOpen: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  navbar: PropTypes.bool,
+  onClosed: PropTypes.func,
+  onOpened: PropTypes.func
 };
 
 Collapse.defaultProps = {

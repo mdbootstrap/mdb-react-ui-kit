@@ -76,7 +76,7 @@ describe('<DataTable />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'datatable').length).toBe(1);
   });
 
@@ -139,7 +139,7 @@ describe('<DataTable />', () => {
   });
 
   describe('adds custom attributes passed as property ', () => {
-    test(`to DataTableTable if (!scrollY || !scrollX)`, () => {
+    test('to DataTableTable if (!scrollY || !scrollX)', () => {
       wrapper = setup({ customAttr: 'custom' });
 
       const dataTableTable = wrapper.find('DataTableTable');
@@ -147,7 +147,7 @@ describe('<DataTable />', () => {
       expect(dataTableTable.prop('customAttr')).toEqual('custom');
     });
 
-    test(`to DataTableTableScroll if (scrollY || scrollX)`, () => {
+    test('to DataTableTableScroll if (scrollY || scrollX)', () => {
       wrapper = setup({ customAttr: 'custom', scrollX: true });
 
       const dataTableScroll = wrapper.find('DataTableTableScroll');
@@ -280,7 +280,7 @@ describe('<DataTable />', () => {
   });
 
   test('correctly sets unsearchable fields', () => {
-    let columns = [
+    const columns = [
       {
         label: 'Name',
         field: 'name',
@@ -343,7 +343,7 @@ describe('<DataTable />', () => {
   });
 
   test('returns correct count of filtered rows ', () => {
-    let columns = [
+    const columns = [
       {
         label: 'Name',
         field: 'name'
@@ -386,7 +386,7 @@ describe('<DataTable />', () => {
   });
 
   test('returns correct count of filtered rows if field`s searchable===false', () => {
-    let columns = [
+    const columns = [
       {
         label: 'Name',
         field: 'name',
@@ -426,7 +426,7 @@ describe('<DataTable />', () => {
   });
 
   test('correctly paginates rows', () => {
-    let columns = [
+    const columns = [
       {
         label: 'Name',
         field: 'name'
@@ -504,7 +504,7 @@ describe('<DataTable />', () => {
 
     wrapper.instance().changeActivePage(5);
     expect(onPageChangeCb).toBeCalledWith({
-      //returns 'page + 1' because page numbering starts from '1', not from '0'
+      // returns 'page + 1' because page numbering starts from '1', not from '0'
       activePage: 6,
       pagesAmount: wrapper.instance().pagesAmount()
     });
@@ -589,17 +589,17 @@ describe('<DataTable />', () => {
   });
 
   describe('sets classes', () => {
-    test(`adds 'dataTables_wrapper dt-bootstrap4' class by default`, () => {
+    test('adds \'dataTables_wrapper dt-bootstrap4\' class by default', () => {
       checkClass(wrapper, 'dataTables_wrapper.dt-bootstrap4');
     });
 
-    test(`adds 'row flex-row-reverse' class if (barReverse) property is passed`, () => {
+    test('adds \'row flex-row-reverse\' class if (barReverse) property is passed', () => {
       wrapper = setup({ barReverse: true });
 
       checkClass(wrapper, 'row.flex-row-reverse');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

@@ -22,7 +22,7 @@ describe('<DataTableInfo />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'datatable-info').length).toBe(1);
   });
 

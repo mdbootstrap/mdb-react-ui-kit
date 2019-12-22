@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import './Typography.css';
 import { MDBBox } from 'mdbreact';
 
-class Typogrphy extends React.Component {
+class Typography extends React.Component {
   render() {
     const {
       className,
@@ -46,59 +46,61 @@ class Typogrphy extends React.Component {
           {children}
         </MDBBox>
       );
-    } else if (listUnStyled) {
+    }
+    if (listUnStyled) {
       return (
         <MDBBox tag='ul' className='list-unstyled'>
           {children}
         </MDBBox>
       );
-    } else if (listInLine) {
+    }
+    if (listInLine) {
       return (
         <MDBBox tag='ul' className='list-inline'>
           {children}
         </MDBBox>
       );
-    } else if (note) {
+    }
+    if (note) {
       return (
         <MDBBox tag='p' className={notes}>
           <strong>{noteTitle}</strong>
           {children}
         </MDBBox>
       );
-    } else {
-      return (
-        <Tag {...attributes} className={isEmptyClass}>
-          {children}
-        </Tag>
-      );
     }
+    return (
+      <Tag {...attributes} className={isEmptyClass}>
+        {children}
+      </Tag>
+    );
   }
 }
 
-Typogrphy.propTypes = {
-  className: PropTypes.string,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  variant: PropTypes.string,
+Typography.propTypes = {
   blockquote: PropTypes.bool,
   bqColor: PropTypes.string,
   bqTitle: PropTypes.string,
-  listUnStyled: PropTypes.bool,
-  listInLine: PropTypes.bool,
+  className: PropTypes.string,
   colorText: PropTypes.string,
+  listInLine: PropTypes.bool,
+  listUnStyled: PropTypes.bool,
   note: PropTypes.bool,
   noteColor: PropTypes.string,
-  noteTitle: PropTypes.string
+  noteTitle: PropTypes.string,
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  variant: PropTypes.string
 };
-Typogrphy.defaultProps = {
-  tag: 'p',
+Typography.defaultProps = {
   abbr: false,
   abbrLeftText: true,
   blockquote: false,
-  listUnStyled: false,
   listInLine: false,
-  noteColor: 'primary'
+  listUnStyled: false,
+  noteColor: 'primary',
+  tag: 'p'
 };
 
-export default Typogrphy;
-export { Typogrphy as MDBTypo };
-export { Typogrphy as MDBTypogrphy };
+export default Typography;
+export { Typography as MDBTypo };
+export { Typography as MDBTypography };

@@ -32,13 +32,14 @@ const Rating = props => {
 
   useEffect(() => {
     setData(props.data);
+    // eslint-disable-next-line react/destructuring-assignment
   }, [props.data]);
 
   useEffect(() => {
     const choosedIndex = data.findIndex(item => item.choosed);
 
     if (choosedIndex !== -1)
-      setChoosed({ title: data[choosedIndex].tooltip, index: choosedIndex });
+      {setChoosed({ title: data[choosedIndex].tooltip, index: choosedIndex });}
   }, [data]);
 
   useEffect(() => {
@@ -136,8 +137,8 @@ const Rating = props => {
 
           if (isChoosed) {
             current = choosed.index;
-            if (isHovered) current = hovered;
-          } else if (isHovered) current = hovered;
+            if (isHovered) {current = hovered;}
+          } else if (isHovered) {current = hovered;}
 
           const isCustom = Array.isArray(fillColors);
 
@@ -171,7 +172,7 @@ const Rating = props => {
           if (isChoosed && index <= choosed.index) {
             renderIcon = faces[choosed.index];
 
-            if (isHovered) renderIcon = faces[hovered];
+            if (isHovered) {renderIcon = faces[hovered];}
           } else if (isHovered && index <= hovered) {
             renderIcon = faces[hovered];
           }
@@ -256,9 +257,9 @@ Rating.propTypes = {
   containerClassName: PropTypes.string,
   data: PropTypes.arrayOf(
     PropTypes.shape({
+      choosed: PropTypes.bool,
       icon: PropTypes.string,
-      tooltip: PropTypes.string,
-      choosed: PropTypes.bool
+      tooltip: PropTypes.string
     })
   ),
   feedback: PropTypes.bool,
@@ -267,13 +268,13 @@ Rating.propTypes = {
     PropTypes.bool,
     PropTypes.arrayOf(PropTypes.string)
   ]),
+  getValue: PropTypes.func,
   iconClassName: PropTypes.string,
   iconFaces: PropTypes.bool,
-  iconSize: PropTypes.string,
   iconRegular: PropTypes.bool,
-  tag: PropTypes.string,
-  getValue: PropTypes.func,
-  submitHandler: PropTypes.func
+  iconSize: PropTypes.string,
+  submitHandler: PropTypes.func,
+  tag: PropTypes.string
 };
 
 Rating.defaultProps = {

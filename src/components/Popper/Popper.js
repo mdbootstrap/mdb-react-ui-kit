@@ -1,71 +1,69 @@
-import classNames from "classnames";
-import Popper from "popper.js";
-import PropTypes from "prop-types";
-import React from "react";
-import "./Popper.css";
-
+import classNames from 'classnames';
+import Popper from 'popper.js';
+import PropTypes from 'prop-types';
+import React from 'react';
+import './Popper.css';
 class Popover extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      popperJS: null,
-      visible: props.isVisible,
-      showPopper: props.isVisible
-    };
+  state = {
+    popperJS: null,
+    visible: this.props.isVisible,
+    showPopper: this.props.isVisible
+  };
 
-    this.popoverWrapperRef = React.createRef();
-    this.referenceElm = React.createRef();
-  }
+  popoverWrapperRef = React.createRef();
+  referenceElm = React.createRef();
 
   componentDidUpdate(prevProps, prevState) {
     const { showPopper } = this.state;
     const { isVisible, onChange } = this.props;
-
     this.setPopperJS();
-
     if (
       prevProps.isVisible !== isVisible &&
       isVisible !== showPopper &&
       showPopper !== prevProps.showPopper
-    )
+    ) {
       this.setState({ showPopper: isVisible });
-
-    if (onChange && showPopper !== prevState.showPopper) onChange(showPopper);
-
-    if (showPopper && prevState.showPopper !== showPopper) this.createPopper();
+    }
+    if (onChange && showPopper !== prevState.showPopper) {
+      onChange(showPopper);
+    }
+    if (showPopper && prevState.showPopper !== showPopper) {
+      this.createPopper();
+    }
   }
 
   componentDidMount() {
     this.timer = setInterval(() => this.setPopperJS(), 3);
-
-    document.addEventListener("click", this.handleClick);
+    document.addEventListener('click', this.handleClick);
   }
 
   setPopperJS = () => {
-    if (this.state.showPopper) {
-      this.state.popperJS
-        ? this.state.popperJS.scheduleUpdate()
-        : this.createPopper();
+    const { showPopper, popperJS } = this.state;
+    if (showPopper) {
+      popperJS ? popperJS.scheduleUpdate() : this.createPopper();
       setTimeout(() => clearInterval(this.timer), 1000);
     }
   };
 
   createPopper = () => {
-    if (this.referenceElm && this.popoverWrapperRef)
+    const { placement, modifiers } = this.props;
+    const { popperJS } = this.state;
+    if (this.referenceElm && this.popoverWrapperRef) {
       this.setState({
         popperJS: new Popper(
           this.referenceElm,
           this.popoverWrapperRef,
           {
-            placement: this.props.placement,
-            ...this.props.modifiers
+            placement,
+            ...modifiers
           },
           () =>
             setTimeout(() => {
-              this.state.popperJS.scheduleUpdate();
+              popperJS.scheduleUpdate();
             }, 10)
         )
       });
+    }
   };
 
   doToggle = toggler => {
@@ -74,30 +72,34 @@ class Popover extends React.Component {
         showPopper: toggler && true
       },
       () => {
-        if (this.state.showPopper)
+        const { showPopper, visible } = this.state;
+        if (showPopper) {
           this.setState(
             {
-              visible:
-                typeof toggler !== "undefined" ? toggler : !this.state.visible
+              visible: typeof toggler !== 'undefined' ? toggler : !visible
             },
             () => {
               this.createPopper();
               this.state.popperJS.scheduleUpdate();
             }
           );
+        }
       }
     );
   };
 
   handleClick = e => {
     const { target } = e;
-    if (this.popoverWrapperRef && this.state.showPopper) {
+    const { showPopper } = this.state;
+
+    if (this.popoverWrapperRef && showPopper) {
       if (
         this.popoverWrapperRef.contains(target) ||
         this.referenceElm.contains(target) ||
         target === this.referenceElm
-      )
+      ) {
         return;
+      }
 
       this.doToggle(false);
     }
@@ -124,20 +126,18 @@ class Popover extends React.Component {
     } = this.props;
 
     const { visible, showPopper } = this.state;
-
     const Popper = children[1];
     const Wrapper = children[0];
-
     const classes = classNames(
-      visible && "show",
-      popover ? "popover" : !material && !email && "tooltip px-2",
+      visible && 'show',
+      popover ? 'popover' : !material && !email && 'tooltip px-2',
       className
     );
 
     const popperClasses = classNames(
-      (material || email) && "tooltip-inner",
-      material && (sm ? "md-inner" : "md-inner-main"),
-      email && (sm ? "md-inner" : "md-inner-email")
+      (material || email) && 'tooltip-inner',
+      material && (sm ? 'md-inner' : 'md-inner-main'),
+      email && (sm ? 'md-inner' : 'md-inner-email')
     );
 
     return (
@@ -190,15 +190,13 @@ class Popover extends React.Component {
             >
               {Popper.props.children}
             </Popper.type>
-
-            <span x-arrow="" className={classNames("popover_arrow")}></span>
+            <span x-arrow='' className={classNames('popover_arrow')}></span>
           </Tag>
         )}
       </>
     );
   }
 }
-
 Popover.propTypes = {
   children: PropTypes.node,
   clickable: PropTypes.bool,
@@ -214,18 +212,16 @@ Popover.propTypes = {
   style: PropTypes.objectOf(PropTypes.string),
   tag: PropTypes.string
 };
-
 Popover.defaultProps = {
   clickable: false,
   domElement: false,
-  id: "popper",
+  id: 'popper',
   isVisible: false,
-  placement: "top",
+  placement: 'top',
   popover: false,
-  style: { display: "inline-block" },
-  tag: "div"
+  style: { display: 'inline-block' },
+  tag: 'div'
 };
-
 export default Popover;
 export { Popover as MDBPopper };
 export { Popover as MDBTooltip };

@@ -9,7 +9,7 @@ const Button = props => {
   const handleClick = e => {
     e.stopPropagation();
     // Waves - Get Cursor Position
-    let cursorPos = {
+    const cursorPos = {
       top: e.clientY,
       left: e.clientX,
       time: Date.now()
@@ -21,29 +21,32 @@ const Button = props => {
     action,
     active,
     block,
+    children,
     circle,
     className,
     color,
     disabled,
     download,
     flat,
+    gradient,
     innerRef,
     outline,
     role,
+    rounded,
     size,
     social,
     tag: Tag,
     target,
     type,
-    rounded,
     ...attributes
   } = props;
 
   const classes = classNames(
     color !== '' && `btn-${color}`,
+    color && outline && `btn-outline-${color}`,
     'btn',
     'Ripple-parent',
-    className,
+    gradient && `${gradient}-gradient`,
     {
       active,
       'btn-circle': circle,
@@ -52,7 +55,8 @@ const Button = props => {
       [`btn-${social}`]: social,
       [`btn-${size}`]: size,
       disabled
-    }
+    },
+    className
   );
 
   if (attributes.href && Tag === 'button') {
@@ -73,7 +77,7 @@ const Button = props => {
       download={download}
       disabled={disabled}
     >
-      {props.children}
+      {children}
       {!disabled && (
         <Waves cursorPos={cursorPos} outline={outline} flat={flat || rounded} />
       )}

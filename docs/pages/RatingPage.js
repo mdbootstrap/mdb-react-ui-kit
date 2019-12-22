@@ -67,7 +67,7 @@ const RatingPage = () => {
       </SectionContainer>
 
       <SectionContainer header='With feedback' flexCenter>
-        <MDBRating iconSize='2x' feedback submitHandler={(e)=>console.log(e)}/>
+        <MDBRating iconSize='2x' feedback submitHandler={e => console.log(e)} />
       </SectionContainer>
     </MDBContainer>
   );

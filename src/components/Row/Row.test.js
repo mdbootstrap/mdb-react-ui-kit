@@ -18,12 +18,12 @@ describe('<Row />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     const row = findByTestAttr(wrapper, 'row');
     expect(row.length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Row />, div);
   });
@@ -100,7 +100,7 @@ describe('<Row />', () => {
       checkClass(wrapper, 'align-self-end');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

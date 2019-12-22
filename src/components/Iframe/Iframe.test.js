@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import { findByTestAttr, checkProps, checkClass } from '../../tests/utils';
 import checkPropTypes from 'check-prop-types';
+import { findByTestAttr, checkProps, checkClass } from '../../tests/utils';
 import Iframe from './Iframe';
 
-const setup = (props = {}) => shallow(<Iframe {...props} src="test" />);
+const setup = (props = {}) => shallow(<Iframe {...props} src='test' />);
 
 describe('<Iframe />', () => {
   let wrapper;
@@ -15,14 +15,14 @@ describe('<Iframe />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     const Iframe = findByTestAttr(wrapper, 'iframe');
     expect(Iframe.length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Iframe src="test" />, div);
+    ReactDOM.render(<Iframe src='test' />, div);
   });
 
   test('does not throw warnings with expected props', () => {
@@ -69,7 +69,7 @@ describe('<Iframe />', () => {
       checkClass(wrapper, 'embed-responsive-16by9');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

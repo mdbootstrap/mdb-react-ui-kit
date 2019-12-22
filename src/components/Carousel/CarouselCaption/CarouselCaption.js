@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const CarouselCaption = props => {
-  let { children, className, tag: Tag, ...attributes } = props;
+  const { children, className, tag: Tag, ...attributes } = props;
 
   const classes = classNames('carousel-caption', className);
 
@@ -16,9 +16,9 @@ const CarouselCaption = props => {
 
 CarouselCaption.propTypes = {
   active: PropTypes.string,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  children: PropTypes.node,
   className: PropTypes.string,
-  children: PropTypes.node
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 CarouselCaption.defaultProps = {

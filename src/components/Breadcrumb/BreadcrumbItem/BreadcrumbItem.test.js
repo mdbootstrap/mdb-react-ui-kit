@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow, mount } from 'enzyme';
-import { findByTestAttr, checkProps, checkClass } from '../../../tests/utils';
 import checkPropTypes from 'check-prop-types';
+import { findByTestAttr, checkProps, checkClass } from '../../../tests/utils';
 import BreadcrumbItem from './BreadcrumbItem';
 
 const setup = (props = {}) => shallow(<BreadcrumbItem {...props} />);
@@ -16,12 +16,12 @@ describe('<BreadcrumbItem />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     const BreadcrumbItem = findByTestAttr(wrapper, 'breadcrumb-item');
     expect(BreadcrumbItem.length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<BreadcrumbItem children='children text node' />, div);
   });
@@ -48,10 +48,10 @@ describe('<BreadcrumbItem />', () => {
     checkPropTypes(wrapper);
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ 'data-custom-attr': 'custom' });
 
-    expect(wrapper.find(`[data-custom-attr="custom"]`).length).toBe(1);
+    expect(wrapper.find('[data-custom-attr="custom"]').length).toBe(1);
   });
 
   test('adds `strong` tag', () => {
@@ -79,17 +79,17 @@ describe('<BreadcrumbItem />', () => {
       checkClass(wrapper, 'breadcrumb-item');
     });
 
-    test(`adds 'active' class`, () => {
+    test('adds \'active\' class', () => {
       wrapper = setup({ active: true });
       checkClass(wrapper, 'active');
     });
 
-    test(`adds 'bc-icons' class`, () => {
+    test('adds \'bc-icons\' class', () => {
       wrapper = setup({ icon: 'star' });
       checkClass(wrapper, 'bc-icons');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
       checkClass(wrapper, 'testClassName');
     });

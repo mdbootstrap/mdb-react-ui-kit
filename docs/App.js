@@ -11,8 +11,8 @@ import {
   MDBTooltip,
   MDBIcon
 } from 'mdbreact';
-import { ReactComponent as Logo } from './assets/logo.svg';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { ReactComponent as Logo } from './assets/logo.svg';
 import Routes from './Routes';
 
 class App extends Component {
@@ -25,9 +25,10 @@ class App extends Component {
       collapseID: prevState.collapseID !== collapseID ? collapseID : ''
     }));
 
-  closeCollapse = collapseID => () => {
+  closeCollapse = collID => () => {
+    const { collapseID } = this.state;
     window.scrollTo(0, 0);
-    this.state.collapseID === collapseID && this.setState({ collapseID: '' });
+    collapseID === collID && this.setState({ collapseID: '' });
   };
 
   render() {
@@ -52,11 +53,7 @@ class App extends Component {
             <MDBNavbarToggler
               onClick={this.toggleCollapse('mainNavbarCollapse')}
             />
-            <MDBCollapse
-              id='mainNavbarCollapse'
-              isOpen={this.state.collapseID}
-              navbar
-            >
+            <MDBCollapse id='mainNavbarCollapse' isOpen={collapseID} navbar>
               <MDBNavbarNav right>
                 <MDBNavItem>
                   <MDBNavLink
@@ -170,6 +167,25 @@ class App extends Component {
                       </strong>
                     </a>
                     <span>FREE</span>
+                  </MDBTooltip>
+                </MDBNavItem>
+                <MDBNavItem className='mr-2'>
+                  <MDBTooltip
+                    placement='bottom'
+                    domElement
+                    style={{ display: 'block' }}
+                  >
+                    <a
+                      className='nav-link Ripple-parent'
+                      href='https://mdbootstrap.com/support/cat/react/'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      <strong>
+                        <MDBIcon icon='question-circle' />
+                      </strong>
+                    </a>
+                    <span>SUPPORT</span>
                   </MDBTooltip>
                 </MDBNavItem>
               </MDBNavbarNav>

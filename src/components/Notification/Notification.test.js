@@ -18,7 +18,7 @@ describe('<Notification />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'notification').length).toBe(1);
   });
 
@@ -54,10 +54,10 @@ describe('<Notification />', () => {
     checkTag(wrapper, 'a');
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ 'data-custom-attr': 'custom' });
 
-    expect(wrapper.find(`[data-custom-attr="custom"]`).length).toBe(1);
+    expect(wrapper.find('[data-custom-attr="custom"]').length).toBe(1);
   });
 
   test('renders title inside `strong` tag', () => {
@@ -106,62 +106,62 @@ describe('<Notification />', () => {
   });
 
   describe('sets classes', () => {
-    test(`adds 'toast' class by default`, () => {
+    test('adds \'toast\' class by default', () => {
       checkClass(wrapper, 'toast');
     });
 
-    test(`adds 'fade' class if (fade)`, () => {
+    test('adds \'fade\' class if (fade)', () => {
       wrapper = setup({ fade: true });
       checkClass(wrapper, 'fade');
     });
 
-    test(`adds 'hide' class if (!show)`, () => {
+    test('adds \'hide\' class if (!show)', () => {
       wrapper = setup({ show: false });
       checkClass(wrapper, 'hide');
     });
 
-    test(`adds 'show' class if (show)`, () => {
+    test('adds \'show\' class if (show)', () => {
       wrapper = setup({ show: true });
       checkClass(wrapper, 'show');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'customTest' });
       checkClass(wrapper, 'customTest');
     });
 
-    test(`adds 'toast-header' class to header by default)`, () => {
+    test('adds \'toast-header\' class to header by default)', () => {
       checkClass(wrapper.find('div'), 'toast-header');
     });
 
-    test(`adds custom class to header)`, () => {
+    test('adds custom class to header)', () => {
       wrapper = setup({ titleClassName: 'headerTest' });
       checkClass(wrapper.find('div'), 'headerTest');
     });
 
-    test(`adds 'mr-2' class to icon by default)`, () => {
+    test('adds \'mr-2\' class to icon by default)', () => {
       checkClass(wrapper.find('Fa'), 'mr-2');
     });
 
-    test(`adds custom class to icon)`, () => {
+    test('adds custom class to icon)', () => {
       wrapper = setup({ iconClassName: 'iconTest' });
       checkClass(wrapper.find('Fa'), 'iconTest');
     });
 
-    test(`adds 'toast-body' class to body by default)`, () => {
+    test('adds \'toast-body\' class to body by default)', () => {
       checkClass(wrapper.find('div').last(), 'toast-body');
     });
 
-    test(`adds custom class to body)`, () => {
+    test('adds custom class to body)', () => {
       wrapper = setup({ bodyClassName: 'bodyTest' });
       checkClass(wrapper.find('div').last(), 'bodyTest');
     });
 
-    test(`adds 'ml-2 mb-1' classes to 'closeIcon' by default)`, () => {
+    test('adds \'ml-2 mb-1\' classes to \'closeIcon\' by default)', () => {
       checkClass(wrapper.find('MDBCloseIcon').last(), 'ml-2.mb-1');
     });
 
-    test(`adds custom class to closeIcon)`, () => {
+    test('adds custom class to closeIcon)', () => {
       wrapper = setup({ closeClassName: 'closeTest' });
       checkClass(wrapper.find('MDBCloseIcon').last(), 'closeTest');
     });

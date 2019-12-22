@@ -22,10 +22,10 @@ const DataTableSearch = props => {
 };
 
 DataTableSearch.propTypes = {
-  barReverse: PropTypes.bool,
   handleSearchChange: PropTypes.func.isRequired,
   search: PropTypes.string.isRequired,
   searching: PropTypes.bool.isRequired,
+  barReverse: PropTypes.bool,
   label: PropTypes.string
 };
 

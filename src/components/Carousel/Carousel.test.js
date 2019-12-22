@@ -20,11 +20,11 @@ describe('<Carousel />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'carousel').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Carousel />, div);
   });
@@ -59,68 +59,68 @@ describe('<Carousel />', () => {
     checkTag(wrapper, 'a');
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ customAttr: 'custom' });
 
-    expect(wrapper.props()['customAttr']).toBe('custom');
+    expect(wrapper.props().customAttr).toBe('custom');
     expect(wrapper.find('[customAttr="custom"]').length).toBe(1);
   });
 
-  test(`renders div-wrapper when 'showControls' and 'multiItem' properties are passed`, () => {
+  test('renders div-wrapper when \'showControls\' and \'multiItem\' properties are passed', () => {
     wrapper = setup({ showControls: true, multiItem: true });
 
     expect(wrapper.find('div.controls-top')).toHaveLength(1);
   });
 
-  test(`renders 'controls' when 'showControls' property is passed`, () => {
+  test('renders \'controls\' when \'showControls\' property is passed', () => {
     wrapper = mounted({ showControls: true });
 
     expect(wrapper.find('Control')).toHaveLength(2);
   });
 
-  test(`does not render 'controls' when 'showControls=false' property is passed`, () => {
+  test('does not render \'controls\' when \'showControls=false\' property is passed', () => {
     wrapper = mounted({ showControls: false });
 
     expect(wrapper.find('Control')).toHaveLength(0);
   });
 
-  test(`changes slide to 'next'`, () => {
+  test('changes slide to \'next\'', () => {
     wrapper = setup({ showControls: true, activeItem: 1 });
     wrapper.instance().next();
 
-    expect(wrapper.state()['activeItem']).toEqual(2);
+    expect(wrapper.state().activeItem).toEqual(2);
   });
 
-  test(`changes slide to 'prev'`, () => {
+  test('changes slide to \'prev\'', () => {
     wrapper = setup({ showControls: true, activeItem: 2 });
     wrapper.instance().prev();
 
-    expect(wrapper.state()['activeItem']).toEqual(1);
+    expect(wrapper.state().activeItem).toEqual(1);
   });
 
-  test(`shows first slide after clicking 'next' on the last slide`, () => {
+  test('shows first slide after clicking \'next\' on the last slide', () => {
     wrapper = setup({ showControls: true, activeItem: 3 });
     wrapper.setState({ length: 3 });
 
     wrapper.instance().next();
-    expect(wrapper.state()['activeItem']).toEqual(1);
+    expect(wrapper.state().activeItem).toEqual(1);
   });
 
-  test(`shows last slide after clicking 'prev' on the first slide`, () => {
+  test('shows last slide after clicking \'prev\' on the first slide', () => {
     wrapper = setup({ showControls: true, activeItem: 1 });
     wrapper.setState({ length: 3 });
 
     wrapper.instance().prev();
-    expect(wrapper.state()['activeItem']).toEqual(3);
+    expect(wrapper.state().activeItem).toEqual(3);
   });
 
-  test(`does not show indicators when 'showIndicators=false' property is passed`, () => {
+  test('does not show indicators when \'showIndicators=false\' property is passed', () => {
     wrapper = setup({ showIndicators: false });
 
     expect(wrapper.find('CarouselIndicators')).toHaveLength(0);
   });
 
-  test(`shows indicators when 'showIndicators=true' property is passed`, () => {
+  test('shows indicators when \'showIndicators=true\' property is passed', () => {
     wrapper = setup({ showIndicators: true });
 
     expect(wrapper.find('CarouselIndicators')).toHaveLength(1);
@@ -151,7 +151,7 @@ describe('<Carousel />', () => {
       checkClass(wrapper, 'testimonial-carousel');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

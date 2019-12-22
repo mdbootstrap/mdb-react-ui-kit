@@ -14,10 +14,10 @@ const CardGroup = props => {
 };
 
 CardGroup.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   className: PropTypes.string,
+  column: PropTypes.bool,
   deck: PropTypes.bool,
-  column: PropTypes.bool
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 CardGroup.defaultProps = {

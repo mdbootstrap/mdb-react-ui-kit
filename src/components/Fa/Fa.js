@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const Fa = props => {
   const {
@@ -26,26 +26,27 @@ const Fa = props => {
     ...attributes
   } = props;
 
-  const iconPrefix = brand || fab ? "fab" : light || fal ? "fal" : regular || far ? "far" : "fa";
+  const iconPrefix =
+    brand || fab ? 'fab' : light || fal ? 'fal' : regular || far ? 'far' : 'fa';
 
   const classes = classNames(
     iconPrefix,
-    list ? "fa-li" : false,
+    list ? 'fa-li' : false,
     icon ? `fa-${icon}` : false,
     size ? `fa-${size}` : false,
-    fixed ? "fa-fw" : false,
+    fixed ? 'fa-fw' : false,
     pull ? `fa-pull-${pull}` : false,
-    border ? "fa-border" : false,
-    spin ? "fa-spin" : false,
-    pulse ? "fa-pulse" : false,
+    border ? 'fa-border' : false,
+    spin ? 'fa-spin' : false,
+    pulse ? 'fa-pulse' : false,
     rotate ? `fa-rotate-${rotate}` : false,
     flip ? `fa-flip-${flip}` : false,
-    inverse ? "fa-inverse" : false,
+    inverse ? 'fa-inverse' : false,
     stack ? `fa-${stack}` : false,
     className
   );
 
-  return <i data-test="fa" {...attributes} className={classes} />;
+  return <i data-test='fa' {...attributes} className={classes} />;
 };
 
 Fa.propTypes = {
@@ -65,30 +66,30 @@ Fa.propTypes = {
   pulse: PropTypes.bool,
   regular: PropTypes.bool,
   rotate: PropTypes.string,
-  spin: PropTypes.bool,
   size: PropTypes.string,
+  spin: PropTypes.bool,
   stack: PropTypes.string
 };
 
 Fa.defaultProps = {
   border: false,
   brand: false,
-  className: "",
+  className: '',
   fab: false,
   fal: false,
   far: false,
   fixed: false,
-  flip: "",
+  flip: '',
   inverse: false,
   light: false,
   list: false,
-  pull: "",
+  pull: '',
   pulse: false,
   regular: false,
-  rotate: "",
+  rotate: '',
+  size: '',
   spin: false,
-  size: "",
-  stack: ""
+  stack: ''
 };
 
 export default Fa;

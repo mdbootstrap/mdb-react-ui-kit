@@ -10,20 +10,20 @@ const Table = props => {
     borderless,
     btn,
     children,
+    className,
     dark,
     fixed,
-    theadColor,
     hover,
     maxHeight,
     responsive,
-    responsiveSm,
-    responsiveMd,
     responsiveLg,
+    responsiveMd,
+    responsiveSm,
     responsiveXl,
     scrollY,
     small,
     striped,
-    className,
+    theadColor,
     ...attributes
   } = props;
 
@@ -71,20 +71,20 @@ Table.propTypes = {
   borderless: PropTypes.bool,
   btn: PropTypes.bool,
   children: PropTypes.node,
+  className: PropTypes.string,
   dark: PropTypes.bool,
   fixed: PropTypes.bool,
-  theadColor: PropTypes.string,
   hover: PropTypes.bool,
   maxHeight: PropTypes.string,
   responsive: PropTypes.bool,
-  responsiveSm: PropTypes.bool,
-  responsiveMd: PropTypes.bool,
   responsiveLg: PropTypes.bool,
+  responsiveMd: PropTypes.bool,
+  responsiveSm: PropTypes.bool,
   responsiveXl: PropTypes.bool,
   scrollY: PropTypes.bool,
   small: PropTypes.bool,
   striped: PropTypes.bool,
-  className: PropTypes.string
+  theadColor: PropTypes.string
 };
 
 export default Table;

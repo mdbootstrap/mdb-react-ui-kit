@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 import { findByTestAttr, checkProps, checkClass } from '../../../tests/utils';
 import ModalBody from './ModalBody';
@@ -14,19 +14,19 @@ describe('<ModalBody />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'modal-body').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<ModalBody />, div);
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ customAttr: 'custom' });
 
-    expect(wrapper.props()['customAttr']).toBe('custom');
+    expect(wrapper.props().customAttr).toBe('custom');
     expect(wrapper.find('[customAttr="custom"]').length).toBe(1);
   });
 
@@ -45,11 +45,11 @@ describe('<ModalBody />', () => {
   });
 
   describe('sets classes', () => {
-    test(`adds 'modal-body' class by default`, () => {
+    test("adds 'modal-body' class by default", () => {
       checkClass(wrapper, 'modal-body');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

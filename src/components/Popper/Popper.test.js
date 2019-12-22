@@ -1,18 +1,24 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 import { checkClass, checkProps } from '../../tests/utils';
 import Popper from './Popper';
 
-const Wrapper = props => <button>{props.children}</button>;
-const Content = props => <div>{props.children}</div>;
+const Wrapper = props => {
+  const { children } = props;
+ return <button>{children}</button>;
+};
+const Content = props => {
+  const { children } = props;
+  return  <div>{children}</div>;
+};
 
 Wrapper.type = 'span';
 Content.type = 'div';
 
 const setup = (props = {}) =>
   mount(
-    <Popper tag={'section'} isVisible={true} {...props}>
+    <Popper tag='section' isVisible {...props}>
       <Wrapper />
       <Content>Body</Content>
     </Popper>
@@ -25,7 +31,7 @@ describe('<Popper />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     wrapper = setup({ isVisible: true });
     expect(wrapper.find('[data-popper="popper"]').length).toBe(2);
   });
@@ -59,7 +65,7 @@ describe('<Popper />', () => {
 
   test('should not render popover content if (!state.visible) and !Content.props.children', () => {
     wrapper = mount(
-      <Popper tag={'section'} isVisible={false}>
+      <Popper tag='section' isVisible={false}>
         <Wrapper />
         <Content />
       </Popper>
@@ -94,7 +100,7 @@ describe('<Popper />', () => {
   test('renders Wrapper with `innerRef` if (!domElement)', () => {
     wrapper = setup({ domElement: false });
 
-    expect(wrapper.find('Wrapper').props()['innerRef']).toBeTruthy();
+    expect(wrapper.find('Wrapper').props().innerRef).toBeTruthy();
   });
 
   test('should not render Wrapper with `innerRef` if (domElement)', () => {
@@ -102,7 +108,7 @@ describe('<Popper />', () => {
 
     // console.log(wrapper.debug())
 
-    expect(wrapper.find('Wrapper').props()['innerRef']).toBeTruthy();
+    expect(wrapper.find('Wrapper').props().innerRef).toBeTruthy();
   });
 
   test('renders Content.props.children', () => {
@@ -110,17 +116,17 @@ describe('<Popper />', () => {
   });
 
   describe('sets classes', () => {
-    test(`adds 'show' class to Tooltip if (state.visible)`, () => {
+    test("adds 'show' class to Tooltip if (state.visible)", () => {
       checkClass(wrapper.find('section'), 'show');
     });
 
-    test(`adds 'popover' classes to Tooltip if (props.popover)`, () => {
+    test("adds 'popover' classes to Tooltip if (props.popover)", () => {
       wrapper = setup({ popover: true });
 
       checkClass(wrapper.find('section'), 'popover');
     });
 
-    test(`adds 'tooltip' classes to Tooltip if (!props.popover)`, () => {
+    test("adds 'tooltip' classes to Tooltip if (!props.popover)", () => {
       wrapper = setup({ popover: false });
 
       checkClass(wrapper.find('section'), 'tooltip');

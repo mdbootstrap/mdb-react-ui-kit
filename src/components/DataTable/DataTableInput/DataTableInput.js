@@ -18,9 +18,9 @@ const DataTableInput = ({ value, onChange, label }) => (
 
 DataTableInput.propTypes = {
   label: PropTypes.oneOfType([
-    PropTypes.string,
     PropTypes.number,
-    PropTypes.object
+    PropTypes.object,
+    PropTypes.string
   ]),
   onChange: PropTypes.func,
   value: PropTypes.string

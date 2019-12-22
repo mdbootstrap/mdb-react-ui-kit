@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 import {
   findByTestAttr,
@@ -20,11 +20,11 @@ describe('<DropdownItem />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'dropdown-item').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<DropdownItem />, div);
   });
@@ -65,10 +65,10 @@ describe('<DropdownItem />', () => {
     checkTag(wrapper, 'div');
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ 'data-custom-attr': 'custom' });
 
-    expect(wrapper.find(`[data-custom-attr="custom"]`).length).toBe(1);
+    expect(wrapper.find('[data-custom-attr="custom"]').length).toBe(1);
   });
 
   test('should not invoke onClick if (disabled || header || divider) was passed', () => {
@@ -167,7 +167,7 @@ describe('<DropdownItem />', () => {
       checkClass(wrapper, 'dropdown-divider');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

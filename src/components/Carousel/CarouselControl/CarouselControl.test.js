@@ -19,11 +19,11 @@ describe('<CarouselControl />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'carousel-control').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<CarouselControl />, div);
   });
@@ -80,17 +80,17 @@ describe('<CarouselControl />', () => {
       checkClass(wrapper, 'carousel-control-next');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');
     });
 
-    test(`should not render Fa if 'iconLeft' or 'iconRight' properties are not passed`, () => {
+    test('should not render Fa if \'iconLeft\' or \'iconRight\' properties are not passed', () => {
       expect(wrapper.find('Fa')).toHaveLength(0);
     });
 
-    test(`should render Fa if 'iconLeft' or 'iconRight' properties are not passed`, () => {
+    test('should render Fa if \'iconLeft\' or \'iconRight\' properties are not passed', () => {
       wrapper = setup({ iconLeft: true });
       expect(wrapper.find('Fa')).toHaveLength(1);
     });

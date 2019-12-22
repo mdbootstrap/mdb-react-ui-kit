@@ -31,17 +31,17 @@ const DataTableEntries = props => {
 };
 
 DataTableEntries.propTypes = {
-  barReverse: PropTypes.bool,
-  handleEntriesChange: PropTypes.func.isRequired,
   displayEntries: PropTypes.bool.isRequired,
   entries: PropTypes.number.isRequired,
   entriesArr: PropTypes.arrayOf(PropTypes.number).isRequired,
-  paging: PropTypes.bool.isRequired,
+  handleEntriesChange: PropTypes.func.isRequired,
   label: PropTypes.oneOfType([
-    PropTypes.string,
     PropTypes.number,
-    PropTypes.object
-  ]).isRequired
+    PropTypes.object,
+    PropTypes.string
+  ]).isRequired,
+  paging: PropTypes.bool.isRequired,
+  barReverse: PropTypes.bool
 };
 
 export default DataTableEntries;

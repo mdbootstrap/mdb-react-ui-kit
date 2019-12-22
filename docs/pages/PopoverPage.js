@@ -6,8 +6,8 @@ import {
   MDBPopoverHeader,
   MDBContainer
 } from 'mdbreact';
-import DocsLink from './../components/docsLink';
-import SectionContainer from './../components/sectionContainer';
+import DocsLink from '../components/docsLink';
+import SectionContainer from '../components/sectionContainer';
 
 const PopoverPage = () => {
   const [visible, setVisibility] = useState(true);

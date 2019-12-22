@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   MDBFreeBird,
   MDBInput,
@@ -9,49 +9,49 @@ import {
   MDBBtn,
   MDBContainer,
   MDBEdgeHeader
-} from "mdbreact";
-import DocsLink from "./../components/docsLink";
-import SectionContainer from "./../components/sectionContainer";
+} from 'mdbreact';
+import DocsLink from '../components/docsLink';
+import SectionContainer from '../components/sectionContainer';
 
 const EdgeHeaderPage = props => {
   return (
-    <MDBContainer className="mt-3 text-center">
+    <MDBContainer className='mt-3 text-center'>
       <DocsLink
-        title="Edge Header"
-        href="https://mdbootstrap.com/plugins/react/edge-header/"
+        title='Edge Header'
+        href='https://mdbootstrap.com/plugins/react/edge-header/'
       />
       <SectionContainer>
-        <MDBEdgeHeader color="mdb-color darken-2" />
+        <MDBEdgeHeader color='mdb-color darken-2' />
         <MDBFreeBird>
           <MDBRow>
             <MDBCol
-              md="8"
-              lg="7"
-              className="text-left mx-auto float-none white z-depth-1 py-2 px-2"
+              md='8'
+              lg='7'
+              className='text-left mx-auto float-none white z-depth-1 py-2 px-2'
             >
               <MDBCardBody>
                 <MDBCardTitle>Material Design Edge Headers</MDBCardTitle>
-                <p className="pb-4">Example of Material Design Form</p>
+                <p className='pb-4'>Example of Material Design Form</p>
                 <form>
-                  <MDBInput label="Your name" group type="text" icon="user" />
+                  <MDBInput label='Your name' group type='text' icon='user' />
                   <MDBInput
-                    label="Your email"
+                    label='Your email'
                     group
-                    type="email"
-                    icon="envelope"
+                    type='email'
+                    icon='envelope'
                   />
                   <MDBInput
-                    type="textarea"
-                    rows="2"
-                    label="Textarea"
-                    icon="pencil-alt"
+                    type='textarea'
+                    rows='2'
+                    label='Textarea'
+                    icon='pencil-alt'
                   />
-                  <MDBBtn color="mdb-color" className="text-xs-left">
+                  <MDBBtn color='mdb-color' className='text-xs-left'>
                     Submit
                   </MDBBtn>
                 </form>
-                <div className="my-2">
-                  <p style={{ fontWeight: "300", fontSize: "0.75rem" }}>
+                <div className='my-2'>
+                  <p style={{ fontWeight: '300', fontSize: '0.75rem' }}>
                     Never submit your passwords here
                   </p>
                 </div>

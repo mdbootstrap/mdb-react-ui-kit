@@ -5,8 +5,8 @@ import { omit } from '../utils';
 
 const propTypes = {
   activeItem: PropTypes.any,
-  tabId: PropTypes.any,
-  className: PropTypes.string
+  className: PropTypes.string,
+  tabId: PropTypes.any
 };
 
 class TabContent extends React.Component {
@@ -15,8 +15,9 @@ class TabContent extends React.Component {
   };
 
   getChildContext() {
+    const { activeItem } = this.state;
     return {
-      activeItemId: this.state.activeItem
+      activeItemId: activeItem
     };
   }
 

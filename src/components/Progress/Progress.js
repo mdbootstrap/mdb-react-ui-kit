@@ -14,8 +14,8 @@ const Progress = ({
   min,
   preloader,
   striped,
-  wrapperStyle,
   value,
+  wrapperStyle,
   ...attributes
 }) => {
   const percent = ((value - min) / (max - min)) * 100;
@@ -23,19 +23,19 @@ const Progress = ({
   const progressClasses = classNames(
     'progress',
     material && 'md-progress',
-    preloader && (color ? color + '-color' : 'primary-color') + '-dark',
+    preloader && `${color ? `${color}-color` : 'primary-color'}-dark`,
     className
   );
 
   const progressBarClasses = classNames(
     preloader ? 'indeterminate' : 'progress-bar',
-    barClassName ? barClassName : null,
+    barClassName || null,
     animated ? 'progress-bar-animated' : null,
     color ? `bg-${color}` : null,
     striped || animated ? 'progress-bar-striped' : null
   );
 
-  const computedHeight = height ? height : children && '1rem';
+  const computedHeight = height || (children && '1rem');
 
   const computedWrapperStyle = { ...wrapperStyle, height: computedHeight };
 
@@ -72,8 +72,8 @@ Progress.propTypes = {
   min: PropTypes.number,
   preloader: PropTypes.bool,
   striped: PropTypes.bool,
-  wrapperStyle: PropTypes.object,
-  value: PropTypes.number
+  value: PropTypes.number,
+  wrapperStyle: PropTypes.object
 };
 
 Progress.defaultProps = {
@@ -87,8 +87,8 @@ Progress.defaultProps = {
   min: 0,
   preloader: false,
   striped: false,
-  wrapperStyle: {},
-  value: 0
+  value: 0,
+  wrapperStyle: {}
 };
 
 export default Progress;

@@ -19,11 +19,11 @@ describe('<Pagination />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'pagination').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Pagination />, div);
   });
@@ -46,7 +46,7 @@ describe('<Pagination />', () => {
     checkProps(wrapper, {});
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ customAttr: 'custom' });
 
     expect(wrapper.find('[customAttr="custom"]').length).toBe(1);
@@ -63,25 +63,25 @@ describe('<Pagination />', () => {
       checkClass(wrapper, 'pagination');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');
     });
 
-    test(`adds 'pagination-circle' when 'circle' property is passed`, () => {
+    test('adds \'pagination-circle\' when \'circle\' property is passed', () => {
       wrapper = setup({ circle: true });
 
       checkClass(wrapper, 'pagination-circle');
     });
 
-    test(`adds 'pg-primary' when 'color="primary"' property is passed`, () => {
+    test('adds \'pg-primary\' when \'color="primary"\' property is passed', () => {
       wrapper = setup({ color: 'primary' });
 
       checkClass(wrapper, 'pg-primary');
     });
 
-    test(`adds 'pagination-lg' when 'size=lg' property is passed`, () => {
+    test('adds \'pagination-lg\' when \'size=lg\' property is passed', () => {
       wrapper = setup({ size: 'lg' });
 
       checkClass(wrapper, 'pagination-lg');

@@ -19,19 +19,19 @@ describe('<NavItem />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'nav-item').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<NavItem />, div);
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ customAttr: 'custom' });
 
-    expect(wrapper.props()['customAttr']).toBe('custom');
+    expect(wrapper.props().customAttr).toBe('custom');
     expect(wrapper.find('[customAttr="custom"]').length).toBe(1);
   });
 
@@ -61,23 +61,23 @@ describe('<NavItem />', () => {
   });
 
   describe('sets classes', () => {
-    test(`adds 'nav-item' class by default`, () => {
+    test('adds \'nav-item\' class by default', () => {
       checkClass(wrapper, 'nav-item');
     });
 
-    test(`adds 'active' class if (active) property is passed`, () => {
+    test('adds \'active\' class if (active) property is passed', () => {
       wrapper = setup({ active: true });
 
       checkClass(wrapper, 'active');
     });
 
-    test(`adds 'navbar-text' class if (text) property is passed`, () => {
+    test('adds \'navbar-text\' class if (text) property is passed', () => {
       wrapper = setup({ text: 'test' });
 
       checkClass(wrapper, 'navbar-text');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

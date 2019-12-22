@@ -5,7 +5,8 @@ import classNames from 'classnames';
 const getExpandClass = expand => {
   if (expand === false) {
     return false;
-  } else if (expand === true || expand === 'xs') {
+  }
+  if (expand === true || expand === 'xs') {
     return 'navbar-expand';
   }
 
@@ -27,13 +28,16 @@ class Navbar extends Component {
   };
 
   componentDidMount() {
-    if (this.props.scrolling || this.props.scrollingNavbarOffset) {
+    const { scrolling, scrollingNavbarOffset } = this.props;
+    if (scrolling || scrollingNavbarOffset) {
       window.addEventListener('scroll', this.handleScroll);
     }
   }
 
   componentWillUnmount() {
-    if (this.props.scrolling || this.props.scrollingNavbarOffset) {
+    const { scrolling, scrollingNavbarOffset } = this.props;
+
+    if (scrolling || scrollingNavbarOffset) {
       window.removeEventListener('scroll', this.handleScroll);
     }
   }
@@ -55,7 +59,9 @@ class Navbar extends Component {
       ...attributes
     } = this.props;
 
-    let classes = classNames(
+    const { isCollapsed } = this.state;
+
+    const classes = classNames(
       {
         'navbar-light': light,
         'navbar-dark': dark,
@@ -63,8 +69,8 @@ class Navbar extends Component {
         [`fixed-${fixed}`]: fixed,
         'scrolling-navbar': scrolling || scrollingNavbarOffset,
         'double-nav': double,
-        'top-nav-collapse': this.state.isCollapsed,
-        [`${color}`]: color && transparent ? this.state.isCollapsed : color
+        'top-nav-collapse': isCollapsed,
+        [`${color}`]: color && transparent ? isCollapsed : color
       },
       'navbar',
       getExpandClass(expand),
@@ -83,17 +89,17 @@ class Navbar extends Component {
 }
 
 Navbar.propTypes = {
-  light: PropTypes.bool,
+  className: PropTypes.string,
+  color: PropTypes.string,
   dark: PropTypes.bool,
   double: PropTypes.bool,
+  expand: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   fixed: PropTypes.string,
-  sticky: PropTypes.string,
+  light: PropTypes.bool,
   scrolling: PropTypes.bool,
   scrollingNavbarOffset: PropTypes.number,
-  color: PropTypes.string,
+  sticky: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  className: PropTypes.string,
-  expand: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   transparent: PropTypes.bool
 };
 

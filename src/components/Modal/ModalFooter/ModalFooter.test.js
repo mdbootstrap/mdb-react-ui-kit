@@ -14,19 +14,19 @@ describe('<ModalFooter />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'modal-footer').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<ModalFooter />, div);
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ customAttr: 'custom' });
 
-    expect(wrapper.props()['customAttr']).toBe('custom');
+    expect(wrapper.props().customAttr).toBe('custom');
     expect(wrapper.find('[customAttr="custom"]').length).toBe(1);
   });
 
@@ -45,41 +45,41 @@ describe('<ModalFooter />', () => {
   });
 
   describe('sets classes', () => {
-    test(`adds 'modal-footer' class by default`, () => {
+    test('adds \'modal-footer\' class by default', () => {
       checkClass(wrapper, 'modal-footer');
     });
 
-    test(`adds 'justify-content-start' class`, () => {
+    test('adds \'justify-content-start\' class', () => {
       wrapper = setup({ start: true });
 
       checkClass(wrapper, 'justify-content-start');
     });
 
-    test(`adds 'justify-content-end' class`, () => {
+    test('adds \'justify-content-end\' class', () => {
       wrapper = setup({ end: true });
 
       checkClass(wrapper, 'justify-content-end');
     });
 
-    test(`adds 'justify-content-center' class`, () => {
+    test('adds \'justify-content-center\' class', () => {
       wrapper = setup({ center: true });
 
       checkClass(wrapper, 'justify-content-center');
     });
 
-    test(`adds 'justify-content-between' class`, () => {
+    test('adds \'justify-content-between\' class', () => {
       wrapper = setup({ between: true });
 
       checkClass(wrapper, 'justify-content-between');
     });
 
-    test(`adds 'justify-content-around' class`, () => {
+    test('adds \'justify-content-around\' class', () => {
       wrapper = setup({ around: true });
 
       checkClass(wrapper, 'justify-content-around');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

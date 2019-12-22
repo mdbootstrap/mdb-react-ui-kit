@@ -12,7 +12,7 @@ describe('<DataTableInput />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'datatable-input').length).toBe(1);
   });
 
@@ -48,7 +48,7 @@ describe('<DataTableInput />', () => {
       expect(label).toEqual('Search');
     });
 
-    test(`sets correct input's placeholder`, () => {
+    test('sets correct input\'s placeholder', () => {
       wrapper = setup({ label: 'test' });
       let input = wrapper.find('input').prop('placeholder');
       expect(input).toEqual('test');

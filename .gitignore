@@ -27,3 +27,6 @@ yarn.lock
 *.tgz
 
 .history
+
+
+//lint-staged

@@ -8,7 +8,7 @@ const FormInline = props => {
 
   const handleClick = e => {
     // Get Cursor Position
-    let cursorPos = {
+    const cursorPos = {
       top: e.clientY,
       left: e.clientX,
       time: Date.now()
@@ -20,7 +20,7 @@ const FormInline = props => {
 
   const classes = classNames(
     'form-inline',
-    props.waves && 'Ripple-parent',
+    waves && 'Ripple-parent',
     className
   );
 
@@ -32,8 +32,8 @@ const FormInline = props => {
       onMouseDown={handleClick}
       onTouchStart={handleClick}
     >
-      {props.children}
-      {props.waves && <Waves cursorPos={cursorPos} />}
+      {children}
+      {waves && <Waves cursorPos={cursorPos} />}
     </form>
   );
 };

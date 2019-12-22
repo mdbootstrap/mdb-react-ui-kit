@@ -35,8 +35,8 @@ Pagination.propTypes = {
   circle: PropTypes.bool,
   className: PropTypes.string,
   color: PropTypes.string,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-  size: PropTypes.oneOf(['lg', 'sm'])
+  size: PropTypes.oneOf(['lg', 'sm']),
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 Pagination.defaultProps = {

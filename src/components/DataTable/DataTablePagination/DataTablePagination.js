@@ -15,33 +15,38 @@ class DataTablePagination extends Component {
   }
 
   componentDidUpdate = prevProps => {
-    if (prevProps.pages !== this.props.pages) {
-      this.setState({ pages: this.props.pages }, () => this.groupPages());
+    const { pages } = this.props;
+
+    if (prevProps.pages !== pages) {
+      this.setState({ pages: pages }, () => this.groupPages());
     }
   };
 
   pagesIndexify = () => {
-    let mutablePages = [...this.state.pages];
+    const { pages } = this.state;
+
+    const mutablePages = [...pages];
     mutablePages.forEach((page, index) => (page.index = index));
     return mutablePages;
   };
 
   groupPages = () => {
-    let pGroups = [];
-    let pages = this.pagesIndexify();
+    const pGroups = [];
+    const pages = this.pagesIndexify();
+    const { pagesAmount } = this.props;
 
     while (pages.length > 0) {
-      pGroups.push(pages.splice(0, this.props.pagesAmount));
+      pGroups.push(pages.splice(0, pagesAmount));
     }
 
     this.setState({ pGroups });
   };
 
   choosePagesGroup = () => {
-    const pGroupNumber = Math.floor(
-      this.props.activePage / this.props.pagesAmount
-    );
-    return this.state.pGroups.length ? this.state.pGroups[pGroupNumber] : [];
+    const { activePage, pagesAmount } = this.props;
+    const { pGroups } = this.state;
+    const pGroupNumber = Math.floor(activePage / pagesAmount);
+    return pGroups.length ? pGroups[pGroupNumber] : [];
   };
 
   render() {
@@ -99,9 +104,9 @@ class DataTablePagination extends Component {
 DataTablePagination.propTypes = {
   activePage: PropTypes.number.isRequired,
   changeActivePage: PropTypes.func.isRequired,
+  label: PropTypes.arrayOf(PropTypes.string).isRequired,
   pages: PropTypes.array.isRequired,
-  pagesAmount: PropTypes.number.isRequired,
-  label: PropTypes.arrayOf(PropTypes.string).isRequired
+  pagesAmount: PropTypes.number.isRequired
 };
 
 export default DataTablePagination;

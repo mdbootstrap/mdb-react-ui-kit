@@ -33,20 +33,22 @@ class CarouselItem extends Component {
       ...attributes
     } = this.props;
 
+    let { slide, activeItem } = this.context;
+
     itemId = parseInt(itemId, 10);
 
-    let classes = classNames(
+    const classes = classNames(
       'carousel-item',
       {
-        'active carousel-slide-item': this.context.slide,
-        active: !this.context.slide && itemId === this.context.activeItem
+        'active carousel-slide-item': slide,
+        active: !slide && itemId === activeItem
       },
       className
     );
 
-    let slideIndex = this.context.activeItem - itemId;
+    const slideIndex = activeItem - itemId;
 
-    if (this.context.slide) {
+    if (slide) {
       if (slideIndex < 0) {
         this.moveForward();
       } else if (slideIndex > 0) {
@@ -73,10 +75,10 @@ class CarouselItem extends Component {
 
 CarouselItem.propTypes = {
   active: PropTypes.bool,
-  itemId: PropTypes.any,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  children: PropTypes.node,
   className: PropTypes.string,
-  children: PropTypes.node
+  itemId: PropTypes.any,
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 CarouselItem.defaultProps = {

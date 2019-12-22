@@ -18,11 +18,11 @@ describe('<Container />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'container').length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<Container />, div);
   });
@@ -42,7 +42,7 @@ describe('<Container />', () => {
     checkProps(wrapper, {});
   });
 
-  test(`adds custom class passed as property`, () => {
+  test('adds custom class passed as property', () => {
     wrapper = setup({ className: 'testClassName' });
 
     checkClass(wrapper, 'testClassName');
@@ -53,10 +53,10 @@ describe('<Container />', () => {
     checkTag(wrapper, 'a');
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ customAttr: 'custom' });
 
-    expect(wrapper.props()['customAttr']).toBe('custom');
+    expect(wrapper.props().customAttr).toBe('custom');
     expect(wrapper.find('[customAttr="custom"]').length).toBe(1);
   });
 

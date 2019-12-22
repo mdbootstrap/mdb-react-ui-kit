@@ -26,8 +26,8 @@ MDBCloseIcon.defaultProps = {
 };
 
 MDBCloseIcon.propTypes = {
-  className: PropTypes.string,
   ariaLabel: PropTypes.string,
+  className: PropTypes.string,
   onClick: PropTypes.func
 };
 

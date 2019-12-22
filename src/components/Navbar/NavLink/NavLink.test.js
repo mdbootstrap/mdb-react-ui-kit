@@ -15,11 +15,11 @@ describe('<NavLink />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'nav-link').length).toBeTruthy();
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(
       <Router>
@@ -47,19 +47,19 @@ describe('<NavLink />', () => {
     checkProps(wrapper, {});
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ customAttr: 'custom' });
 
     expect(wrapper.find('[customAttr="custom"]').length).toBeTruthy();
   });
 
-  test(`renders Waves if (!disabled)`, () => {
+  test('renders Waves if (!disabled)', () => {
     wrapper = setup({ disabled: false });
 
     expect(wrapper.find('Waves')).toHaveLength(1);
   });
 
-  test(`does not render Waves if (disabled)`, () => {
+  test('does not render Waves if (disabled)', () => {
     wrapper = setup({ disabled: true });
 
     expect(wrapper.find('Waves')).toHaveLength(0);
@@ -70,29 +70,29 @@ describe('<NavLink />', () => {
       wrapper = setup();
     });
 
-    test(`adds 'nav-link' class by default`, () => {
+    test('adds \'nav-link\' class by default', () => {
       checkClass(wrapper, 'nav-link');
     });
 
-    test(`adds 'active' class if (active) property is passed`, () => {
+    test('adds \'active\' class if (active) property is passed', () => {
       wrapper = setup({ active: true });
 
       checkClass(wrapper, 'active');
     });
 
-    test(`adds 'disabled' class if (disabled) property is passed`, () => {
+    test('adds \'disabled\' class if (disabled) property is passed', () => {
       wrapper = setup({ disabled: true });
 
       checkClass(wrapper, 'disabled');
     });
 
-    test(`adds 'Ripple-parent' class if (!disabled) property is passed`, () => {
+    test('adds \'Ripple-parent\' class if (!disabled) property is passed', () => {
       wrapper = setup({ disabled: false });
 
       checkClass(wrapper, 'Ripple-parent');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

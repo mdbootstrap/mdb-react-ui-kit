@@ -9,7 +9,7 @@ const TableBody = props => {
     'text-white': textWhite
   });
   const renderTD = (field, key, array, row) => {
-    if (field === 'clickEvent') return null;
+    if (field === 'clickEvent') {return null;}
     if (field !== 'colspan') {
       if (row.message) {
         return (
@@ -21,18 +21,17 @@ const TableBody = props => {
         );
       } else {
         return (
-          (array[key + 1] !== 'colspan' && row[field] !== (null) && (
+          (array[key + 1] !== 'colspan' && row[field] !== null && (
             <td key={key}>{row[field]}</td>
           )) || <td key={key}></td>
         );
       }
-    } else {
-      return (
-        <td key={key} colSpan={row['colspan']}>
-          {row[array[key - 1]]}
-        </td>
-      );
     }
+    return (
+      <td key={key} colSpan={row.colspan}>
+        {row[array[key - 1]]}
+      </td>
+    );
   };
 
   return (

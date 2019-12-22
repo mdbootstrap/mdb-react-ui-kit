@@ -23,7 +23,7 @@ describe('<DropdownMenuComponent />', () => {
     wrapper = setup(expectedProps);
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'dropdown-menu-component').length).toBe(1);
   });
 

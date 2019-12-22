@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
-import { findByTestAttr, checkProps, checkClass } from '../../tests/utils';
 import checkPropTypes from 'check-prop-types';
+import { findByTestAttr, checkProps, checkClass } from '../../tests/utils';
 import FormInline from './FormInline';
 
 const setup = (props = {}) => shallow(<FormInline {...props} />);
@@ -14,12 +14,12 @@ describe('<FormInline />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     const FormInline = findByTestAttr(wrapper, 'form-inline');
     expect(FormInline.length).toBe(1);
   });
 
-  test(`renders without errors`, () => {
+  test('renders without errors', () => {
     const div = document.createElement('div');
     ReactDOM.render(<FormInline icon='star' />, div);
   });
@@ -38,10 +38,10 @@ describe('<FormInline />', () => {
     checkPropTypes(wrapper);
   });
 
-  test(`adds custom attributes passed as property`, () => {
+  test('adds custom attributes passed as property', () => {
     wrapper = setup({ icon: 'star', customAttr: 'custom' });
 
-    expect(wrapper.props()['customAttr']).toBe('custom');
+    expect(wrapper.props().customAttr).toBe('custom');
     expect(wrapper.find('[customAttr="custom"]').length).toBe(1);
   });
 
@@ -66,7 +66,7 @@ describe('<FormInline />', () => {
       checkClass(wrapper, 'Ripple-parent');
     });
 
-    test(`adds custom class passed as property`, () => {
+    test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');

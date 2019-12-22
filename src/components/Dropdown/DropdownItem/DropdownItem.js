@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { omit } from '../../utils';
 
-class DropdownItem extends React.Component {
+class DropdownItem extends Component {
   onClick = e => {
     const { disabled, header, divider, onClick, toggle } = this.props;
 
@@ -44,10 +44,12 @@ class DropdownItem extends React.Component {
       ...props
     } = omit(this.props, ['toggle']);
 
+    const { toggle } = this.props;
+
     const classes = classNames(
       {
-        active: active,
-        disabled: disabled,
+        active,
+        disabled,
         'dropdown-item': !divider && !header,
         'dropdown-header': header,
         'dropdown-divider': divider
@@ -66,9 +68,7 @@ class DropdownItem extends React.Component {
     }
 
     const type =
-      Tag === 'button' && (props.onClick || this.props.toggle)
-        ? 'button'
-        : undefined;
+      Tag === 'button' && (props.onClick || toggle) ? 'button' : undefined;
 
     return (
       <Tag
@@ -85,14 +85,14 @@ class DropdownItem extends React.Component {
 }
 
 DropdownItem.propTypes = {
-  children: PropTypes.node,
   active: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
   disabled: PropTypes.bool,
   divider: PropTypes.bool,
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   header: PropTypes.bool,
   onClick: PropTypes.func,
-  className: PropTypes.string,
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   toggle: PropTypes.bool
 };
 

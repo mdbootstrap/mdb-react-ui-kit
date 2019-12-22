@@ -3,28 +3,32 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './ButtonGroup.css';
 
-const ButtonGroup = props => {
-  const { className, size, vertical, ...attributes } = props;
-
+const ButtonGroup = ({
+  className,
+  size,
+  vertical,
+  children,
+  ...attributes
+}) => {
   const classes = classNames(
     className,
-    size ? 'btn-group-' + size : false,
+    size ? `btn-group-${size}` : false,
     vertical ? 'btn-group-vertical' : 'btn-group'
   );
 
   return (
     <div data-test='button-group' {...attributes} className={classes}>
-      {props.children}
+      {children}
     </div>
   );
 };
 
 ButtonGroup.propTypes = {
   'aria-label': PropTypes.string,
+  children: PropTypes.node,
   className: PropTypes.string,
   role: PropTypes.string,
   size: PropTypes.string,
-  children: PropTypes.node,
   vertical: PropTypes.bool
 };
 

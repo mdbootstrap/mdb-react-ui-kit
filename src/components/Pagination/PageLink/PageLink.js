@@ -15,9 +15,9 @@ const PageLink = props => {
 };
 
 PageLink.propTypes = {
-  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  children: PropTypes.node,
   className: PropTypes.string,
-  children: PropTypes.node
+  tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 
 PageLink.defaultProps = {

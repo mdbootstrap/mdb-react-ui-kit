@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   MDBContainer,
   MDBRow,
@@ -8,52 +8,52 @@ import {
   MDBTable,
   MDBTableBody,
   MDBTableHead
-} from "mdbreact";
-import DocsLink from "./../components/docsLink";
-import SectionContainer from "../components/sectionContainer";
+} from 'mdbreact';
+import DocsLink from '../components/docsLink';
+import SectionContainer from '../components/sectionContainer';
 
 const TablePage = props => {
   const data = {
     columns: [
       {
-        label: "#",
-        field: "id",
-        sort: "asc"
+        label: '#',
+        field: 'id',
+        sort: 'asc'
       },
       {
-        label: "First",
-        field: "first",
-        sort: "asc"
+        label: 'First',
+        field: 'first',
+        sort: 'asc'
       },
       {
-        label: "Last",
-        field: "last",
-        sort: "asc"
+        label: 'Last',
+        field: 'last',
+        sort: 'asc'
       },
       {
-        label: "Handle",
-        field: "handle",
-        sort: "asc"
+        label: 'Handle',
+        field: 'handle',
+        sort: 'asc'
       }
     ],
     rows: [
       {
         id: 1,
-        first: "Mark",
-        last: "Otto",
-        handle: "@mdo"
+        first: 'Mark',
+        last: 'Otto',
+        handle: '@mdo'
       },
       {
         id: 2,
-        first: "Jacob",
-        last: "Thornton",
-        handle: "@fat"
+        first: 'Jacob',
+        last: 'Thornton',
+        handle: '@fat'
       },
       {
         id: 3,
-        first: "Larry",
-        last: "the Bird",
-        handle: "@twitter"
+        first: 'Larry',
+        last: 'the Bird',
+        handle: '@twitter'
       }
     ]
   };
@@ -61,44 +61,44 @@ const TablePage = props => {
   const data_collspan = {
     columns: [
       {
-        label: "#",
-        field: "id",
-        sort: "asc"
+        label: '#',
+        field: 'id',
+        sort: 'asc'
       },
       {
-        label: "First",
-        field: "first",
-        sort: "asc"
+        label: 'First',
+        field: 'first',
+        sort: 'asc'
       },
       {
-        label: "Last",
-        field: "last",
-        sort: "asc"
+        label: 'Last',
+        field: 'last',
+        sort: 'asc'
       },
       {
-        label: "Handle",
-        field: "handle",
-        sort: "asc"
+        label: 'Handle',
+        field: 'handle',
+        sort: 'asc'
       }
     ],
     rows: [
       {
         id: 1,
-        first: "Mark",
-        last: "Otto",
-        handle: "@mdo"
+        first: 'Mark',
+        last: 'Otto',
+        handle: '@mdo'
       },
       {
         id: 2,
-        first: "Jacob",
-        last: "Thornton",
-        handle: "@fat"
+        first: 'Jacob',
+        last: 'Thornton',
+        handle: '@fat'
       },
       {
         id: 3,
-        first: "Larry the Bird",
+        first: 'Larry the Bird',
         colspan: 2,
-        handle: "@twitter"
+        handle: '@twitter'
       }
     ]
   };
@@ -106,102 +106,102 @@ const TablePage = props => {
   const data_responsive = {
     columns: [
       {
-        label: "#",
-        field: "id",
-        sort: "asc"
+        label: '#',
+        field: 'id',
+        sort: 'asc'
       },
       {
-        label: "Heading",
-        field: "heading0",
-        sort: "asc"
+        label: 'Heading',
+        field: 'heading0',
+        sort: 'asc'
       },
       {
-        label: "Heading",
-        field: "heading1",
-        sort: "asc"
+        label: 'Heading',
+        field: 'heading1',
+        sort: 'asc'
       },
       {
-        label: "Heading",
-        field: "heading2",
-        sort: "asc"
+        label: 'Heading',
+        field: 'heading2',
+        sort: 'asc'
       },
       {
-        label: "Heading",
-        field: "heading3",
-        sort: "asc"
+        label: 'Heading',
+        field: 'heading3',
+        sort: 'asc'
       },
       {
-        label: "Heading",
-        field: "heading4",
-        sort: "asc"
+        label: 'Heading',
+        field: 'heading4',
+        sort: 'asc'
       },
       {
-        label: "Heading",
-        field: "heading5",
-        sort: "asc"
+        label: 'Heading',
+        field: 'heading5',
+        sort: 'asc'
       },
       {
-        label: "Heading",
-        field: "heading6",
-        sort: "asc"
+        label: 'Heading',
+        field: 'heading6',
+        sort: 'asc'
       },
       {
-        label: "Heading",
-        field: "heading7",
-        sort: "asc"
+        label: 'Heading',
+        field: 'heading7',
+        sort: 'asc'
       },
       {
-        label: "Heading",
-        field: "heading8",
-        sort: "asc"
+        label: 'Heading',
+        field: 'heading8',
+        sort: 'asc'
       }
     ],
     rows: [
       {
         id: 1,
-        heading0: "Cell",
-        heading1: "Cell",
-        heading2: "Cell",
-        heading3: "Cell",
-        heading4: "Cell",
-        heading5: "Cell",
-        heading6: "Cell",
-        heading7: "Cell",
-        heading8: "Cell"
+        heading0: 'Cell',
+        heading1: 'Cell',
+        heading2: 'Cell',
+        heading3: 'Cell',
+        heading4: 'Cell',
+        heading5: 'Cell',
+        heading6: 'Cell',
+        heading7: 'Cell',
+        heading8: 'Cell'
       },
       {
         id: 2,
-        heading0: "Cell",
-        heading1: "Cell",
-        heading2: "Cell",
-        heading3: "Cell",
-        heading4: "Cell",
-        heading5: "Cell",
-        heading6: "Cell",
-        heading7: "Cell",
-        heading8: "Cell"
+        heading0: 'Cell',
+        heading1: 'Cell',
+        heading2: 'Cell',
+        heading3: 'Cell',
+        heading4: 'Cell',
+        heading5: 'Cell',
+        heading6: 'Cell',
+        heading7: 'Cell',
+        heading8: 'Cell'
       },
       {
         id: 3,
-        heading0: "Cell",
-        heading1: "Cell",
-        heading2: "Cell",
-        heading3: "Cell",
-        heading4: "Cell",
-        heading5: "Cell",
-        heading6: "Cell",
-        heading7: "Cell",
-        heading8: "Cell"
+        heading0: 'Cell',
+        heading1: 'Cell',
+        heading2: 'Cell',
+        heading3: 'Cell',
+        heading4: 'Cell',
+        heading5: 'Cell',
+        heading6: 'Cell',
+        heading7: 'Cell',
+        heading8: 'Cell'
       }
     ]
   };
 
   return (
-    <MDBContainer className="mt-3">
-      <DocsLink title="Tables" href="https://mdbootstrap.com/docs/react/tables/basic/" />
-      <MDBRow className="py-3">
-        <MDBCol md="12">
-          <SectionContainer noBorder title="Basic example">
+    <MDBContainer className='mt-3'>
+      <DocsLink title='Tables' href='https://mdbootstrap.com/docs/react/tables/basic/' />
+      <MDBRow className='py-3'>
+        <MDBCol md='12'>
+          <SectionContainer noBorder title='Basic example'>
             <MDBCard>
               <MDBCardBody>
                 <MDBTable>
@@ -240,18 +240,18 @@ const TablePage = props => {
         </MDBCol>
       </MDBRow>
 
-      <MDBRow className="py-3">
-        <MDBCol md="12">
-          <SectionContainer noBorder title="Head options">
+      <MDBRow className='py-3'>
+        <MDBCol md='12'>
+          <SectionContainer noBorder title='Head options'>
             <MDBCard>
               <MDBCardBody>
-                <MDBTable className="mb-5">
-                  <MDBTableHead columns={data.columns} color="primary-color" textWhite />
+                <MDBTable className='mb-5'>
+                  <MDBTableHead columns={data.columns} color='primary-color' textWhite />
                   <MDBTableBody rows={data.rows} />
                 </MDBTable>
 
                 <MDBTable>
-                  <MDBTableHead columns={data.columns} color="dark" />
+                  <MDBTableHead columns={data.columns} color='dark' />
                   <MDBTableBody rows={data.rows} />
                 </MDBTable>
               </MDBCardBody>
@@ -260,9 +260,9 @@ const TablePage = props => {
         </MDBCol>
       </MDBRow>
 
-      <MDBRow className="py-3">
-        <MDBCol md="12">
-          <SectionContainer noBorder title="Striped rows">
+      <MDBRow className='py-3'>
+        <MDBCol md='12'>
+          <SectionContainer noBorder title='Striped rows'>
             <MDBCard>
               <MDBCardBody>
                 <MDBTable striped>
@@ -275,13 +275,13 @@ const TablePage = props => {
         </MDBCol>
       </MDBRow>
 
-      <MDBRow className="py-3">
-        <MDBCol md="12">
-          <SectionContainer noBorder title="Bordered">
+      <MDBRow className='py-3'>
+        <MDBCol md='12'>
+          <SectionContainer noBorder title='Bordered'>
             <MDBCard>
               <MDBCardBody>
                 <MDBTable bordered>
-                  <MDBTableHead columns={data_collspan.columns} color="primary-color" textWhite />
+                  <MDBTableHead columns={data_collspan.columns} color='primary-color' textWhite />
                   <MDBTableBody rows={data_collspan.rows} />
                 </MDBTable>
               </MDBCardBody>
@@ -290,9 +290,9 @@ const TablePage = props => {
         </MDBCol>
       </MDBRow>
 
-      <MDBRow className="py-3">
-        <MDBCol md="12">
-          <SectionContainer noBorder title="Borderless">
+      <MDBRow className='py-3'>
+        <MDBCol md='12'>
+          <SectionContainer noBorder title='Borderless'>
             <MDBCard>
               <MDBCardBody>
                 <MDBTable borderless>
@@ -305,13 +305,13 @@ const TablePage = props => {
         </MDBCol>
       </MDBRow>
 
-      <MDBRow className="py-3">
-        <MDBCol md="12">
-          <SectionContainer noBorder title="Hoverable">
+      <MDBRow className='py-3'>
+        <MDBCol md='12'>
+          <SectionContainer noBorder title='Hoverable'>
             <MDBCard>
               <MDBCardBody>
                 <MDBTable hover>
-                  <MDBTableHead columns={data_collspan.columns} color="secondary-color" textWhite />
+                  <MDBTableHead columns={data_collspan.columns} color='secondary-color' textWhite />
                   <MDBTableBody rows={data_collspan.rows} />
                 </MDBTable>
               </MDBCardBody>
@@ -320,13 +320,13 @@ const TablePage = props => {
         </MDBCol>
       </MDBRow>
 
-      <MDBRow className="py-3">
-        <MDBCol md="12">
-          <SectionContainer noBorder title="Small">
+      <MDBRow className='py-3'>
+        <MDBCol md='12'>
+          <SectionContainer noBorder title='Small'>
             <MDBCard>
               <MDBCardBody>
                 <MDBTable small>
-                  <MDBTableHead columns={data_collspan.columns} color="primary-color" textWhite />
+                  <MDBTableHead columns={data_collspan.columns} color='primary-color' textWhite />
                   <MDBTableBody rows={data_collspan.rows} />
                 </MDBTable>
               </MDBCardBody>
@@ -335,14 +335,14 @@ const TablePage = props => {
         </MDBCol>
       </MDBRow>
 
-      <MDBRow className="py-3">
-        <MDBCol md="12">
-          <SectionContainer noBorder title="Captions">
+      <MDBRow className='py-3'>
+        <MDBCol md='12'>
+          <SectionContainer noBorder title='Captions'>
             <MDBCard>
               <MDBCardBody>
                 <MDBTable>
                   <caption>List of users</caption>
-                  <MDBTableHead columns={data.columns} color="indigo" textWhite />
+                  <MDBTableHead columns={data.columns} color='indigo' textWhite />
                   <MDBTableBody rows={data.rows} />
                 </MDBTable>
               </MDBCardBody>
@@ -351,13 +351,13 @@ const TablePage = props => {
         </MDBCol>
       </MDBRow>
 
-      <MDBRow className="py-3">
-        <MDBCol md="12">
-          <SectionContainer noBorder title="Responsive">
+      <MDBRow className='py-3'>
+        <MDBCol md='12'>
+          <SectionContainer noBorder title='Responsive'>
             <MDBCard>
               <MDBCardBody>
                 <MDBTable responsive>
-                  <MDBTableHead columns={data_responsive.columns} color="primary-color" textWhite />
+                  <MDBTableHead columns={data_responsive.columns} color='primary-color' textWhite />
                   <MDBTableBody rows={data_responsive.rows} />
                 </MDBTable>
               </MDBCardBody>

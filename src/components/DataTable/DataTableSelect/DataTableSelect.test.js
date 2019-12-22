@@ -22,7 +22,7 @@ describe('<DataTableSelect />', () => {
     wrapper = setup();
   });
 
-  test(`renders`, () => {
+  test('renders', () => {
     expect(findByTestAttr(wrapper, 'datatable-select').length).toBe(1);
   });
 
@@ -31,7 +31,7 @@ describe('<DataTableSelect />', () => {
   });
 
   test('renders correct label', () => {
-    //if entries will not be equal to [] .text() will return different value
+    // if entries will not be equal to [] .text() will return different value
     expect(wrapper.find('label').text()).toEqual('testLabel');
   });
 
@@ -64,7 +64,7 @@ describe('<DataTableSelect />', () => {
   });
 
   describe('sets classes', () => {
-    test(`adds 'custom-select custom-select-sm form-control form-control-sm' class by default`, () => {
+    test('adds \'custom-select custom-select-sm form-control form-control-sm\' class by default', () => {
       checkClass(
         wrapper,
         'custom-select.custom-select-sm.form-control.form-control-sm'

@@ -1,43 +1,44 @@
-import React, { Component } from "react";
-import { MDBBtn, MDBCollapse, MDBContainer } from "mdbreact";
-import DocsLink from "./../components/docsLink";
-import SectionContainer from "./../components/sectionContainer";
+import React, { Component } from 'react';
+import { MDBBtn, MDBCollapse, MDBContainer } from 'mdbreact';
+import DocsLink from '../components/docsLink';
+import SectionContainer from '../components/sectionContainer';
 
 class CollapsePage extends Component {
   state = {
-    collapseID: ""
+    collapseID: ''
   };
 
   toggleCollapse = collapseID => () => {
     this.setState(prevState => ({
-      collapseID: prevState.collapseID !== collapseID ? collapseID : ""
+      collapseID: prevState.collapseID !== collapseID ? collapseID : ''
     }));
   };
 
   render() {
+    const { collapseID } = this.state;
     return (
       <MDBContainer>
         <DocsLink
-          title="Collapse"
-          href="https://mdbootstrap.com/docs/react/advanced/collapse/"
+          title='Collapse'
+          href='https://mdbootstrap.com/docs/react/advanced/collapse/'
         />
 
-        <SectionContainer header="Basic examples">
+        <SectionContainer header='Basic examples'>
           <MDBBtn
-            color="primary"
-            onClick={this.toggleCollapse("basicCollapse")}
-            style={{ marginBottom: "1rem" }}
+            color='primary'
+            onClick={this.toggleCollapse('basicCollapse')}
+            style={{ marginBottom: '1rem' }}
           >
             Toggle1
           </MDBBtn>
           <MDBBtn
-            color="info"
-            onClick={this.toggleCollapse("basicCollapse")}
-            style={{ marginBottom: "1rem" }}
+            color='info'
+            onClick={this.toggleCollapse('basicCollapse')}
+            style={{ marginBottom: '1rem' }}
           >
             Toggle2
           </MDBBtn>
-          <MDBCollapse id="basicCollapse" isOpen={this.state.collapseID}>
+          <MDBCollapse id='basicCollapse' isOpen={collapseID}>
             <p>
               Anim pariatur cliche reprehenderit, enim eiusmod high life
               accusamus terry richardson ad squid. Nihil anim keffiyeh
@@ -47,18 +48,18 @@ class CollapsePage extends Component {
           </MDBCollapse>
         </SectionContainer>
 
-        <SectionContainer header="Accordion without icon">
+        <SectionContainer header='Accordion without icon'>
           <div>
             <div>
               <MDBBtn
-                color="primary"
-                onClick={this.toggleCollapse("accordion1")}
-                style={{ marginBottom: "1rem" }}
+                color='primary'
+                onClick={this.toggleCollapse('accordion1')}
+                style={{ marginBottom: '1rem' }}
               >
                 Collapsible Group Item #1
               </MDBBtn>
             </div>
-            <MDBCollapse id="accordion1" isOpen={this.state.collapseID}>
+            <MDBCollapse id='accordion1' isOpen={collapseID}>
               Anim pariatur cliche reprehenderit, enim eiusmod high life
               accusamus terry richardson ad squid. 3 wolf moon officia aute, non
               cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
@@ -73,14 +74,14 @@ class CollapsePage extends Component {
 
             <div>
               <MDBBtn
-                color="primary"
-                onClick={this.toggleCollapse("accordion2")}
-                style={{ marginBottom: "1rem" }}
+                color='primary'
+                onClick={this.toggleCollapse('accordion2')}
+                style={{ marginBottom: '1rem' }}
               >
                 Collapsible Group Item #2
               </MDBBtn>
             </div>
-            <MDBCollapse id="accordion2" isOpen={this.state.collapseID}>
+            <MDBCollapse id='accordion2' isOpen={collapseID}>
               Anim pariatur cliche reprehenderit, enim eiusmod high life
               accusamus terry richardson ad squid. 3 wolf moon officia aute, non
               cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
@@ -95,14 +96,14 @@ class CollapsePage extends Component {
 
             <div>
               <MDBBtn
-                color="primary"
-                onClick={this.toggleCollapse("accordion3")}
-                style={{ marginBottom: "1rem" }}
+                color='primary'
+                onClick={this.toggleCollapse('accordion3')}
+                style={{ marginBottom: '1rem' }}
               >
                 Collapsible Group Item #2
               </MDBBtn>
             </div>
-            <MDBCollapse id="accordion3" isOpen={this.state.collapseID}>
+            <MDBCollapse id='accordion3' isOpen={collapseID}>
               Anim pariatur cliche reprehenderit, enim eiusmod high life
               accusamus terry richardson ad squid. 3 wolf moon officia aute, non
               cupidatat skateboard dolor brunch. Food truck quinoa nesciunt
