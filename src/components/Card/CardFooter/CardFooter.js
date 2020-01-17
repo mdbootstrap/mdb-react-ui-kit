@@ -29,18 +29,11 @@ const CardFooter = props => {
     className
   );
 
-  let component = (
-    <Tag data-test='card-footer' {...attributes} className={classes} />
+  return (
+    <Tag {...attributes} className={classes}>
+      {small ? <small> {children} </small> : children}
+    </Tag>
   );
-
-  if (small) {
-    component = (
-      <Tag {...attributes} className={classes}>
-        <small> {children} </small>
-      </Tag>
-    );
-  }
-  return component;
 };
 
 CardFooter.propTypes = {

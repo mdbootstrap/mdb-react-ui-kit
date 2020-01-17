@@ -37,6 +37,8 @@ class ModalPage extends Component {
     modal16: false,
     modal17: false,
     modal18: false,
+    modal19: false,
+    modal20: false,
     backdrop: false,
     mailAddress: '@mdo'
   };
@@ -73,7 +75,9 @@ class ModalPage extends Component {
       modal16,
       modal17,
       modal18,
+      modal19,
       modal2,
+      modal20,
       modal3,
       modal4,
       modal5,
@@ -351,7 +355,57 @@ class ModalPage extends Component {
           </MDBModal>
         </SectionContainer>
 
-        <SectionContainer header='Scrolling long contetn' flexCenter>
+        <SectionContainer header='Disable backdrop' flexCenter>
+          <MDBBtn onClick={this.toggle(19)} color='danger'>
+            Modal
+          </MDBBtn>
+          <MDBModal isOpen={modal19} toggle={this.toggle(19)} disableBackdrop>
+            <MDBModalHeader toggle={this.toggle(19)}>
+              Modal title
+            </MDBModalHeader>
+            <MDBModalBody>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </MDBModalBody>
+            <MDBModalFooter>
+              <MDBBtn color='secondary' onClick={this.toggle(19)}>
+                Close
+              </MDBBtn>
+              <MDBBtn color='primary'>Save changes</MDBBtn>
+            </MDBModalFooter>
+          </MDBModal>
+        </SectionContainer>
+
+        <SectionContainer header='Focus Trap' flexCenter>
+          <MDBBtn onClick={this.toggle(20)} color='success'>
+            Modal
+          </MDBBtn>
+          <MDBModal
+            isOpen={modal20}
+            toggle={this.toggle(20)}
+            disableFocusTrap={false}
+          >
+            <MDBModalHeader toggle={this.toggle(20)}>
+              Modal title
+            </MDBModalHeader>
+            <MDBModalBody>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </MDBModalBody>
+            <MDBModalFooter>
+              <MDBBtn color='secondary' onClick={this.toggle(20)}>
+                Close
+              </MDBBtn>
+              <MDBBtn color='primary'>Save changes</MDBBtn>
+            </MDBModalFooter>
+          </MDBModal>
+        </SectionContainer>
+
+        <SectionContainer header='Scrolling long content' flexCenter>
           <MDBBtn color='primary' onClick={this.toggle(13)}>
             Modal
           </MDBBtn>

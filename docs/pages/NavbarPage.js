@@ -4,7 +4,7 @@ import {
   MDBNavbarBrand,
   MDBNavbarNav,
   MDBNavItem,
-  MDBNavLink,
+  MDBLink,
   MDBNavbarToggler,
   MDBCollapse,
   MDBFormInline,
@@ -46,13 +46,13 @@ class NavbarPage extends Component {
             <MDBCollapse id='navbarCollapse3' isOpen={isOpen} navbar>
               <MDBNavbarNav left>
                 <MDBNavItem active>
-                  <MDBNavLink to='#!'>Home</MDBNavLink>
+                  <MDBLink to='#!'>Home</MDBLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBNavLink to='#!'>Features</MDBNavLink>
+                  <MDBLink to='#!'>Features</MDBLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBNavLink to='#!'>Pricing</MDBNavLink>
+                  <MDBLink to='#!'>Pricing</MDBLink>
                 </MDBNavItem>
                 <MDBNavItem>
                   <MDBDropdown>
@@ -123,13 +123,13 @@ class NavbarPage extends Component {
               <MDBCollapse id='navbarCollapse' isOpen={collapseID} navbar>
                 <MDBNavbarNav left>
                   <MDBNavItem active>
-                    <MDBNavLink to='#!'>Home</MDBNavLink>
+                    <MDBLink to='#!'>Home</MDBLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <MDBNavLink to='#!'>Link</MDBNavLink>
+                    <MDBLink to='#!'>Link</MDBLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <MDBNavLink to='#!'>Profile</MDBNavLink>
+                    <MDBLink to='#!'>Profile</MDBLink>
                   </MDBNavItem>
                 </MDBNavbarNav>
                 <MDBNavbarNav right>
@@ -166,13 +166,13 @@ class NavbarPage extends Component {
               <MDBCollapse id='navbarCollapse1' isOpen={collapseID} navbar>
                 <MDBNavbarNav left>
                   <MDBNavItem active>
-                    <MDBNavLink to='#!'>Home</MDBNavLink>
+                    <MDBLink to='#!'>Home</MDBLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <MDBNavLink to='#!'>Link</MDBNavLink>
+                    <MDBLink to='#!'>Link</MDBLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <MDBNavLink to='#!'>Profile</MDBNavLink>
+                    <MDBLink to='#!'>Profile</MDBLink>
                   </MDBNavItem>
                 </MDBNavbarNav>
                 <MDBNavbarNav right>
@@ -208,13 +208,13 @@ class NavbarPage extends Component {
               <MDBCollapse id='navbarCollapse2' isOpen={collapseID} navbar>
                 <MDBNavbarNav left>
                   <MDBNavItem active>
-                    <MDBNavLink to='#!'>Home</MDBNavLink>
+                    <MDBLink to='#!'>Home</MDBLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <MDBNavLink to='#!'>Link</MDBNavLink>
+                    <MDBLink to='#!'>Link</MDBLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <MDBNavLink to='#!'>Profile</MDBNavLink>
+                    <MDBLink to='#!'>Profile</MDBLink>
                   </MDBNavItem>
                 </MDBNavbarNav>
                 <MDBNavbarNav right>
@@ -250,13 +250,13 @@ class NavbarPage extends Component {
               <MDBCollapse id='navbarCollapse3' isOpen={collapseID} navbar>
                 <MDBNavbarNav left>
                   <MDBNavItem active>
-                    <MDBNavLink to='#!'>Home</MDBNavLink>
+                    <MDBLink to='#!'>Home</MDBLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <MDBNavLink to='#!'>Link</MDBNavLink>
+                    <MDBLink to='#!'>Link</MDBLink>
                   </MDBNavItem>
                   <MDBNavItem>
-                    <MDBNavLink to='#!'>Profile</MDBNavLink>
+                    <MDBLink to='#!'>Profile</MDBLink>
                   </MDBNavItem>
                 </MDBNavbarNav>
                 <MDBNavbarNav right>
@@ -294,13 +294,13 @@ class NavbarPage extends Component {
             <MDBCollapse id='navbarCollapse3' isOpen={collapseID} navbar>
               <MDBNavbarNav left>
                 <MDBNavItem active>
-                  <MDBNavLink to='#!'>Home</MDBNavLink>
+                  <MDBLink to='#!'>Home</MDBLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBNavLink to='#!'>Features</MDBNavLink>
+                  <MDBLink to='#!'>Features</MDBLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBNavLink to='#!'>Pricing</MDBNavLink>
+                  <MDBLink to='#!'>Pricing</MDBLink>
                 </MDBNavItem>
                 <MDBNavItem>
                   <MDBDropdown>
@@ -353,13 +353,13 @@ class NavbarPage extends Component {
             <MDBCollapse id='navbarCollapse3' isOpen={collapseID} navbar>
               <MDBNavbarNav left>
                 <MDBNavItem active>
-                  <MDBNavLink to='#!'>Home</MDBNavLink>
+                  <MDBLink to='#!'>Home</MDBLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBNavLink to='#!'>Features</MDBNavLink>
+                  <MDBLink to='#!'>Features</MDBLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBNavLink to='#!'>Pricing</MDBNavLink>
+                  <MDBLink to='#!'>Pricing</MDBLink>
                 </MDBNavItem>
                 <MDBNavItem>
                   <MDBDropdown>
@@ -383,14 +383,14 @@ class NavbarPage extends Component {
               </MDBNavbarNav>
               <MDBNavbarNav right>
                 <MDBNavItem>
-                  <MDBNavLink className='waves-effect waves-light' to='#!'>
+                  <MDBLink className='waves-effect waves-light' to='#!'>
                     <MDBIcon brand icon='twitter' />
-                  </MDBNavLink>
+                  </MDBLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBNavLink className='waves-effect waves-light' to='#!'>
+                  <MDBLink className='waves-effect waves-light' to='#!'>
                     <MDBIcon brand icon='google-plus' />
-                  </MDBNavLink>
+                  </MDBLink>
                 </MDBNavItem>
                 <MDBNavItem>
                   <MDBDropdown>
@@ -432,16 +432,16 @@ class NavbarPage extends Component {
             <MDBCollapse id='navbarCollapse3' isOpen={collapseID} navbar>
               <MDBNavbarNav right>
                 <MDBNavItem>
-                  <MDBNavLink className='waves-effect waves-light' to='#!'>
+                  <MDBLink className='waves-effect waves-light' to='#!'>
                     <MDBIcon icon='envelope' className='mr-1' />
                     Contact
-                  </MDBNavLink>
+                  </MDBLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBNavLink className='waves-effect waves-light' to='#!'>
+                  <MDBLink className='waves-effect waves-light' to='#!'>
                     <MDBIcon icon='cog' className='mr-1' />
                     Settings
-                  </MDBNavLink>
+                  </MDBLink>
                 </MDBNavItem>
                 <MDBNavItem>
                   <MDBDropdown>
@@ -473,13 +473,13 @@ class NavbarPage extends Component {
             <MDBCollapse id='navbarCollapse3' isOpen={collapseID} navbar>
               <MDBNavbarNav left>
                 <MDBNavItem active>
-                  <MDBNavLink to='#!'>Home</MDBNavLink>
+                  <MDBLink to='#!'>Home</MDBLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBNavLink to='#!'>Features</MDBNavLink>
+                  <MDBLink to='#!'>Features</MDBLink>
                 </MDBNavItem>
                 <MDBNavItem>
-                  <MDBNavLink to='#!'>Pricing</MDBNavLink>
+                  <MDBLink to='#!'>Pricing</MDBLink>
                 </MDBNavItem>
                 <MDBNavItem>
                   <MDBDropdown>
@@ -503,12 +503,12 @@ class NavbarPage extends Component {
               </MDBNavbarNav>
               <MDBNavbarNav right>
                 <MDBNavItem>
-                  <MDBNavLink
+                  <MDBLink
                     className='waves-effect waves-light d-flex align-items-center'
                     to='#!'
                   >
                     1<MDBIcon icon='envelope' className='ml-1' />
-                  </MDBNavLink>
+                  </MDBLink>
                 </MDBNavItem>
                 <MDBNavItem>
                   <MDBDropdown>

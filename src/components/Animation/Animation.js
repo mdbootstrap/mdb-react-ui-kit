@@ -4,10 +4,8 @@ import classNames from 'classnames';
 
 class Animation extends Component {
   state = {
-    // eslint-disable-next-line react/destructuring-assignment
-    isVisible: !this.props.reveal,
-    // eslint-disable-next-line react/destructuring-assignment
-    revealed: !this.props.reveal,
+    isVisible: false,
+    revealed: false,
     countIterations: 0
   };
 
@@ -15,6 +13,11 @@ class Animation extends Component {
 
   componentDidMount() {
     const { reveal } = this.props;
+
+    this.setState({
+      isVisible: !reveal,
+      revealed: !reveal
+    });
 
     if (reveal) {
       window.addEventListener('scroll', this.updatePredicate);

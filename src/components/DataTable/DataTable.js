@@ -27,9 +27,6 @@ class DataTable extends Component {
     unsearchable: []
   };
 
-
-
-
   componentDidMount() {
     const { data, paging } = this.props;
     const { order, columns, pages, rows } = this.state;
@@ -39,7 +36,11 @@ class DataTable extends Component {
     }
 
     
-    order.length && this.handleSort(order[0], order[1]);
+    if (order.length > 0) {
+      this.handleSort(order[0], order[1]);
+    } else {
+      this.handleSort();
+    }
 
     this.setUnsearchable(columns);
 
@@ -51,7 +52,7 @@ class DataTable extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { columns } = this.state
+    const { columns } = this.state;
     const { data } = this.props;
 
     if (prevProps.data !== data) {
@@ -146,7 +147,9 @@ class DataTable extends Component {
     ];
 
     let comp = aField > bField ? -1 : 1;
-    if (direction === 'asc') {comp *= -1;}
+    if (direction === 'asc') {
+      comp *= -1;
+    }
 
     return comp;
   };
@@ -170,7 +173,9 @@ class DataTable extends Component {
   handleSort = (field, sort) => {
     const { onSort } = this.props;
 
-    if (sort === 'disabled') {return;}
+    if (sort === 'disabled') {
+      return;
+    }
 
     this.setState(
       prevState => {
@@ -181,7 +186,9 @@ class DataTable extends Component {
         this.sort(rows, sortRows, field, direction);
 
         columns.forEach(col => {
-          if (col.sort === 'disabled') {return;}
+          if (col.sort === 'disabled') {
+            return;
+          }
 
           col.sort =
             col.field === field ? (col.sort === 'desc' ? 'asc' : 'desc') : '';
@@ -230,18 +237,20 @@ class DataTable extends Component {
               } else if (row[key]) {
                 stringValue = row[key].toString();
               }
-              if (stringValue.toLowerCase().includes(search.toLowerCase()))
-                {return true;}
+              if (stringValue.toLowerCase().includes(search.toLowerCase())) {
+                return true;
+              }
             }
           }
           return false;
         });
 
-        if (filteredRows.length === 0)
-          {filteredRows.push({
+        if (filteredRows.length === 0) {
+          filteredRows.push({
             message: noRecordsFoundLabel,
             colspan: prevState.columns.length
-          });}
+          });
+        }
         let test = {};
         if (this.props.disableRetreatAfterSorting) {
           test = {
@@ -511,7 +520,11 @@ DataTable.propTypes = {
   fixed: PropTypes.bool,
   hover: PropTypes.bool,
   info: PropTypes.bool,
-  infoLabel: PropTypes.arrayOf(PropTypes.string),
+  infoLabel: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object,
+    PropTypes.string
+  ]),
   maxHeight: PropTypes.string,
   noBottomColumns: PropTypes.bool,
   noRecordsFoundLabel: PropTypes.string,
