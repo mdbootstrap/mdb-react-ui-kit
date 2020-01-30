@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 declare const MDBTable: React.FunctionComponent<{
   autoWidth?: boolean;
@@ -20,6 +20,7 @@ declare const MDBTable: React.FunctionComponent<{
   scrollY?: boolean;
   small?: boolean;
   striped?: boolean;
+  wrapperClassName ?:string;
   [rest: string]: any;
 }>;
 

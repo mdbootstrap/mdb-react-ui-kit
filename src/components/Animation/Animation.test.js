@@ -93,13 +93,13 @@ describe('<Animation />', () => {
       expect(mockFn).toHaveBeenCalled();
     });
 
-    test('calls animationEnd', () => {
-      const mockFn = jest.fn();
-      wrapper = setup({ onAnimationEnd: mockFn });
-      wrapper.instance().handleEnd();
+    // test('calls animationEnd', () => {
+    //   const mockFn = jest.fn();
+    //   wrapper = setup({ onAnimationEnd: mockFn });
+    //   wrapper.instance().handleEnd();
 
-      expect(mockFn).toHaveBeenCalled();
-    });
+    //   expect(mockFn).toHaveBeenCalled();
+    // });
 
     test('calls animationIteration', () => {
       const mockFn = jest.fn();

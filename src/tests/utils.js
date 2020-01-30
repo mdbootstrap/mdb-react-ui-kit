@@ -22,6 +22,7 @@ export const checkClass = (component, className, toBe = 1) => {
 };
 
 export const checkTag = (component, tag) => {
+  console.log(tag);
   return expect(component.is(tag)).toBe(true);
 };
 

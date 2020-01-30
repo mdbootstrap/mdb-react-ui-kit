@@ -66,7 +66,7 @@ const Box = props => {
   const isEmptyClass = classes !== '' ? classes : null;
 
   return (
-    <Tag {...attributes} className={isEmptyClass}>
+    <Tag data-test='box' {...attributes} className={isEmptyClass}>
       {children}
     </Tag>
   );

@@ -30,7 +30,7 @@ const CardFooter = props => {
   );
 
   return (
-    <Tag {...attributes} className={classes}>
+    <Tag data-test='card-footer' {...attributes} className={classes}>
       {small ? <small> {children} </small> : children}
     </Tag>
   );

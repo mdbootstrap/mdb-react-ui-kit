@@ -124,10 +124,10 @@ describe('<DataTable />', () => {
       theadTextWhite: true,
       tbodyColor: 'test',
       tbodyTextWhite: true,
-      
-      onSearch: ()=>{},
-      onSort: ()=>{},
-      onPageChange: ()=>{}
+
+      onSearch: () => {},
+      onSort: () => {},
+      onPageChange: () => {}
     };
 
     wrapper = setup(expectedProps);
@@ -321,13 +321,13 @@ describe('<DataTable />', () => {
 
   test('counts correct amount of pages', () => {
     wrapper = setup({ entries: 1, data: { rows: [] } });
-    expect(wrapper.instance().pagesAmount()).toEqual(0);
+    expect(wrapper.instance().pagesAmount()).toEqual(1);
 
     wrapper = setup({ entries: 2, data: { rows: [{}, {}, {}, {}] } });
-    expect(wrapper.instance().pagesAmount()).toEqual(2);
+    expect(wrapper.instance().pagesAmount()).toEqual(1);
 
     wrapper = setup({ entries: 2, data: { rows: [{}, {}, {}, {}, {}] } });
-    expect(wrapper.instance().pagesAmount()).toEqual(3);
+    expect(wrapper.instance().pagesAmount()).toEqual(1);
   });
 
   test('`handleSearchChange()` invokes `filterRows()` and sets state correctly', done => {
@@ -589,11 +589,11 @@ describe('<DataTable />', () => {
   });
 
   describe('sets classes', () => {
-    test('adds \'dataTables_wrapper dt-bootstrap4\' class by default', () => {
+    test("adds 'dataTables_wrapper dt-bootstrap4' class by default", () => {
       checkClass(wrapper, 'dataTables_wrapper.dt-bootstrap4');
     });
 
-    test('adds \'row flex-row-reverse\' class if (barReverse) property is passed', () => {
+    test("adds 'row flex-row-reverse' class if (barReverse) property is passed", () => {
       wrapper = setup({ barReverse: true });
 
       checkClass(wrapper, 'row.flex-row-reverse');

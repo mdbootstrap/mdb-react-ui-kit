@@ -8,9 +8,13 @@ const Fa = props => {
     brand,
     className,
     fab,
+    duotone,
     fal,
+    fad,
     far,
+    solid,
     fixed,
+    fas,
     flip,
     icon,
     inverse,
@@ -27,7 +31,17 @@ const Fa = props => {
   } = props;
 
   const iconPrefix =
-    brand || fab ? 'fab' : light || fal ? 'fal' : regular || far ? 'far' : 'fa';
+    regular || far
+      ? 'far'
+      : solid || fas
+      ? 'fas'
+      : light || fal
+      ? 'fal'
+      : duotone || fad
+      ? 'fad'
+      : brand || fab
+      ? 'fab'
+      : 'fa';
 
   const classes = classNames(
     iconPrefix,

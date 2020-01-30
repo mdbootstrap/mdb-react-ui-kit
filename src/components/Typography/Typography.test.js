@@ -7,11 +7,11 @@ import {
   checkClass,
   checkTag
 } from '../../tests/utils';
-import { MDBRow } from 'mdbreact';
+import Typography from './Typography';
 
-const setup = (props = {}) => shallow(<MDBRow {...props} />);
+const setup = (props = {}) => shallow(<Typography {...props} />);
 
-describe('<MDBRow />', () => {
+describe('<Typography />', () => {
   let wrapper;
 
   beforeEach(() => {
@@ -19,27 +19,27 @@ describe('<MDBRow />', () => {
   });
 
   test('renders', () => {
-    const row = findByTestAttr(wrapper, 'row');
-    expect(row.length).toBe(1);
+    const typography = findByTestAttr(wrapper, 'typography');
+    expect(typography.length).toBe(1);
   });
 
   test('renders without errors', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<MDBRow />, div);
+    ReactDOM.render(<Typography />, div);
   });
 
   test('does not throw warnings with expected props', () => {
     const expectedProps = {
-      tag: 'div',
-      className: 'testClassName',
-      top: true,
-      bottom: true,
-      middle: true,
-      end: true,
-      start: true,
-      center: true,
-      between: true,
-      around: true
+      blockquote: true,
+      bqColor: 'primary',
+      bqTitle: 'primary',
+      className: 'test',
+      colorText: 'blue',
+      listInLine: true,
+      listUnStyled: true,
+      note: true,
+      noteColor: 'info',
+      noteTitle: 'test'
     };
 
     wrapper = setup(expectedProps);
@@ -54,56 +54,27 @@ describe('<MDBRow />', () => {
     wrapper = setup({ tag: 'a' });
     checkTag(wrapper, 'a');
   });
+  test('check tag if is a h1', () => {
+    wrapper = setup({ tag: 'h1' });
+    checkTag(wrapper, 'h1');
+  });
 
   describe('sets classes', () => {
-    test('adds row class by default', () => {
-      checkClass(wrapper, 'row');
-    });
-
-    test('adds justify-content-end class', () => {
-      wrapper = setup({ end: true });
-      checkClass(wrapper, 'justify-content-end');
-    });
-
-    test('adds justify-content-start class', () => {
-      wrapper = setup({ start: true });
-      checkClass(wrapper, 'justify-content-start');
-    });
-
-    test('adds justify-content-center class', () => {
-      wrapper = setup({ center: true });
-      checkClass(wrapper, 'justify-content-center');
-    });
-
-    test('adds justify-content-between class', () => {
-      wrapper = setup({ between: true });
-      checkClass(wrapper, 'justify-content-between');
-    });
-
-    test('adds justify-content-around class', () => {
-      wrapper = setup({ around: true });
-      checkClass(wrapper, 'justify-content-around');
-    });
-
-    test('adds align-self-start class', () => {
-      wrapper = setup({ top: true });
-      checkClass(wrapper, 'align-self-start');
-    });
-
-    test('adds align-self-center class', () => {
-      wrapper = setup({ middle: true });
-      checkClass(wrapper, 'align-self-center');
-    });
-
-    test('adds align-self-end class', () => {
-      wrapper = setup({ bottom: true });
-      checkClass(wrapper, 'align-self-end');
+    test('check if is blockquote is true set color', () => {
+      wrapper = setup({ blockquote: true, bqColor: 'primary' });
+      checkClass(wrapper, 'bq-primary');
     });
 
     test('adds custom class passed as property', () => {
       wrapper = setup({ className: 'testClassName' });
 
       checkClass(wrapper, 'testClassName');
+    });
+
+    test('adds note colors', () => {
+      wrapper = setup({ note: true, noteColor: 'info' });
+
+      checkClass(wrapper, 'note-info');
     });
   });
 });

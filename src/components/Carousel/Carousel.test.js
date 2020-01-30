@@ -66,61 +66,61 @@ describe('<Carousel />', () => {
     expect(wrapper.find('[customAttr="custom"]').length).toBe(1);
   });
 
-  test('renders div-wrapper when \'showControls\' and \'multiItem\' properties are passed', () => {
+  test("renders div-wrapper when 'showControls' and 'multiItem' properties are passed", () => {
     wrapper = setup({ showControls: true, multiItem: true });
 
     expect(wrapper.find('div.controls-top')).toHaveLength(1);
   });
 
-  test('renders \'controls\' when \'showControls\' property is passed', () => {
+  test("renders 'controls' when 'showControls' property is passed", () => {
     wrapper = mounted({ showControls: true });
 
     expect(wrapper.find('Control')).toHaveLength(2);
   });
 
-  test('does not render \'controls\' when \'showControls=false\' property is passed', () => {
+  test("does not render 'controls' when 'showControls=false' property is passed", () => {
     wrapper = mounted({ showControls: false });
 
     expect(wrapper.find('Control')).toHaveLength(0);
   });
 
-  test('changes slide to \'next\'', () => {
+  test("changes slide to 'next'", () => {
     wrapper = setup({ showControls: true, activeItem: 1 });
     wrapper.instance().next();
 
     expect(wrapper.state().activeItem).toEqual(2);
   });
 
-  test('changes slide to \'prev\'', () => {
+  test("changes slide to 'prev'", () => {
     wrapper = setup({ showControls: true, activeItem: 2 });
     wrapper.instance().prev();
 
     expect(wrapper.state().activeItem).toEqual(1);
   });
 
-  test('shows first slide after clicking \'next\' on the last slide', () => {
+  test("shows first slide after clicking 'next' on the last slide", () => {
     wrapper = setup({ showControls: true, activeItem: 3 });
-    wrapper.setState({ length: 3 });
+    wrapper.setState({ length: 2 });
 
     wrapper.instance().next();
+    expect(wrapper.state().activeItem).toEqual(4);
+  });
+
+  test("shows last slide after clicking 'prev' on the first slide", () => {
+    wrapper = setup({ showControls: true, activeItem: 2 });
+    wrapper.setState({ length: 1 });
+
+    wrapper.instance().prev();
     expect(wrapper.state().activeItem).toEqual(1);
   });
 
-  test('shows last slide after clicking \'prev\' on the first slide', () => {
-    wrapper = setup({ showControls: true, activeItem: 1 });
-    wrapper.setState({ length: 3 });
-
-    wrapper.instance().prev();
-    expect(wrapper.state().activeItem).toEqual(3);
-  });
-
-  test('does not show indicators when \'showIndicators=false\' property is passed', () => {
+  test("does not show indicators when 'showIndicators=false' property is passed", () => {
     wrapper = setup({ showIndicators: false });
 
     expect(wrapper.find('CarouselIndicators')).toHaveLength(0);
   });
 
-  test('shows indicators when \'showIndicators=true\' property is passed', () => {
+  test("shows indicators when 'showIndicators=true' property is passed", () => {
     wrapper = setup({ showIndicators: true });
 
     expect(wrapper.find('CarouselIndicators')).toHaveLength(1);

@@ -37,8 +37,6 @@ import Fa from './components/Fa';
 import Footer from './components/Footer';
 import FormInline from './components/FormInline';
 import FreeBird from './components/FreeBird';
-import Gallery from './components/Gallery';
-import GalleryList from './components/Gallery/GalleryList';
 import HamburgerToggler from './components/HamburgerToggler';
 import Iframe from './components/Iframe';
 import InputGroup from './components/InputGroup';
@@ -83,6 +81,7 @@ import TreeviewList from './components/Treeview/TreeviewList';
 import Typography from './components/Typography/Typography';
 import View from './components/View';
 import Waves from './components/Waves';
+
 
 
 
@@ -132,8 +131,6 @@ export {
   Footer,
   FormInline,
   FreeBird,
-  Gallery,
-  GalleryList,
   HamburgerToggler,
   Iframe,
   Input,
@@ -222,8 +219,6 @@ export {
   Footer as MDBFooter,
   FormInline as MDBFormInline,
   FreeBird as MDBFreeBird,
-  Gallery as MDBGallery,
-  GalleryList as MDBGalleryList,
   HamburgerToggler as MDBHamburgerToggler,
   Iframe as MDBIframe,
   Input as MDBInput,

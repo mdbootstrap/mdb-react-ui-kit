@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import './Typography.css';
-import { MDBBox } from 'mdbreact';
 
 class Typography extends React.Component {
   render() {
@@ -41,36 +40,24 @@ class Typography extends React.Component {
     const isEmptyClass = classes !== '' ? classes : null;
 
     if (blockquote) {
-      return (
-        <MDBBox tag='blockquote' className={bc}>
-          {children}
-        </MDBBox>
-      );
+      return <blockquote className={bc}>{children}</blockquote>;
     }
     if (listUnStyled) {
-      return (
-        <MDBBox tag='ul' className='list-unstyled'>
-          {children}
-        </MDBBox>
-      );
+      return <ul className='list-unstyled'>{children}</ul>;
     }
     if (listInLine) {
-      return (
-        <MDBBox tag='ul' className='list-inline'>
-          {children}
-        </MDBBox>
-      );
+      return <ul className='list-inline'>{children}</ul>;
     }
     if (note) {
       return (
-        <MDBBox tag='p' className={notes}>
+        <p className={notes}>
           <strong>{noteTitle}</strong>
           {children}
-        </MDBBox>
+        </p>
       );
     }
     return (
-      <Tag {...attributes} className={isEmptyClass}>
+      <Tag data-test='typography' {...attributes} className={isEmptyClass}>
         {children}
       </Tag>
     );

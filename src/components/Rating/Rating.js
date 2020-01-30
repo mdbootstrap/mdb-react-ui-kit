@@ -38,8 +38,9 @@ const Rating = props => {
   useEffect(() => {
     const choosedIndex = data.findIndex(item => item.choosed);
 
-    if (choosedIndex !== -1)
-      {setChoosed({ title: data[choosedIndex].tooltip, index: choosedIndex });}
+    if (choosedIndex !== -1) {
+      setChoosed({ title: data[choosedIndex].tooltip, index: choosedIndex });
+    }
   }, [data]);
 
   useEffect(() => {
@@ -137,8 +138,12 @@ const Rating = props => {
 
           if (isChoosed) {
             current = choosed.index;
-            if (isHovered) {current = hovered;}
-          } else if (isHovered) {current = hovered;}
+            if (isHovered) {
+              current = hovered;
+            }
+          } else if (isHovered) {
+            current = hovered;
+          }
 
           const isCustom = Array.isArray(fillColors);
 
@@ -172,7 +177,9 @@ const Rating = props => {
           if (isChoosed && index <= choosed.index) {
             renderIcon = faces[choosed.index];
 
-            if (isHovered) {renderIcon = faces[hovered];}
+            if (isHovered) {
+              renderIcon = faces[hovered];
+            }
           } else if (isHovered && index <= hovered) {
             renderIcon = faces[hovered];
           }
@@ -250,7 +257,11 @@ const Rating = props => {
     );
   }
 
-  return <Tag className={containerClasses}>{renderedIcons}</Tag>;
+  return (
+    <Tag data-test='rating' className={containerClasses}>
+      {renderedIcons}
+    </Tag>
+  );
 };
 
 Rating.propTypes = {

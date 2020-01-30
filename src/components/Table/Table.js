@@ -24,6 +24,7 @@ const Table = props => {
     small,
     striped,
     theadColor,
+    wrapperClassName,
     ...attributes
   } = props;
 
@@ -42,19 +43,20 @@ const Table = props => {
     className
   );
 
-  const wrapperClasses = classNames({
-    'table-dark': dark,
-    'table-responsive': responsive,
-    'table-responsive-sm': responsiveSm,
-    'table-responsive-md': responsiveMd,
-    'table-responsive-lg': responsiveLg,
-    'table-responsive-xl': responsiveXl,
-    'table-wrapper-scroll-y': scrollY
-  });
+  const wrapperClasses = classNames(
+    {
+      'table-dark': dark,
+      'table-responsive': responsive,
+      'table-responsive-sm': responsiveSm,
+      'table-responsive-md': responsiveMd,
+      'table-responsive-lg': responsiveLg,
+      'table-responsive-xl': responsiveXl,
+      'table-wrapper-scroll-y': scrollY
+    },
+    wrapperClassName
+  );
 
-  const wrapperStyles = {
-    maxHeight: maxHeight ? `${maxHeight}` : null
-  };
+  const wrapperStyles = { maxHeight };
 
   return (
     <div data-test='table' className={wrapperClasses} style={wrapperStyles}>
@@ -84,7 +86,8 @@ Table.propTypes = {
   scrollY: PropTypes.bool,
   small: PropTypes.bool,
   striped: PropTypes.bool,
-  theadColor: PropTypes.string
+  theadColor: PropTypes.string,
+  wrapperClassName: PropTypes.string
 };
 
 export default Table;

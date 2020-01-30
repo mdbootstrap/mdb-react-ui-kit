@@ -69,10 +69,6 @@ describe('<Link />', () => {
       wrapper = setup();
     });
 
-    test("adds 'link-router' class by default", () => {
-      checkClass(wrapper, 'link-router');
-    });
-
     test("adds 'active' class if (active) property is passed", () => {
       wrapper = setup({ active: true });
 

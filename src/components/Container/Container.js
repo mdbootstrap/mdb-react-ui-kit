@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const Container = props => {
-  const { className, fluid, tag: Tag, ...attributes } = props;
+  const { className, fluid, size, tag: Tag, ...attributes } = props;
 
   const classes = classNames(
-    fluid ? 'container-fluid' : 'container',
+    fluid ? 'container-fluid' : size ? `container-${size}` : 'container',
     className
   );
 
@@ -16,6 +16,7 @@ const Container = props => {
 Container.propTypes = {
   className: PropTypes.string,
   fluid: PropTypes.bool,
+  size: PropTypes.oneOf(['sm', 'md', 'lg', 'xl']),
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
 };
 

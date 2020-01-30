@@ -162,7 +162,7 @@ describe('<Modal />', () => {
     expect(callback).not.toBeCalled();
   });
 
-  test('handleBackdropClick does not close modal if \'backdrop\' property is not passed', () => {
+  test("handleBackdropClick does not close modal if 'backdrop' property is not passed", () => {
     const callback = jest.fn();
     wrapper = setup({ toggle: callback, backdrop: false });
 
@@ -256,65 +256,65 @@ describe('<Modal />', () => {
     });
 
     describe('sets modal-dialog classes', () => {
-      test('adds \'modal-dialog\' class by default', () => {
+      test("adds 'modal-dialog' class by default", () => {
         checkClass(wrapper, 'modal-dialog');
       });
 
-      test('adds \'cascading-modal\' class', () => {
+      test("adds 'cascading-modal' class", () => {
         wrapper = setup({ cascading: true });
         checkClass(wrapper, 'cascading-modal');
       });
 
-      test('adds \'modal-side\' class', () => {
+      test("adds 'modal-side' class", () => {
         wrapper = setup({ side: true });
         checkClass(wrapper, 'modal-side');
       });
 
-      test('adds \'modal-full-height\' class', () => {
+      test("adds 'modal-full-height' class", () => {
         wrapper = setup({ fullHeight: true });
         checkClass(wrapper, 'modal-full-height');
       });
 
-      test('adds \'modal-frame\' class', () => {
+      test("adds 'modal-frame' class", () => {
         wrapper = setup({ frame: true });
         checkClass(wrapper, 'modal-frame');
       });
 
-      test('adds \'modal-dialog-centered\' class', () => {
+      test("adds 'modal-dialog-centered' class", () => {
         wrapper = setup({ centered: true });
         checkClass(wrapper, 'modal-dialog-centered');
       });
 
-      test('adds \'modal-dialog-centered\' class', () => {
+      test("adds 'modal-dialog-centered' class", () => {
         wrapper = setup({ centered: true });
         checkClass(wrapper, 'modal-dialog-centered');
       });
 
-      test('adds \'modal-sm\' class', () => {
+      test("adds 'modal-sm' class", () => {
         wrapper = setup({ size: 'sm' });
         checkClass(wrapper, 'modal-sm');
       });
 
-      test('adds \'modal-bottom-left\' class', () => {
+      test("adds 'modal-bottom-left' class", () => {
         wrapper = setup({ position: 'bottom-left' });
         checkClass(wrapper, 'modal-bottom-left');
       });
 
-      test('adds \'modal-notify white-text modal-danger\' classes', () => {
+      test("adds 'modal-notify white-text modal-danger' classes", () => {
         wrapper = setup({ modalStyle: 'danger' });
         checkClass(wrapper, 'modal-notify.white-text.modal-danger');
       });
     });
 
     describe('sets wrapper classes', () => {
-      test('adds \'modal\' class', () => {
+      test("adds 'modal' class", () => {
         wrapper = setup({ backdrop: false });
         wrapper = wrapper.find('div').first();
 
         checkClass(wrapper, 'modal');
       });
 
-      test('adds \'fade\' class', () => {
+      test("adds 'fade' class", () => {
         wrapper = setup({ backdrop: false, fade: true });
         wrapper = wrapper.find('div').first();
 
@@ -328,28 +328,28 @@ describe('<Modal />', () => {
         checkClass(wrapper, 'wrapTest');
       });
 
-      test('adds \'modal\' class', () => {
+      test("adds 'modal' class", () => {
         wrapper = setup({ backdrop: false, wrapClassName: 'wrapTest' });
         wrapper = wrapper.find('div').first();
 
         checkClass(wrapper, 'wrapTest');
       });
 
-      test('adds \'top\' class when \'animation\' and \'posotion\' properties are not passed', () => {
+      test("adds 'top' class when 'animation' and 'posotion' properties are not passed", () => {
         wrapper = setup({ backdrop: false });
         wrapper = wrapper.find('div').first();
 
         checkClass(wrapper, 'top');
       });
 
-      test('adds \'left\' class when \'animation=left\' property is  passed', () => {
-        wrapper = setup({ backdrop: false, animation: 'left' });
+      test("adds 'left' class when 'position=left' property is  passed", () => {
+        wrapper = setup({ backdrop: false, position: 'left', fade: true });
         wrapper = wrapper.find('div').first();
 
         checkClass(wrapper, 'left');
       });
 
-      test('adds \'right\' class when \'position=top-right\' property is  passed', () => {
+      test("adds 'right' class when 'position=top-right' property is  passed", () => {
         wrapper = setup({ backdrop: false, position: 'top-right' });
         wrapper = wrapper.find('div').first();
 
@@ -358,20 +358,20 @@ describe('<Modal />', () => {
     });
 
     describe('sets backdrop classes', () => {
-      test('adds \'modal-backdrop\' class by default', () => {
+      test("adds 'modal-backdrop' class by default", () => {
         const backdropDiv = wrapper.find('div').first();
 
         checkClass(backdropDiv, 'modal-backdrop');
       });
 
-      test('adds \'fade\' class', () => {
+      test("adds 'fade' class", () => {
         wrapper = setup({ fade: true });
         const backdropDiv = wrapper.find('div').first();
 
         checkClass(backdropDiv, 'fade');
       });
 
-      test('adds \'show\' class when \'fade\' property is not passed', () => {
+      test("adds 'show' class when 'fade' property is not passed", () => {
         wrapper = setup({ fade: false });
         const backdropDiv = wrapper.find('div').first();
 
@@ -387,7 +387,7 @@ describe('<Modal />', () => {
     });
 
     describe('sets content classes', () => {
-      test('adds \'modal-content\' class by default', () => {
+      test("adds 'modal-content' class by default", () => {
         const content = wrapper.find('div').at(3);
 
         checkClass(content, 'modal-content');
