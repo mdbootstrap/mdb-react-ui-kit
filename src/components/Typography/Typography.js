@@ -78,9 +78,9 @@ Typography.propTypes = {
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   variant: PropTypes.string
 };
+
 Typography.defaultProps = {
   abbr: false,
-  abbrLeftText: true,
   blockquote: false,
   listInLine: false,
   listUnStyled: false,

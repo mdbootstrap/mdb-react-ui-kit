@@ -5,6 +5,7 @@ declare class MDBModal extends React.Component<
     autoFocus?: boolean;
     backdrop?: boolean;
     backdropClassName?: string;
+    backdropStyles?: object;
     cascading?: boolean;
     centered?: boolean;
     className?: string;
@@ -25,6 +26,7 @@ declare class MDBModal extends React.Component<
     role?: string;
     tabIndex?: string;
     wrapClassName?: boolean;
+    wrapperStyles?: object;
     keyboard?: boolean;
     toggle?: () => void;
     hiddenModal?: () => void;

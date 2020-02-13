@@ -23,9 +23,7 @@ class Modal extends Component {
 
   componentDidUpdate = (prevProps, prevState) => {
     const { isOpen, overflowScroll } = this.props;
-    const overflowStatement = overflowScroll
-      ? 'overflow-y-scroll'
-      : 'overflow-hidden';
+    const overflowStatement = overflowScroll ? 'overflow-y-scroll' : 'overflow-hidden';
 
     if (prevState.isOpen !== isOpen) {
       this.setState({ isOpen }, () => {
@@ -68,17 +66,11 @@ class Modal extends Component {
   };
 
   handleBackdropClick = e => {
-    if (
-      !this.props.backdrop ||
-      (e.target.closest('[role="dialog"]') &&
-        !e.target.classList.contains('modal'))
-    ) {
+    if (!this.props.backdrop || (e.target.closest('[role="dialog"]') && !e.target.classList.contains('modal'))) {
       return;
     }
 
-    if (
-      !(e.clientX > e.target.clientWidth || e.clientY > e.target.clientHeight)
-    ) {
+    if (!(e.clientX > e.target.clientWidth || e.clientY > e.target.clientHeight)) {
       if (!this.modalContent.contains(e.target)) {
         if (!this.props.disableBackdrop) {
           this.props.toggle();
@@ -99,6 +91,7 @@ class Modal extends Component {
       animation,
       backdrop,
       backdropClassName,
+      backdropStyles,
       cascading,
       centered,
       children,
@@ -111,17 +104,25 @@ class Modal extends Component {
       id,
       inline,
       modalStyle,
+      noClickableBodyWithoutBackdrop,
       position,
       role,
       side,
       size,
       tabIndex,
-      wrapClassName
+      wrapClassName,
+      wrapperStyles
     } = this.props;
 
     const { isOpen } = this.state;
 
     const timeout = fade ? 300 : 0;
+    const removeBackdropClass = {
+      position: 'fixed',
+      ...backdropStyles
+    };
+
+    const removeBackdropCondtions = !backdrop && isOpen && !noClickableBodyWithoutBackdrop;
 
     const modalDialogClasses = classNames(
       {
@@ -145,40 +146,37 @@ class Modal extends Component {
         top: fade && !animation && !position,
         animation: fade && animation
       },
-      fade && position && position && positionSplited.length > 1
-        ? positionSplited[1]
-        : positionSplited[0],
+      fade && position && position && positionSplited.length > 1 ? positionSplited[1] : positionSplited[0],
       wrapClassName
     );
 
-    const backdropClasses = classNames(
-      'modal-backdrop',
-      fade ? 'fade' : 'show',
-      backdropClassName
-    );
+    const backdropClasses = classNames('modal-backdrop', fade ? 'fade' : 'show', backdropClassName);
 
     const contentClasses = classNames('modal-content', contentClassName);
 
     const modalAttributes = returnAttributes({
-      style: { display: 'block' },
+      style: {
+        display: 'block',
+        position: removeBackdropCondtions && 'relative',
+        width: removeBackdropCondtions && 0
+      },
       id,
       tabIndex,
       role,
       'aria-hidden': 'true'
     });
+    const styles = removeBackdropCondtions ? removeBackdropClass : {};
 
     const modal = (
       <div
         data-test='modal'
         onKeyUp={this.handleEscape}
         className={wrapperClasses}
+        style={wrapperStyles}
         {...modalAttributes}
       >
-        <div className={modalDialogClasses} role='document'>
-          <div
-            ref={elem => (this.modalContent = elem)}
-            className={contentClasses}
-          >
+        <div style={styles} className={modalDialogClasses} role='document'>
+          <div ref={elem => (this.modalContent = elem)} className={contentClasses}>
             {children}
           </div>
         </div>
@@ -221,6 +219,7 @@ class Modal extends Component {
 Modal.defaultProps = {
   autoFocus: true,
   backdrop: true,
+  backdropStyles: { top: 0, left: 0, right: 0, bottom: 0 },
   backdropTransitionTimeout: 150,
   disableBackdrop: false,
   disableFocusTrap: true,
@@ -232,7 +231,8 @@ Modal.defaultProps = {
   position: '',
   role: 'dialog',
   tabIndex: '-1',
-  zIndex: 1050
+  zIndex: 1050,
+  noClickableBodyWithoutBackdrop: false
 };
 
 Modal.propTypes = {
@@ -255,6 +255,7 @@ Modal.propTypes = {
   keyboard: PropTypes.bool,
   modalClassName: PropTypes.string,
   modalStyle: PropTypes.string,
+  noClickableBodyWithoutBackdrop: PropTypes.bool,
   overflowScroll: PropTypes.bool,
   position: PropTypes.string,
   role: PropTypes.string,
@@ -262,7 +263,8 @@ Modal.propTypes = {
   side: PropTypes.bool,
   size: PropTypes.string,
   tabIndex: PropTypes.string,
-  wrapClassName: PropTypes.string
+  wrapClassName: PropTypes.string,
+  wrapperStyles: PropTypes.object
 };
 
 export default Modal;

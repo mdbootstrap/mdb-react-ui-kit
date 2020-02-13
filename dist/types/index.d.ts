@@ -778,6 +778,7 @@ declare class MDBModal extends Component<
     autoFocus?: boolean;
     backdrop?: boolean;
     backdropClassName?: string;
+    backdropStyles?: object;
     cascading?: boolean;
     centered?: boolean;
     className?: string;
@@ -798,6 +799,7 @@ declare class MDBModal extends Component<
     role?: string;
     tabIndex?: string;
     wrapClassName?: boolean;
+    wrapperStyles?: object;
     keyboard?: boolean;
     toggle?: () => void;
     hiddenModal?: () => void;

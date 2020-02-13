@@ -1,3 +1,5 @@
 {
-  "hooks": {}
+  "hooks": {
+    "pre-commit": ""
+  }
 }

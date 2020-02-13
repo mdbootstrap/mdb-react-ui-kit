@@ -88,10 +88,7 @@ class ModalPage extends Component {
     } = this.state;
     return (
       <MDBContainer>
-        <DocsLink
-          title='Modal'
-          href='https://mdbootstrap.com/docs/react/modals/basic/'
-        />
+        <DocsLink title='Modal' href='https://mdbootstrap.com/docs/react/modals/basic/' />
         <SectionContainer header='Basic example' flexCenter>
           <MDBBtn color='danger' onClick={this.toggle(1)}>
             Modal
@@ -99,10 +96,9 @@ class ModalPage extends Component {
           <MDBModal backdrop={false} isOpen={modal1} toggle={this.toggle(1)}>
             <MDBModalHeader toggle={this.toggle(1)}>Modal title</MDBModalHeader>
             <MDBModalBody>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.
             </MDBModalBody>
             <MDBModalFooter>
               <MDBBtn color='secondary' onClick={this.toggle(1)}>
@@ -113,21 +109,16 @@ class ModalPage extends Component {
           </MDBModal>
         </SectionContainer>
 
-        <SectionContainer
-          header='Central modal'
-          flexCenter
-          className='flex-wrap'
-        >
+        <SectionContainer header='Central modal' flexCenter className='flex-wrap'>
           <MDBBtn color='primary' onClick={this.toggle(2)}>
             Medium modal
           </MDBBtn>
           <MDBModal isOpen={modal2} toggle={this.toggle(2)}>
             <MDBModalHeader toggle={this.toggle(2)}>Modal title</MDBModalHeader>
             <MDBModalBody>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.
             </MDBModalBody>
             <MDBModalFooter>
               <MDBBtn color='secondary' onClick={this.toggle(2)}>
@@ -143,8 +134,8 @@ class ModalPage extends Component {
           <MDBModal isOpen={modal3} toggle={this.toggle(3)} size='sm'>
             <MDBModalHeader toggle={this.toggle(3)}>Modal title</MDBModalHeader>
             <MDBModalBody>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.
             </MDBModalBody>
             <MDBModalFooter>
               <MDBBtn color='secondary' size='sm' onClick={this.toggle(3)}>
@@ -162,10 +153,9 @@ class ModalPage extends Component {
           <MDBModal isOpen={modal4} toggle={this.toggle(4)} size='lg'>
             <MDBModalHeader toggle={this.toggle(4)}>Modal title</MDBModalHeader>
             <MDBModalBody>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.
             </MDBModalBody>
             <MDBModalFooter>
               <MDBBtn color='secondary' onClick={this.toggle(4)}>
@@ -181,10 +171,9 @@ class ModalPage extends Component {
           <MDBModal isOpen={modal5} toggle={this.toggle(5)} size='fluid'>
             <MDBModalHeader toggle={this.toggle(5)}>Modal title</MDBModalHeader>
             <MDBModalBody>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.
             </MDBModalBody>
             <MDBModalFooter>
               <MDBBtn color='secondary' onClick={this.toggle(5)}>
@@ -199,18 +188,12 @@ class ModalPage extends Component {
           <MDBBtn color='secondary' onClick={this.toggle(6)}>
             Top right
           </MDBBtn>
-          <MDBModal
-            isOpen={modal6}
-            toggle={this.toggle(6)}
-            side
-            position='top-right'
-          >
+          <MDBModal isOpen={modal6} toggle={this.toggle(6)} side position='top-right'>
             <MDBModalHeader toggle={this.toggle(6)}>Modal title</MDBModalHeader>
             <MDBModalBody>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.
             </MDBModalBody>
             <MDBModalFooter>
               <MDBBtn color='secondary' onClick={this.toggle(6)}>
@@ -223,18 +206,12 @@ class ModalPage extends Component {
           <MDBBtn color='secondary' onClick={this.toggle(7)}>
             Bottom left
           </MDBBtn>
-          <MDBModal
-            isOpen={modal7}
-            toggle={this.toggle(7)}
-            side
-            position='bottom-left'
-          >
+          <MDBModal isOpen={modal7} toggle={this.toggle(7)} side position='bottom-left'>
             <MDBModalHeader toggle={this.toggle(7)}>Modal title</MDBModalHeader>
             <MDBModalBody>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.
             </MDBModalBody>
             <MDBModalFooter>
               <MDBBtn color='secondary' onClick={this.toggle(7)}>
@@ -249,18 +226,12 @@ class ModalPage extends Component {
           <MDBBtn color='info' onClick={this.toggle(8)}>
             Right
           </MDBBtn>
-          <MDBModal
-            isOpen={modal8}
-            toggle={this.toggle(8)}
-            fullHeight
-            position='right'
-          >
+          <MDBModal isOpen={modal8} toggle={this.toggle(8)} fullHeight position='right'>
             <MDBModalHeader toggle={this.toggle(8)}>Modal title</MDBModalHeader>
             <MDBModalBody>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.
             </MDBModalBody>
             <MDBModalFooter>
               <MDBBtn color='secondary' onClick={this.toggle(8)}>
@@ -273,18 +244,12 @@ class ModalPage extends Component {
           <MDBBtn color='info' onClick={this.toggle(9)}>
             Bottom
           </MDBBtn>
-          <MDBModal
-            isOpen={modal9}
-            toggle={this.toggle(9)}
-            fullHeight
-            position='bottom'
-          >
+          <MDBModal isOpen={modal9} toggle={this.toggle(9)} fullHeight position='bottom'>
             <MDBModalHeader toggle={this.toggle(9)}>Modal title</MDBModalHeader>
             <MDBModalBody>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.
             </MDBModalBody>
             <MDBModalFooter>
               <MDBBtn color='secondary' onClick={this.toggle(9)}>
@@ -299,15 +264,10 @@ class ModalPage extends Component {
           <MDBBtn color='warning' onClick={this.toggle(10)}>
             Bottom
           </MDBBtn>
-          <MDBModal
-            isOpen={modal10}
-            toggle={this.toggle(10)}
-            frame
-            position='bottom'
-          >
+          <MDBModal isOpen={modal10} toggle={this.toggle(10)} frame position='bottom'>
             <MDBModalBody className='text-center'>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.
               <MDBBtn color='secondary' onClick={this.toggle(10)}>
                 Close
               </MDBBtn>
@@ -317,15 +277,10 @@ class ModalPage extends Component {
           <MDBBtn color='warning' onClick={this.toggle(11)}>
             Top
           </MDBBtn>
-          <MDBModal
-            isOpen={modal11}
-            toggle={this.toggle(11)}
-            frame
-            position='top'
-          >
+          <MDBModal isOpen={modal11} toggle={this.toggle(11)} frame position='top'>
             <MDBModalBody className='text-center'>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua.
               <MDBBtn color='secondary' onClick={this.toggle(11)}>
                 Close
               </MDBBtn>
@@ -336,15 +291,16 @@ class ModalPage extends Component {
 
         <SectionContainer header='Remove backdrop' flexCenter>
           <MDBBtn onClick={this.toggle(12)}>Modal</MDBBtn>
-          <MDBModal isOpen={modal12} toggle={this.toggle(12)} backdrop={false}>
-            <MDBModalHeader toggle={this.toggle(12)}>
-              Modal title
-            </MDBModalHeader>
+          <MDBModal
+            isOpen={modal12}
+            toggle={this.toggle(12)}
+            backdrop={false}
+          >
+            <MDBModalHeader toggle={this.toggle(12)}>Modal title</MDBModalHeader>
             <MDBModalBody>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.
             </MDBModalBody>
             <MDBModalFooter>
               <MDBBtn color='secondary' onClick={this.toggle(12)}>
@@ -360,14 +316,11 @@ class ModalPage extends Component {
             Modal
           </MDBBtn>
           <MDBModal isOpen={modal19} toggle={this.toggle(19)} disableBackdrop>
-            <MDBModalHeader toggle={this.toggle(19)}>
-              Modal title
-            </MDBModalHeader>
+            <MDBModalHeader toggle={this.toggle(19)}>Modal title</MDBModalHeader>
             <MDBModalBody>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.
             </MDBModalBody>
             <MDBModalFooter>
               <MDBBtn color='secondary' onClick={this.toggle(19)}>
@@ -382,19 +335,12 @@ class ModalPage extends Component {
           <MDBBtn onClick={this.toggle(20)} color='success'>
             Modal
           </MDBBtn>
-          <MDBModal
-            isOpen={modal20}
-            toggle={this.toggle(20)}
-            disableFocusTrap={false}
-          >
-            <MDBModalHeader toggle={this.toggle(20)}>
-              Modal title
-            </MDBModalHeader>
+          <MDBModal isOpen={modal20} toggle={this.toggle(20)} disableFocusTrap={false}>
+            <MDBModalHeader toggle={this.toggle(20)}>Modal title</MDBModalHeader>
             <MDBModalBody>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.
             </MDBModalBody>
             <MDBModalFooter>
               <MDBBtn color='secondary' onClick={this.toggle(20)}>
@@ -410,55 +356,35 @@ class ModalPage extends Component {
             Modal
           </MDBBtn>
           <MDBModal isOpen={modal13} toggle={this.toggle(13)}>
-            <MDBModalHeader toggle={this.toggle(13)}>
-              Modal title
-            </MDBModalHeader>
+            <MDBModalHeader toggle={this.toggle(13)}>Modal title</MDBModalHeader>
             <MDBModalBody>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit
-              amet, consectetur adipisicing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-              ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Lorem ipsum dolor sit amet, consectetur adipisicing
-              elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-              aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor
-              sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-              ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Lorem ipsum dolor sit amet, consectetur adipisicing
-              elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-              aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor
-              sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-              ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Lorem ipsum dolor sit amet, consectetur adipisicing
-              elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-              aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor
-              sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-              veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-              ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet,
+              consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+              ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem
+              ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+              commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet,
+              consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+              ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem
+              ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+              commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet,
+              consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+              ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </MDBModalBody>
             <MDBModalFooter>
               <MDBBtn color='secondary' onClick={this.toggle(13)}>
@@ -474,14 +400,11 @@ class ModalPage extends Component {
             Modal
           </MDBBtn>
           <MDBModal isOpen={modal14} toggle={this.toggle(14)} centered>
-            <MDBModalHeader toggle={this.toggle(14)}>
-              Modal title
-            </MDBModalHeader>
+            <MDBModalHeader toggle={this.toggle(14)}>Modal title</MDBModalHeader>
             <MDBModalBody>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.
             </MDBModalBody>
             <MDBModalFooter>
               <MDBBtn color='secondary' onClick={this.toggle(14)}>
@@ -497,18 +420,14 @@ class ModalPage extends Component {
             Modal
           </MDBBtn>
           <MDBModal isOpen={modal15} toggle={this.toggle(15)}>
-            <MDBModalHeader toggle={this.toggle(15)}>
-              Modal title
-            </MDBModalHeader>
+            <MDBModalHeader toggle={this.toggle(15)}>Modal title</MDBModalHeader>
             <MDBModalBody>
               This
               <MDBPopover popover clickable id='popper1' placement='right'>
                 <MDBBtn color='secondary'>button</MDBBtn>
                 <div>
                   <MDBPopoverHeader>MDBPopover title</MDBPopoverHeader>
-                  <MDBPopoverBody>
-                    MDBPopover body content is set in this attribute.
-                  </MDBPopoverBody>
+                  <MDBPopoverBody>MDBPopover body content is set in this attribute.</MDBPopoverBody>
                 </div>
               </MDBPopover>
               triggers a popover on click.
@@ -536,9 +455,7 @@ class ModalPage extends Component {
         <SectionContainer header='Using the grid' flexCenter>
           <MDBBtn onClick={this.toggle(16)}>Modal</MDBBtn>
           <MDBModal isOpen={modal16} toggle={this.toggle(16)}>
-            <MDBModalHeader toggle={this.toggle(16)}>
-              Modal title
-            </MDBModalHeader>
+            <MDBModalHeader toggle={this.toggle(16)}>Modal title</MDBModalHeader>
             <MDBModalBody>
               <MDBContainer fluid className='text-white'>
                 <MDBRow>
@@ -593,9 +510,7 @@ class ModalPage extends Component {
             Open modal for {mailAddress}
           </MDBBtn>
           <MDBModal isOpen={modal17} toggle={this.toggle(17)}>
-            <MDBModalHeader toggle={this.toggle(17)}>
-              New message to {mailAddress}
-            </MDBModalHeader>
+            <MDBModalHeader toggle={this.toggle(17)}>New message to {mailAddress}</MDBModalHeader>
             <MDBModalBody>
               <div className='md-form'>
                 <MDBInput value={mailAddress} />
@@ -622,14 +537,11 @@ class ModalPage extends Component {
             hiddenModal={this.hiddenFunction}
             showModal={this.showFunction}
           >
-            <MDBModalHeader toggle={this.toggle(18)}>
-              Modal title
-            </MDBModalHeader>
+            <MDBModalHeader toggle={this.toggle(18)}>Modal title</MDBModalHeader>
             <MDBModalBody>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+              ea commodo consequat.
             </MDBModalBody>
             <MDBModalFooter>
               <MDBBtn color='secondary' onClick={this.toggle(18)}>

@@ -6,8 +6,9 @@ import commonjs from 'rollup-plugin-commonjs';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import dts from 'rollup-plugin-dts';
 import pkg from './package.json';
+import { terser } from 'rollup-plugin-terser';
 
-const dependencies = Object.keys(require('./package.json').dependencies)
+const dependencies = Object.keys(require('./package.json').dependencies);
 
 const plugins = [
   peerDepsExternal(),
@@ -25,7 +26,7 @@ const plugins = [
   postcss({
     extract: false
   }),
-
+  terser()
 ];
 
 export default [
@@ -36,18 +37,17 @@ export default [
     output: [
       {
         file: pkg.main,
-        format: 'cjs',
+        format: 'cjs'
       },
       {
         file: pkg.module,
-        format: 'es',
+        format: 'es'
       }
     ]
   },
   {
     input: './src/index.d.ts',
     output: [{ file: 'dist/types/index.d.ts', format: 'es' }],
-    plugins: [dts()],
-  },
-
+    plugins: [dts()]
+  }
 ];
