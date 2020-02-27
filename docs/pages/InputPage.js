@@ -1,13 +1,5 @@
 import React, { Component } from 'react';
-import {
-  MDBInput,
-  MDBInputSelect,
-  MDBFormInline,
-  MDBBtn,
-  MDBContainer,
-  MDBRow,
-  MDBCol
-} from 'mdbreact';
+import { MDBInput, MDBInputSelect, MDBFormInline, MDBBtn, MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 import DocsLink from '../components/docsLink';
 import SectionContainer from '../components/sectionContainer';
 
@@ -19,11 +11,11 @@ class InputPage extends Component {
   };
 
   nextInputRef = null;
-
+  secondInputRef = null;
   componentDidMount() {
-    document
-      .querySelectorAll('.iconHover')
-      .forEach(el => (el.style.cursor = 'pointer'));
+    document.querySelectorAll('.iconHover').forEach(el => (el.style.cursor = 'pointer'));
+
+    this.nextInputRef.focus();
   }
 
   handleSubmit = event => {
@@ -54,16 +46,16 @@ class InputPage extends Component {
     });
   };
 
+  handleFocus = () => {
+    return true;
+  };
+
   render() {
     const { iconInput, typeInput, value } = this.state;
 
     return (
       <MDBContainer className='mt-5'>
-        <DocsLink
-          title='Inputs'
-          href='https://mdbootstrap.com/docs/react/forms/inputs/'
-        />
-
+        <DocsLink title='Inputs' href='https://mdbootstrap.com/docs/react/forms/inputs/' />
         <SectionContainer header='Basic examples'>
           <MDBRow>
             <MDBCol md='6'>
@@ -74,11 +66,7 @@ class InputPage extends Component {
               />
             </MDBCol>
             <MDBCol md='6'>
-              <MDBInput
-                label='Example label'
-                onChange={this.handleChange}
-                value={value}
-              />
+              <MDBInput label='Example label' onChange={this.handleChange} value={value} />
             </MDBCol>
           </MDBRow>
           <MDBRow>
@@ -91,11 +79,7 @@ class InputPage extends Component {
               />
             </MDBCol>
             <MDBCol md='6'>
-              <MDBInput
-                label='Example label'
-                inputRef={ref => (this.nextInputRef = ref)}
-                icon='envelope'
-              />
+              <MDBInput label='Example label' inputRef={ref => (this.nextInputRef = ref)} icon='envelope' />
             </MDBCol>
           </MDBRow>
 
@@ -137,13 +121,7 @@ class InputPage extends Component {
               />
             </MDBCol>
             <MDBCol md='6'>
-              <MDBInput
-                label='Type your password'
-                icon='lock'
-                group
-                type='password'
-                validate
-              />
+              <MDBInput label='Type your password' icon='lock' group type='password' validate />
             </MDBCol>
           </MDBRow>
 
@@ -159,25 +137,13 @@ class InputPage extends Component {
               error='wrong'
               success='right'
             />
-            <MDBInput
-              label='Type your password'
-              icon='lock'
-              group
-              type='password'
-              validate
-            />
+            <MDBInput label='Type your password' icon='lock' group type='password' validate />
             <MDBBtn>Login</MDBBtn>
           </MDBFormInline>
 
           <MDBRow>
             <MDBCol md='6'>
-              <MDBInput
-                getValue={this.getValue}
-                type='textarea'
-                label='Icon Prefix'
-                rows='2'
-                icon='pencil-alt'
-              />
+              <MDBInput getValue={this.getValue} type='textarea' label='Icon Prefix' rows='2' icon='pencil-alt' />
             </MDBCol>
             <MDBCol md='6'>
               <MDBInput type='textarea' label='Basic textarea' rows='2' />
@@ -189,20 +155,9 @@ class InputPage extends Component {
           <MDBRow>
             <MDBCol md='6' tag='section'>
               <SectionContainer header='Outline'>
-                <MDBInput
-                  labelClass='labelBg'
-                  outline
-                  label='Type your email'
-                  type='email'
-                />
+                <MDBInput labelClass='labelBg' outline label='Type your email' type='email' />
 
-                <MDBInput
-                  labelClass='labelBg'
-                  outline
-                  label='Type your password'
-                  icon='lock'
-                  type='password'
-                />
+                <MDBInput labelClass='labelBg' outline label='Type your password' icon='lock' type='password' />
 
                 <MDBInput
                   labelClass='labelBg'
@@ -214,32 +169,15 @@ class InputPage extends Component {
                   icon='pencil-alt'
                 />
 
-                <MDBInput
-                  labelClass='labelBg'
-                  outline
-                  type='textarea'
-                  label='Basic textarea'
-                  rows='2'
-                />
+                <MDBInput labelClass='labelBg' outline type='textarea' label='Basic textarea' rows='2' />
               </SectionContainer>
             </MDBCol>
 
             <MDBCol md='6' tag='section'>
               <SectionContainer header='With background'>
-                <MDBInput
-                  labelClass='labelBg'
-                  background
-                  label='Type your email'
-                  type='email'
-                />
+                <MDBInput labelClass='labelBg' background label='Type your email' type='email' />
 
-                <MDBInput
-                  labelClass='labelBg'
-                  background
-                  label='Type your password'
-                  icon='lock'
-                  type='password'
-                />
+                <MDBInput labelClass='labelBg' background label='Type your password' icon='lock' type='password' />
 
                 <MDBInput
                   labelClass='labelBg'
@@ -251,13 +189,7 @@ class InputPage extends Component {
                   icon='pencil-alt'
                 />
 
-                <MDBInput
-                  labelClass='labelBg'
-                  background
-                  type='textarea'
-                  label='Basic textarea'
-                  rows='2'
-                />
+                <MDBInput labelClass='labelBg' background type='textarea' label='Basic textarea' rows='2' />
               </SectionContainer>
             </MDBCol>
           </MDBRow>
@@ -265,28 +197,11 @@ class InputPage extends Component {
 
         <SectionContainer header='Numeric'>
           <MDBCol md='5'>
-            <MDBInputSelect
-              getValue={this.getValue}
-              min={5}
-              max={15}
-              value={10}
-              className='mb-2'
-            />
+            <MDBInputSelect getValue={this.getValue} min={5} max={15} value={10} className='mb-2' />
 
-            <MDBInputSelect
-              precision={2}
-              value={50.3}
-              step={0.1}
-              className='mb-2'
-            />
+            <MDBInputSelect precision={2} value={50.3} step={0.1} className='mb-2' />
 
-            <MDBInputSelect
-              precision={2}
-              value={50.3}
-              step={0.5}
-              snap
-              className='mb-2'
-            />
+            <MDBInputSelect precision={2} value={50.3} step={0.5} snap className='mb-2' />
           </MDBCol>
         </SectionContainer>
 
@@ -297,50 +212,23 @@ class InputPage extends Component {
           <label htmlFor='inputDisabledEx2' className='disabled mt-4'>
             Disabled input
           </label>
-          <input
-            type='text'
-            id='inputDisabledEx2'
-            className='form-control'
-            disabled
-          />
+          <input type='text' id='inputDisabledEx2' className='form-control' disabled />
         </SectionContainer>
 
         <SectionContainer header='MDBInput fields'>
-          <input
-            className='form-control form-control-lg mb-3'
-            type='text'
-            placeholder='Large input'
-          />
-          <input
-            className='form-control mb-3'
-            type='text'
-            placeholder='Medium input'
-          />
-          <input
-            className='form-control form-control-sm'
-            type='text'
-            placeholder='Small input'
-          />
+          <input className='form-control form-control-lg mb-3' type='text' placeholder='Large input' />
+          <input className='form-control mb-3' type='text' placeholder='Medium input' />
+          <input className='form-control form-control-sm' type='text' placeholder='Small input' />
         </SectionContainer>
 
         <SectionContainer header='Form groups' tag='form'>
           <div className='form-group'>
             <label htmlFor='formGroupExampleInput'>Example label</label>
-            <input
-              type='text'
-              className='form-control'
-              id='formGroupExampleInput'
-              placeholder='Example input'
-            />
+            <input type='text' className='form-control' id='formGroupExampleInput' placeholder='Example input' />
           </div>
           <div className='form-group'>
             <label htmlFor='formGroupExampleInput2'>Another label</label>
-            <input
-              type='text'
-              className='form-control'
-              id='formGroupExampleInput2'
-              placeholder='Another input'
-            />
+            <input type='text' className='form-control' id='formGroupExampleInput2' placeholder='Another input' />
           </div>
         </SectionContainer>
 
@@ -349,18 +237,10 @@ class InputPage extends Component {
             <SectionContainer header='Form grid' tag='form'>
               <MDBRow>
                 <MDBCol>
-                  <input
-                    type='text'
-                    className='form-control'
-                    placeholder='First name'
-                  />
+                  <input type='text' className='form-control' placeholder='First name' />
                 </MDBCol>
                 <MDBCol>
-                  <input
-                    type='text'
-                    className='form-control'
-                    placeholder='Last name'
-                  />
+                  <input type='text' className='form-control' placeholder='Last name' />
                 </MDBCol>
               </MDBRow>
             </SectionContainer>
@@ -369,18 +249,10 @@ class InputPage extends Component {
             <SectionContainer header='Form row' tag='form'>
               <div className='form-row'>
                 <MDBCol>
-                  <input
-                    type='text'
-                    className='form-control'
-                    placeholder='First name'
-                  />
+                  <input type='text' className='form-control' placeholder='First name' />
                 </MDBCol>
                 <MDBCol>
-                  <input
-                    type='text'
-                    className='form-control'
-                    placeholder='Last name'
-                  />
+                  <input type='text' className='form-control' placeholder='Last name' />
                 </MDBCol>
               </div>
             </SectionContainer>
@@ -392,31 +264,16 @@ class InputPage extends Component {
             <div className='form-row'>
               <div className='form-group col-md-6'>
                 <label htmlFor='inputEmail4'>Email</label>
-                <input
-                  type='email'
-                  className='form-control'
-                  id='inputEmail4'
-                  placeholder='Email'
-                />
+                <input type='email' className='form-control' id='inputEmail4' placeholder='Email' />
               </div>
               <div className='form-group col-md-6'>
                 <label htmlFor='inputPassword4'>Password</label>
-                <input
-                  type='password'
-                  className='form-control'
-                  id='inputPassword4'
-                  placeholder='Password'
-                />
+                <input type='password' className='form-control' id='inputPassword4' placeholder='Password' />
               </div>
             </div>
             <div className='form-group'>
               <label htmlFor='inputAddress'>Address</label>
-              <input
-                type='text'
-                className='form-control'
-                id='inputAddress'
-                placeholder='1234 Main St'
-              />
+              <input type='text' className='form-control' id='inputAddress' placeholder='1234 Main St' />
             </div>
             <div className='form-group'>
               <label htmlFor='inputAddress2'>Address 2</label>
@@ -430,21 +287,11 @@ class InputPage extends Component {
             <div className='form-row'>
               <div className='form-group col-md-6'>
                 <label htmlFor='inputCity'>City</label>
-                <input
-                  type='text'
-                  className='form-control'
-                  id='inputCity'
-                  placeholder='New York City'
-                />
+                <input type='text' className='form-control' id='inputCity' placeholder='New York City' />
               </div>
               <div className='form-group col-md-6'>
                 <label htmlFor='inputZip'>Zip</label>
-                <input
-                  type='text'
-                  className='form-control'
-                  id='inputZip'
-                  placeholder='11206-1117'
-                />
+                <input type='text' className='form-control' id='inputZip' placeholder='11206-1117' />
               </div>
             </div>
             <button type='submit' className='btn btn-primary btn-md'>
@@ -460,28 +307,15 @@ class InputPage extends Component {
                 Email
               </label>
               <div className='col-sm-10'>
-                <input
-                  type='email'
-                  className='form-control'
-                  id='inputEmail3'
-                  placeholder='Email'
-                />
+                <input type='email' className='form-control' id='inputEmail3' placeholder='Email' />
               </div>
             </div>
             <div className='form-group row'>
-              <label
-                htmlFor='inputPassword3'
-                className='col-sm-2 col-form-label'
-              >
+              <label htmlFor='inputPassword3' className='col-sm-2 col-form-label'>
                 Password
               </label>
               <div className='col-sm-10'>
-                <input
-                  type='password'
-                  className='form-control'
-                  id='inputPassword3'
-                  placeholder='Password'
-                />
+                <input type='password' className='form-control' id='inputPassword3' placeholder='Password' />
               </div>
             </div>
             <div className='form-group row'>
@@ -498,18 +332,10 @@ class InputPage extends Component {
           <form>
             <div className='form-row'>
               <div className='col-7'>
-                <input
-                  type='text'
-                  className='form-control'
-                  placeholder='City'
-                />
+                <input type='text' className='form-control' placeholder='City' />
               </div>
               <div className='col'>
-                <input
-                  type='text'
-                  className='form-control'
-                  placeholder='State'
-                />
+                <input type='text' className='form-control' placeholder='State' />
               </div>
               <div className='col'>
                 <input type='text' className='form-control' placeholder='Zip' />
@@ -525,12 +351,7 @@ class InputPage extends Component {
                 <label className='sr-only' htmlFor='inlineFormInput'>
                   Name
                 </label>
-                <input
-                  type='text'
-                  className='form-control mb-2'
-                  id='inlineFormInput'
-                  placeholder='Jane Doe'
-                />
+                <input type='text' className='form-control mb-2' id='inlineFormInput' placeholder='Jane Doe' />
               </div>
               <div className='col-auto'>
                 <label className='sr-only' htmlFor='inlineFormInputGroup'>
@@ -540,12 +361,7 @@ class InputPage extends Component {
                   <div className='input-group-prepend'>
                     <div className='input-group-text'>@</div>
                   </div>
-                  <input
-                    type='text'
-                    className='form-control py-0'
-                    id='inlineFormInputGroup'
-                    placeholder='Username'
-                  />
+                  <input type='text' className='form-control py-0' id='inlineFormInputGroup' placeholder='Username' />
                 </div>
               </div>
               <div className='col-auto'>
@@ -561,18 +377,10 @@ class InputPage extends Component {
           <form>
             <div className='form-row'>
               <div className='col-7'>
-                <input
-                  type='text'
-                  className='form-control'
-                  placeholder='City'
-                />
+                <input type='text' className='form-control' placeholder='City' />
               </div>
               <div className='col'>
-                <input
-                  type='text'
-                  className='form-control'
-                  placeholder='State'
-                />
+                <input type='text' className='form-control' placeholder='State' />
               </div>
               <div className='col'>
                 <input type='text' className='form-control' placeholder='Zip' />
@@ -583,28 +391,17 @@ class InputPage extends Component {
 
         <SectionContainer header='Textarea'>
           <div className='form-group'>
-            <label htmlFor='exampleFormControlTextarea1'>
-              Example textarea
-            </label>
-            <textarea
-              className='form-control'
-              id='exampleFormControlTextarea1'
-              rows='5'
-            />
+            <label htmlFor='exampleFormControlTextarea1'>Example textarea</label>
+            <textarea className='form-control' id='exampleFormControlTextarea1' rows='5' />
           </div>
         </SectionContainer>
 
         <SectionContainer header='Help text'>
           <label htmlFor='inputPassword5'>Password</label>
-          <input
-            type='password'
-            id='inputPassword5'
-            className='form-control'
-            aria-describedby='passwordHelpBlock'
-          />
+          <input type='password' id='inputPassword5' className='form-control' aria-describedby='passwordHelpBlock' />
           <small id='passwordHelpBlock' className='form-text text-muted'>
-            Your password must be 8-20 characters long, contain letters and
-            numbers, and must not contain spaces, special characters, or emoji.
+            Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
+            special characters, or emoji.
           </small>
           <br />
           <form className='form-inline'>
