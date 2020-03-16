@@ -109,6 +109,7 @@ class Input extends React.Component {
       label,
       labelClass,
       labelId,
+      labelStyles,
       size,
       success,
       tag: Tag,
@@ -196,6 +197,7 @@ class Input extends React.Component {
           onChange={this.onChange}
           onInput={this.onInput}
           onFocus={this.onFocus}
+          aria-disabled={disabled}
         />
         {label && (
           <label
@@ -205,6 +207,8 @@ class Input extends React.Component {
             data-success={success}
             id={labelId}
             onClick={this.setFocus}
+            style={labelStyles}
+            aria-labelledby={labelId}
           >
             {label}
           </label>
@@ -240,6 +244,7 @@ Input.propTypes = {
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object, PropTypes.bool]),
   labelClass: PropTypes.string,
   labelId: PropTypes.string,
+  labelStyles: PropTypes.object,
   noTag: PropTypes.bool,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,

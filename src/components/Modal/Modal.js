@@ -91,7 +91,7 @@ class Modal extends Component {
       animation,
       backdrop,
       backdropClassName,
-      backdropStyles,
+      modalStylesWithoutBackdrop,
       cascading,
       centered,
       children,
@@ -119,10 +119,10 @@ class Modal extends Component {
     const timeout = fade ? 300 : 0;
     const removeBackdropClass = {
       position: 'fixed',
-      ...backdropStyles
+      ...modalStylesWithoutBackdrop
     };
 
-    const removeBackdropCondtions = !backdrop && isOpen && !noClickableBodyWithoutBackdrop;
+    const removeBackdropConditions = !backdrop && isOpen && !noClickableBodyWithoutBackdrop;
 
     const modalDialogClasses = classNames(
       {
@@ -138,7 +138,7 @@ class Modal extends Component {
       'modal-dialog',
       className
     );
-    const positionSplited = position.split('-');
+    const splitPosition = position.split('-');
     const wrapperClasses = classNames(
       {
         modal: !inline,
@@ -146,26 +146,24 @@ class Modal extends Component {
         top: fade && !animation && !position,
         animation: fade && animation
       },
-      fade && position && position && positionSplited.length > 1 ? positionSplited[1] : positionSplited[0],
+      fade && position && position && splitPosition.length > 1 ? splitPosition[1] : splitPosition[0],
       wrapClassName
     );
 
     const backdropClasses = classNames('modal-backdrop', fade ? 'fade' : 'show', backdropClassName);
-
     const contentClasses = classNames('modal-content', contentClassName);
-
     const modalAttributes = returnAttributes({
       style: {
         display: 'block',
-        position: removeBackdropCondtions && 'relative',
-        width: removeBackdropCondtions && 0
+        position: removeBackdropConditions && 'relative',
+        width: removeBackdropConditions && 0
       },
       id,
       tabIndex,
       role,
       'aria-hidden': 'true'
     });
-    const styles = removeBackdropCondtions ? removeBackdropClass : {};
+    const styles = removeBackdropConditions ? removeBackdropClass : {};
 
     const modal = (
       <div
@@ -219,7 +217,7 @@ class Modal extends Component {
 Modal.defaultProps = {
   autoFocus: true,
   backdrop: true,
-  backdropStyles: { top: 0, left: 0, right: 0, bottom: 0 },
+  modalStylesWithoutBackdrop: { top: 0, left: 0, right: 0, bottom: 0 },
   backdropTransitionTimeout: 150,
   disableBackdrop: false,
   disableFocusTrap: true,
