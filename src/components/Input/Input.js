@@ -16,12 +16,16 @@ class Input extends React.Component {
     // User wants to access the input ref, but we have to use it intenrally to.
     // Return Ref instance to share ref with parent
     // then user sets ref as a callback -> inputRef={ref => this.myInputRef = ref}
-    const { inputRef, focused } = this.props;
+    const { inputRef, focused, indeterminate } = this.props;
     inputRef && inputRef(this.inputElementRef.current);
     if (focused === true) {
       this.setState({ isFocused: focused }, () => {
         this.setFocus();
       });
+    }
+
+    if (indeterminate) {
+      this.inputElementRef.current.indeterminate = true;
     }
   }
 
@@ -88,6 +92,7 @@ class Input extends React.Component {
       disabled,
       error,
       filled,
+      focused,
       gap,
       getValue,
       group,
@@ -96,20 +101,20 @@ class Input extends React.Component {
       iconBrand,
       iconClass,
       iconLight,
-      onIconClick,
-      onIconMouseEnter,
-      onIconMouseLeave,
       iconRegular,
       iconSize,
       id,
+      indeterminate,
       inputRef,
-      noTag,
-      focused,
-      outline,
       label,
       labelClass,
       labelId,
       labelStyles,
+      noTag,
+      onIconClick,
+      onIconMouseEnter,
+      onIconMouseLeave,
+      outline,
       size,
       success,
       tag: Tag,
@@ -119,6 +124,7 @@ class Input extends React.Component {
       valueDefault,
       ...attributes
     } = this.props;
+
     const { innerValue, isFocused } = this.state;
     const isNotEmpty =
       (!!innerValue || !!hint || isFocused || innerValue === 0) && type !== 'checkbox' && type !== 'radio';
@@ -240,6 +246,7 @@ Input.propTypes = {
   iconRegular: PropTypes.bool,
   iconSize: PropTypes.string,
   id: PropTypes.string,
+  indeterminate: PropTypes.bool,
   inputRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object, PropTypes.bool]),
   labelClass: PropTypes.string,
@@ -275,6 +282,7 @@ Input.defaultProps = {
   icon: '',
   iconBrand: false,
   focused: false,
+  indeterminate: false,
   iconClass: '',
   iconLight: false,
   onIconMouseEnter: () => {},
@@ -284,7 +292,7 @@ Input.defaultProps = {
   id: undefined,
   noTag: false,
   outline: false,
-  label: '',
+  label: ' ',
   labelClass: '',
   labelId: '',
   size: '',
