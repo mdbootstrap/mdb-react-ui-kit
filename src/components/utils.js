@@ -1,3 +1,8 @@
+import moment from 'moment';
+// import variables from '../../dist/scss/core/_colors.scss';
+
+// const { danger, warning, success, primary, info, secondary, light, dark } = variables;
+
 export function getTetherAttachments(placement) {
   let attachments = {};
   switch (placement) {
@@ -130,23 +135,14 @@ export function isBodyOverflowing() {
 }
 
 export function getOriginalBodyPadding() {
-  return parseInt(
-    window
-    .getComputedStyle(document.body, null)
-    .getPropertyValue('padding-right') || 0,
-    10
-  );
+  return parseInt(window.getComputedStyle(document.body, null).getPropertyValue('padding-right') || 0, 10);
 }
 
 export function conditionallyUpdateScrollbar() {
   const scrollbarWidth = getScrollbarWidth();
   // https://github.com/twbs/bootstrap/blob/v4.0.0-alpha.4/js/src/modal.js#L420
-  const fixedContent = document.querySelectorAll(
-    '.navbar-fixed-top, .navbar-fixed-bottom, .is-fixed'
-  )[0];
-  const bodyPadding = fixedContent ?
-    parseInt(fixedContent.style.paddingRight || 0, 10) :
-    0;
+  const fixedContent = document.querySelectorAll('.navbar-fixed-top, .navbar-fixed-bottom, .is-fixed')[0];
+  const bodyPadding = fixedContent ? parseInt(fixedContent.style.paddingRight || 0, 10) : 0;
 
   if (isBodyOverflowing()) {
     setScrollbarWidth(bodyPadding + scrollbarWidth);
@@ -154,7 +150,9 @@ export function conditionallyUpdateScrollbar() {
 }
 
 export function mapToCssModules(className, cssModule) {
-  if (!cssModule) {return className;}
+  if (!cssModule) {
+    return className;
+  }
   return className
     .split(' ')
     .map(c => cssModule[c] || c)
@@ -182,20 +180,31 @@ export const keyCodes = {
 };
 
 export const returnAttributes = attributes => {
-  const newAttributesObject = Object.keys(attributes).reduce(
-    (previousValue, currentElement) => {
-      if (attributes[currentElement])
-        {previousValue[currentElement] = attributes[currentElement];}
-      return previousValue;
-    }, {}
-  );
+  const newAttributesObject = Object.keys(attributes).reduce((previousValue, currentElement) => {
+    if (attributes[currentElement]) {
+      previousValue[currentElement] = attributes[currentElement];
+    }
+    return previousValue;
+  }, {});
 
   return newAttributesObject;
 };
 
 export const getColorClass = color => {
   const colorArray = color.split(' ');
-  const specialColors = ['danger', 'warning', 'success', 'info', 'default', 'primary', 'secondary', 'elegant', 'stylish', 'unique', 'special'];
+  const specialColors = [
+    'danger',
+    'warning',
+    'success',
+    'info',
+    'default',
+    'primary',
+    'secondary',
+    'elegant',
+    'stylish',
+    'unique',
+    'special'
+  ];
   let colorClasses = '';
 
   colorArray.forEach(color => {
@@ -212,7 +221,7 @@ export const getColorClass = color => {
   });
 
   return colorClasses;
-}
+};
 
 export function debounce(fn, time = 166) {
   let timeout;
@@ -232,3 +241,45 @@ export function debounce(fn, time = 166) {
 
   return debounced;
 }
+
+export const makeFirstLetterUpper = element => {
+  return element.charAt(0).toUpperCase() + element.slice(1);
+};
+
+export const makeRandomID = (id = '1') => {
+  return Array(id.length)
+    .fill(null)
+    .map(() =>
+      Math.random()
+        .toString(16)
+        .substr(2)
+    )
+    .join('');
+};
+
+const themeColors = {
+  danger: 'rgba(255, 53, 71)',
+  warning: 'rgba(255, 187, 51)',
+  success: 'rgba(0, 200, 81)',
+  primary: 'rgba(66, 133, 244)',
+  info: 'rgba(51, 181, 229)',
+  secondary: 'rgba(170, 102, 204)',
+  light: 'rgba(224, 224, 224)',
+  dark: 'rgba(33, 33, 33)'
+};
+
+const themeColorsOpacity = {
+  danger: 'rgba(255, 53, 71, .2)',
+  warning: 'rgba(255, 187, 51, .2)',
+  success: 'rgba(0, 200, 81, .2)',
+  primary: 'rgba(66, 133, 244, .2)',
+  info: 'rgba(51, 181, 229, .2)',
+  secondary: 'rgba(170, 102, 204, .2)',
+  light: 'rgba(224, 224, 224, 1) ',
+  dark: 'rgba(33, 33, 33, .2)'
+};
+
+export const takeThemeColor = theme => themeColors[theme];
+export const takeThemeColorOpacity = theme => themeColorsOpacity[theme];
+
+export const takeAcutalDate = date => moment(date || new Date());

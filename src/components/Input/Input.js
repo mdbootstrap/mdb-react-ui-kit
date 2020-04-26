@@ -37,6 +37,16 @@ class Input extends React.Component {
     return null;
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { focused } = this.props;
+
+    if (prevProps.focused !== focused) {
+      this.setState({ isFocused: focused }, () => {
+        this.setFocus();
+      });
+    }
+  }
+
   onBlur = event => {
     event.stopPropagation();
     const { onBlur } = this.props;
@@ -122,6 +132,7 @@ class Input extends React.Component {
       validate,
       value,
       valueDefault,
+      iconStyle,
       ...attributes
     } = this.props;
 
@@ -189,6 +200,7 @@ class Input extends React.Component {
             onClick={onIconClick || this.setFocus}
             onMouseEnter={onIconMouseEnter}
             onMouseLeave={onIconMouseLeave}
+            style={iconStyle}
           />
         )}
         <TagInput
@@ -245,6 +257,7 @@ Input.propTypes = {
   iconLight: PropTypes.bool,
   iconRegular: PropTypes.bool,
   iconSize: PropTypes.string,
+  iconStyle: PropTypes.object,
   id: PropTypes.string,
   indeterminate: PropTypes.bool,
   inputRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),

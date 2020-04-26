@@ -19,7 +19,7 @@ class Carousel extends Component {
   carouselRef = React.createRef();
 
   componentDidMount() {
-    const { interval, thumbnails } = this.props;
+    const { interval, thumbnails, length } = this.props;
     if (interval === false) {
       return;
     }
@@ -27,25 +27,21 @@ class Carousel extends Component {
 
     // get images src atr
     if (thumbnails) {
-      const CarouselItemsArray = this.carouselRef.current.querySelectorAll(
-        '.carousel-item img'
-      );
+      const CarouselItemsArray = this.carouselRef.current.querySelectorAll('.carousel-item img');
 
-      const srcArray = Array.prototype.map.call(
-        CarouselItemsArray,
-        item => item.src
-      );
+      const srcArray = Array.prototype.map.call(CarouselItemsArray, item => item.src);
       this.setState({ ...this.state, srcArray });
     }
+
+    this.setState({ initialLength: length });
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
     const { length } = this.props;
-    const { InitialLength } = this.state;
-    if (InitialLength !== length) {
-      this.setState({
-        InitialLength: length
-      });
+    const initialLength = length;
+
+    if (prevState.initialLength !== length) {
+      this.setState({ initialLength });
     }
   }
 
@@ -246,9 +242,7 @@ class Carousel extends Component {
             />
           </>
         )}
-        {showIndicators && (
-          <CarouselIndicators>{CarouselIndicatorsArray}</CarouselIndicators>
-        )}
+        {showIndicators && <CarouselIndicators>{CarouselIndicatorsArray}</CarouselIndicators>}
       </Tag>
     );
   }

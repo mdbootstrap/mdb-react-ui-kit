@@ -33,16 +33,7 @@ class DropdownItem extends Component {
 
   render() {
     const tabIndex = this.getTabIndex();
-    let {
-      className,
-      divider,
-      tag: Tag,
-      header,
-      href,
-      active,
-      disabled,
-      ...props
-    } = omit(this.props, ['toggle']);
+    let { className, divider, tag: Tag, header, href, active, disabled, ...props } = omit(this.props, ['toggle']);
 
     const { toggle } = this.props;
 
@@ -67,8 +58,7 @@ class DropdownItem extends Component {
       }
     }
 
-    const type =
-      Tag === 'button' && (props.onClick || toggle) ? 'button' : undefined;
+    const type = Tag === 'button' && (props.onClick || toggle) ? 'button' : undefined;
 
     return (
       <Tag
