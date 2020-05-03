@@ -14,7 +14,9 @@ class Modal extends Component {
   modalContent = React.createRef();
 
   componentDidMount = () => {
-    document.body.classList.add('modal-open');
+    if(this.props.showModal) {
+      document.body.classList.add('modal-open'); 
+    }
   };
 
   componentWillUnmount = () => {
