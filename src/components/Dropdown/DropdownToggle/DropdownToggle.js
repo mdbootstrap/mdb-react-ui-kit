@@ -38,9 +38,7 @@ class DropdownToggle extends React.Component {
       className
     );
 
-    const children = props.children || (
-      <span className='sr-only'>{ariaLabel}</span>
-    );
+    const children = props.children || <span className='sr-only'>{ariaLabel}</span>;
 
     let Tag = tag;
 
@@ -56,23 +54,11 @@ class DropdownToggle extends React.Component {
       <Reference data-test='dropdown-toggle'>
         {({ ref }) =>
           tag || nav ? (
-            <Tag
-              {...props}
-              className={classes}
-              onClick={this.onClick}
-              aria-expanded={isOpen}
-              ref={ref}
-            >
+            <Tag {...props} className={classes} onClick={this.onClick} aria-expanded={isOpen} ref={ref}>
               {children}
             </Tag>
           ) : (
-            <Tag
-              {...props}
-              className={classes}
-              onClick={this.onClick}
-              aria-expanded={isOpen}
-              innerRef={ref}
-            >
+            <Tag {...props} className={classes} onClick={this.onClick} aria-expanded={isOpen} innerRef={ref}>
               {children}
             </Tag>
           )

@@ -3,15 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const NavbarToggler = props => {
-  const {
-    right,
-    left,
-    children,
-    className,
-    tag: Tag,
-    image,
-    ...attributes
-  } = props;
+  const { right, left, children, className, tag: Tag, image, ...attributes } = props;
 
   const classes = classNames(
     {
@@ -26,10 +18,7 @@ const NavbarToggler = props => {
     <Tag data-test='navbar-toggler' {...attributes} className={classes}>
       {children ||
         (image ? (
-          <span
-            className='navbar-toggler-icon'
-            style={{ backgroundImage: `url("${image}")` }}
-          />
+          <span className='navbar-toggler-icon' style={{ backgroundImage: `url("${image}")` }} />
         ) : (
           <span className='navbar-toggler-icon' />
         ))}

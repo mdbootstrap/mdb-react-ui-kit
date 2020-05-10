@@ -3,17 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const Nav = props => {
-  const {
-    children,
-    className,
-    tag: Tag,
-    tabs,
-    color,
-    classicTabs,
-    pills,
-    header,
-    ...attributes
-  } = props;
+  const { children, className, tag: Tag, tabs, color, classicTabs, pills, header, ...attributes } = props;
 
   const classes = classNames(
     'nav',

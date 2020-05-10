@@ -11,14 +11,7 @@ const InputNumeric = props => {
   const { className, getValue, ...attributes } = props;
 
   const classes = classNames('form-control', className);
-  return (
-    <NumericInput
-      data-test='input-numeric'
-      {...attributes}
-      onChange={onChangeHandler}
-      className={classes}
-    />
-  );
+  return <NumericInput data-test='input-numeric' {...attributes} onChange={onChangeHandler} className={classes} />;
 };
 
 InputNumeric.propTypes = {

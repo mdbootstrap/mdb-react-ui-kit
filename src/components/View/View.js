@@ -15,19 +15,7 @@ const View = props => {
     setCursorPos(cursorPos);
   };
 
-  const {
-    cascade,
-    children,
-    className,
-    fixed,
-    hover,
-    rounded,
-    src,
-    tag: Tag,
-    waves,
-    zoom,
-    ...attributes
-  } = props;
+  const { cascade, children, className, fixed, hover, rounded, src, tag: Tag, waves, zoom, ...attributes } = props;
 
   const classes = classNames(
     'view',

@@ -9,12 +9,7 @@ const CardVideo = props => {
   const classes = classNames(className);
 
   return (
-    <MDBIframe
-      data-test='card-video'
-      {...attributes}
-      src={src}
-      className={classes}
-    >
+    <MDBIframe data-test='card-video' {...attributes} src={src} className={classes}>
       {children}
     </MDBIframe>
   );

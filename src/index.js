@@ -28,6 +28,7 @@ import Col from './components/Col';
 import Collapse from './components/Collapse';
 import Container from './components/Container';
 import DataTable from './components/DataTable';
+import DataTableV5 from './components/DataTable/DataTableNew';
 import Dropdown from './components/Dropdown';
 import DropdownItem from './components/Dropdown/DropdownItem';
 import DropdownMenu from './components/Dropdown/DropdownMenu';
@@ -84,104 +85,6 @@ import Waves from './components/Waves';
 
 
 
-
-
-
- //! Free components
-import Button from './components/Button';
-import Input from './components/Input';
-
-
-export {
-  // FREE
-  Alert,
-  Animation,
-  Badge,
-  Box,
-  Breadcrumb,
-  BreadcrumbItem,
-  Button,
-  ButtonGroup,
-  ButtonToolbar,
-  Card,
-  CardBody,
-  CardFooter,
-  CardGroup,
-  CardHeader,
-  CardImage,
-  CardText,
-  CardTitle,
-  CardVideo,
-  Carousel,
-  CarouselCaption,
-  CarouselControl,
-  CarouselIndicator,
-  CarouselIndicators,
-  CarouselInner,
-  CarouselItem,
-  CloseIcon,
-  Col,
-  Collapse,
-  Container,
-  DataTable,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  EdgeHeader,
-  Fa,
-  Footer,
-  FormInline,
-  FreeBird,
-  HamburgerToggler,
-  Iframe,
-  Input,
-  InputGroup,
-  InputNumeric,
-  Jumbotron,
-  Link,
-  ListGroup,
-  ListGroupItem,
-  Mask,
-  Media,
-  Modal,
-  ModalBody,
-  ModalFooter,
-  ModalHeader,
-  Nav,
-  Navbar,
-  NavbarBrand,
-  NavbarNav,
-  NavbarToggler,
-  NavItem,
-  NavLink,
-  Notification,
-  Pagination,
-  PageItem,
-  PageLink,
-  Popover,
-  Popover as Popper,
-  PopoverBody,
-  PopoverHeader,
-  Progress,
-  Rating,
-  Row,
-  TabContent,
-  TabPane,
-  Table,
-  TableBody,
-  TableFoot,
-  TableHead,
-  Treeview,
-  TreeviewItem,
-  TreeviewList,
-  Typography,
-  Typography as Typo,
-  Tooltip,
-  View,
-  Waves,
-  
-
   Alert as MDBAlert,
   Animation as MDBAnimation,
   Badge as MDBBadge,
@@ -212,6 +115,7 @@ export {
   Collapse as MDBCollapse,
   Container as MDBContainer,
   DataTable as MDBDataTable,
+  DataTableV5 as MDBDataTableV5,
   Dropdown as MDBDropdown,
   DropdownItem as MDBDropdownItem,
   DropdownMenu as MDBDropdownMenu,

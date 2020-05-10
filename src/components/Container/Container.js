@@ -5,10 +5,7 @@ import classNames from 'classnames';
 const Container = props => {
   const { className, fluid, size, tag: Tag, ...attributes } = props;
 
-  const classes = classNames(
-    fluid ? 'container-fluid' : size ? `container-${size}` : 'container',
-    className
-  );
+  const classes = classNames(fluid ? 'container-fluid' : size ? `container-${size}` : 'container', className);
 
   return <Tag data-test='container' {...attributes} className={classes} />;
 };

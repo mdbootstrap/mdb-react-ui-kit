@@ -3,19 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const Row = props => {
-  const {
-    around,
-    between,
-    bottom,
-    center,
-    className,
-    end,
-    middle,
-    start,
-    tag: Tag,
-    top,
-    ...attributes
-  } = props;
+  const { around, between, bottom, center, className, end, middle, start, tag: Tag, top, ...attributes } = props;
 
   const classes = classNames(
     'row',

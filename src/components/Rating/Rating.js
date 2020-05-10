@@ -1,12 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import {
-  Fa,
-  MDBBtn,
-  MDBPopoverBody,
-  MDBPopoverHeader,
-  MDBTooltip
-} from 'mdbreact';
+import { Fa, MDBBtn, MDBPopoverBody, MDBPopoverHeader, MDBTooltip } from 'mdbreact';
 import PropTypes from 'prop-types';
 
 const Rating = props => {
@@ -109,152 +103,139 @@ const Rating = props => {
   let renderedIcons = [];
 
   if (data.length) {
-    renderedIcons = data.map(
-      (
-        { icon = 'star', tooltip, far, size, choosed: _, ...itemAttributes },
-        index
-      ) => {
-        const isChoosed = choosed.index !== null;
-        const isHovered = hovered !== null;
-        const isFormOpened = openedForm !== null;
-        const isFormActive = feedback && isFormOpened && openedForm === index;
+    renderedIcons = data.map(({ icon = 'star', tooltip, far, size, choosed: _, ...itemAttributes }, index) => {
+      const isChoosed = choosed.index !== null;
+      const isHovered = hovered !== null;
+      const isFormOpened = openedForm !== null;
+      const isFormActive = feedback && isFormOpened && openedForm === index;
 
-        let toFill = false;
+      let toFill = false;
 
-        if (isChoosed) {
-          toFill = index <= choosed.index;
+      if (isChoosed) {
+        toFill = index <= choosed.index;
 
-          if (isHovered && hovered > choosed.index) {
-            toFill = index <= hovered;
-          }
-        } else if (isHovered) {
+        if (isHovered && hovered > choosed.index) {
           toFill = index <= hovered;
         }
+      } else if (isHovered) {
+        toFill = index <= hovered;
+      }
 
-        let fillColor = '';
+      let fillColor = '';
 
-        if (fillColors) {
-          let current = null;
+      if (fillColors) {
+        let current = null;
 
-          if (isChoosed) {
-            current = choosed.index;
-            if (isHovered) {
-              current = hovered;
-            }
-          } else if (isHovered) {
+        if (isChoosed) {
+          current = choosed.index;
+          if (isHovered) {
             current = hovered;
           }
-
-          const isCustom = Array.isArray(fillColors);
-
-          const defaultFillColors = [
-            'oneStar',
-            'twoStars',
-            'threeStars',
-            'fourStars',
-            'fiveStars'
-          ];
-
-          if (current !== null) {
-            fillColor = isCustom
-              ? fillColors[current]
-              : defaultFillColors[current];
-          }
+        } else if (isHovered) {
+          current = hovered;
         }
 
-        const iconClasses = classNames(
-          'py-2 px-1 rate-popover',
-          toFill && (fillColors ? fillColor : fillClassName),
-          iconClassName
-        );
+        const isCustom = Array.isArray(fillColors);
 
-        let renderIcon = icon;
+        const defaultFillColors = ['oneStar', 'twoStars', 'threeStars', 'fourStars', 'fiveStars'];
 
-        if (iconFaces) {
-          const faces = ['angry', 'frown', 'meh', 'smile', 'laugh'];
-          renderIcon = 'meh-blank';
+        if (current !== null) {
+          fillColor = isCustom ? fillColors[current] : defaultFillColors[current];
+        }
+      }
 
-          if (isChoosed && index <= choosed.index) {
-            renderIcon = faces[choosed.index];
+      const iconClasses = classNames(
+        'py-2 px-1 rate-popover',
+        toFill && (fillColors ? fillColor : fillClassName),
+        iconClassName
+      );
 
-            if (isHovered) {
-              renderIcon = faces[hovered];
-            }
-          } else if (isHovered && index <= hovered) {
+      let renderIcon = icon;
+
+      if (iconFaces) {
+        const faces = ['angry', 'frown', 'meh', 'smile', 'laugh'];
+        renderIcon = 'meh-blank';
+
+        if (isChoosed && index <= choosed.index) {
+          renderIcon = faces[choosed.index];
+
+          if (isHovered) {
             renderIcon = faces[hovered];
           }
+        } else if (isHovered && index <= hovered) {
+          renderIcon = faces[hovered];
         }
+      }
 
-        let tooltipContent = tooltip;
+      let tooltipContent = tooltip;
 
-        if (isFormActive) {
-          tooltipContent = (
-            <form
-              onSubmit={e => {
-                submitHandler(e, tooltip, openedForm + 1, feedbackValue);
-                onCloseHanlder();
-              }}
-            >
-              <MDBPopoverHeader>{tooltip}</MDBPopoverHeader>
-              <MDBPopoverBody>
-                <textarea
-                  type='text'
-                  className='md-textarea form-control py-0'
-                  value={feedbackValue}
-                  onChange={feedbackValueHandler}
-                  // style={{ resize: 'none' }}
-                />
-                <div className='d-flex align-items-center justify-content-around mt-2'>
-                  <MDBBtn type='submit' color='primary' size='sm'>
-                    Submit!
-                  </MDBBtn>
-                  <button
-                    onMouseDown={onCloseHanlder}
-                    style={{
-                      backgroundColor: '#fff',
-                      border: 'none',
-                      padding: '0.5rem 1.6rem'
-                    }}
-                  >
-                    Close
-                  </button>
-                </div>
-              </MDBPopoverBody>
-            </form>
-          );
-        }
-
-        return (
-          <MDBTooltip
-            key={tooltip}
-            domElement
-            placement='top'
-            tag='span'
-            popover={isFormActive}
-            isVisible={isFormActive}
-            clickable={isFormActive}
+      if (isFormActive) {
+        tooltipContent = (
+          <form
+            onSubmit={e => {
+              submitHandler(e, tooltip, openedForm + 1, feedbackValue);
+              onCloseHanlder();
+            }}
           >
-            <span>
-              <Fa
-                style={{ cursor: 'pointer' }}
-                {...commonAttributes}
-                {...itemAttributes}
-                icon={renderIcon}
-                size={size || iconSize}
-                far={far || iconRegular}
-                className={iconClasses}
-                data-index={index}
-                data-original-title={tooltip}
-                onMouseEnter={() => handleMouseEnter(tooltip, index)}
-                onMouseLeave={handleMouseLeave}
-                onClick={e => handleClick(tooltip, index, e)}
+            <MDBPopoverHeader>{tooltip}</MDBPopoverHeader>
+            <MDBPopoverBody>
+              <textarea
+                type='text'
+                className='md-textarea form-control py-0'
+                value={feedbackValue}
+                onChange={feedbackValueHandler}
+                // style={{ resize: 'none' }}
               />
-            </span>
-            <div style={{ userSelect: 'none' }}>{tooltipContent}</div>
-          </MDBTooltip>
+              <div className='d-flex align-items-center justify-content-around mt-2'>
+                <MDBBtn type='submit' color='primary' size='sm'>
+                  Submit!
+                </MDBBtn>
+                <button
+                  onMouseDown={onCloseHanlder}
+                  style={{
+                    backgroundColor: '#fff',
+                    border: 'none',
+                    padding: '0.5rem 1.6rem'
+                  }}
+                >
+                  Close
+                </button>
+              </div>
+            </MDBPopoverBody>
+          </form>
         );
       }
-    );
+
+      return (
+        <MDBTooltip
+          key={tooltip}
+          domElement
+          placement='top'
+          tag='span'
+          popover={isFormActive}
+          isVisible={isFormActive}
+          clickable={isFormActive}
+        >
+          <span>
+            <Fa
+              style={{ cursor: 'pointer' }}
+              {...commonAttributes}
+              {...itemAttributes}
+              icon={renderIcon}
+              size={size || iconSize}
+              far={far || iconRegular}
+              className={iconClasses}
+              data-index={index}
+              data-original-title={tooltip}
+              onMouseEnter={() => handleMouseEnter(tooltip, index)}
+              onMouseLeave={handleMouseLeave}
+              onClick={e => handleClick(tooltip, index, e)}
+            />
+          </span>
+          <div style={{ userSelect: 'none' }}>{tooltipContent}</div>
+        </MDBTooltip>
+      );
+    });
   }
 
   return (
@@ -275,10 +256,7 @@ Rating.propTypes = {
   ),
   feedback: PropTypes.bool,
   fillClassName: PropTypes.string,
-  fillColors: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.arrayOf(PropTypes.string)
-  ]),
+  fillColors: PropTypes.oneOfType([PropTypes.bool, PropTypes.arrayOf(PropTypes.string)]),
   getValue: PropTypes.func,
   iconClassName: PropTypes.string,
   iconFaces: PropTypes.bool,

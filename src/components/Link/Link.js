@@ -22,7 +22,14 @@ const Link = props => {
   };
 
   return (
-    <LinkRouter data-test='link-router' className={classes} onMouseUp={handleClick} onTouchStart={handleClick} to={to} {...attributes}>
+    <LinkRouter
+      data-test='link-router'
+      className={classes}
+      onMouseUp={handleClick}
+      onTouchStart={handleClick}
+      to={to}
+      {...attributes}
+    >
       {children}
       {disabled ? false : <Waves cursorPos={cursorPos} />}
     </LinkRouter>

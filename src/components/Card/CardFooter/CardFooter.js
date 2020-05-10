@@ -3,18 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const CardFooter = props => {
-  const {
-    className,
-    tag: Tag,
-    color,
-    children,
-    text,
-    border,
-    transparent,
-    small,
-    muted,
-    ...attributes
-  } = props;
+  const { className, tag: Tag, color, children, text, border, transparent, small, muted, ...attributes } = props;
 
   const classes = classNames(
     {

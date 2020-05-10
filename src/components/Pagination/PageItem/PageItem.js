@@ -3,14 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const PageItem = props => {
-  const {
-    active,
-    className,
-    children,
-    disabled,
-    tag: Tag,
-    ...attributes
-  } = props;
+  const { active, className, children, disabled, tag: Tag, ...attributes } = props;
 
   const classes = classNames(
     {

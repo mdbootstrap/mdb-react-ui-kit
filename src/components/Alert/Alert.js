@@ -21,11 +21,7 @@ const Alert = props => {
 
   const { className, tag: Tag, color, children, dismiss } = props;
 
-  const alertClasses = classNames(
-    'alert',
-    color && `alert-${color}`,
-    className
-  );
+  const alertClasses = classNames('alert', color && `alert-${color}`, className);
 
   let alertComponent;
 
@@ -40,13 +36,7 @@ const Alert = props => {
       >
         <Tag data-test='alert' className={alertClasses} role='alert'>
           {children}
-          <button
-            onClick={closeAlert}
-            type='button'
-            className='close'
-            data-dismiss='alert'
-            aria-label='Close'
-          >
+          <button onClick={closeAlert} type='button' className='close' data-dismiss='alert' aria-label='Close'>
             <span aria-hidden='true'>&times;</span>
           </button>
         </Tag>
@@ -70,16 +60,7 @@ Alert.defaultProps = {
 
 Alert.propTypes = {
   className: PropTypes.string,
-  color: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'success',
-    'danger',
-    'warning',
-    'info',
-    'light',
-    'dark'
-  ]),
+  color: PropTypes.oneOf(['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']),
   onClose: PropTypes.func,
   onClosed: PropTypes.func,
   tag: PropTypes.string

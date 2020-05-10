@@ -14,20 +14,11 @@ const TableFoot = props => {
   });
 
   return (
-    <thead
-      data-test='table-foot'
-      {...attributes}
-      className={classes || undefined}
-    >
+    <thead data-test='table-foot' {...attributes} className={classes || undefined}>
       {columns && (
         <tr>
           {columns.map(col => (
-            <th
-              key={col.field}
-              className={
-                col.hasOwnProperty('minimal') ? `th-${col.minimal}` : undefined
-              }
-            >
+            <th key={col.field} className={col.hasOwnProperty('minimal') ? `th-${col.minimal}` : undefined}>
               {col.label}
             </th>
           ))}

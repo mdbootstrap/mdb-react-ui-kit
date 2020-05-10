@@ -40,12 +40,7 @@ const Progress = ({
   const computedWrapperStyle = { ...wrapperStyle, height: computedHeight };
 
   return (
-    <div
-      data-test='progress'
-      {...attributes}
-      className={progressClasses}
-      style={computedWrapperStyle}
-    >
+    <div data-test='progress' {...attributes} className={progressClasses} style={computedWrapperStyle}>
       <div
         className={progressBarClasses}
         style={{ width: `${percent}%`, height: computedHeight }}

@@ -23,6 +23,7 @@ import BadgePage from './pages/BadgePage';
 import BreadcrumbPage from './pages/BreadcrumbPage';
 import FaPage from './pages/FaPage';
 import DatatablePage from './pages/DatatablePage';
+import DatatablePageV5 from './pages/DatatablePage-2';
 import DatatableApiPage from './pages/DatatableApiPage';
 import ModalPage from './pages/ModalPage';
 import ModalFormPage from './pages/ModalFormPage';
@@ -77,7 +78,6 @@ class Routes extends React.Component {
         <Route exact path='/modals' component={ModalsNavPage} />
         <Route exact path='/navigation' component={NavigationNavPage} />
         <Route exact path='/tables' component={TablesNavPage} />
-
         {/* FREE */}
         <Route path='/addons/iframe' component={IframePage} />
         <Route path='/addons/edge-header' component={EdgeHeaderPage} />
@@ -129,12 +129,12 @@ class Routes extends React.Component {
         <Route path='/tables/table-styles' component={TableStylesPage} />
         <Route path='/tables/datatable-api' component={DatatableApiPage} />
         <Route path='/tables/datatable' component={DatatablePage} />
-
+        <Route path='/tables/datatable-2' component={DatatablePageV5} />
         
         <Route
           render={function() {
             return <h1>Not Found</h1>;
-          }} 
+          }}
         />
       </Switch>
     );

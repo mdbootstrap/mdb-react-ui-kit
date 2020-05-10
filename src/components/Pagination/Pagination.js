@@ -3,15 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const Pagination = props => {
-  const {
-    children,
-    circle,
-    className,
-    color,
-    tag: Tag,
-    size,
-    ...attributes
-  } = props;
+  const { children, circle, className, color, tag: Tag, size, ...attributes } = props;
 
   const classes = classNames(
     {

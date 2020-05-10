@@ -1,6 +1,6 @@
 {
   "name": "mdbreact",
-  "version": "4.26.0",
+  "version": "4.26.1",
   "author": "MDBootstrap",
   "repository": "https://github.com/mdbootstrap/React-Bootstrap-with-Material-Design",
   "main": "dist/mdbreact.js",
@@ -56,7 +56,8 @@
     "react-router-dom": "^5.1.2",
     "react-scroll": "1.7.16",
     "react-toastify": "5.5.0",
-    "react-transition-group": "4.3.0"
+    "react-transition-group": "4.3.0",
+    "sass-loader": "^8.0.2"
   },
   "peerDependencies": {
     "react": "*",
@@ -95,7 +96,7 @@
     "lint-staged": "^9.5.0",
     "node-sass": "4.13.1",
     "prettier": "^1.19.1",
-    "rollup": "^1.29.0",
+    "rollup": "1.29.0",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-dts": "1.2.0",

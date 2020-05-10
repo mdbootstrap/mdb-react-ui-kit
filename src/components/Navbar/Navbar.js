@@ -77,14 +77,7 @@ class Navbar extends Component {
       className
     );
 
-    return (
-      <Tag
-        data-test='navbar'
-        {...attributes}
-        className={classes}
-        role='navigation'
-      />
-    );
+    return <Tag data-test='navbar' {...attributes} className={classes} role='navigation' />;
   }
 }
 

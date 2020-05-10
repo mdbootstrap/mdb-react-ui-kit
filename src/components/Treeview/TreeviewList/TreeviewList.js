@@ -43,64 +43,36 @@ const TreeviewList = props => {
     disabled && disabledClassName
   );
 
-  const classes = classNames(
-    theme && `treeview-${theme}-items px-0`,
-    className
-  );
+  const classes = classNames(theme && `treeview-${theme}-items px-0`, className);
 
   const iconClasses = classNames(theme ? 'mx-2' : 'mr-2');
 
   const child = children && (
-    <ul
-      className={nestedClasses}
-      style={{ height: 'calc(100% + 0.6rem)', marginLeft: '2px' }}
-    >
+    <ul className={nestedClasses} style={{ height: 'calc(100% + 0.6rem)', marginLeft: '2px' }}>
       {children}
     </ul>
   );
 
   const collapse = theme && <MDBCollapse isOpen={opened}>{child}</MDBCollapse>;
 
-  const iconArrow =
-    theme !== 'colorful'
-      ? 'angle-right'
-      : opened
-      ? 'minus-circle'
-      : 'plus-circle';
+  const iconArrow = theme !== 'colorful' ? 'angle-right' : opened ? 'minus-circle' : 'plus-circle';
 
   const arrow = children && (
-    <MDBIcon
-      icon={iconArrow}
-      rotate={theme !== 'colorful' ? (opened ? '90 down' : '0') : ''}
-      className='rotate'
-    />
+    <MDBIcon icon={iconArrow} rotate={theme !== 'colorful' ? (opened ? '90 down' : '0') : ''} className='rotate' />
   );
 
   const btn = children && (
-    <MDBBtn
-      flat
-      className='m-0 py-0 px-1 mr-1 z-depth-0'
-      onClick={handleSwitch}
-    >
+    <MDBBtn flat className='m-0 py-0 px-1 mr-1 z-depth-0' onClick={handleSwitch}>
       {arrow}
     </MDBBtn>
   );
 
   return (
     <Tag data-test='treeview-list' {...attributes} className={classes}>
-      <span
-        className={folder}
-        onClick={!disabled && theme ? handleSwitch : null}
-      >
+      <span className={folder} onClick={!disabled && theme ? handleSwitch : null}>
         {theme ? arrow : btn}
         <span>
-          <MDBIcon
-            className={iconClasses}
-            fab={fab}
-            fal={fal}
-            far={far}
-            icon={icon}
-          />
+          <MDBIcon className={iconClasses} fab={fab} fal={fal} far={far} icon={icon} />
           {title}
         </span>
       </span>

@@ -4,16 +4,7 @@ import classNames from 'classnames';
 import Fa from '../../Fa';
 
 const Control = props => {
-  const {
-    className,
-    direction,
-    iconLeft,
-    iconRight,
-    multiItem,
-    onClick,
-    tag: Tag,
-    testimonial
-  } = props;
+  const { className, direction, iconLeft, iconRight, multiItem, onClick, tag: Tag, testimonial } = props;
 
   let text;
 
@@ -29,12 +20,7 @@ const Control = props => {
 
   if (testimonial) {
     const arrow = direction === 'prev' ? 'left' : 'right';
-    classes = classNames(
-      `carousel-control-${direction}`,
-      arrow,
-      'carousel-control',
-      className
-    );
+    classes = classNames(`carousel-control-${direction}`, arrow, 'carousel-control', className);
     caretClasses = classNames(`icon-${direction}`);
   }
 
@@ -43,12 +29,7 @@ const Control = props => {
   }
 
   return (
-    <Tag
-      data-test='carousel-control'
-      className={classes}
-      data-slide={direction}
-      onClick={onClick}
-    >
+    <Tag data-test='carousel-control' className={classes} data-slide={direction} onClick={onClick}>
       {iconLeft ? (
         <Fa icon='chevron-left' />
       ) : iconRight ? (

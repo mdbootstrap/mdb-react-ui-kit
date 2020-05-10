@@ -2,9 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ni = require('os').networkInterfaces();
 const ip = Object.keys(ni)
-  .map(interf =>
-    ni[interf].map(o => !o.internal && o.family === 'IPv4' && o.address)
-  )
+  .map(interf => ni[interf].map(o => !o.internal && o.family === 'IPv4' && o.address))
   .reduce((a, b) => a.concat(b))
   .filter(o => o)[0];
 
@@ -29,6 +27,7 @@ const config = {
         use: ['babel-loader']
       },
       { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+      { test: /\.s(a|c)ss$/, use: ['style-loader', 'css-loader', 'sass-loader'] },
       { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader' },
       { test: /\.(woff|woff2)$/, loader: 'url-loader?prefix=font/&limit=5000' },
       {

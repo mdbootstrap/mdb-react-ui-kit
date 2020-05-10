@@ -18,11 +18,7 @@ const FormInline = props => {
 
   const { className, waves, children, ...attributes } = props;
 
-  const classes = classNames(
-    'form-inline',
-    waves && 'Ripple-parent',
-    className
-  );
+  const classes = classNames('form-inline', waves && 'Ripple-parent', className);
 
   return (
     <form

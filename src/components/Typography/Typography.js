@@ -32,11 +32,7 @@ class Typography extends React.Component {
       className
     );
     const bc = classNames('blockquote', bqColor && `bq-${bqColor}`, className);
-    const notes = classNames(
-      'note',
-      noteColor && `note-${noteColor}`,
-      className
-    );
+    const notes = classNames('note', noteColor && `note-${noteColor}`, className);
     const isEmptyClass = classes !== '' ? classes : null;
 
     if (blockquote) {

@@ -44,9 +44,7 @@ class Dropdown extends Component {
   };
 
   addEvents = () => {
-    ['click', 'touchstart', 'keyup'].forEach(event =>
-      document.addEventListener(event, this.handleDocumentClick, true)
-    );
+    ['click', 'touchstart', 'keyup'].forEach(event => document.addEventListener(event, this.handleDocumentClick, true));
   };
 
   removeEvents = () => {
@@ -63,7 +61,9 @@ class Dropdown extends Component {
     const TAB = keyCode === tab;
     const KEYUP = type === 'keyup';
 
-    if (MOUSE_RIGHT_CLICK || (KEYUP && !TAB)) {return;}
+    if (MOUSE_RIGHT_CLICK || (KEYUP && !TAB)) {
+      return;
+    }
 
     const container = this.getContainer();
 
@@ -117,7 +117,9 @@ class Dropdown extends Component {
 
     e.preventDefault();
 
-    if (disabled) {return;}
+    if (disabled) {
+      return;
+    }
 
     const container = this.getContainer();
 
@@ -133,9 +135,7 @@ class Dropdown extends Component {
       return;
     }
 
-    const items = container.querySelectorAll(
-      '.dropdown-menu .dropdown-item:not(.disabled)'
-    );
+    const items = container.querySelectorAll('.dropdown-menu .dropdown-item:not(.disabled)');
 
     items.length && this.handleFocus(e, items);
   };
@@ -146,15 +146,7 @@ class Dropdown extends Component {
   };
 
   render() {
-    const {
-      className,
-      children,
-      dropup,
-      group,
-      size,
-      dropright,
-      dropleft
-    } = omit(this.props, ['toggle', 'disabled']);
+    const { className, children, dropup, group, size, dropright, dropleft } = omit(this.props, ['toggle', 'disabled']);
 
     const { isOpen } = this.state;
 
@@ -172,11 +164,7 @@ class Dropdown extends Component {
     );
     return (
       <Manager>
-        <div
-          data-test='dropdown'
-          className={classes}
-          onKeyDown={this.handleKeyDown}
-        >
+        <div data-test='dropdown' className={classes} onKeyDown={this.handleKeyDown}>
           {children}
         </div>
       </Manager>

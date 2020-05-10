@@ -78,9 +78,7 @@ const Button = props => {
       disabled={disabled}
     >
       {children}
-      {!disabled && (
-        <Waves cursorPos={cursorPos} outline={outline} flat={flat || rounded} />
-      )}
+      {!disabled && <Waves cursorPos={cursorPos} outline={outline} flat={flat || rounded} />}
     </Tag>
   );
 };

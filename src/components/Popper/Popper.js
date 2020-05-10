@@ -17,11 +17,7 @@ class Popover extends React.Component {
     const { showPopper } = this.state;
     const { isVisible, onChange } = this.props;
     this.setPopperJS();
-    if (
-      prevProps.isVisible !== isVisible &&
-      isVisible !== showPopper &&
-      showPopper !== prevProps.showPopper
-    ) {
+    if (prevProps.isVisible !== isVisible && isVisible !== showPopper && showPopper !== prevProps.showPopper) {
       this.setState({ showPopper: isVisible });
     }
     if (onChange && showPopper !== prevState.showPopper) {
@@ -146,11 +142,7 @@ class Popover extends React.Component {
           <Wrapper.type
             {...Wrapper.props}
             onMouseEnter={() => !clickable && this.doToggle(true)}
-            onMouseLeave={() =>
-              !clickable &&
-              !popover &&
-              setTimeout(() => this.doToggle(false), 0)
-            }
+            onMouseLeave={() => !clickable && !popover && setTimeout(() => this.doToggle(false), 0)}
             onTouchStart={() => !clickable && this.doToggle(true)}
             onTouchEnd={() => !clickable && !popover && this.doToggle(false)}
             onMouseDown={() => {
@@ -165,11 +157,7 @@ class Popover extends React.Component {
           <Wrapper.type
             {...Wrapper.props}
             onMouseEnter={() => !clickable && this.doToggle(true)}
-            onMouseLeave={() =>
-              !clickable &&
-              !popover &&
-              setTimeout(() => this.doToggle(false), 0)
-            }
+            onMouseLeave={() => !clickable && !popover && setTimeout(() => this.doToggle(false), 0)}
             onTouchStart={() => !clickable && this.doToggle(true)}
             onTouchEnd={() => !clickable && !popover && this.doToggle(false)}
             onMouseDown={() => clickable && this.doToggle(!showPopper)}
@@ -179,15 +167,8 @@ class Popover extends React.Component {
           />
         )}
         {showPopper && (
-          <Tag
-            ref={ref => (this.popoverWrapperRef = ref)}
-            className={classes}
-            data-popper={id}
-            {...attributes}
-          >
-            <Popper.type
-              className={classNames(popperClasses, Popper.props.className)}
-            >
+          <Tag ref={ref => (this.popoverWrapperRef = ref)} className={classes} data-popper={id} {...attributes}>
+            <Popper.type className={classNames(popperClasses, Popper.props.className)}>
               {Popper.props.children}
             </Popper.type>
             <span x-arrow='' className={classNames('popover_arrow')}></span>

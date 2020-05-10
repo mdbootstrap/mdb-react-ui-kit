@@ -3,20 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const Col = props => {
-  const {
-    xs,
-    sm,
-    md,
-    lg,
-    xl,
-    top,
-    bottom,
-    middle,
-    size,
-    className,
-    tag: Tag,
-    ...attributes
-  } = props;
+  const { xs, sm, md, lg, xl, top, bottom, middle, size, className, tag: Tag, ...attributes } = props;
 
   const classes = classNames(
     size && `col-${size}`,

@@ -5,11 +5,7 @@ import classNames from 'classnames';
 const Jumbotron = props => {
   const { className, children, fluid, ...attributes } = props;
 
-  const classes = classNames(
-    'jumbotron',
-    fluid ? 'jumbotron-fluid' : false,
-    className
-  );
+  const classes = classNames('jumbotron', fluid ? 'jumbotron-fluid' : false, className);
 
   return (
     <div data-test='jumbotron' {...attributes} className={classes}>

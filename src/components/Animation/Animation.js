@@ -41,13 +41,10 @@ class Animation extends Component {
     const currentRef = this.elemRef.current;
 
     if (
-      (windowHeight + scroll - 100 > this.getOffset(currentRef) &&
-        scroll < this.getOffset(currentRef)) ||
-      (windowHeight + scroll - 100 >
-        this.getOffset(currentRef) + currentRef.clientHeight &&
+      (windowHeight + scroll - 100 > this.getOffset(currentRef) && scroll < this.getOffset(currentRef)) ||
+      (windowHeight + scroll - 100 > this.getOffset(currentRef) + currentRef.clientHeight &&
         scroll < this.getOffset(currentRef) + currentRef.clientHeight) ||
-      (windowHeight + scroll === docHeight &&
-        this.getOffset(currentRef) + 100 > docHeight)
+      (windowHeight + scroll === docHeight && this.getOffset(currentRef) + 100 > docHeight)
     ) {
       this.setState({
         isVisible: true,
@@ -139,12 +136,7 @@ class Animation extends Component {
 
     const getAllStyles = Object.assign(styleObject, style);
 
-    const classes = classNames(
-      isVisible && 'animated',
-      type && type,
-      infinite && 'infinite',
-      className
-    );
+    const classes = classNames(isVisible && 'animated', type && type, infinite && 'infinite', className);
 
     return (
       <Tag
@@ -165,10 +157,7 @@ class Animation extends Component {
 }
 
 Animation.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]),
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
   className: PropTypes.string,
   count: PropTypes.number,
   delay: PropTypes.string,

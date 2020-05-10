@@ -3,15 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const CardHeader = props => {
-  const {
-    border,
-    className,
-    color,
-    tag: Tag,
-    text,
-    transparent,
-    ...attributes
-  } = props;
+  const { border, className, color, tag: Tag, text, transparent, ...attributes } = props;
 
   const classes = classNames(
     {

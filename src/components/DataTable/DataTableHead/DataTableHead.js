@@ -3,16 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const DataTableHead = props => {
-  const {
-    color,
-    columns,
-    handleSort,
-    scrollX,
-    scrollY,
-    sortable,
-    sorted,
-    textWhite
-  } = props;
+  const { color, columns, handleSort, scrollX, scrollY, sortable, sorted, textWhite } = props;
 
   const theadClasses = classNames(
     color && (color !== 'dark' && color !== 'light' ? color : `thead-${color}`),
@@ -44,9 +35,7 @@ const DataTableHead = props => {
                 col.hasOwnProperty('minimal') ? `th-${col.minimal}` : null,
                 sortable &&
                   col.sort !== 'disabled' &&
-                  (sorted && col.sort
-                    ? `sorting_${col.sort === 'asc' ? 'desc' : 'asc'}`
-                    : 'sorting')
+                  (sorted && col.sort ? `sorting_${col.sort === 'asc' ? 'desc' : 'asc'}` : 'sorting')
               )}
               {...col.attributes}
             >

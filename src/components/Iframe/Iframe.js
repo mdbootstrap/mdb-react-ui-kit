@@ -17,7 +17,9 @@ class Iframe extends Component {
 
     if (ratio) {
       const newRatio = ratio.split('by')[0] / ratio.split('by')[1];
-      if (typeof ratioNumber === 'number') {ratioNumber = newRatio;}
+      if (typeof ratioNumber === 'number') {
+        ratioNumber = newRatio;
+      }
     }
 
     if (width && height) {
@@ -55,7 +57,7 @@ class Iframe extends Component {
       width
     } = this.props;
 
-    const { stateWidth, stateHeight } = this.state
+    const { stateWidth, stateHeight } = this.state;
 
     const classes = classNames('embed-responsive-item', className);
     const wrapperClasses = classNames(

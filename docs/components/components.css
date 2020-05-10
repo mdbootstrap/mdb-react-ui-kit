@@ -1,0 +1,25 @@
+.result-demo {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0;
+  border-top: none;
+  padding: 15px;
+  padding-top: 50px;
+  color: grey;
+  background-color: #f8f8f8;
+  display: block;
+  border-radius: 5px;
+}
+
+.result-demo:before {
+  display: block;
+  content: "Result:";
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 5px 15px;
+  width: 100%;
+  background-color: #e0e0e0;
+  font-weight: 400;
+}

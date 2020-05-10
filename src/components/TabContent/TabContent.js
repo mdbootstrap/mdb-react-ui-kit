@@ -22,9 +22,7 @@ class TabContent extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    return prevState.activeItem !== nextProps.activeItem
-      ? { activeItem: nextProps.activeItem }
-      : null;
+    return prevState.activeItem !== nextProps.activeItem ? { activeItem: nextProps.activeItem } : null;
   }
 
   render() {

@@ -9,7 +9,9 @@ const TableBody = props => {
     'text-white': textWhite
   });
   const renderTD = (field, key, array, row) => {
-    if (field === 'clickEvent') {return null;}
+    if (field === 'clickEvent') {
+      return null;
+    }
     if (field !== 'colspan') {
       if (row.message) {
         return (
@@ -21,9 +23,9 @@ const TableBody = props => {
         );
       } else {
         return (
-          (array[key + 1] !== 'colspan' && row[field] !== null && (
-            <td key={key}>{row[field]}</td>
-          )) || <td key={key}></td>
+          (array[key + 1] !== 'colspan' && row[field] !== null && <td key={key}>{row[field]}</td>) || (
+            <td key={key}></td>
+          )
         );
       }
     }
@@ -35,26 +37,13 @@ const TableBody = props => {
   };
 
   return (
-    <tbody
-      data-test='table-body'
-      {...attributes}
-      className={classes || undefined}
-    >
+    <tbody data-test='table-body' {...attributes} className={classes || undefined}>
       {rows &&
         rows.map((row, index) => (
-          <tr
-            onClick={
-              row.hasOwnProperty('clickEvent') ? row.clickEvent : undefined
-            }
-            key={index}
-          >
+          <tr onClick={row.hasOwnProperty('clickEvent') ? row.clickEvent : undefined} key={index}>
             {columns
-              ? columns.map(({ field }, key, array) =>
-                  renderTD(field, key, array, row)
-                )
-              : Object.keys(row).map((field, key, array) =>
-                  renderTD(field, key, array, row)
-                )}
+              ? columns.map(({ field }, key, array) => renderTD(field, key, array, row))
+              : Object.keys(row).map((field, key, array) => renderTD(field, key, array, row))}
           </tr>
         ))}
       {children}

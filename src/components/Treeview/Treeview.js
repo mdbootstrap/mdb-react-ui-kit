@@ -21,22 +21,9 @@ const Treeview = props => {
     return target;
   };
 
-  const {
-    theme,
-    children,
-    className,
-    getValue,
-    header,
-    listClassName,
-    tag: Tag,
-    ...attributes
-  } = props;
+  const { theme, children, className, getValue, header, listClassName, tag: Tag, ...attributes } = props;
 
-  const classes = classNames(
-    'border',
-    theme ? `treeview-${theme}` : 'treeview',
-    className
-  );
+  const classes = classNames('border', theme ? `treeview-${theme}` : 'treeview', className);
   const ulClasses = classNames(
     'list-unstyled',
     header ? 'pb-2 mb-1' : 'py-2 my-1',

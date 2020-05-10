@@ -3,20 +3,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const CarouselInner = props => {
-  const {
-    active,
-    children,
-    childrenCount,
-    className,
-    tag: Tag,
-    ...attributes
-  } = props;
+  const { active, children, childrenCount, className, tag: Tag, ...attributes } = props;
 
-  const classes = classNames(
-    'carousel-inner',
-    active ? 'active' : '',
-    className
-  );
+  const classes = classNames('carousel-inner', active ? 'active' : '', className);
   return (
     <Tag data-test='carousel-inner' {...attributes} className={classes}>
       {children}

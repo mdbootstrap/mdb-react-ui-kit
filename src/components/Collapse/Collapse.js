@@ -34,8 +34,7 @@ class Collapse extends Component {
     const { isOpen } = this.props;
     const { collapse } = this.state;
 
-    const willOpen =
-      typeof isOpen !== 'boolean' ? isOpen === prevState.id : isOpen;
+    const willOpen = typeof isOpen !== 'boolean' ? isOpen === prevState.id : isOpen;
 
     if (willOpen && collapse === HIDDEN) {
       this.openCollapse();
@@ -99,16 +98,7 @@ class Collapse extends Component {
   }
 
   render() {
-    const {
-      navbar,
-      children,
-      className,
-      isOpen,
-      delay,
-      onOpened,
-      onClosed,
-      ...attributes
-    } = this.props;
+    const { navbar, children, className, isOpen, delay, onOpened, onClosed, ...attributes } = this.props;
 
     const { collapse, height } = this.state;
     let collapseClass;
@@ -130,11 +120,7 @@ class Collapse extends Component {
         collapseClass = 'collapse';
     }
 
-    const classes = classNames(
-      collapseClass,
-      navbar ? 'navbar-collapse' : false,
-      className
-    );
+    const classes = classNames(collapseClass, navbar ? 'navbar-collapse' : false, className);
 
     const style = height === null ? null : { height };
 
@@ -157,10 +143,7 @@ class Collapse extends Component {
 Collapse.propTypes = {
   children: PropTypes.node,
   className: PropTypes.node,
-  delay: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.shape({ hide: PropTypes.number, show: PropTypes.number })
-  ]),
+  delay: PropTypes.oneOfType([PropTypes.number, PropTypes.shape({ hide: PropTypes.number, show: PropTypes.number })]),
   id: PropTypes.string,
   isOpen: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   navbar: PropTypes.bool,

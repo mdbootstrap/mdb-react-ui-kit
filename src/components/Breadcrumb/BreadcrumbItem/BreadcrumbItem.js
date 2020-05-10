@@ -20,17 +20,11 @@ const BreadcrumbItem = props => {
     ...attributes
   } = props;
 
-  const classes = classNames(
-    active ? 'active' : false,
-    icon && 'bc-icons',
-    'breadcrumb-item',
-    className
-  );
+  const classes = classNames(active ? 'active' : false, icon && 'bc-icons', 'breadcrumb-item', className);
 
   const iconClasses = classNames(appendIcon ? 'mx-2' : 'mr-2', iconClassName);
 
-  const WithBold = ({ children }) =>
-    bold ? <strong>{children}</strong> : children;
+  const WithBold = ({ children }) => (bold ? <strong>{children}</strong> : children);
 
   const WithIcon = () => {
     if (icon) {

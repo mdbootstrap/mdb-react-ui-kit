@@ -26,7 +26,14 @@ const NavLink = props => {
   const Tag = link ? MDBLink : NavLinkRouter;
 
   return (
-    <Tag data-test='nav-link' className={classes} onMouseUp={handleClick} onTouchStart={handleClick} to={to} {...attributes}>
+    <Tag
+      data-test='nav-link'
+      className={classes}
+      onMouseUp={handleClick}
+      onTouchStart={handleClick}
+      to={to}
+      {...attributes}
+    >
       {children}
       {disabled ? false : <Waves cursorPos={cursorPos} />}
     </Tag>

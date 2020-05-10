@@ -4,15 +4,7 @@ import classNames from 'classnames';
 
 const ModalHeader = props => {
   let closeButton;
-  const {
-    className,
-    children,
-    toggle,
-    tag: Tag,
-    closeAriaLabel,
-    titleClass,
-    ...attributes
-  } = props;
+  const { className, children, toggle, tag: Tag, closeAriaLabel, titleClass, ...attributes } = props;
 
   const classes = classNames('modal-header', className);
 
@@ -20,12 +12,7 @@ const ModalHeader = props => {
 
   if (toggle) {
     closeButton = (
-      <button
-        type='button'
-        onClick={toggle}
-        className='close'
-        aria-label={closeAriaLabel}
-      >
+      <button type='button' onClick={toggle} className='close' aria-label={closeAriaLabel}>
         <span aria-hidden='true'>{String.fromCharCode(215)}</span>
       </button>
     );

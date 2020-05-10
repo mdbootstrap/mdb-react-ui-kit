@@ -43,11 +43,7 @@ const InputGroup = ({
 
   const appendClassNames = classNames('input-group-append', appendClassName);
 
-  const textClassNames = classNames(
-    'input-group-text',
-    material && 'md-addon',
-    textClassName
-  );
+  const textClassNames = classNames('input-group-text', material && 'md-addon', textClassName);
 
   const handleChange = event => {
     event.persist();
@@ -62,19 +58,10 @@ const InputGroup = ({
           {label}
         </label>
       )}
-      <Tag
-        data-test='input-group'
-        {...attributes}
-        className={containerClassNames}
-        id={containerId}
-      >
+      <Tag data-test='input-group' {...attributes} className={containerClassNames} id={containerId}>
         {prepend && (
           <div className={prependClassNames}>
-            {typeof prepend === 'string' ? (
-              <span className={textClassNames}>{prepend}</span>
-            ) : (
-              prepend
-            )}
+            {typeof prepend === 'string' ? <span className={textClassNames}>{prepend}</span> : prepend}
           </div>
         )}
         {inputs || (
@@ -92,11 +79,7 @@ const InputGroup = ({
         )}
         {append && (
           <div className={appendClassNames}>
-            {typeof append === 'string' ? (
-              <span className={textClassNames}>{append}</span>
-            ) : (
-              append
-            )}
+            {typeof append === 'string' ? <span className={textClassNames}>{append}</span> : append}
           </div>
         )}
         {children}

@@ -3,16 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const ModalFooter = props => {
-  const {
-    className,
-    children,
-    center,
-    start,
-    end,
-    around,
-    between,
-    ...attributes
-  } = props;
+  const { className, children, center, start, end, around, between, ...attributes } = props;
 
   const classes = classNames('modal-footer', className, {
     'justify-content-start': start,

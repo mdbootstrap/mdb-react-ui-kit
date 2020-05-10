@@ -24,14 +24,7 @@ class CarouselItem extends Component {
   };
 
   render() {
-    let {
-      active,
-      children,
-      className,
-      itemId,
-      tag: Tag,
-      ...attributes
-    } = this.props;
+    let { active, children, className, itemId, tag: Tag, ...attributes } = this.props;
 
     let { slide, activeItem } = this.context;
 
@@ -61,12 +54,7 @@ class CarouselItem extends Component {
     }
 
     return (
-      <Tag
-        data-test='carousel-item'
-        {...attributes}
-        className={classes}
-        style={this.style}
-      >
+      <Tag data-test='carousel-item' {...attributes} className={classes} style={this.style}>
         {children}
       </Tag>
     );

@@ -29,6 +29,7 @@ import MDBCol from './components/Col';
 import MDBCollapse from './components/Collapse';
 import MDBContainer from './components/Container';
 import MDBDataTable from './components/DataTable';
+import MDBDataTableV5 from './components/DataTable/DataTableNew';
 import MDBDropdown from './components/Dropdown';
 import MDBDropdownItem from './components/Dropdown/DropdownItem';
 import MDBDropdownMenu from './components/Dropdown/DropdownMenu';
@@ -83,104 +84,4 @@ import MDBWaves from './components/Waves';
 //FREE
 
 
-
-
-
-
- //! Free components
-import MDBBtn from './components/Button';
-import MDBInput from './components/Input';
-
-
-export {
-  //FREE
-  MDBAlert,
-  MDBAnimation,
-  MDBBadge,
-  MDBBox,
-  MDBBreadcrumb,
-  MDBBreadcrumbItem,
-  MDBBtn,
-  MDBBtnGroup,
-  MDBBtnToolbar,
-  MDBIcon,
-  MDBCard,
-  MDBCardBody,
-  MDBCardFooter,
-  MDBCardGroup,
-  MDBCardHeader,
-  MDBCardImage,
-  MDBCardText,
-  MDBCardTitle,
-  MDBCardVideo,
-  MDBCarousel,
-  MDBCarouselCaption,
-  MDBCarouselControl,
-  MDBCarouselIndicator,
-  MDBCarouselIndicators,
-  MDBCarouselInner,
-  MDBCarouselItem,
-  MDBCloseIcon,
-  MDBCol,
-  MDBCollapse,
-  MDBContainer,
-  MDBDataTable,
-  MDBDropdown,
-  MDBDropdownItem,
-  MDBDropdownMenu,
-  MDBDropdownToggle,
-  MDBEdgeHeader,
-  MDBFooter,
-  MDBFormInline,
-  MDBFreeBird,
-  MDBHamburgerToggler,
-  MDBIframe,
-  MDBInput,
-  MDBInputGroup,
-  MDBInputNumeric,
-  MDBJumbotron,
-  MDBLink,
-  MDBListGroup,
-  MDBListGroupItem,
-  MDBMask,
-  MDBMedia,
-  MDBModal,
-  MDBModalBody,
-  MDBModalHeader,
-  MDBModalFooter,
-  MDBNav,
-  MDBNavbar,
-  MDBNavbarBrand,
-  MDBNavbarNav,
-  MDBNavbarToggler,
-  MDBNavItem,
-  MDBNavLink,
-  MDBNotification,
-  MDBPagination,
-  MDBPageItem,
-  MDBPageLink as MDBPageNav,
-  MDBPopper,
-  MDBPopper as MDBPopover,
-  MDBPopper as MDBTooltip,
-  MDBPopoverBody,
-  MDBPopoverHeader,
-  MDBProgress,
-  MDBRating,
-  MDBRow,
-  MDBTabContent,
-  MDBTabPane,
-  MDBTable,
-  MDBTableBody,
-  MDBTableFoot,
-  MDBTableHead,
-  MDBTreeview,
-  MDBTreeviewItem,
-  MDBTreeviewList,
-  MDBTypo,
-  MDBTypo as MDBTypography,
-  MDBView,
-  MDBWaves,
-  //FREE
-
-  
 };
