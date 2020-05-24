@@ -557,6 +557,7 @@ const DatatablePage = () => {
                   pagesAmount={4}
                   data={data()}
                   materialSearch={true}
+                  proSelect
                 />
               </MDBCardBody>
             </MDBCard>

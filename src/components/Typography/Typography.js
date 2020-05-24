@@ -61,9 +61,12 @@ class Typography extends React.Component {
 }
 
 Typography.propTypes = {
+  bgText: PropTypes.bool,
   blockquote: PropTypes.bool,
   bqColor: PropTypes.string,
+  bqFooter: PropTypes.bool,
   bqTitle: PropTypes.string,
+  children: PropTypes.bool,
   className: PropTypes.string,
   colorText: PropTypes.string,
   listInLine: PropTypes.bool,
@@ -72,6 +75,7 @@ Typography.propTypes = {
   noteColor: PropTypes.string,
   noteTitle: PropTypes.string,
   tag: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  text: PropTypes.string,
   variant: PropTypes.string
 };
 

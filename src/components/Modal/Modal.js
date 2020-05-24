@@ -8,7 +8,7 @@ import './Modal.css';
 
 class Modal extends Component {
   state = {
-    isOpen: this.props.isOpen || false
+    initialIsOpen: this.props.isOpen || false
   };
 
   modalContent = React.createRef();
@@ -25,8 +25,8 @@ class Modal extends Component {
     const { isOpen, overflowScroll } = this.props;
     const overflowStatement = overflowScroll ? 'overflow-y-scroll' : 'overflow-hidden';
 
-    if (prevState.isOpen !== isOpen) {
-      this.setState({ isOpen }, () => {
+    if (prevState.initialIsOpen !== isOpen) {
+      this.setState({ initialIsOpen: isOpen }, () => {
         if (isOpen) {
           document.body.classList.add(overflowStatement);
         } else {
@@ -91,7 +91,7 @@ class Modal extends Component {
       animation,
       backdrop,
       backdropClassName,
-      modalStylesWithoutBackdrop,
+      backdropTransitionTimeout,
       cascading,
       centered,
       children,
@@ -103,26 +103,59 @@ class Modal extends Component {
       fullHeight,
       id,
       inline,
+      isOpen,
+      keyboard,
       modalStyle,
+      modalStylesWithoutBackdrop,
+      modalTransitionTimeout,
       noClickableBodyWithoutBackdrop,
+      overflowScroll,
       position,
       role,
       side,
       size,
       tabIndex,
+      toggle,
       wrapClassName,
-      wrapperStyles
+      wrapperStyles,
+      zIndex,
+      ...attributes
     } = this.props;
 
-    const { isOpen } = this.state;
+    const { initialIsOpen } = this.state;
 
-    const timeout = fade ? 300 : 0;
+    const whichPosition = () => {
+      if (position === 'bottom-right') {
+        return { top: 'auto', bottom: 10, right: 10, left: 'auto' };
+      } else if (position === 'bottom-left') {
+        return { top: 'auto', bottom: 10, right: 'auto', left: 10 };
+      } else if (position === 'top-right') {
+        return { top: 10, bottom: 'auto', right: 10, left: 'auto' };
+      } else if (position === 'top-left') {
+        return { top: 10, bottom: 'auto', right: 'auto', left: 10 };
+      } else if (position === 'right') {
+        return { right: 0 };
+      } else if (position === 'left') {
+        return { left: 0 };
+      } else if (position === 'bottom') {
+        return { bottom: 0 };
+      } else if (position === 'top') {
+        return { top: 0 };
+      } else {
+        return { top: 0, bottom: 0, right: 0, left: 0 };
+      }
+    };
+
+    const timeout = fade ? modalTransitionTimeout : 0;
+    const backdropTimeout = fade ? backdropTransitionTimeout : 0;
+
     const removeBackdropClass = {
       position: 'fixed',
+      ...whichPosition(),
       ...modalStylesWithoutBackdrop
     };
 
-    const removeBackdropConditions = !backdrop && isOpen && !noClickableBodyWithoutBackdrop;
+    const removeBackdropConditions = !backdrop && initialIsOpen && !noClickableBodyWithoutBackdrop;
 
     const modalDialogClasses = classNames(
       {
@@ -155,13 +188,14 @@ class Modal extends Component {
     const modalAttributes = returnAttributes({
       style: {
         display: 'block',
-        position: removeBackdropConditions && 'relative',
+        position: removeBackdropConditions && 'fixed',
         width: removeBackdropConditions && 0
       },
       id,
       tabIndex,
       role,
-      'aria-hidden': 'true'
+      'aria-hidden': 'true',
+      ...attributes
     });
     const styles = removeBackdropConditions ? removeBackdropClass : {};
 
@@ -185,9 +219,9 @@ class Modal extends Component {
       <>
         {backdrop && (
           <Transition
-            timeout={timeout}
-            in={isOpen}
-            appear={isOpen}
+            timeout={backdropTimeout}
+            in={initialIsOpen}
+            appear={initialIsOpen}
             mountOnEnter
             unmountOnExit
             onEntered={node => this.handleOnEntered('backdrop', node)}
@@ -199,8 +233,8 @@ class Modal extends Component {
         )}
         <Transition
           timeout={timeout}
-          in={isOpen}
-          appear={isOpen}
+          in={initialIsOpen}
+          appear={initialIsOpen}
           mountOnEnter
           unmountOnExit
           onMouseDown={e => this.handleBackdropClick(e)}
@@ -217,7 +251,6 @@ class Modal extends Component {
 Modal.defaultProps = {
   autoFocus: true,
   backdrop: true,
-  modalStylesWithoutBackdrop: { top: 0, left: 0, right: 0, bottom: 0 },
   backdropTransitionTimeout: 150,
   disableBackdrop: false,
   disableFocusTrap: true,
@@ -235,8 +268,10 @@ Modal.defaultProps = {
 
 Modal.propTypes = {
   animation: PropTypes.string,
+  autoFocus: PropTypes.bool,
   backdrop: PropTypes.bool,
   backdropClassName: PropTypes.string,
+  backdropTransitionTimeout: PropTypes.number,
   cascading: PropTypes.bool,
   centered: PropTypes.bool,
   children: PropTypes.node,
@@ -250,9 +285,13 @@ Modal.propTypes = {
   hiddenModal: PropTypes.func,
   hideModal: PropTypes.func,
   id: PropTypes.string,
+  inline: PropTypes.bool,
+  isOpen: PropTypes.bool,
   keyboard: PropTypes.bool,
   modalClassName: PropTypes.string,
   modalStyle: PropTypes.string,
+  modalStylesWithoutBackdrop: PropTypes.object,
+  modalTransitionTimeout: PropTypes.number,
   noClickableBodyWithoutBackdrop: PropTypes.bool,
   overflowScroll: PropTypes.bool,
   position: PropTypes.string,
@@ -261,8 +300,10 @@ Modal.propTypes = {
   side: PropTypes.bool,
   size: PropTypes.string,
   tabIndex: PropTypes.string,
+  toggle: PropTypes.func,
   wrapClassName: PropTypes.string,
-  wrapperStyles: PropTypes.object
+  wrapperStyles: PropTypes.object,
+  zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 export default Modal;

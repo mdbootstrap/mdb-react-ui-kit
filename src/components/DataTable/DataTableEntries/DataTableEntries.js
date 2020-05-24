@@ -4,11 +4,6 @@ import DataTableSelectFree from '../DataTableSelect';
 
 
 
-/*
-// PRO-END
-import DataTableSelect from '../DataTableSelect';
-
-
 const DataTableEntries = props => {
   const {
     handleEntriesChange,

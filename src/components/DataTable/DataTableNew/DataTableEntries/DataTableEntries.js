@@ -3,17 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import DataTableSelectFree from '../DataTableSelect/DataTableSelect';
 
-// PRO-START
-import DataTableSelect from '../../../pro/DataTable/DataTableNew/DataTableSelect';
-// FREE-START
 
-/*
-// PRO-END
-import DataTableSelect from '../DataTableSelect';
-// PRO-START
-*/
-// FREE-END
-// PRO-END
 
 const DataTableEntries = props => {
   const {
@@ -44,18 +34,7 @@ const DataTableEntries = props => {
         />
       )}
 
-      {/* PRO-START */}
-      {paging && displayEntries && proSelect && (
-        <DataTableSelect
-          value={entries}
-          onChange={handleEntriesChange}
-          entries={entriesArr}
-          label={label}
-          barReverse={barReverse}
-          {...attributes}
-        />
-      )}
-      {/* PRO-END */}
+      
     </div>
   );
 };

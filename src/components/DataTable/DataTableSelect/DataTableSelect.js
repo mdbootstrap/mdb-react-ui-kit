@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const DataTableSelect = ({ value, onChange, entries, label }) => {
+const DataTableSelect = ({ value, onChange, entries, label, barReverse }) => {
   const getValue = e => {
     const value = parseInt(e.target.value, 10);
     onChange(value);
@@ -30,11 +30,7 @@ const DataTableSelect = ({ value, onChange, entries, label }) => {
 
 DataTableSelect.propTypes = {
   entries: PropTypes.arrayOf(PropTypes.number).isRequired,
-  label: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.object
-  ]).isRequired,
+  label: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.object]).isRequired,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.number.isRequired
 };

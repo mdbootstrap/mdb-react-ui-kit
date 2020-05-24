@@ -82,6 +82,7 @@ const TreeviewList = props => {
 };
 
 TreeviewList.propTypes = {
+  children: PropTypes.object,
   className: PropTypes.string,
   disabled: PropTypes.bool,
   disabledClassName: PropTypes.string,
@@ -90,7 +91,8 @@ TreeviewList.propTypes = {
   far: PropTypes.bool,
   icon: PropTypes.string,
   opened: PropTypes.bool,
-  tag: PropTypes.string
+  tag: PropTypes.string,
+  title: PropTypes.any
 };
 
 TreeviewList.defaultProps = {

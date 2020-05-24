@@ -20,7 +20,9 @@ class Waves extends React.Component {
         this.setState({ animate: false, cursorPos }, () => {
           this.replying();
         });
-      } else {this.replying();}
+      } else {
+        this.replying();
+      }
     }
   }
 
@@ -48,9 +50,7 @@ class Waves extends React.Component {
     return (
       <div
         data-test='waves'
-        className={`Ripple ${outline || flat || dark ? 'Ripple-outline ' : ''}${
-          animate ? 'is-reppling' : ''
-        }`}
+        className={`Ripple ${outline || flat || dark ? 'Ripple-outline ' : ''}${animate ? 'is-reppling' : ''}`}
         style={{
           top: `${top}px`,
           left: `${left}px`,
@@ -66,6 +66,7 @@ Waves.propTypes = {
   animate: PropTypes.bool,
   children: PropTypes.node,
   cursorPos: PropTypes.object,
+  dark: PropTypes.bool,
   flat: PropTypes.bool,
   outline: PropTypes.bool
 };

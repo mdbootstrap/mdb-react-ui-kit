@@ -9,9 +9,7 @@ import DataTableInfo from './DataTableInfo';
 import DataTablePagination from './DataTablePagination';
 import { MDBSelect, MDBInput } from 'mdbreact';
 
-// PRO-START
-import ExportToCsvBtn from '../../pro/DataTable/ExportToCSV';
-// PRO-END
+
 
 import './scss/_datatables2.scss';
 import './scss/_datatables-select2.scss';
@@ -188,9 +186,7 @@ class DataTable extends Component {
       });
     }
 
-    // PRO-START
-    this.filterOptions();
-    // PRO-END
+    
 
     if (order.length > 0) {
       this.handleSort(order[0], order[1]);
@@ -593,46 +589,7 @@ class DataTable extends Component {
     );
   };
 
-  // PRO-START
-  getLabelForFilter = field => {
-    if (this.props.filter) {
-      const arr = this.props.data.columns;
-      return arr.filter(el => el.field === field)[0].label || null;
-    }
-  };
-
-  filterOptions = () => {
-    if (this.props.filter) {
-      const { filter, data } = this.props;
-      let arr = [];
-      data.rows.map(el => arr.push(el[filter]));
-      arr = [...new Set(arr)].sort((a, b) => a.localeCompare(b));
-      arr = arr.map((text, value) => ({ text, value: `${value}` }));
-
-      this.setState({ filterOptions: arr });
-    }
-  };
-
-  useFilterSelect = content => {
-    const { filter, data } = this.props;
-
-    if (filter) {
-      if (content !== '') {
-        const filteredRows = data.rows.filter(el => el[filter] === content);
-
-        this.setState({ searchSelect: content, rows: filteredRows }, () => {
-          this.filterRows(this.state.searchSelect);
-          this.filterRows();
-        });
-      } else {
-        this.setState({ searchSelect: content, rows: data.rows }, () => {
-          this.filterRows(this.state.searchSelect);
-          this.filterRows();
-        });
-      }
-    }
-  };
-  // PRO-END
+  
 
   render() {
     const {
@@ -828,30 +785,7 @@ class DataTable extends Component {
           </div>
         </div>
 
-        {/* PRO-START */}
-        {(filter || exportToCSV) && (
-          <div className='row justify-content-between'>
-            <div className='pl-3'>
-              {filter && (
-                <MDBSelect
-                  options={filterOptions}
-                  label={`Filter ${this.getLabelForFilter(filter)}`}
-                  getTextContent={this.useFilterSelect}
-                  className='m-0 pt-2'
-                />
-              )}
-            </div>
-
-            <div className='mr-2'>
-              {exportToCSV && (
-                <ExportToCsvBtn columns={columns} data={pages} color='primary'>
-                  Download CSV
-                </ExportToCsvBtn>
-              )}
-            </div>
-          </div>
-        )}
-        {/* PRO-END */}
+        
       </div>
     );
   }

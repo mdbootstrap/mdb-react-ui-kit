@@ -68,6 +68,7 @@ View.propTypes = {
   cascade: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
+  fixed: PropTypes.bool,
   hover: PropTypes.bool,
   rounded: PropTypes.bool,
   src: PropTypes.string,

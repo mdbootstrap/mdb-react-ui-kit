@@ -2,14 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DataTableInput from '../DataTableInput';
 
-/*
-// PRO-END
-import DataTableInput from '../DataTableInput';
-// PRO-START
-*/
-// FREE-END
-// PRO-END
-
 const DataTableSearch = props => {
   const {
     handleSearchChange,

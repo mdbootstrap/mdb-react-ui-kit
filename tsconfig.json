@@ -1,27 +1,19 @@
 {
-    "compilerOptions": {
-      "declaration": true,
-      "module": "commonjs",
-      "target": "es5",
-      "lib": [
-        "es6",
-        "dom"
-      ],
-      "jsx": "react",
-      "moduleResolution": "node",
-      "forceConsistentCasingInFileNames": true,
-      "strict": true,
-      "noEmit": true,
-      "experimentalDecorators": true,
-      "allowSyntheticDefaultImports": true,
-      "noErrorTruncation": true,
-      "outDir": "./dist"
-    },
-    "include": [
-      "src/**/*.d.ts"
-    ],
-    "exclude": [
-      "dist",
-      "node_modules"
-    ]
-  }
+  "compilerOptions": {
+    "declaration": true,
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "jsx": "react",
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "noErrorTruncation": true,
+    "outDir": "./dist"
+  },
+  "include": ["src/**/*.d.ts"],
+  "exclude": ["dist", "node_modules"]
+}
