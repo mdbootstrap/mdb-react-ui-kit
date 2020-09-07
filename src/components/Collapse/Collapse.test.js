@@ -34,6 +34,7 @@ describe('<Collapse />', () => {
       id: 'test',
       navbar: true,
       delay: { show: 5, hide: 5 },
+	  tag: 'div',
       onOpened: jest.fn(),
       onClosed: jest.fn()
     };

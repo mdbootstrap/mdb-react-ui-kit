@@ -5,6 +5,7 @@ declare class MDBCollapse extends React.Component<
     className?: string;
     children?: React.ReactNode;
     delay?: { show: number, hide: number };
+    tag?: string;
     isOpen?: boolean | string;
     id?: string;
     navbar?: boolean;

@@ -98,7 +98,7 @@ class Collapse extends Component {
   }
 
   render() {
-    const { navbar, children, className, isOpen, delay, onOpened, onClosed, ...attributes } = this.props;
+    const { navbar, children, className, isOpen, delay, tag: Tag, onOpened, onClosed, ...attributes } = this.props;
 
     const { collapse, height } = this.state;
     let collapseClass;
@@ -125,7 +125,7 @@ class Collapse extends Component {
     const style = height === null ? null : { height };
 
     return (
-      <div
+      <Tag
         data-test='collapse'
         {...attributes}
         style={{ ...attributes.style, ...style }}
@@ -135,7 +135,7 @@ class Collapse extends Component {
         }}
       >
         {children}
-      </div>
+      </Tag>
     );
   }
 }
@@ -144,6 +144,7 @@ Collapse.propTypes = {
   children: PropTypes.node,
   className: PropTypes.node,
   delay: PropTypes.oneOfType([PropTypes.number, PropTypes.shape({ hide: PropTypes.number, show: PropTypes.number })]),
+  tag: PropTypes.string,
   id: PropTypes.string,
   isOpen: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   navbar: PropTypes.bool,
@@ -154,6 +155,7 @@ Collapse.propTypes = {
 Collapse.defaultProps = {
   isOpen: '',
   delay: DEFAULT_DELAYS,
+  tag: 'div',
   onOpened: () => {},
   onClosed: () => {}
 };
