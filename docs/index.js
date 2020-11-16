@@ -5,9 +5,11 @@ import 'bootstrap-css-only/css/bootstrap.min.css';
 import '../dist/css/mdb.css';
 import './index.css';
 import App from './App';
+import AppClear from './App-clear';
 
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// if you want to see demo app, change <AppClear/> to <App />
+ReactDOM.render(<AppClear />, document.getElementById('root'));
 
 registerServiceWorker();
