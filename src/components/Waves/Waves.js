@@ -13,6 +13,8 @@ class Waves extends React.Component {
     cursorPos: this.props.cursorPos
   };
 
+  wavesRef = React.createRef();
+
   componentDidUpdate(prevProps, prevState) {
     const { cursorPos } = this.props;
     if (prevState.cursorPos.time !== cursorPos.time) {
@@ -27,7 +29,7 @@ class Waves extends React.Component {
   }
 
   replying() {
-    const $ripple = ReactDOM.findDOMNode(this);
+    const $ripple = this.wavesRef.current;
     const $button = $ripple.parentNode;
     const buttonPos = $button.getBoundingClientRect();
     const buttonWidth = $button.offsetWidth;
@@ -57,6 +59,7 @@ class Waves extends React.Component {
           width: `${width}px`,
           height: `${height}px`
         }}
+        ref={this.wavesRef}
       />
     );
   }

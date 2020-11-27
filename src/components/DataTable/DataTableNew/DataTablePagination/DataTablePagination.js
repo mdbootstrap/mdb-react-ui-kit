@@ -75,8 +75,8 @@ class DataTablePagination extends Component {
             </PageItem>
 
             {pagesNumber &&
-              this.choosePagesGroup().map(page => (
-                <PageItem key={Object.keys(page[0])[0] + page.index} active={page.index === activePage}>
+              this.choosePagesGroup().map((page, i) => (
+                <PageItem key={Object.keys(page[0])[0] + page.index + i} active={page.index === activePage}>
                   <PageLink className='page-link' onClick={() => changeActivePage(page.index)}>
                     {page.index + 1}
                     {page.index === activePage && <span className='sr-only'>(current)</span>}

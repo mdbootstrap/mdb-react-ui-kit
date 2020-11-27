@@ -17,8 +17,8 @@ const DataTableSelect = ({ value, onChange, entries, label, barReverse }) => {
           className='custom-select custom-select-sm form-control form-control-sm'
           style={{ marginLeft: '.5rem' }}
         >
-          {entries.map(entry => (
-            <option key={entry} value={entry}>
+          {entries.map((entry, i) => (
+            <option key={entry + i} value={entry}>
               {entry}
             </option>
           ))}

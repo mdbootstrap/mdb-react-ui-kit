@@ -57,40 +57,22 @@ class DataTablePagination extends Component {
         <div className='dataTables_paginate'>
           <Pagination>
             <PageItem disabled={activePage <= 0}>
-              <PageLink
-                className='page-link'
-                aria-label={label[0]}
-                onClick={() => changeActivePage(activePage - 1)}
-              >
+              <PageLink className='page-link' aria-label={label[0]} onClick={() => changeActivePage(activePage - 1)}>
                 <span>{label[0]}</span>
               </PageLink>
             </PageItem>
 
-            {this.choosePagesGroup().map(page => (
-              <PageItem
-                key={Object.keys(page[0])[0] + page.index}
-                active={page.index === activePage}
-              >
-                <PageLink
-                  className='page-link'
-                  onClick={() => changeActivePage(page.index)}
-                >
+            {this.choosePagesGroup().map((page, i) => (
+              <PageItem key={Object.keys(page[0])[0] + page.index + i} active={page.index === activePage}>
+                <PageLink className='page-link' onClick={() => changeActivePage(page.index)}>
                   {page.index + 1}
-                  {page.index === activePage && (
-                    <span className='sr-only'>(current)</span>
-                  )}
+                  {page.index === activePage && <span className='sr-only'>(current)</span>}
                 </PageLink>
               </PageItem>
             ))}
 
-            <PageItem
-              disabled={!pages.length || activePage === pages.length - 1}
-            >
-              <PageLink
-                className='page-link'
-                aria-label={label[1]}
-                onClick={() => changeActivePage(activePage + 1)}
-              >
+            <PageItem disabled={!pages.length || activePage === pages.length - 1}>
+              <PageLink className='page-link' aria-label={label[1]} onClick={() => changeActivePage(activePage + 1)}>
                 <span>{label[1]}</span>
               </PageLink>
             </PageItem>

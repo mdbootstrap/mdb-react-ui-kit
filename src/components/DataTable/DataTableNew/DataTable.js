@@ -419,15 +419,19 @@ class DataTable extends Component {
 
   handleSort = (field, sort) => {
     const { onSort, sortRows } = this.props;
+    const { direction } = this.state;
 
     if (sort === 'disabled') {
       return;
     }
+
+    this.setState({ direction: !direction });
+
     this.setState(
       prevState => {
-        const { rows, columns } = prevState;
+        const { rows, columns, direction: prevDir } = prevState;
         const newRows = [...rows];
-        const direction = sort === 'desc' ? 'desc' : 'asc';
+        const direction = prevDir ? 'asc' : 'desc';
 
         this.sort(newRows, sortRows, field, direction);
 
@@ -436,7 +440,7 @@ class DataTable extends Component {
             return;
           }
 
-          col.sort = col.field === field ? (col.sort === 'desc' ? 'asc' : 'desc') : '';
+          col.sort = col.field === field ? direction : '';
         });
 
         return {
@@ -453,7 +457,7 @@ class DataTable extends Component {
 
   filterRows = (search = this.state.search) => {
     const { unsearchable } = this.state;
-    const { sortRows, noRecordsFoundLabel, disableRetreatAfterSorting, checkbox } = this.props;
+    const { sortRows, noRecordsFoundLabel, disableRetreatAfterSorting, checkbox, startPage } = this.props;
 
     this.setState(
       prevState => {
@@ -499,7 +503,7 @@ class DataTable extends Component {
                 : prevState.pages.length - 1)
           };
         } else {
-          return { filteredRows, activePage: 0 };
+          return { filteredRows, activePage: startPage };
         }
       },
       () => this.paginateRows()
@@ -641,6 +645,7 @@ class DataTable extends Component {
       searchLabel,
       searchTop,
       small,
+      startPage,
       multipleCheckboxes,
       bodyCheckboxID,
       headCheckboxID,
@@ -838,6 +843,7 @@ DataTable.propTypes = {
   small: PropTypes.bool,
   sortable: PropTypes.bool,
   sortRows: PropTypes.arrayOf(PropTypes.string),
+  startPage: PropTypes.number,
   striped: PropTypes.bool,
   tbodyColor: PropTypes.string,
   tbodyTextWhite: PropTypes.bool,
@@ -886,6 +892,7 @@ DataTable.defaultProps = {
   searchTop: false,
   small: false,
   sortable: true,
+  startPage: 0,
   striped: false,
   theadColor: '',
   theadTextWhite: false,

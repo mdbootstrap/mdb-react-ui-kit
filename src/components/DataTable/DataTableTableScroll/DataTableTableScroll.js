@@ -38,11 +38,7 @@ const DataTableTableScroll = props => {
     ...attributes
   } = props;
 
-  const minWidth = scrollX
-    ? `${columns
-        .map(col => col.width)
-        .reduce((prev, curr) => prev + curr, 0)}px`
-    : 'auto';
+  const minWidth = scrollX ? `${columns.map(col => col.width).reduce((prev, curr) => prev + curr, 0)}px` : 'auto';
 
   return (
     <div data-test='datatable-table-scroll' className='col-sm-12'>
@@ -90,11 +86,7 @@ const DataTableTableScroll = props => {
           </div>
         </div>
 
-        <div
-          className='dataTable_scrollBody'
-          style={{ overflow: 'auto' }}
-          onScroll={handleTableBodyScroll}
-        >
+        <div className='dataTable_scrollBody' style={{ overflow: 'auto' }} onScroll={handleTableBodyScroll}>
           <Table
             style={{
               minWidth
@@ -119,9 +111,9 @@ const DataTableTableScroll = props => {
             {...attributes}
           >
             <colgroup>
-              {columns.map(col => (
+              {columns.map((col, i) => (
                 <col
-                  key={col.field}
+                  key={col.field + i}
                   style={{
                     width: `${col.width}px` || 'auto',
                     minWidth: `${col.width}px` || 'auto'
@@ -129,12 +121,7 @@ const DataTableTableScroll = props => {
                 />
               ))}
             </colgroup>
-            <TableBody
-              color={tbodyColor}
-              textWhite={tbodyTextWhite}
-              rows={rows}
-              columns={columns}
-            />
+            <TableBody color={tbodyColor} textWhite={tbodyTextWhite} rows={rows} columns={columns} />
             {children}
           </Table>
         </div>

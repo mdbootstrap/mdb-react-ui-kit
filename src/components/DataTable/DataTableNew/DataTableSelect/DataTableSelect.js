@@ -18,8 +18,8 @@ const DataTableSelect = ({ value, onChange, entries, label, style, barReverse, .
           style={{ marginLeft: '.5rem', ...style }}
           {...props}
         >
-          {entries.map(entry => (
-            <option key={entry} value={entry}>
+          {entries.map((entry, i) => (
+            <option key={entry + i} value={entry}>
               {entry}
             </option>
           ))}

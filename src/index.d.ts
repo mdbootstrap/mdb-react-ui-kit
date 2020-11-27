@@ -70,7 +70,7 @@ import MDBProgress from './components/Progress';
 import MDBRating from './components/Rating';
 import MDBRow from './components/Row';
 import MDBTabContent from './components/TabContent';
-import MDBTabPane from './components/TabPane';
+import MDBTabPane from './components/TabContent/TabPane';
 import MDBTable from './components/Table';
 import MDBTableBody from './components/Table/TableBody';
 import MDBTableFoot from './components/Table/TableFoot';

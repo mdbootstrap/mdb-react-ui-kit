@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Fa from '../../Fa';
+import CarouselContext from '../CarouselContext';
 
 const Control = props => {
   const { className, direction, iconLeft, iconRight, multiItem, onClick, tag: Tag, testimonial } = props;
@@ -29,18 +30,24 @@ const Control = props => {
   }
 
   return (
-    <Tag data-test='carousel-control' className={classes} data-slide={direction} onClick={onClick}>
-      {iconLeft ? (
-        <Fa icon='chevron-left' />
-      ) : iconRight ? (
-        <Fa icon='chevron-right' />
-      ) : (
-        <div>
-          <span className={caretClasses} aria-hidden='true' />
-          <span className='sr-only'>{text}</span>
-        </div>
-      )}
-    </Tag>
+    <CarouselContext.Consumer>
+      {({}) => {
+        return (
+          <Tag data-test='carousel-control' className={classes} data-slide={direction} onClick={onClick}>
+            {iconLeft ? (
+              <Fa icon='chevron-left' />
+            ) : iconRight ? (
+              <Fa icon='chevron-right' />
+            ) : (
+              <div>
+                <span className={caretClasses} aria-hidden='true' />
+                <span className='sr-only'>{text}</span>
+              </div>
+            )}
+          </Tag>
+        );
+      }}
+    </CarouselContext.Consumer>
   );
 };
 

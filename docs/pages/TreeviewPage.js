@@ -33,6 +33,7 @@ class TreeviewPage extends Component {
             <MDBTreeview
               header='Folders'
               className='w-20'
+              openOnToggler
               getValue={value => console.log(value)}
             >
               <MDBTreeviewList icon='envelope-open' title='Mail' far>
@@ -72,6 +73,7 @@ class TreeviewPage extends Component {
               theme='animated'
               header='Folders'
               className='w-20'
+              openOnToggler
               getValue={value => console.log(value)}
             >
               <MDBTreeviewList icon='envelope-open' title='Mail' far open>

@@ -29,7 +29,7 @@ class Popover extends React.Component {
   }
 
   componentDidMount() {
-    this.timer = setInterval(() => this.setPopperJS(), 3);
+    this.timer = setTimeout(() => this.setPopperJS(), 3);
     document.addEventListener('click', this.handleClick);
   }
 
@@ -37,7 +37,6 @@ class Popover extends React.Component {
     const { showPopper, popperJS } = this.state;
     if (showPopper) {
       popperJS ? popperJS.scheduleUpdate() : this.createPopper();
-      setTimeout(() => clearInterval(this.timer), 1000);
     }
   };
 
@@ -51,7 +50,7 @@ class Popover extends React.Component {
           this.popoverWrapperRef,
           {
             placement,
-            ...modifiers
+            modifiers
           },
           () =>
             setTimeout(() => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import CarouselContext from '../CarouselContext';
 
 const CarouselCaption = props => {
   const { children, className, tag: Tag, ...attributes } = props;
@@ -8,9 +9,15 @@ const CarouselCaption = props => {
   const classes = classNames('carousel-caption', className);
 
   return (
-    <Tag data-test='carousel-caption' {...attributes} className={classes}>
-      {children}
-    </Tag>
+    <CarouselContext.Consumer>
+      {({}) => {
+        return (
+          <Tag data-test='carousel-caption' {...attributes} className={classes}>
+            {children}
+          </Tag>
+        );
+      }}
+    </CarouselContext.Consumer>
   );
 };
 

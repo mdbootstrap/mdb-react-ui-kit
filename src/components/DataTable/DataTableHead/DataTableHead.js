@@ -27,10 +27,10 @@ const DataTableHead = props => {
       )}
       <thead data-test='datatable-head' className={theadClasses || undefined}>
         <tr>
-          {columns.map(col => (
+          {columns.map((col, i) => (
             <th
               onClick={() => sortable && handleSort(col.field, col.sort)}
-              key={col.field}
+              key={col.field + i}
               className={classNames(
                 col.hasOwnProperty('minimal') ? `th-${col.minimal}` : null,
                 sortable &&

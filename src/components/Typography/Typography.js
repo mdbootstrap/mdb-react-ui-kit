@@ -66,7 +66,7 @@ Typography.propTypes = {
   bqColor: PropTypes.string,
   bqFooter: PropTypes.bool,
   bqTitle: PropTypes.string,
-  children: PropTypes.bool,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   className: PropTypes.string,
   colorText: PropTypes.string,
   listInLine: PropTypes.bool,
@@ -80,7 +80,6 @@ Typography.propTypes = {
 };
 
 Typography.defaultProps = {
-  abbr: false,
   blockquote: false,
   listInLine: false,
   listUnStyled: false,

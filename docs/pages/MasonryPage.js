@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { MDBContainer } from 'mdbreact';
 import DocsLink from '../components/docsLink';
 import SectionContainer from '../components/sectionContainer';
@@ -14,7 +13,7 @@ class MasonryPage extends React.Component {
   arrangeMasonry = () => {
     const numCols = 3;
     const colHeights = Array(numCols).fill(0);
-    const container = ReactDOM.findDOMNode(this.MasonryRef.current);
+    const container = this.MasonryRef.current;
 
     Array.from(container.children).forEach((child, i) => {
       const order = i % numCols;
@@ -27,10 +26,7 @@ class MasonryPage extends React.Component {
   render() {
     return (
       <MDBContainer className='mt-5'>
-        <DocsLink
-          title='Masks'
-          href='https://mdbootstrap.com/docs/react/css/masks/'
-        />
+        <DocsLink title='Masks' href='https://mdbootstrap.com/docs/react/css/masks/' />
 
         <SectionContainer noBorder header='Column layout'>
           <div className='masonry-with-columns mx-0' ref={this.MasonryRef}>

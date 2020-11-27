@@ -5,6 +5,7 @@ import CarouselControl from './CarouselControl';
 import CarouselIndicator from './CarouselIndicator';
 import CarouselIndicators from './CarouselIndicators';
 import './Carousel.css';
+import CarouselContext from './CarouselContext';
 
 class Carousel extends Component {
   state = {
@@ -38,10 +39,14 @@ class Carousel extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { length } = this.props;
+    const { activeItem } = this.state;
     const initialLength = length;
 
     if (prevState.initialLength !== length) {
       this.setState({ initialLength });
+    }
+    if (prevState.activeItem !== activeItem) {
+      this.setState({ activeItem });
     }
   }
 
@@ -133,16 +138,6 @@ class Carousel extends Component {
     });
   };
 
-  getChildContext() {
-    const { activeItem, initialLength } = this.state;
-    const { slide } = this.props;
-    return {
-      activeItem,
-      length: initialLength,
-      slide
-    };
-  }
-
   render() {
     const {
       activeItem,
@@ -161,8 +156,7 @@ class Carousel extends Component {
       ...attributes
     } = this.props;
 
-    const { initialLength, srcArray, swipeAvailable } = this.state;
-    const ariaLabel = 'carousel';
+    const { initialLength, srcArray, swipeAvailable, activeItem: activeItems } = this.state;
 
     const classes = classNames(
       'carousel',
@@ -173,6 +167,7 @@ class Carousel extends Component {
     );
 
     const CarouselIndicatorsArray = [];
+
     for (let i = 1; i <= initialLength; i++) {
       const { activeItem } = this.state;
       CarouselIndicatorsArray.push(
@@ -189,61 +184,63 @@ class Carousel extends Component {
     const isTestimonial = !!testimonial;
 
     return (
-      <Tag
-        data-test='carousel'
-        ref={this.carouselRef}
-        {...attributes}
-        className={classes}
-        aria-label={ariaLabel}
-        onTouchStart={this.startTouch}
-        onTouchMove={swipeAvailable ? this.moveTouch : null}
-        onTouchEnd={this.swipeAvailableHandler}
-        onMouseEnter={onHoverStop ? this.clearCycleIntervalHandler : null}
-        onMouseLeave={onHoverStop ? this.restartInterval : null}
-      >
-        {showControls && multiItem && (
-          <div className='controls-top'>
-            <CarouselControl
-              testimonial={isTestimonial}
-              multiItem={isMultiItem}
-              iconLeft
-              className='btn-floating'
-              direction='prev'
-              role='button'
-              onClick={this.prev}
-            />
-            <CarouselControl
-              testimonial={isTestimonial}
-              multiItem={isMultiItem}
-              iconRight
-              className='btn-floating'
-              direction='next'
-              role='button'
-              onClick={this.next}
-            />
-          </div>
-        )}
-        {children}
-        {showControls && !multiItem && (
-          <>
-            <CarouselControl
-              testimonial={isTestimonial}
-              multiItem={isMultiItem}
-              direction='prev'
-              role='button'
-              onClick={this.prev}
-            />
-            <CarouselControl
-              testimonial={isTestimonial}
-              multiItem={isMultiItem}
-              direction='next'
-              role='button'
-              onClick={this.next}
-            />
-          </>
-        )}
-        {showIndicators && <CarouselIndicators>{CarouselIndicatorsArray}</CarouselIndicators>}
-      </Tag>
+      <CarouselContext.Provider value={{ activeItem: activeItems, slide, length: initialLength }}>
+        <Tag
+          data-test='carousel'
+          ref={this.carouselRef}
+          {...attributes}
+          className={classes}
+          aria-label='carousel'
+          onTouchStart={this.startTouch}
+          onTouchMove={swipeAvailable ? this.moveTouch : null}
+          onTouchEnd={this.swipeAvailableHandler}
+          onMouseEnter={onHoverStop ? this.clearCycleIntervalHandler : null}
+          onMouseLeave={onHoverStop ? this.restartInterval : null}
+        >
+          {showControls && multiItem && (
+            <div className='controls-top'>
+              <CarouselControl
+                testimonial={isTestimonial}
+                multiItem={isMultiItem}
+                iconLeft
+                className='btn-floating'
+                direction='prev'
+                role='button'
+                onClick={this.prev}
+              />
+              <CarouselControl
+                testimonial={isTestimonial}
+                multiItem={isMultiItem}
+                iconRight
+                className='btn-floating'
+                direction='next'
+                role='button'
+                onClick={this.next}
+              />
+            </div>
+          )}
+          {children}
+          {showControls && !multiItem && (
+            <>
+              <CarouselControl
+                testimonial={isTestimonial}
+                multiItem={isMultiItem}
+                direction='prev'
+                role='button'
+                onClick={this.prev}
+              />
+              <CarouselControl
+                testimonial={isTestimonial}
+                multiItem={isMultiItem}
+                direction='next'
+                role='button'
+                onClick={this.next}
+              />
+            </>
+          )}
+          {showIndicators && <CarouselIndicators>{CarouselIndicatorsArray}</CarouselIndicators>}
+        </Tag>
+      </CarouselContext.Provider>
     );
   }
 }
@@ -272,12 +269,6 @@ Carousel.defaultProps = {
   showControls: true,
   showIndicators: true,
   tag: 'div'
-};
-
-Carousel.childContextTypes = {
-  activeItem: PropTypes.any,
-  length: PropTypes.any,
-  slide: PropTypes.any
 };
 
 export default Carousel;

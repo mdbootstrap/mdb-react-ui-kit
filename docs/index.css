@@ -42,20 +42,6 @@
   color: #283593;
 }
 
-.nav-link:focus {
+.nav-link:focus{
   outline: none;
-}
-
-/* styling for App-clear.js */
-body {
-  background-color: #2e2e2e !important;
-}
-.text-poppy-red {
-  color: #ef5350 !important;
-}
-.btn-poppy-red {
-  background-color: #ef5350 !important;
-}
-.bg-poppy-red {
-  background-color: #ef5350 !important;
 }

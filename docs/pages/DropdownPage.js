@@ -1,21 +1,12 @@
 import React from 'react';
-import {
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem,
-  MDBContainer
-} from 'mdbreact';
+import { MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBContainer } from 'mdbreact';
 import DocsLink from '../components/docsLink';
 import SectionContainer from '../components/sectionContainer';
 
 const DropdownPage = () => {
   return (
     <MDBContainer>
-      <DocsLink
-        title='MDBDropdown'
-        href='https://mdbootstrap.com/docs/react/components/dropdowns/'
-      />
+      <DocsLink title='MDBDropdown' href='https://mdbootstrap.com/docs/react/components/dropdowns/' />
 
       <SectionContainer header='Basic example' flexCenter className='flex-wrap'>
         <MDBDropdown>

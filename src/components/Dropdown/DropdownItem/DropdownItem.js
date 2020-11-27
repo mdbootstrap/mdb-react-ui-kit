@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { omit } from '../../utils';
+import DropdownContext from '../DropdownContext';
 
 class DropdownItem extends Component {
-  onClick = e => {
-    const { disabled, header, divider, onClick, toggle } = this.props;
+  onClick = (e, callbackToggle) => {
+    const { disabled, header, divider, onClick } = this.props;
 
     if (disabled || header || divider) {
       e.preventDefault();
@@ -16,8 +17,8 @@ class DropdownItem extends Component {
       onClick(e);
     }
 
-    if (toggle) {
-      this.context.toggle(e);
+    if (callbackToggle) {
+      callbackToggle(e);
     }
   };
 
@@ -34,8 +35,6 @@ class DropdownItem extends Component {
   render() {
     const tabIndex = this.getTabIndex();
     let { className, divider, tag: Tag, header, href, active, disabled, ...props } = omit(this.props, ['toggle']);
-
-    const { toggle } = this.props;
 
     const classes = classNames(
       {
@@ -58,18 +57,24 @@ class DropdownItem extends Component {
       }
     }
 
-    const type = Tag === 'button' && (props.onClick || toggle) ? 'button' : undefined;
-
     return (
-      <Tag
-        data-test='dropdown-item'
-        type={type}
-        {...props}
-        tabIndex={tabIndex}
-        className={classes}
-        onClick={this.onClick}
-        href={href}
-      />
+      <DropdownContext.Consumer>
+        {({ isOpen, toggle }) => {
+          const type = Tag === 'button' && (props.onClick || toggle) ? 'button' : undefined;
+
+          return (
+            <Tag
+              data-test='dropdown-item'
+              type={type}
+              {...props}
+              tabIndex={tabIndex}
+              className={classes}
+              onClick={e => this.onClick(e, toggle)}
+              href={href}
+            />
+          );
+        }}
+      </DropdownContext.Consumer>
     );
   }
 }
@@ -89,10 +94,6 @@ DropdownItem.propTypes = {
 DropdownItem.defaultProps = {
   tag: 'button',
   toggle: true
-};
-
-DropdownItem.contextTypes = {
-  toggle: PropTypes.func
 };
 
 export default DropdownItem;

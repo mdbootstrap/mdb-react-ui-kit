@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Reference } from 'react-popper';
 import Button from '../../Button';
+import DropdownContext from '../DropdownContext';
 
-class DropdownToggle extends React.Component {
-  onClick = e => {
+class DropdownToggle extends Component {
+  onClick = (e, callback) => {
     const { disabled, nav, tag, onClick } = this.props;
-    const { toggle } = this.context;
 
     if (disabled) {
       e.preventDefault();
@@ -22,12 +22,11 @@ class DropdownToggle extends React.Component {
       onClick(e);
     }
 
-    toggle(e);
+    callback && callback(e);
   };
 
   render() {
     const { className, color, caret, nav, tag, ...props } = this.props;
-    const { isOpen } = this.context;
     const ariaLabel = props['aria-label'] || 'Toggle Dropdown';
 
     const classes = classNames(
@@ -51,19 +50,37 @@ class DropdownToggle extends React.Component {
     }
 
     return (
-      <Reference data-test='dropdown-toggle'>
-        {({ ref }) =>
-          tag || nav ? (
-            <Tag {...props} className={classes} onClick={this.onClick} aria-expanded={isOpen} ref={ref}>
-              {children}
-            </Tag>
-          ) : (
-            <Tag {...props} className={classes} onClick={this.onClick} aria-expanded={isOpen} innerRef={ref}>
-              {children}
-            </Tag>
-          )
-        }
-      </Reference>
+      <DropdownContext.Consumer>
+        {({ isOpen, toggle }) => {
+          return (
+            <Reference data-test='dropdown-toggle'>
+              {({ ref }) =>
+                tag || nav ? (
+                  <Tag
+                    {...props}
+                    className={classes}
+                    onClick={e => this.onClick(e, toggle)}
+                    aria-expanded={isOpen}
+                    ref={ref}
+                  >
+                    {children}
+                  </Tag>
+                ) : (
+                  <Tag
+                    {...props}
+                    className={classes}
+                    onClick={e => this.onClick(e, toggle)}
+                    aria-expanded={isOpen}
+                    innerRef={ref}
+                  >
+                    {children}
+                  </Tag>
+                )
+              }
+            </Reference>
+          );
+        }}
+      </DropdownContext.Consumer>
     );
   }
 }
@@ -83,11 +100,6 @@ DropdownToggle.propTypes = {
 DropdownToggle.defaultProps = {
   'aria-haspopup': true,
   color: 'secondary'
-};
-
-DropdownToggle.contextTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  toggle: PropTypes.func.isRequired
 };
 
 export default DropdownToggle;

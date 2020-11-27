@@ -56,7 +56,7 @@ const DatatablePage = () => {
         age: '61',
         date: '2011/04/25',
         salary: '$320',
-        clickEvent: () => testClickEvent(1)
+        clickEvent: row => testClickEvent(row)
       },
       {
         name: 'Garrett Winters',

@@ -21,7 +21,7 @@ const Treeview = props => {
     return target;
   };
 
-  const { theme, children, className, getValue, header, listClassName, tag: Tag, ...attributes } = props;
+  const { theme, children, className, getValue, header, listClassName, openOnToggler, tag: Tag, ...attributes } = props;
 
   const classes = classNames('border', theme ? `treeview-${theme}` : 'treeview', className);
   const ulClasses = classNames(
@@ -46,6 +46,7 @@ const Treeview = props => {
         <TreeviewContext.Provider
           value={{
             active,
+            openOnToggler,
             theme,
             getActive
           }}
@@ -62,11 +63,13 @@ Treeview.propTypes = {
   getValue: PropTypes.func,
   header: PropTypes.string,
   listClassName: PropTypes.string,
+  openOnToggler: PropTypes.bool,
   tag: PropTypes.string,
   theme: PropTypes.string
 };
 
 Treeview.defaultProps = {
+  openOnToggler: false,
   tag: 'div',
   theme: '',
   getValue: () => {}

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import CarouselContext from '../CarouselContext';
 
 const CarouselIndicators = props => {
   const { children, className, ...attributes } = props;
@@ -8,9 +9,15 @@ const CarouselIndicators = props => {
   const classes = classNames('carousel-indicators', className);
 
   return (
-    <ol data-test='carousel-indicators' {...attributes} className={classes}>
-      {children}
-    </ol>
+    <CarouselContext.Consumer>
+      {({}) => {
+        return (
+          <ol data-test='carousel-indicators' {...attributes} className={classes}>
+            {children}
+          </ol>
+        );
+      }}
+    </CarouselContext.Consumer>
   );
 };
 

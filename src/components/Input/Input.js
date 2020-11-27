@@ -121,10 +121,12 @@ class Input extends React.Component {
       labelClass,
       labelId,
       labelStyles,
+      name,
       onIconClick,
       onIconMouseEnter,
       onIconMouseLeave,
       size,
+      iconStyle,
       success,
       tag: Tag,
       type,
@@ -150,6 +152,8 @@ class Input extends React.Component {
     }
 
     attributes.disabled = disabled;
+
+    // attributes.name = name;
 
     const classes = classNames(
       formControlClass,
@@ -198,6 +202,7 @@ class Input extends React.Component {
             onClick={onIconClick || this.setFocus}
             onMouseEnter={onIconMouseEnter}
             onMouseLeave={onIconMouseLeave}
+            style={iconStyle}
           />
         )}
         <TagInput
@@ -206,6 +211,7 @@ class Input extends React.Component {
           className={classes}
           id={id}
           placeholder={hint}
+          name={name}
           ref={this.inputElementRef}
           value={innerValue}
           onBlur={this.onBlur}
@@ -255,6 +261,7 @@ Input.propTypes = {
   iconLight: PropTypes.bool,
   iconRegular: PropTypes.bool,
   iconSize: PropTypes.string,
+  iconStyle: PropTypes.object,
   id: PropTypes.string,
   indeterminate: PropTypes.bool,
   inputRef: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
@@ -263,6 +270,7 @@ Input.propTypes = {
   labelClass: PropTypes.string,
   labelId: PropTypes.string,
   labelStyles: PropTypes.object,
+  name: PropTypes.string,
   noTag: PropTypes.bool,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
@@ -304,6 +312,7 @@ Input.defaultProps = {
   id: undefined,
   isControlled: false,
   noTag: false,
+  name: undefined,
   outline: false,
   label: ' ',
   labelClass: '',

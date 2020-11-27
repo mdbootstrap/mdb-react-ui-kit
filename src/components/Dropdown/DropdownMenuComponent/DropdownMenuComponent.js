@@ -1,25 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import DropdownContext from '../DropdownContext';
 
-const DropdownMenuComponent = ({
-  tag: Tag,
-  tabIndex,
-  role,
-  attributes,
-  aria,
-  d_key,
-  children
-}) => (
-  <Tag
-    data-test='dropdown-menu-component'
-    tabIndex={tabIndex}
-    role={role}
-    {...attributes}
-    aria-hidden={aria}
-    key={d_key}
-  >
-    {children}
-  </Tag>
+const DropdownMenuComponent = ({ tag: Tag, tabIndex, role, attributes, aria, d_key, children }) => (
+  <DropdownContext.Consumer>
+    {({ isOpen, toggle }) => {
+      return (
+        <Tag
+          data-test='dropdown-menu-component'
+          tabIndex={tabIndex}
+          role={role}
+          {...attributes}
+          aria-hidden={aria}
+          key={d_key}
+        >
+          {children}
+        </Tag>
+      );
+    }}
+  </DropdownContext.Consumer>
 );
 
 DropdownMenuComponent.propTypes = {

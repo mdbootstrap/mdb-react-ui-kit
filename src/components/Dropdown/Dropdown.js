@@ -1,26 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ReactDOM from 'react-dom';
 import { Manager } from 'react-popper';
 import classNames from 'classnames';
 import { omit, keyCodes } from '../utils';
+import DropdownContext from './DropdownContext';
 
 class Dropdown extends Component {
   state = {
     isOpen: false
   };
 
-  getChildContext() {
-    const { isOpen } = this.state;
-    const { dropup, dropright, dropleft } = this.props;
-    return {
-      isOpen: isOpen,
-      dropup: dropup,
-      dropright: dropright,
-      dropleft: dropleft,
-      toggle: this.toggle
-    };
-  }
+  dropdownContainer = React.createRef();
 
   componentDidMount() {
     this.handleEventsBinding();
@@ -40,7 +30,7 @@ class Dropdown extends Component {
   }
 
   getContainer = () => {
-    return ReactDOM.findDOMNode(this);
+    return this.dropdownContainer.current;
   };
 
   addEvents = () => {
@@ -146,7 +136,10 @@ class Dropdown extends Component {
   };
 
   render() {
-    const { className, children, dropup, group, size, dropright, dropleft } = omit(this.props, ['toggle', 'disabled']);
+    const { className, children, dropup, group, size, dropright, dropleft, toggle } = omit(this.props, [
+      'toggle',
+      'disabled'
+    ]);
 
     const { isOpen } = this.state;
 
@@ -163,11 +156,27 @@ class Dropdown extends Component {
       className
     );
     return (
-      <Manager>
-        <div data-test='dropdown' className={classes} onKeyDown={this.handleKeyDown}>
-          {children}
-        </div>
-      </Manager>
+      <DropdownContext.Provider
+        value={{
+          dropleft,
+          dropright,
+          dropup,
+          isOpen,
+          toggle
+        }}
+      >
+        <Manager>
+          <div
+            data-test='dropdown'
+            onClick={this.toggle}
+            className={classes}
+            onKeyDown={this.handleKeyDown}
+            ref={this.dropdownContainer}
+          >
+            {children}
+          </div>
+        </Manager>
+      </DropdownContext.Provider>
     );
   }
 }
@@ -189,13 +198,6 @@ Dropdown.defaultProps = {
   dropright: false,
   dropup: false,
   tag: 'div'
-};
-Dropdown.childContextTypes = {
-  dropleft: PropTypes.bool.isRequired,
-  dropright: PropTypes.bool.isRequired,
-  dropup: PropTypes.bool.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  toggle: PropTypes.func.isRequired
 };
 
 export default Dropdown;

@@ -14,9 +14,9 @@ const DataTableHead = props => {
     <>
       {(scrollY || scrollX) && (
         <colgroup>
-          {columns.map(col => (
+          {columns.map((col, i) => (
             <col
-              key={col.field}
+              key={col.field + i}
               style={{
                 width: `${col.width}px` || 'auto',
                 minWidth: `${col.width}px` || 'auto'

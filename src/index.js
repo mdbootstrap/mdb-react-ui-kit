@@ -70,7 +70,7 @@ import Progress from './components/Progress';
 import Rating from './components/Rating';
 import Row from './components/Row';
 import TabContent from './components/TabContent';
-import TabPane from './components/TabPane';
+import TabPane from './components/TabContent/TabPane';
 import Table from './components/Table';
 import TableBody from './components/Table/TableBody';
 import TableFoot from './components/Table/TableFoot';

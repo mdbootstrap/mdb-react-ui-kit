@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { omit } from '../utils';
+import TabContext from './TabContext';
 
 const propTypes = {
   activeItem: PropTypes.any,
@@ -14,30 +15,26 @@ class TabContent extends React.Component {
     activeItem: this.props.activeItem
   };
 
-  getChildContext() {
-    const { activeItem } = this.state;
-    return {
-      activeItemId: activeItem
-    };
-  }
-
   static getDerivedStateFromProps(nextProps, prevState) {
     return prevState.activeItem !== nextProps.activeItem ? { activeItem: nextProps.activeItem } : null;
   }
 
   render() {
     const { className } = this.props;
+    const { activeItem } = this.state;
 
     const attributes = omit(this.props, Object.keys(propTypes));
 
     const classes = classNames('tab-content', className);
-    return <div data-test='tabContent' {...attributes} className={classes} />;
+
+    //<div data-test='tabContent' {...attributes} className={classes} />
+    return (
+      <TabContext.Provider value={{ activeItemId: activeItem }}>
+        <div data-test='tabContent' {...attributes} className={classes} />
+      </TabContext.Provider>
+    );
   }
 }
-
-TabContent.childContextTypes = {
-  activeItemId: PropTypes.any
-};
 
 TabContent.propTypes = propTypes;
 
