@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MDBBtn, MDBCol, MDBContainer, MDBRow } from 'mdbreact';
+import { MDBBtn, MDBCol, MDBContainer, MDBRow, MDBIcon } from 'mdbreact';
 import './index.css';
 import logo from './logo.png';
 
@@ -19,24 +19,16 @@ class App extends Component {
           <MDBCol middle={true} md='6' className='text-center'>
             <div className='d-flex mt-5'>
               <div className='text-center'>
-                <h2 className='h1 text-poppy-red'>BLACK NOVEMBER SURPRISE!</h2>
-                <i className='fas fa-shopping-basket text-white fa-10x'></i>
+                <h2 className='h1 mb-5'>CYBER MONDAY SALE!</h2>
+                <MDBIcon icon="calendar-day cyan-text" size="10x" />
                 <p className='mt-2 text-white'>
                   Check what we have prepared and start using the richest UI Kit today.
                   <br />
                   Hurry up & don't loose your chance.
                 </p>
-                <p>
-                  <a
-                    rel='noopener noreferrer'
-                    target='_blank'
-                    type='button'
-                    className='btn btn-danger btn-rounded btn-lg text-white bg-poppy-red'
-                    href='https://mdbootstrap.com/sale/'
-                  >
-                    <i className='fas fa-cart-arrow-down'></i> CLAIM OFFER
-                  </a>
-                </p>
+                <MDBBtn color="cyan" href="https://mdbootstrap.com/sale/" target="_blank">
+                  CLAIM OFFER
+                </MDBBtn>
               </div>
             </div>
           </MDBCol>
