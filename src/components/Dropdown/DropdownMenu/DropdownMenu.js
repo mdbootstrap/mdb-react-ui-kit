@@ -6,6 +6,8 @@ import DropdownMenuComponent from '../DropdownMenuComponent';
 import './DropdownMenu.css';
 import DropdownContext from '../DropdownContext';
 
+import DropdownMenuComponent from './DropdownMenuComponent';
+
 
 class DropdownMenu extends Component {
   render() {
