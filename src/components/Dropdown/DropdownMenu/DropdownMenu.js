@@ -6,9 +6,6 @@ import DropdownMenuComponent from '../DropdownMenuComponent';
 import './DropdownMenu.css';
 import DropdownContext from '../DropdownContext';
 
-import DropdownMenuComponent from './DropdownMenuComponent';
-
-
 class DropdownMenu extends Component {
   render() {
     const { basic, children, className, color, flip, modifiers, right, tag, ...attrs } = this.props;
@@ -21,7 +18,7 @@ class DropdownMenu extends Component {
               'dropdown-menu-right': right,
               [`dropdown-${color}`]: color,
               show: isOpen,
-              basic
+              basic,
             },
             'dropdown-menu',
             className
@@ -76,7 +73,7 @@ DropdownMenu.propTypes = {
   flip: PropTypes.bool,
   modifiers: PropTypes.object,
   right: PropTypes.bool,
-  tag: PropTypes.string
+  tag: PropTypes.string,
 };
 
 DropdownMenu.defaultProps = {
@@ -85,7 +82,7 @@ DropdownMenu.defaultProps = {
   flip: true,
   right: false,
   tag: 'div',
-  color: false
+  color: false,
 };
 
 // DropdownMenu.contextTypes = {
