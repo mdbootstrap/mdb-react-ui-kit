@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { MDBBtn, MDBCol, MDBContainer, MDBRow, MDBIcon } from 'mdbreact';
+import { MDBBtn, MDBCol, MDBContainer, MDBRow } from 'mdbreact';
 import './index.css';
 import logo from './logo.png';
+import image from './christmas.png';
+
+// remove body styles in index.css too
 
 class App extends Component {
   render() {
@@ -10,25 +13,37 @@ class App extends Component {
         <MDBRow center style={{ height: '100vh' }}>
           <MDBCol middle={true} md='6' className='text-center'>
             <img src={logo} alt='logo' style={{ width: '10rem' }} />
-            <h1 className='text-white'>Welcome to Your MDB React App</h1>
-            <p className='mb-2 text-white'>The application is configured and ready to import our components.</p>
+            <h1 style={{ color: '#6a8255' }}>Welcome to Your MDB React App</h1>
+            <p className='mb-2' style={{ color: '#6a8255' }}>
+              The application is configured and ready to import our components.
+            </p>
             <MDBBtn href='https://mdbootstrap.com/docs/react/' target='blank' color='light-blue'>
               <strong>Check out our docs!</strong>
             </MDBBtn>
           </MDBCol>
-          <MDBCol middle={true} md='6' className='text-center'>
+          <MDBCol middle={true} md='6' className='text-center '>
             <div className='d-flex mt-5'>
-              <div className='text-center'>
-                <h2 className='h1 mb-5'>CYBER MONDAY SALE!</h2>
-                <MDBIcon icon="calendar-day cyan-text" size="10x" />
-                <p className='mt-2 text-white'>
-                  Check what we have prepared and start using the richest UI Kit today.
+              <div className='text-center w-100'>
+                <h1 className='text-one' style={{ color: '#6a8255' }}>
+                  CHRISTMAS SALE!
+                </h1>
+
+                <img src={image} alt='christmas' />
+
+                <p className='mt-4 text-two'>
+                  Get Templates & Plugins as a gift!
                   <br />
-                  Hurry up & don't loose your chance.
+                  Hurry up & don't lose your chance.
                 </p>
-                <MDBBtn color="cyan" href="https://mdbootstrap.com/sale/" target="_blank">
-                  CLAIM OFFER
-                </MDBBtn>
+                <a
+                  type='button'
+                  className='btn btn-danger text-white btn-rounded btn-lg'
+                  rel='noreferrer'
+                  target='_blank'
+                  href='https://mdbootstrap.com/sale/'
+                >
+                  <i className='fas fa-gifts'></i> GET Your gift
+                </a>
               </div>
             </div>
           </MDBCol>

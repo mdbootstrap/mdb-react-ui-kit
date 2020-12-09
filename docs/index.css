@@ -1,3 +1,7 @@
+body {
+  background-color: #f6e0a2;
+}
+
 .flyout {
   display: flex;
   flex-direction: column;
@@ -42,6 +46,6 @@
   color: #283593;
 }
 
-.nav-link:focus{
+.nav-link:focus {
   outline: none;
 }
