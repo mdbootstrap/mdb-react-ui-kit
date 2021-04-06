@@ -1,6 +1,6 @@
 {
   "name": "mdbreact",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "author": "MDBootstrap",
   "repository": "https://github.com/mdbootstrap/React-Bootstrap-with-Material-Design",
   "main": "dist/mdbreact.js",
