@@ -38,7 +38,7 @@
     "@fortawesome/fontawesome-free": "^5.12.0",
     "@material-ui/core": "3.9.3",
     "bootstrap-css-only": "4.4.1",
-    "chart.js": "2.9.3",
+    "chart.js": "2.9.4",
     "classnames": "2.2.6",
     "focus-trap-react": "^6.0.0",
     "material-ui-pickers": "2.2.4",
