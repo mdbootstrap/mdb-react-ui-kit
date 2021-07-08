@@ -47,7 +47,7 @@ declare class MDBDataTable extends React.Component<
     responsiveLg?: boolean;
     responsiveXl?: boolean;
     searching?: boolean;
-    searchingLabel?: string;
+    searchLabel?: string;
     scrollX?: boolean;
     scrollY?: boolean;
     sortable?: boolean;

@@ -558,6 +558,7 @@ const DatatablePage = () => {
                   data={data()}
                   materialSearch={true}
                   proSelect
+                  onSort={(s) => console.log(s)}
                 />
               </MDBCardBody>
             </MDBCard>

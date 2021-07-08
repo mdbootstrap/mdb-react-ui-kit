@@ -473,6 +473,7 @@ declare class MDBCollapse extends Component<
     className?: string;
     children?: ReactNode;
     delay?: { show: number, hide: number };
+    tag?: string;
     isOpen?: boolean | string;
     id?: string;
     navbar?: boolean;
@@ -536,7 +537,7 @@ declare class MDBDataTable extends Component<
     responsiveLg?: boolean;
     responsiveXl?: boolean;
     searching?: boolean;
-    searchingLabel?: string;
+    searchLabel?: string;
     scrollX?: boolean;
     scrollY?: boolean;
     sortable?: boolean;
@@ -862,15 +863,15 @@ declare class MDBModal extends Component<
     hiddenModal?: () => void;
     hideModal?: () => void;
     id?: string;
-    inline: boolean;
+    inline?: boolean;
     isOpen?: boolean;
     keyboard?: boolean;
     modalClassName?: string;
     modalStyle?: 'success' | 'info' | 'danger' | 'warning';
     modalStylesWithoutBackdrop?: ReactNode;
     modalTransitionTimeout?: number;
-    noClickableBodyWithoutBackdrop: boolean;
-    overflowScroll: boolean;
+    noClickableBodyWithoutBackdrop?: boolean;
+    overflowScroll?: boolean;
     position?: string;
     role?: string;
     showModal?: () => void;

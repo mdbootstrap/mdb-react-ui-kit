@@ -13,14 +13,6 @@ class Modal extends Component {
 
   modalContent = React.createRef();
 
-  componentDidMount = () => {
-    document.body.classList.add('modal-open');
-  };
-
-  componentWillUnmount = () => {
-    document.body.classList.remove('modal-open');
-  };
-
   componentDidUpdate = (prevProps, prevState) => {
     const { isOpen, overflowScroll } = this.props;
     const overflowStatement = overflowScroll ? 'overflow-y-scroll' : 'overflow-hidden';
@@ -28,8 +20,10 @@ class Modal extends Component {
     if (prevState.initialIsOpen !== isOpen) {
       this.setState({ initialIsOpen: isOpen }, () => {
         if (isOpen) {
+          document.body.classList.add('modal-open');
           document.body.classList.add(overflowStatement);
         } else {
+          document.body.classList.remove('modal-open');
           document.body.classList.remove(overflowStatement);
         }
       });

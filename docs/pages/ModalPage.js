@@ -526,7 +526,7 @@ class ModalPage extends Component {
           </MDBModal>
         </SectionContainer>
 
-        <SectionContainer header='Modal Events' flexCenter>
+        {/* <SectionContainer header='Modal Events' flexCenter>
           <MDBBtn color='warning' onClick={this.toggle(18)}>
             Modal events
           </MDBBtn>
@@ -550,7 +550,7 @@ class ModalPage extends Component {
               <MDBBtn color='primary'>Save changes</MDBBtn>
             </MDBModalFooter>
           </MDBModal>
-        </SectionContainer>
+        </SectionContainer> */}
       </MDBContainer>
     );
   }

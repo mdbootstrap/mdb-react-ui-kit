@@ -21,15 +21,15 @@ declare class MDBModal extends React.Component<
     hiddenModal?: () => void;
     hideModal?: () => void;
     id?: string;
-    inline: boolean;
+    inline?: boolean;
     isOpen?: boolean;
     keyboard?: boolean;
     modalClassName?: string;
     modalStyle?: 'success' | 'info' | 'danger' | 'warning';
     modalStylesWithoutBackdrop?: React.ReactNode;
     modalTransitionTimeout?: number;
-    noClickableBodyWithoutBackdrop: boolean;
-    overflowScroll: boolean;
+    noClickableBodyWithoutBackdrop?: boolean;
+    overflowScroll?: boolean;
     position?: string;
     role?: string;
     showModal?: () => void;

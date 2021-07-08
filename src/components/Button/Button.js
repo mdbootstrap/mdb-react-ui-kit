@@ -54,6 +54,7 @@ const Button = props => {
       'btn-action': action,
       [`btn-${social}`]: social,
       [`btn-${size}`]: size,
+      'btn-rounded': rounded,
       disabled
     },
     className
@@ -99,9 +100,12 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   download: PropTypes.string,
   flat: PropTypes.bool,
+  gradient: PropTypes.string,
   innerRef: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   onClick: PropTypes.func,
+  outline: PropTypes.bool,
   role: PropTypes.string,
+  rounded: PropTypes.bool,
   size: PropTypes.string,
   social: PropTypes.string,
   tag: PropTypes.string,

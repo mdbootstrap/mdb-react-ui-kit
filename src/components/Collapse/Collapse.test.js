@@ -35,7 +35,8 @@ describe('<Collapse />', () => {
       navbar: true,
       delay: { show: 5, hide: 5 },
       onOpened: jest.fn(),
-      onClosed: jest.fn()
+      onClosed: jest.fn(),
+      tag: 'div'
     };
 
     wrapper = mounted(expectedProps);

@@ -98,7 +98,7 @@ class Collapse extends Component {
   }
 
   render() {
-    const { navbar, children, className, isOpen, delay, onOpened, onClosed, ...attributes } = this.props;
+    const { navbar, children, className, isOpen, delay, tag: Tag, onOpened, onClosed, ...attributes } = this.props;
 
     const { collapse, height } = this.state;
     let collapseClass;
@@ -125,7 +125,7 @@ class Collapse extends Component {
     const style = height === null ? null : { height };
 
     return (
-      <div
+      <Tag
         data-test='collapse'
         {...attributes}
         style={{ ...attributes.style, ...style }}
@@ -135,7 +135,7 @@ class Collapse extends Component {
         }}
       >
         {children}
-      </div>
+      </Tag>
     );
   }
 }
@@ -148,14 +148,16 @@ Collapse.propTypes = {
   isOpen: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   navbar: PropTypes.bool,
   onClosed: PropTypes.func,
-  onOpened: PropTypes.func
+  onOpened: PropTypes.func,
+  tag: PropTypes.string
 };
 
 Collapse.defaultProps = {
   isOpen: '',
   delay: DEFAULT_DELAYS,
   onOpened: () => {},
-  onClosed: () => {}
+  onClosed: () => {},
+  tag: 'div'
 };
 export default Collapse;
 export { Collapse as MDBCollapse };

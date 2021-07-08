@@ -192,7 +192,7 @@ class DataTable extends Component {
       () => this.filterRows()
     );
 
-    onSort && typeof onSort === 'function' && onSort({ column: field, direction: sort === 'desc' ? 'desc' : 'asc' });
+    onSort && typeof onSort === 'function' && onSort({ column: field, direction: this.state.direction === true ? 'asc' : 'desc' });
   };
 
   filterRows = (search = this.state.search) => {

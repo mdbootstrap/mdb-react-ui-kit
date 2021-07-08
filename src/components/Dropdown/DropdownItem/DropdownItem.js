@@ -6,11 +6,15 @@ import DropdownContext from '../DropdownContext';
 
 class DropdownItem extends Component {
   onClick = (e, callbackToggle) => {
-    const { disabled, header, divider, onClick } = this.props;
+    const { disabled, header, divider, onClick, toggle } = this.props;
 
     if (disabled || header || divider) {
       e.preventDefault();
       return;
+    }
+
+    if (!toggle) {
+      e.stopPropagation();
     }
 
     if (onClick) {

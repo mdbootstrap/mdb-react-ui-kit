@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Fa from '../Fa';
 
-class Input extends React.Component {
+class Input extends React.PureComponent {
   state = {
     innerValue: this.props.value || this.props.valueDefault,
     isFocused: false,
