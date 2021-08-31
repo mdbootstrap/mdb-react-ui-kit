@@ -17,6 +17,9 @@ type InputProps = {
   contrast?: boolean;
   value?: string;
   name?: string;
+  validation?: string;
+  invalid?: boolean;
+  validationTooltip?: boolean;
   labelRef?: React.RefObject<HTMLLabelElement>;
   textarea?: boolean;
   [rest: string]: any;

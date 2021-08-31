@@ -13,6 +13,8 @@ declare const MDBCheckbox: React.FunctionComponent<{
   name?: string;
   inline?: boolean;
   checked?: boolean;
+  validation?: string;
+  invalid?: boolean;
   btn?: boolean;
   btnColor?: string;
   [rest: string]: any;

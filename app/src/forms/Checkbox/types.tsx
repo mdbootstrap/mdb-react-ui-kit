@@ -12,6 +12,8 @@ type CheckboxProps = {
   value?: string | boolean;
   name?: string;
   inline?: boolean;
+  validation?: string;
+  invalid?: boolean;
   checked?: boolean;
   btn?: boolean;
   btnColor?: string;

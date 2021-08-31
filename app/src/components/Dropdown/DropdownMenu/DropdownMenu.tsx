@@ -10,7 +10,6 @@ const MDBDropdownMenu: React.FC<DropdownMenuProps> = ({
   tag: Tag,
   children,
   style,
-  wrapperStyle,
   dark,
   responsive,
   ...props
@@ -105,28 +104,27 @@ const MDBDropdownMenu: React.FC<DropdownMenuProps> = ({
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-ignore
   return attachELements ? (
-    <div
-      className='position-absolute'
-      ref={setPopperElement}
+    <Tag
+      className={classes}
+      style={{ position: 'absolute', zIndex: 1000, ...styles.popper, ...style }}
+      {...props}
       {...attributes.popper}
-      style={{ display: 'block', zIndex: 1000, ...styles.popper, ...wrapperStyle }}
+      ref={setPopperElement}
       tabIndex={-1}
     >
-      <Tag className={classes} style={{ ...style }} {...props} tabIndex={-1}>
-        {React.Children.map(children, (child: any, index) => {
-          if (child?.type === MDBDropdownItem) {
-            return React.cloneElement(child, {
-              tabIndex: 0,
-              'data-active': activeIndex === index && true,
-              'data-index': index,
-              className: activeIndex === index ? 'active' : '',
-            });
-          } else {
-            return child;
-          }
-        })}
-      </Tag>
-    </div>
+      {React.Children.map(children, (child: any, index) => {
+        if (child?.type === MDBDropdownItem) {
+          return React.cloneElement(child, {
+            tabIndex: 0,
+            'data-active': activeIndex === index && true,
+            'data-index': index,
+            className: activeIndex === index ? 'active' : '',
+          });
+        } else {
+          return child;
+        }
+      })}
+    </Tag>
   ) : (
     ''
   );

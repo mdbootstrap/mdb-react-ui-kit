@@ -71,11 +71,6 @@ const MDBDropdown: React.FC<DropdownProps> = ({
   );
 
   useEffect(() => {
-    const wo = document.body.scrollTop;
-    console.log(wo);
-  });
-
-  useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);

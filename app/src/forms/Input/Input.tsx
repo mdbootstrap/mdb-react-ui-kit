@@ -20,6 +20,9 @@ const MDBInput: React.FC<InputProps> = ({
   labelStyle,
   inputRef,
   textarea,
+  validation,
+  invalid,
+  validationTooltip,
   ...props
 }) => {
   const labelEl = useRef<HTMLLabelElement>(null);
@@ -36,6 +39,12 @@ const MDBInput: React.FC<InputProps> = ({
   const wrapperClasses = clsx('form-outline', contrast && 'form-white', wrapperClass);
   const inputClasses = clsx('form-control', active && 'active', size && `form-control-${size}`, className);
   const labelClasses = clsx('form-label', labelClass);
+  const validationClasses = clsx(
+    validation &&
+      (invalid
+        ? `invalid-${validationTooltip ? `tooltip` : `feedback`}`
+        : `valid-${validationTooltip ? `tooltip` : `feedback`}`)
+  );
 
   useEffect(() => {
     if (labelReference.current) {
@@ -91,6 +100,7 @@ const MDBInput: React.FC<InputProps> = ({
           {label}
         </label>
       )}
+      {validation && <div className={validationClasses}>{validation}</div>}
       <div className='form-notch'>
         <div className='form-notch-leading'></div>
         <div className='form-notch-middle' style={{ width: labelWidth }}></div>

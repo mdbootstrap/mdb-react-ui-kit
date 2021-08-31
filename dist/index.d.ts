@@ -1,13 +1,14 @@
-import React$1, { FunctionComponent, ElementType, ComponentProps, ReactNode, ReactElement, CSSProperties, RefObject } from 'react';
+import * as React$1 from 'react';
+import React__default from 'react';
 
-declare const MDBContainer: FunctionComponent<{
+declare const MDBContainer: React$1.FunctionComponent<{
   className?: string;
   fluid?: boolean;
-  tag?: ElementType;
+  tag?: React$1.ElementType;
   [rest: string]: any;
 }>;
 
-declare const MDBCol: FunctionComponent<{
+declare const MDBCol: React$1.FunctionComponent<{
   center?: string | boolean;
   className?: string;
   end?: string | boolean;
@@ -20,23 +21,23 @@ declare const MDBCol: FunctionComponent<{
   size?: string;
   sm?: string;
   start?: string | boolean;
-  tag?: ElementType;
+  tag?: React$1.ElementType;
   xl?: string;
   xs?: string;
   [rest: string]: any;
 }>;
 
-declare const MDBBadge: FunctionComponent<{
+declare const MDBBadge: React$1.FunctionComponent<{
   className?: string;
   pill?: boolean;
   dot?: boolean;
   notification?: boolean;
   color?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBBtn: FunctionComponent<{
+declare const MDBBtn: React$1.FunctionComponent<{
   className?: string;
   color?: string;
   outline?: boolean;
@@ -52,81 +53,81 @@ declare const MDBBtn: FunctionComponent<{
   toggle?: boolean;
   target?: string;
   value?: string | number;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBBtnGroup: FunctionComponent<{
+declare const MDBBtnGroup: React$1.FunctionComponent<{
   className?: string;
   role?: string;
   shadow?: string;
   toolbar?: boolean;
   size?: string;
   vertical?: boolean;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBSpinner: FunctionComponent<{
+declare const MDBSpinner: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   grow?: boolean;
   color?: string;
   size?: string;
   [rest: string]: any;
 }>;
 
-declare const MDBCard: FunctionComponent<{
+declare const MDBCard: React$1.FunctionComponent<{
   className?: string;
   border?: string;
   background?: string;
   shadow?: string;
   alignment?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBCardHeader: FunctionComponent<{
+declare const MDBCardHeader: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   border?: string;
   background?: string;
   [rest: string]: any;
 }>;
 
-declare const MDBCardSubTitle: FunctionComponent<{
+declare const MDBCardSubTitle: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBCardTitle: FunctionComponent<{
+declare const MDBCardTitle: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBCardText: FunctionComponent<{
+declare const MDBCardText: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBCardBody: FunctionComponent<{
+declare const MDBCardBody: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBCardFooter: FunctionComponent<{
+declare const MDBCardFooter: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   border?: string;
   background?: string;
   [rest: string]: any;
 }>;
 
-declare const MDBCardImage: FunctionComponent<{
+declare const MDBCardImage: React$1.FunctionComponent<{
   className?: string;
   position?: string;
   overlay?: boolean;
@@ -134,35 +135,35 @@ declare const MDBCardImage: FunctionComponent<{
   [rest: string]: any;
 }>;
 
-declare const MDBCardOverlay: FunctionComponent<{
+declare const MDBCardOverlay: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBCardLink: FunctionComponent<{
+declare const MDBCardLink: React$1.FunctionComponent<{
   className?: string;
   [rest: string]: any;
 }>;
 
-declare const MDBCardGroup: FunctionComponent<{
+declare const MDBCardGroup: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBListGroup: FunctionComponent<{
+declare const MDBListGroup: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   horizontal?: boolean;
   horizontalSize?: string;
   flush?: boolean;
   [rest: string]: any;
 }>;
 
-declare const MDBListGroupItem: FunctionComponent<{
+declare const MDBListGroupItem: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   active?: boolean;
   disabled?: boolean;
   action?: boolean;
@@ -170,10 +171,10 @@ declare const MDBListGroupItem: FunctionComponent<{
   [rest: string]: any;
 }>;
 
-declare const MDBTooltip: FunctionComponent<{
+declare const MDBTooltip: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
-  tooltipTag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
+  tooltipTag?: React$1.ComponentProps<any>;
   placement?:
     | 'top'
     | 'auto'
@@ -192,13 +193,13 @@ declare const MDBTooltip: FunctionComponent<{
     | 'left-end'
     | undefined;
   options?: Record<string, unknown>;
-  title?: string | ReactNode;
+  title?: string | React$1.ReactNode;
   wrapperProps?: Record<string, unknown>;
   wrapperClass?: string;
   [rest: string]: any;
 }>;
 
-declare const MDBRow: FunctionComponent<{
+declare const MDBRow: React$1.FunctionComponent<{
   around?: boolean;
   between?: boolean;
   bottom?: boolean;
@@ -207,13 +208,13 @@ declare const MDBRow: FunctionComponent<{
   end?: boolean;
   evenly?: boolean;
   middle?: boolean;
-  tag?: ElementType;
+  tag?: React$1.ElementType;
   start?: boolean;
   top?: boolean;
   [rest: string]: any;
 }>;
 
-declare const MDBIcon: FunctionComponent<{
+declare const MDBIcon: React$1.FunctionComponent<{
   className?: string;
   fab?: boolean;
   far?: boolean;
@@ -236,9 +237,9 @@ declare const MDBIcon: FunctionComponent<{
   [rest: string]: any;
 }>;
 
-declare const MDBTypography: FunctionComponent<{
+declare const MDBTypography: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   variant?: string;
   blockquote?: boolean;
   note?: boolean;
@@ -249,11 +250,11 @@ declare const MDBTypography: FunctionComponent<{
   [rest: string]: any;
 }>;
 
-declare const MDBBreadcrumb: FunctionComponent<{
+declare const MDBBreadcrumb: React$1.FunctionComponent<{
   bold?: boolean;
-  children?: ReactNode;
+  children?: React$1.ReactNode;
   className?: string;
-  tag?: ReactElement;
+  tag?: React$1.ReactElement;
   color?:
     | 'primary'
     | 'secondary'
@@ -272,16 +273,16 @@ declare const MDBBreadcrumb: FunctionComponent<{
   [rest: string]: any;
 }>;
 
-declare const MDBBreadcrumbItem: FunctionComponent<{
+declare const MDBBreadcrumbItem: React$1.FunctionComponent<{
   active?: boolean;
   className?: string;
-  tag?: ElementType;
+  tag?: React$1.ElementType;
   current?: 'page' | 'step' | 'location';
   [rest: string]: any;
 }>;
 
-declare const MDBNavbar: FunctionComponent<{
-  children?: ReactNode;
+declare const MDBNavbar: React$1.FunctionComponent<{
+  children?: React$1.ReactNode;
   className?: string;
   tag?: 'nav' | 'div';
   [rest: string]: any;
@@ -307,51 +308,51 @@ declare const MDBNavbar: FunctionComponent<{
   sticky?: boolean;
 }>;
 
-declare const MDBNavbarLink: FunctionComponent<{
+declare const MDBNavbarLink: React$1.FunctionComponent<{
   active?: boolean;
-  children?: ReactNode;
+  children?: React$1.ReactNode;
   className?: string;
   disabled?: boolean;
-  tag?: ElementType;
+  tag?: React$1.ElementType;
   [rest: string]: any;
   link?: boolean;
 }>;
 
-declare const MDBNavbarBrand: FunctionComponent<{
-  children?: ReactNode;
+declare const MDBNavbarBrand: React$1.FunctionComponent<{
+  children?: React$1.ReactNode;
   className?: string;
-  tag?: ElementType;
+  tag?: React$1.ElementType;
   [rest: string]: any;
 }>;
 
-declare const MDBNavbarItem: FunctionComponent<{
-  children?: ReactNode;
+declare const MDBNavbarItem: React$1.FunctionComponent<{
+  children?: React$1.ReactNode;
   className?: string;
   active?: boolean;
   text?: boolean;
-  tag?: ElementType;
+  tag?: React$1.ElementType;
   [rest: string]: any;
 }>;
 
-declare const MDBNavbarNav: FunctionComponent<{
-  children?: ReactNode;
+declare const MDBNavbarNav: React$1.FunctionComponent<{
+  children?: React$1.ReactNode;
   className?: string;
-  tag?: ElementType;
+  tag?: React$1.ElementType;
   right?: boolean;
   fullWidth?: boolean;
   left?: boolean;
   [rest: string]: any;
 }>;
 
-declare const MDBNavbarToggler: FunctionComponent<{
-  children?: ReactNode;
+declare const MDBNavbarToggler: React$1.FunctionComponent<{
+  children?: React$1.ReactNode;
   className?: string;
-  tag?: ElementType;
+  tag?: React$1.ElementType;
   [rest: string]: any;
 }>;
 
-declare const MDBFooter: FunctionComponent<{
-  children?: ReactNode;
+declare const MDBFooter: React$1.FunctionComponent<{
+  children?: React$1.ReactNode;
   className?: string;
   color?:
     | 'primary'
@@ -372,35 +373,35 @@ declare const MDBFooter: FunctionComponent<{
   [rest: string]: any;
 }>;
 
-declare const MDBPagination: FunctionComponent<{
-  children?: ReactNode;
+declare const MDBPagination: React$1.FunctionComponent<{
+  children?: React$1.ReactNode;
   className?: string;
   center?: boolean;
   end?: boolean;
   start?: boolean;
   size?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   circle?: boolean;
   [rest: string]: any;
 }>;
 
-declare const MDBPaginationLink: FunctionComponent<{
-  children?: ReactNode;
+declare const MDBPaginationLink: React$1.FunctionComponent<{
+  children?: React$1.ReactNode;
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBPaginationItem: FunctionComponent<{
-  children?: ReactNode;
+declare const MDBPaginationItem: React$1.FunctionComponent<{
+  children?: React$1.ReactNode;
   className?: string;
   active?: boolean;
   disabled?: boolean;
-  tag?: ReactElement;
+  tag?: React$1.ReactElement;
   [rest: string]: any;
 }>;
 
-declare const MDBTable: FunctionComponent<{
+declare const MDBTable: React$1.FunctionComponent<{
   className?: string;
   align?: 'top' | 'bottom' | 'middle';
   borderColor?:
@@ -436,70 +437,73 @@ declare const MDBTable: FunctionComponent<{
   hover?: boolean;
   small?: boolean;
   striped?: boolean;
-  tag?: ElementType;
+  tag?: React$1.ElementType;
   [rest: string]: any;
 }>;
 
-declare const MDBTableHead: FunctionComponent<{
+declare const MDBTableHead: React$1.FunctionComponent<{
   className?: string;
-  tag?: ElementType;
+  tag?: React$1.ElementType;
   dark?: boolean;
   light?: boolean;
   [rest: string]: any;
 }>;
 
-declare const MDBTableBody: FunctionComponent<{
+declare const MDBTableBody: React$1.FunctionComponent<{
   className?: string;
-  tag?: ElementType;
+  tag?: React$1.ElementType;
   [rest: string]: any;
 }>;
 
-declare const MDBProgress: FunctionComponent<{
+declare const MDBProgress: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   height?: number | string;
   style?: Record<string, unknown>;
   [rest: string]: any;
 }>;
 
-declare const MDBProgressBar: FunctionComponent<{
+declare const MDBProgressBar: React$1.FunctionComponent<{
   animated?: boolean;
   bgColor?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark';
   className?: string;
   striped?: boolean;
   style?: Record<string, unknown>;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   valuemax?: string | number;
   valuemin?: string | number;
   width?: string | number;
   [rest: string]: any;
 }>;
 
-declare const MDBInput: FunctionComponent<{
+declare const MDBInput: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
-  wrapperTag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
+  wrapperTag?: React$1.ComponentProps<any>;
   id?: string;
   label?: string;
   labelId?: string;
   labelClass?: string;
   wrapperClass?: string;
   wrapperStyle?: Record<string, unknown>;
-  labelStyle?: CSSProperties;
+  labelStyle?: React$1.CSSProperties;
   disabled?: boolean;
   size?: string;
   readonly?: boolean;
   contrast?: boolean;
   value?: string;
   name?: string;
-  labelRef?: RefObject<HTMLLabelElement>;
+  validation?: string;
+  invalid?: boolean;
+  validationTooltip?: boolean;
+  labelRef?: React$1.RefObject<HTMLLabelElement>;
   textarea?: boolean;
   [rest: string]: any;
 }>;
 
-declare const MDBCheckbox: FunctionComponent<{
+declare const MDBCheckbox: React$1.FunctionComponent<{
   className?: string;
-  wrapperTag?: ComponentProps<any>;
+  wrapperTag?: React$1.ComponentProps<any>;
   wrapperClass?: string;
   id?: string;
   label?: string;
@@ -510,6 +514,8 @@ declare const MDBCheckbox: FunctionComponent<{
   name?: string;
   inline?: boolean;
   checked?: boolean;
+  validation?: string;
+  invalid?: boolean;
   btn?: boolean;
   btnColor?: string;
   [rest: string]: any;
@@ -517,13 +523,13 @@ declare const MDBCheckbox: FunctionComponent<{
 
 declare const MDBRadio: typeof MDBCheckbox;
 
-declare const MDBCollapse: FunctionComponent<{
+declare const MDBCollapse: React$1.FunctionComponent<{
   className?: string;
   navbar?: boolean;
   show?: boolean | string;
   center?: boolean;
   style?: Record<string, unknown>;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
@@ -540,56 +546,55 @@ declare type DropdownProps = {
     animation?: boolean;
 };
 
-declare const MDBDropdown: React$1.FC<DropdownProps>;
+declare const MDBDropdown: React__default.FC<DropdownProps>;
 
-declare const MDBDropdownItem: FunctionComponent<{
+declare const MDBDropdownItem: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBDropdownMenu: FunctionComponent<{
+declare const MDBDropdownMenu: React$1.FunctionComponent<{
   className?: string;
   style?: Record<string, any>;
-  wrapperStyle?: Record<string, any>;
   dark?: boolean;
   responsive?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBDropdownToggle: FunctionComponent<{
+declare const MDBDropdownToggle: React$1.FunctionComponent<{
   className?: string;
   border?: string;
   background?: string;
   shadow?: string;
   alignment?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBDropdownLink: FunctionComponent<{
+declare const MDBDropdownLink: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBDropdownDivider: FunctionComponent<{
+declare const MDBDropdownDivider: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBDropdownHeader: FunctionComponent<{
+declare const MDBDropdownHeader: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBPopover: FunctionComponent<{
-  btnChildren?: ReactNode;
+declare const MDBPopover: React$1.FunctionComponent<{
+  btnChildren?: React$1.ReactNode;
   btnClassName?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   className?: string;
   dismiss?: boolean;
   isOpen?: boolean;
@@ -611,23 +616,23 @@ declare const MDBPopover: FunctionComponent<{
     | 'left-start'
     | 'left-end';
   poperStyle?: Record<string, unknown>;
-  popperTag?: ComponentProps<any>;
+  popperTag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBPopoverBody: FunctionComponent<{
+declare const MDBPopoverBody: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBPopoverHeader: FunctionComponent<{
+declare const MDBPopoverHeader: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBModal: FunctionComponent<{
+declare const MDBModal: React$1.FunctionComponent<{
   animationDirection?: string;
   backdrop?: boolean;
   className?: string;
@@ -635,81 +640,180 @@ declare const MDBModal: FunctionComponent<{
   tabIndex?: string;
   show?: boolean;
   staticBackdrop?: boolean;
-  tag?: ComponentProps<any>;
-  modalRef?: RefObject<HTMLElement>;
+  tag?: React$1.ComponentProps<any>;
+  modalRef?: React$1.RefObject<HTMLElement>;
   [rest: string]: any;
 }>;
 
-declare const MDBModalDialog: FunctionComponent<{
+declare const MDBModalDialog: React$1.FunctionComponent<{
   className?: string;
   centered?: boolean;
   size?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBModalContent: FunctionComponent<{
+declare const MDBModalContent: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBModalHeader: FunctionComponent<{
+declare const MDBModalHeader: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBModalTitle: FunctionComponent<{
+declare const MDBModalTitle: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBModalBody: FunctionComponent<{
+declare const MDBModalBody: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBModalFooter: FunctionComponent<{
+declare const MDBModalFooter: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBScrollspy: FunctionComponent<{
+declare const MDBScrollspy: React$1.FunctionComponent<{
   className?: string;
   offset?: number;
   onElement?: boolean;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBScrollspySection: FunctionComponent<{
+declare const MDBScrollspySection: React$1.FunctionComponent<{
   className?: string;
   customSelect?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBScrollspyNavList: FunctionComponent<{
+declare const MDBScrollspyNavList: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBScrollspyNavItem: FunctionComponent<{
+declare const MDBScrollspyNavItem: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;
 
-declare const MDBScrollspyNavLink: FunctionComponent<{
+declare const MDBScrollspyNavLink: React$1.FunctionComponent<{
   className?: string;
-  tag?: ComponentProps<any>;
+  tag?: React$1.ComponentProps<any>;
   scrollElement?: HTMLElement;
   [rest: string]: any;
 }>;
 
-export { MDBBadge, MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBBtnGroup, MDBCard, MDBCardBody, MDBCardFooter, MDBCardGroup, MDBCardHeader, MDBCardImage, MDBCardLink, MDBCardOverlay, MDBCardSubTitle, MDBCardText, MDBCardTitle, MDBCheckbox, MDBCol, MDBCollapse, MDBContainer, MDBDropdown, MDBDropdownDivider, MDBDropdownHeader, MDBDropdownItem, MDBDropdownLink, MDBDropdownMenu, MDBDropdownToggle, MDBFooter, MDBIcon, MDBInput, MDBListGroup, MDBListGroupItem, MDBModal, MDBModalBody, MDBModalContent, MDBModalDialog, MDBModalFooter, MDBModalHeader, MDBModalTitle, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav, MDBNavbarToggler, MDBPagination, MDBPaginationItem, MDBPaginationLink, MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBProgress, MDBProgressBar, MDBRadio, MDBRow, MDBScrollspy, MDBScrollspyNavItem, MDBScrollspyNavLink, MDBScrollspyNavList, MDBScrollspySection, MDBSpinner, MDBTable, MDBTableBody, MDBTableHead, MDBTooltip, MDBTypography };
+declare const MDBSwitch: typeof MDBCheckbox;
+
+declare const MDBRange: React$1.FunctionComponent<{
+  className?: string;
+  id?: string;
+  label?: string;
+  labelId?: string;
+  labelClass?: string;
+  min?: string;
+  max?: string;
+  step?: string;
+  value?: number;
+  name?: string;
+  [rest: string]: any;
+}>;
+
+declare const MDBFile: React$1.FunctionComponent<{
+  className?: string;
+  id?: string;
+  label?: string;
+  disabled?: boolean;
+  labelId?: string;
+  labelClass?: string;
+  size?: string;
+  name?: string;
+  [rest: string]: any;
+}>;
+
+declare const MDBInputGroup: React$1.FunctionComponent<{
+  className?: string;
+  noWrap?: boolean;
+  tag?: React$1.ComponentProps<any>;
+  size?: string;
+  [rest: string]: any;
+}>;
+
+declare const MDBInputGroupText: React$1.FunctionComponent<{
+  className?: string;
+  noBorder?: boolean;
+  tag?: React$1.ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBInputGroupElement: React$1.FunctionComponent<{
+  className?: string;
+  textarea?: boolean;
+  [rest: string]: any;
+}>;
+
+declare const MDBRipple: React$1.FunctionComponent<{
+  className?: string;
+  rippleUnbound?: boolean;
+  rippleColor?: string;
+  rippleRadius?: number;
+  rippleDuration?: number;
+  rippleCentered?: boolean;
+  // rippleTag?: React.ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBValidation: React$1.FunctionComponent<{
+  className?: string;
+  isValidated?: boolean;
+  [rest: string]: any;
+}>;
+
+declare const MDBTabs: React$1.FunctionComponent<{
+  className?: string;
+  fill?: boolean;
+  justify?: boolean;
+  pills?: boolean;
+  [rest: string]: any;
+}>;
+
+declare const MDBTabsItem: React$1.FunctionComponent<{
+  className?: string;
+  [rest: string]: any;
+}>;
+
+declare const MDBTabsLink: React$1.FunctionComponent<{
+  className?: string;
+  active?: boolean;
+  color?: string;
+  [rest: string]: any;
+}>;
+
+declare const MDBTabsContent: React$1.FunctionComponent<{
+  className?: string;
+  tag?: React$1.ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBTabsPane: React$1.FunctionComponent<{
+  className?: string;
+  show?: boolean;
+  tag?: React$1.ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+export { MDBBadge, MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBBtnGroup, MDBCard, MDBCardBody, MDBCardFooter, MDBCardGroup, MDBCardHeader, MDBCardImage, MDBCardLink, MDBCardOverlay, MDBCardSubTitle, MDBCardText, MDBCardTitle, MDBCheckbox, MDBCol, MDBCollapse, MDBContainer, MDBDropdown, MDBDropdownDivider, MDBDropdownHeader, MDBDropdownItem, MDBDropdownLink, MDBDropdownMenu, MDBDropdownToggle, MDBFile, MDBFooter, MDBIcon, MDBInput, MDBInputGroup, MDBInputGroupElement, MDBInputGroupText, MDBListGroup, MDBListGroupItem, MDBModal, MDBModalBody, MDBModalContent, MDBModalDialog, MDBModalFooter, MDBModalHeader, MDBModalTitle, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav, MDBNavbarToggler, MDBPagination, MDBPaginationItem, MDBPaginationLink, MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBProgress, MDBProgressBar, MDBRadio, MDBRange, MDBRipple, MDBRow, MDBScrollspy, MDBScrollspyNavItem, MDBScrollspyNavLink, MDBScrollspyNavList, MDBScrollspySection, MDBSpinner, MDBSwitch, MDBTable, MDBTableBody, MDBTableHead, MDBTabs, MDBTabsContent, MDBTabsItem, MDBTabsLink, MDBTabsPane, MDBTooltip, MDBTypography, MDBValidation };

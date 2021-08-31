@@ -17,7 +17,10 @@ const MDBCheckbox: React.FC<CheckboxProps> = React.forwardRef<HTMLAllCollection,
       id,
       defaultChecked,
       checked,
+      validation,
+      invalid,
       btnColor,
+      toggleSwitch,
       ...props
     },
     ref
@@ -35,9 +38,15 @@ const MDBCheckbox: React.FC<CheckboxProps> = React.forwardRef<HTMLAllCollection,
       }
     }
 
-    const wrapperClasses = clsx(label && !btn && 'form-check', inline && !btn && 'form-check-inline', wrapperClass);
+    const wrapperClasses = clsx(
+      label && !btn && 'form-check',
+      inline && !btn && 'form-check-inline',
+      toggleSwitch && 'form-switch',
+      wrapperClass
+    );
     const inputClasses = clsx(inputStyle, className);
     const labelClasses = clsx(labelStyle, labelClass);
+    const validationClasses = clsx(validation && (invalid ? 'invalid-feedback' : 'valid-feedback'));
 
     return (
       <WrapperTag className={wrapperClasses}>
@@ -55,6 +64,7 @@ const MDBCheckbox: React.FC<CheckboxProps> = React.forwardRef<HTMLAllCollection,
             {label}
           </label>
         )}
+        {validation && <div className={validationClasses}>{validation}</div>}
       </WrapperTag>
     );
   }

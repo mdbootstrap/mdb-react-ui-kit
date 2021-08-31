@@ -64,6 +64,19 @@ import MDBScrollspySection from './navigation/Scrollspy/ScrollspySection/Scrolls
 import MDBScrollspyNavItem from './navigation/Scrollspy/ScrollspyNavItem/ScrollspyNavItem';
 import MDBScrollspyNavLink from './navigation/Scrollspy/ScrollspyNavlink/ScrollspyNavlink';
 import MDBScrollspyNavList from './navigation/Scrollspy/ScrollspyNavList/ScrollspyNavList';
+import MDBSwitch from './forms/Switch/Switch';
+import MDBRange from './forms/Range/Range';
+import MDBFile from './forms/File/File';
+import MDBInputGroup from './forms/InputGroup/InputGroup';
+import MDBInputGroupText from './forms/InputGroup/InputGroupText/InputGroupText';
+import MDBInputGroupElement from './forms/InputGroup/InputGroupElement/InputGroupElement';
+import MDBRipple from './methods/Ripple/Ripple';
+import MDBValidation from './forms/Validation/Validation';
+import MDBTabs from './navigation/Tabs/Tabs';
+import MDBTabsItem from './navigation/Tabs/TabsItem/TabsItem';
+import MDBTabsLink from './navigation/Tabs/TabsLink/TabsLink';
+import MDBTabsContent from './navigation/Tabs/TabsContent/TabsContent';
+import MDBTabsPane from './navigation/Tabs/TabsPane/TabsPane';
 
 export {
   MDBContainer,
@@ -132,4 +145,17 @@ export {
   MDBScrollspyNavItem,
   MDBScrollspyNavLink,
   MDBScrollspyNavList,
+  MDBSwitch,
+  MDBRange,
+  MDBFile,
+  MDBInputGroup,
+  MDBInputGroupText,
+  MDBInputGroupElement,
+  MDBRipple,
+  MDBValidation,
+  MDBTabs,
+  MDBTabsItem,
+  MDBTabsLink,
+  MDBTabsContent,
+  MDBTabsPane,
 };
