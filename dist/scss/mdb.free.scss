@@ -43,12 +43,14 @@
 @import './bootstrap-rtl-fix/popover';
 @import './bootstrap-rtl-fix/carousel';
 @import './bootstrap-rtl-fix/spinners';
+@import './bootstrap-rtl-fix/offcanvas';
 @import './bootstrap-rtl-fix/tooltip';
 
 // Helpers
 @import './bootstrap-rtl-fix/helpers';
 
 // Utilities
+@import './free/utilities';
 @import './bootstrap-rtl-fix/utilities/api';
 
 // MDB CORE

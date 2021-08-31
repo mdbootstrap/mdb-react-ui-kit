@@ -69,8 +69,7 @@
   }
 
   + .card-link {
-    /*!rtl:ignore*/
-    margin-left: 5px;
+    margin-left: $card-spacer-x;
   }
 }
 

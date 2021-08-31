@@ -123,8 +123,7 @@
 
   .btn-close {
     padding: ($modal-header-padding-y / 2) ($modal-header-padding-x / 2);
-    margin: ($modal-header-padding-y / -2) ($modal-header-padding-x / -2)
-      ($modal-header-padding-y / -2) auto;
+    margin: ($modal-header-padding-y / -2) ($modal-header-padding-x / -2) ($modal-header-padding-y / -2) auto;
   }
 }
 
@@ -161,15 +160,6 @@
   > * {
     margin: $modal-footer-margin-between / 2;
   }
-}
-
-// Measure scrollbar width for padding body during modal show/hide
-.modal-scrollbar-measure {
-  position: absolute;
-  top: -9999px;
-  width: 50px;
-  height: 50px;
-  overflow: scroll;
 }
 
 // Scale up the modal
@@ -210,6 +200,7 @@
   }
 }
 
+// scss-docs-start modal-fullscreen-loop
 @each $breakpoint in map-keys($grid-breakpoints) {
   $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
   $postfix: if($infix != '', $infix + '-down', '');
@@ -241,3 +232,4 @@
     }
   }
 }
+// scss-docs-end modal-fullscreen-loop

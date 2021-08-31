@@ -159,14 +159,10 @@ $rfs-mq-property-height: if($rfs-mode == max-media-query, max-height, min-height
 
       @if $unit == px {
         // Convert to rem if needed
-        $val: $val +
-          ' ' +
-          if($rfs-unit == rem, #{$value / ($value * 0 + $rfs-rem-value)}rem, $value);
+        $val: $val + ' ' + if($rfs-unit == rem, #{$value / ($value * 0 + $rfs-rem-value)}rem, $value);
       } @else if $unit == rem {
         // Convert to px if needed
-        $val: $val +
-          ' ' +
-          if($rfs-unit == px, #{$value / ($value * 0 + 1) * $rfs-rem-value}px, $value);
+        $val: $val + ' ' + if($rfs-unit == px, #{$value / ($value * 0 + 1) * $rfs-rem-value}px, $value);
       } @else {
         // If $value isn't a number (like inherit) or $value has a unit (not px or rem, like 1.5em) or $ is 0, just print the value
         $val: $val + ' ' + $value;

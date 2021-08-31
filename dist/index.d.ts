@@ -53,6 +53,7 @@ declare const MDBBtn: React$1.FunctionComponent<{
   toggle?: boolean;
   target?: string;
   value?: string | number;
+  noRipple?: boolean;
   tag?: React$1.ComponentProps<any>;
   [rest: string]: any;
 }>;

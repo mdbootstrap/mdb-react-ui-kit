@@ -3,16 +3,7 @@
 //
 
 .form-check {
-  .form-check-input {
-    margin-left: $form-check-input-margin-left * -1;
-
-    &[type='radio'] {
-      margin-left: $form-check-input-radio-margin-left * -1;
-    }
-  }
-
-  margin-bottom: 0;
-  min-height: auto;
+  min-height: 1.5rem;
 }
 
 .form-check-input {
@@ -90,6 +81,8 @@
 
   &[type='checkbox'] {
     border-radius: $form-check-input-checkbox-border-radius;
+    margin-top: 0.19em;
+    margin-right: 8px;
 
     &:focus {
       &:after {
@@ -158,6 +151,8 @@
     border-radius: $form-check-input-radio-border-radius;
     width: $form-check-input-radio-width;
     height: $form-check-input-radio-height;
+    margin-top: 0.125em;
+    margin-right: 6px;
 
     &:before {
       width: $form-check-input-radio-before-width;
@@ -185,9 +180,11 @@
         height: $form-check-input-radio-checked-after-height;
         border-color: $form-check-input-radio-checked-after-border-color;
         background-color: $form-check-input-radio-checked-after-background-color;
-        margin-top: $form-check-input-radio-checked-after-margin-top;
-        margin-left: $form-check-input-radio-checked-after-margin-left;
         transition: $form-check-input-radio-checked-after-transition;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        left: 50%;
+        top: 50%;
       }
 
       &:focus {
@@ -208,8 +205,6 @@
 //
 
 .form-switch {
-  padding-left: $form-switch-padding-left;
-
   .form-check-input {
     background-image: none;
     border-width: 0;
@@ -217,8 +212,8 @@
     width: $form-switch-form-check-input-width;
     height: $form-switch-form-check-input-height;
     background-color: $form-switch-form-check-input-background-color;
-    margin-top: $form-switch-form-check-input-margin-top;
-    margin-right: $form-switch-form-check-input-margin-right;
+    margin-top: 0.3em;
+    margin-right: 8px;
 
     &:after {
       content: '';

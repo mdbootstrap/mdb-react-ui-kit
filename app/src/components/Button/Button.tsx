@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import type { ButtonProps } from './types';
+import MDBRipple from '../../methods/Ripple/Ripple';
 
 const MDBBtn: React.FC<ButtonProps> = React.forwardRef<HTMLAllCollection, ButtonProps>(
   (
@@ -17,6 +18,7 @@ const MDBBtn: React.FC<ButtonProps> = React.forwardRef<HTMLAllCollection, Button
       block,
       active,
       toggle,
+      noRipple,
       tag: Tag,
       ...props
     },
@@ -25,6 +27,7 @@ const MDBBtn: React.FC<ButtonProps> = React.forwardRef<HTMLAllCollection, Button
     const [isActive, setActive] = useState(active ? active : false);
 
     let btnColor;
+    const waveColor = (color && ['light', 'link'].includes(color as string)) || outline ? 'dark' : 'light';
 
     if (color !== 'none') {
       if (outline) {
@@ -58,7 +61,7 @@ const MDBBtn: React.FC<ButtonProps> = React.forwardRef<HTMLAllCollection, Button
       Tag = 'a';
     }
 
-    return (
+    return ['hr', 'img', 'input'].includes(Tag) || noRipple ? (
       <Tag
         className={classes}
         onClick={
@@ -75,10 +78,29 @@ const MDBBtn: React.FC<ButtonProps> = React.forwardRef<HTMLAllCollection, Button
       >
         {children}
       </Tag>
+    ) : (
+      <MDBRipple
+        rippleTag={Tag}
+        rippleColor={waveColor}
+        className={classes}
+        onClick={
+          toggle
+            ? () => {
+                setActive(!isActive);
+              }
+            : undefined
+        }
+        disabled={disabled && Tag === 'button' ? true : undefined}
+        href={href}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </MDBRipple>
     );
   }
 );
 
-MDBBtn.defaultProps = { tag: 'button', type: 'button', role: 'button' };
+MDBBtn.defaultProps = { tag: 'button', type: 'button', role: 'button', color: 'primary' };
 
 export default MDBBtn;

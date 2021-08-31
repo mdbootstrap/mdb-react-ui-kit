@@ -17,8 +17,7 @@
     font-weight: $nav-tabs-link-font-weight;
     font-size: $nav-tabs-link-font-size;
     color: $nav-tabs-link-color;
-    padding: $nav-tabs-link-padding-top $nav-tabs-link-padding-x $nav-tabs-link-padding-bottom
-      $nav-tabs-link-padding-x;
+    padding: $nav-tabs-link-padding-top $nav-tabs-link-padding-x $nav-tabs-link-padding-bottom $nav-tabs-link-padding-x;
 
     &:hover {
       background-color: $nav-tabs-link-hover-background-color;
@@ -62,5 +61,15 @@
     color: $nav-pills-link-active-color;
     background-color: $nav-pills-link-active-bg;
     box-shadow: $btn-box-shadow;
+  }
+}
+
+// Fix for keeping margins of pills
+.nav-fill,
+.nav-justified {
+  .nav-item {
+    .nav-link {
+      width: auto;
+    }
   }
 }

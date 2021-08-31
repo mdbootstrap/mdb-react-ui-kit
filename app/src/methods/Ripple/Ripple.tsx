@@ -229,6 +229,6 @@ const MDBRipple: React.FC<RippleProps> = React.forwardRef<HTMLAllCollection, Rip
   }
 );
 
-MDBRipple.defaultProps = { rippleTag: MDBBtn, rippleDuration: 500, rippleRadius: 0, rippleColor: 'dark' };
+MDBRipple.defaultProps = { rippleTag: 'div', rippleDuration: 500, rippleRadius: 0, rippleColor: 'dark' };
 
 export default MDBRipple;

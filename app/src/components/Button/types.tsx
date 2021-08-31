@@ -14,6 +14,7 @@ type ButtonProps = {
   toggle?: boolean;
   target?: string;
   value?: string | number;
+  noRipple?: boolean;
   tag?: React.ComponentProps<any>;
   [rest: string]: any;
 };

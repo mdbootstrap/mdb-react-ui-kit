@@ -120,7 +120,7 @@ const MDBPopover: React.FC<PopoverProps> = ({
 MDBPopover.defaultProps = {
   tag: MDBBtn,
   popperTag: 'div',
-  placement: 'top',
+  placement: 'bottom',
 };
 
 export default MDBPopover;
