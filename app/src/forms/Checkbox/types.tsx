@@ -17,6 +17,7 @@ type CheckboxProps = {
   checked?: boolean;
   btn?: boolean;
   btnColor?: string;
+  disableWrapper?: boolean;
   [rest: string]: any;
 };
 

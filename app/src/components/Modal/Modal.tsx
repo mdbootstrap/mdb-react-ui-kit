@@ -2,11 +2,13 @@ import React, { useEffect, useState, useCallback, useRef } from 'react';
 import clsx from 'clsx';
 import type { ModalProps } from './types';
 import ReactDOM from 'react-dom';
+
 const MDBModal: React.FC<ModalProps> = ({
   animationDirection,
   backdrop,
   children,
   className,
+  closeOnEsc,
   getOpenState,
   modalRef,
   show,
@@ -62,18 +64,20 @@ const MDBModal: React.FC<ModalProps> = ({
 
   const handleKeydown = useCallback(
     (event: KeyboardEvent) => {
-      if (isOpenModal && event.key === 'Escape') {
-        if (!staticBackdrop) {
-          closeModal();
-        } else {
-          setStaticModal(true);
-          setTimeout(() => {
-            setStaticModal(false);
-          }, 300);
+      if (closeOnEsc) {
+        if (isOpenModal && event.key === 'Escape') {
+          if (!staticBackdrop) {
+            closeModal();
+          } else {
+            setStaticModal(true);
+            setTimeout(() => {
+              setStaticModal(false);
+            }, 300);
+          }
         }
       }
     },
-    [closeModal, isOpenModal, staticBackdrop]
+    [closeModal, isOpenModal, staticBackdrop, closeOnEsc]
   );
 
   useEffect(() => {
@@ -123,17 +127,23 @@ const MDBModal: React.FC<ModalProps> = ({
 
   return (
     <>
-      <Tag
-        className={classes}
-        ref={modalReference}
-        style={{ display: innerShow || show ? 'block' : 'none' }}
-        {...props}
-      >
-        {children}
-      </Tag>
-      {ReactDOM.createPortal(backdrop && innerShow && <div className={backdropClasses}></div>, document.body)}
+      {(show || innerShow) &&
+        ReactDOM.createPortal(
+          <>
+            <Tag
+              className={classes}
+              ref={modalReference}
+              style={{ display: innerShow || show ? 'block' : 'none' }}
+              {...props}
+            >
+              {children}
+            </Tag>
+            {ReactDOM.createPortal(backdrop && innerShow && <div className={backdropClasses}></div>, document.body)}
+          </>,
+          document.body
+        )}
     </>
   );
 };
-MDBModal.defaultProps = { tag: 'div', backdrop: true };
+MDBModal.defaultProps = { tag: 'div', backdrop: true, closeOnEsc: true };
 export default MDBModal;

@@ -16,6 +16,7 @@ declare const MDBInput: React.FunctionComponent<{
   readonly?: boolean;
   contrast?: boolean;
   value?: string;
+  defaultValue?: string;
   name?: string;
   validation?: string;
   invalid?: boolean;

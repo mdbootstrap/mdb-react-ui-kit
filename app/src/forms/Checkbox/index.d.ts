@@ -17,6 +17,7 @@ declare const MDBCheckbox: React.FunctionComponent<{
   invalid?: boolean;
   btn?: boolean;
   btnColor?: string;
+  disableWrapper?: boolean;
   [rest: string]: any;
 }>;
 

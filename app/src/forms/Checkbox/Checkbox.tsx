@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { useState } from 'react';
+import React from 'react';
 import type { CheckboxProps } from './types';
 
 const MDBCheckbox: React.FC<CheckboxProps> = React.forwardRef<HTMLAllCollection, CheckboxProps>(
@@ -20,6 +20,7 @@ const MDBCheckbox: React.FC<CheckboxProps> = React.forwardRef<HTMLAllCollection,
       validation,
       invalid,
       btnColor,
+      disableWrapper,
       toggleSwitch,
       ...props
     },
@@ -49,23 +50,45 @@ const MDBCheckbox: React.FC<CheckboxProps> = React.forwardRef<HTMLAllCollection,
     const validationClasses = clsx(validation && (invalid ? 'invalid-feedback' : 'valid-feedback'));
 
     return (
-      <WrapperTag className={wrapperClasses}>
-        <Tag
-          className={inputClasses}
-          type='checkbox'
-          defaultChecked={defaultChecked}
-          checked={checked}
-          id={id}
-          ref={ref}
-          {...props}
-        />
-        {label && (
-          <label className={labelClasses} id={labelId} htmlFor={id}>
-            {label}
-          </label>
+      <>
+        {disableWrapper ? (
+          <>
+            <Tag
+              className={inputClasses}
+              type='checkbox'
+              defaultChecked={defaultChecked}
+              checked={checked}
+              id={id}
+              ref={ref}
+              {...props}
+            />
+            {label && (
+              <label className={labelClasses} id={labelId} htmlFor={id}>
+                {label}
+              </label>
+            )}
+            {validation && <div className={validationClasses}>{validation}</div>}
+          </>
+        ) : (
+          <WrapperTag className={wrapperClasses}>
+            <Tag
+              className={inputClasses}
+              type='checkbox'
+              defaultChecked={defaultChecked}
+              checked={checked}
+              id={id}
+              ref={ref}
+              {...props}
+            />
+            {label && (
+              <label className={labelClasses} id={labelId} htmlFor={id}>
+                {label}
+              </label>
+            )}
+            {validation && <div className={validationClasses}>{validation}</div>}
+          </WrapperTag>
         )}
-        {validation && <div className={validationClasses}>{validation}</div>}
-      </WrapperTag>
+      </>
     );
   }
 );

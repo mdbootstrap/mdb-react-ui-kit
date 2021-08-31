@@ -7,6 +7,7 @@ const MDBInput: React.FC<InputProps> = ({
   size,
   contrast,
   value,
+  defaultValue,
   id,
   labelId,
   labelClass,
@@ -27,6 +28,8 @@ const MDBInput: React.FC<InputProps> = ({
   btnOnClick,
   btnRef,
   btnChildren,
+  onBlur,
+  readonly,
   btn,
   ...props
 }) => {
@@ -41,7 +44,9 @@ const MDBInput: React.FC<InputProps> = ({
 
   const [oldValue, setNewValue] = useState(value);
   const [labelWidth, setLabelWidth] = useState(0);
-  const [active, setActive] = useState(value !== undefined && value.length > 0 ? true : false);
+  const [active, setActive] = useState(
+    (value !== undefined && value.length > 0) || (defaultValue !== undefined && defaultValue.length) > 0 ? true : false
+  );
 
   const wrapperClasses = clsx('form-outline', contrast && 'form-white', wrapperClass);
   const inputClasses = clsx('form-control', active && 'active', size && `form-control-${size}`, className);
@@ -70,27 +75,41 @@ const MDBInput: React.FC<InputProps> = ({
     value.length > 0 ? setActive(true) : setActive(false);
   }, [value]);
 
+  useEffect(() => {
+    if (defaultValue === undefined) return;
+    defaultValue.length > 0 ? setActive(true) : setActive(false);
+  }, [defaultValue]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setNewValue(e.currentTarget.value);
     onChange && onChange(e);
   };
 
-  const handleBlur = useCallback(() => {
-    if ((oldValue !== undefined && oldValue.length > 0) || (value !== undefined && value.length > 0)) {
-      setActive(true);
-    } else {
-      setActive(false);
-    }
-  }, [oldValue, value]);
+  const handleBlur = useCallback(
+    (e) => {
+      if (
+        (oldValue !== undefined && oldValue.length > 0) ||
+        (value !== undefined && value.length > 0 && defaultValue !== undefined && defaultValue.length > 0)
+      ) {
+        setActive(true);
+      } else {
+        setActive(false);
+      }
+      onBlur && onBlur(e);
+    },
+    [oldValue, value, defaultValue, onBlur]
+  );
 
   return (
     <WrapperTag className={wrapperClasses} style={{ ...wrapperStyle }}>
       {textarea ? (
         <textarea
+          readOnly={readonly}
           className={inputClasses}
           onBlur={handleBlur}
           onChange={handleChange}
           onFocus={setWidth}
+          defaultValue={defaultValue}
           value={value}
           id={id}
           ref={inputReference}
@@ -98,11 +117,13 @@ const MDBInput: React.FC<InputProps> = ({
         />
       ) : (
         <input
+          readOnly={readonly}
           className={inputClasses}
           onBlur={handleBlur}
           onChange={handleChange}
           onFocus={setWidth}
           value={value}
+          defaultValue={defaultValue}
           id={id}
           ref={inputReference}
           {...props}
@@ -129,6 +150,6 @@ const MDBInput: React.FC<InputProps> = ({
   );
 };
 
-MDBInput.defaultProps = { wrapperTag: 'div' };
+MDBInput.defaultProps = { wrapperTag: 'div', readonly: false };
 
 export default MDBInput;
