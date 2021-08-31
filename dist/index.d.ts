@@ -305,7 +305,7 @@ declare const MDBNavbar: React$1.FunctionComponent<{
     | 'white-50';
   expand?: string | boolean;
   bgColor?: 'white' | 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark';
-  fixed?: boolean;
+  fixed?: string;
   sticky?: boolean;
 }>;
 

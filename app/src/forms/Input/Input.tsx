@@ -55,11 +55,15 @@ const MDBInput: React.FC<InputProps> = ({
 
   useEffect(() => {
     if (labelReference.current) {
+      if (labelReference.current?.clientWidth !== 0) setLabelWidth(labelReference.current.clientWidth * 0.8 + 8);
+    }
+  }, [labelReference, labelReference.current?.clientWidth]);
+
+  const setWidth = () => {
+    if (labelReference.current) {
       setLabelWidth(labelReference.current.clientWidth * 0.8 + 8);
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  };
 
   useEffect(() => {
     if (value === undefined) return;
@@ -86,6 +90,7 @@ const MDBInput: React.FC<InputProps> = ({
           className={inputClasses}
           onBlur={handleBlur}
           onChange={handleChange}
+          onFocus={setWidth}
           value={value}
           id={id}
           ref={inputReference}
@@ -96,6 +101,7 @@ const MDBInput: React.FC<InputProps> = ({
           className={inputClasses}
           onBlur={handleBlur}
           onChange={handleChange}
+          onFocus={setWidth}
           value={value}
           id={id}
           ref={inputReference}

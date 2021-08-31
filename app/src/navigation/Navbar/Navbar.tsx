@@ -34,15 +34,14 @@ const MDBNavbar: React.FC<NavbarProps> = React.forwardRef<HTMLAllCollection, Nav
 
     const classes = clsx(
       {
-        'fixed-top': fixed,
-        'sticky-top': sticky,
-
         'navbar-light': light,
         'navbar-dark': dark,
         'scrolling-navbar': scrolling || scrollingNavbarOffset,
         'top-nav-collapse': collapsed,
         [`text-${color}`]: color && transparent ? collapsed : color,
       },
+      fixed && `fixed-${fixed}`,
+      sticky && 'sticky-top',
       'navbar',
       expand && getExpandClass(expand),
       bgColor && `bg-${bgColor}`,

@@ -101,6 +101,6 @@ const MDBBtn: React.FC<ButtonProps> = React.forwardRef<HTMLAllCollection, Button
   }
 );
 
-MDBBtn.defaultProps = { tag: 'button', type: 'button', role: 'button', color: 'primary' };
+MDBBtn.defaultProps = { tag: 'button', role: 'button', color: 'primary' };
 
 export default MDBBtn;

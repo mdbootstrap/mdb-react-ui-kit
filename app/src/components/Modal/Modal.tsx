@@ -37,7 +37,7 @@ const MDBModal: React.FC<ModalProps> = ({
 
     setTimeout(() => {
       setIsOpenBackrop(false);
-      getOpenState(false);
+      getOpenState && getOpenState(false);
     }, 150);
     setTimeout(() => {
       setInnerShow(false);
@@ -104,7 +104,7 @@ const MDBModal: React.FC<ModalProps> = ({
       }, 0);
       setTimeout(() => {
         setIsOpenModal(true);
-        getOpenState(true);
+        getOpenState && getOpenState(true);
       }, 150);
     } else {
       closeModal();
