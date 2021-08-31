@@ -24,7 +24,7 @@ import MDBTypography from './styles/Typography/index';
 import MDBBreadcrumb from './navigation/Breadcrumb/index';
 import MDBBreadcrumbItem from './navigation/Breadcrumb/BreadcrumbItem/index';
 import MDBNavbar from './navigation/Navbar/index';
-import MDBNavbarLink from './navigation/Navbar/NavbarLink/';
+import MDBNavbarLink from './navigation/Navbar/NavbarLink';
 import MDBNavbarBrand from './navigation/Navbar/NavbarBrand';
 import MDBNavbarItem from './navigation/Navbar/NavbarItem';
 import MDBNavbarNav from './navigation/Navbar/NavbarNav';
@@ -52,6 +52,18 @@ import MDBDropdownHeader from './components/Dropdown/DropdownHeader/index';
 import MDBPopover from './components/Popover/index';
 import MDBPopoverBody from './components/Popover/PopoverBody/index';
 import MDBPopoverHeader from './components/Popover/PopoverHeader/index';
+import MDBModal from './components/Modal/index';
+import MDBModalDialog from './components/Modal/ModalDialog/index';
+import MDBModalContent from './components/Modal/ModalContent/index';
+import MDBModalHeader from './components/Modal/ModalHeader/index';
+import MDBModalTitle from './components/Modal/ModalTitle/index';
+import MDBModalBody from './components/Modal/ModalBody/index';
+import MDBModalFooter from './components/Modal/ModalFooter/index';
+import MDBScrollspy from './navigation/Scrollspy/index';
+import MDBScrollspySection from './navigation/Scrollspy/ScrollspySection/index';
+import MDBScrollspyNavList from './navigation/Scrollspy/ScrollspyNavList/index';
+import MDBScrollspyNavItem from './navigation/Scrollspy/ScrollspyNavItem/index';
+import MDBScrollspyNavLink from './navigation/Scrollspy/ScrollspyNavlink/index';
 
 export {
   MDBContainer,
@@ -108,4 +120,16 @@ export {
   MDBPopoverBody,
   MDBPopoverHeader,
   MDBTooltip,
+  MDBModal,
+  MDBModalDialog,
+  MDBModalContent,
+  MDBModalHeader,
+  MDBModalTitle,
+  MDBModalBody,
+  MDBModalFooter,
+  MDBScrollspy,
+  MDBScrollspySection,
+  MDBScrollspyNavItem,
+  MDBScrollspyNavLink,
+  MDBScrollspyNavList,
 };

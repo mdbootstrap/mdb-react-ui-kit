@@ -1,24 +1,22 @@
 import clsx from 'clsx';
-import React from 'react';
+import React, { useState } from 'react';
 import type { CheckboxProps } from './types';
 
 const MDBCheckbox: React.FC<CheckboxProps> = React.forwardRef<HTMLAllCollection, CheckboxProps>(
   (
     {
       className,
-      name,
-      value,
       tag: Tag,
-      id,
       labelId,
-      disabled,
       labelClass,
       wrapperClass,
       wrapperTag: WrapperTag,
       label,
-      checked,
       inline,
       btn,
+      id,
+      defaultChecked,
+      checked,
       btnColor,
       ...props
     },
@@ -46,11 +44,9 @@ const MDBCheckbox: React.FC<CheckboxProps> = React.forwardRef<HTMLAllCollection,
         <Tag
           className={inputClasses}
           type='checkbox'
-          value={value}
-          name={name}
+          defaultChecked={defaultChecked}
+          checked={checked}
           id={id}
-          disabled={disabled}
-          defaultChecked={checked}
           ref={ref}
           {...props}
         />

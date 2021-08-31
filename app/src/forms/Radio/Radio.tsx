@@ -6,6 +6,4 @@ const MDBRadio: React.FC<RadioProps> = React.forwardRef<HTMLAllCollection, Radio
   return <MDBCheckbox type='radio' ref={ref} {...props} />;
 });
 
-// MDBRadio.defaultProps = { tag: 'input', wrapperTag: 'div' };
-
 export default MDBRadio;

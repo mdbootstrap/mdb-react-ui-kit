@@ -9,6 +9,8 @@ declare const MDBInput: React.FunctionComponent<{
   labelId?: string;
   labelClass?: string;
   wrapperClass?: string;
+  wrapperStyle?: Record<string, unknown>;
+  labelStyle?: React.CSSProperties;
   disabled?: boolean;
   size?: string;
   readonly?: boolean;
@@ -16,6 +18,7 @@ declare const MDBInput: React.FunctionComponent<{
   value?: string;
   name?: string;
   labelRef?: React.RefObject<HTMLLabelElement>;
+  textarea?: boolean;
   [rest: string]: any;
 }>;
 

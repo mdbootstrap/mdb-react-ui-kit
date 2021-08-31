@@ -52,6 +52,18 @@ import MDBDropdownHeader from './components/Dropdown/DropdownHeader/DropdownHead
 import MDBPopover from './components/Popover/Popover';
 import MDBPopoverBody from './components/Popover/PopoverBody/PopoverBody';
 import MDBPopoverHeader from './components/Popover/PopoverHeader/PopoverHeader';
+import MDBModal from './components/Modal/Modal';
+import MDBModalDialog from './components/Modal/ModalDialog/ModalDialog';
+import MDBModalContent from './components/Modal/ModalContent/ModalContent';
+import MDBModalHeader from './components/Modal/ModalHeader/ModalHeader';
+import MDBModalTitle from './components/Modal/ModalTitle/ModalTitle';
+import MDBModalBody from './components/Modal/ModalBody/ModalBody';
+import MDBModalFooter from './components/Modal/ModalFooter/ModalFooter';
+import MDBScrollspy from './navigation/Scrollspy/Scrollspy';
+import MDBScrollspySection from './navigation/Scrollspy/ScrollspySection/ScrollspySection';
+import MDBScrollspyNavItem from './navigation/Scrollspy/ScrollspyNavItem/ScrollspyNavItem';
+import MDBScrollspyNavLink from './navigation/Scrollspy/ScrollspyNavlink/ScrollspyNavlink';
+import MDBScrollspyNavList from './navigation/Scrollspy/ScrollspyNavList/ScrollspyNavList';
 
 export {
   MDBContainer,
@@ -108,4 +120,16 @@ export {
   MDBPopoverBody,
   MDBPopoverHeader,
   MDBTooltip,
+  MDBModal,
+  MDBModalDialog,
+  MDBModalContent,
+  MDBModalHeader,
+  MDBModalTitle,
+  MDBModalBody,
+  MDBModalFooter,
+  MDBScrollspy,
+  MDBScrollspySection,
+  MDBScrollspyNavItem,
+  MDBScrollspyNavLink,
+  MDBScrollspyNavList,
 };

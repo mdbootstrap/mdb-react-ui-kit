@@ -1,31 +1,91 @@
-import React from 'react';
-import { MDBBtn, MDBContainer } from 'mdb-react-ui-kit';
+import React from "react";
+import { MDBBtn, MDBContainer, MDBTooltip, MDBIcon } from "mdb-react-ui-kit";
 
 function App() {
+  function Clipboard_CopyTo(value: any) {
+    var tempInput = document.createElement("input");
+    tempInput.value = value;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+  }
+
+  const handleClick = () => {
+    Clipboard_CopyTo("T9TTVSQB");
+    var div = document.getElementById("code-success");
+    if (div) {
+      div.style.display = "block";
+    }
+    setTimeout(function () {
+      // @ts-ignore
+      document.getElementById("code-success").style.display = "none";
+    }, 900);
+  };
   return (
     <MDBContainer fluid>
       <div
-        className='d-flex justify-content-center align-items-center'
-        style={{ height: '100vh' }}
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "100vh" }}
       >
-        <div className='text-center'>
-          <img
-            className='mb-4'
-            src='https://mdbootstrap.com/img/logo/mdb-transparent-250px.png'
-            style={{ width: 250, height: 90 }}
-          />
-          <h5 className='mb-3'>
-            Thank you for using our product. We're glad you're with us.
+        <div className="text-center">
+          <h2>Release surprise!</h2>
+          <p className="h4 fw-bold">50% OFF MDB PRO</p>
+          <div className="row justify-content-center">
+            <div className="col-md-6">
+              <img
+                src="https://mdbootstrap.com/img/Marketing/campaigns/50off-SJARV.png"
+                className="img-fluid"
+                alt=""
+              />
+            </div>
+          </div>
+
+          <h5 className="mb-3">
+            Use this coupon code before it expires and claim the reward
           </h5>
-          <p className='mb-3'>MDB Team</p>
-          <MDBBtn
-            tag='a'
-            href='https://mdbootstrap.com/docs/standard/getting-started/'
-            target='_blank'
-            role='button'
+          <p className="mb-3">
+            The coupon code will be valid until the end of the week
+          </p>
+
+          <div className="mt-2">
+            <code className="h2 border rounded py-1 px-5 flex-item me-2">
+              T9TTVSQB
+            </code>
+            <br />
+
+            <MDBBtn
+              className="me-2"
+              id="disc-50"
+              href="#"
+              size="lg"
+              color="info"
+              style={{ backgroundColor: "#009fe7" }}
+              onClick={handleClick}
+            >
+              COPY TO CLIPBOARD <MDBIcon far icon="copy" />
+            </MDBBtn>
+            <MDBBtn
+              outline
+              className="mt-3"
+              href="https://mdbootstrap.com/docs/standard/getting-started/"
+              size="lg"
+              target="_blank"
+              style={{ borderColor: "#009fe7", color: "#009fe7" }}
+            >
+              MDB tutorial
+            </MDBBtn>
+          </div>
+          <p>
+            See <a href="https://mdbootstrap.com/pro/">prices</a>
+          </p>
+          <div
+            className="my-2 me-2 alert alert-success"
+            id="code-success"
+            style={{ display: "none", position: 'fixed', width: '300px', top: '0', right: '0' }}
           >
-            Start MDB tutorial
-          </MDBBtn>
+            Copied
+          </div>
         </div>
       </div>
     </MDBContainer>

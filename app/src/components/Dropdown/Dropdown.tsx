@@ -1,8 +1,9 @@
 import clsx from 'clsx';
-import React, { useEffect, useCallback, useState, useMemo } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import type { DropdownProps } from './types';
 import { DropdownContext } from './context';
 import { usePopper } from 'react-popper';
+import { flip } from '@popperjs/core';
 
 const MDBDropdown: React.FC<DropdownProps> = ({
   className,
@@ -42,6 +43,7 @@ const MDBDropdown: React.FC<DropdownProps> = ({
 
   const { styles, attributes } = usePopper(referenceElement, popperElement, {
     placement: isPlacement,
+    modifiers: [flip],
     ...options,
   });
 
@@ -69,6 +71,11 @@ const MDBDropdown: React.FC<DropdownProps> = ({
   );
 
   useEffect(() => {
+    const wo = document.body.scrollTop;
+    console.log(wo);
+  });
+
+  useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -81,7 +88,7 @@ const MDBDropdown: React.FC<DropdownProps> = ({
     }
   }, [countLength, isOpenState]);
 
-  useMemo(() => {
+  useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
     let secondTimer: ReturnType<typeof setTimeout>;
 

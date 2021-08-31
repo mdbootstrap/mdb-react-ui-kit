@@ -493,6 +493,7 @@ declare const MDBInput: FunctionComponent<{
   value?: string;
   name?: string;
   labelRef?: RefObject<HTMLLabelElement>;
+  textarea?: boolean;
   [rest: string]: any;
 }>;
 
@@ -626,4 +627,89 @@ declare const MDBPopoverHeader: FunctionComponent<{
   [rest: string]: any;
 }>;
 
-export { MDBBadge, MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBBtnGroup, MDBCard, MDBCardBody, MDBCardFooter, MDBCardGroup, MDBCardHeader, MDBCardImage, MDBCardLink, MDBCardOverlay, MDBCardSubTitle, MDBCardText, MDBCardTitle, MDBCheckbox, MDBCol, MDBCollapse, MDBContainer, MDBDropdown, MDBDropdownDivider, MDBDropdownHeader, MDBDropdownItem, MDBDropdownLink, MDBDropdownMenu, MDBDropdownToggle, MDBFooter, MDBIcon, MDBInput, MDBListGroup, MDBListGroupItem, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav, MDBNavbarToggler, MDBPagination, MDBPaginationItem, MDBPaginationLink, MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBProgress, MDBProgressBar, MDBRadio, MDBRow, MDBSpinner, MDBTable, MDBTableBody, MDBTableHead, MDBTooltip, MDBTypography };
+declare const MDBModal: FunctionComponent<{
+  animationDirection?: string;
+  backdrop?: boolean;
+  className?: string;
+  closeOnEsc?: boolean;
+  tabIndex?: string;
+  show?: boolean;
+  staticBackdrop?: boolean;
+  tag?: ComponentProps<any>;
+  modalRef?: RefObject<HTMLElement>;
+  [rest: string]: any;
+}>;
+
+declare const MDBModalDialog: FunctionComponent<{
+  className?: string;
+  centered?: boolean;
+  size?: string;
+  tag?: ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBModalContent: FunctionComponent<{
+  className?: string;
+  tag?: ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBModalHeader: FunctionComponent<{
+  className?: string;
+  tag?: ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBModalTitle: FunctionComponent<{
+  className?: string;
+  tag?: ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBModalBody: FunctionComponent<{
+  className?: string;
+  tag?: ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBModalFooter: FunctionComponent<{
+  className?: string;
+  tag?: ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBScrollspy: FunctionComponent<{
+  className?: string;
+  offset?: number;
+  onElement?: boolean;
+  tag?: ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBScrollspySection: FunctionComponent<{
+  className?: string;
+  customSelect?: string;
+  tag?: ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBScrollspyNavList: FunctionComponent<{
+  className?: string;
+  tag?: ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBScrollspyNavItem: FunctionComponent<{
+  className?: string;
+  tag?: ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBScrollspyNavLink: FunctionComponent<{
+  className?: string;
+  tag?: ComponentProps<any>;
+  scrollElement?: HTMLElement;
+  [rest: string]: any;
+}>;
+
+export { MDBBadge, MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBBtnGroup, MDBCard, MDBCardBody, MDBCardFooter, MDBCardGroup, MDBCardHeader, MDBCardImage, MDBCardLink, MDBCardOverlay, MDBCardSubTitle, MDBCardText, MDBCardTitle, MDBCheckbox, MDBCol, MDBCollapse, MDBContainer, MDBDropdown, MDBDropdownDivider, MDBDropdownHeader, MDBDropdownItem, MDBDropdownLink, MDBDropdownMenu, MDBDropdownToggle, MDBFooter, MDBIcon, MDBInput, MDBListGroup, MDBListGroupItem, MDBModal, MDBModalBody, MDBModalContent, MDBModalDialog, MDBModalFooter, MDBModalHeader, MDBModalTitle, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav, MDBNavbarToggler, MDBPagination, MDBPaginationItem, MDBPaginationLink, MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBProgress, MDBProgressBar, MDBRadio, MDBRow, MDBScrollspy, MDBScrollspyNavItem, MDBScrollspyNavLink, MDBScrollspyNavList, MDBScrollspySection, MDBSpinner, MDBTable, MDBTableBody, MDBTableHead, MDBTooltip, MDBTypography };

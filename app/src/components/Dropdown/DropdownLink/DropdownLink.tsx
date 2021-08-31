@@ -14,8 +14,9 @@ const MDBDropdownLink: React.FC<DropdownLinkProps> = ({
 
   const { handleClose } = useContext(DropdownContext);
 
-  const handleClickItem = (e: React.MouseEvent) => {
+  const handleClickItem = (e: React.MouseEvent<HTMLAnchorElement>) => {
     handleClose();
+
     onClick && onClick(e);
   };
 

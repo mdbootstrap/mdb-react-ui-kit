@@ -14,7 +14,7 @@ const MDBCard: React.FC<CardProps> = React.forwardRef<HTMLAllCollection, CardPro
     );
 
     return (
-      <Tag className={classes} {...props}>
+      <Tag className={classes} ref={ref} {...props}>
         {children}
       </Tag>
     );

@@ -9,7 +9,7 @@ type CheckboxProps = {
   labelId?: string;
   labelClass?: string;
   disabled?: boolean;
-  value?: string;
+  value?: string | boolean;
   name?: string;
   inline?: boolean;
   checked?: boolean;

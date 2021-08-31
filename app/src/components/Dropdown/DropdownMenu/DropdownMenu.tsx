@@ -25,6 +25,7 @@ const MDBDropdownMenu: React.FC<DropdownMenuProps> = ({
     animatedFadeOut,
     animation,
     getCount,
+    handleOpenClose,
   } = useContext(DropdownContext);
 
   const classes = clsx(
@@ -77,9 +78,13 @@ const MDBDropdownMenu: React.FC<DropdownMenuProps> = ({
             setCount(0);
           }
         }
+        if (e.key === 'Escape' || e.key === 'Enter') {
+          setAttachELements(false);
+          handleOpenClose();
+        }
       }
     },
-    [attachELements, childrenLength, count]
+    [attachELements, childrenLength, handleOpenClose, count]
   );
 
   useEffect(() => {

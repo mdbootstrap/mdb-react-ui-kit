@@ -7,27 +7,36 @@ const MDBCollapse: React.FC<CollapseProps> = ({
   center,
   children,
   show,
+  id,
   navbar,
+  tag: Tag,
   style,
   ...props
 }): JSX.Element => {
   const [showCollapse, setShowCollapse] = useState<boolean | undefined>(false);
+  const [showCollapseString, setShowCollapseString] = useState<string | undefined>('');
+  const [statement, setStatement] = useState(false);
   const [collapseHeight, setCollapseHeight] = useState<string | number | undefined>(undefined);
   const [transition, setTransition] = useState(false);
 
   const classes = clsx(
     transition ? 'collapsing' : 'collapse',
-    !transition && showCollapse && 'show',
+    !transition && (showCollapse || statement) && 'show',
     navbar && 'navbar-collapse',
     center && 'justify-content-center',
     className
   );
-  const refCollapse = useRef<HTMLDivElement>(null);
+  const refCollapse = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    setShowCollapse(show);
+    if (typeof show === 'string') {
+      setShowCollapseString(show);
+      setStatement(showCollapseString === id);
+    } else {
+      setShowCollapse(show);
+    }
 
-    if (showCollapse) {
+    if (statement || showCollapse) {
       setTransition(true);
     }
 
@@ -38,21 +47,23 @@ const MDBCollapse: React.FC<CollapseProps> = ({
     return () => {
       clearTimeout(timer);
     };
-  }, [collapseHeight, show, showCollapse]);
+  }, [collapseHeight, show, showCollapse, id, showCollapseString, statement]);
 
   useEffect(() => {
-    if (showCollapse) {
+    if (showCollapse || statement) {
       setCollapseHeight(refCollapse?.current?.scrollHeight);
     } else {
       setCollapseHeight(0);
     }
-  }, [showCollapse]);
+  }, [showCollapse, statement]);
 
   return (
-    <div style={{ height: collapseHeight, ...style }} className={classes} {...props} ref={refCollapse}>
+    <Tag style={{ height: collapseHeight, ...style }} id={id} className={classes} {...props} ref={refCollapse}>
       {children}
-    </div>
+    </Tag>
   );
 };
+
+MDBCollapse.defaultProps = { tag: 'div' };
 
 export default MDBCollapse;

@@ -15,3 +15,7 @@
   color: #fff;
   background-color: #1266f1;
 }
+
+.btn-group.dropstart > .dropdown-menu {
+  right: 0 !important;
+}
