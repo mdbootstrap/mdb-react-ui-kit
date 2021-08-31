@@ -1,4 +1,4 @@
-import React$1, { FunctionComponent, ElementType, ComponentProps, ReactNode, ReactElement, RefObject } from 'react';
+import React$1, { FunctionComponent, ElementType, ComponentProps, ReactNode, ReactElement, CSSProperties, RefObject } from 'react';
 
 declare const MDBContainer: FunctionComponent<{
   className?: string;
@@ -484,6 +484,8 @@ declare const MDBInput: FunctionComponent<{
   labelId?: string;
   labelClass?: string;
   wrapperClass?: string;
+  wrapperStyle?: Record<string, unknown>;
+  labelStyle?: CSSProperties;
   disabled?: boolean;
   size?: string;
   readonly?: boolean;
@@ -503,7 +505,7 @@ declare const MDBCheckbox: FunctionComponent<{
   labelId?: string;
   labelClass?: string;
   disabled?: boolean;
-  value?: string;
+  value?: string | boolean;
   name?: string;
   inline?: boolean;
   checked?: boolean;
@@ -517,9 +519,10 @@ declare const MDBRadio: typeof MDBCheckbox;
 declare const MDBCollapse: FunctionComponent<{
   className?: string;
   navbar?: boolean;
-  show?: boolean;
+  show?: boolean | string;
   center?: boolean;
   style?: Record<string, unknown>;
+  tag?: ComponentProps<any>;
   [rest: string]: any;
 }>;
 
