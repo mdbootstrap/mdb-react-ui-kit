@@ -1,204 +1,195 @@
-<p align="center">
-  <a href="http://mdbootstrap.com/docs/react/">
-    <img width="500" src="https://mdbootstrap.com/img/Marketing/general/logo/huge/mdb-react.png">
-  </a>
-</p>
+![MDB Logo](https://mdbootstrap.com/img/Marketing/general/logo/medium/mdb-react.png)
 
-<h1 align="center">React Bootstrap with Material Design</h1>
+# MDB 5 React
 
-<p align="center">
-Built with <b>React and Bootstrap 4</b>. Absolutely <b>no jQuery</b>.
-</p>
+### React 17 & Bootstrap 5 & Material Design 2.0 UI KIT
 
-<p align="center">
-<b>400+</b> material UI elements, <b>600+</b> material icons, <b>74</b> CSS animations, SASS files and many more.
-</p>
+**[>> Get Started in 4 steps](https://mdbootstrap.com/docs/b5/react/getting-started/installation/)**
 
-<p align="center">
-All fully responsive. All compatible with different browsers.
-</p>
+**[>> MDBReact 5 Demo](https://mdbootstrap.com/docs/b5/react#demo)**
 
-<p align="center">
-  <a href="https://npmcharts.com/compare/mdbreact?minimal=true"><img src="https://img.shields.io/npm/dm/mdbreact.svg" alt="Downloads"></a>
-  <a href="https://github.com/mdbootstrap/React-Bootstrap-with-Material-Design/blob/master/license.pdf"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
-  <a href="https://badge.fury.io/js/angular-bootstrap-md"><img src="https://badge.fury.io/js/mdbreact.svg" alt="npm"></a>
-  <a href="https://twitter.com/intent/tweet/?text=Thanks+@mdbootstrap+for+creating+amazing+and+free+Material+Design+for+Bootstrap+4+UI+KIT%20https://mdbootstrap.com/docs/react/&hashtags=react,code,webdesign,bootstrap"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"></a>
-</p>
-
-<p align="center">
-  <a href="https://mdbootstrap.com/docs/react/" target="_blank">
-    <img width="700" src="https://mdbootstrap.com/img/Marketing/products/react/mdb-free.jpg" alt="logo">
-  </a>
-</p>
+<a href="https://npmcharts.com/compare/mdb-react-ui-kit?minimal=true"> <img src="https://img.shields.io/npm/dw/mdb-react-ui-kit" alt="Downloads"></a>
+<a href="https://github.com/mdbootstrap/mdb-react-ui-kit/License.pdf"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
+<a href="https://twitter.com/intent/tweet/?text=Thanks+@mdbootstrap+for+creating+amazing+and+free+Material+Design+for+Bootstrap+4+UI+KIT%20https://mdbootstrap.com/docs/jquery/&hashtags=javascript,code,webdesign,bootstrap"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social&label=Let%20us%20know%20you%20were%20here%21&"></a>
+<a href="https://www.youtube.com/watch?v=c9B4TPnak1A&t=6s"><img alt="YouTube Video Views" src="https://img.shields.io/youtube/views/c9B4TPnak1A?label=Bootstrap%205%20Tutorial%20Views&style=social"></a>
 
 ---
 
-## Table of Contents
+<table>
+  <tbody>
+    <tr>
+      <td>
+          <a href="https://mdbootstrap.com/docs/b5/react/" alt="Bootstrap 5" rel="dofollow">
+          		<img src="https://mdbootstrap.com/wp-content/themes/mdbootstrap4/content/en/_mdb5/standard/about/assets/mdb5-about.jpg">
+          </a>
+      </td>
+      <td>
+        <ul>
+        <li><b>500+ material UI components</b></li>
+         <li>Super simple, 1 minute installation</li>
+         <li>Detailed docs & multiple practical examples</li>
+         <li>React 17</li>
+         <li>Huge and active community</li>
+         <li><b>MIT license - free for personal & commercial use</b></li>
+        </ul>
+      </td>
+    </tr>
+   </tbody>
+</table>
 
-- [Other Technologies](#other-technologies)
-- [Demo](#demo)
-- [Version](#version)
-- [Quick start](#quick-start)
-- [Available commands](#available-commands)
-- [How to install MDB via npm](#how-to-install-mdb-via-npm)
-- [Supported Browsers](#supported-browsers)
-- [Documentation](#documentation)
-- [Pro version](#pro-version)
-- [Highlights](#highlights)
-- [Useful Links](#useful-links)
-- [Social Media](#social-media)
+Trusted by <b>2 000 000+</b> developers & designers. Used by companies like
 
-# Other Technologies
+<table>
+  <tbody>
+    <tr>
+      <td><img src="https://mdbootstrap.com/img/logo/brands/nike.png" style="width: 10px;"></td>
+      <td><img src="https://mdbootstrap.com/img/logo/brands/amazon.png" style="width: 10px;"></td>
+      <td><img src="https://mdbootstrap.com/img/logo/brands/sony.png" style="width: 10px;"></td>
+      <td><img src="https://mdbootstrap.com/img/logo/brands/samsung.png"  style="height: 40px">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/airbus.png" style="height: 40px">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/yahoo.png"  style="height: 40px">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/deloitte.png" style="height: 40px"></div>
+      <td><img src="https://mdbootstrap.com/img/logo/brands/ge.png" style="height: 40px">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/kpmg.png" style="height: 40px">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/unity.png" style="height: 40px">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/ikea.png" style="max-height: 40px">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/aegon.png" style="height: 40px">
+    </tr>
+   </tbody>
+</table>
 
-[<img src="https://mdbootstrap.com/img/Marketing/general/logo/small/jquery.png"/>](https://mdbootstrap.com/docs/jquery/)[<img src="https://mdbootstrap.com/img/Marketing/general/logo/small/angular.png"/>](https://mdbootstrap.com/docs/react/)[<img src="https://mdbootstrap.com/img/Marketing/general/logo/small/vue.png"/>](https://mdbootstrap.com/docs/vue/)
+---
 
-# Demo:
+###### Tutorial for the latest Bootstrap v.5 Alpha. In this video we'll learn about the changes implemented into v.5.
 
-[Main demo](https://mdbootstrap.com/docs/react/components/demo/)
+**[>> Click here for a written tutorial](https://mdbootstrap.com/docs/b5/react/getting-started/quick-start/)**
 
-# Version:
+<table>
+  <tbody>
+    <tr>
+      <td align="center">
+          		<img src="https://mdbootstrap.com/wp-content/uploads/2020/12/learnmore-1.png">
+          </a>
+      </td>
+      <td>
+          <a href="https://mdbootstrap.com/docs/b5/react/bootstrap-5-tutorial/#section-beginner" alt="Bootstrap 5" rel="dofollow">
+          		<img src="https://mdbootstrap.com/wp-content/uploads/2020/12/cover-bootstrap-5-1.png">
+          </a>
+      </td>
+    </tr>
+     <tr>
+        <td align="center">
+          <p align="center"><b>Start to Code</b></p>
+          <a href="https://mdbootstrap.com/docs/standard/bootstrap-5-tutorial/#section-beginner" alt="Bootstrap 5" rel="dofollow">
+          		<img src="https://mdbootstrap.com/wp-content/uploads/2020/12/Screenshot_26.png">
+          </a>
+         </td>
+        <td align="center">
+          <p align="center"><b>Learn Bootstrap 5 | Crash Course for Beginners in 1.5H</b></p>
+          <a href="https://mdbootstrap.com/docs/standard/bootstrap-5-tutorial/#section-beginner" alt="Bootstrap 5" rel="dofollow">
+          		<img src="https://mdbootstrap.com/wp-content/uploads/2020/12/Screenshot_26.png">
+          </a>
+         </td>
+      </tr>
+   </tbody>
+</table>
 
-- MDBReact 5.0.1
-- React 16.12.0
+---
 
-# Quick start
+# Demo
 
-- Clone following repo:
+#### Simplicity and ease of use are key features of MDB 5 React UI Kit. You need only one minute to install and run it.
 
-```bash
-git clone https://github.com/mdbootstrap/react-bootstrap-with-material-design .
-```
+### Buttons
 
-note "." at the end. It will clone files directly into current folder.
+<p>Use MDB custom button styles for actions in forms, dialogs, and more with support for multiple sizes, states, and more.</p>
 
-- Run `npm i`
-- Run `npm start`
-- Voilà! Open browser and visit http://localhost:3000
+<a href="https://mdbootstrap.com/docs/b5/react/components/buttons/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo-buttons.gif">
+  </p>
+</a>
 
-Now you can navigate to [our documentation](http://mdbootstrap.com/docs/react/), pick any component and place within your project.
+<a href="https://mdbootstrap.com/docs/b5/react/components/buttons/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo-social-buttons.png">
+  </p>
+</a>
 
-# Available commands
+<a href="https://mdbootstrap.com/docs/b5/react/components/buttons/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo-buttons2.png">
+  </p>
+</a>
 
-- npm start - runs the app in development mode.
-- npm run remove-demo - remove demo directory from your project and generate a boilerplate for your app
-- npm run build - builds the app for production to the build folder.
-- npm test - runs the test watcher in an interactive mode.
+<a href="https://mdbootstrap.com/docs/b5/react/components/buttons/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo-buttons-outline.gif">
+  </p>
+</a>
 
-# How to install MDB via npm:
+### Spinners
 
-- create new project `create-react-app myApp`
-- `cd myApp`
-- `npm install --save mdbreact`
-- Import style files into the src/index.js before the App.js file:
+<p>Indicate the loading state of a component or page with MDB spinners, built entirely with HTML, CSS, and no JavaScript.</p>
 
-```javascript
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import 'bootstrap-css-only/css/bootstrap.min.css';
-import 'mdbreact/dist/css/mdb.css';
-```
+<a href="https://mdbootstrap.com/docs/b5/react/components/spinners/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo-loader.gif">
+  </p>
+</a>
 
-### Run server
+<a href="https://mdbootstrap.com/docs/b5/react/components/spinners/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo-color-spinners.gif">
+  </p>
+</a>
 
-```bash
-npm start
-```
+### Cards
 
-# Supported browsers
+<p>A card is a flexible and extensible content container. It includes options for headers and footers, a wide variety of content, contextual background colors, and powerful display options.</p>
 
-MDBootstrap supports the **latest, stable releases** of all major browsers and platforms.
+<a href="https://mdbootstrap.com/docs/b5/react/components/cards/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo-cards.png">
+  </p>
+</a>
 
-Alternative browsers which use the latest version of WebKit, Blink, or Gecko, whether directly or via the platform’s web view API, are not explicitly supported. However, MDBootstrap should (in most cases) display and function correctly in these browsers as well.
+### Footer
 
-### Mobile devices
+<p>A footer is an additional navigation component. It can hold links, buttons, company info, copyrights, forms, and many other elements.</p>
 
-Generally speaking, MDBootstrap supports the latest versions of each major platform’s default browsers. Note that proxy browsers (such as Opera Mini, Opera Mobile’s Turbo mode, UC Browser Mini, Amazon Silk) are not supported.
+<a href="https://mdbootstrap.com/docs/b5/react/navigation/footer/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo-footer.png">
+  </p>
+</a>
 
-|                   | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari | Android Browser & WebView | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br> Miscrosoft Edge |
-| :---------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|      Android      |                                                                                                   Supported                                                                                                   |                                                                                                     Supported                                                                                                     |                                                                                                      N/A                                                                                                      |  Android v5.0+ supported  |                                                                                                       Supported                                                                                                        |
-|        iOS        |                                                                                                   Supported                                                                                                   |                                                                                                     Supported                                                                                                     |                                                                                                   Supported                                                                                                   |            N/A            |                                                                                                       Supported                                                                                                        |
-| Windows 10 Mobile |                                                                                                      N/A                                                                                                      |                                                                                                        N/A                                                                                                        |                                                                                                      N/A                                                                                                      |            N/A            |                                                                                                       Supported                                                                                                        |
+### Hover
 
-### Desktop browsers
+<p>MDB hover effect appears when the user positions the computer cursor over an element without activating it. Hover effects make a website more interactive.</p>
 
-Similarly, the latest versions of most desktop browsers are supported.
+<a href="https://mdbootstrap.com/docs/b5/react/content-styles/hover-effects/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo-hover.gif">
+  </p>
+</a>
 
-|         | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br> Internet Explorer | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="Internet Explorer / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br> Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Opera | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png" alt="Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)</br>Safari |
-| :-----: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
-|   Mac   |                                                                                                   Supported                                                                                                   |                                                                                                     Supported                                                                                                     |                                                                                                           N/A                                                                                                            |                                                                                                            N/A                                                                                                             |                                                                                                 Supported                                                                                                 |                                                                                                   Supported                                                                                                   |
-| Windows |                                                                                                   Supported                                                                                                   |                                                                                                     Supported                                                                                                     |                                                                                                           N/A                                                                                                            |                                                                                                         Supported                                                                                                          |                                                                                                 Supported                                                                                                 |                                                                                                 Not supported                                                                                                 |
+<a href="https://mdbootstrap.com/docs/b5/react/content-styles/hover-effects/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo-hover2.png">
+  </p>
+</a>
 
-# Documentation:
+### Notes
 
-[Huge, detailed documentation avilable online](http://mdbootstrap.com/docs/react/)
+<p>Notes are small components very helpful in inserting an additional piece of information.</p>
 
-# PRO version:
+<a href="https://mdbootstrap.com/docs/b5/react/content-styles/typography/" alt="Bootstrap 5" rel="dofollow">
+  <p align="center">
+    <img src="https://mdbootstrap.com/img/Marketing/campaigns/demo-alerts.png">
+  </p>
+</a>
 
-[React Bootstrap with Material Design PRO](https://mdbootstrap.com/products/react-ui-kit/)
+</table>
 
-# Highlights:
-
-**Bootstrap 4**
-Up-to-date with the latest standards of Bootstrap 4 and all the best it has to offer.
-
-**Detailed documentation**
-Intuitive and user-friendly documentation, created with a copy-paste approach.
-
-**No jQuery**
-Writing you code with pure React is now quicker, easier, and cleaner.
-
-**Cross-browser compatibility**
-Works perfectly with Chrome, Firefox, Safari, Opera and Microsoft Edge.
-
-**Frequent updates**
-Expect any bugs being fixed in a matter of days.
-
-**Active community**
-MDB is broadly used by professionals on multiple levels, who are ready to aid you.
-
-**Useful helpers**
-Reduce the frequency of highly repetitive declarations in your CSS.
-
-**Technical support**
-Every day we help our users with their issues and problems.
-
-**SASS files**
-Thought-out .scss files come in a compile-ready form.
-
-**Flexbox**
-Full support of Flexbox layout system lets you forget about alignment issues.
-
-### Support MDB developers
-
-- Star our GitHub repo
-- Create pull requests, submit bugs, suggest new features or documentation updates
-- Follow us on [Twitter](https://twitter.com/mdbootstrap)
-- Like our page on [Facebook](https://www.facebook.com/mdbootstrap)
-
-A big ❤️ **thank you to all our users** ❤️ who are working with us to improve the software. We wouldn't be where we are without you.
-
-# Useful Links:
-
-[Getting started](https://mdbootstrap.com/docs/react/getting-started/download/)
-
-[Quick Start](https://mdbootstrap.com/docs/react/getting-started/quick-start/)
-
-[Changelog](https://mdbootstrap.com/docs/react/changelog/)
-
-# Social Media:
-
-[Twitter](https://twitter.com/MDBootstrap)
-
-[Facebook](https://www.facebook.com/mdbootstrap)
-
-[Pinterest](https://pl.pinterest.com/mdbootstrap)
-
-[Google+](https://plus.google.com/u/0/b/107863090883699620484/+Mdbootstrap/posts)
-
-[Dribbble](https://dribbble.com/mdbootstrap)
-
-[LinkedIn](https://www.linkedin.com/company/material-design-for-bootstrap)
-
-## Contact:
-
-contact@mdbootstrap.com
+and more.

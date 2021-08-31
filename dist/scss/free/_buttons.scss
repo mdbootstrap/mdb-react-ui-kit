@@ -1,102 +1,292 @@
-// Buttons
+//
+// Base styles
+//
+
 .btn {
-  margin: $btn-margin-basic;
-  color: inherit;
+  font-family: $btn-font-family;
   text-transform: uppercase;
-  word-wrap: break-word;
-  white-space: normal;
-  cursor: pointer;
+  vertical-align: bottom;
   border: 0;
-  border-radius: $border-radius-base;
-  box-shadow: $z-depth-1;
-  transition: $btn-transition;
-  @include button-size($btn-padding-y-basic, $btn-padding-x-basic, $btn-font-size-basic);
+  box-shadow: $btn-box-shadow;
+  font-weight: $btn-font-weight;
+  @include button-size-mdb(
+    $btn-padding-top,
+    $btn-padding-right,
+    $btn-padding-bottom,
+    $btn-padding-left,
+    $btn-font-size,
+    $btn-line-height
+  );
 
-  @include hover-focus-active {
-    outline: 0;
-    box-shadow: $z-depth-1-half;
+  &:hover {
+    box-shadow: $btn-hover-box-shadow;
   }
 
-  &.btn-block {
-    margin: inherit;
+  &:focus,
+  &.focus {
+    box-shadow: $btn-focus-box-shadow;
   }
 
-  .fas,
-  .fab,
-  .far {
-    &.right {
-      margin-left: $btn-icon-margin;
+  &:active,
+  &.active {
+    box-shadow: $btn-hover-box-shadow;
+
+    &:focus {
+      box-shadow: $btn-hover-box-shadow;
     }
-    &.left {
-      margin-right: $btn-icon-margin;
-    }
   }
 
-  &.btn-lg {
-    @include button-size($btn-padding-y-large, $btn-padding-x-large, $btn-font-size-large);
-  }
-  &.btn-md {
-    @include button-size($btn-padding-y-medium, $btn-padding-x-medium, $btn-font-size-medium);
-  }
-  &.btn-sm {
-    @include button-size($btn-padding-y-small, $btn-padding-x-small, $btn-font-size-small);
-  }
-
+  &:disabled,
   &.disabled,
-  &:disabled {
-    @include hover-focus-active {
-      box-shadow: $z-depth-1;
-    }
+  fieldset:disabled & {
+    box-shadow: $btn-box-shadow;
+    border: 0;
   }
 
-  &[class*="btn-outline-"] {
-    padding-top: $btn-outline-padding-y-basic;
-    padding-bottom: $btn-outline-padding-y-basic;
-    &.btn-lg {
-      padding-top: $btn-outline-padding-y-large;
-      padding-bottom: $btn-outline-padding-y-large;
-    }
-    &.btn-md {
-      padding-top: $btn-outline-padding-y-medium;
-      padding-bottom: $btn-outline-padding-y-medium;
-    }
-    &.btn-sm {
-      padding-top: $btn-outline-padding-y-small;
-      padding-bottom: $btn-outline-padding-y-small;
-    }
+  .btn-check:focus + &,
+  &:focus {
+    outline: 0;
+    box-shadow: $btn-focus-box-shadow;
   }
 }
 
-.btn-link {
-  color: $black-base;
-  background-color: transparent;
+//
+// Button block
+//
+
+.btn-block {
+  display: block;
+  width: 100%;
+
+  // Vertically space out multiple block buttons
+  + .btn-block {
+    margin-top: $btn-block-spacing-y;
+  }
+}
+
+//
+// Outline option
+//
+
+[class*='btn-outline-'] {
+  border-width: $btn-border-width;
+  border-style: solid;
   box-shadow: none;
-  @include hover-focus-active {
-    color: $black-base;
-    background-color: transparent;
+  @include button-outline-size-mdb(
+    $btn-outline-padding-top,
+    $btn-outline-padding-right,
+    $btn-outline-padding-bottom,
+    $btn-outline-padding-left
+  );
+
+  &:hover {
+    box-shadow: none;
+    text-decoration: none;
+  }
+
+  &:focus,
+  &.focus {
+    box-shadow: none;
+    text-decoration: none;
+  }
+
+  &:active,
+  &.active {
+    box-shadow: none;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  &:disabled,
+  &.disabled,
+  fieldset:disabled & {
+    box-shadow: none;
+  }
+
+  &.btn-lg {
+    @include button-outline-size-mdb(
+      $btn-outline-padding-top-lg,
+      $btn-outline-padding-right-lg,
+      $btn-outline-padding-bottom-lg,
+      $btn-outline-padding-left-lg
+    );
+  }
+
+  &.btn-sm {
+    @include button-outline-size-mdb(
+      $btn-outline-padding-top-sm,
+      $btn-outline-padding-right-sm,
+      $btn-outline-padding-bottom-sm,
+      $btn-outline-padding-left-sm
+    );
+  }
+}
+
+//
+// Alternate buttons
+//
+
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @include button-variant-mdb($value);
+  }
+}
+
+//
+// Alternate buttons outline
+//
+
+@each $color, $value in $theme-colors {
+  .btn-outline-#{$color} {
+    @include button-outline-variant-mdb($value);
+  }
+}
+
+//
+// Button Sizes
+//
+
+.btn-lg {
+  @include button-size-mdb(
+    $btn-padding-top-lg,
+    $btn-padding-right-lg,
+    $btn-padding-bottom-lg,
+    $btn-padding-left-lg,
+    $btn-font-size-lg,
+    $btn-line-height-lg
+  );
+}
+
+.btn-sm {
+  @include button-size-mdb(
+    $btn-padding-top-sm,
+    $btn-padding-right-sm,
+    $btn-padding-bottom-sm,
+    $btn-padding-left-sm,
+    $btn-font-size-sm,
+    $btn-line-height-sm
+  );
+}
+
+// Link buttons
+//
+// Make a button look and behave like a link
+
+.btn-link {
+  box-shadow: none;
+  text-decoration: none;
+
+  &:hover {
+    box-shadow: none;
+    text-decoration: none;
+    background-color: $btn-link-bgc;
+  }
+
+  &:focus,
+  &.focus {
+    box-shadow: none;
+    text-decoration: none;
+    background-color: $btn-link-bgc;
+  }
+
+  &:active,
+  &.active {
+    box-shadow: none;
+    background-color: $btn-link-bgc;
+
+    &:focus {
+      box-shadow: none;
+      background-color: $btn-link-bgc;
+    }
+  }
+
+  &:disabled,
+  &.disabled,
+  fieldset:disabled & {
     box-shadow: none;
   }
 }
 
-.btn-group {
-  > .btn:not(:first-child),
-  > .btn-group:not(:first-child) {
-    margin-left: -$btn-group-margin;
+//
+// Rounded option
+//
+
+.btn-rounded {
+  border-radius: $btn-rounded-border-radius;
+}
+
+//
+// Floating option
+//
+
+.btn-floating,
+[class*='btn-outline-'].btn-floating {
+  border-radius: $btn-floating-border-radius;
+  padding: 0;
+  position: relative;
+}
+
+.btn-floating {
+  width: $btn-floating-width;
+  height: $btn-floating-height;
+
+  .fas,
+  .far,
+  .fab {
+    width: $btn-floating-icon-width;
+    line-height: $btn-floating-icon-line-height;
+  }
+
+  &.btn-lg {
+    width: $btn-floating-width-lg;
+    height: $btn-floating-height-lg;
+
+    .fas,
+    .far,
+    .fab {
+      width: $btn-floating-icon-width-lg;
+      line-height: $btn-floating-icon-line-height-lg;
+    }
+  }
+
+  &.btn-sm {
+    width: $btn-floating-width-sm;
+    height: $btn-floating-height-sm;
+
+    .fas,
+    .far,
+    .fab {
+      width: $btn-floating-icon-width-sm;
+      line-height: $btn-floating-icon-line-height-sm;
+    }
   }
 }
 
-@each $btn_name, $color_value in $mdb-colors {
-  @include make-button($btn_name, $color_value);
-  @include make-outline-button($btn_name, $color_value);
-}
+[class*='btn-outline-'].btn-floating {
+  .fas,
+  .far,
+  .fab {
+    width: $btn-outline-floating-icon-width;
+    line-height: $btn-outline-floating-icon-line-height;
+  }
 
-@each $name, $val in $gradients {
-  @include make-gradient-button($name, $val);
-}
+  &.btn-lg {
+    .fas,
+    .far,
+    .fab {
+      width: $btn-outline-floating-icon-width-lg;
+      line-height: $btn-outline-floating-icon-line-height-lg;
+    }
+  }
 
-.btn-warning:focus,
-.btn-warning:not(:disabled):not(.disabled).active,
-.btn-warning:not(:disabled):not(.disabled):active,
-.show > .btn-warning.dropdown-toggle {
-  color: $white-base;
+  &.btn-sm {
+    .fas,
+    .far,
+    .fab {
+      width: $btn-outline-floating-icon-width-sm;
+      line-height: $btn-outline-floating-icon-line-height-sm;
+    }
+  }
 }

@@ -1,30 +1,15 @@
-Material Design for Bootstrap
+MDB 5 React
 
-Version: MDB React Pro 5.1.0
+Version: FREE 1.0.0 Alpha 1
 
 Documentation:
-https://mdbootstrap.com/docs/react/
+https://mdbootstrap.com/docs/b5/react/
 
-Getting started:
-https://mdbootstrap.com/docs/react/getting-started/quick-start/
+Installation:
+https://mdbootstrap.com/docs/b5/react/getting-started/installation/
 
-FAQ
-https://mdbootstrap.com/docs/react/getting-started/faq/
+CLI & hosting:
+https://mdbootstrap.com/docs/standard/cli/
 
 Support:
-https://mdbootstrap.com/support/
-
-ChangeLog
-https://mdbootstrap.com/docs/react/changelog/
-
-License:
-https://mdbootstrap.com/license/
-
-Facebook: https://facebook.com/mdbootstrap
-Twitter: https://twitter.com/MDBootstrap
-Google+: https://plus.google.com/u/0/+Mdbootstrap/posts
-Dribbble: https://dribbble.com/mdbootstrap
-
-
-Contact:
-office@mdbootstrap.com
+https://mdbootstrap.com/support/cat/react/

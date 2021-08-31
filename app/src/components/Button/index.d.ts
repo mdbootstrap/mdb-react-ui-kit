@@ -1,0 +1,23 @@
+import * as React from 'react';
+
+declare const MDBBtn: React.FunctionComponent<{
+  className?: string;
+  color?: string;
+  outline?: boolean;
+  rounded?: boolean;
+  floating?: boolean;
+  disabled?: boolean;
+  size?: string;
+  href?: string;
+  role?: string;
+  block?: boolean;
+  type?: 'reset' | 'submit' | 'button';
+  active?: boolean;
+  toggle?: boolean;
+  target?: string;
+  value?: string | number;
+  tag?: React.ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+export default MDBBtn;

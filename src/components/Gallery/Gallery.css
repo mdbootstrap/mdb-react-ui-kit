@@ -1,7 +1,0 @@
-.mdb-gallery {
-  display: flex;
-  flex-wrap: wrap;
-  overflow-y: auto;
-  list-style: none;
-  padding: 0;
-}

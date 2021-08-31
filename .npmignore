@@ -1,3 +1,5 @@
-docs
-public
-src
+node_modules
+mdb-react-ui-kit-*
+demo*
+app*
+build*

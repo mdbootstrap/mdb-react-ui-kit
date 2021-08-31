@@ -1,78 +1,36 @@
-// Tables
-table {
-  th {
-    font-size: $table-th-font-size;
-    font-weight: 400;
+//
+// Basic MDB table
+//
+
+.table {
+  font-size: $table-font-size;
+
+  > :not(caption) > * > * {
+    padding: $table-cell-padding-y $table-cell-padding-x;
+    transition: $table-hover-transition;
+    background-image: none;
+    background-color: var(--bs-table-accent-bg);
   }
-  td {
-    font-size: $table-td-font-size;
+
+  th {
+    font-weight: 500;
+  }
+
+  tbody {
     font-weight: 300;
   }
-  &.table {
-    thead th {
-      border-top: none;
-    }
-    th,
-    td {
-      padding-top: $table-th-padding-top;
-      padding-bottom: $table-td-padding-bottom;
-    }
-    a {
-      margin: 0;
-      color: $table-a-color;
-      // &.btn {
-      //   color: inherit;
-      // }
-    }
-    .label-table {
-      height: $table-label-line-height;
-      padding: 0;
-      margin: 0;
-      line-height: $table-label-height;
-    }
-    &.btn-table {
-      td {
-        vertical-align: middle;
-      }
-    }
-  }
-  &.table-hover {
-    tbody {
-      tr {
-        &:hover {
-          background-color: $table-hover-background-color;
-          transition: $table-hover-transition;
-        }
-      }
-    }
-  }
-  .th-lg {
-    min-width: $table-th-lg-min-width;
-  }
-  .th-sm {
-    min-width: $table-th-sm-min-width;
-  }
-  &.table-sm {
-    th,
-    td {
-      padding-top: $table-sm-padding-y;
-      padding-bottom: $table-sm-padding-y;
-    }
+
+  > :not(:last-child) > :last-child > * {
+    border-bottom-color: $table-group-separator-color;
   }
 }
-.table-scroll-vertical {
-  max-height: $table-scroll-vertical-max-height;
-  overflow-y: auto;
-}
-.table-fixed {
-  table-layout: fixed;
-}
-.table-responsive,
-.table-responsive-sm,
-.table-responsive-md,
-.table-responsive-lg,
-.table-responsive-xl {
-  > .table-bordered {
-    border-top: 1px solid #dee2e6;
+
+.table-sm {
+  > :not(caption) > * > * {
+    padding: $table-cell-padding-y-sm $table-cell-padding-x-sm;
   }
+}
+
+@each $color, $value in $table-variants {
+  @include table-variant-mdb($color, $value);
 }
