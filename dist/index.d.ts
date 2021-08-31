@@ -820,7 +820,6 @@ declare const MDBCarousel: React$1.FunctionComponent<{
   activeItem?: number;
   className?: string;
   fade?: boolean;
-  interval?: number;
   keyboard?: boolean;
   pause?: boolean;
   showControls?: boolean;
@@ -850,6 +849,7 @@ declare const MDBCarouselCaption: React$1.FunctionComponent<{
 
 declare const MDBCarouselItem: React$1.FunctionComponent<{
   className?: string;
+  interval?: number;
   itemId?: number;
   tag?: React$1.ComponentProps<any>;
   [rest: string]: any;

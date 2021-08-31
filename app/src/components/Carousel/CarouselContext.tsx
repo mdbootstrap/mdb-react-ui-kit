@@ -6,6 +6,8 @@ interface CarouselProps {
   fade: boolean;
   prev: number;
   setPrev: React.SetStateAction<any>;
+  clicked: string;
+  setActiveInterval: React.SetStateAction<any>;
 }
 
 const CarouselContext = React.createContext<CarouselProps>({
@@ -14,6 +16,8 @@ const CarouselContext = React.createContext<CarouselProps>({
   fade: false,
   prev: 0,
   setPrev: null,
+  clicked: '',
+  setActiveInterval: null,
 });
 
 export { CarouselContext };

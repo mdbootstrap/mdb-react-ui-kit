@@ -10,7 +10,6 @@ const MDBCarousel: React.FC<CarouselProps> = ({
   dark,
   children,
   carouselRef,
-  interval,
   keyboard,
   pause,
   touch,
@@ -23,8 +22,10 @@ const MDBCarousel: React.FC<CarouselProps> = ({
   const [imagesCount, setImagesCount] = useState(0);
   const [activeItem, setActiveItem] = useState(0);
   const [prevState, setPrevState] = useState(0);
+  const [clicked, setClicked] = useState('');
   const [startInterval, setStartInterval] = useState(true);
   const [clientTouch, setClientTouch] = useState({ initialX: 0, initialY: 0 });
+  const [activeInterval, setActiveInterval] = useState(5000);
 
   const carouselInnerRef = useRef<HTMLElement>(null);
   const carouselReference = carouselRef ? carouselRef : carouselInnerRef;
@@ -34,6 +35,7 @@ const MDBCarousel: React.FC<CarouselProps> = ({
   const setPrev = useCallback(() => {
     const prevIndex = activeItem === 0 ? imagesCount : activeItem - 1;
 
+    setClicked('prev');
     setActiveItem(prevIndex);
   }, [activeItem, imagesCount]);
 
@@ -41,11 +43,11 @@ const MDBCarousel: React.FC<CarouselProps> = ({
     const nextIndex = activeItem === imagesCount ? 0 : activeItem + 1;
 
     setActiveItem(nextIndex);
+    setClicked('next');
   }, [activeItem, imagesCount]);
 
   const handleKeydown = useCallback(
     (event: KeyboardEvent) => {
-      console.log(event.key);
       switch (event.key) {
         case 'ArrowLeft':
           event.preventDefault();
@@ -70,27 +72,30 @@ const MDBCarousel: React.FC<CarouselProps> = ({
 
       setTimeout(() => {
         setIsChanging(false);
-      }, 700);
+      }, 900);
     } else if (!isChanging && isNext) {
       setNext();
       setIsChanging(true);
 
       setTimeout(() => {
         setIsChanging(false);
-      }, 700);
+      }, 900);
     } else {
       return;
     }
   };
 
-  const handleIndicatorClick = (i: number) => {
-    if (!isChanging) {
-      setActiveItem(i);
-      setIsChanging(true);
+  const handleIndicatorClick = (i: number, e: any) => {
+    if (e.target) {
+      if (!isChanging && !e.target.classList.contains('active')) {
+        setClicked('indicator');
+        setActiveItem(i);
+        setIsChanging(true);
 
-      setTimeout(() => {
-        setIsChanging(false);
-      }, 700);
+        setTimeout(() => {
+          setIsChanging(false);
+        }, 700);
+      }
     }
   };
 
@@ -105,14 +110,14 @@ const MDBCarousel: React.FC<CarouselProps> = ({
   }, [handleKeydown, keyboard]);
 
   useEffect(() => {
-    if (interval && startInterval) {
-      const cycleInterval = setInterval(setNext, interval);
+    if (activeInterval && startInterval) {
+      const cycleInterval = setInterval(setNext, activeInterval);
 
       return () => {
         clearInterval(cycleInterval);
       };
     }
-  }, [interval, setNext, startInterval]);
+  }, [activeInterval, setNext, startInterval]);
 
   useEffect(() => {
     const carouselImgList = carouselReference.current.querySelectorAll('.carousel-item-react img');
@@ -159,6 +164,8 @@ const MDBCarousel: React.FC<CarouselProps> = ({
         fade: fade ? true : false,
         prev: prevState,
         setPrev: setPrevState,
+        clicked: clicked,
+        setActiveInterval: setActiveInterval,
       }}
     >
       <Tag
@@ -174,7 +181,11 @@ const MDBCarousel: React.FC<CarouselProps> = ({
         {showIndicators && (
           <ol className='carousel-indicators'>
             {Array.from(Array(imagesCount + 1)).map((item, i) => (
-              <MDBCarouselIndicatorItem key={i} active={activeItem === i} onClick={() => handleIndicatorClick(i)} />
+              <MDBCarouselIndicatorItem
+                key={i}
+                active={activeItem === i}
+                onClick={(e: MouseEvent) => handleIndicatorClick(i, e)}
+              />
             ))}
           </ol>
         )}
@@ -189,5 +200,5 @@ const MDBCarousel: React.FC<CarouselProps> = ({
     </CarouselContext.Provider>
   );
 };
-MDBCarousel.defaultProps = { tag: 'div', interval: 5000, fade: false, pause: true, touch: true, keyboard: false };
+MDBCarousel.defaultProps = { tag: 'div', fade: false, pause: true, touch: true, keyboard: false };
 export default MDBCarousel;

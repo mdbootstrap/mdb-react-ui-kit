@@ -4,7 +4,6 @@ type CarouselProps = {
   activeItem?: number;
   className?: string;
   fade?: boolean;
-  interval?: number;
   keyboard?: boolean;
   pause?: boolean;
   showControls?: boolean;

@@ -28,7 +28,7 @@
 
 .carousel-item {
   position: relative;
-  display: none;
+  visibility: hidden;
   float: left;
   width: 100%;
   margin-right: -100%;
@@ -39,7 +39,7 @@
 .carousel-item.active,
 .carousel-item-next,
 .carousel-item-prev {
-  display: block;
+  visibility: visible;
 }
 
 /* rtl:begin:ignore */
@@ -112,19 +112,11 @@
 }
 .carousel-control-prev {
   left: 0;
-  background-image: if(
-    $enable-gradients,
-    linear-gradient(90deg, rgba($black, 0.25), rgba($black, 0.001)),
-    null
-  );
+  background-image: if($enable-gradients, linear-gradient(90deg, rgba($black, 0.25), rgba($black, 0.001)), null);
 }
 .carousel-control-next {
   right: 0;
-  background-image: if(
-    $enable-gradients,
-    linear-gradient(270deg, rgba($black, 0.25), rgba($black, 0.001)),
-    null
-  );
+  background-image: if($enable-gradients, linear-gradient(270deg, rgba($black, 0.25), rgba($black, 0.001)), null);
 }
 
 // Icons for within
