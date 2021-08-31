@@ -82,6 +82,8 @@ import MDBCarouselInner from './components/Carousel/CarouselInner/index';
 import MDBCarouselElement from './components/Carousel/CarouselElement/index';
 import MDBCarouselCaption from './components/Carousel/CarouselCaption/index';
 import MDBCarouselItem from './components/Carousel/CarouselItem/index';
+import MDBAccordion from './components/Accordion/index';
+import MDBAccordionItem from './components/Accordion/AccordionItem/index';
 
 export {
   MDBContainer,
@@ -168,4 +170,6 @@ export {
   MDBCarouselInner,
   MDBCarouselElement,
   MDBCarouselCaption,
+  MDBAccordion,
+  MDBAccordionItem,
 };

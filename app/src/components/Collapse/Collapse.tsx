@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import type { CollapseProps } from './types';
 
 const MDBCollapse: React.FC<CollapseProps> = ({
@@ -28,6 +28,18 @@ const MDBCollapse: React.FC<CollapseProps> = ({
   );
   const refCollapse = useRef<HTMLElement>(null);
 
+  const handleResize = useCallback(() => {
+    if (showCollapse || statement) {
+      setCollapseHeight(undefined);
+    }
+  }, [showCollapse, statement]);
+
+  useEffect(() => {
+    if (collapseHeight === undefined && (showCollapse || statement)) {
+      setCollapseHeight(refCollapse?.current?.scrollHeight);
+    }
+  }, [collapseHeight, showCollapse, statement]);
+
   useEffect(() => {
     if (typeof show === 'string') {
       setShowCollapseString(show);
@@ -47,7 +59,7 @@ const MDBCollapse: React.FC<CollapseProps> = ({
     return () => {
       clearTimeout(timer);
     };
-  }, [collapseHeight, show, showCollapse, id, showCollapseString, statement]);
+  }, [show, showCollapse, id, showCollapseString, statement]);
 
   useEffect(() => {
     if (showCollapse || statement) {
@@ -56,6 +68,14 @@ const MDBCollapse: React.FC<CollapseProps> = ({
       setCollapseHeight(0);
     }
   }, [showCollapse, statement]);
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [handleResize]);
 
   return (
     <Tag style={{ height: collapseHeight, ...style }} id={id} className={classes} {...props} ref={refCollapse}>

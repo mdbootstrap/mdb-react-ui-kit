@@ -47,6 +47,12 @@ const MDBPopover: React.FC<PopoverProps> = ({
     onClick && onClick(e);
   };
 
+  useEffect(() => {
+    if (!isOpen) {
+      setIsOpenState(false);
+    }
+  }, [isOpen]);
+
   const handleClickOutside = useCallback(
     (e: MouseEvent) => {
       if (

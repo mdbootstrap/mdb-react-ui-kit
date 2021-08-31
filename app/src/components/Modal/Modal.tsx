@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import clsx from 'clsx';
 import type { ModalProps } from './types';
+import ReactDOM from 'react-dom';
 const MDBModal: React.FC<ModalProps> = ({
   animationDirection,
   backdrop,
   children,
   className,
-  closeOnEsc,
   getOpenState,
   modalRef,
   show,
@@ -14,154 +14,126 @@ const MDBModal: React.FC<ModalProps> = ({
   tag: Tag,
   ...props
 }) => {
-  const [showModal, setShowModal] = useState(show);
-  const [isReadyToHide, setIsReadyToHide] = useState(show);
+  const [isOpenBackdrop, setIsOpenBackrop] = useState(show);
+  const [isOpenModal, setIsOpenModal] = useState(show);
+  const [innerShow, setInnerShow] = useState(show);
   const [staticModal, setStaticModal] = useState(false);
-  const classes = clsx(
-    'modal',
-    'fade',
-    animationDirection,
-    isReadyToHide && show && 'show',
-    staticModal && 'modal-static',
-    className
-  );
-  const modalInnerRef = useRef<HTMLElement>(null);
-  const hasVScroll = window.innerWidth > document.documentElement.clientWidth && window.innerWidth >= 576;
-  const [locker, setLocker] = useState(false);
 
+  const modalInnerRef = useRef<HTMLElement>(null);
   const modalReference = modalRef ? modalRef : modalInnerRef;
 
-  const handleClick = useCallback(
-    (e: MouseEvent) => {
-      if (!staticBackdrop && e.target === modalReference.current) {
-        setShowModal(false);
-
-        if (backdrop) {
-          if (show || showModal) {
-            document.body.classList.toggle('modal-open');
-          }
-
-          if (hasVScroll) {
-            setLocker(true);
-            if (document.body.classList.contains('modal-open')) {
-              document.body.style.paddingRight = '17px';
-            } else {
-              document.body.style.paddingRight = '';
-            }
-          }
-        }
-
-        getOpenState && getOpenState(false);
-      } else if (staticBackdrop) {
-        setStaticModal(true);
-
-        setTimeout(() => {
-          setStaticModal(false);
-        }, 300);
-      }
-    },
-    [modalReference, getOpenState, backdrop] // eslint-disable-line react-hooks/exhaustive-deps
+  const classes = clsx(
+    'modal',
+    staticModal && 'modal-static',
+    animationDirection,
+    'fade',
+    isOpenModal && 'show',
+    className
   );
+  const backdropClasses = clsx('modal-backdrop', 'fade', isOpenBackdrop && 'show');
 
-  const handleEscKey = useCallback(
-    (e: KeyboardEvent) => {
-      if (!staticBackdrop && e.key === 'Escape') {
-        setShowModal(false);
+  const closeModal = useCallback(() => {
+    setIsOpenModal(false);
 
-        if (backdrop) {
-          if (show || showModal) {
-            document.body.classList.toggle('modal-open');
-          }
+    setTimeout(() => {
+      setIsOpenBackrop(false);
+      getOpenState(false);
+    }, 150);
+    setTimeout(() => {
+      setInnerShow(false);
+    }, 350);
+  }, [getOpenState]);
 
-          if (hasVScroll) {
-            setLocker(true);
-            if (document.body.classList.contains('modal-open')) {
-              document.body.style.paddingRight = '17px';
-            } else {
-              document.body.style.paddingRight = '';
-            }
-          }
-        }
-
-        getOpenState && getOpenState(false);
-      } else if (staticBackdrop) {
-        setStaticModal(true);
-
-        setTimeout(() => {
-          setStaticModal(false);
-        }, 300);
-      }
-    },
-    [getOpenState, closeOnEsc] // eslint-disable-line react-hooks/exhaustive-deps
-  );
-
-  useEffect(() => {
-    setShowModal(show);
-
-    if (backdrop) {
-      if (show || showModal) {
-        document.body.classList.toggle('modal-open');
-      }
-
-      if (hasVScroll) {
-        setLocker(true);
-        if (document.body.classList.contains('modal-open')) {
-          document.body.style.paddingRight = '17px';
+  const handleClickOutside = useCallback(
+    (event: any) => {
+      if (isOpenModal && event.target === modalReference.current) {
+        if (!staticBackdrop) {
+          closeModal();
         } else {
-          document.body.style.paddingRight = '';
+          setStaticModal(true);
+          setTimeout(() => {
+            setStaticModal(false);
+          }, 300);
         }
       }
-    }
+    },
+    [closeModal, modalReference, isOpenModal, staticBackdrop]
+  );
 
-    getOpenState && getOpenState(show);
-  }, [show, getOpenState]); // eslint-disable-line react-hooks/exhaustive-deps
+  const handleKeydown = useCallback(
+    (event: KeyboardEvent) => {
+      if (isOpenModal && event.key === 'Escape') {
+        if (!staticBackdrop) {
+          closeModal();
+        } else {
+          setStaticModal(true);
+          setTimeout(() => {
+            setStaticModal(false);
+          }, 300);
+        }
+      }
+    },
+    [closeModal, isOpenModal, staticBackdrop]
+  );
 
   useEffect(() => {
-    if (showModal) {
-      document.addEventListener('click', handleClick);
-      document.addEventListener('keydown', handleEscKey);
-    }
-    return () => {
-      document.removeEventListener('click', handleClick);
-      document.removeEventListener('keydown', handleEscKey);
+    const getScrollbarWidth = () => {
+      const documentWidth = document.documentElement.clientWidth;
+      return Math.abs(window.innerWidth - documentWidth);
     };
-  }, [handleClick, handleEscKey, showModal]);
 
-  useEffect(() => {
-    let timer: ReturnType<typeof setTimeout>;
-    let secondTimer: ReturnType<typeof setTimeout>;
-    if (showModal) {
-      setIsReadyToHide(true);
-      timer = setTimeout(() => {
-        setShowModal(true);
-      }, 4);
+    const hasVScroll = window.innerWidth > document.documentElement.clientWidth && window.innerWidth >= 576;
+
+    if (innerShow && hasVScroll) {
+      const scrollbarWidth = getScrollbarWidth();
+      document.body.classList.add('modal-open');
+      document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
     } else {
-      setShowModal(false);
-      secondTimer = setTimeout(() => {
-        setIsReadyToHide(false);
-      }, 300);
+      document.body.classList.remove('modal-open');
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
     }
+  }, [innerShow]);
+
+  useEffect(() => {
+    if (show) {
+      setInnerShow(true);
+      setTimeout(() => {
+        setIsOpenBackrop(true);
+      }, 0);
+      setTimeout(() => {
+        setIsOpenModal(true);
+        getOpenState(true);
+      }, 150);
+    } else {
+      closeModal();
+    }
+  }, [show, closeModal, getOpenState]);
+
+  useEffect(() => {
+    window.addEventListener('click', handleClickOutside);
+    window.addEventListener('keydown', handleKeydown);
+
     return () => {
-      clearTimeout(timer);
-      clearTimeout(secondTimer);
+      window.removeEventListener('click', handleClickOutside);
+      window.removeEventListener('keydown', handleKeydown);
     };
-  }, [showModal]);
+  }, [handleKeydown, handleClickOutside]);
+
   return (
     <>
       <Tag
-        style={{
-          display: show || isReadyToHide ? 'block' : 'none',
-          paddingRight: show && locker ? '17px' : '',
-        }}
         className={classes}
         ref={modalReference}
+        style={{ display: innerShow || show ? 'block' : 'none' }}
         {...props}
       >
         {children}
       </Tag>
-      {backdrop && isReadyToHide && <div className='modal-backdrop fade show'></div>}
+      {ReactDOM.createPortal(backdrop && innerShow && <div className={backdropClasses}></div>, document.body)}
     </>
   );
 };
-MDBModal.defaultProps = { tag: 'div', backdrop: true, closeOnEsc: true, staticBackdrop: false, show: false };
+MDBModal.defaultProps = { tag: 'div', backdrop: true };
 export default MDBModal;

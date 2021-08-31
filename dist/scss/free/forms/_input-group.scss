@@ -20,9 +20,9 @@
 }
 
 .input-group-text {
+  background-color: transparent;
   min-height: $input-group-min-height;
   height: $input-group-height;
-  background-color: transparent;
   padding-top: $input-group-text-padding-y;
   padding-bottom: $input-group-text-padding-y;
   > .form-check-input[type='checkbox'] {
