@@ -2,23 +2,21 @@ import clsx from 'clsx';
 import React, { useState, useEffect, useRef } from 'react';
 import type { InputProps } from './types';
 
-const MDBInput: React.FC<InputProps> = React.forwardRef<HTMLAllCollection, InputProps>(
+const MDBInput: React.FC<InputProps> = React.forwardRef<HTMLInputElement, InputProps>(
   (
     {
       className,
       size,
       contrast,
-      name,
       value,
-      tag: Tag,
       id,
       labelId,
-      readonly,
-      disabled,
       labelClass,
       wrapperClass,
       wrapperTag: WrapperTag,
       label,
+      onChange,
+      labelRef,
       ...props
     },
     ref
@@ -37,30 +35,25 @@ const MDBInput: React.FC<InputProps> = React.forwardRef<HTMLAllCollection, Input
       if (labelEl.current) {
         setLabelWidth(labelEl.current.clientWidth * 0.8 + 8);
       }
+
+      labelRef && labelRef(labelEl);
+
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+      oldValue.length > 0 ? setActive(true) : setActive(false);
+    }, [oldValue]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setNewValue(e.currentTarget.value);
-    };
 
-    const handleBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
-      e.currentTarget.value !== '' ? setActive(true) : setActive(false);
+      onChange && onChange(e);
     };
 
     return (
       <WrapperTag className={wrapperClasses}>
-        <Tag
-          className={inputClasses}
-          onBlur={handleBlur}
-          onChange={handleChange}
-          value={oldValue}
-          name={name}
-          readOnly={readonly}
-          id={id}
-          disabled={disabled}
-          ref={ref}
-          {...props}
-        />
+        <input className={inputClasses} onChange={handleChange} value={oldValue} id={id} ref={ref} {...props} />
         {label && (
           <label className={labelClasses} id={labelId} htmlFor={id} ref={labelEl}>
             {label}
@@ -76,6 +69,6 @@ const MDBInput: React.FC<InputProps> = React.forwardRef<HTMLAllCollection, Input
   }
 );
 
-MDBInput.defaultProps = { tag: 'input', wrapperTag: 'div' };
+MDBInput.defaultProps = { wrapperTag: 'div' };
 
 export default MDBInput;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-declare const MDBColumn: React.FunctionComponent<{
+declare const MDBCol: React.FunctionComponent<{
   center?: string | boolean;
   className?: string;
   end?: string | boolean;
@@ -19,4 +19,4 @@ declare const MDBColumn: React.FunctionComponent<{
   [rest: string]: any;
 }>;
 
-export default MDBColumn;
+export default MDBCol;

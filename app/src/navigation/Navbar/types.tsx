@@ -8,6 +8,8 @@ type NavbarProps = {
   color?: string;
   expand?: string | boolean;
   bgColor?: string;
+  fixed?: boolean;
+  sticky?: boolean;
 };
 
 export { NavbarProps };

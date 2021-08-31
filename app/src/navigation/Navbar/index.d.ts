@@ -22,7 +22,9 @@ declare const MDBNavbar: React.FunctionComponent<{
     | 'black-50'
     | 'white-50';
   expand?: string | boolean;
-  bgColor?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark';
+  bgColor?: 'white' | 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark';
+  fixed?: boolean;
+  sticky?: boolean;
 }>;
 
 export default MDBNavbar;

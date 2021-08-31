@@ -15,6 +15,7 @@ declare const MDBInput: React.FunctionComponent<{
   contrast?: boolean;
   value?: string;
   name?: string;
+  labelRef?: React.RefObject<HTMLLabelElement>;
   [rest: string]: any;
 }>;
 

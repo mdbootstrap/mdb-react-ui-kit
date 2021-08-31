@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-declare const ListGroup: React.FunctionComponent<{
+declare const MDBListGroup: React.FunctionComponent<{
   className?: string;
   tag?: React.ComponentProps<any>;
   horizontal?: boolean;
@@ -9,4 +9,4 @@ declare const ListGroup: React.FunctionComponent<{
   [rest: string]: any;
 }>;
 
-export default ListGroup;
+export default MDBListGroup;

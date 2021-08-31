@@ -5,6 +5,7 @@ declare const MDBNavbarNav: React.FunctionComponent<{
   className?: string;
   tag?: React.ElementType;
   right?: boolean;
+  fullWidth?: boolean;
   left?: boolean;
   [rest: string]: any;
 }>;

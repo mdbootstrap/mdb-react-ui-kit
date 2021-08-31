@@ -1,0 +1,17 @@
+.dropdown-menu [data-active='true'] a.dropdown-item,
+.dropdown-menu .dropdown-item:focus,
+.dropdown-menu li:focus .dropdown-item {
+  color: #16181b;
+  background-color: #eee;
+}
+
+.dropdown-menu li:focus {
+  outline: none;
+}
+
+.dropdown-menu.dropdown-menu-dark [data-active='true'] a.dropdown-item,
+.dropdown-menu.dropdown-menu-dark .dropdown-item:focus,
+.dropdown-menu.dropdown-menu-dark li:focus .dropdown-item {
+  color: #fff;
+  background-color: #1266f1;
+}

@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-declare const MDBNavItem: React.FunctionComponent<{
+declare const MDBNavbarItem: React.FunctionComponent<{
   children?: React.ReactNode;
   className?: string;
-  active?: string;
-  text?: string;
+  active?: boolean;
+  text?: boolean;
   tag?: React.ElementType;
   [rest: string]: any;
 }>;
 
-export default MDBNavItem;
+export default MDBNavbarItem;

@@ -17,6 +17,7 @@ import MDBCardLink from './components/Card/CardLink/CardLink';
 import MDBCardGroup from './components/Card/CardGroup/CardGroup';
 import MDBListGroup from './components/ListGroup/ListGroup';
 import MDBListGroupItem from './components/ListGroup/ListGroupItem/ListGroupItem';
+import MDBTooltip from './components/Tooltip/Tooltip';
 import MDBRow from './layout/Row/Row';
 import MDBIcon from './styles/Icon/Icon';
 import MDBTypography from './styles/Typography/Typography';
@@ -38,6 +39,19 @@ import MDBTableBody from './data/Tables/TableBody/TableBody';
 import MDBProgress from './components/Progress/Progress';
 import MDBProgressBar from './components/Progress/ProgressBar/ProgressBar';
 import MDBInput from './forms/Input/Input';
+import MDBCheckbox from './forms/Checkbox/Checkbox';
+import MDBRadio from './forms/Radio/Radio';
+import MDBCollapse from './components/Collapse/Collapse';
+import MDBDropdown from './components/Dropdown/Dropdown';
+import MDBDropdownItem from './components/Dropdown/DropdownItem/DropdownItem';
+import MDBDropdownMenu from './components/Dropdown/DropdownMenu/DropdownMenu';
+import MDBDropdownToggle from './components/Dropdown/DropdownToggle/DropdownToggle';
+import MDBDropdownLink from './components/Dropdown/DropdownLink/DropdownLink';
+import MDBDropdownDivider from './components/Dropdown/DropdownDivider/DropdownDivider';
+import MDBDropdownHeader from './components/Dropdown/DropdownHeader/DropdownHeader';
+import MDBPopover from './components/Popover/Popover';
+import MDBPopoverBody from './components/Popover/PopoverBody/PopoverBody';
+import MDBPopoverHeader from './components/Popover/PopoverHeader/PopoverHeader';
 
 export {
   MDBContainer,
@@ -80,4 +94,18 @@ export {
   MDBProgress,
   MDBProgressBar,
   MDBInput,
+  MDBCheckbox,
+  MDBRadio,
+  MDBCollapse,
+  MDBDropdown,
+  MDBDropdownItem,
+  MDBDropdownToggle,
+  MDBDropdownMenu,
+  MDBDropdownLink,
+  MDBDropdownDivider,
+  MDBDropdownHeader,
+  MDBPopover,
+  MDBPopoverBody,
+  MDBPopoverHeader,
+  MDBTooltip,
 };

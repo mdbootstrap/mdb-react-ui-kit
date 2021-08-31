@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 import { ColumnProps } from './types';
 
-const MDBColumn: React.FC<ColumnProps> = React.forwardRef<HTMLAllCollection, ColumnProps>(
+const MDBCol: React.FC<ColumnProps> = React.forwardRef<HTMLAllCollection, ColumnProps>(
   (
     {
       center,
@@ -51,6 +51,6 @@ const MDBColumn: React.FC<ColumnProps> = React.forwardRef<HTMLAllCollection, Col
   }
 );
 
-MDBColumn.defaultProps = { tag: 'div' };
+MDBCol.defaultProps = { tag: 'div' };
 
-export default MDBColumn;
+export default MDBCol;

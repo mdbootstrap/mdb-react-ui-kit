@@ -7,7 +7,7 @@ import MDBSpinner from './components/Spinner/index';
 import MDBCard from './components/Card/index';
 import MDBCardHeader from './components/Card/CardHeader/index';
 import MDBCardSubTitle from './components/Card/CardSubTitle/index';
-import MDBCardTitle from './components/Card/CardHeader/index';
+import MDBCardTitle from './components/Card/CardTitle/index';
 import MDBCardText from './components/Card/CardText/index';
 import MDBCardBody from './components/Card/CardBody/index';
 import MDBCardFooter from './components/Card/CardFooter/index';
@@ -17,6 +17,7 @@ import MDBCardLink from './components/Card/CardLink/index';
 import MDBCardGroup from './components/Card/CardGroup/index';
 import MDBListGroup from './components/ListGroup/index';
 import MDBListGroupItem from './components/ListGroup/ListGroupItem/index';
+import MDBTooltip from './components/Tooltip/index';
 import MDBRow from './layout/Row/index';
 import MDBIcon from './styles/Icon/index';
 import MDBTypography from './styles/Typography/index';
@@ -38,6 +39,19 @@ import MDBTableBody from './data/Tables/TableBody/index';
 import MDBProgress from './components/Progress/index';
 import MDBProgressBar from './components/Progress/ProgressBar/index';
 import MDBInput from './forms/Input/index';
+import MDBCheckbox from './forms/Checkbox/index';
+import MDBRadio from './forms/Radio/index';
+import MDBCollapse from './components/Collapse/index';
+import MDBDropdown from './components/Dropdown/Dropdown';
+import MDBDropdownItem from './components/Dropdown/DropdownItem/index';
+import MDBDropdownMenu from './components/Dropdown/DropdownMenu/index';
+import MDBDropdownToggle from './components/Dropdown/DropdownToggle/index';
+import MDBDropdownLink from './components/Dropdown/DropdownLink/index';
+import MDBDropdownDivider from './components/Dropdown/DropdownDivider/index';
+import MDBDropdownHeader from './components/Dropdown/DropdownHeader/index';
+import MDBPopover from './components/Popover/index';
+import MDBPopoverBody from './components/Popover/PopoverBody/index';
+import MDBPopoverHeader from './components/Popover/PopoverHeader/index';
 
 export {
   MDBContainer,
@@ -80,4 +94,18 @@ export {
   MDBProgress,
   MDBProgressBar,
   MDBInput,
+  MDBCheckbox,
+  MDBRadio,
+  MDBCollapse,
+  MDBDropdown,
+  MDBDropdownItem,
+  MDBDropdownToggle,
+  MDBDropdownMenu,
+  MDBDropdownLink,
+  MDBDropdownDivider,
+  MDBDropdownHeader,
+  MDBPopover,
+  MDBPopoverBody,
+  MDBPopoverHeader,
+  MDBTooltip,
 };

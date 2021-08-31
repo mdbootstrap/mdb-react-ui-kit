@@ -18,6 +18,8 @@ const MDBNavbar: React.FC<NavbarProps> = React.forwardRef<HTMLAllCollection, Nav
       light,
       dark,
       scrolling,
+      fixed,
+      sticky,
       scrollingNavbarOffset,
       color,
       transparent,
@@ -32,6 +34,9 @@ const MDBNavbar: React.FC<NavbarProps> = React.forwardRef<HTMLAllCollection, Nav
 
     const classes = clsx(
       {
+        'fixed-top': fixed,
+        'sticky-top': sticky,
+
         'navbar-light': light,
         'navbar-dark': dark,
         'scrolling-navbar': scrolling || scrollingNavbarOffset,

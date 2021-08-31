@@ -1,6 +1,6 @@
 {
   "name": "mdb-react-ui-kit",
-  "version": "1.0.0-alpha1",
+  "version": "1.0.0-alpha2",
   "main": "./dist/mdb-react-ui-kit.js",
   "module": "./dist/mdb-react-ui-kit.esm.js",
   "types": "./dist/index.d.ts",
@@ -10,7 +10,9 @@
   },
   "homepage": "https://mdbootstrap.com/",
   "dependencies": {
-    "clsx": "1.1.1"
+    "clsx": "1.1.1",
+    "react-popper": "2.2.4",
+    "@popperjs/core": "2.6.0"
   },
   "peerDependencies": {
     "react": "^17.0.0",

@@ -1,6 +1,6 @@
 {
   "name": "mdb-react-ui-kit-demo",
-  "version": "1.0.0-alpha1",
+  "version": "1.0.0-alpha2",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -14,7 +14,9 @@
     "@types/react-dom": "^17.0.0",
     "clsx": "1.1.1",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-popper": "2.2.4",
+    "@popperjs/core": "2.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

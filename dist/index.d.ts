@@ -1,4 +1,4 @@
-import { FunctionComponent, ElementType, ComponentProps, ReactNode, ReactElement } from 'react';
+import React$1, { FunctionComponent, ElementType, ComponentProps, ReactNode, ReactElement, RefObject } from 'react';
 
 declare const MDBContainer: FunctionComponent<{
   className?: string;
@@ -170,6 +170,34 @@ declare const MDBListGroupItem: FunctionComponent<{
   [rest: string]: any;
 }>;
 
+declare const MDBTooltip: FunctionComponent<{
+  className?: string;
+  tag?: ComponentProps<any>;
+  tooltipTag?: ComponentProps<any>;
+  placement?:
+    | 'top'
+    | 'auto'
+    | 'auto-start'
+    | 'auto-end'
+    | 'bottom'
+    | 'right'
+    | 'left'
+    | 'top-start'
+    | 'top-end'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'right-start'
+    | 'right-end'
+    | 'left-start'
+    | 'left-end'
+    | undefined;
+  options?: Record<string, unknown>;
+  title?: string | ReactNode;
+  wrapperProps?: Record<string, unknown>;
+  wrapperClass?: string;
+  [rest: string]: any;
+}>;
+
 declare const MDBRow: FunctionComponent<{
   around?: boolean;
   between?: boolean;
@@ -310,6 +338,7 @@ declare const MDBNavbarNav: FunctionComponent<{
   className?: string;
   tag?: ElementType;
   right?: boolean;
+  fullWidth?: boolean;
   left?: boolean;
   [rest: string]: any;
 }>;
@@ -461,7 +490,137 @@ declare const MDBInput: FunctionComponent<{
   contrast?: boolean;
   value?: string;
   name?: string;
+  labelRef?: RefObject<HTMLLabelElement>;
   [rest: string]: any;
 }>;
 
-export { MDBBadge, MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBBtnGroup, MDBCard, MDBCardBody, MDBCardFooter, MDBCardGroup, MDBCardHeader, MDBCardImage, MDBCardLink, MDBCardOverlay, MDBCardSubTitle, MDBCardText, MDBCardTitle, MDBCol, MDBContainer, MDBFooter, MDBIcon, MDBInput, MDBListGroup, MDBListGroupItem, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav, MDBNavbarToggler, MDBPagination, MDBPaginationItem, MDBPaginationLink, MDBProgress, MDBProgressBar, MDBRow, MDBSpinner, MDBTable, MDBTableBody, MDBTableHead, MDBTypography };
+declare const MDBCheckbox: FunctionComponent<{
+  className?: string;
+  wrapperTag?: ComponentProps<any>;
+  wrapperClass?: string;
+  id?: string;
+  label?: string;
+  labelId?: string;
+  labelClass?: string;
+  disabled?: boolean;
+  value?: string;
+  name?: string;
+  inline?: boolean;
+  checked?: boolean;
+  btn?: boolean;
+  btnColor?: string;
+  [rest: string]: any;
+}>;
+
+declare const MDBRadio: typeof MDBCheckbox;
+
+declare const MDBCollapse: FunctionComponent<{
+  className?: string;
+  navbar?: boolean;
+  show?: boolean;
+  center?: boolean;
+  style?: Record<string, unknown>;
+  [rest: string]: any;
+}>;
+
+declare type DropdownProps = {
+    className?: string;
+    group?: boolean;
+    isOpen?: boolean;
+    dropup?: boolean;
+    dropright?: boolean;
+    dropleft?: boolean;
+    options?: Record<string, unknown>;
+    tag?: React.ComponentProps<any>;
+    [rest: string]: any;
+    animation?: boolean;
+};
+
+declare const MDBDropdown: React$1.FC<DropdownProps>;
+
+declare const MDBDropdownItem: FunctionComponent<{
+  className?: string;
+  tag?: ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBDropdownMenu: FunctionComponent<{
+  className?: string;
+  style?: Record<string, any>;
+  wrapperStyle?: Record<string, any>;
+  dark?: boolean;
+  responsive?: string;
+  tag?: ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBDropdownToggle: FunctionComponent<{
+  className?: string;
+  border?: string;
+  background?: string;
+  shadow?: string;
+  alignment?: string;
+  tag?: ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBDropdownLink: FunctionComponent<{
+  className?: string;
+  tag?: ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBDropdownDivider: FunctionComponent<{
+  className?: string;
+  tag?: ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBDropdownHeader: FunctionComponent<{
+  className?: string;
+  tag?: ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBPopover: FunctionComponent<{
+  btnChildren?: ReactNode;
+  btnClassName?: string;
+  tag?: ComponentProps<any>;
+  className?: string;
+  dismiss?: boolean;
+  isOpen?: boolean;
+  options?: Record<string, unknown>;
+  placement?:
+    | 'top'
+    | 'auto'
+    | 'auto-start'
+    | 'auto-end'
+    | 'bottom'
+    | 'right'
+    | 'left'
+    | 'top-start'
+    | 'top-end'
+    | 'bottom-start'
+    | 'bottom-end'
+    | 'right-start'
+    | 'right-end'
+    | 'left-start'
+    | 'left-end';
+  poperStyle?: Record<string, unknown>;
+  popperTag?: ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBPopoverBody: FunctionComponent<{
+  className?: string;
+  tag?: ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBPopoverHeader: FunctionComponent<{
+  className?: string;
+  tag?: ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+export { MDBBadge, MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBBtnGroup, MDBCard, MDBCardBody, MDBCardFooter, MDBCardGroup, MDBCardHeader, MDBCardImage, MDBCardLink, MDBCardOverlay, MDBCardSubTitle, MDBCardText, MDBCardTitle, MDBCheckbox, MDBCol, MDBCollapse, MDBContainer, MDBDropdown, MDBDropdownDivider, MDBDropdownHeader, MDBDropdownItem, MDBDropdownLink, MDBDropdownMenu, MDBDropdownToggle, MDBFooter, MDBIcon, MDBInput, MDBListGroup, MDBListGroupItem, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav, MDBNavbarToggler, MDBPagination, MDBPaginationItem, MDBPaginationLink, MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBProgress, MDBProgressBar, MDBRadio, MDBRow, MDBSpinner, MDBTable, MDBTableBody, MDBTableHead, MDBTooltip, MDBTypography };
