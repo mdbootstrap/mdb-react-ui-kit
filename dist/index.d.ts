@@ -816,4 +816,43 @@ declare const MDBTabsPane: React$1.FunctionComponent<{
   [rest: string]: any;
 }>;
 
-export { MDBBadge, MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBBtnGroup, MDBCard, MDBCardBody, MDBCardFooter, MDBCardGroup, MDBCardHeader, MDBCardImage, MDBCardLink, MDBCardOverlay, MDBCardSubTitle, MDBCardText, MDBCardTitle, MDBCheckbox, MDBCol, MDBCollapse, MDBContainer, MDBDropdown, MDBDropdownDivider, MDBDropdownHeader, MDBDropdownItem, MDBDropdownLink, MDBDropdownMenu, MDBDropdownToggle, MDBFile, MDBFooter, MDBIcon, MDBInput, MDBInputGroup, MDBInputGroupElement, MDBInputGroupText, MDBListGroup, MDBListGroupItem, MDBModal, MDBModalBody, MDBModalContent, MDBModalDialog, MDBModalFooter, MDBModalHeader, MDBModalTitle, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav, MDBNavbarToggler, MDBPagination, MDBPaginationItem, MDBPaginationLink, MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBProgress, MDBProgressBar, MDBRadio, MDBRange, MDBRipple, MDBRow, MDBScrollspy, MDBScrollspyNavItem, MDBScrollspyNavLink, MDBScrollspyNavList, MDBScrollspySection, MDBSpinner, MDBSwitch, MDBTable, MDBTableBody, MDBTableHead, MDBTabs, MDBTabsContent, MDBTabsItem, MDBTabsLink, MDBTabsPane, MDBTooltip, MDBTypography, MDBValidation };
+declare const MDBCarousel: React$1.FunctionComponent<{
+  activeItem?: number;
+  className?: string;
+  fade?: boolean;
+  interval?: number;
+  keyboard?: boolean;
+  pause?: boolean;
+  showControls?: boolean;
+  showIndicators?: boolean;
+  touch?: boolean;
+  tag?: React$1.ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBCarouselInner: React$1.FunctionComponent<{
+  className?: string;
+  tag?: React$1.ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBCarouselElement: React$1.FunctionComponent<{
+  className?: string;
+  tag?: React$1.ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBCarouselCaption: React$1.FunctionComponent<{
+  className?: string;
+  tag?: React$1.ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+declare const MDBCarouselItem: React$1.FunctionComponent<{
+  className?: string;
+  itemId?: number;
+  tag?: React$1.ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+export { MDBBadge, MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBBtnGroup, MDBCard, MDBCardBody, MDBCardFooter, MDBCardGroup, MDBCardHeader, MDBCardImage, MDBCardLink, MDBCardOverlay, MDBCardSubTitle, MDBCardText, MDBCardTitle, MDBCarousel, MDBCarouselCaption, MDBCarouselElement, MDBCarouselInner, MDBCarouselItem, MDBCheckbox, MDBCol, MDBCollapse, MDBContainer, MDBDropdown, MDBDropdownDivider, MDBDropdownHeader, MDBDropdownItem, MDBDropdownLink, MDBDropdownMenu, MDBDropdownToggle, MDBFile, MDBFooter, MDBIcon, MDBInput, MDBInputGroup, MDBInputGroupElement, MDBInputGroupText, MDBListGroup, MDBListGroupItem, MDBModal, MDBModalBody, MDBModalContent, MDBModalDialog, MDBModalFooter, MDBModalHeader, MDBModalTitle, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav, MDBNavbarToggler, MDBPagination, MDBPaginationItem, MDBPaginationLink, MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBProgress, MDBProgressBar, MDBRadio, MDBRange, MDBRipple, MDBRow, MDBScrollspy, MDBScrollspyNavItem, MDBScrollspyNavLink, MDBScrollspyNavList, MDBScrollspySection, MDBSpinner, MDBSwitch, MDBTable, MDBTableBody, MDBTableHead, MDBTabs, MDBTabsContent, MDBTabsItem, MDBTabsLink, MDBTabsPane, MDBTooltip, MDBTypography, MDBValidation };

@@ -77,6 +77,11 @@ import MDBTabsItem from './navigation/Tabs/TabsItem/TabsItem';
 import MDBTabsLink from './navigation/Tabs/TabsLink/TabsLink';
 import MDBTabsContent from './navigation/Tabs/TabsContent/TabsContent';
 import MDBTabsPane from './navigation/Tabs/TabsPane/TabsPane';
+import MDBCarousel from './components/Carousel/Carousel';
+import MDBCarouselInner from './components/Carousel/CarouselInner/CarouselInner';
+import MDBCarouselElement from './components/Carousel/CarouselElement/CarouselElement';
+import MDBCarouselCaption from './components/Carousel/CarouselCaption/CarouselCaption';
+import MDBCarouselItem from './components/Carousel/CarouselItem/CarouselItem';
 
 export {
   MDBContainer,
@@ -158,4 +163,9 @@ export {
   MDBTabsLink,
   MDBTabsContent,
   MDBTabsPane,
+  MDBCarousel,
+  MDBCarouselItem,
+  MDBCarouselInner,
+  MDBCarouselElement,
+  MDBCarouselCaption,
 };

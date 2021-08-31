@@ -1,0 +1,17 @@
+import * as React from 'react';
+
+declare const MDBCarousel: React.FunctionComponent<{
+  activeItem?: number;
+  className?: string;
+  fade?: boolean;
+  interval?: number;
+  keyboard?: boolean;
+  pause?: boolean;
+  showControls?: boolean;
+  showIndicators?: boolean;
+  touch?: boolean;
+  tag?: React.ComponentProps<any>;
+  [rest: string]: any;
+}>;
+
+export default MDBCarousel;

@@ -23,13 +23,20 @@ const MDBInput: React.FC<InputProps> = ({
   validation,
   invalid,
   validationTooltip,
+  btnClasses,
+  btnOnClick,
+  btnRef,
+  btnChildren,
+  btn,
   ...props
 }) => {
   const labelEl = useRef<HTMLLabelElement>(null);
+  const btnEl = useRef<HTMLLabelElement>(null);
   const inputEl = useRef<HTMLInputElement>(null);
   const textareaEl = useRef<HTMLTextAreaElement>(null);
 
   const labelReference = labelRef ? labelRef : labelEl;
+  const btnReference = btnRef ? btnRef : btnEl;
   const inputReference = inputRef ? inputRef : textarea ? textareaEl : inputEl;
 
   const [oldValue, setNewValue] = useState(value);
@@ -106,6 +113,11 @@ const MDBInput: React.FC<InputProps> = ({
         <div className='form-notch-middle' style={{ width: labelWidth }}></div>
         <div className='form-notch-trailing'></div>
       </div>
+      {btn && (
+        <button ref={btnReference} className={btnClasses} onClick={btnOnClick}>
+          {btn}
+        </button>
+      )}
       {children}
     </WrapperTag>
   );

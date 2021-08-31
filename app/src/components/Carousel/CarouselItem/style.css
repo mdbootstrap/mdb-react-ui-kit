@@ -1,0 +1,17 @@
+.carousel-item-react {
+  position: relative;
+  visibility: hidden;
+  float: left;
+  width: 100%;
+  margin-right: -100%;
+  backface-visibility: hidden;
+  transition: transform 0.6s ease-in-out;
+}
+
+.carousel-fade .carousel-item-react {
+  transition: opacity 0.8s;
+}
+
+.carousel-item-react.active {
+  visibility: visible;
+}
