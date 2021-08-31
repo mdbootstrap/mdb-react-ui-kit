@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import React, { useEffect, useCallback } from 'react';
 import type { ScrollspyProps } from './types';
 

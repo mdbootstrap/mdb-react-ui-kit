@@ -3,8 +3,8 @@ import React from 'react';
 import type { ScrollspyNavLinkProps } from './types';
 
 const MDBScrollspyNavLink: React.FC<ScrollspyNavLinkProps> = React.forwardRef<HTMLAllCollection, ScrollspyNavLinkProps>(
-  ({ className, scrollElement, active, tag: Tag, children, ...props }, ref) => {
-    const classes = clsx('nav-link', className, active && 'active');
+  ({ className, collapsible, scrollElement, active, tag: Tag, children, ...props }, ref) => {
+    const classes = clsx('nav-link', collapsible && 'collapsible-scrollspy', className, active && 'active');
 
     const handleClick = (element: any) => {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -16,7 +16,9 @@ const MDBScrollspyNavLink: React.FC<ScrollspyNavLinkProps> = React.forwardRef<HT
         ref={ref}
         {...props}
         onClick={() => handleClick(scrollElement)}
-        style={{ cursor: 'pointer' }}
+        style={{
+          cursor: 'pointer',
+        }}
       >
         {children}
       </Tag>

@@ -1,6 +1,7 @@
 import React from 'react';
 
 type CarouselProps = {
+  asyncData?: any;
   activeItem?: number;
   className?: string;
   fade?: boolean;

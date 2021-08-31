@@ -5,6 +5,7 @@ import MDBCarouselControl from './CarouselControl/CarouselControl';
 import MDBCarouselIndicatorItem from './CarouselIndicatorItem/CarouselIndicatorItem';
 import { CarouselContext } from './CarouselContext';
 const MDBCarousel: React.FC<CarouselProps> = ({
+  asyncData,
   fade,
   className,
   dark,
@@ -120,10 +121,14 @@ const MDBCarousel: React.FC<CarouselProps> = ({
   }, [activeInterval, setNext, startInterval]);
 
   useEffect(() => {
-    const carouselImgList = carouselReference.current.querySelectorAll('.carousel-item-react img');
+    if (asyncData) {
+      setImagesCount(asyncData.length - 1);
+    } else {
+      const carouselImgList = carouselReference.current.querySelectorAll('.carousel-item-react img');
 
-    setImagesCount(carouselImgList.length - 1);
-  }, [carouselReference, showIndicators]);
+      setImagesCount(carouselImgList.length - 1);
+    }
+  }, [carouselReference, showIndicators, asyncData]);
 
   const startTouch = (e: TouchEvent) => {
     touch && setClientTouch({ initialX: e.touches[0].clientX, initialY: e.touches[0].clientY });

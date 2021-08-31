@@ -3,11 +3,21 @@ import React from 'react';
 import type { ScrollspyNavListProps } from './types';
 
 const MDBScrollspyNavList: React.FC<ScrollspyNavListProps> = React.forwardRef<HTMLAllCollection, ScrollspyNavListProps>(
-  ({ className, tag: Tag, children, ...props }, ref) => {
+  ({ className, collapsible, active, tag: Tag, children, ...props }, ref) => {
     const classes = clsx('nav', className);
 
     return (
-      <Tag className={classes} ref={ref} {...props}>
+      <Tag
+        className={classes}
+        ref={ref}
+        {...props}
+        style={{
+          overflow: collapsible && 'hidden',
+          height: collapsible && (active ? '46px' : '0px'),
+          transition: collapsible && 'height .5s ease',
+          flexWrap: collapsible && 'nowrap',
+        }}
+      >
         {children}
       </Tag>
     );

@@ -819,6 +819,7 @@ declare const MDBTabsPane: React$1.FunctionComponent<{
 }>;
 
 declare const MDBCarousel: React$1.FunctionComponent<{
+  asyncData?: any;
   activeItem?: number;
   className?: string;
   fade?: boolean;

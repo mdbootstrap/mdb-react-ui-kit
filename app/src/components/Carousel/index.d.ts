@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 declare const MDBCarousel: React.FunctionComponent<{
+  asyncData?: any;
   activeItem?: number;
   className?: string;
   fade?: boolean;
