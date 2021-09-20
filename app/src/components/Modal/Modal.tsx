@@ -5,11 +5,13 @@ import ReactDOM from 'react-dom';
 
 const MDBModal: React.FC<ModalProps> = ({
   animationDirection,
+  appendToBody,
   backdrop,
   children,
   className,
   closeOnEsc,
   getOpenState,
+  leaveHiddenModal,
   modalRef,
   show,
   staticBackdrop,
@@ -125,9 +127,9 @@ const MDBModal: React.FC<ModalProps> = ({
     };
   }, [handleKeydown, handleClickOutside]);
 
-  return (
+  const appendToBodyTemplate = (
     <>
-      {(show || innerShow) &&
+      {(leaveHiddenModal || show || innerShow) &&
         ReactDOM.createPortal(
           <>
             <Tag
@@ -144,6 +146,26 @@ const MDBModal: React.FC<ModalProps> = ({
         )}
     </>
   );
+
+  const modalTemplate = (
+    <>
+      {(leaveHiddenModal || show || innerShow) && (
+        <>
+          <Tag
+            className={classes}
+            ref={modalReference}
+            style={{ display: innerShow || show ? 'block' : 'none' }}
+            {...props}
+          >
+            {children}
+          </Tag>
+          {ReactDOM.createPortal(backdrop && innerShow && <div className={backdropClasses}></div>, document.body)}
+        </>
+      )}
+    </>
+  );
+
+  return <>{appendToBody ? appendToBodyTemplate : modalTemplate}</>;
 };
-MDBModal.defaultProps = { tag: 'div', backdrop: true, closeOnEsc: true };
+MDBModal.defaultProps = { tag: 'div', backdrop: true, closeOnEsc: true, leaveHiddenModal: true };
 export default MDBModal;

@@ -3,6 +3,8 @@ type ModalProps = {
   backdrop?: boolean;
   className?: string;
   closeOnEsc?: boolean;
+  leaveHiddenModal?: boolean;
+  appendToBody?: boolean;
   tabIndex?: string;
   show?: boolean;
   staticBackdrop?: boolean;

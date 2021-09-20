@@ -27,7 +27,6 @@ const MDBInput: React.FC<InputProps> = ({
   btnClasses,
   btnOnClick,
   btnRef,
-  btnChildren,
   onBlur,
   readonly,
   btn,
@@ -42,7 +41,7 @@ const MDBInput: React.FC<InputProps> = ({
   const btnReference = btnRef ? btnRef : btnEl;
   const inputReference = inputRef ? inputRef : textarea ? textareaEl : inputEl;
 
-  const [oldValue, setNewValue] = useState(value);
+  const [oldValue, setNewValue] = useState(value || defaultValue);
   const [labelWidth, setLabelWidth] = useState(0);
   const [active, setActive] = useState(
     (value !== undefined && value.length > 0) || (defaultValue !== undefined && defaultValue.length) > 0 ? true : false
@@ -86,18 +85,15 @@ const MDBInput: React.FC<InputProps> = ({
   };
 
   const handleBlur = useCallback(
-    (e) => {
-      if (
-        (oldValue !== undefined && oldValue.length > 0) ||
-        (value !== undefined && value.length > 0 && defaultValue !== undefined && defaultValue.length > 0)
-      ) {
+    (e: any) => {
+      if ((oldValue !== undefined && oldValue.length > 0) || (value !== undefined && value.length > 0)) {
         setActive(true);
       } else {
         setActive(false);
       }
       onBlur && onBlur(e);
     },
-    [oldValue, value, defaultValue, onBlur]
+    [oldValue, value, onBlur]
   );
 
   return (

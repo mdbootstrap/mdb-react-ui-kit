@@ -8,6 +8,7 @@ import MDBBtn from '../Button/Button';
 const MDBTooltip: React.FC<TooltipProps> = ({
   className,
   children,
+  disableMouseDown,
   tag: Tag,
   tooltipTag: TooltipTag,
   options,
@@ -79,11 +80,13 @@ const MDBTooltip: React.FC<TooltipProps> = ({
   );
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleClick);
-    return () => {
-      document.removeEventListener('mousedown', handleClick);
-    };
-  }, [handleClick]);
+    if (!disableMouseDown) {
+      document.addEventListener('mousedown', handleClick);
+      return () => {
+        document.removeEventListener('mousedown', handleClick);
+      };
+    }
+  }, [handleClick, disableMouseDown]);
 
   return (
     <>

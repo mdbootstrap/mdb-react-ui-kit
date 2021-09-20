@@ -22,6 +22,7 @@ declare const MDBTooltip: React.FunctionComponent<{
     | 'left-end'
     | undefined;
   options?: Record<string, unknown>;
+  disableMouseDown?: boolean;
   title?: string | React.ReactNode;
   wrapperProps?: Record<string, unknown>;
   wrapperClass?: string;

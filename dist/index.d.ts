@@ -174,6 +174,7 @@ declare const MDBListGroupItem: React$1.FunctionComponent<{
 
 declare const MDBTooltip: React$1.FunctionComponent<{
   className?: string;
+  disableMouseDown?: boolean;
   tag?: React$1.ComponentProps<any>;
   tooltipTag?: React$1.ComponentProps<any>;
   placement?:
@@ -194,6 +195,7 @@ declare const MDBTooltip: React$1.FunctionComponent<{
     | 'left-end'
     | undefined;
   options?: Record<string, unknown>;
+  disableMouseDown?: boolean;
   title?: string | React$1.ReactNode;
   wrapperProps?: Record<string, unknown>;
   wrapperClass?: string;
@@ -493,6 +495,7 @@ declare const MDBInput: React$1.FunctionComponent<{
   readonly?: boolean;
   contrast?: boolean;
   value?: string;
+  defaultValue?: string;
   name?: string;
   validation?: string;
   invalid?: boolean;
@@ -519,6 +522,7 @@ declare const MDBCheckbox: React$1.FunctionComponent<{
   invalid?: boolean;
   btn?: boolean;
   btnColor?: string;
+  disableWrapper?: boolean;
   [rest: string]: any;
 }>;
 
@@ -638,6 +642,8 @@ declare const MDBModal: React$1.FunctionComponent<{
   backdrop?: boolean;
   className?: string;
   closeOnEsc?: boolean;
+  leaveHiddenModal?: boolean;
+  appendToBody?: boolean;
   tabIndex?: string;
   show?: boolean;
   staticBackdrop?: boolean;
