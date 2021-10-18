@@ -4,6 +4,7 @@ import type { DropdownMenuProps } from './types';
 import { DropdownContext } from '../context';
 import './style.css';
 import MDBDropdownItem from '../DropdownItem/DropdownItem';
+import ReactDOM from 'react-dom';
 
 const MDBDropdownMenu: React.FC<DropdownMenuProps> = ({
   className,
@@ -104,27 +105,32 @@ const MDBDropdownMenu: React.FC<DropdownMenuProps> = ({
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-ignore
   return attachELements ? (
-    <Tag
-      className={classes}
-      style={{ position: 'absolute', zIndex: 1000, ...styles.popper, ...style }}
-      {...props}
-      {...attributes.popper}
-      ref={setPopperElement}
-      tabIndex={-1}
-    >
-      {React.Children.map(children, (child: any, index) => {
-        if (child?.type === MDBDropdownItem) {
-          return React.cloneElement(child, {
-            tabIndex: 0,
-            'data-active': activeIndex === index && true,
-            'data-index': index,
-            className: activeIndex === index ? 'active' : '',
-          });
-        } else {
-          return child;
-        }
-      })}
-    </Tag>
+    <>
+      {ReactDOM.createPortal(
+        <Tag
+          className={classes}
+          style={{ position: 'absolute', zIndex: 1000, ...styles.popper, ...style }}
+          {...props}
+          {...attributes.popper}
+          ref={setPopperElement}
+          tabIndex={-1}
+        >
+          {React.Children.map(children, (child: any, index) => {
+            if (child?.type === MDBDropdownItem) {
+              return React.cloneElement(child, {
+                tabIndex: 0,
+                'data-active': activeIndex === index && true,
+                'data-index': index,
+                className: activeIndex === index ? 'active' : '',
+              });
+            } else {
+              return child;
+            }
+          })}
+        </Tag>,
+        document.body
+      )}
+    </>
   ) : (
     ''
   );

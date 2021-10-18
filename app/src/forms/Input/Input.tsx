@@ -30,6 +30,7 @@ const MDBInput: React.FC<InputProps> = ({
   onBlur,
   readonly,
   btn,
+  btnType,
   ...props
 }) => {
   const labelEl = useRef<HTMLLabelElement>(null);
@@ -137,7 +138,7 @@ const MDBInput: React.FC<InputProps> = ({
         <div className='form-notch-trailing'></div>
       </div>
       {btn && (
-        <button ref={btnReference} className={btnClasses} onClick={btnOnClick}>
+        <button ref={btnReference} type={btnType} className={btnClasses} onClick={btnOnClick}>
           {btn}
         </button>
       )}
@@ -146,6 +147,6 @@ const MDBInput: React.FC<InputProps> = ({
   );
 };
 
-MDBInput.defaultProps = { wrapperTag: 'div', readonly: false };
+MDBInput.defaultProps = { wrapperTag: 'div', btnType: 'button', readonly: false };
 
 export default MDBInput;

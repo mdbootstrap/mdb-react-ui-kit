@@ -3,139 +3,225 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import type { CarouselProps } from './types';
 import MDBCarouselControl from './CarouselControl/CarouselControl';
 import MDBCarouselIndicatorItem from './CarouselIndicatorItem/CarouselIndicatorItem';
-import { CarouselContext } from './CarouselContext';
+
+import { queueCallback, isRTL, reflow } from './utils';
+
 const MDBCarousel: React.FC<CarouselProps> = ({
-  asyncData,
   fade,
   className,
   dark,
   children,
   carouselRef,
+  interval,
   keyboard,
-  pause,
   touch,
   tag: Tag,
   showControls,
   showIndicators,
   ...props
 }) => {
-  const [isChanging, setIsChanging] = useState(false);
+  const items = useRef<Array<HTMLElement> | null>(null);
+  const carouselInterval = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const activeElement = useRef<HTMLElement | null>(null);
+
+  const isSliding = useRef(false);
+  const isChanging = useRef(false);
+
+  const [active, setActive] = useState(0);
   const [imagesCount, setImagesCount] = useState(0);
-  const [activeItem, setActiveItem] = useState(0);
-  const [prevState, setPrevState] = useState(0);
-  const [clicked, setClicked] = useState('');
-  const [startInterval, setStartInterval] = useState(true);
   const [clientTouch, setClientTouch] = useState({ initialX: 0, initialY: 0 });
-  const [activeInterval, setActiveInterval] = useState(5000);
 
   const carouselInnerRef = useRef<HTMLElement>(null);
   const carouselReference = carouselRef ? carouselRef : carouselInnerRef;
 
   const classes = clsx('carousel', 'slide', fade && 'carousel-fade', dark && 'carousel-dark', className);
 
-  const setPrev = useCallback(() => {
-    const prevIndex = activeItem === 0 ? imagesCount : activeItem - 1;
+  const directionToOrder = (direction: string) => {
+    if (!['right', 'left'].includes(direction)) {
+      return direction;
+    }
 
-    setClicked('prev');
-    setActiveItem(prevIndex);
-  }, [activeItem, imagesCount]);
+    if (isRTL()) {
+      return direction === 'left' ? 'prev' : 'next';
+    }
 
-  const setNext = useCallback(() => {
-    const nextIndex = activeItem === imagesCount ? 0 : activeItem + 1;
+    return direction === 'left' ? 'next' : 'prev';
+  };
 
-    setActiveItem(nextIndex);
-    setClicked('next');
-  }, [activeItem, imagesCount]);
+  const getItemIndex = useCallback(
+    (element: HTMLElement) => {
+      items.current =
+        element && element.parentNode
+          ? Array.from(carouselReference.current.querySelectorAll('.carousel-item', element.parentNode))
+          : [];
 
-  const handleKeydown = useCallback(
-    (event: KeyboardEvent) => {
-      switch (event.key) {
-        case 'ArrowLeft':
-          event.preventDefault();
-          setPrev();
-          break;
-
-        case 'ArrowRight':
-          event.preventDefault();
-          setNext();
-          break;
-
-        default:
-      }
+      return items.current?.indexOf(element);
     },
-    [setPrev, setNext]
+    [carouselReference]
   );
 
-  const handleControlClick = (isNext: boolean) => {
-    if (!isChanging && !isNext) {
-      setPrev();
-      setIsChanging(true);
+  const pause = () => {
+    if (carouselInterval.current) {
+      clearInterval(carouselInterval.current);
+      carouselInterval.current = null;
+    }
+  };
 
-      setTimeout(() => {
-        setIsChanging(false);
-      }, 900);
-    } else if (!isChanging && isNext) {
-      setNext();
-      setIsChanging(true);
+  const getItemByOrder = useCallback(
+    (order: string, activeElement: HTMLElement) => {
+      const isPrev = order === 'prev';
+      const activeIndex = getItemIndex(activeElement) as number;
 
-      setTimeout(() => {
-        setIsChanging(false);
-      }, 900);
-    } else {
+      const delta = isPrev ? -1 : 1;
+      const itemIndex = (activeIndex + delta) % (items.current?.length as number);
+
+      const myItems = items.current;
+
+      if (myItems) {
+        if (itemIndex === -1) {
+          return myItems[(items.current?.length as number) - 1];
+        } else {
+          return myItems[itemIndex];
+        }
+      }
+    },
+    [getItemIndex]
+  );
+
+  const setElementActive = useCallback(
+    (order: string) => {
+      const next = active === imagesCount - 1 ? 0 : active + 1;
+      const prev = active === 0 ? imagesCount - 1 : active - 1;
+
+      setActive(order === 'next' ? next : prev);
+    },
+    [active, imagesCount]
+  );
+
+  const isVisible = (element: any) => {
+    if (!element) {
+      return false;
+    }
+
+    if (element.style && element.parentNode && element.parentNode.style) {
+      const elementStyle = getComputedStyle(element);
+      const parentNodeStyle = getComputedStyle(element.parentNode);
+
+      return (
+        elementStyle.display !== 'none' && parentNodeStyle.display !== 'none' && elementStyle.visibility !== 'hidden'
+      );
+    }
+
+    return false;
+  };
+
+  const slide = useCallback(
+    (directionOrOrder: string, element: any) => {
+      const order = directionToOrder(directionOrOrder);
+      const activeElement = carouselReference.current.querySelector('.active.carousel-item');
+      const nextElement = element || getItemByOrder(order, activeElement);
+
+      const isCycling = Boolean(carouselInterval.current);
+
+      const isNext = order === 'next';
+      const directionalClassName = isNext ? 'carousel-item-start' : 'carousel-item-end';
+      const orderClassName = isNext ? 'carousel-item-next' : 'carousel-item-prev';
+
+      if (nextElement && nextElement.classList.contains('active')) {
+        isSliding.current = false;
+        return;
+      }
+
+      if (element === null) {
+        setElementActive(order);
+      }
+
+      if (!activeElement || !nextElement) {
+        // Some weirdness is happening, so we bail
+        return;
+      }
+
+      isSliding.current = true;
+
+      if (isCycling) {
+        pause();
+      }
+
+      activeElement.current = nextElement;
+
+      if (carouselReference.current.classList.contains('slide')) {
+        nextElement.classList.add(orderClassName);
+
+        reflow(nextElement);
+
+        activeElement.classList.add(directionalClassName);
+        nextElement.classList.add(directionalClassName);
+
+        const completeCallBack = () => {
+          nextElement.classList.remove(directionalClassName, orderClassName);
+          nextElement.classList.add('active');
+
+          activeElement.classList.remove('active', orderClassName, directionalClassName);
+
+          isSliding.current = false;
+        };
+
+        queueCallback(completeCallBack, activeElement, true);
+      } else {
+        activeElement.classList.remove('active');
+        nextElement.classList.add('active');
+
+        isSliding.current = false;
+      }
+    },
+
+    [carouselReference, getItemByOrder, setElementActive]
+  );
+
+  const next = useCallback(() => {
+    if (!isSliding.current) {
+      slide('next', null);
+    }
+  }, [slide]);
+
+  const nextWhenVisible = useCallback(() => {
+    if (!document.hidden && isVisible(carouselReference.current)) {
+      next();
+    }
+  }, [next, carouselReference]);
+
+  const to = (index: number) => {
+    activeElement.current = carouselReference.current.querySelector('.active.carousel-item');
+    const activeIndex = getItemIndex(activeElement.current as HTMLElement);
+
+    setActive(index);
+
+    if (index > (items.current?.length as number) - 1 || index < 0) {
       return;
     }
-  };
 
-  const handleIndicatorClick = (i: number, e: any) => {
-    if (e.target) {
-      if (!isChanging && !e.target.classList.contains('active')) {
-        setClicked('indicator');
-        setActiveItem(i);
-        setIsChanging(true);
+    const order = index > activeIndex ? 'next' : 'prev';
 
-        setTimeout(() => {
-          setIsChanging(false);
-        }, 700);
-      }
+    if (items.current) {
+      slide(order, items.current[index]);
     }
   };
 
-  useEffect(() => {
-    if (keyboard) {
-      document.addEventListener('keydown', handleKeydown);
-
-      return () => {
-        document.removeEventListener('keydown', handleKeydown);
-      };
+  const cycle = useCallback(() => {
+    if (carouselInterval.current) {
+      clearInterval(carouselInterval.current);
+      carouselInterval.current = null;
     }
-  }, [handleKeydown, keyboard]);
 
-  useEffect(() => {
-    if (activeInterval && startInterval) {
-      const cycleInterval = setInterval(setNext, activeInterval);
-
-      return () => {
-        clearInterval(cycleInterval);
-      };
-    }
-  }, [activeInterval, setNext, startInterval]);
-
-  useEffect(() => {
-    if (asyncData) {
-      setImagesCount(asyncData.length - 1);
-    } else {
-      const carouselImgList = carouselReference.current.querySelectorAll('.carousel-item-react img');
-
-      setImagesCount(carouselImgList.length - 1);
-    }
-  }, [carouselReference, showIndicators, asyncData]);
+    carouselInterval.current = setInterval(document.visibilityState ? nextWhenVisible : next, interval);
+  }, [next, nextWhenVisible, interval]);
 
   const startTouch = (e: TouchEvent) => {
     touch && setClientTouch({ initialX: e.touches[0].clientX, initialY: e.touches[0].clientY });
   };
 
   const moveTouch = (e: TouchEvent) => {
-    setIsChanging(true);
+    isChanging.current = true;
 
     const { initialX, initialY } = clientTouch;
 
@@ -152,58 +238,82 @@ const MDBCarousel: React.FC<CarouselProps> = ({
     if (Math.abs(diffX) > Math.abs(diffY)) {
       // sliding horizontally
       if (diffX > 0) {
-        setNext();
+        slide('left', null);
       } else {
-        setPrev();
+        slide('right', null);
       }
     }
 
     setClientTouch({ initialX: 0, initialY: 0 });
   };
 
+  const handleKeydown = useCallback(
+    (event: KeyboardEvent) => {
+      switch (event.key) {
+        case 'ArrowLeft':
+          event.preventDefault();
+          slide('right', null);
+          break;
+
+        case 'ArrowRight':
+          event.preventDefault();
+          slide('left', null);
+          break;
+
+        default:
+      }
+    },
+    [slide]
+  );
+
+  useEffect(() => {
+    const imgLength = carouselReference.current.querySelectorAll('.carousel-item').length;
+
+    setImagesCount(imgLength);
+  }, [carouselReference]);
+
+  useEffect(() => {
+    if (keyboard) {
+      document.addEventListener('keydown', handleKeydown);
+
+      return () => {
+        document.removeEventListener('keydown', handleKeydown);
+      };
+    }
+  }, [handleKeydown, keyboard]);
+
+  useEffect(() => {
+    cycle();
+  }, [cycle]);
+
   return (
-    <CarouselContext.Provider
-      value={{
-        activeItem: activeItem ? activeItem : 0,
-        imagesCount: imagesCount,
-        fade: fade ? true : false,
-        prev: prevState,
-        setPrev: setPrevState,
-        clicked: clicked,
-        setActiveInterval: setActiveInterval,
-      }}
+    <Tag
+      onTouchStart={startTouch}
+      onTouchMove={!isChanging.current ? moveTouch : null}
+      onTouchEnd={() => (isChanging.current = false)}
+      onMouseEnter={pause}
+      onMouseLeave={cycle}
+      className={classes}
+      ref={carouselReference}
+      {...props}
     >
-      <Tag
-        onTouchStart={startTouch}
-        onTouchMove={!isChanging ? moveTouch : null}
-        onTouchEnd={() => setIsChanging(false)}
-        onMouseEnter={pause ? () => setStartInterval(false) : null}
-        onMouseLeave={pause ? () => setStartInterval(true) : null}
-        className={classes}
-        ref={carouselReference}
-        {...props}
-      >
-        {showIndicators && (
-          <ol className='carousel-indicators'>
-            {Array.from(Array(imagesCount + 1)).map((item, i) => (
-              <MDBCarouselIndicatorItem
-                key={i}
-                active={activeItem === i}
-                onClick={(e: MouseEvent) => handleIndicatorClick(i, e)}
-              />
-            ))}
-          </ol>
-        )}
-        {children}
-        {showControls && (
-          <>
-            <MDBCarouselControl direction='prev' onClick={() => handleControlClick(false)} />
-            <MDBCarouselControl direction='next' onClick={() => handleControlClick(true)} />
-          </>
-        )}
-      </Tag>
-    </CarouselContext.Provider>
+      {showIndicators && (
+        <ol className='carousel-indicators'>
+          {Array.from(Array(imagesCount)).map((item, i) => (
+            <MDBCarouselIndicatorItem key={i} active={active === i} onClick={() => to(i)} />
+          ))}
+        </ol>
+      )}
+
+      {children}
+      {showControls && (
+        <>
+          <MDBCarouselControl direction='prev' onClick={() => slide('right', null)} />
+          <MDBCarouselControl direction='next' onClick={() => slide('left', null)} />
+        </>
+      )}
+    </Tag>
   );
 };
-MDBCarousel.defaultProps = { tag: 'div', fade: false, pause: true, touch: true, keyboard: false };
+MDBCarousel.defaultProps = { tag: 'div', fade: false, interval: 5000, touch: true, keyboard: false };
 export default MDBCarousel;
