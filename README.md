@@ -15,6 +15,13 @@
 
 ---
 
+ <a href="https://mdbootstrap.com/bf/waiting-list/" alt="BF Waiting List" rel="dofollow">
+          		<img src="https://mdbootstrap.com/img/Marketing/campaigns/bf2021/waiting-listBF.gif">
+          </a>
+          
+---          
+
+
 <table>
   <tbody>
     <tr>
