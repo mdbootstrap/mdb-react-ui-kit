@@ -10,7 +10,7 @@ const MDBModal: React.FC<ModalProps> = ({
   children,
   className,
   closeOnEsc,
-  getOpenState,
+  setShow,
   leaveHiddenModal,
   modalRef,
   show,
@@ -41,12 +41,12 @@ const MDBModal: React.FC<ModalProps> = ({
 
     setTimeout(() => {
       setIsOpenBackrop(false);
-      getOpenState && getOpenState(false);
+      setShow && setShow(false);
     }, 150);
     setTimeout(() => {
       setInnerShow(false);
     }, 350);
-  }, [getOpenState]);
+  }, [setShow]);
 
   const handleClickOutside = useCallback(
     (event: any) => {
@@ -110,12 +110,12 @@ const MDBModal: React.FC<ModalProps> = ({
       }, 0);
       setTimeout(() => {
         setIsOpenModal(true);
-        getOpenState && getOpenState(true);
+        setShow && setShow(true);
       }, 150);
     } else {
       closeModal();
     }
-  }, [show, closeModal, getOpenState]);
+  }, [show, closeModal, setShow]);
 
   useEffect(() => {
     window.addEventListener('click', handleClickOutside);

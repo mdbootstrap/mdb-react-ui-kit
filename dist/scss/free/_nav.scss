@@ -17,7 +17,8 @@
     font-weight: $nav-tabs-link-font-weight;
     font-size: $nav-tabs-link-font-size;
     color: $nav-tabs-link-color;
-    padding: $nav-tabs-link-padding-top $nav-tabs-link-padding-x $nav-tabs-link-padding-bottom $nav-tabs-link-padding-x;
+    padding: $nav-tabs-link-padding-top $nav-tabs-link-padding-x $nav-tabs-link-padding-bottom
+      $nav-tabs-link-padding-x;
 
     &:hover {
       background-color: $nav-tabs-link-hover-background-color;

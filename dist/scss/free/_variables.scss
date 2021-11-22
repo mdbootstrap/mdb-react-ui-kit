@@ -404,6 +404,11 @@ $body-color: $gray-800 !default;
 $border-radius-xl: 0.5rem !default;
 
 // Components
+
+// Placeholders
+$placeholder-opacity-max: 0.5 !default;
+$placeholder-opacity-min: 0.2 !default;
+//
 //
 // Shadows offset, blur, spread and color
 
@@ -565,8 +570,8 @@ $fixed-action-btn-li-margin-bottom: 1.5rem !default;
 // Material styling for group of buttons
 
 $btn-group-border-radius: calc(4px - 1px) !default;
-$btn-group-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-  box-shadow 0.15s ease-in-out !default;
+$btn-group-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !default;
 
 // Forms
 //
@@ -618,6 +623,8 @@ $form-white-label-color: $gray-50 !default;
 $form-white-notch-div-border-color: $gray-50 !default;
 $form-white-input-focus-label-color: $white !default;
 $form-white-input-focus-border-color: $white !default;
+$form-white-placeholder-color: rgba(255, 255, 255, 0.7) !default;
+$form-white-disabled-bgc: rgba(255, 255, 255, 0.45) !default;
 
 $form-check-input-margin-left: 1.79rem !default;
 $form-check-input-radio-margin-left: 1.85rem !default;
@@ -738,7 +745,8 @@ $form-switch-form-check-input-checked-checkbox-after-margin-top: -3px !default;
 $form-switch-form-check-input-checked-checkbox-after-margin-left: 1.0625rem !default;
 $form-switch-form-check-input-checked-checkbox-after-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
   0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !default;
-$form-switch-form-check-input-checked-checkbox-after-transition: background-color 0.2s, transform 0.2s !default;
+$form-switch-form-check-input-checked-checkbox-after-transition: background-color 0.2s,
+  transform 0.2s !default;
 
 $form-file-height: calc(1.79rem + 0.33rem + 2px) !default;
 
@@ -1022,3 +1030,8 @@ $table-cell-padding-x: 1.4rem !default;
 $table-cell-padding-y-sm: 0.5rem !default;
 $table-cell-padding-x-sm: $table-cell-padding-x !default;
 $table-hover-bg: rgba(0, 0, 0, 0.075) !default;
+
+// Select
+$form-select-transition: all 0.2s linear;
+$form-select-focus-border-color: #1266f1;
+$form-select-focus-border-box-shadow: inset 0px 0px 0px 1px #1266f1;

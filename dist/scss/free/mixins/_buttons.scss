@@ -68,7 +68,14 @@
 }
 
 // Button sizes
-@mixin button-size-mdb($padding-top, $padding-right, $padding-bottom, $padding-left, $font-size, $line-height) {
+@mixin button-size-mdb(
+  $padding-top,
+  $padding-right,
+  $padding-bottom,
+  $padding-left,
+  $font-size,
+  $line-height
+) {
   padding: $padding-top $padding-right $padding-bottom $padding-left;
   font-size: $font-size;
   line-height: $line-height;

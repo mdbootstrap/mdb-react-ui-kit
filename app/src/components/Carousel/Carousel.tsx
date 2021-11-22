@@ -23,6 +23,7 @@ const MDBCarousel: React.FC<CarouselProps> = ({
   const items = useRef<Array<HTMLElement> | null>(null);
   const carouselInterval = useRef<ReturnType<typeof setTimeout> | null>(null);
   const activeElement = useRef<HTMLElement | null>(null);
+  const isBlocked = useRef(false);
 
   const isSliding = useRef(false);
   const isChanging = useRef(false);
@@ -191,6 +192,15 @@ const MDBCarousel: React.FC<CarouselProps> = ({
   }, [next, carouselReference]);
 
   const to = (index: number) => {
+    if (isBlocked.current) {
+      return;
+    }
+
+    isBlocked.current = true;
+    setTimeout(() => {
+      isBlocked.current = false;
+    }, 700);
+
     activeElement.current = carouselReference.current.querySelector('.active.carousel-item');
     const activeIndex = getItemIndex(activeElement.current as HTMLElement);
 
@@ -286,6 +296,19 @@ const MDBCarousel: React.FC<CarouselProps> = ({
     cycle();
   }, [cycle]);
 
+  const move = (direction: string) => {
+    if (isBlocked.current) {
+      return;
+    }
+
+    isBlocked.current = true;
+    setTimeout(() => {
+      isBlocked.current = false;
+    }, 600);
+
+    slide(direction, null);
+  };
+
   return (
     <Tag
       onTouchStart={startTouch}
@@ -308,8 +331,8 @@ const MDBCarousel: React.FC<CarouselProps> = ({
       {children}
       {showControls && (
         <>
-          <MDBCarouselControl direction='prev' onClick={() => slide('right', null)} />
-          <MDBCarouselControl direction='next' onClick={() => slide('left', null)} />
+          <MDBCarouselControl direction='prev' onClick={() => move('right')} />
+          <MDBCarouselControl direction='next' onClick={() => move('left')} />
         </>
       )}
     </Tag>

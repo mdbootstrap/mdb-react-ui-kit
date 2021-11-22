@@ -21,8 +21,6 @@
 
 .input-group-text {
   background-color: transparent;
-  min-height: $input-group-min-height;
-  height: $input-group-height;
   padding-top: $input-group-text-padding-y;
   padding-bottom: $input-group-text-padding-y;
   > .form-check-input[type='checkbox'] {
@@ -43,7 +41,6 @@
   }
 
   .input-group-text {
-    height: $input-group-lg-height;
     font-size: $input-group-lg-text-font-size;
   }
 }
@@ -58,8 +55,6 @@
   }
 
   .input-group-text {
-    min-height: $input-group-sm-min-height;
-    height: $input-group-sm-height;
     font-size: $input-group-sm-text-font-size;
     line-height: $input-group-sm-text-line-height;
   }
@@ -72,16 +67,21 @@
     }
     input + .input-group-text {
       border: 0;
-      border-left: $input-group-form-outline-border-left-width solid $input-group-form-outline-border-left-color;
+      border-left: $input-group-form-outline-border-left-width solid
+        $input-group-form-outline-border-left-color;
     }
   }
   .form-outline:not(:first-child),
-  .form-outline:not(:first-child) .form-notch-leading {
+  .select-wrapper:not(:first-child),
+  .form-outline:not(:first-child) .form-notch-leading,
+  .select-wrapper:not(:first-child) .form-notch-leading {
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
   }
   .form-outline:not(:last-child),
-  .form-outline:not(:last-child) .form-notch-trailing {
+  .select-wrapper:not(:last-child),
+  .form-outline:not(:last-child) .form-notch-trailing,
+  .select-wrapper:not(:last-child) .form-notch-trailing {
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
   }
