@@ -67,8 +67,7 @@
     }
     input + .input-group-text {
       border: 0;
-      border-left: $input-group-form-outline-border-left-width solid
-        $input-group-form-outline-border-left-color;
+      border-left: $input-group-form-outline-border-left-width solid $input-group-form-outline-border-left-color;
     }
   }
   .form-outline:not(:first-child),

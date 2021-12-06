@@ -20,6 +20,7 @@ const MDBCol: React.FC<ColumnProps> = React.forwardRef<HTMLAllCollection, Column
       start,
       tag: Tag,
       xl,
+      xxl,
       xs,
       ...props
     },
@@ -32,7 +33,8 @@ const MDBCol: React.FC<ColumnProps> = React.forwardRef<HTMLAllCollection, Column
       md && `col-md-${md}`,
       lg && `col-lg-${lg}`,
       xl && `col-xl-${xl}`,
-      !size && !xs && !sm && !md && !lg && !xl ? 'col' : '',
+      xxl && `col-xxl-${xxl}`,
+      !size && !xs && !sm && !md && !lg && !xl && !xxl ? 'col' : '',
       order && `order-${order}`,
       start && 'align-self-start',
       center && 'align-self-center',

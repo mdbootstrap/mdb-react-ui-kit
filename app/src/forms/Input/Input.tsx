@@ -27,6 +27,7 @@ const MDBInput: React.FC<InputProps> = ({
   btnClasses,
   btnOnClick,
   btnRef,
+  type,
   onBlur,
   readonly,
   btn,
@@ -49,7 +50,13 @@ const MDBInput: React.FC<InputProps> = ({
   );
 
   const wrapperClasses = clsx('form-outline', contrast && 'form-white', wrapperClass);
-  const inputClasses = clsx('form-control', active && 'active', size && `form-control-${size}`, className);
+  const inputClasses = clsx(
+    'form-control',
+    active && 'active',
+    type === 'date' && 'active',
+    size && `form-control-${size}`,
+    className
+  );
   const labelClasses = clsx('form-label', labelClass);
   const validationClasses = clsx(
     validation &&
@@ -114,6 +121,7 @@ const MDBInput: React.FC<InputProps> = ({
         />
       ) : (
         <input
+          type={type}
           readOnly={readonly}
           className={inputClasses}
           onBlur={handleBlur}

@@ -15,11 +15,7 @@
 }
 
 .offcanvas-backdrop {
-  @include overlay-backdrop(
-    $zindex-offcanvas-backdrop,
-    $offcanvas-backdrop-bg,
-    $offcanvas-backdrop-opacity
-  );
+  @include overlay-backdrop($zindex-offcanvas-backdrop, $offcanvas-backdrop-bg, $offcanvas-backdrop-opacity);
 }
 
 .offcanvas-header {

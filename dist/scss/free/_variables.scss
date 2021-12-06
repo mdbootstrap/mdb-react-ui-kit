@@ -570,8 +570,8 @@ $fixed-action-btn-li-margin-bottom: 1.5rem !default;
 // Material styling for group of buttons
 
 $btn-group-border-radius: calc(4px - 1px) !default;
-$btn-group-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !default;
+$btn-group-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+  box-shadow 0.15s ease-in-out !default;
 
 // Forms
 //
@@ -745,8 +745,7 @@ $form-switch-form-check-input-checked-checkbox-after-margin-top: -3px !default;
 $form-switch-form-check-input-checked-checkbox-after-margin-left: 1.0625rem !default;
 $form-switch-form-check-input-checked-checkbox-after-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),
   0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12) !default;
-$form-switch-form-check-input-checked-checkbox-after-transition: background-color 0.2s,
-  transform 0.2s !default;
+$form-switch-form-check-input-checked-checkbox-after-transition: background-color 0.2s, transform 0.2s !default;
 
 $form-file-height: calc(1.79rem + 0.33rem + 2px) !default;
 

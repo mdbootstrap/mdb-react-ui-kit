@@ -15,6 +15,7 @@ type ColumnProps = {
   start?: string | boolean;
   tag?: React.ComponentProps<any>;
   xl?: string;
+  xxl?: string;
   xs?: string;
   [rest: string]: any;
 };

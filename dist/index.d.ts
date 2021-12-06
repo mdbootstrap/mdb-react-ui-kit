@@ -23,6 +23,7 @@ declare const MDBCol: React$1.FunctionComponent<{
   start?: string | boolean;
   tag?: React$1.ElementType;
   xl?: string;
+  xxl?: string;
   xs?: string;
   [rest: string]: any;
 }>;

@@ -15,6 +15,7 @@ declare const MDBCol: React.FunctionComponent<{
   start?: string | boolean;
   tag?: React.ElementType;
   xl?: string;
+  xxl?: string;
   xs?: string;
   [rest: string]: any;
 }>;

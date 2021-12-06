@@ -1,10 +1,10 @@
 import clsx from 'clsx';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import type { RippleProps } from './types';
 import MDBBtn from '../../components/Button/Button';
 import MDBRippleWave from './RippleWave/RippleWave';
 
-const MDBRipple: React.FC<RippleProps> = React.forwardRef<HTMLAllCollection, RippleProps>(
+const MDBRipple: React.FC<RippleProps> = 
   (
     {
       className,
@@ -16,10 +16,12 @@ const MDBRipple: React.FC<RippleProps> = React.forwardRef<HTMLAllCollection, Rip
       rippleColor,
       children,
       onClick,
+      rippleRef,
       ...props
-    },
-    ref
+    }
   ) => {
+    const rippleEl = useRef(null);
+    const rippleReference = rippleRef ? rippleRef : rippleEl;
     const GRADIENT =
       'rgba({{color}}, 0.2) 0, rgba({{color}}, 0.3) 40%, rgba({{color}}, 0.4) 50%, rgba({{color}}, 0.5) 60%, rgba({{color}}, 0) 70%';
 
@@ -159,7 +161,7 @@ const MDBRipple: React.FC<RippleProps> = React.forwardRef<HTMLAllCollection, Rip
     };
 
     const getStyles = (e: any) => {
-      const itemRect = e.target.getBoundingClientRect();
+      const itemRect = rippleReference.current.getBoundingClientRect();
 
       const offsetX = e.clientX - itemRect.left;
       const offsetY = e.clientY - itemRect.top;
@@ -219,15 +221,14 @@ const MDBRipple: React.FC<RippleProps> = React.forwardRef<HTMLAllCollection, Rip
     }, [rippleDuration, rippleStyles]);
 
     return (
-      <Tag className={classes} onClick={(e: any) => handleClick(e)} ref={ref} {...props}>
+      <Tag className={classes} onClick={(e: any) => handleClick(e)} ref={rippleReference} {...props}>
         {children}
         {rippleStyles.map((item, i) => (
           <MDBRippleWave key={i} style={item}></MDBRippleWave>
         ))}
       </Tag>
     );
-  }
-);
+  };
 
 MDBRipple.defaultProps = { rippleTag: 'div', rippleDuration: 500, rippleRadius: 0, rippleColor: 'dark' };
 

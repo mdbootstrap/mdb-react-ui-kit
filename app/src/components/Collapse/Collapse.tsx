@@ -10,6 +10,7 @@ const MDBCollapse: React.FC<CollapseProps> = ({
   id,
   navbar,
   tag: Tag,
+  collapseRef,
   style,
   ...props
 }): JSX.Element => {
@@ -17,16 +18,16 @@ const MDBCollapse: React.FC<CollapseProps> = ({
   const [showCollapseString, setShowCollapseString] = useState<string | undefined>('');
   const [statement, setStatement] = useState(false);
   const [collapseHeight, setCollapseHeight] = useState<string | number | undefined>(undefined);
-  const [transition, setTransition] = useState(false);
-
   const classes = clsx(
-    transition ? 'collapsing' : 'collapse',
-    !transition && (showCollapse || statement) && 'show',
+    'collapsing',
+    'collapse',
+    (showCollapse || statement) && 'show',
     navbar && 'navbar-collapse',
     center && 'justify-content-center',
     className
   );
-  const refCollapse = useRef<HTMLElement>(null);
+  const collapseEl = useRef<HTMLElement>(null);
+  const refCollapse = collapseRef ? collapseRef : collapseEl;
 
   const handleResize = useCallback(() => {
     if (showCollapse || statement) {
@@ -38,7 +39,7 @@ const MDBCollapse: React.FC<CollapseProps> = ({
     if (collapseHeight === undefined && (showCollapse || statement)) {
       setCollapseHeight(refCollapse?.current?.scrollHeight);
     }
-  }, [collapseHeight, showCollapse, statement]);
+  }, [collapseHeight, showCollapse, statement, refCollapse]);
 
   useEffect(() => {
     if (typeof show === 'string') {
@@ -48,17 +49,17 @@ const MDBCollapse: React.FC<CollapseProps> = ({
       setShowCollapse(show);
     }
 
-    if (statement || showCollapse) {
-      setTransition(true);
-    }
+    // if (statement || showCollapse) {
+    //   setTransition(true);
+    // }
 
-    const timer = setTimeout(() => {
-      setTransition(false);
-    }, 350);
+    // const timer = setTimeout(() => {
+    //   setTransition(false);
+    // }, 350);
 
-    return () => {
-      clearTimeout(timer);
-    };
+    // return () => {
+    //   clearTimeout(timer);
+    // };
   }, [show, showCollapse, id, showCollapseString, statement]);
 
   useEffect(() => {
@@ -67,7 +68,7 @@ const MDBCollapse: React.FC<CollapseProps> = ({
     } else {
       setCollapseHeight(0);
     }
-  }, [showCollapse, statement]);
+  }, [showCollapse, statement, refCollapse]);
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);

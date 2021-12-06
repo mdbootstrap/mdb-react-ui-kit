@@ -55,8 +55,7 @@
 
     &::before {
       right: -1px;
-      border-width: ($tooltip-arrow-width * 0.5) $tooltip-arrow-height ($tooltip-arrow-width * 0.5)
-        0;
+      border-width: ($tooltip-arrow-width * 0.5) $tooltip-arrow-height ($tooltip-arrow-width * 0.5) 0;
       border-right-color: $tooltip-arrow-color;
     }
   }
@@ -86,8 +85,7 @@
 
     &::before {
       left: -1px;
-      border-width: ($tooltip-arrow-width * 0.5) 0 ($tooltip-arrow-width * 0.5)
-        $tooltip-arrow-height;
+      border-width: ($tooltip-arrow-width * 0.5) 0 ($tooltip-arrow-width * 0.5) $tooltip-arrow-height;
       border-left-color: $tooltip-arrow-color;
     }
   }
