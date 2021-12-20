@@ -1,26 +1,35 @@
-import React from "react";
-import { MDBBtn, MDBContainer, MDBIcon } from "mdb-react-ui-kit";
-
+import React from 'react';
+import { MDBBtn, MDBContainer, MDBIcon } from 'mdb-react-ui-kit';
 function App() {
   return (
-    <MDBContainer>
-      <div style={{ height: '100vh' }} className='d-flex justify-content-center align-items-center'>
-        <div className="text-center">
-          <img className='mb-2' src='https://bf-sale.mdbgo.io/bf.png' width='800' height='450' />
-          <h2 className='fw-bold'>Black Friday Sale</h2>
+    <MDBContainer fluid>
+      <div
+        className='d-flex justify-content-center align-items-center'
+        style={{ height: '100vh' }}
+      >
+        <div className='text-center'>
+          <img
+            className='mb-4'
+            src='https://mdbootstrap.com/img/logo/mdb-transparent-250px.png'
+            style={{ width: 250, height: 90 }}
+          />
           <h5 className='mb-3'>
-            Get MDB Pro with discounts{" "}
-            <span className='text-danger'>up to 95%</span>
+            Thank you for using our product. We're glad you're with us.
           </h5>
-          <p className="mb-3 fw-bold">Hurry up the offer is limited!</p>
-          <a className='btn btn-black btn-lg mt-2' target='_blank' role='button' href="https://mdbootstrap.com/bf/sale/">
-            {" "}
-            <MDBIcon fas icon='shopping-cart' /> Get the offer
-          </a>
+          <p className='mb-3'>MDB Team</p>
+          <MDBBtn
+            tag='a'
+            href='https://mdbootstrap.com/docs/standard/getting-started/'
+            target='_blank'
+            role='button'
+          >
+            Start MDB tutorial
+          </MDBBtn>
+          <p className="mt-4"><a href="https://mdbootstrap.com/sale/free/"><MDBIcon far icon='surprise' size='lg' /> Free users
+            buy cheaper .. </a></p>
         </div>
       </div>
     </MDBContainer>
   );
 }
-
 export default App;

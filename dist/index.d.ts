@@ -646,6 +646,7 @@ declare const MDBModal: React$1.FunctionComponent<{
   appendToBody?: boolean;
   tabIndex?: string;
   show?: boolean;
+  setShow?: React$1.SetStateAction<any>;
   staticBackdrop?: boolean;
   tag?: React$1.ComponentProps<any>;
   modalRef?: React$1.RefObject<HTMLElement>;

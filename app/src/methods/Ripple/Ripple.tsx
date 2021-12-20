@@ -4,7 +4,25 @@ import type { RippleProps } from './types';
 import MDBBtn from '../../components/Button/Button';
 import MDBRippleWave from './RippleWave/RippleWave';
 
-const MDBRipple: React.FC<RippleProps> = 
+const useCombinedRefs = (...refs: any) => {
+  const targetRef = React.useRef()
+
+  React.useEffect(() => {
+    refs.forEach((ref: any) => {
+      if (!ref) return
+
+      if (typeof ref === 'function') {
+        ref(targetRef.current)
+      } else {
+        ref.current = targetRef.current
+      }
+    })
+  }, [refs])
+
+  return targetRef
+}
+
+const MDBRipple: React.FC<RippleProps> = React.forwardRef<HTMLAllCollection, RippleProps>(
   (
     {
       className,
@@ -16,12 +34,13 @@ const MDBRipple: React.FC<RippleProps> =
       rippleColor,
       children,
       onClick,
-      rippleRef,
       ...props
-    }
+    },
+    ref
   ) => {
-    const rippleEl = useRef(null);
-    const rippleReference = rippleRef ? rippleRef : rippleEl;
+    const rippleRef = useRef(null);
+    const combinedRef = useCombinedRefs(ref, rippleRef);
+
     const GRADIENT =
       'rgba({{color}}, 0.2) 0, rgba({{color}}, 0.3) 40%, rgba({{color}}, 0.4) 50%, rgba({{color}}, 0.5) 60%, rgba({{color}}, 0) 70%';
 
@@ -161,7 +180,9 @@ const MDBRipple: React.FC<RippleProps> =
     };
 
     const getStyles = (e: any) => {
-      const itemRect = rippleReference.current.getBoundingClientRect();
+      // eslint-disable-next-line
+      // @ts-ignore
+      const itemRect = combinedRef.current?.getBoundingClientRect();
 
       const offsetX = e.clientX - itemRect.left;
       const offsetY = e.clientY - itemRect.top;
@@ -221,14 +242,15 @@ const MDBRipple: React.FC<RippleProps> =
     }, [rippleDuration, rippleStyles]);
 
     return (
-      <Tag className={classes} onClick={(e: any) => handleClick(e)} ref={rippleReference} {...props}>
+      <Tag className={classes} onClick={(e: any) => handleClick(e)} ref={combinedRef} {...props}>
         {children}
         {rippleStyles.map((item, i) => (
           <MDBRippleWave key={i} style={item}></MDBRippleWave>
         ))}
       </Tag>
     );
-  };
+  }
+);
 
 MDBRipple.defaultProps = { rippleTag: 'div', rippleDuration: 500, rippleRadius: 0, rippleColor: 'dark' };
 

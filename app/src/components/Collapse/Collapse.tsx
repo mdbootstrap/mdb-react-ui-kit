@@ -18,10 +18,11 @@ const MDBCollapse: React.FC<CollapseProps> = ({
   const [showCollapseString, setShowCollapseString] = useState<string | undefined>('');
   const [statement, setStatement] = useState(false);
   const [collapseHeight, setCollapseHeight] = useState<string | number | undefined>(undefined);
+  const [transition, setTransition] = useState(false);
+
   const classes = clsx(
-    'collapsing',
-    'collapse',
-    (showCollapse || statement) && 'show',
+    transition ? 'collapsing' : 'collapse',
+    !transition && (showCollapse || statement) && 'show',
     navbar && 'navbar-collapse',
     center && 'justify-content-center',
     className
@@ -49,17 +50,17 @@ const MDBCollapse: React.FC<CollapseProps> = ({
       setShowCollapse(show);
     }
 
-    // if (statement || showCollapse) {
-    //   setTransition(true);
-    // }
+    if (statement || showCollapse) {
+      setTransition(true);
+    }
 
-    // const timer = setTimeout(() => {
-    //   setTransition(false);
-    // }, 350);
+    const timer = setTimeout(() => {
+      setTransition(false);
+    }, 350);
 
-    // return () => {
-    //   clearTimeout(timer);
-    // };
+    return () => {
+      clearTimeout(timer);
+    };
   }, [show, showCollapse, id, showCollapseString, statement]);
 
   useEffect(() => {
