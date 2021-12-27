@@ -15,12 +15,6 @@
 
 ---
 
- <a href="https://mdbootstrap.com/bf/sale/" alt="BF Waiting List" rel="dofollow">
-          		<img src="https://mdbcdn.b-cdn.net/img/Marketing/campaigns/bf2021/black-friday-sale.gif">
-          </a>
-          
----          
-
 
 <table>
   <tbody>
@@ -49,18 +43,18 @@ Trusted by <b>2 000 000+</b> developers & designers. Used by companies like
 <table>
   <tbody>
     <tr>
-      <td><img src="https://mdbootstrap.com/img/logo/brands/nike.png" style="width: 10px;"></td>
-      <td><img src="https://mdbootstrap.com/img/logo/brands/amazon.png" style="width: 10px;"></td>
-      <td><img src="https://mdbootstrap.com/img/logo/brands/sony.png" style="width: 10px;"></td>
-      <td><img src="https://mdbootstrap.com/img/logo/brands/samsung.png"  style="height: 40px">
-      <td><img src="https://mdbootstrap.com/img/logo/brands/airbus.png" style="height: 40px">
-      <td><img src="https://mdbootstrap.com/img/logo/brands/yahoo.png"  style="height: 40px">
-      <td><img src="https://mdbootstrap.com/img/logo/brands/deloitte.png" style="height: 40px"></div>
-      <td><img src="https://mdbootstrap.com/img/logo/brands/ge.png" style="height: 40px">
-      <td><img src="https://mdbootstrap.com/img/logo/brands/kpmg.png" style="height: 40px">
-      <td><img src="https://mdbootstrap.com/img/logo/brands/unity.png" style="height: 40px">
-      <td><img src="https://mdbootstrap.com/img/logo/brands/ikea.png" style="max-height: 40px">
-      <td><img src="https://mdbootstrap.com/img/logo/brands/aegon.png" style="height: 40px">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/nike.png"></td>
+      <td><img src="https://mdbootstrap.com/img/logo/brands/amazon.png"></td>
+      <td><img src="https://mdbootstrap.com/img/logo/brands/sony.png"></td>
+      <td><img src="https://mdbootstrap.com/img/logo/brands/samsung.png">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/airbus.png">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/yahoo.png">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/deloitte.png">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/ge.png">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/kpmg.png">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/unity.png>
+      <td><img src="https://mdbootstrap.com/img/logo/brands/ikea.png">
+      <td><img src="https://mdbootstrap.com/img/logo/brands/aegon.png">
     </tr>
    </tbody>
 </table>
