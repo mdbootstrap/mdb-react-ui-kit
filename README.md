@@ -73,7 +73,7 @@ Trusted by <b>2 000 000+</b> developers & designers. Used by companies like
           </a>
       </td>
       <td>
-          <a href="https://mdbootstrap.com/docs/b5/react/bootstrap-5-tutorial/#section-beginner" alt="Bootstrap 5" rel="dofollow">
+          <a href="https://mdbootstrap.com/docs/standard/bootstrap-5-tutorial/#section-beginner" alt="Bootstrap 5" rel="dofollow">
           		<img src="https://mdbootstrap.com/wp-content/uploads/2020/12/cover-bootstrap-5-1.png">
           </a>
       </td>
