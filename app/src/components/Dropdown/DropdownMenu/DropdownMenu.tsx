@@ -61,10 +61,10 @@ const MDBDropdownMenu: React.FC<DropdownMenuProps> = ({
 
   const handleDown = useCallback(
     (e: any) => {
-      e.preventDefault();
-
       if (attachELements) {
         if (e.key === 'ArrowUp') {
+          e.preventDefault();
+
           setCount(count - 1);
 
           if (count <= 0) {
@@ -72,6 +72,8 @@ const MDBDropdownMenu: React.FC<DropdownMenuProps> = ({
           }
         }
         if (e.key === 'ArrowDown') {
+          e.preventDefault();
+
           setCount(count + 1);
 
           if (count === childrenLength - 1) {

@@ -22,6 +22,7 @@ const MDBModal: React.FC<ModalProps> = ({
   const [isOpenModal, setIsOpenModal] = useState(show);
   const [innerShow, setInnerShow] = useState(show);
   const [staticModal, setStaticModal] = useState(false);
+  const [focusedElement, setFocusedElement] = useState(0);
 
   const modalInnerRef = useRef<HTMLElement>(null);
   const modalReference = modalRef ? modalRef : modalInnerRef;
@@ -66,6 +67,12 @@ const MDBModal: React.FC<ModalProps> = ({
 
   const handleKeydown = useCallback(
     (event: KeyboardEvent) => {
+      if (isOpenModal && event.key === 'Tab') {
+        event.preventDefault();
+
+        setFocusedElement(focusedElement + 1);
+      }
+
       if (closeOnEsc) {
         if (isOpenModal && event.key === 'Escape') {
           if (!staticBackdrop) {
@@ -79,8 +86,23 @@ const MDBModal: React.FC<ModalProps> = ({
         }
       }
     },
-    [closeModal, isOpenModal, staticBackdrop, closeOnEsc]
+    [closeModal, isOpenModal, staticBackdrop, closeOnEsc, focusedElement]
   );
+
+  useEffect(() => {
+    const focusableElements = modalReference.current?.querySelectorAll(
+      'button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+
+    if (focusableElements && focusableElements.length > 0) {
+      if (focusedElement === focusableElements.length) {
+        (focusableElements[0] as HTMLElement).focus();
+        setFocusedElement(0);
+      } else {
+        (focusableElements[focusedElement] as HTMLElement).focus();
+      }
+    }
+  }, [focusedElement, modalReference]);
 
   useEffect(() => {
     const getScrollbarWidth = () => {

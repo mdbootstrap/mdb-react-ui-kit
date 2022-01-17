@@ -8,9 +8,10 @@ const MDBDropdownLink: React.FC<DropdownLinkProps> = ({
   className,
   tag: Tag,
   children,
+  disableClass,
   ...props
 }): JSX.Element => {
-  const classes = clsx('dropdown-item', className);
+  const classes = clsx(!disableClass && 'dropdown-item', className);
 
   const { handleClose } = useContext(DropdownContext);
 
