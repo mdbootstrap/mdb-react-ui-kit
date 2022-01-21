@@ -17,7 +17,7 @@ One click setup! MDB GO allows you to create a WordPress page with a single clic
 Regardless whether you want to create a Travel Blog or an e-commerce shop to sell your product you can easily do that. You can even combine both into single page.
 
 
-## About Material Design for Bootstrap 5 & Vanilla JavaScript
+## About Material Design for Bootstrap 5 & React 17
 
 <p>Created by <a href="https://mdbootstrap.com"><img height="30" src="https://mdbootstrap.com/img/Marketing/general/logo/medium/mdb-r.png"></a>  
 <a href="https://npmcharts.com/compare/mdbreact?minimal=true"> <img src="https://img.shields.io/npm/dm/mdbootstrap.svg?label=NPM%20Downloads" alt="Downloads"></a>
