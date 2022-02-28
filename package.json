@@ -1,6 +1,6 @@
 {
   "name": "mdb-react-ui-kit",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "main": "./dist/mdb-react-ui-kit.js",
   "module": "./dist/mdb-react-ui-kit.esm.js",
   "types": "./dist/index.d.ts",
@@ -36,6 +36,7 @@
   ],
   "author": "MDBootstrap",
   "license": "SEE LICENSE IN <license.pdf>",
+  "homepage": "https://mdbootstrap.com/docs/b5/react/",
   "bugs": {
     "url": "https://github.com/mdbootstrap/mdb-react-ui-kit/issues"
   }

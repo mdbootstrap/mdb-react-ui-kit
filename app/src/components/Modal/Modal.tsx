@@ -23,6 +23,7 @@ const MDBModal: React.FC<ModalProps> = ({
   const [innerShow, setInnerShow] = useState(show);
   const [staticModal, setStaticModal] = useState(false);
   const [focusedElement, setFocusedElement] = useState(0);
+  const [focusableElements, setFocusableElements] = useState<any>([]);
 
   const modalInnerRef = useRef<HTMLElement>(null);
   const modalReference = modalRef ? modalRef : modalInnerRef;
@@ -90,10 +91,30 @@ const MDBModal: React.FC<ModalProps> = ({
   );
 
   useEffect(() => {
-    const focusableElements = modalReference.current?.querySelectorAll(
-      'button, a, input, select, textarea, [tabindex]:not([tabindex="-1"])'
-    );
+    const focusable = modalReference.current?.querySelectorAll(
+      'button, a, input, select, textarea, [tabindex]'
+    ) as any as Array<HTMLElement>;
 
+    const filtered = Array.from(focusable)
+      .filter((el: any) => el.tabIndex !== -1)
+      .sort((a, b) => {
+        if (a.tabIndex === b.tabIndex) {
+          return 0;
+        }
+        if (b.tabIndex === null) {
+          return -1;
+        }
+        if (a.tabIndex === null) {
+          return 1;
+        }
+        return a.tabIndex - b.tabIndex;
+      });
+
+    setFocusableElements(filtered);
+    setFocusedElement(filtered.length - 1);
+  }, [modalReference]);
+
+  useEffect(() => {
     if (focusableElements && focusableElements.length > 0) {
       if (focusedElement === focusableElements.length) {
         (focusableElements[0] as HTMLElement).focus();
@@ -102,7 +123,7 @@ const MDBModal: React.FC<ModalProps> = ({
         (focusableElements[focusedElement] as HTMLElement).focus();
       }
     }
-  }, [focusedElement, modalReference]);
+  }, [focusedElement, focusableElements]);
 
   useEffect(() => {
     const getScrollbarWidth = () => {
@@ -122,6 +143,12 @@ const MDBModal: React.FC<ModalProps> = ({
       document.body.style.overflow = '';
       document.body.style.paddingRight = '';
     }
+
+    return () => {
+      document.body.classList.remove('modal-open');
+      document.body.style.overflow = '';
+      document.body.style.paddingRight = '';
+    };
   }, [innerShow]);
 
   useEffect(() => {
