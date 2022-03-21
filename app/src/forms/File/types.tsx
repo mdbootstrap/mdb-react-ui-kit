@@ -1,15 +1,11 @@
 import React from 'react';
 
-type FileProps = {
-  className?: string;
-  id?: string;
-  label?: string;
-  disabled?: boolean;
-  labelId?: string;
+interface FileProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {
+  label?: React.ReactNode;
   labelClass?: string;
+  labelStyle?: React.CSSProperties;
+  inputRef?: React.MutableRefObject<any>;
   size?: string;
-  name?: string;
-  [rest: string]: any;
-};
+}
 
 export { FileProps };

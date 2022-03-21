@@ -1,408 +1,379 @@
 import * as React$1 from 'react';
 import React__default from 'react';
 
-declare const MDBContainer: React$1.FunctionComponent<{
-  className?: string;
-  fluid?: boolean;
-  tag?: React$1.ElementType;
-  [rest: string]: any;
-}>;
+interface ContainerProps extends React.HTMLAttributes<HTMLElement> {
+    breakpoint?: string;
+    fluid?: boolean;
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBCol: React$1.FunctionComponent<{
-  center?: string | boolean;
-  className?: string;
-  end?: string | boolean;
-  lg?: string;
-  md?: string;
-  offsetSm?: string | number;
-  offsetMd?: string | number;
-  offsetLg?: string | number;
-  order?: string | number;
-  size?: string;
-  sm?: string;
-  start?: string | boolean;
-  tag?: React$1.ElementType;
-  xl?: string;
-  xxl?: string;
-  xs?: string;
-  [rest: string]: any;
-}>;
+declare const MDBContainer: React$1.FunctionComponent<ContainerProps>;
 
-declare const MDBBadge: React$1.FunctionComponent<{
-  className?: string;
-  pill?: boolean;
-  dot?: boolean;
-  notification?: boolean;
-  color?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+interface ColumnProps extends React.HTMLAttributes<HTMLElement> {
+    center?: boolean;
+    end?: boolean;
+    lg?: string | number;
+    md?: string | number;
+    offsetSm?: string | number;
+    offsetMd?: string | number;
+    offsetLg?: string | number;
+    order?: string | number;
+    size?: string | number;
+    sm?: string | number;
+    start?: boolean;
+    tag?: React.ComponentProps<any>;
+    xl?: string | number;
+    xxl?: string | number;
+    xs?: string | number;
+}
 
-declare const MDBBtn: React$1.FunctionComponent<{
-  className?: string;
-  color?: string;
-  outline?: boolean;
-  rounded?: boolean;
-  floating?: boolean;
-  disabled?: boolean;
-  size?: string;
-  href?: string;
-  role?: string;
-  block?: boolean;
-  type?: 'reset' | 'submit' | 'button';
-  active?: boolean;
-  toggle?: boolean;
-  target?: string;
-  value?: string | number;
-  noRipple?: boolean;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBCol: React$1.FunctionComponent<ColumnProps>;
 
-declare const MDBBtnGroup: React$1.FunctionComponent<{
-  className?: string;
-  role?: string;
-  shadow?: string;
-  toolbar?: boolean;
-  size?: string;
-  vertical?: boolean;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+interface BadgeProps extends Omit<React__default.AllHTMLAttributes<HTMLElement>, 'color'> {
+    color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light' | 'dark' | 'muted' | 'white' | 'info';
+    dot?: boolean;
+    notification?: boolean;
+    pill?: boolean;
+    ref?: React__default.ForwardedRef<HTMLAllCollection>;
+    tag?: React__default.ComponentProps<any>;
+}
 
-declare const MDBSpinner: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  grow?: boolean;
-  color?: string;
-  size?: string;
-  [rest: string]: any;
-}>;
+declare const MDBBadge: React$1.FunctionComponent<BadgeProps>;
 
-declare const MDBCard: React$1.FunctionComponent<{
-  className?: string;
-  border?: string;
-  background?: string;
-  shadow?: string;
-  alignment?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare type btnProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+declare type anchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
+declare type joinedTypes = btnProps & anchorProps;
+interface ButtonProps extends Omit<joinedTypes, 'size' | 'color'> {
+    active?: boolean;
+    block?: boolean;
+    color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light' | 'dark' | 'muted' | 'white' | 'info' | 'none' | 'link';
+    floating?: boolean;
+    noRipple?: boolean;
+    outline?: boolean;
+    rippleUnbound?: boolean;
+    rippleColor?: string;
+    rippleRadius?: number;
+    rippleDuration?: number;
+    rippleCentered?: boolean;
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+    rounded?: boolean;
+    size?: 'sm' | 'lg';
+    toggle?: boolean;
+    target?: string;
+    tag?: React.ComponentProps<any>;
+    to?: string;
+}
 
-declare const MDBCardHeader: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  border?: string;
-  background?: string;
-  [rest: string]: any;
-}>;
+declare const MDBBtn: React$1.FunctionComponent<ButtonProps>;
 
-declare const MDBCardSubTitle: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+interface ButtonGroupProps extends Omit<React.HTMLAttributes<HTMLElement>, 'size'> {
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+    size?: 'sm' | 'lg';
+    shadow?: '0' | '1' | '2' | '3' | '4' | '5';
+    toolbar?: boolean;
+    vertical?: boolean;
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBCardTitle: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBBtnGroup: React$1.FunctionComponent<ButtonGroupProps>;
 
-declare const MDBCardText: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+interface SpinnerProps extends React.HTMLAttributes<HTMLElement> {
+    color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light' | 'dark' | 'muted' | 'white' | 'info' | 'body' | 'black-50' | 'white-50';
+    grow?: boolean;
+    size?: 'lg' | 'sm';
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBCardBody: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBSpinner: React$1.FunctionComponent<SpinnerProps>;
 
-declare const MDBCardFooter: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  border?: string;
-  background?: string;
-  [rest: string]: any;
-}>;
+interface CardProps extends React.HTMLAttributes<HTMLElement> {
+    alignment?: string;
+    border?: string;
+    background?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light' | 'dark' | 'white' | 'info' | 'transparent';
+    shadow?: '0' | '1' | '2' | '3' | '4' | '5';
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBCardImage: React$1.FunctionComponent<{
-  className?: string;
-  position?: string;
-  overlay?: boolean;
-  fluid?: boolean;
-  [rest: string]: any;
-}>;
+declare const MDBCard: React$1.FunctionComponent<CardProps>;
 
-declare const MDBCardOverlay: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+interface CardHeaderProps extends React.HTMLAttributes<HTMLElement> {
+    border?: string;
+    background?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light' | 'dark' | 'white' | 'info' | 'transparent';
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBCardLink: React$1.FunctionComponent<{
-  className?: string;
-  [rest: string]: any;
-}>;
+declare const MDBCardHeader: React$1.FunctionComponent<CardHeaderProps>;
 
-declare const MDBCardGroup: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+interface CardSubTitleProps extends React.AllHTMLAttributes<HTMLElement> {
+    tag?: React.ComponentProps<any>;
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+}
 
-declare const MDBListGroup: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  horizontal?: boolean;
-  horizontalSize?: string;
-  flush?: boolean;
-  [rest: string]: any;
-}>;
+declare const MDBCardSubTitle: React$1.FunctionComponent<CardSubTitleProps>;
 
-declare const MDBListGroupItem: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  active?: boolean;
-  disabled?: boolean;
-  action?: boolean;
-  color?: string;
-  [rest: string]: any;
-}>;
+interface CardTitleProps extends React.AllHTMLAttributes<HTMLElement> {
+    tag?: React.ComponentProps<any>;
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+}
 
-declare const MDBTooltip: React$1.FunctionComponent<{
-  className?: string;
-  disableMouseDown?: boolean;
-  tag?: React$1.ComponentProps<any>;
-  tooltipTag?: React$1.ComponentProps<any>;
-  placement?:
-    | 'top'
-    | 'auto'
-    | 'auto-start'
-    | 'auto-end'
-    | 'bottom'
-    | 'right'
-    | 'left'
-    | 'top-start'
-    | 'top-end'
-    | 'bottom-start'
-    | 'bottom-end'
-    | 'right-start'
-    | 'right-end'
-    | 'left-start'
-    | 'left-end'
-    | undefined;
-  options?: Record<string, unknown>;
-  title?: string | React$1.ReactNode;
-  wrapperProps?: Record<string, unknown>;
-  wrapperClass?: string;
-  [rest: string]: any;
-}>;
+declare const MDBCardTitle: React$1.FunctionComponent<CardTitleProps>;
 
-declare const MDBRow: React$1.FunctionComponent<{
-  around?: boolean;
-  between?: boolean;
-  bottom?: boolean;
-  center?: boolean;
-  className?: string;
-  end?: boolean;
-  evenly?: boolean;
-  middle?: boolean;
-  tag?: React$1.ElementType;
-  start?: boolean;
-  top?: boolean;
-  [rest: string]: any;
-}>;
+interface CardTextProps extends React.AllHTMLAttributes<HTMLElement> {
+    tag?: React.ComponentProps<any>;
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+}
 
-declare const MDBIcon: React$1.FunctionComponent<{
-  className?: string;
-  fab?: boolean;
-  far?: boolean;
-  fas?: boolean;
-  fal?: boolean;
-  flag?: string;
-  size?: string;
-  color?: string;
-  icon?: string;
-  border?: boolean;
-  rotate?: string;
-  pull?: string;
-  spin?: boolean;
-  list?: boolean;
-  fixed?: boolean;
-  pulse?: boolean;
-  flip?: string;
-  inverse?: boolean;
-  stack?: string;
-  [rest: string]: any;
-}>;
+declare const MDBCardText: React$1.FunctionComponent<CardTextProps>;
 
-declare const MDBTypography: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  variant?: string;
-  blockquote?: boolean;
-  note?: boolean;
-  noteColor?: string;
-  listUnStyled?: boolean;
-  listInLine?: boolean;
-  colorText?: string;
-  [rest: string]: any;
-}>;
+interface CardBodyProps extends React.HTMLAttributes<HTMLElement> {
+    tag?: React.ComponentProps<any>;
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+}
 
-declare const MDBBreadcrumb: React$1.FunctionComponent<{
-  bold?: boolean;
-  children?: React$1.ReactNode;
-  className?: string;
-  tag?: React$1.ReactElement;
-  color?:
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'info'
-    | 'warning'
-    | 'danger'
-    | 'light'
-    | 'dark'
-    | 'body'
-    | 'muted'
-    | 'white'
-    | 'black-50'
-    | 'white-50';
-  uppercase?: boolean;
-  [rest: string]: any;
-}>;
+declare const MDBCardBody: React$1.FunctionComponent<CardBodyProps>;
 
-declare const MDBBreadcrumbItem: React$1.FunctionComponent<{
-  active?: boolean;
-  className?: string;
-  tag?: React$1.ElementType;
-  current?: 'page' | 'step' | 'location';
-  [rest: string]: any;
-}>;
+interface CardFooterProps extends React.HTMLAttributes<HTMLElement> {
+    border?: string;
+    background?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light' | 'dark' | 'white' | 'info' | 'transparent';
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBNavbar: React$1.FunctionComponent<{
-  children?: React$1.ReactNode;
-  className?: string;
-  tag?: 'nav' | 'div';
-  [rest: string]: any;
-  light?: boolean;
-  dark?: boolean;
-  color?:
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'info'
-    | 'warning'
-    | 'danger'
-    | 'light'
-    | 'dark'
-    | 'body'
-    | 'muted'
-    | 'white'
-    | 'black-50'
-    | 'white-50';
-  expand?: string | boolean;
-  bgColor?: 'white' | 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark';
-  fixed?: string;
-  sticky?: boolean;
-}>;
+declare const MDBCardFooter: React$1.FunctionComponent<CardFooterProps>;
 
-declare const MDBNavbarLink: React$1.FunctionComponent<{
-  active?: boolean;
-  children?: React$1.ReactNode;
-  className?: string;
-  disabled?: boolean;
-  tag?: React$1.ElementType;
-  [rest: string]: any;
-  link?: boolean;
-}>;
+interface CardImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+    position?: string;
+    overlay?: boolean;
+    fluid?: boolean;
+}
 
-declare const MDBNavbarBrand: React$1.FunctionComponent<{
-  children?: React$1.ReactNode;
-  className?: string;
-  tag?: React$1.ElementType;
-  [rest: string]: any;
-}>;
+declare const MDBCardImage: React$1.FunctionComponent<CardImageProps>;
 
-declare const MDBNavbarItem: React$1.FunctionComponent<{
-  children?: React$1.ReactNode;
-  className?: string;
-  active?: boolean;
-  text?: boolean;
-  tag?: React$1.ElementType;
-  [rest: string]: any;
-}>;
+interface CardOverlayProps extends React.HTMLAttributes<HTMLElement> {
+    tag?: React.ComponentProps<any>;
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+}
 
-declare const MDBNavbarNav: React$1.FunctionComponent<{
-  children?: React$1.ReactNode;
-  className?: string;
-  tag?: React$1.ElementType;
-  right?: boolean;
-  fullWidth?: boolean;
-  left?: boolean;
-  [rest: string]: any;
-}>;
+declare const MDBCardOverlay: React$1.FunctionComponent<CardOverlayProps>;
 
-declare const MDBNavbarToggler: React$1.FunctionComponent<{
-  children?: React$1.ReactNode;
-  className?: string;
-  tag?: React$1.ElementType;
-  [rest: string]: any;
-}>;
+declare type CardLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
-declare const MDBFooter: React$1.FunctionComponent<{
-  children?: React$1.ReactNode;
-  className?: string;
-  color?:
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'info'
-    | 'warning'
-    | 'danger'
-    | 'light'
-    | 'dark'
-    | 'body'
-    | 'muted'
-    | 'white'
-    | 'black-50'
-    | 'white-50';
-  tag?: 'footer' | 'div';
-  bgColor?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark';
-  [rest: string]: any;
-}>;
+declare const MDBCardLink: React$1.FunctionComponent<CardLinkProps>;
 
-declare const MDBPagination: React$1.FunctionComponent<{
-  children?: React$1.ReactNode;
-  className?: string;
-  center?: boolean;
-  end?: boolean;
-  start?: boolean;
-  size?: string;
-  tag?: React$1.ComponentProps<any>;
-  circle?: boolean;
-  [rest: string]: any;
-}>;
+interface CardGroupProps extends React.HTMLAttributes<HTMLElement> {
+    tag?: React.ComponentProps<any>;
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+}
 
-declare const MDBPaginationLink: React$1.FunctionComponent<{
-  children?: React$1.ReactNode;
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBCardGroup: React$1.FunctionComponent<CardGroupProps>;
 
-declare const MDBPaginationItem: React$1.FunctionComponent<{
-  children?: React$1.ReactNode;
-  className?: string;
-  active?: boolean;
-  disabled?: boolean;
-  tag?: React$1.ReactElement;
-  [rest: string]: any;
-}>;
+interface ListGroupProps extends React__default.HTMLAttributes<HTMLElement> {
+    horizontal?: boolean;
+    horizontalSize?: string;
+    flush?: boolean;
+    ref?: React__default.ForwardedRef<HTMLAllCollection>;
+    tag?: React__default.ComponentProps<any>;
+}
+
+declare const MDBListGroup: React$1.FunctionComponent<ListGroupProps>;
+
+interface ListGroupItemProps extends Omit<React__default.AllHTMLAttributes<HTMLLIElement>, 'action'> {
+    active?: boolean;
+    action?: boolean;
+    color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light' | 'dark' | 'info';
+    disabled?: boolean;
+    tag?: React__default.ComponentProps<any>;
+}
+
+declare const MDBListGroupItem: React$1.FunctionComponent<ListGroupItemProps>;
+
+interface TooltipProps extends Omit<React.AllHTMLAttributes<HTMLElement>, 'title'> {
+    disableMouseDown?: boolean;
+    options?: Record<string, unknown>;
+    placement?: 'top' | 'auto' | 'auto-start' | 'auto-end' | 'bottom' | 'right' | 'left' | 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end' | 'right-start' | 'right-end' | 'left-start' | 'left-end';
+    tag?: React.ComponentProps<any>;
+    tooltipTag?: React.ComponentProps<any>;
+    title?: React.ReactNode;
+    wrapperProps?: Record<string, unknown>;
+    wrapperClass?: string;
+}
+
+declare const MDBTooltip: React$1.FunctionComponent<TooltipProps>;
+
+interface RowProps extends React.HTMLAttributes<HTMLElement> {
+    around?: boolean;
+    between?: boolean;
+    bottom?: boolean;
+    center?: boolean;
+    end?: boolean;
+    evenly?: boolean;
+    middle?: boolean;
+    start?: boolean;
+    tag?: React.ComponentProps<any>;
+    top?: boolean;
+}
+
+declare const MDBRow: React$1.FunctionComponent<RowProps>;
+
+declare type IconProps = {
+    animate?: 'beat' | 'fade' | 'beat-fade' | 'bounce' | 'shake' | 'flip' | 'spin' | 'pulse';
+    className?: string;
+    iconType?: string;
+    fab?: boolean;
+    far?: boolean;
+    fas?: boolean;
+    fal?: boolean;
+    flag?: string;
+    size?: '1x' | '2x' | '3x' | '4x' | '5x' | '6x' | '7x' | '8x' | '9x' | '10x' | '2xs' | 'xs' | 'sm' | 'lg' | 'xl' | '2xl';
+    color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light' | 'dark' | 'muted' | 'white' | 'info' | 'body' | 'black-50' | 'white-50';
+    icon?: string;
+    border?: boolean;
+    rotate?: '90' | '180' | '270' | 'by';
+    pull?: 'left' | 'right';
+    spin?: boolean;
+    list?: boolean;
+    fixed?: boolean;
+    pulse?: boolean;
+    flip?: 'horizontal' | 'vertical' | 'both';
+    inverse?: boolean;
+    stack?: '1x' | '2x';
+    style?: React.CSSProperties;
+    [rest: string]: any;
+};
+
+declare const MDBIcon: React$1.FunctionComponent<IconProps>;
+
+declare type TypographyProps = Omit<React.AllHTMLAttributes<HTMLElement>, 'color'> & {
+    blockquote?: boolean;
+    color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light' | 'dark' | 'muted' | 'white' | 'info' | 'body' | 'black-50' | 'white-50';
+    listUnStyled?: boolean;
+    listInLine?: boolean;
+    note?: boolean;
+    noteColor?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light' | 'dark' | 'muted' | 'white' | 'info' | 'transparent';
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+    tag?: React.ComponentProps<any>;
+    variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+};
+
+declare const MDBTypography: React$1.FunctionComponent<TypographyProps>;
+
+interface BreadcrumbProps extends React.AllHTMLAttributes<HTMLElement> {
+    bold?: boolean;
+    tag?: React.ComponentProps<any>;
+    color?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark' | 'body' | 'muted' | 'white' | 'black-50' | 'white-50';
+    uppercase?: boolean;
+    ref?: React.Ref<any>;
+}
+
+declare const MDBBreadcrumb: React$1.FunctionComponent<BreadcrumbProps>;
+
+interface BreadcrumbItemProp extends React.AllHTMLAttributes<HTMLElement> {
+    active?: boolean;
+    tag?: React.ComponentProps<any>;
+    current?: 'page' | 'step' | 'location';
+    ref?: React.Ref<any>;
+}
+
+declare const MDBBreadcrumbItem: React$1.FunctionComponent<BreadcrumbItemProp>;
+
+interface NavbarProps extends Omit<React.AllHTMLAttributes<HTMLElement>, 'scrolling'> {
+    tag?: React.ComponentProps<any>;
+    light?: boolean;
+    dark?: boolean;
+    color?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark' | 'body' | 'muted' | 'white' | 'black-50' | 'white-50';
+    expand?: string | boolean;
+    bgColor?: 'white' | 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark';
+    fixed?: string;
+    sticky?: boolean;
+    transparent?: boolean;
+    scrollingNavbarOffset?: number;
+    scrolling?: boolean;
+    ref?: React.Ref<any>;
+}
+
+declare const MDBNavbar: React$1.FunctionComponent<NavbarProps>;
+
+interface NavbarLinkProps extends React.AllHTMLAttributes<HTMLElement> {
+    tag?: React.ComponentProps<any>;
+    active?: boolean;
+    disabled?: boolean;
+    ref?: React.Ref<any>;
+}
+
+declare const MDBNavbarLink: React$1.FunctionComponent<NavbarLinkProps>;
+
+interface NavbarBrandProps extends React.AllHTMLAttributes<HTMLElement> {
+    tag?: React.ComponentProps<any>;
+    ref?: React.Ref<any>;
+}
+
+declare const MDBNavbarBrand: React$1.FunctionComponent<NavbarBrandProps>;
+
+interface NavbarItemProps extends React.AllHTMLAttributes<HTMLElement> {
+    active?: boolean;
+    text?: boolean;
+    tag?: React.ComponentProps<any>;
+    ref?: React.Ref<any>;
+}
+
+declare const MDBNavbarItem: React$1.FunctionComponent<NavbarItemProps>;
+
+interface NavbarNavProps extends React.AllHTMLAttributes<HTMLElement> {
+    tag?: React.ComponentProps<any>;
+    right?: boolean;
+    fullWidth?: boolean;
+    left?: boolean;
+    ref?: React.Ref<any>;
+}
+
+declare const MDBNavbarNav: React$1.FunctionComponent<NavbarNavProps>;
+
+interface NavbarTogglerProps extends React.AllHTMLAttributes<HTMLElement> {
+    tag?: React.ComponentProps<any>;
+    ref?: React.Ref<any>;
+}
+
+declare const MDBNavbarToggler: React$1.FunctionComponent<NavbarTogglerProps>;
+
+interface FooterProps extends React.AllHTMLAttributes<HTMLElement> {
+    color?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark' | 'body' | 'muted' | 'white' | 'black-50' | 'white-50';
+    tag?: React.ComponentProps<any>;
+    bgColor?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark';
+    ref?: React.Ref<any>;
+}
+
+declare const MDBFooter: React$1.FunctionComponent<FooterProps>;
+
+interface PaginationProps extends Omit<React.AllHTMLAttributes<HTMLElement>, 'size' | 'start'> {
+    center?: boolean;
+    end?: boolean;
+    start?: boolean;
+    size?: 'lg' | 'sm';
+    tag?: React.ComponentProps<any>;
+    circle?: boolean;
+    ref?: React.Ref<any>;
+}
+
+declare const MDBPagination: React$1.FunctionComponent<PaginationProps>;
+
+interface PaginationLinkProps extends React.AllHTMLAttributes<HTMLElement> {
+    tag?: React.ComponentProps<any>;
+    ref?: React.Ref<any>;
+}
+
+declare const MDBPaginationLink: React$1.FunctionComponent<PaginationLinkProps>;
+
+interface PaginationItemProps extends React.AllHTMLAttributes<HTMLElement> {
+    active?: boolean;
+    disabled?: boolean;
+    tag?: React.ComponentProps<any>;
+    ref?: React.Ref<any>;
+}
+
+declare const MDBPaginationItem: React$1.FunctionComponent<PaginationItemProps>;
 
 declare const MDBTable: React$1.FunctionComponent<{
   className?: string;
@@ -444,386 +415,377 @@ declare const MDBTable: React$1.FunctionComponent<{
   [rest: string]: any;
 }>;
 
-declare const MDBTableHead: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ElementType;
-  dark?: boolean;
-  light?: boolean;
-  [rest: string]: any;
-}>;
+interface TableHeadProps extends React.AllHTMLAttributes<HTMLElement> {
+    dark?: boolean;
+    light?: boolean;
+    tag?: React.ComponentProps<any>;
+    ref?: React.Ref<any>;
+}
 
-declare const MDBTableBody: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ElementType;
-  [rest: string]: any;
-}>;
+declare const MDBTableHead: React$1.FunctionComponent<TableHeadProps>;
 
-declare const MDBProgress: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  height?: number | string;
-  style?: Record<string, unknown>;
-  [rest: string]: any;
-}>;
+interface TableBodyProps extends React.AllHTMLAttributes<HTMLElement> {
+    tag?: React.ComponentProps<any>;
+    ref?: React.Ref<any>;
+}
 
-declare const MDBProgressBar: React$1.FunctionComponent<{
-  animated?: boolean;
-  bgColor?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark';
-  className?: string;
-  striped?: boolean;
-  style?: Record<string, unknown>;
-  tag?: React$1.ComponentProps<any>;
-  valuemax?: string | number;
-  valuemin?: string | number;
-  width?: string | number;
-  [rest: string]: any;
-}>;
+declare const MDBTableBody: React$1.FunctionComponent<TableBodyProps>;
 
-declare const MDBInput: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  wrapperTag?: React$1.ComponentProps<any>;
-  id?: string;
-  label?: string;
-  labelId?: string;
-  labelClass?: string;
-  wrapperClass?: string;
-  wrapperStyle?: Record<string, unknown>;
-  labelStyle?: React$1.CSSProperties;
-  disabled?: boolean;
-  size?: string;
-  readonly?: boolean;
-  contrast?: boolean;
-  value?: string;
-  defaultValue?: string;
-  name?: string;
-  validation?: string;
-  invalid?: boolean;
-  validationTooltip?: boolean;
-  labelRef?: React$1.RefObject<HTMLLabelElement>;
-  textarea?: boolean;
-  [rest: string]: any;
-}>;
+interface ProgressProps extends React.HTMLAttributes<HTMLElement> {
+    height?: number | string;
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBCheckbox: React$1.FunctionComponent<{
-  className?: string;
-  wrapperTag?: React$1.ComponentProps<any>;
-  wrapperClass?: string;
-  id?: string;
-  label?: string;
-  labelId?: string;
-  labelClass?: string;
-  disabled?: boolean;
-  value?: string | boolean;
-  name?: string;
-  inline?: boolean;
-  checked?: boolean;
-  validation?: string;
-  invalid?: boolean;
-  btn?: boolean;
-  btnColor?: string;
-  disableWrapper?: boolean;
-  [rest: string]: any;
-}>;
+declare const MDBProgress: React$1.FunctionComponent<ProgressProps>;
 
-declare const MDBRadio: typeof MDBCheckbox;
+interface ProgressBarProps extends React.HTMLAttributes<HTMLElement> {
+    animated?: boolean;
+    bgColor?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light' | 'dark' | 'white' | 'info' | 'transparent';
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+    striped?: boolean;
+    tag?: React.ComponentProps<any>;
+    valuemax?: string | number;
+    valuemin?: string | number;
+    valuenow?: string | number;
+    width?: string | number;
+    [rest: string]: any;
+}
 
-declare const MDBCollapse: React$1.FunctionComponent<{
-  className?: string;
-  navbar?: boolean;
-  show?: boolean | string;
-  center?: boolean;
-  style?: Record<string, unknown>;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBProgressBar: React$1.FunctionComponent<ProgressBarProps>;
 
-declare type DropdownProps = {
-    className?: string;
+declare type InputELement = Omit<React__default.InputHTMLAttributes<HTMLInputElement>, 'size' | 'value' | 'defaultValue'>;
+declare type InputProps = InputELement & {
+    contrast?: boolean;
+    defaultValue?: string;
+    label?: React__default.ReactNode;
+    labelStyle?: React__default.CSSProperties;
+    labelClass?: string;
+    labelRef?: React__default.MutableRefObject<any>;
+    inputRef?: React__default.MutableRefObject<any>;
+    readonly?: boolean;
+    size?: string;
+    value?: string;
+    wrapperTag?: React__default.ComponentProps<any>;
+    wrapperClass?: string;
+    wrapperStyle?: Record<string, unknown>;
+};
+
+declare const MDBInput: React$1.FunctionComponent<InputProps>;
+
+interface InputTemplateProps extends React__default.InputHTMLAttributes<HTMLInputElement> {
+    btn?: boolean;
+    btnColor?: string;
+    disableWrapper?: boolean;
+    inputRef?: React__default.MutableRefObject<any>;
+    label?: React__default.ReactNode;
+    labelClass?: string;
+    labelStyle?: React__default.CSSProperties;
+    inline?: boolean;
+    toggleSwitch?: boolean;
+    wrapperTag?: React__default.ComponentProps<any>;
+    wrapperClass?: string;
+    wrapperStyle?: React__default.CSSProperties;
+}
+
+declare type CheckboxProps = Omit<InputTemplateProps, 'toggleSwitch'>;
+
+declare const MDBCheckbox: React$1.FunctionComponent<CheckboxProps>;
+
+declare type RadioProps = Omit<InputTemplateProps, 'toggleSwitch'>;
+
+declare const MDBRadio: React.FunctionComponent<RadioProps>;
+
+interface CollapseProps extends React.HTMLAttributes<HTMLElement> {
+    center?: boolean;
+    collapseRef?: React.RefObject<any>;
+    navbar?: boolean;
+    show?: boolean | string;
+    tag?: React.ComponentProps<any>;
+}
+
+declare const MDBCollapse: React$1.FunctionComponent<CollapseProps>;
+
+interface DropdownProps extends React.HTMLAttributes<HTMLElement> {
+    animation?: boolean;
     group?: boolean;
     isOpen?: boolean;
     dropup?: boolean;
     dropright?: boolean;
     dropleft?: boolean;
     options?: Record<string, unknown>;
+    placement?: 'top' | 'auto' | 'auto-start' | 'auto-end' | 'bottom' | 'right' | 'left' | 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end' | 'right-start' | 'right-end' | 'left-start' | 'left-end';
     tag?: React.ComponentProps<any>;
-    [rest: string]: any;
-    animation?: boolean;
-};
+}
 
 declare const MDBDropdown: React__default.FC<DropdownProps>;
 
-declare const MDBDropdownItem: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+interface DropdownItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBDropdownMenu: React$1.FunctionComponent<{
-  className?: string;
-  style?: Record<string, any>;
-  dark?: boolean;
-  responsive?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBDropdownItem: React$1.FunctionComponent<DropdownItemProps>;
 
-declare const MDBDropdownToggle: React$1.FunctionComponent<{
-  className?: string;
-  border?: string;
-  background?: string;
-  shadow?: string;
-  alignment?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+interface DropdownMenuProps extends React.HTMLAttributes<HTMLElement> {
+    dark?: boolean;
+    responsive?: '' | 'start' | 'end' | 'sm-start' | 'md-start' | 'lg-start' | 'xl-start' | 'xxl-start' | 'sm-end' | 'md-end' | 'lg-end' | 'xl-end' | 'xxl-end';
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBDropdownLink: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBDropdownMenu: React$1.FunctionComponent<DropdownMenuProps>;
 
-declare const MDBDropdownDivider: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+interface DropdownToggleProps extends ButtonProps {
+    split?: boolean;
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBDropdownHeader: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBDropdownToggle: React$1.FunctionComponent<DropdownToggleProps>;
 
-declare const MDBPopover: React$1.FunctionComponent<{
-  btnChildren?: React$1.ReactNode;
-  btnClassName?: string;
-  tag?: React$1.ComponentProps<any>;
-  className?: string;
-  dismiss?: boolean;
-  isOpen?: boolean;
-  options?: Record<string, unknown>;
-  placement?:
-    | 'top'
-    | 'auto'
-    | 'auto-start'
-    | 'auto-end'
-    | 'bottom'
-    | 'right'
-    | 'left'
-    | 'top-start'
-    | 'top-end'
-    | 'bottom-start'
-    | 'bottom-end'
-    | 'right-start'
-    | 'right-end'
-    | 'left-start'
-    | 'left-end';
-  poperStyle?: Record<string, unknown>;
-  popperTag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+interface DropdownLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+    disableClass?: boolean;
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBPopoverBody: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBDropdownLink: React$1.FunctionComponent<DropdownLinkProps>;
 
-declare const MDBPopoverHeader: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+interface DropdownDividerProps extends React.HTMLAttributes<HTMLElement> {
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBModal: React$1.FunctionComponent<{
-  animationDirection?: string;
-  backdrop?: boolean;
-  className?: string;
-  closeOnEsc?: boolean;
-  leaveHiddenModal?: boolean;
-  appendToBody?: boolean;
-  tabIndex?: string;
-  show?: boolean;
-  setShow?: React$1.SetStateAction<any>;
-  staticBackdrop?: boolean;
-  tag?: React$1.ComponentProps<any>;
-  modalRef?: React$1.RefObject<HTMLElement>;
-  [rest: string]: any;
-}>;
+declare const MDBDropdownDivider: React$1.FunctionComponent<DropdownDividerProps>;
 
-declare const MDBModalDialog: React$1.FunctionComponent<{
-  className?: string;
-  centered?: boolean;
-  size?: string;
-  scrollable?: boolean;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+interface DropdownHeaderProps extends React.AllHTMLAttributes<HTMLHeadingElement> {
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBModalContent: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBDropdownHeader: React$1.FunctionComponent<DropdownHeaderProps>;
 
-declare const MDBModalHeader: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+interface PopoverProps extends ButtonProps {
+    btnChildren?: React.ReactNode;
+    btnClassName?: string;
+    dismiss?: boolean;
+    isOpen?: boolean;
+    options?: Record<string, unknown>;
+    placement?: 'top' | 'auto' | 'auto-start' | 'auto-end' | 'bottom' | 'right' | 'left' | 'top-start' | 'top-end' | 'bottom-start' | 'bottom-end' | 'right-start' | 'right-end' | 'left-start' | 'left-end';
+    poperStyle?: React.CSSProperties;
+    popperTag?: React.ComponentProps<any>;
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBModalTitle: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBPopover: React$1.FunctionComponent<PopoverProps>;
 
-declare const MDBModalBody: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+interface PopoverBodyProps extends React.HTMLAttributes<HTMLElement> {
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBModalFooter: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBPopoverBody: React$1.FunctionComponent<PopoverBodyProps>;
 
-declare const MDBScrollspy: React$1.FunctionComponent<{
-  className?: string;
-  offset?: number;
-  onElement?: boolean;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+interface PopoverHeaderProps extends React.AllHTMLAttributes<HTMLHeadElement> {
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBScrollspySection: React$1.FunctionComponent<{
-  className?: string;
-  customSelect?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBPopoverHeader: React$1.FunctionComponent<PopoverHeaderProps>;
 
-declare const MDBScrollspyNavList: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+interface ModalProps extends React.HTMLAttributes<HTMLElement> {
+    animationDirection?: 'top' | 'bottom' | 'right' | 'left';
+    appendToBody?: boolean;
+    backdrop?: boolean;
+    closeOnEsc?: boolean;
+    leaveHiddenModal?: boolean;
+    modalRef?: React.RefObject<HTMLElement>;
+    show?: boolean;
+    setShow?: React.SetStateAction<any>;
+    staticBackdrop?: boolean;
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBScrollspyNavItem: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBModal: React$1.FunctionComponent<ModalProps>;
 
-declare const MDBScrollspyNavLink: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  scrollElement?: HTMLElement;
-  [rest: string]: any;
-}>;
+interface ModalDialogProps extends React.HTMLAttributes<HTMLElement> {
+    centered?: boolean;
+    size?: 'sm' | 'lg' | 'xl' | 'fullscreen' | 'fullscreen-sm-down' | 'fullscreen-md-down' | 'fullscreen-lg-down' | 'fullscreen-xl-down' | 'fullscreen-xxl-down';
+    scrollable?: boolean;
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBSwitch: typeof MDBCheckbox;
+declare const MDBModalDialog: React$1.FunctionComponent<ModalDialogProps>;
 
-declare const MDBRange: React$1.FunctionComponent<{
-  className?: string;
-  id?: string;
-  label?: string;
-  labelId?: string;
-  labelClass?: string;
-  min?: string;
-  max?: string;
-  step?: string;
-  value?: number;
-  name?: string;
-  [rest: string]: any;
-}>;
+interface ModalContentProps extends React.HTMLAttributes<HTMLElement> {
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBFile: React$1.FunctionComponent<{
-  className?: string;
-  id?: string;
-  label?: string;
-  disabled?: boolean;
-  labelId?: string;
-  labelClass?: string;
-  size?: string;
-  name?: string;
-  [rest: string]: any;
-}>;
+declare const MDBModalContent: React$1.FunctionComponent<ModalContentProps>;
 
-declare const MDBInputGroup: React$1.FunctionComponent<{
-  className?: string;
-  noWrap?: boolean;
-  tag?: React$1.ComponentProps<any>;
-  size?: string;
-  [rest: string]: any;
-}>;
+interface ModalHeaderProps extends React.HTMLAttributes<HTMLElement> {
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBInputGroupText: React$1.FunctionComponent<{
-  className?: string;
-  noBorder?: boolean;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBModalHeader: React$1.FunctionComponent<ModalHeaderProps>;
 
-declare const MDBInputGroupElement: React$1.FunctionComponent<{
-  className?: string;
-  textarea?: boolean;
-  [rest: string]: any;
-}>;
+interface ModalTitleProps extends React.AllHTMLAttributes<HTMLHeadElement> {
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBRipple: React$1.FunctionComponent<{
-  className?: string;
-  rippleUnbound?: boolean;
-  rippleColor?: string;
-  rippleRadius?: number;
-  rippleDuration?: number;
-  rippleCentered?: boolean;
-  // rippleTag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBModalTitle: React$1.FunctionComponent<ModalTitleProps>;
 
-declare const MDBValidation: React$1.FunctionComponent<{
-  className?: string;
-  isValidated?: boolean;
-  [rest: string]: any;
-}>;
+interface ModalBodyProps extends React.HTMLAttributes<HTMLElement> {
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBTabs: React$1.FunctionComponent<{
-  className?: string;
-  fill?: boolean;
-  justify?: boolean;
-  pills?: boolean;
-  [rest: string]: any;
-}>;
+declare const MDBModalBody: React$1.FunctionComponent<ModalBodyProps>;
 
-declare const MDBTabsItem: React$1.FunctionComponent<{
-  className?: string;
-  [rest: string]: any;
-}>;
+interface ModalFooterProps extends React.HTMLAttributes<HTMLElement> {
+    ref?: React.ForwardedRef<HTMLAllCollection>;
+    tag?: React.ComponentProps<any>;
+}
 
-declare const MDBTabsLink: React$1.FunctionComponent<{
-  className?: string;
-  active?: boolean;
-  color?: string;
-  [rest: string]: any;
-}>;
+declare const MDBModalFooter: React$1.FunctionComponent<ModalFooterProps>;
 
-declare const MDBTabsContent: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+interface ScrollspyProps extends React.AllHTMLAttributes<HTMLAllCollection> {
+    offset?: number;
+    onElement?: boolean;
+    setActive?: React.Dispatch<React.SetStateAction<number>>;
+    tag?: React.ComponentProps<any>;
+    targets?: NodeListOf<HTMLElement> | HTMLElement[];
+    ref?: React.Ref<any>;
+}
 
-declare const MDBTabsPane: React$1.FunctionComponent<{
-  className?: string;
-  show?: boolean;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBScrollspy: React$1.FunctionComponent<ScrollspyProps>;
+
+interface ScrollspySectionProps extends React.AllHTMLAttributes<HTMLElement> {
+    customSelect?: string;
+    tag?: React.ComponentProps<any>;
+    ref?: React.Ref<any>;
+}
+
+declare const MDBScrollspySection: React$1.FunctionComponent<ScrollspySectionProps>;
+
+interface ScrollspyNavListProps extends React.AllHTMLAttributes<HTMLElement> {
+    tag?: React.ComponentProps<any>;
+    collapsible?: boolean;
+    active?: boolean;
+}
+
+declare const MDBScrollspyNavList: React$1.FunctionComponent<ScrollspyNavListProps>;
+
+interface ScrollspyNavItemProps extends React.AllHTMLAttributes<HTMLElement> {
+    tag?: React.ComponentProps<any>;
+    ref?: React.Ref<any>;
+}
+
+declare const MDBScrollspyNavItem: React$1.FunctionComponent<ScrollspyNavItemProps>;
+
+interface ScrollspyNavLinkProps extends React.AllHTMLAttributes<HTMLElement> {
+    tag?: React.ComponentProps<any>;
+    scrollElement?: HTMLElement;
+    collapsible?: boolean;
+    active?: boolean;
+    ref?: React.Ref<any>;
+}
+
+declare const MDBScrollspyNavLink: React$1.FunctionComponent<ScrollspyNavLinkProps>;
+
+declare type SwitchProps = Omit<InputTemplateProps, 'toggleSwitch'>;
+
+declare const MDBSwitch: React.FunctionComponent<SwitchProps>;
+
+interface RangeProps extends Omit<React__default.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+    disableTooltip?: boolean;
+    label?: string;
+    labelId?: string;
+    labelClass?: string;
+    step?: string;
+    inputRef?: React__default.MutableRefObject<any>;
+}
+
+declare const MDBRange: React__default.FunctionComponent<RangeProps>;
+
+interface FileProps extends Omit<React__default.InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {
+    label?: React__default.ReactNode;
+    labelClass?: string;
+    labelStyle?: React__default.CSSProperties;
+    inputRef?: React__default.MutableRefObject<any>;
+    size?: string;
+}
+
+declare const MDBFile: React$1.FunctionComponent<FileProps>;
+
+declare type InputGroupProps = Omit<React__default.DetailedHTMLProps<React__default.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'ref'> & {
+    noWrap?: boolean;
+    noBorder?: boolean;
+    ref?: React__default.ForwardedRef<HTMLAllCollection>;
+    size?: string;
+    tag?: React__default.ComponentProps<any>;
+    textTag?: React__default.ComponentProps<any>;
+    textClass?: string;
+    textBefore?: React__default.ReactNode | Array<React__default.ReactNode>;
+    textAfter?: React__default.ReactNode | Array<React__default.ReactNode>;
+    textProps?: Record<string, unknown>;
+};
+
+declare const MDBInputGroup: React$1.FunctionComponent<InputGroupProps>;
+
+interface RippleProps extends React__default.AllHTMLAttributes<HTMLElement> {
+    rippleUnbound?: boolean;
+    rippleColor?: string;
+    rippleRadius?: number;
+    rippleDuration?: number;
+    rippleCentered?: boolean;
+    ref?: React__default.ForwardedRef<any>;
+    rippleTag?: React__default.ComponentProps<any>;
+}
+
+declare const MDBRipple: React$1.FunctionComponent<RippleProps>;
+
+declare type ValidationProps = React__default.FormHTMLAttributes<HTMLFormElement> & {
+    formRef?: React__default.MutableRefObject<any>;
+    isValidated?: boolean;
+};
+
+declare const MDBValidation: React$1.FunctionComponent<ValidationProps>;
+
+interface TabsProps extends React.AllHTMLAttributes<HTMLUListElement> {
+    fill?: boolean;
+    justify?: boolean;
+    pills?: boolean;
+    ref?: React.Ref<any>;
+}
+
+declare const MDBTabs: React$1.FunctionComponent<TabsProps>;
+
+interface TabsItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
+    ref?: React.Ref<any>;
+}
+
+declare const MDBTabsItem: React$1.FunctionComponent<TabsItemProps>;
+
+interface TabsLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+    active?: boolean;
+    color?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'info' | 'light' | 'dark';
+    ref?: React.Ref<any>;
+}
+
+declare const MDBTabsLink: React$1.FunctionComponent<TabsLinkProps>;
+
+interface TabsContentProps extends React.AllHTMLAttributes<HTMLElement> {
+    tag?: React.ComponentProps<any>;
+    ref?: React.Ref<any>;
+}
+
+declare const MDBTabsContent: React$1.FunctionComponent<TabsContentProps>;
+
+interface TabsPaneProps extends React.AllHTMLAttributes<HTMLElement> {
+    show?: boolean;
+    tag?: React.ComponentProps<any>;
+    ref?: React.Ref<any>;
+}
+
+declare const MDBTabsPane: React$1.FunctionComponent<TabsPaneProps>;
 
 declare const MDBCarousel: React$1.FunctionComponent<{
   asyncData?: any;
@@ -865,23 +827,56 @@ declare const MDBCarouselItem: React$1.FunctionComponent<{
   [rest: string]: any;
 }>;
 
-declare const MDBAccordion: React$1.FunctionComponent<{
-  alwaysOpen?: boolean;
-  className?: string;
-  flush?: boolean;
-  initialActive?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+interface AccordionProps extends React__default.HTMLAttributes<HTMLElement> {
+    alwaysOpen?: boolean;
+    flush?: boolean;
+    initialActive?: number;
+    ref?: React__default.ForwardedRef<HTMLAllCollection>;
+    tag?: React__default.ComponentProps<any>;
+}
 
-declare const MDBAccordionItem: React$1.FunctionComponent<{
-  className?: string;
-  bodyClassName?: string;
-  headerClassName?: string;
-  collapseId: string;
-  headerTitle?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBAccordion: React$1.FunctionComponent<AccordionProps>;
 
-export { MDBAccordion, MDBAccordionItem, MDBBadge, MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBBtnGroup, MDBCard, MDBCardBody, MDBCardFooter, MDBCardGroup, MDBCardHeader, MDBCardImage, MDBCardLink, MDBCardOverlay, MDBCardSubTitle, MDBCardText, MDBCardTitle, MDBCarousel, MDBCarouselCaption, MDBCarouselElement, MDBCarouselInner, MDBCarouselItem, MDBCheckbox, MDBCol, MDBCollapse, MDBContainer, MDBDropdown, MDBDropdownDivider, MDBDropdownHeader, MDBDropdownItem, MDBDropdownLink, MDBDropdownMenu, MDBDropdownToggle, MDBFile, MDBFooter, MDBIcon, MDBInput, MDBInputGroup, MDBInputGroupElement, MDBInputGroupText, MDBListGroup, MDBListGroupItem, MDBModal, MDBModalBody, MDBModalContent, MDBModalDialog, MDBModalFooter, MDBModalHeader, MDBModalTitle, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav, MDBNavbarToggler, MDBPagination, MDBPaginationItem, MDBPaginationLink, MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBProgress, MDBProgressBar, MDBRadio, MDBRange, MDBRipple, MDBRow, MDBScrollspy, MDBScrollspyNavItem, MDBScrollspyNavLink, MDBScrollspyNavList, MDBScrollspySection, MDBSpinner, MDBSwitch, MDBTable, MDBTableBody, MDBTableHead, MDBTabs, MDBTabsContent, MDBTabsItem, MDBTabsLink, MDBTabsPane, MDBTooltip, MDBTypography, MDBValidation };
+interface AccordionItemProps extends React__default.HTMLAttributes<HTMLElement> {
+    bodyClassName?: string;
+    bodyStyle?: React__default.CSSProperties;
+    collapseId: number;
+    headerClassName?: string;
+    headerStyle?: React__default.CSSProperties;
+    headerTitle?: React__default.ReactNode;
+    ref?: React__default.ForwardedRef<HTMLAllCollection>;
+    tag?: React__default.ComponentProps<any>;
+}
+
+declare const MDBAccordionItem: React$1.FunctionComponent<AccordionItemProps>;
+
+declare type TextAreaElement = Omit<React__default.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size' | 'value' | 'defaultValue'>;
+declare type TextAreaProps = TextAreaElement & {
+    contrast?: boolean;
+    defaultValue?: string;
+    label?: React__default.ReactNode;
+    labelStyle?: React__default.CSSProperties;
+    labelClass?: string;
+    labelRef?: React__default.MutableRefObject<any>;
+    inputRef?: React__default.MutableRefObject<any>;
+    readonly?: boolean;
+    size?: string;
+    textarea?: boolean;
+    value?: string;
+    wrapperTag?: React__default.ComponentProps<any>;
+    wrapperClass?: string;
+    wrapperStyle?: Record<string, unknown>;
+};
+
+declare const MDBTextArea: React$1.FunctionComponent<TextAreaProps>;
+
+declare type ValidationItemProps = React__default.AllHTMLAttributes<HTMLElement> & {
+    tag?: React__default.ComponentProps<any>;
+    invalid?: boolean;
+    feedback?: React__default.ReactNode;
+    tooltip?: boolean;
+};
+
+declare const MDBValidationItem: React$1.FunctionComponent<ValidationItemProps>;
+
+export { MDBAccordion, MDBAccordionItem, MDBBadge, MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBBtnGroup, MDBCard, MDBCardBody, MDBCardFooter, MDBCardGroup, MDBCardHeader, MDBCardImage, MDBCardLink, MDBCardOverlay, MDBCardSubTitle, MDBCardText, MDBCardTitle, MDBCarousel, MDBCarouselCaption, MDBCarouselElement, MDBCarouselInner, MDBCarouselItem, MDBCheckbox, MDBCol, MDBCollapse, MDBContainer, MDBDropdown, MDBDropdownDivider, MDBDropdownHeader, MDBDropdownItem, MDBDropdownLink, MDBDropdownMenu, MDBDropdownToggle, MDBFile, MDBFooter, MDBIcon, MDBInput, MDBInputGroup, MDBListGroup, MDBListGroupItem, MDBModal, MDBModalBody, MDBModalContent, MDBModalDialog, MDBModalFooter, MDBModalHeader, MDBModalTitle, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav, MDBNavbarToggler, MDBPagination, MDBPaginationItem, MDBPaginationLink, MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBProgress, MDBProgressBar, MDBRadio, MDBRange, MDBRipple, MDBRow, MDBScrollspy, MDBScrollspyNavItem, MDBScrollspyNavLink, MDBScrollspyNavList, MDBScrollspySection, MDBSpinner, MDBSwitch, MDBTable, MDBTableBody, MDBTableHead, MDBTabs, MDBTabsContent, MDBTabsItem, MDBTabsLink, MDBTabsPane, MDBTextArea, MDBTooltip, MDBTypography, MDBValidation, MDBValidationItem };

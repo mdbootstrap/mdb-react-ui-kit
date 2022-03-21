@@ -1,11 +1,6 @@
 import * as React from 'react';
+import { TableHeadProps } from './types';
 
-declare const MDBTableHead: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ElementType;
-  dark?: boolean;
-  light?: boolean;
-  [rest: string]: any;
-}>;
+declare const MDBTableHead: React.FunctionComponent<TableHeadProps>;
 
 export default MDBTableHead;

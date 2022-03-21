@@ -1,7 +1,5 @@
-type PopoverHeaderProps = {
-  className?: string;
+interface PopoverHeaderProps extends React.AllHTMLAttributes<HTMLHeadElement> {
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+}
 
 export { PopoverHeaderProps };

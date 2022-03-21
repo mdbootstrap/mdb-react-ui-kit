@@ -1,9 +1,6 @@
 import * as React from 'react';
+import { CardTextProps } from './types';
 
-declare const MDBCardText: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBCardText: React.FunctionComponent<CardTextProps>;
 
 export default MDBCardText;

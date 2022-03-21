@@ -1,9 +1,6 @@
 import * as React from 'react';
+import { TabsContentProps } from './types';
 
-declare const MDBTabsContent: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBTabsContent: React.FunctionComponent<TabsContentProps>;
 
 export default MDBTabsContent;

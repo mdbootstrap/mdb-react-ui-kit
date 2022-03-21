@@ -1,9 +1,6 @@
 import * as React from 'react';
+import { CardBodyProps } from './types';
 
-declare const MDBCardBody: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBCardBody: React.FunctionComponent<CardBodyProps>;
 
 export default MDBCardBody;

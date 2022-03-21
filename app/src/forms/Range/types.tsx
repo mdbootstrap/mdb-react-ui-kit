@@ -1,17 +1,12 @@
 import React from 'react';
 
-type RangeProps = {
-  className?: string;
-  id?: string;
+interface RangeProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'> {
+  disableTooltip?: boolean;
   label?: string;
   labelId?: string;
   labelClass?: string;
-  min?: string;
-  max?: string;
   step?: string;
-  value?: number;
-  name?: string;
-  [rest: string]: any;
-};
+  inputRef?: React.MutableRefObject<any>;
+}
 
 export { RangeProps };

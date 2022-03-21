@@ -1,29 +1,21 @@
 import React from 'react';
 
-type InputProps = {
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  wrapperTag?: React.ComponentProps<any>;
-  id?: string;
-  label?: string;
-  labelId?: string;
+type InputELement = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'value' | 'defaultValue'>;
+
+type InputProps = InputELement & {
+  contrast?: boolean;
+  defaultValue?: string;
+  label?: React.ReactNode;
+  labelStyle?: React.CSSProperties;
   labelClass?: string;
+  labelRef?: React.MutableRefObject<any>;
+  inputRef?: React.MutableRefObject<any>;
+  readonly?: boolean;
+  size?: string;
+  value?: string;
+  wrapperTag?: React.ComponentProps<any>;
   wrapperClass?: string;
   wrapperStyle?: Record<string, unknown>;
-  labelStyle?: React.CSSProperties;
-  disabled?: boolean;
-  size?: string;
-  readonly?: boolean;
-  contrast?: boolean;
-  value?: string;
-  defaultValue?: string;
-  name?: string;
-  validation?: string;
-  invalid?: boolean;
-  validationTooltip?: boolean;
-  labelRef?: React.RefObject<HTMLLabelElement>;
-  textarea?: boolean;
-  [rest: string]: any;
 };
 
 export { InputProps };

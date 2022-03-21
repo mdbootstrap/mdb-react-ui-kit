@@ -1,9 +1,6 @@
 import * as React from 'react';
+import { DropdownHeaderProps } from './types';
 
-declare const MDBDropdownHeader: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBDropdownHeader: React.FunctionComponent<DropdownHeaderProps>;
 
 export default MDBDropdownHeader;

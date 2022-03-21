@@ -1,11 +1,9 @@
-type NavbarNavProps = {
-  children?: React.ReactNode;
-  className?: string;
+interface NavbarNavProps extends React.AllHTMLAttributes<HTMLElement> {
   tag?: React.ComponentProps<any>;
   right?: boolean;
   fullWidth?: boolean;
   left?: boolean;
-  [rest: string]: any;
-};
+  ref?: React.Ref<any>;
+}
 
 export { NavbarNavProps };

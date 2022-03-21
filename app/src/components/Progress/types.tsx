@@ -1,9 +1,7 @@
-type ProgressProps = {
-  className?: string;
-  tag?: React.ComponentProps<any>;
+interface ProgressProps extends React.HTMLAttributes<HTMLElement> {
   height?: number | string;
-  style?: Record<string, unknown>;
-  [rest: string]: any;
-};
+  ref?: React.ForwardedRef<HTMLAllCollection>;
+  tag?: React.ComponentProps<any>;
+}
 
 export { ProgressProps };

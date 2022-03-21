@@ -1,8 +1,6 @@
-type PaginationLinkProps = {
-  children?: React.ReactNode;
-  className?: string;
+interface PaginationLinkProps extends React.AllHTMLAttributes<HTMLElement> {
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+  ref?: React.Ref<any>;
+}
 
 export { PaginationLinkProps };

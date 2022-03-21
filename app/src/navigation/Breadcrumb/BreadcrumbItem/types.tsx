@@ -1,11 +1,8 @@
-import React from 'react';
-
-type BreadcrumbItemProp = {
+interface BreadcrumbItemProp extends React.AllHTMLAttributes<HTMLElement> {
   active?: boolean;
-  className?: string;
   tag?: React.ComponentProps<any>;
   current?: 'page' | 'step' | 'location';
-  [rest: string]: any;
-};
+  ref?: React.Ref<any>;
+}
 
 export { BreadcrumbItemProp };

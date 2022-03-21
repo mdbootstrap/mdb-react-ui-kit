@@ -1,11 +1,6 @@
 import * as React from 'react';
+import { CardHeaderProps } from './types';
 
-declare const MDBCardHeader: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  border?: string;
-  background?: string;
-  [rest: string]: any;
-}>;
+declare const MDBCardHeader: React.FunctionComponent<CardHeaderProps>;
 
 export default MDBCardHeader;

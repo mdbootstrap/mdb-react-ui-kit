@@ -1,99 +1,88 @@
 import clsx from 'clsx';
-import React, { useState } from 'react';
+import React, { useState, TouchEvent, ChangeEvent } from 'react';
+import RangeThumb from './RangeThumb/RangeThumb';
 import type { RangeProps } from './types';
 
-const MDBRange: React.FC<RangeProps> = React.forwardRef<HTMLAllCollection, RangeProps>(
-  (
-    {
-      className,
-      tag: Tag,
-      labelId,
-      max,
-      min,
-      onChange,
-      onMouseDown,
-      onMouseUp,
-      onTouchStart,
-      onTouchEnd,
-      labelClass,
-      value,
-      label,
-      id,
-      ...props
-    },
-    ref
-  ) => {
-    const [showThumb, setShowThumb] = useState(false);
-    const [inputValue, setInputValue] = useState(value ? value : 0);
-    const [thumbPosition, setThumbPosition] = useState(
-      ((value ? value : 0 - Number(min)) * 100) / (Number(max) - Number(min))
-    );
+const MDBRange: React.FC<RangeProps> = ({
+  className,
+  defaultValue,
+  disableTooltip,
+  labelId,
+  max,
+  min,
+  onMouseDown,
+  onMouseUp,
+  onTouchStart,
+  onTouchEnd,
+  onChange,
+  labelClass,
+  value,
+  label,
+  id,
+  inputRef,
+  ...props
+}) => {
+  const [inputValue, setInputValue] = useState(defaultValue);
+  const [showThumb, setShowThumb] = useState(false);
 
-    const inputClasses = clsx('form-range', className);
-    const labelClasses = clsx('form-label', labelClass);
-    const thumbClasses = clsx('thumb', showThumb && 'thumb-active');
+  const inputClasses = clsx('form-range', className);
+  const labelClasses = clsx('form-label', labelClass);
 
-    const handleChange = (e: any) => {
-      setInputValue(e.target.value);
+  const handleMouseDown = (e: any) => {
+    setShowThumb(true);
+    onMouseDown && onMouseDown(e);
+  };
 
-      setThumbPosition(((e.target.value - Number(min)) * 100) / (Number(max) - Number(min)));
+  const handleMouseUp = (e: any) => {
+    setShowThumb(false);
+    onMouseUp && onMouseUp(e);
+  };
 
-      onChange && onChange(e);
-    };
+  const handleTouchStart = (e: TouchEvent<HTMLInputElement>) => {
+    setShowThumb(true);
+    onTouchStart && onTouchStart(e);
+  };
 
-    const handleMouseDown = (e: MouseEvent) => {
-      setShowThumb(true);
-      onMouseDown && onMouseDown(e);
-    };
+  const handleTouchEnd = (e: TouchEvent<HTMLInputElement>) => {
+    setShowThumb(false);
+    onTouchEnd && onTouchEnd(e);
+  };
 
-    const handleMouseUp = (e: MouseEvent) => {
-      setShowThumb(false);
-      onMouseUp && onMouseUp(e);
-    };
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+    onChange && onChange(e);
+  };
 
-    const handleTouchStart = (e: MouseEvent) => {
-      setShowThumb(true);
-      onTouchStart && onTouchStart(e);
-    };
+  return (
+    <>
+      {label && (
+        <label className={labelClasses} id={labelId} htmlFor={id}>
+          {label}
+        </label>
+      )}
 
-    const handleTouchEnd = (e: MouseEvent) => {
-      setShowThumb(false);
-      onTouchEnd && onTouchEnd(e);
-    };
+      <div className='range'>
+        <input
+          type='range'
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onChange={handleChange}
+          className={inputClasses}
+          value={value ? value : inputValue}
+          id={id}
+          min={min}
+          max={max}
+          ref={inputRef}
+          {...props}
+        />
+        {!disableTooltip && <RangeThumb value={value ? value : inputValue} showThumb={showThumb} min={min} max={max} />}
+      </div>
+    </>
+  );
+};
 
-    return (
-      <>
-        {label && (
-          <label className={labelClasses} id={labelId} htmlFor={id}>
-            {label}
-          </label>
-        )}
-
-        <div className='range'>
-          <Tag
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-            onTouchStart={handleTouchStart}
-            onTouchEnd={handleTouchEnd}
-            onChange={handleChange}
-            className={inputClasses}
-            value={value}
-            type='range'
-            id={id}
-            ref={ref}
-            min={min}
-            max={max}
-            {...props}
-          />
-          <span className={thumbClasses} style={{ left: `calc(${thumbPosition}% + (${8 - thumbPosition * 0.15}px))` }}>
-            <span className='thumb-value'>{inputValue}</span>
-          </span>
-        </div>
-      </>
-    );
-  }
-);
-
-MDBRange.defaultProps = { tag: 'input', min: '0', max: '100' };
+MDBRange.defaultProps = { defaultValue: 0 };
 
 export default MDBRange;

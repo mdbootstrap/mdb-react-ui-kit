@@ -1,13 +1,6 @@
 import * as React from 'react';
+import { NavbarLinkProps } from './types';
 
-declare const MDBNavbarLink: React.FunctionComponent<{
-  active?: boolean;
-  children?: React.ReactNode;
-  className?: string;
-  disabled?: boolean;
-  tag?: React.ElementType;
-  [rest: string]: any;
-  link?: boolean;
-}>;
+declare const MDBNavbarLink: React.FunctionComponent<NavbarLinkProps>;
 
 export default MDBNavbarLink;

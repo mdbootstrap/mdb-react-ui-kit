@@ -1,12 +1,6 @@
 import * as React from 'react';
+import { PaginationItemProps } from './types';
 
-declare const MDBPaginationItem: React.FunctionComponent<{
-  children?: React.ReactNode;
-  className?: string;
-  active?: boolean;
-  disabled?: boolean;
-  tag?: React.ReactElement;
-  [rest: string]: any;
-}>;
+declare const MDBPaginationItem: React.FunctionComponent<PaginationItemProps>;
 
 export default MDBPaginationItem;

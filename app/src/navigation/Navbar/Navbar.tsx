@@ -49,7 +49,7 @@ const MDBNavbar: React.FC<NavbarProps> = React.forwardRef<HTMLAllCollection, Nav
     );
 
     const handleScroll = useCallback(() => {
-      if (window.pageYOffset > scrollingNavbarOffset) {
+      if (scrollingNavbarOffset && window.pageYOffset > scrollingNavbarOffset) {
         setCollapsed(true);
       } else {
         setCollapsed(false);

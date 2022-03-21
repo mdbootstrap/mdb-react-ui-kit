@@ -19,6 +19,6 @@ const MDBAccordion: React.FC<AccordionProps> = React.forwardRef<HTMLAllCollectio
   }
 );
 
-MDBAccordion.defaultProps = { tag: 'div', initialActive: '' };
+MDBAccordion.defaultProps = { tag: 'div', initialActive: 0 };
 
 export default MDBAccordion;

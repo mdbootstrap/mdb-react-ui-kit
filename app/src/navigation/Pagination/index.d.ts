@@ -1,15 +1,6 @@
 import * as React from 'react';
+import { PaginationProps } from './types';
 
-declare const MDBPagination: React.FunctionComponent<{
-  children?: React.ReactNode;
-  className?: string;
-  center?: boolean;
-  end?: boolean;
-  start?: boolean;
-  size?: string;
-  tag?: React.ComponentProps<any>;
-  circle?: boolean;
-  [rest: string]: any;
-}>;
+declare const MDBPagination: React.FunctionComponent<PaginationProps>;
 
 export default MDBPagination;

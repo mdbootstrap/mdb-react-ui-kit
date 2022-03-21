@@ -4,26 +4,14 @@ import type { TypographyProps } from './types';
 
 const MDBTypography: React.FC<TypographyProps> = React.forwardRef<HTMLAllCollection, TypographyProps>(
   (
-    {
-      className,
-      children,
-      tag: Tag,
-      variant,
-      colorText,
-      blockquote,
-      note,
-      noteColor,
-      listUnStyled,
-      listInLine,
-      ...props
-    },
+    { className, children, tag: Tag, variant, color, blockquote, note, noteColor, listUnStyled, listInLine, ...props },
     ref
   ) => {
     const classes = clsx(
       variant && variant,
       blockquote && 'blockquote',
       note && 'note',
-      colorText && `text-${colorText}`,
+      color && `text-${color}`,
       noteColor && `note-${noteColor}`,
       listUnStyled && 'list-unstyled',
       listInLine && 'list-inline',

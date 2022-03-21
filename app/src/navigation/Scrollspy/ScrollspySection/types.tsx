@@ -1,10 +1,7 @@
-import React from 'react';
-
-type ScrollspySectionProps = {
-  className?: string;
+interface ScrollspySectionProps extends React.AllHTMLAttributes<HTMLElement> {
   customSelect?: string;
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+  ref?: React.Ref<any>;
+}
 
 export { ScrollspySectionProps };

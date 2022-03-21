@@ -1,11 +1,6 @@
 import * as React from 'react';
+import { ProgressProps } from './types';
 
-declare const MDBProgress: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  height?: number | string;
-  style?: Record<string, unknown>;
-  [rest: string]: any;
-}>;
+declare const MDBProgress: React.FunctionComponent<ProgressProps>;
 
 export default MDBProgress;

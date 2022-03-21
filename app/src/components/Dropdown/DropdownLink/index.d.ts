@@ -1,9 +1,6 @@
 import * as React from 'react';
+import { DropdownLinkProps } from './types';
 
-declare const MDBDropdownLink: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBDropdownLink: React.FunctionComponent<DropdownLinkProps>;
 
 export default MDBDropdownLink;

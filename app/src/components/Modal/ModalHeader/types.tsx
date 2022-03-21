@@ -1,7 +1,6 @@
-type ModalHeaderProps = {
-  className?: string;
+interface ModalHeaderProps extends React.HTMLAttributes<HTMLElement> {
+  ref?: React.ForwardedRef<HTMLAllCollection>;
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+}
 
 export { ModalHeaderProps };

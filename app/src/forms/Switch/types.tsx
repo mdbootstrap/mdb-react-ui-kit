@@ -1,6 +1,5 @@
-import React from 'react';
-import { CheckboxProps } from '../Checkbox/types';
+import { InputTemplateProps } from '../InputTemplate/types';
 
-type SwitchProps = CheckboxProps;
+type SwitchProps = Omit<InputTemplateProps, 'toggleSwitch'>;
 
 export { SwitchProps };

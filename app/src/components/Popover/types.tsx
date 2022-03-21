@@ -1,10 +1,10 @@
-type PopoverProps = {
+import { ButtonProps } from '../Button/types';
+
+interface PopoverProps extends ButtonProps {
   btnChildren?: React.ReactNode;
   btnClassName?: string;
-  className?: string;
   dismiss?: boolean;
   isOpen?: boolean;
-  tag?: React.ComponentProps<any>;
   options?: Record<string, unknown>;
   placement?:
     | 'top'
@@ -22,9 +22,9 @@ type PopoverProps = {
     | 'right-end'
     | 'left-start'
     | 'left-end';
-  poperStyle?: Record<string, unknown>;
+  poperStyle?: React.CSSProperties;
   popperTag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+  tag?: React.ComponentProps<any>;
+}
 
 export { PopoverProps };

@@ -1,7 +1,6 @@
-type CardTitleProps = {
-  className?: string;
+interface CardTitleProps extends React.AllHTMLAttributes<HTMLElement> {
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+  ref?: React.ForwardedRef<HTMLAllCollection>;
+}
 
 export { CardTitleProps };

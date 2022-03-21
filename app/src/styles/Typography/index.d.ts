@@ -1,16 +1,6 @@
 import * as React from 'react';
+import { TypographyProps } from './types';
 
-declare const MDBTypography: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  variant?: string;
-  blockquote?: boolean;
-  note?: boolean;
-  noteColor?: string;
-  listUnStyled?: boolean;
-  listInLine?: boolean;
-  colorText?: string;
-  [rest: string]: any;
-}>;
+declare const MDBTypography: React.FunctionComponent<TypographyProps>;
 
 export default MDBTypography;

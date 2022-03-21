@@ -1,15 +1,29 @@
-type NavbarProps = {
-  children?: React.ReactNode;
-  className?: string;
+interface NavbarProps extends Omit<React.AllHTMLAttributes<HTMLElement>, 'scrolling'> {
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
   light?: boolean;
   dark?: boolean;
-  color?: string;
+  color?:
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'info'
+    | 'warning'
+    | 'danger'
+    | 'light'
+    | 'dark'
+    | 'body'
+    | 'muted'
+    | 'white'
+    | 'black-50'
+    | 'white-50';
   expand?: string | boolean;
-  bgColor?: string;
+  bgColor?: 'white' | 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark';
   fixed?: string;
   sticky?: boolean;
-};
+  transparent?: boolean;
+  scrollingNavbarOffset?: number;
+  scrolling?: boolean;
+  ref?: React.Ref<any>;
+}
 
 export { NavbarProps };

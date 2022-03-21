@@ -1,9 +1,6 @@
 import * as React from 'react';
+import { DropdownItemProps } from './types';
 
-declare const MDBDropdownItem: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBDropdownItem: React.FunctionComponent<DropdownItemProps>;
 
 export default MDBDropdownItem;

@@ -1,8 +1,6 @@
-type NavbarBrandProps = {
-  children?: React.ReactNode;
-  className?: string;
+interface NavbarBrandProps extends React.AllHTMLAttributes<HTMLElement> {
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+  ref?: React.Ref<any>;
+}
 
 export { NavbarBrandProps };

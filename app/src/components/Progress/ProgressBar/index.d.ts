@@ -1,16 +1,6 @@
 import * as React from 'react';
+import { ProgressBarProps } from './types';
 
-declare const MDBProgressBar: React.FunctionComponent<{
-  animated?: boolean;
-  bgColor?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark';
-  className?: string;
-  striped?: boolean;
-  style?: Record<string, unknown>;
-  tag?: React.ComponentProps<any>;
-  valuemax?: string | number;
-  valuemin?: string | number;
-  width?: string | number;
-  [rest: string]: any;
-}>;
+declare const MDBProgressBar: React.FunctionComponent<ProgressBarProps>;
 
 export default MDBProgressBar;

@@ -12,7 +12,7 @@ const MDBDropdownItem: React.FC<DropdownItemProps> = ({
 }): JSX.Element => {
   const { activeIndex, handleClose } = useContext(DropdownContext);
 
-  const handleClickItem = (e: React.MouseEvent) => {
+  const handleClickItem = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     handleClose();
     onClick && onClick(e);
   };

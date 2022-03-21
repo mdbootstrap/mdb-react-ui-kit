@@ -1,10 +1,7 @@
-import React from 'react';
-
-type TabsLinkProps = {
-  className?: string;
+interface TabsLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   active?: boolean;
-  color?: string;
-  [rest: string]: any;
-};
+  color?: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'info' | 'light' | 'dark';
+  ref?: React.Ref<any>;
+}
 
 export { TabsLinkProps };

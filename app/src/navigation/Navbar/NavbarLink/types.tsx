@@ -1,11 +1,8 @@
-type NavbarLinkProps = {
-  children?: React.ReactNode;
-  className?: string;
+interface NavbarLinkProps extends React.AllHTMLAttributes<HTMLElement> {
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
   active?: boolean;
   disabled?: boolean;
-  link?: boolean;
-};
+  ref?: React.Ref<any>;
+}
 
 export { NavbarLinkProps };

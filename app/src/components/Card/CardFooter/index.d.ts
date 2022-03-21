@@ -1,11 +1,6 @@
 import * as React from 'react';
+import { CardFooterProps } from './types';
 
-declare const MDBCardFooter: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  border?: string;
-  background?: string;
-  [rest: string]: any;
-}>;
+declare const MDBCardFooter: React.FunctionComponent<CardFooterProps>;
 
 export default MDBCardFooter;

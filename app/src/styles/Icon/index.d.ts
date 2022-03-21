@@ -1,26 +1,6 @@
 import * as React from 'react';
+import { IconProps } from './types';
 
-declare const MDBIcon: React.FunctionComponent<{
-  className?: string;
-  fab?: boolean;
-  far?: boolean;
-  fas?: boolean;
-  fal?: boolean;
-  flag?: string;
-  size?: string;
-  color?: string;
-  icon?: string;
-  border?: boolean;
-  rotate?: string;
-  pull?: string;
-  spin?: boolean;
-  list?: boolean;
-  fixed?: boolean;
-  pulse?: boolean;
-  flip?: string;
-  inverse?: boolean;
-  stack?: string;
-  [rest: string]: any;
-}>;
+declare const MDBIcon: React.FunctionComponent<IconProps>;
 
 export default MDBIcon;

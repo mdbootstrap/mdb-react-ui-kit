@@ -1,6 +1,3 @@
-type CardLinkProps = {
-  className?: string;
-  [rest: string]: any;
-};
+type CardLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
 export { CardLinkProps };

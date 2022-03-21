@@ -17,19 +17,19 @@ const MDBScrollspy: React.FC<ScrollspyProps> = React.forwardRef<HTMLAllCollectio
           const lastIndex = targets.length - 1;
 
           if (scrollTop < targets[0].offsetTop) {
-            setActive(0);
+            setActive?.(0);
           }
 
           targets.forEach((target: any, i: number) => {
             const nextTarget = targets[i + 1];
 
             if (scrollTop > target.offsetTop - offset && scrollTop < nextTarget?.offsetTop - offset) {
-              setActive(i + 1);
+              setActive?.(i + 1);
             }
           });
 
           if (scrollTop > targets[lastIndex].offsetTop - offset) {
-            setActive(lastIndex + 1);
+            setActive?.(lastIndex + 1);
           }
         }
       },

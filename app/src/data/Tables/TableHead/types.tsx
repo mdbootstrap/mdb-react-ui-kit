@@ -1,11 +1,8 @@
-import React from 'react';
-
-type TableHeadProps = {
-  className?: string;
+interface TableHeadProps extends React.AllHTMLAttributes<HTMLElement> {
   dark?: boolean;
   light?: boolean;
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+  ref?: React.Ref<any>;
+}
 
 export { TableHeadProps };

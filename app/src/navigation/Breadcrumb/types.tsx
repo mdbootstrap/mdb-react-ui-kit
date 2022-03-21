@@ -1,11 +1,22 @@
-type BreadcrumbProps = {
+interface BreadcrumbProps extends React.AllHTMLAttributes<HTMLElement> {
   bold?: boolean;
-  children?: React.ReactNode;
-  className?: string;
-  color?: string;
   tag?: React.ComponentProps<any>;
+  color?:
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'info'
+    | 'warning'
+    | 'danger'
+    | 'light'
+    | 'dark'
+    | 'body'
+    | 'muted'
+    | 'white'
+    | 'black-50'
+    | 'white-50';
   uppercase?: boolean;
-  [rest: string]: any;
-};
+  ref?: React.Ref<any>;
+}
 
 export { BreadcrumbProps };

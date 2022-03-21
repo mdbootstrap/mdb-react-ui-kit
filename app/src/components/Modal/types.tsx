@@ -1,17 +1,14 @@
-type ModalProps = {
-  animationDirection?: string;
+interface ModalProps extends React.HTMLAttributes<HTMLElement> {
+  animationDirection?: 'top' | 'bottom' | 'right' | 'left';
+  appendToBody?: boolean;
   backdrop?: boolean;
-  className?: string;
   closeOnEsc?: boolean;
   leaveHiddenModal?: boolean;
-  appendToBody?: boolean;
-  tabIndex?: string;
+  modalRef?: React.RefObject<HTMLElement>;
   show?: boolean;
   setShow?: React.SetStateAction<any>;
   staticBackdrop?: boolean;
   tag?: React.ComponentProps<any>;
-  modalRef?: React.RefObject<HTMLElement>;
-  [rest: string]: any;
-};
+}
 
 export { ModalProps };

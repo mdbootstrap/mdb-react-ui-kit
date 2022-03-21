@@ -1,7 +1,6 @@
-type ModalTitleProps = {
-  className?: string;
+interface ModalTitleProps extends React.AllHTMLAttributes<HTMLHeadElement> {
+  ref?: React.ForwardedRef<HTMLAllCollection>;
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+}
 
 export { ModalTitleProps };

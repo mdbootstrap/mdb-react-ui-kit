@@ -1,17 +1,17 @@
 import React from 'react';
 
 interface AccordionProps {
-  activeItem: string | undefined;
+  activeItem?: number;
   setActiveItem: React.SetStateAction<any>;
-  alwaysOpen: boolean | undefined;
-  initialActive: string | undefined;
+  alwaysOpen?: boolean;
+  initialActive?: number;
 }
 
 const AccordionContext = React.createContext<AccordionProps>({
-  activeItem: '',
+  activeItem: 0,
   setActiveItem: null,
   alwaysOpen: false,
-  initialActive: '',
+  initialActive: 0,
 });
 
 export { AccordionContext };

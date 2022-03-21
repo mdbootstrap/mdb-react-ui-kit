@@ -1,7 +1,6 @@
-type CardTextProps = {
-  className?: string;
-  [rest: string]: any;
+interface CardTextProps extends React.AllHTMLAttributes<HTMLElement> {
   tag?: React.ComponentProps<any>;
-};
+  ref?: React.ForwardedRef<HTMLAllCollection>;
+}
 
 export { CardTextProps };

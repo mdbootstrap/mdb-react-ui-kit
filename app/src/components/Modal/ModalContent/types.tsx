@@ -1,7 +1,6 @@
-type ModalContentProps = {
-  className?: string;
+interface ModalContentProps extends React.HTMLAttributes<HTMLElement> {
+  ref?: React.ForwardedRef<HTMLAllCollection>;
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+}
 
 export { ModalContentProps };

@@ -1,13 +1,6 @@
 import * as React from 'react';
+import { BadgeProps } from './types';
 
-declare const MDBBadge: React.FunctionComponent<{
-  className?: string;
-  pill?: boolean;
-  dot?: boolean;
-  notification?: boolean;
-  color?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBBadge: React.FunctionComponent<BadgeProps>;
 
 export default MDBBadge;

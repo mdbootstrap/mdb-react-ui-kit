@@ -1,7 +1,5 @@
-type DropdownDividerProps = {
-  className?: string;
+interface DropdownDividerProps extends React.HTMLAttributes<HTMLElement> {
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+}
 
 export { DropdownDividerProps };

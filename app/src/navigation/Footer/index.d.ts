@@ -1,25 +1,6 @@
 import * as React from 'react';
+import { FooterProps } from './types';
 
-declare const MDBFooter: React.FunctionComponent<{
-  children?: React.ReactNode;
-  className?: string;
-  color?:
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'info'
-    | 'warning'
-    | 'danger'
-    | 'light'
-    | 'dark'
-    | 'body'
-    | 'muted'
-    | 'white'
-    | 'black-50'
-    | 'white-50';
-  tag?: 'footer' | 'div';
-  bgColor?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark';
-  [rest: string]: any;
-}>;
+declare const MDBFooter: React.FunctionComponent<FooterProps>;
 
 export default MDBFooter;

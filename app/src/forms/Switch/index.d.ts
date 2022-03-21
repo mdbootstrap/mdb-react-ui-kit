@@ -1,5 +1,5 @@
-import MDBCheckbox from '../Checkbox/index';
+import { SwitchProps } from './types';
 
-declare const MDBSwitch: typeof MDBCheckbox;
+declare const MDBSwitch: React.FunctionComponent<SwitchProps>;
 
 export default MDBSwitch;

@@ -1,9 +1,6 @@
 import * as React from 'react';
+import { ModalTitleProps } from './types';
 
-declare const MDBModalTitle: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBModalTitle: React.FunctionComponent<ModalTitleProps>;
 
 export default MDBModalTitle;

@@ -1,11 +1,6 @@
 import * as React from 'react';
+import { TabsProps } from './types';
 
-declare const MDBTabs: React.FunctionComponent<{
-  className?: string;
-  fill?: boolean;
-  justify?: boolean;
-  pills?: boolean;
-  [rest: string]: any;
-}>;
+declare const MDBTabs: React.FunctionComponent<TabsProps>;
 
 export default MDBTabs;

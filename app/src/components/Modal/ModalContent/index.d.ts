@@ -1,9 +1,6 @@
 import * as React from 'react';
+import { ModalContentProps } from './types';
 
-declare const MDBModalContent: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBModalContent: React.FunctionComponent<ModalContentProps>;
 
 export default MDBModalContent;

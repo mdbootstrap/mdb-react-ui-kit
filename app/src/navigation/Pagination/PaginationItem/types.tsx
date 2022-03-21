@@ -1,10 +1,8 @@
-type PaginationItemProps = {
-  children?: React.ReactNode;
-  className?: string;
+interface PaginationItemProps extends React.AllHTMLAttributes<HTMLElement> {
   active?: boolean;
   disabled?: boolean;
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+  ref?: React.Ref<any>;
+}
 
 export { PaginationItemProps };

@@ -56,13 +56,13 @@ const MDBTooltip: React.FC<TooltipProps> = ({
     };
   }, [isOpenState, isClicked]);
 
-  const handleOnMouseEnter = (e: MouseEvent) => {
+  const handleOnMouseEnter = (e: any) => {
     setIsOpenState(true);
 
     onMouseEnter && onMouseEnter(e);
   };
 
-  const handleOnMouseLeave = (e: MouseEvent) => {
+  const handleOnMouseLeave = (e: any) => {
     setIsOpenState(false);
 
     onMouseLeave && onMouseLeave(e);

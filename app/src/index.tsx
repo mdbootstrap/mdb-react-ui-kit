@@ -68,8 +68,6 @@ import MDBSwitch from './forms/Switch/Switch';
 import MDBRange from './forms/Range/Range';
 import MDBFile from './forms/File/File';
 import MDBInputGroup from './forms/InputGroup/InputGroup';
-import MDBInputGroupText from './forms/InputGroup/InputGroupText/InputGroupText';
-import MDBInputGroupElement from './forms/InputGroup/InputGroupElement/InputGroupElement';
 import MDBRipple from './methods/Ripple/Ripple';
 import MDBValidation from './forms/Validation/Validation';
 import MDBTabs from './navigation/Tabs/Tabs';
@@ -84,6 +82,8 @@ import MDBCarouselCaption from './components/Carousel/CarouselCaption/CarouselCa
 import MDBCarouselItem from './components/Carousel/CarouselItem/CarouselItem';
 import MDBAccordion from './components/Accordion/Accordion';
 import MDBAccordionItem from './components/Accordion/AccordionItem/AccordionItem';
+import MDBTextArea from './forms/TextArea/TextArea';
+import MDBValidationItem from './forms/Validation/ValidationItem/ValidationItem';
 
 export {
   MDBContainer,
@@ -156,8 +156,6 @@ export {
   MDBRange,
   MDBFile,
   MDBInputGroup,
-  MDBInputGroupText,
-  MDBInputGroupElement,
   MDBRipple,
   MDBValidation,
   MDBTabs,
@@ -172,4 +170,6 @@ export {
   MDBCarouselCaption,
   MDBAccordion,
   MDBAccordionItem,
+  MDBTextArea,
+  MDBValidationItem,
 };

@@ -1,13 +1,11 @@
 import React from 'react';
 
-type ListGroupItemProps = {
-  className?: string;
-  tag?: React.ComponentProps<any>;
+interface ListGroupItemProps extends Omit<React.AllHTMLAttributes<HTMLLIElement>, 'action'> {
   active?: boolean;
-  disabled?: boolean;
   action?: boolean;
-  color?: string;
-  [rest: string]: any;
-};
+  color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light' | 'dark' | 'info';
+  disabled?: boolean;
+  tag?: React.ComponentProps<any>;
+}
 
 export { ListGroupItemProps };

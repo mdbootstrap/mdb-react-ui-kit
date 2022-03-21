@@ -1,9 +1,9 @@
 import React from 'react';
+import InputTemplate from '../InputTemplate/InputTemplate';
 import type { SwitchProps } from './types';
-import MDBCheckbox from '../Checkbox/Checkbox';
 
-const MDBSwitch: React.FC<SwitchProps> = React.forwardRef<HTMLAllCollection, SwitchProps>(({ ...props }, ref) => {
-  return <MDBCheckbox toggleSwitch type='checkbox' ref={ref} {...props} />;
-});
+const MDBSwitch: React.FC<SwitchProps> = ({ ...props }) => {
+  return <InputTemplate type='checkbox' toggleSwitch {...props} />;
+};
 
 export default MDBSwitch;

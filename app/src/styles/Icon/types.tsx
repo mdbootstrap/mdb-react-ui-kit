@@ -1,25 +1,55 @@
-import React from 'react';
-
 type IconProps = {
+  animate?: 'beat' | 'fade' | 'beat-fade' | 'bounce' | 'shake' | 'flip' | 'spin' | 'pulse';
   className?: string;
+  iconType?: string;
   fab?: boolean;
   far?: boolean;
   fas?: boolean;
   fal?: boolean;
   flag?: string;
-  size?: string;
-  color?: string;
+  size?:
+    | '1x'
+    | '2x'
+    | '3x'
+    | '4x'
+    | '5x'
+    | '6x'
+    | '7x'
+    | '8x'
+    | '9x'
+    | '10x'
+    | '2xs'
+    | 'xs'
+    | 'sm'
+    | 'lg'
+    | 'xl'
+    | '2xl';
+  color?:
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'danger'
+    | 'warning'
+    | 'light'
+    | 'dark'
+    | 'muted'
+    | 'white'
+    | 'info'
+    | 'body'
+    | 'black-50'
+    | 'white-50';
   icon?: string;
   border?: boolean;
-  rotate?: string;
-  pull?: string;
+  rotate?: '90' | '180' | '270' | 'by';
+  pull?: 'left' | 'right';
   spin?: boolean;
   list?: boolean;
   fixed?: boolean;
   pulse?: boolean;
-  flip?: string;
+  flip?: 'horizontal' | 'vertical' | 'both';
   inverse?: boolean;
-  stack?: string;
+  stack?: '1x' | '2x';
+  style?: React.CSSProperties;
   [rest: string]: any;
 };
 

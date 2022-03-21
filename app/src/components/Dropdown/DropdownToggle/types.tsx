@@ -1,11 +1,8 @@
-type DropdownToggleProps = {
-  className?: string;
-  border?: string;
-  background?: string;
-  shadow?: string;
+import { ButtonProps } from '../../Button/types';
+
+interface DropdownToggleProps extends ButtonProps {
+  split?: boolean;
   tag?: React.ComponentProps<any>;
-  alignment?: string;
-  [rest: string]: any;
-};
+}
 
 export { DropdownToggleProps };

@@ -1,5 +1,5 @@
-import MDBCheckbox from '../Checkbox/index';
+import { RadioProps } from './types';
 
-declare const MDBRadio: typeof MDBCheckbox;
+declare const MDBRadio: React.FunctionComponent<RadioProps>;
 
 export default MDBRadio;

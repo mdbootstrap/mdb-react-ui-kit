@@ -1,11 +1,6 @@
 import * as React from 'react';
+import { CardImageProps } from './types';
 
-declare const MDBCardImage: React.FunctionComponent<{
-  className?: string;
-  position?: string;
-  overlay?: boolean;
-  fluid?: boolean;
-  [rest: string]: any;
-}>;
+declare const MDBCardImage: React.FunctionComponent<CardImageProps>;
 
 export default MDBCardImage;

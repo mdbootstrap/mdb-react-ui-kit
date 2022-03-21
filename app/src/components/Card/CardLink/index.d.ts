@@ -1,8 +1,6 @@
 import * as React from 'react';
+import { CardLinkProps } from './types';
 
-declare const MDBCardLink: React.FunctionComponent<{
-  className?: string;
-  [rest: string]: any;
-}>;
+declare const MDBCardLink: React.FunctionComponent<CardLinkProps>;
 
 export default MDBCardLink;

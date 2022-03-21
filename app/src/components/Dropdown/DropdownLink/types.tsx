@@ -1,7 +1,6 @@
-type DropdownLinkProps = {
-  className?: string;
+interface DropdownLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  disableClass?: boolean;
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+}
 
 export { DropdownLinkProps };

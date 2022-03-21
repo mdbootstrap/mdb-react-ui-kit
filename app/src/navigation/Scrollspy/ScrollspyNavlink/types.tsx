@@ -1,10 +1,9 @@
-import React from 'react';
-
-type ScrollspyNavLinkProps = {
-  className?: string;
+interface ScrollspyNavLinkProps extends React.AllHTMLAttributes<HTMLElement> {
   tag?: React.ComponentProps<any>;
   scrollElement?: HTMLElement;
-  [rest: string]: any;
-};
+  collapsible?: boolean;
+  active?: boolean;
+  ref?: React.Ref<any>;
+}
 
 export { ScrollspyNavLinkProps };

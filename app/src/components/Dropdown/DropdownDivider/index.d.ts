@@ -1,9 +1,6 @@
 import * as React from 'react';
+import { DropdownDividerProps } from './types';
 
-declare const MDBDropdownDivider: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBDropdownDivider: React.FunctionComponent<DropdownDividerProps>;
 
 export default MDBDropdownDivider;

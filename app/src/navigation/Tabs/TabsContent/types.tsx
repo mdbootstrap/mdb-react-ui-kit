@@ -1,9 +1,6 @@
-import React from 'react';
-
-type TabsContentProps = {
-  className?: string;
+interface TabsContentProps extends React.AllHTMLAttributes<HTMLElement> {
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+  ref?: React.Ref<any>;
+}
 
 export { TabsContentProps };

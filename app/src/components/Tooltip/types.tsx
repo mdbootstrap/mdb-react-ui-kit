@@ -1,7 +1,6 @@
-type TooltipProps = {
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  tooltipTag?: React.ComponentProps<any>;
+interface TooltipProps extends Omit<React.AllHTMLAttributes<HTMLElement>, 'title'> {
+  disableMouseDown?: boolean;
+  options?: Record<string, unknown>;
   placement?:
     | 'top'
     | 'auto'
@@ -17,14 +16,12 @@ type TooltipProps = {
     | 'right-start'
     | 'right-end'
     | 'left-start'
-    | 'left-end'
-    | undefined;
-  options?: Record<string, unknown>;
-  disableMouseDown?: boolean;
-  title?: string | React.ReactNode;
+    | 'left-end';
+  tag?: React.ComponentProps<any>;
+  tooltipTag?: React.ComponentProps<any>;
+  title?: React.ReactNode;
   wrapperProps?: Record<string, unknown>;
   wrapperClass?: string;
-  [rest: string]: any;
-};
+}
 
 export { TooltipProps };

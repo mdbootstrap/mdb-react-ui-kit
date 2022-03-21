@@ -1,15 +1,6 @@
 import * as React from 'react';
+import { FileProps } from './types';
 
-declare const MDBFile: React.FunctionComponent<{
-  className?: string;
-  id?: string;
-  label?: string;
-  disabled?: boolean;
-  labelId?: string;
-  labelClass?: string;
-  size?: string;
-  name?: string;
-  [rest: string]: any;
-}>;
+declare const MDBFile: React.FunctionComponent<FileProps>;
 
 export default MDBFile;

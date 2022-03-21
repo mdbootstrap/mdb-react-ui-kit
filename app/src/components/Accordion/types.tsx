@@ -1,12 +1,11 @@
 import React from 'react';
 
-type AccordionProps = {
+interface AccordionProps extends React.HTMLAttributes<HTMLElement> {
   alwaysOpen?: boolean;
-  className?: string;
   flush?: boolean;
-  initialActive?: string;
+  initialActive?: number;
+  ref?: React.ForwardedRef<HTMLAllCollection>;
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+}
 
 export { AccordionProps };

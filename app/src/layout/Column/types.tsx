@@ -1,23 +1,19 @@
-import React from 'react';
-
-type ColumnProps = {
-  center?: string | boolean;
-  className?: string;
-  end?: string | boolean;
-  lg?: string;
-  md?: string;
+interface ColumnProps extends React.HTMLAttributes<HTMLElement> {
+  center?: boolean;
+  end?: boolean;
+  lg?: string | number;
+  md?: string | number;
   offsetSm?: string | number;
   offsetMd?: string | number;
   offsetLg?: string | number;
   order?: string | number;
-  size?: string;
-  sm?: string;
-  start?: string | boolean;
+  size?: string | number;
+  sm?: string | number;
+  start?: boolean;
   tag?: React.ComponentProps<any>;
-  xl?: string;
-  xxl?: string;
-  xs?: string;
-  [rest: string]: any;
-};
+  xl?: string | number;
+  xxl?: string | number;
+  xs?: string | number;
+}
 
 export { ColumnProps };

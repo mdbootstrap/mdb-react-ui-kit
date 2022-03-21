@@ -1,8 +1,7 @@
-type ContainerProps = {
+interface ContainerProps extends React.HTMLAttributes<HTMLElement> {
   breakpoint?: string;
   fluid?: boolean;
-  className?: string;
   tag?: React.ComponentProps<any>;
-};
+}
 
 export { ContainerProps };

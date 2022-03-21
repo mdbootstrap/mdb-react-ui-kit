@@ -1,12 +1,10 @@
-type ButtonGroupProps = {
-  className?: string;
-  role?: string;
-  shadow?: string;
+interface ButtonGroupProps extends Omit<React.HTMLAttributes<HTMLElement>, 'size'> {
+  ref?: React.ForwardedRef<HTMLAllCollection>;
+  size?: 'sm' | 'lg';
+  shadow?: '0' | '1' | '2' | '3' | '4' | '5';
   toolbar?: boolean;
-  size?: string;
   vertical?: boolean;
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+}
 
 export { ButtonGroupProps };

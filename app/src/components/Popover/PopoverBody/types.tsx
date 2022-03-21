@@ -1,7 +1,5 @@
-type PopoverBodyProps = {
-  className?: string;
+interface PopoverBodyProps extends React.HTMLAttributes<HTMLElement> {
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+}
 
 export { PopoverBodyProps };

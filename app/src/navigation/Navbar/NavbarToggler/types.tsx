@@ -1,8 +1,6 @@
-type NavbarTogglerProps = {
-  children?: React.ReactNode;
-  className?: string;
+interface NavbarTogglerProps extends React.AllHTMLAttributes<HTMLElement> {
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+  ref?: React.Ref<any>;
+}
 
 export { NavbarTogglerProps };

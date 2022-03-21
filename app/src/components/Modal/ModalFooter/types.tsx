@@ -1,7 +1,6 @@
-type ModalFooterProps = {
-  className?: string;
+interface ModalFooterProps extends React.HTMLAttributes<HTMLElement> {
+  ref?: React.ForwardedRef<HTMLAllCollection>;
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+}
 
 export { ModalFooterProps };

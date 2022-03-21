@@ -1,9 +1,6 @@
 import * as React from 'react';
+import { PopoverBodyProps } from './types';
 
-declare const MDBPopoverBody: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBPopoverBody: React.FunctionComponent<PopoverBodyProps>;
 
 export default MDBPopoverBody;

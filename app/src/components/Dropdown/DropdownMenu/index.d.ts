@@ -1,12 +1,6 @@
 import * as React from 'react';
+import { DropdownMenuProps } from './types';
 
-declare const MDBDropdownMenu: React.FunctionComponent<{
-  className?: string;
-  style?: Record<string, any>;
-  dark?: boolean;
-  responsive?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBDropdownMenu: React.FunctionComponent<DropdownMenuProps>;
 
 export default MDBDropdownMenu;

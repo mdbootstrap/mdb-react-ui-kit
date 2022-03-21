@@ -1,26 +1,6 @@
 import * as React from 'react';
+import { BreadcrumbProps } from './types';
 
-declare const MDBBreadcrumb: React.FunctionComponent<{
-  bold?: boolean;
-  children?: React.ReactNode;
-  className?: string;
-  tag?: React.ReactElement;
-  color?:
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'info'
-    | 'warning'
-    | 'danger'
-    | 'light'
-    | 'dark'
-    | 'body'
-    | 'muted'
-    | 'white'
-    | 'black-50'
-    | 'white-50';
-  uppercase?: boolean;
-  [rest: string]: any;
-}>;
+declare const MDBBreadcrumb: React.FunctionComponent<BreadcrumbProps>;
 
 export default MDBBreadcrumb;

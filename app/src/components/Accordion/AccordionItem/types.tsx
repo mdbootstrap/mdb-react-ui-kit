@@ -1,13 +1,14 @@
 import React from 'react';
 
-type AccordionItemProps = {
-  className?: string;
+interface AccordionItemProps extends React.HTMLAttributes<HTMLElement> {
   bodyClassName?: string;
+  bodyStyle?: React.CSSProperties;
+  collapseId: number;
   headerClassName?: string;
-  collapseId: string;
-  headerTitle?: string;
+  headerStyle?: React.CSSProperties;
+  headerTitle?: React.ReactNode;
+  ref?: React.ForwardedRef<HTMLAllCollection>;
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+}
 
 export { AccordionItemProps };

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import type { ValidationProps } from './types';
 
 const MDBValidation: React.FC<ValidationProps> = ({
@@ -7,12 +7,10 @@ const MDBValidation: React.FC<ValidationProps> = ({
   children,
   formRef,
   isValidated,
+  onReset,
   onSubmit,
   ...props
 }) => {
-  const formEl = useRef<HTMLLabelElement>(null);
-
-  const formReference = formRef ? formRef : formEl;
   const [validated, setValidated] = useState(isValidated);
 
   const classes = clsx('needs-validation', validated && 'was-validated', className);
@@ -24,11 +22,22 @@ const MDBValidation: React.FC<ValidationProps> = ({
     onSubmit && onSubmit(e);
   };
 
+  const handleReset = (e: any) => {
+    e.preventDefault();
+    setValidated(false);
+
+    onReset && onReset(e);
+  };
+
   return (
-    <form className={classes} onSubmit={handleSubmit} ref={formReference} {...props}>
+    <form className={classes} onSubmit={handleSubmit} onReset={handleReset} ref={formRef} {...props}>
       {children}
     </form>
   );
+};
+
+MDBValidation.defaultProps = {
+  noValidate: true,
 };
 
 export default MDBValidation;

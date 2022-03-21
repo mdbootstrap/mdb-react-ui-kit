@@ -1,9 +1,6 @@
-import React from 'react';
-
-type TableBodyProps = {
-  className?: string;
+interface TableBodyProps extends React.AllHTMLAttributes<HTMLElement> {
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+  ref?: React.Ref<any>;
+}
 
 export { TableBodyProps };

@@ -1,9 +1,8 @@
 import React from 'react';
 
-type ValidationProps = {
-  className?: string;
+type ValidationProps = React.FormHTMLAttributes<HTMLFormElement> & {
+  formRef?: React.MutableRefObject<any>;
   isValidated?: boolean;
-  [rest: string]: any;
 };
 
 export { ValidationProps };

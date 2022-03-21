@@ -1,12 +1,6 @@
 import * as React from 'react';
+import { SpinnerProps } from './types';
 
-declare const MDBSpinner: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  grow?: boolean;
-  color?: string;
-  size?: string;
-  [rest: string]: any;
-}>;
+declare const MDBSpinner: React.FunctionComponent<SpinnerProps>;
 
 export default MDBSpinner;

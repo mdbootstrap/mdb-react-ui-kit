@@ -1,10 +1,18 @@
-type ModalDialogProps = {
-  className?: string;
+interface ModalDialogProps extends React.HTMLAttributes<HTMLElement> {
   centered?: boolean;
-  size?: string;
+  size?:
+    | 'sm'
+    | 'lg'
+    | 'xl'
+    | 'fullscreen'
+    | 'fullscreen-sm-down'
+    | 'fullscreen-md-down'
+    | 'fullscreen-lg-down'
+    | 'fullscreen-xl-down'
+    | 'fullscreen-xxl-down';
   scrollable?: boolean;
+  ref?: React.ForwardedRef<HTMLAllCollection>;
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+}
 
 export { ModalDialogProps };

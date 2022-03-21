@@ -1,9 +1,6 @@
 import * as React from 'react';
+import { ValidationProps } from './types';
 
-declare const MDBValidation: React.FunctionComponent<{
-  className?: string;
-  isValidated?: boolean;
-  [rest: string]: any;
-}>;
+declare const MDBValidation: React.FunctionComponent<ValidationProps>;
 
 export default MDBValidation;

@@ -3,6 +3,7 @@ import React from 'react';
 import type { IconProps } from './types';
 
 const MDBIcon: React.FC<IconProps> = ({
+  animate,
   className,
   icon,
   fab,
@@ -22,6 +23,7 @@ const MDBIcon: React.FC<IconProps> = ({
   rotate,
   inverse,
   stack,
+  iconType,
   children,
   ...props
 }) => {
@@ -41,17 +43,18 @@ const MDBIcon: React.FC<IconProps> = ({
     type = 'fa';
   }
   const classes = clsx(
-    type,
+    iconType ? `fa-${iconType}` : type,
+    animate && `fa-${animate}`,
     flag ? `flag-${flag}` : icon && `fa-${icon}`,
     size && `fa-${size}`,
     color && `text-${color}`,
     border && 'fa-border',
     rotate && `fa-rotate-${rotate}`,
     pull && `fa-pull-${pull}`,
-    spin && 'fa-spin',
+    spin && !animate && 'fa-spin',
     list && 'fa-li',
     fixed && 'fa-fw',
-    pulse && 'fa-pulse',
+    pulse && !animate && 'fa-pulse',
     inverse && 'fa-inverse',
     flip && `fa-flip-${flip}`,
     stack && `fa-stack-${stack}`,

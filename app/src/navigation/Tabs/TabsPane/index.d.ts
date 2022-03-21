@@ -1,10 +1,6 @@
 import * as React from 'react';
+import { TabsPaneProps } from './types';
 
-declare const MDBTabsPane: React.FunctionComponent<{
-  className?: string;
-  show?: boolean;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBTabsPane: React.FunctionComponent<TabsPaneProps>;
 
 export default MDBTabsPane;

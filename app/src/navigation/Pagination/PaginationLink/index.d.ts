@@ -1,10 +1,6 @@
 import * as React from 'react';
+import { PaginationLinkProps } from './types';
 
-declare const MDBPaginationLink: React.FunctionComponent<{
-  children?: React.ReactNode;
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBPaginationLink: React.FunctionComponent<PaginationLinkProps>;
 
 export default MDBPaginationLink;

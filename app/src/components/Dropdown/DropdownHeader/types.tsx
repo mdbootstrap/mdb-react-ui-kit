@@ -1,7 +1,5 @@
-type DropdownHeaderProps = {
-  className?: string;
+interface DropdownHeaderProps extends React.AllHTMLAttributes<HTMLHeadingElement> {
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+}
 
 export { DropdownHeaderProps };

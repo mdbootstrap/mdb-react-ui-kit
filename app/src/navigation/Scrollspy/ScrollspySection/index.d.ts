@@ -1,10 +1,6 @@
 import * as React from 'react';
+import { ScrollspySectionProps } from './types';
 
-declare const MDBScrollspySection: React.FunctionComponent<{
-  className?: string;
-  customSelect?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBScrollspySection: React.FunctionComponent<ScrollspySectionProps>;
 
 export default MDBScrollspySection;

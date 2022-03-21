@@ -1,10 +1,6 @@
 import * as React from 'react';
+import { TabsLinkProps } from './types';
 
-declare const MDBTabsLink: React.FunctionComponent<{
-  className?: string;
-  active?: boolean;
-  color?: string;
-  [rest: string]: any;
-}>;
+declare const MDBTabsLink: React.FunctionComponent<TabsLinkProps>;
 
 export default MDBTabsLink;

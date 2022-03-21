@@ -1,11 +1,16 @@
 import React from 'react';
 
-type InputGroupProps = {
-  className?: string;
+type InputGroupProps = Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'ref'> & {
   noWrap?: boolean;
-  tag?: React.ComponentProps<any>;
+  noBorder?: boolean;
+  ref?: React.ForwardedRef<HTMLAllCollection>;
   size?: string;
-  [rest: string]: any;
+  tag?: React.ComponentProps<any>;
+  textTag?: React.ComponentProps<any>;
+  textClass?: string;
+  textBefore?: React.ReactNode | Array<React.ReactNode>;
+  textAfter?: React.ReactNode | Array<React.ReactNode>;
+  textProps?: Record<string, unknown>;
 };
 
 export { InputGroupProps };

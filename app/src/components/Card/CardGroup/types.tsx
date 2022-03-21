@@ -1,7 +1,6 @@
-type CardGroupProps = {
-  className?: string;
+interface CardGroupProps extends React.HTMLAttributes<HTMLElement> {
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+  ref?: React.ForwardedRef<HTMLAllCollection>;
+}
 
 export { CardGroupProps };

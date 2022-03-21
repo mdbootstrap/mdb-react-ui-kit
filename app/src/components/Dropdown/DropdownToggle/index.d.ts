@@ -1,13 +1,6 @@
 import * as React from 'react';
+import { DropdownToggleProps } from './types';
 
-declare const MDBDropdownToggle: React.FunctionComponent<{
-  className?: string;
-  border?: string;
-  background?: string;
-  shadow?: string;
-  alignment?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBDropdownToggle: React.FunctionComponent<DropdownToggleProps>;
 
 export default MDBDropdownToggle;

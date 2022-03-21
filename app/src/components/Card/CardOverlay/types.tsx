@@ -1,7 +1,6 @@
-type CardOverlayProps = {
-  className?: string;
+interface CardOverlayProps extends React.HTMLAttributes<HTMLElement> {
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+  ref?: React.ForwardedRef<HTMLAllCollection>;
+}
 
 export { CardOverlayProps };

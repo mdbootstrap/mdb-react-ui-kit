@@ -1,17 +1,6 @@
-import * as React from 'react';
+import React from 'react';
+import { RangeProps } from './types';
 
-declare const MDBRange: React.FunctionComponent<{
-  className?: string;
-  id?: string;
-  label?: string;
-  labelId?: string;
-  labelClass?: string;
-  min?: string;
-  max?: string;
-  step?: string;
-  value?: number;
-  name?: string;
-  [rest: string]: any;
-}>;
+declare const MDBRange: React.FunctionComponent<RangeProps>;
 
 export default MDBRange;

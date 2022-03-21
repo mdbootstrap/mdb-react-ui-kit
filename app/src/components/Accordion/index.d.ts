@@ -1,12 +1,6 @@
 import * as React from 'react';
+import { AccordionProps } from './types';
 
-declare const MDBAccordion: React.FunctionComponent<{
-  alwaysOpen?: boolean;
-  className?: string;
-  flush?: boolean;
-  initialActive?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBAccordion: React.FunctionComponent<AccordionProps>;
 
 export default MDBAccordion;

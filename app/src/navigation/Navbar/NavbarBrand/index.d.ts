@@ -1,10 +1,6 @@
 import * as React from 'react';
+import { NavbarBrandProps } from './types';
 
-declare const MDBNavbarBrand: React.FunctionComponent<{
-  children?: React.ReactNode;
-  className?: string;
-  tag?: React.ElementType;
-  [rest: string]: any;
-}>;
+declare const MDBNavbarBrand: React.FunctionComponent<NavbarBrandProps>;
 
 export default MDBNavbarBrand;

@@ -1,32 +1,6 @@
 import * as React from 'react';
+import { PopoverProps } from './types';
 
-declare const MDBPopover: React.FunctionComponent<{
-  btnChildren?: React.ReactNode;
-  btnClassName?: string;
-  tag?: React.ComponentProps<any>;
-  className?: string;
-  dismiss?: boolean;
-  isOpen?: boolean;
-  options?: Record<string, unknown>;
-  placement?:
-    | 'top'
-    | 'auto'
-    | 'auto-start'
-    | 'auto-end'
-    | 'bottom'
-    | 'right'
-    | 'left'
-    | 'top-start'
-    | 'top-end'
-    | 'bottom-start'
-    | 'bottom-end'
-    | 'right-start'
-    | 'right-end'
-    | 'left-start'
-    | 'left-end';
-  poperStyle?: Record<string, unknown>;
-  popperTag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBPopover: React.FunctionComponent<PopoverProps>;
 
 export default MDBPopover;

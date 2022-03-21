@@ -1,9 +1,6 @@
 import * as React from 'react';
+import { ModalHeaderProps } from './types';
 
-declare const MDBModalHeader: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBModalHeader: React.FunctionComponent<ModalHeaderProps>;
 
 export default MDBModalHeader;

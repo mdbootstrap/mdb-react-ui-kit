@@ -1,10 +1,6 @@
 import * as React from 'react';
+import { ContainerProps } from './types';
 
-declare const MDBContainer: React.FunctionComponent<{
-  className?: string;
-  fluid?: boolean;
-  tag?: React.ElementType;
-  [rest: string]: any;
-}>;
+declare const MDBContainer: React.FunctionComponent<ContainerProps>;
 
 export default MDBContainer;

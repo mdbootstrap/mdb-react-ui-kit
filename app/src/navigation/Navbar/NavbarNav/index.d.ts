@@ -1,13 +1,6 @@
 import * as React from 'react';
+import { NavbarNavProps } from './types';
 
-declare const MDBNavbarNav: React.FunctionComponent<{
-  children?: React.ReactNode;
-  className?: string;
-  tag?: React.ElementType;
-  right?: boolean;
-  fullWidth?: boolean;
-  left?: boolean;
-  [rest: string]: any;
-}>;
+declare const MDBNavbarNav: React.FunctionComponent<NavbarNavProps>;
 
 export default MDBNavbarNav;

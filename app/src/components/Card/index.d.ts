@@ -1,13 +1,6 @@
 import * as React from 'react';
+import { CardProps } from './types';
 
-declare const MDBCard: React.FunctionComponent<{
-  className?: string;
-  border?: string;
-  background?: string;
-  shadow?: string;
-  alignment?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBCard: React.FunctionComponent<CardProps>;
 
 export default MDBCard;

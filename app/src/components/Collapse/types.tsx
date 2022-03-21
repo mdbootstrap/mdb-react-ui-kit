@@ -1,11 +1,9 @@
-type CollapseProps = {
-  className?: string;
+interface CollapseProps extends React.HTMLAttributes<HTMLElement> {
+  center?: boolean;
+  collapseRef?: React.RefObject<any>;
   navbar?: boolean;
   show?: boolean | string;
-  center?: boolean;
-  style?: Record<string, unknown>;
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+}
 
 export { CollapseProps };

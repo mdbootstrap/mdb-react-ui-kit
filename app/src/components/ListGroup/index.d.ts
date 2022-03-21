@@ -1,12 +1,6 @@
 import * as React from 'react';
+import { ListGroupProps } from './types';
 
-declare const MDBListGroup: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  horizontal?: boolean;
-  horizontalSize?: string;
-  flush?: boolean;
-  [rest: string]: any;
-}>;
+declare const MDBListGroup: React.FunctionComponent<ListGroupProps>;
 
 export default MDBListGroup;

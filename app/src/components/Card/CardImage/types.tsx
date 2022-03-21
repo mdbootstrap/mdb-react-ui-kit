@@ -1,9 +1,7 @@
-type CardImageProps = {
-  className?: string;
+interface CardImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   position?: string;
   overlay?: boolean;
   fluid?: boolean;
-  [rest: string]: any;
-};
+}
 
 export { CardImageProps };

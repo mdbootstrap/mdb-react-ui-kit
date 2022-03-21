@@ -1,12 +1,11 @@
 import React from 'react';
 
-type ListGroupProps = {
-  className?: string;
-  tag?: React.ComponentProps<any>;
+interface ListGroupProps extends React.HTMLAttributes<HTMLElement> {
   horizontal?: boolean;
   horizontalSize?: string;
   flush?: boolean;
-  [rest: string]: any;
-};
+  ref?: React.ForwardedRef<HTMLAllCollection>;
+  tag?: React.ComponentProps<any>;
+}
 
 export { ListGroupProps };

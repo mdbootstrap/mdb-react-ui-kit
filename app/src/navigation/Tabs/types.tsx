@@ -1,11 +1,8 @@
-import React from 'react';
-
-type TabsProps = {
-  className?: string;
+interface TabsProps extends React.AllHTMLAttributes<HTMLUListElement> {
   fill?: boolean;
   justify?: boolean;
   pills?: boolean;
-  [rest: string]: any;
-};
+  ref?: React.Ref<any>;
+}
 
 export { TabsProps };

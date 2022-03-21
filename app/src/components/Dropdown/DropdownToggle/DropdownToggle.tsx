@@ -15,7 +15,7 @@ const MDBDropdownToggle: React.FC<DropdownToggleProps> = ({
   const classes = clsx('dropdown-toggle', split && 'dropdown-toggle-split', className);
   const { handleOpenClose, setReferenceElement, isOpenState } = useContext(DropdownContext);
 
-  const handleToggleClick = (e: React.MouseEvent) => {
+  const handleToggleClick = (e: any) => {
     handleOpenClose();
 
     onClick && onClick(e);

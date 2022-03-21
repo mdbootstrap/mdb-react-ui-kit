@@ -1,7 +1,5 @@
-type DropdownItemProps = {
-  className?: string;
+interface DropdownItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+}
 
 export { DropdownItemProps };

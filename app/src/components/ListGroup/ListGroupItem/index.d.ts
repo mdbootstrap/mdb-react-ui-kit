@@ -1,13 +1,6 @@
 import * as React from 'react';
+import { ListGroupItemProps } from './types';
 
-declare const MDBListGroupItem: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  active?: boolean;
-  disabled?: boolean;
-  action?: boolean;
-  color?: string;
-  [rest: string]: any;
-}>;
+declare const MDBListGroupItem: React.FunctionComponent<ListGroupItemProps>;
 
 export default MDBListGroupItem;

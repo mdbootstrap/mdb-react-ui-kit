@@ -1,11 +1,6 @@
 import * as React from 'react';
+import { BreadcrumbItemProp } from './types';
 
-declare const MDBBreadcrumbItem: React.FunctionComponent<{
-  active?: boolean;
-  className?: string;
-  tag?: React.ElementType;
-  current?: 'page' | 'step' | 'location';
-  [rest: string]: any;
-}>;
+declare const MDBBreadcrumbItem: React.FunctionComponent<BreadcrumbItemProp>;
 
 export default MDBBreadcrumbItem;

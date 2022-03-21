@@ -1,8 +1,5 @@
-import React from 'react';
-
-type TabsItemProps = {
-  className?: string;
-  [rest: string]: any;
-};
+interface TabsItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
+  ref?: React.Ref<any>;
+}
 
 export { TabsItemProps };

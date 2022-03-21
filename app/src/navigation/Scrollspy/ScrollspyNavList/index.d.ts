@@ -1,9 +1,6 @@
 import * as React from 'react';
+import { ScrollspyNavListProps } from './types';
 
-declare const MDBScrollspyNavList: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBScrollspyNavList: React.FunctionComponent<ScrollspyNavListProps>;
 
 export default MDBScrollspyNavList;

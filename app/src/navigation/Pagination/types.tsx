@@ -1,14 +1,11 @@
-type PaginationProps = {
-  children?: React.ReactNode;
-  className?: string;
-  disabled?: boolean;
+interface PaginationProps extends Omit<React.AllHTMLAttributes<HTMLElement>, 'size' | 'start'> {
   center?: boolean;
   end?: boolean;
   start?: boolean;
-  size?: string;
+  size?: 'lg' | 'sm';
   tag?: React.ComponentProps<any>;
   circle?: boolean;
-  [rest: string]: any;
-};
+  ref?: React.Ref<any>;
+}
 
 export { PaginationProps };

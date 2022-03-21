@@ -1,26 +1,25 @@
 import clsx from 'clsx';
 import React, { useState, useEffect, useRef } from 'react';
 import type { RippleProps } from './types';
-import MDBBtn from '../../components/Button/Button';
 import MDBRippleWave from './RippleWave/RippleWave';
 
 const useCombinedRefs = (...refs: any) => {
-  const targetRef = React.useRef()
+  const targetRef = React.useRef();
 
   React.useEffect(() => {
     refs.forEach((ref: any) => {
-      if (!ref) return
+      if (!ref) return;
 
       if (typeof ref === 'function') {
-        ref(targetRef.current)
+        ref(targetRef.current);
       } else {
-        ref.current = targetRef.current
+        ref.current = targetRef.current;
       }
-    })
-  }, [refs])
+    });
+  }, [refs]);
 
-  return targetRef
-}
+  return targetRef;
+};
 
 const MDBRipple: React.FC<RippleProps> = React.forwardRef<HTMLAllCollection, RippleProps>(
   (

@@ -1,13 +1,12 @@
 import React from 'react';
 
-type BadgeProps = {
-  className?: string;
-  pill?: boolean;
+interface BadgeProps extends Omit<React.AllHTMLAttributes<HTMLElement>, 'color'> {
+  color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light' | 'dark' | 'muted' | 'white' | 'info';
   dot?: boolean;
   notification?: boolean;
-  color?: string;
+  pill?: boolean;
+  ref?: React.ForwardedRef<HTMLAllCollection>;
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+}
 
 export { BadgeProps };

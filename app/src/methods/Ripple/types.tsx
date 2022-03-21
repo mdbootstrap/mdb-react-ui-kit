@@ -1,14 +1,13 @@
 import React from 'react';
 
-type RippleProps = {
-  className?: string;
+interface RippleProps extends React.AllHTMLAttributes<HTMLElement> {
   rippleUnbound?: boolean;
   rippleColor?: string;
   rippleRadius?: number;
   rippleDuration?: number;
   rippleCentered?: boolean;
-  // rippleTag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+  ref?: React.ForwardedRef<any>;
+  rippleTag?: React.ComponentProps<any>;
+}
 
 export { RippleProps };

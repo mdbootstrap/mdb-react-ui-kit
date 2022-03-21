@@ -1,13 +1,6 @@
 import * as React from 'react';
+import { AccordionItemProps } from './types';
 
-declare const MDBAccordionItem: React.FunctionComponent<{
-  className?: string;
-  bodyClassName?: string;
-  headerClassName?: string;
-  collapseId: string;
-  headerTitle?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBAccordionItem: React.FunctionComponent<AccordionItemProps>;
 
 export default MDBAccordionItem;

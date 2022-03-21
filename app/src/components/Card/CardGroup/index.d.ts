@@ -1,9 +1,6 @@
 import * as React from 'react';
+import { CardGroupProps } from './types';
 
-declare const MDBCardGroup: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBCardGroup: React.FunctionComponent<CardGroupProps>;
 
 export default MDBCardGroup;

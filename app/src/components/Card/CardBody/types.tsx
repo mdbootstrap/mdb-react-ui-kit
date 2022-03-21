@@ -1,7 +1,6 @@
-type CardBodyProps = {
-  className?: string;
+interface CardBodyProps extends React.HTMLAttributes<HTMLElement> {
   tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+  ref?: React.ForwardedRef<HTMLAllCollection>;
+}
 
 export { CardBodyProps };

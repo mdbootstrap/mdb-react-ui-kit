@@ -1,9 +1,6 @@
 import * as React from 'react';
+import { CardSubTitleProps } from './types';
 
-declare const MDBCardSubTitle: React.FunctionComponent<{
-  className?: string;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-}>;
+declare const MDBCardSubTitle: React.FunctionComponent<CardSubTitleProps>;
 
 export default MDBCardSubTitle;

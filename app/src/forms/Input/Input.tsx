@@ -9,7 +9,6 @@ const MDBInput: React.FC<InputProps> = ({
   value,
   defaultValue,
   id,
-  labelId,
   labelClass,
   wrapperClass,
   wrapperStyle,
@@ -20,28 +19,16 @@ const MDBInput: React.FC<InputProps> = ({
   labelRef,
   labelStyle,
   inputRef,
-  textarea,
-  validation,
-  invalid,
-  validationTooltip,
-  btnClasses,
-  btnOnClick,
-  btnRef,
   type,
   onBlur,
   readonly,
-  btn,
-  btnType,
   ...props
 }) => {
   const labelEl = useRef<HTMLLabelElement>(null);
-  const btnEl = useRef<HTMLLabelElement>(null);
   const inputEl = useRef<HTMLInputElement>(null);
-  const textareaEl = useRef<HTMLTextAreaElement>(null);
 
   const labelReference = labelRef ? labelRef : labelEl;
-  const btnReference = btnRef ? btnRef : btnEl;
-  const inputReference = inputRef ? inputRef : textarea ? textareaEl : inputEl;
+  const inputReference = inputRef ? inputRef : inputEl;
 
   const [oldValue, setNewValue] = useState(value || defaultValue);
   const [labelWidth, setLabelWidth] = useState(0);
@@ -58,12 +45,6 @@ const MDBInput: React.FC<InputProps> = ({
     className
   );
   const labelClasses = clsx('form-label', labelClass);
-  const validationClasses = clsx(
-    validation &&
-      (invalid
-        ? `invalid-${validationTooltip ? `tooltip` : `feedback`}`
-        : `valid-${validationTooltip ? `tooltip` : `feedback`}`)
-  );
 
   useEffect(() => {
     if (labelReference.current) {
@@ -87,7 +68,7 @@ const MDBInput: React.FC<InputProps> = ({
     defaultValue.length > 0 ? setActive(true) : setActive(false);
   }, [defaultValue]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: any) => {
     setNewValue(e.currentTarget.value);
     onChange && onChange(e);
   };
@@ -106,55 +87,35 @@ const MDBInput: React.FC<InputProps> = ({
 
   return (
     <WrapperTag className={wrapperClasses} style={{ ...wrapperStyle }}>
-      {textarea ? (
-        <textarea
-          readOnly={readonly}
-          className={inputClasses}
-          onBlur={handleBlur}
-          onChange={handleChange}
-          onFocus={setWidth}
-          defaultValue={defaultValue}
-          value={value}
-          id={id}
-          ref={inputReference}
-          {...props}
-        />
-      ) : (
-        <input
-          type={type}
-          readOnly={readonly}
-          className={inputClasses}
-          onBlur={handleBlur}
-          onChange={handleChange}
-          onFocus={setWidth}
-          value={value}
-          defaultValue={defaultValue}
-          id={id}
-          ref={inputReference}
-          {...props}
-        />
-      )}
+      <input
+        type={type}
+        readOnly={readonly}
+        className={inputClasses}
+        onBlur={handleBlur}
+        onChange={handleChange}
+        onFocus={setWidth}
+        value={value}
+        defaultValue={defaultValue}
+        id={id}
+        ref={inputReference}
+        {...props}
+      />
       {label && (
-        <label className={labelClasses} style={labelStyle} id={labelId} htmlFor={id} ref={labelReference}>
+        <label className={labelClasses} style={labelStyle} htmlFor={id} ref={labelReference}>
           {label}
         </label>
       )}
-      {validation && <div className={validationClasses}>{validation}</div>}
+
       <div className='form-notch'>
         <div className='form-notch-leading'></div>
         <div className='form-notch-middle' style={{ width: labelWidth }}></div>
         <div className='form-notch-trailing'></div>
       </div>
-      {btn && (
-        <button ref={btnReference} type={btnType} className={btnClasses} onClick={btnOnClick}>
-          {btn}
-        </button>
-      )}
       {children}
     </WrapperTag>
   );
 };
 
-MDBInput.defaultProps = { wrapperTag: 'div', btnType: 'button', readonly: false };
+MDBInput.defaultProps = { wrapperTag: 'div', readonly: false };
 
 export default MDBInput;
