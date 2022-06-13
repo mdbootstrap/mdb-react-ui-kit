@@ -1,16 +1,9 @@
-interface CardFooterProps extends React.HTMLAttributes<HTMLElement> {
+import { BaseComponent } from 'src/types/baseComponent';
+import { backgroundColor } from 'src/types/colors';
+
+interface CardFooterProps extends BaseComponent {
   border?: string;
-  background?:
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'danger'
-    | 'warning'
-    | 'light'
-    | 'dark'
-    | 'white'
-    | 'info'
-    | 'transparent';
+  background?: backgroundColor;
   ref?: React.ForwardedRef<HTMLAllCollection>;
   tag?: React.ComponentProps<any>;
 }

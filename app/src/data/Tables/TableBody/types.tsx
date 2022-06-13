@@ -1,6 +1,3 @@
-interface TableBodyProps extends React.AllHTMLAttributes<HTMLElement> {
-  tag?: React.ComponentProps<any>;
-  ref?: React.Ref<any>;
-}
+type TableBodyProps = React.HTMLAttributes<HTMLElement>;
 
 export { TableBodyProps };

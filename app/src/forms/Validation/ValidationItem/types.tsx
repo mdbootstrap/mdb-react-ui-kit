@@ -1,10 +1,11 @@
 import React from 'react';
+import { BaseComponent } from 'src/types/baseComponent';
 
-type ValidationItemProps = React.AllHTMLAttributes<HTMLElement> & {
+interface ValidationItemProps extends BaseComponent {
   tag?: React.ComponentProps<any>;
   invalid?: boolean;
   feedback?: React.ReactNode;
   tooltip?: boolean;
-};
+}
 
 export { ValidationItemProps };

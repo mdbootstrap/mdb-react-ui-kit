@@ -20,7 +20,6 @@ const MDBDropdownMenu: React.FC<DropdownMenuProps> = ({
     setPopperElement,
     isOpenState,
     styles,
-    attributes,
     animatedFadeIn,
     animatedFadeOut,
     animation,
@@ -104,8 +103,6 @@ const MDBDropdownMenu: React.FC<DropdownMenuProps> = ({
     };
   }, [attachELements, handleDown]);
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  //@ts-ignore
   return attachELements ? (
     <>
       {ReactDOM.createPortal(
@@ -113,7 +110,6 @@ const MDBDropdownMenu: React.FC<DropdownMenuProps> = ({
           className={classes}
           style={{ position: 'absolute', zIndex: 1000, ...styles.popper, ...style }}
           {...props}
-          {...attributes.popper}
           ref={setPopperElement}
           tabIndex={-1}
         >
@@ -134,7 +130,7 @@ const MDBDropdownMenu: React.FC<DropdownMenuProps> = ({
       )}
     </>
   ) : (
-    ''
+    <></>
   );
 };
 

@@ -6,6 +6,7 @@ declare const MDBCarousel: React.FunctionComponent<{
   className?: string;
   fade?: boolean;
   keyboard?: boolean;
+  onSlide?: ()=>any;
   pause?: boolean;
   showControls?: boolean;
   showIndicators?: boolean;

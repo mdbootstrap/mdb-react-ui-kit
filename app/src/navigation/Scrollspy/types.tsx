@@ -1,10 +1,9 @@
-interface ScrollspyProps extends React.AllHTMLAttributes<HTMLAllCollection> {
+import React from 'react';
+import { BaseComponent } from 'src/types/baseComponent';
+
+interface ScrollspyProps extends BaseComponent {
+  container?: Window | React.MutableRefObject<any>;
   offset?: number;
-  onElement?: boolean;
-  setActive?: React.Dispatch<React.SetStateAction<number>>;
-  tag?: React.ComponentProps<any>;
-  targets?: NodeListOf<HTMLElement> | HTMLElement[];
-  ref?: React.Ref<any>;
 }
 
 export { ScrollspyProps };

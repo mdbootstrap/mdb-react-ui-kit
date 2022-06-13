@@ -1,3 +1,4 @@
+import { placement } from 'src/types/placement';
 import { ButtonProps } from '../Button/types';
 
 interface PopoverProps extends ButtonProps {
@@ -6,25 +7,12 @@ interface PopoverProps extends ButtonProps {
   dismiss?: boolean;
   isOpen?: boolean;
   options?: Record<string, unknown>;
-  placement?:
-    | 'top'
-    | 'auto'
-    | 'auto-start'
-    | 'auto-end'
-    | 'bottom'
-    | 'right'
-    | 'left'
-    | 'top-start'
-    | 'top-end'
-    | 'bottom-start'
-    | 'bottom-end'
-    | 'right-start'
-    | 'right-end'
-    | 'left-start'
-    | 'left-end';
+  placement?: placement;
   poperStyle?: React.CSSProperties;
   popperTag?: React.ComponentProps<any>;
   tag?: React.ComponentProps<any>;
+  onShow?: () => any;
+  onHide?: () => any;
 }
 
 export { PopoverProps };

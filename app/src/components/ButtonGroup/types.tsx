@@ -1,6 +1,9 @@
-interface ButtonGroupProps extends Omit<React.HTMLAttributes<HTMLElement>, 'size'> {
+import { BaseComponent } from 'src/types/baseComponent';
+import { size } from 'src/types/size';
+
+interface ButtonGroupProps extends BaseComponent {
   ref?: React.ForwardedRef<HTMLAllCollection>;
-  size?: 'sm' | 'lg';
+  size?: size;
   shadow?: '0' | '1' | '2' | '3' | '4' | '5';
   toolbar?: boolean;
   vertical?: boolean;

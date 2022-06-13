@@ -1,4 +1,6 @@
-interface CardBodyProps extends React.HTMLAttributes<HTMLElement> {
+import { BaseComponent } from 'src/types/baseComponent';
+
+interface CardBodyProps extends BaseComponent {
   tag?: React.ComponentProps<any>;
   ref?: React.ForwardedRef<HTMLAllCollection>;
 }

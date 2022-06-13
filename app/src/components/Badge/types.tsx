@@ -1,7 +1,9 @@
 import React from 'react';
+import { BaseComponent } from 'src/types/baseComponent';
+import { backgroundColor } from 'src/types/colors';
 
-interface BadgeProps extends Omit<React.AllHTMLAttributes<HTMLElement>, 'color'> {
-  color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light' | 'dark' | 'muted' | 'white' | 'info';
+interface BadgeProps extends BaseComponent {
+  color?: backgroundColor;
   dot?: boolean;
   notification?: boolean;
   pill?: boolean;

@@ -1,17 +1,10 @@
-interface CardProps extends React.HTMLAttributes<HTMLElement> {
+import { backgroundColor } from 'src/types/colors';
+import { BaseComponent } from 'src/types/baseComponent';
+
+interface CardProps extends BaseComponent {
   alignment?: string;
   border?: string;
-  background?:
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'danger'
-    | 'warning'
-    | 'light'
-    | 'dark'
-    | 'white'
-    | 'info'
-    | 'transparent';
+  background?: backgroundColor;
   shadow?: '0' | '1' | '2' | '3' | '4' | '5';
   ref?: React.ForwardedRef<HTMLAllCollection>;
   tag?: React.ComponentProps<any>;

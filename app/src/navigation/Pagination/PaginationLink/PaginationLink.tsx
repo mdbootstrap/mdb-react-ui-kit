@@ -2,8 +2,8 @@ import clsx from 'clsx';
 import React from 'react';
 import type { PaginationLinkProps } from './types';
 
-const MDBPaginationLink: React.FC<PaginationLinkProps> = React.forwardRef<HTMLAllCollection, PaginationLinkProps>(
-  ({ children, tag: Tag, className, ...props }, ref) => {
+const MDBPaginationLink: React.FC<PaginationLinkProps> = React.forwardRef<HTMLAnchorElement, PaginationLinkProps>(
+  ({ children, className, tag: Tag, ...props }, ref) => {
     const classes = clsx('page-link', className);
 
     return (

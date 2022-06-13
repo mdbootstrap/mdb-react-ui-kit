@@ -1,4 +1,7 @@
-interface DropdownProps extends React.HTMLAttributes<HTMLElement> {
+import { placement } from 'src/types/placement';
+import { BaseComponent } from 'src/types/baseComponent';
+
+interface DropdownProps extends BaseComponent {
   animation?: boolean;
   group?: boolean;
   isOpen?: boolean;
@@ -6,22 +9,7 @@ interface DropdownProps extends React.HTMLAttributes<HTMLElement> {
   dropright?: boolean;
   dropleft?: boolean;
   options?: Record<string, unknown>;
-  placement?:
-    | 'top'
-    | 'auto'
-    | 'auto-start'
-    | 'auto-end'
-    | 'bottom'
-    | 'right'
-    | 'left'
-    | 'top-start'
-    | 'top-end'
-    | 'bottom-start'
-    | 'bottom-end'
-    | 'right-start'
-    | 'right-end'
-    | 'left-start'
-    | 'left-end';
+  placement?: placement;
   tag?: React.ComponentProps<any>;
 }
 

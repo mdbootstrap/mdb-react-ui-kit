@@ -1,4 +1,6 @@
-interface ColumnProps extends React.HTMLAttributes<HTMLElement> {
+import { BaseComponent } from 'src/types/baseComponent';
+
+interface ColumnProps extends BaseComponent {
   center?: boolean;
   end?: boolean;
   lg?: string | number;

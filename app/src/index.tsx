@@ -60,10 +60,8 @@ import MDBModalTitle from './components/Modal/ModalTitle/ModalTitle';
 import MDBModalBody from './components/Modal/ModalBody/ModalBody';
 import MDBModalFooter from './components/Modal/ModalFooter/ModalFooter';
 import MDBScrollspy from './navigation/Scrollspy/Scrollspy';
-import MDBScrollspySection from './navigation/Scrollspy/ScrollspySection/ScrollspySection';
-import MDBScrollspyNavItem from './navigation/Scrollspy/ScrollspyNavItem/ScrollspyNavItem';
-import MDBScrollspyNavLink from './navigation/Scrollspy/ScrollspyNavlink/ScrollspyNavlink';
-import MDBScrollspyNavList from './navigation/Scrollspy/ScrollspyNavList/ScrollspyNavList';
+import MDBScrollspyLink from './navigation/Scrollspy/ScrollspyLink/ScrollspyLink';
+import MDBScrollspySubList from './navigation/Scrollspy/ScrollspySubList/ScrollspySubList';
 import MDBSwitch from './forms/Switch/Switch';
 import MDBRange from './forms/Range/Range';
 import MDBFile from './forms/File/File';
@@ -148,10 +146,8 @@ export {
   MDBModalBody,
   MDBModalFooter,
   MDBScrollspy,
-  MDBScrollspySection,
-  MDBScrollspyNavItem,
-  MDBScrollspyNavLink,
-  MDBScrollspyNavList,
+  MDBScrollspyLink,
+  MDBScrollspySubList,
   MDBSwitch,
   MDBRange,
   MDBFile,

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import MDBBtn from '../Button/Button';
 import type { PopoverProps } from './types';
 import ReactDOM from 'react-dom';
@@ -11,6 +11,8 @@ const MDBPopover: React.FC<PopoverProps> = ({
   btnChildren,
   children,
   tag: Tag,
+  onShow,
+  onHide,
   popperTag: PopperTag,
   isOpen,
   placement,
@@ -23,20 +25,24 @@ const MDBPopover: React.FC<PopoverProps> = ({
   const [referenceElement, setReferenceElement] = useState<HTMLElement>();
   const [popperElement, setPopperElement] = useState<HTMLElement>();
   const { styles, attributes } = usePopper(referenceElement, popperElement, { placement, ...options });
-  const [isOpenState, setIsOpenState] = useState<undefined | boolean>(isOpen);
+  const [isOpenState, setIsOpenState] = useState<boolean>(isOpen ?? false);
   const [attachELements, setAttachELements] = useState(false);
-  const [show, setShow] = useState(false);
 
   const [isClickOutside, setIsClickOutside] = useState(false);
 
   const classes = clsx(
     'popover fade',
-    show && 'show',
+    attachELements && isOpenState && 'show',
     `bs-popover-${placement === 'left' ? 'start' : placement === 'right' ? 'end' : placement}`,
     className
   );
 
   const handleBtnClick = (e: any) => {
+    if (isOpenState && !dismiss) {
+      onHide?.();
+    } else if (!isOpenState) {
+      onShow?.();
+    }
     if (dismiss) {
       setIsClickOutside(true);
       setIsOpenState(true);
@@ -65,27 +71,18 @@ const MDBPopover: React.FC<PopoverProps> = ({
       ) {
         if (!referenceElement.contains(e.target as Node)) {
           setIsOpenState(false);
+          onHide?.();
         }
       }
     },
-    [isClickOutside, isOpenState, popperElement, referenceElement]
+    [isClickOutside, isOpenState, popperElement, referenceElement, onHide]
   );
 
-  useMemo(() => {
-    let timer: ReturnType<typeof setTimeout>;
+  useEffect(() => {
+    const timer: ReturnType<typeof setTimeout> = setTimeout(() => {
+      setAttachELements(isOpenState);
+    }, 150);
 
-    if (isOpenState) {
-      setAttachELements(true);
-      setTimeout(() => {
-        setShow(true);
-      }, 150);
-    } else {
-      timer = setTimeout(() => {
-        setAttachELements(false);
-      }, 150);
-
-      setShow(false);
-    }
     return () => {
       clearTimeout(timer);
     };
@@ -106,14 +103,13 @@ const MDBPopover: React.FC<PopoverProps> = ({
         {btnChildren}
       </Tag>
 
-      {attachELements &&
+      {(attachELements || isOpenState) &&
         ReactDOM.createPortal(
           <PopperTag
             className={classes}
             ref={setPopperElement}
             style={{ ...styles.popper, ...poperStyle }}
             {...attributes.popper}
-            data-testid='popoverTestID'
           >
             {children}
           </PopperTag>,

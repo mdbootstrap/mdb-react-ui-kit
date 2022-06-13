@@ -1,6 +1,6 @@
 MDB 5 React
 
-Version: FREE 3.0.0
+Version: FREE 4.0.0
 
 Documentation:
 https://mdbootstrap.com/docs/b5/react/

@@ -1,8 +1,9 @@
-interface PaginationItemProps extends React.AllHTMLAttributes<HTMLElement> {
+import { BaseComponent } from 'src/types/baseComponent';
+
+interface PaginationItemProps extends BaseComponent {
   active?: boolean;
   disabled?: boolean;
-  tag?: React.ComponentProps<any>;
-  ref?: React.Ref<any>;
+  ref?: React.Ref<HTMLLIElement>;
 }
 
 export { PaginationItemProps };

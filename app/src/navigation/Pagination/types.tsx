@@ -1,11 +1,13 @@
-interface PaginationProps extends Omit<React.AllHTMLAttributes<HTMLElement>, 'size' | 'start'> {
+import { BaseComponent } from 'src/types/baseComponent';
+import { size } from 'src/types/size';
+
+interface PaginationProps extends BaseComponent {
   center?: boolean;
   end?: boolean;
   start?: boolean;
-  size?: 'lg' | 'sm';
-  tag?: React.ComponentProps<any>;
+  size?: size;
   circle?: boolean;
-  ref?: React.Ref<any>;
+  ref?: React.Ref<HTMLUListElement>;
 }
 
 export { PaginationProps };

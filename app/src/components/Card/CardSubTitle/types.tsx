@@ -1,4 +1,6 @@
-interface CardSubTitleProps extends React.AllHTMLAttributes<HTMLElement> {
+import { BaseComponent } from 'src/types/baseComponent';
+
+interface CardSubTitleProps extends BaseComponent {
   tag?: React.ComponentProps<any>;
   ref?: React.ForwardedRef<HTMLAllCollection>;
 }

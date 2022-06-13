@@ -1,11 +1,11 @@
 import React from 'react';
 
 type CarouselProps = {
-  asyncData?: any;
-  activeItem?: number;
   className?: string;
   fade?: boolean;
+  interval?: number;
   keyboard?: boolean;
+  onSlide?: () => any;
   pause?: boolean;
   showControls?: boolean;
   showIndicators?: boolean;

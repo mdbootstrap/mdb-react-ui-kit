@@ -1,21 +1,11 @@
-interface FooterProps extends React.AllHTMLAttributes<HTMLElement> {
-  color?:
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'info'
-    | 'warning'
-    | 'danger'
-    | 'light'
-    | 'dark'
-    | 'body'
-    | 'muted'
-    | 'white'
-    | 'black-50'
-    | 'white-50';
+import { BaseComponent } from 'src/types/baseComponent';
+import { backgroundColor, textColor } from 'src/types/colors';
+
+interface FooterProps extends BaseComponent {
+  color?: textColor;
   tag?: React.ComponentProps<any>;
-  bgColor?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark';
-  ref?: React.Ref<any>;
+  bgColor?: backgroundColor;
+  ref?: React.Ref<HTMLDivElement>;
 }
 
 export { FooterProps };

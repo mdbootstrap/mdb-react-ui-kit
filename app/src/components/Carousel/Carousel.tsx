@@ -18,6 +18,7 @@ const MDBCarousel: React.FC<CarouselProps> = ({
   tag: Tag,
   showControls,
   showIndicators,
+  onSlide,
   ...props
 }) => {
   const items = useRef<Array<HTMLElement> | null>(null);
@@ -31,6 +32,7 @@ const MDBCarousel: React.FC<CarouselProps> = ({
   const [active, setActive] = useState(0);
   const [imagesCount, setImagesCount] = useState(0);
   const [clientTouch, setClientTouch] = useState({ initialX: 0, initialY: 0 });
+  const [isTransitioning, setIsTransitioning] = useState(false)
 
   const carouselInnerRef = useRef<HTMLElement>(null);
   const carouselReference = carouselRef ? carouselRef : carouselInnerRef;
@@ -118,6 +120,7 @@ const MDBCarousel: React.FC<CarouselProps> = ({
 
   const slide = useCallback(
     (directionOrOrder: string, element: any) => {
+      setIsTransitioning(true);
       const order = directionToOrder(directionOrOrder);
       const activeElement = carouselReference.current.querySelector('.active.carousel-item');
       const nextElement = element || getItemByOrder(order, activeElement);
@@ -159,6 +162,7 @@ const MDBCarousel: React.FC<CarouselProps> = ({
         nextElement.classList.add(directionalClassName);
 
         const completeCallBack = () => {
+          setIsTransitioning(false)
           nextElement.classList.remove(directionalClassName, orderClassName);
           nextElement.classList.add('active');
 
@@ -281,6 +285,10 @@ const MDBCarousel: React.FC<CarouselProps> = ({
 
     setImagesCount(imgLength);
   }, [carouselReference]);
+
+  useEffect(()=>{
+    onSlide?.()
+  },[isTransitioning, onSlide])
 
   useEffect(() => {
     if (keyboard) {

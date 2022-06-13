@@ -1,16 +1,9 @@
-interface ProgressBarProps extends React.HTMLAttributes<HTMLElement> {
+import { BaseComponent } from 'src/types/baseComponent';
+import { backgroundColor } from 'src/types/colors';
+
+interface ProgressBarProps extends BaseComponent {
   animated?: boolean;
-  bgColor?:
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'danger'
-    | 'warning'
-    | 'light'
-    | 'dark'
-    | 'white'
-    | 'info'
-    | 'transparent';
+  bgColor?: backgroundColor;
   ref?: React.ForwardedRef<HTMLAllCollection>;
   striped?: boolean;
   tag?: React.ComponentProps<any>;

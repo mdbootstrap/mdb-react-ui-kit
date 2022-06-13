@@ -1,6 +1,6 @@
 {
   "name": "mdb-react-ui-kit",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "main": "./dist/mdb-react-ui-kit.js",
   "module": "./dist/mdb-react-ui-kit.esm.js",
   "types": "./dist/index.d.ts",
@@ -11,14 +11,14 @@
   "homepage": "https://mdbootstrap.com/",
   "dependencies": {
     "clsx": "1.1.1",
-    "react-popper": "2.2.4",
-    "@popperjs/core": "2.6.0"
+    "react-popper": "2.3.0",
+    "@popperjs/core": "2.11.5"
   },
   "peerDependencies": {
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0"
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.3"
   },
   "keywords": [
     "bootstrap",

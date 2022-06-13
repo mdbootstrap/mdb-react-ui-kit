@@ -1,6 +1,7 @@
 import React from 'react';
+import { BaseComponent } from 'src/types/baseComponent';
 
-interface AccordionItemProps extends React.HTMLAttributes<HTMLElement> {
+interface AccordionItemProps extends BaseComponent {
   bodyClassName?: string;
   bodyStyle?: React.CSSProperties;
   collapseId: number;

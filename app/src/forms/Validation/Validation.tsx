@@ -1,40 +1,34 @@
 import clsx from 'clsx';
-import React, { useState } from 'react';
 import type { ValidationProps } from './types';
+import React, { useState } from 'react';
 
-const MDBValidation: React.FC<ValidationProps> = ({
-  className,
-  children,
-  formRef,
-  isValidated,
-  onReset,
-  onSubmit,
-  ...props
-}) => {
-  const [validated, setValidated] = useState(isValidated);
+const MDBValidation: React.FC<ValidationProps> = React.forwardRef<HTMLFormElement, ValidationProps>(
+  ({ className, children, isValidated, onReset, onSubmit, ...props }, ref) => {
+    const [validated, setValidated] = useState(isValidated);
 
-  const classes = clsx('needs-validation', validated && 'was-validated', className);
+    const classes = clsx('needs-validation', validated && 'was-validated', className);
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    setValidated(true);
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      setValidated(true);
 
-    onSubmit && onSubmit(e);
-  };
+      onSubmit && onSubmit(e);
+    };
 
-  const handleReset = (e: any) => {
-    e.preventDefault();
-    setValidated(false);
+    const handleReset = (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      setValidated(false);
 
-    onReset && onReset(e);
-  };
+      onReset && onReset(e);
+    };
 
-  return (
-    <form className={classes} onSubmit={handleSubmit} onReset={handleReset} ref={formRef} {...props}>
-      {children}
-    </form>
-  );
-};
+    return (
+      <form className={classes} onSubmit={handleSubmit} onReset={handleReset} ref={ref} {...props}>
+        {children}
+      </form>
+    );
+  }
+);
 
 MDBValidation.defaultProps = {
   noValidate: true,

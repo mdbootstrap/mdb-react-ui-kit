@@ -1,6 +1,7 @@
 import React from 'react';
+import { BaseComponent } from 'src/types/baseComponent';
 
-interface ListGroupProps extends React.HTMLAttributes<HTMLElement> {
+interface ListGroupProps extends BaseComponent {
   horizontal?: boolean;
   horizontalSize?: string;
   flush?: boolean;

@@ -13,6 +13,9 @@ const MDBModal: React.FC<ModalProps> = ({
   setShow,
   leaveHiddenModal,
   modalRef,
+  onHide,
+  onHidePrevented,
+  onShow,
   show,
   staticBackdrop,
   tag: Tag,
@@ -40,6 +43,7 @@ const MDBModal: React.FC<ModalProps> = ({
 
   const closeModal = useCallback(() => {
     setIsOpenModal(false);
+    isOpenModal && onHide?.();
 
     setTimeout(() => {
       setIsOpenBackrop(false);
@@ -48,7 +52,8 @@ const MDBModal: React.FC<ModalProps> = ({
     setTimeout(() => {
       setInnerShow(false);
     }, 350);
-  }, [setShow]);
+    //eslint-disable-next-line
+  }, [onHide, setShow]);
 
   const handleClickOutside = useCallback(
     (event: any) => {
@@ -57,13 +62,14 @@ const MDBModal: React.FC<ModalProps> = ({
           closeModal();
         } else {
           setStaticModal(true);
+          onHidePrevented?.();
           setTimeout(() => {
             setStaticModal(false);
           }, 300);
         }
       }
     },
-    [closeModal, modalReference, isOpenModal, staticBackdrop]
+    [isOpenModal, modalReference, staticBackdrop, closeModal, onHidePrevented]
   );
 
   const handleKeydown = useCallback(
@@ -80,6 +86,7 @@ const MDBModal: React.FC<ModalProps> = ({
             closeModal();
           } else {
             setStaticModal(true);
+            onHidePrevented?.();
             setTimeout(() => {
               setStaticModal(false);
             }, 300);
@@ -87,7 +94,7 @@ const MDBModal: React.FC<ModalProps> = ({
         }
       }
     },
-    [closeModal, isOpenModal, staticBackdrop, closeOnEsc, focusedElement]
+    [isOpenModal, closeOnEsc, focusedElement, staticBackdrop, closeModal, onHidePrevented]
   );
 
   useEffect(() => {
@@ -153,6 +160,7 @@ const MDBModal: React.FC<ModalProps> = ({
 
   useEffect(() => {
     if (show) {
+      onShow?.();
       setInnerShow(true);
       setTimeout(() => {
         setIsOpenBackrop(true);
@@ -164,7 +172,7 @@ const MDBModal: React.FC<ModalProps> = ({
     } else {
       closeModal();
     }
-  }, [show, closeModal, setShow]);
+  }, [show, closeModal, setShow, onShow]);
 
   useEffect(() => {
     window.addEventListener('click', handleClickOutside);

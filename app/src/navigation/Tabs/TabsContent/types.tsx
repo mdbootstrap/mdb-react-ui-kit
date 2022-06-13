@@ -1,4 +1,6 @@
-interface TabsContentProps extends React.AllHTMLAttributes<HTMLElement> {
+import { BaseComponent } from 'src/types/baseComponent';
+
+interface TabsContentProps extends BaseComponent {
   tag?: React.ComponentProps<any>;
   ref?: React.Ref<any>;
 }

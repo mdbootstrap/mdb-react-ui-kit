@@ -1,22 +1,12 @@
-interface BreadcrumbProps extends React.AllHTMLAttributes<HTMLElement> {
+import { BaseComponent } from 'src/types/baseComponent';
+import { textColor } from 'src/types/colors';
+
+interface BreadcrumbProps extends BaseComponent {
   bold?: boolean;
   tag?: React.ComponentProps<any>;
-  color?:
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'info'
-    | 'warning'
-    | 'danger'
-    | 'light'
-    | 'dark'
-    | 'body'
-    | 'muted'
-    | 'white'
-    | 'black-50'
-    | 'white-50';
+  color?: textColor;
   uppercase?: boolean;
-  ref?: React.Ref<any>;
+  ref?: React.Ref<HTMLOListElement>;
 }
 
 export { BreadcrumbProps };

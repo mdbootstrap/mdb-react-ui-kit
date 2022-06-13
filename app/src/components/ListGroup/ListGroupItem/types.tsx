@@ -1,9 +1,10 @@
 import React from 'react';
+import { backgroundColor } from 'src/types/colors';
+import { BaseComponent } from 'src/types/baseComponent';
 
-interface ListGroupItemProps extends Omit<React.AllHTMLAttributes<HTMLLIElement>, 'action'> {
-  active?: boolean;
+interface ListGroupItemProps extends BaseComponent {
   action?: boolean;
-  color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light' | 'dark' | 'info';
+  color?: backgroundColor;
   disabled?: boolean;
   tag?: React.ComponentProps<any>;
 }

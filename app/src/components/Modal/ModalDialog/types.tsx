@@ -1,4 +1,6 @@
-interface ModalDialogProps extends React.HTMLAttributes<HTMLElement> {
+import { BaseComponent } from 'src/types/baseComponent';
+
+interface ModalDialogProps extends BaseComponent {
   centered?: boolean;
   size?:
     | 'sm'

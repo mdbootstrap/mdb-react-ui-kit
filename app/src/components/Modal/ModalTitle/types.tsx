@@ -1,4 +1,6 @@
-interface ModalTitleProps extends React.AllHTMLAttributes<HTMLHeadElement> {
+import { BaseComponent } from 'src/types/baseComponent';
+
+interface ModalTitleProps extends BaseComponent {
   ref?: React.ForwardedRef<HTMLAllCollection>;
   tag?: React.ComponentProps<any>;
 }

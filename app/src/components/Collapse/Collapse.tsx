@@ -4,7 +4,6 @@ import type { CollapseProps } from './types';
 
 const MDBCollapse: React.FC<CollapseProps> = ({
   className,
-  center,
   children,
   show,
   id,
@@ -15,42 +14,34 @@ const MDBCollapse: React.FC<CollapseProps> = ({
   ...props
 }): JSX.Element => {
   const [showCollapse, setShowCollapse] = useState<boolean | undefined>(false);
-  const [showCollapseString, setShowCollapseString] = useState<string | undefined>('');
-  const [statement, setStatement] = useState(false);
   const [collapseHeight, setCollapseHeight] = useState<string | number | undefined>(undefined);
   const [transition, setTransition] = useState(false);
 
   const classes = clsx(
     transition ? 'collapsing' : 'collapse',
-    !transition && (showCollapse || statement) && 'show',
+    !transition && showCollapse && 'show',
     navbar && 'navbar-collapse',
-    center && 'justify-content-center',
     className
   );
   const collapseEl = useRef<HTMLElement>(null);
-  const refCollapse = collapseRef ? collapseRef : collapseEl;
+  const refCollapse = collapseRef ?? collapseEl;
 
   const handleResize = useCallback(() => {
-    if (showCollapse || statement) {
+    if (showCollapse) {
       setCollapseHeight(undefined);
     }
-  }, [showCollapse, statement]);
+  }, [showCollapse]);
 
   useEffect(() => {
-    if (collapseHeight === undefined && (showCollapse || statement)) {
+    if (collapseHeight === undefined && showCollapse) {
       setCollapseHeight(refCollapse?.current?.scrollHeight);
     }
-  }, [collapseHeight, showCollapse, statement, refCollapse]);
+  }, [collapseHeight, showCollapse, refCollapse]);
 
   useEffect(() => {
-    if (typeof show === 'string') {
-      setShowCollapseString(show);
-      setStatement(showCollapseString === id);
-    } else {
-      setShowCollapse(show);
-    }
+    setShowCollapse(show);
 
-    if (statement || showCollapse) {
+    if (showCollapse) {
       setTransition(true);
     }
 
@@ -61,15 +52,15 @@ const MDBCollapse: React.FC<CollapseProps> = ({
     return () => {
       clearTimeout(timer);
     };
-  }, [show, showCollapse, id, showCollapseString, statement]);
+  }, [show, showCollapse]);
 
   useEffect(() => {
-    if (showCollapse || statement) {
+    if (showCollapse) {
       setCollapseHeight(refCollapse?.current?.scrollHeight);
     } else {
       setCollapseHeight(0);
     }
-  }, [showCollapse, statement, refCollapse]);
+  }, [showCollapse, refCollapse]);
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);

@@ -1,27 +1,17 @@
-interface TooltipProps extends Omit<React.AllHTMLAttributes<HTMLElement>, 'title'> {
+import { BaseComponent } from 'src/types/baseComponent';
+import { placement } from 'src/types/placement';
+
+interface TooltipProps extends BaseComponent {
   disableMouseDown?: boolean;
   options?: Record<string, unknown>;
-  placement?:
-    | 'top'
-    | 'auto'
-    | 'auto-start'
-    | 'auto-end'
-    | 'bottom'
-    | 'right'
-    | 'left'
-    | 'top-start'
-    | 'top-end'
-    | 'bottom-start'
-    | 'bottom-end'
-    | 'right-start'
-    | 'right-end'
-    | 'left-start'
-    | 'left-end';
+  placement?: placement;
   tag?: React.ComponentProps<any>;
   tooltipTag?: React.ComponentProps<any>;
   title?: React.ReactNode;
   wrapperProps?: Record<string, unknown>;
   wrapperClass?: string;
+  onShow?: () => any;
+  onHide?: () => any;
 }
 
 export { TooltipProps };

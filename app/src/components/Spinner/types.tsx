@@ -1,20 +1,11 @@
-interface SpinnerProps extends React.HTMLAttributes<HTMLElement> {
-  color?:
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'danger'
-    | 'warning'
-    | 'light'
-    | 'dark'
-    | 'muted'
-    | 'white'
-    | 'info'
-    | 'body'
-    | 'black-50'
-    | 'white-50';
+import { BaseComponent } from 'src/types/baseComponent';
+import { textColor } from 'src/types/colors';
+import { size } from 'src/types/size';
+
+interface SpinnerProps extends BaseComponent {
+  color?: textColor;
   grow?: boolean;
-  size?: 'lg' | 'sm';
+  size?: size;
   ref?: React.ForwardedRef<HTMLAllCollection>;
   tag?: React.ComponentProps<any>;
 }

@@ -1,3 +1,5 @@
+import { textColor } from 'src/types/colors';
+
 type IconProps = {
   animate?: 'beat' | 'fade' | 'beat-fade' | 'bounce' | 'shake' | 'flip' | 'spin' | 'pulse';
   className?: string;
@@ -24,20 +26,7 @@ type IconProps = {
     | 'lg'
     | 'xl'
     | '2xl';
-  color?:
-    | 'primary'
-    | 'secondary'
-    | 'success'
-    | 'danger'
-    | 'warning'
-    | 'light'
-    | 'dark'
-    | 'muted'
-    | 'white'
-    | 'info'
-    | 'body'
-    | 'black-50'
-    | 'white-50';
+  color?: textColor;
   icon?: string;
   border?: boolean;
   rotate?: '90' | '180' | '270' | 'by';

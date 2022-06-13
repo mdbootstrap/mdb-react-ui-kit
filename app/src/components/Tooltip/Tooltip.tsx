@@ -16,6 +16,8 @@ const MDBTooltip: React.FC<TooltipProps> = ({
   title,
   wrapperProps,
   wrapperClass,
+  onShow,
+  onHide,
   onMouseEnter,
   onMouseLeave,
   ...props
@@ -58,13 +60,13 @@ const MDBTooltip: React.FC<TooltipProps> = ({
 
   const handleOnMouseEnter = (e: any) => {
     setIsOpenState(true);
-
+    onShow?.();
     onMouseEnter && onMouseEnter(e);
   };
 
   const handleOnMouseLeave = (e: any) => {
     setIsOpenState(false);
-
+    onHide?.();
     onMouseLeave && onMouseLeave(e);
   };
 

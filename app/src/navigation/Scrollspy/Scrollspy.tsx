@@ -1,59 +1,69 @@
-import React, { useEffect, useCallback } from 'react';
+import clsx from 'clsx';
+import React, { useCallback, useEffect, useState } from 'react';
+import { ScrollspyContext } from './ScrollspyContext';
 import type { ScrollspyProps } from './types';
 
-const MDBScrollspy: React.FC<ScrollspyProps> = React.forwardRef<HTMLAllCollection, ScrollspyProps>(
-  ({ className, offset, onElement, setActive, targets, tag: Tag, children, ...props }, ref) => {
-    const handleScroll = useCallback(
-      (e: any) => {
-        if (targets && offset) {
-          let scrollTop: number;
+const MDBScrollspy: React.FC<ScrollspyProps> = ({ container, className, children, offset, ...props }) => {
+  const classes = clsx('sticky-top', className);
 
-          if (onElement) {
-            scrollTop = e.target.scrollTop;
-          } else {
-            scrollTop = window.pageYOffset;
-          }
+  const [activeElement, setActiveElement] = useState(null);
+  const [targets, setTargets] = useState<Array<React.MutableRefObject<any>>>([]);
 
-          const lastIndex = targets.length - 1;
+  const isWindow = container instanceof Window;
 
-          if (scrollTop < targets[0].offsetTop) {
-            setActive?.(0);
-          }
+  const handleScroll = useCallback(() => {
+    if (!targets.length) return;
 
-          targets.forEach((target: any, i: number) => {
-            const nextTarget = targets[i + 1];
+    const scrollTop = isWindow ? window.pageYOffset : container?.current?.scrollTop;
+    const offsetValue = Number(offset);
+    const lastItem = targets[targets.length - 1]?.current;
+    const firstItem = targets[0]?.current;
 
-            if (scrollTop > target.offsetTop - offset && scrollTop < nextTarget?.offsetTop - offset) {
-              setActive?.(i + 1);
-            }
-          });
+    if (scrollTop + offsetValue < firstItem.offsetTop) {
+      setActiveElement(null);
+    }
 
-          if (scrollTop > targets[lastIndex].offsetTop - offset) {
-            setActive?.(lastIndex + 1);
-          }
-        }
-      },
-      [targets, offset, onElement, setActive]
-    );
+    targets.forEach((target, i) => {
+      const nextTarget = targets[i + 1]?.current;
+      const currentTarget = target.current;
+      const isBetweenElement =
+        scrollTop > currentTarget.offsetTop - offsetValue && scrollTop < nextTarget?.offsetTop - offsetValue;
 
-    useEffect(() => {
-      if (!onElement) {
-        window.addEventListener('scroll', handleScroll);
+      if (isBetweenElement) {
+        setActiveElement(currentTarget);
 
-        return () => {
-          window.removeEventListener('scroll', handleScroll);
-        };
+        return;
       }
-    }, [targets, onElement, handleScroll]);
+    });
 
-    return (
-      <Tag className={className} ref={ref} {...props} onScroll={onElement ? handleScroll : null}>
-        {children}
-      </Tag>
-    );
-  }
-);
+    const isLastElement = scrollTop > lastItem.offsetTop - offsetValue;
 
-MDBScrollspy.defaultProps = { tag: 'div', onElement: false, offset: 10 };
+    if (isLastElement) {
+      setActiveElement(lastItem);
+    }
+  }, [offset, targets, isWindow, container]);
+
+  useEffect(() => {
+    const spyElement = isWindow ? container : container?.current;
+
+    handleScroll();
+
+    spyElement?.addEventListener('scroll', handleScroll);
+
+    return () => {
+      spyElement?.removeEventListener('scroll', handleScroll);
+    };
+  }, [handleScroll, container, isWindow]);
+
+  return (
+    <div className={classes} {...props}>
+      <ul className='nav flex-column nav-pills menu-sidebar'>
+        <ScrollspyContext.Provider value={{ activeElement, setTargets }}>{children}</ScrollspyContext.Provider>
+      </ul>
+    </div>
+  );
+};
+
+MDBScrollspy.defaultProps = { offset: 10, container: window };
 
 export default MDBScrollspy;

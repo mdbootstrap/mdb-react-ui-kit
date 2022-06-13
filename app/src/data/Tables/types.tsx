@@ -1,13 +1,13 @@
-interface TableProps extends React.AllHTMLAttributes<HTMLElement> {
+import { backgroundColor, textColor } from 'src/types/colors';
+
+interface TableProps extends Omit<React.TableHTMLAttributes<HTMLTableElement>, 'align'> {
   align?: 'top' | 'middle' | 'bottom';
-  borderColor?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | 'white';
-  color?: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'danger' | 'light' | 'dark' | 'white';
+  borderColor?: textColor;
+  color?: backgroundColor;
   bordered?: boolean;
   borderless?: boolean;
   small?: boolean;
   hover?: boolean;
-  tag?: React.ComponentProps<any>;
-  ref?: React.Ref<any>;
   classNameResponsive?: string;
   striped?: boolean;
   responsive?: string | boolean;

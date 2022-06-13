@@ -1,20 +1,26 @@
 import clsx from 'clsx';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import type { AccordionProps } from './types';
 import { AccordionContext } from './AccordionContext';
 
 const MDBAccordion: React.FC<AccordionProps> = React.forwardRef<HTMLAllCollection, AccordionProps>(
-  ({ alwaysOpen, className, flush, initialActive, tag: Tag, children, ...props }, ref) => {
+  ({ alwaysOpen, className, flush, initialActive, tag: Tag, children, onChange, ...props }, ref) => {
     const classes = clsx('accordion', flush && 'accordion-flush', className);
 
     const [activeItem, setActiveItem] = useState(initialActive);
 
+    useEffect(() => {
+      if (!activeItem) return;
+
+      onChange && onChange(activeItem);
+    }, [onChange, activeItem]);
+
     return (
-      <AccordionContext.Provider value={{ activeItem, setActiveItem, alwaysOpen, initialActive }}>
-        <Tag className={classes} ref={ref} {...props}>
+      <Tag className={classes} ref={ref} {...props}>
+        <AccordionContext.Provider value={{ activeItem, setActiveItem, alwaysOpen, initialActive }}>
           {children}
-        </Tag>
-      </AccordionContext.Provider>
+        </AccordionContext.Provider>
+      </Tag>
     );
   }
 );

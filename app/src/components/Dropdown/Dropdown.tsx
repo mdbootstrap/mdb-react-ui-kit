@@ -25,8 +25,7 @@ const MDBDropdown: React.FC<DropdownProps> = ({
   const [referenceElement, setReferenceElement] = useState<HTMLElement>();
   const [popperElement, setPopperElement] = useState<HTMLElement>();
   const [isPlacement, setIsPlacement] = useState(placement);
-  // eslint-disable-next-line prefer-const
-  let [activeIndex, setActiveIndex] = useState<number>(-1);
+  const [activeIndex, setActiveIndex] = useState<number>(-1);
   const [countLength, setCountLength] = useState<number>(-1);
 
   useEffect(() => {

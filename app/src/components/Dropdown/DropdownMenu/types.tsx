@@ -1,4 +1,6 @@
-interface DropdownMenuProps extends React.HTMLAttributes<HTMLElement> {
+import { BaseComponent } from 'src/types/baseComponent';
+
+interface DropdownMenuProps extends BaseComponent {
   dark?: boolean;
   responsive?:
     | ''

@@ -2,20 +2,19 @@ import React from 'react';
 import clsx from 'clsx';
 import type { BreadcrumbItemProp } from './types';
 
-const MDBBreadcrumbItem: React.FC<BreadcrumbItemProp> = React.forwardRef<HTMLAllCollection, BreadcrumbItemProp>(
-  ({ className, active, tag: Tag, current, children, ...props }, ref) => {
+const MDBBreadcrumbItem: React.FC<BreadcrumbItemProp> = React.forwardRef<HTMLLIElement, BreadcrumbItemProp>(
+  ({ className, active, current, children, ...props }, ref) => {
     const classes = clsx('breadcrumb-item', active && 'active', className);
 
     return (
-      <Tag className={classes} ref={ref} aria-current={active && current} {...props}>
+      <li className={classes} ref={ref} aria-current={active && current} {...props}>
         {children}
-      </Tag>
+      </li>
     );
   }
 );
 
 MDBBreadcrumbItem.defaultProps = {
-  tag: 'li',
   current: 'page',
 };
 

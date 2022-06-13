@@ -1,4 +1,6 @@
-interface DropdownDividerProps extends React.HTMLAttributes<HTMLElement> {
+import { BaseComponent } from 'src/types/baseComponent';
+
+interface DropdownDividerProps extends BaseComponent {
   tag?: React.ComponentProps<any>;
 }
 

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, FocusEvent, ChangeEvent, useCallback } from 'react';
 import type { InputProps } from './types';
 
 const MDBInput: React.FC<InputProps> = ({
@@ -24,17 +24,15 @@ const MDBInput: React.FC<InputProps> = ({
   readonly,
   ...props
 }) => {
+  const [newValue, setNewValue] = useState(value || defaultValue);
+  const [labelWidth, setLabelWidth] = useState(0);
+  const [active, setActive] = useState(value || defaultValue ? true : false);
+
   const labelEl = useRef<HTMLLabelElement>(null);
   const inputEl = useRef<HTMLInputElement>(null);
 
   const labelReference = labelRef ? labelRef : labelEl;
   const inputReference = inputRef ? inputRef : inputEl;
-
-  const [oldValue, setNewValue] = useState(value || defaultValue);
-  const [labelWidth, setLabelWidth] = useState(0);
-  const [active, setActive] = useState(
-    (value !== undefined && value.length > 0) || (defaultValue !== undefined && defaultValue.length) > 0 ? true : false
-  );
 
   const wrapperClasses = clsx('form-outline', contrast && 'form-white', wrapperClass);
   const inputClasses = clsx(
@@ -47,46 +45,37 @@ const MDBInput: React.FC<InputProps> = ({
   const labelClasses = clsx('form-label', labelClass);
 
   useEffect(() => {
-    if (labelReference.current) {
-      if (labelReference.current?.clientWidth !== 0) setLabelWidth(labelReference.current.clientWidth * 0.8 + 8);
-    }
-  }, [labelReference, labelReference.current?.clientWidth]);
-
-  const setWidth = () => {
-    if (labelReference.current) {
-      setLabelWidth(labelReference.current.clientWidth * 0.8 + 8);
-    }
-  };
-
-  useEffect(() => {
     if (value === undefined) return;
-    value.length > 0 ? setActive(true) : setActive(false);
+    value ? setActive(true) : setActive(false);
   }, [value]);
 
   useEffect(() => {
     if (defaultValue === undefined) return;
-    defaultValue.length > 0 ? setActive(true) : setActive(false);
+    defaultValue ? setActive(true) : setActive(false);
   }, [defaultValue]);
 
-  const handleChange = (e: any) => {
-    setNewValue(e.currentTarget.value);
-    onChange && onChange(e);
+  const setWidth = useCallback(() => {
+    if (labelReference.current?.clientWidth) {
+      setLabelWidth(labelReference.current.clientWidth * 0.8 + 8);
+    }
+  }, [labelReference]);
+
+  useEffect(() => {
+    setWidth();
+  }, [labelReference.current?.clientWidth, setWidth]);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setNewValue(e.target.value);
+    onChange?.(e);
   };
 
-  const handleBlur = useCallback(
-    (e: any) => {
-      if ((oldValue !== undefined && oldValue.length > 0) || (value !== undefined && value.length > 0)) {
-        setActive(true);
-      } else {
-        setActive(false);
-      }
-      onBlur && onBlur(e);
-    },
-    [oldValue, value, onBlur]
-  );
+  const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
+    newValue !== '' ? setActive(true) : setActive(false);
+    onBlur?.(e);
+  };
 
   return (
-    <WrapperTag className={wrapperClasses} style={{ ...wrapperStyle }}>
+    <WrapperTag className={wrapperClasses} style={wrapperStyle}>
       <input
         type={type}
         readOnly={readonly}
@@ -105,7 +94,6 @@ const MDBInput: React.FC<InputProps> = ({
           {label}
         </label>
       )}
-
       <div className='form-notch'>
         <div className='form-notch-leading'></div>
         <div className='form-notch-middle' style={{ width: labelWidth }}></div>

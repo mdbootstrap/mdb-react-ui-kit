@@ -1,4 +1,6 @@
-interface RowProps extends React.HTMLAttributes<HTMLElement> {
+import { BaseComponent } from 'src/types/baseComponent';
+
+interface RowProps extends BaseComponent {
   around?: boolean;
   between?: boolean;
   bottom?: boolean;

@@ -1,4 +1,6 @@
-interface TabsProps extends React.AllHTMLAttributes<HTMLUListElement> {
+import { BaseComponent } from 'src/types/baseComponent';
+
+interface TabsProps extends BaseComponent {
   fill?: boolean;
   justify?: boolean;
   pills?: boolean;

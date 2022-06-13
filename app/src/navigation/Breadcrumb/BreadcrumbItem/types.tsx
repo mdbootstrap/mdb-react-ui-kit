@@ -1,8 +1,9 @@
-interface BreadcrumbItemProp extends React.AllHTMLAttributes<HTMLElement> {
+import { BaseComponent } from 'src/types/baseComponent';
+
+interface BreadcrumbItemProp extends BaseComponent {
   active?: boolean;
-  tag?: React.ComponentProps<any>;
   current?: 'page' | 'step' | 'location';
-  ref?: React.Ref<any>;
+  ref?: React.Ref<HTMLLIElement>;
 }
 
 export { BreadcrumbItemProp };
