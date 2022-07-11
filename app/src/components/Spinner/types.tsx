@@ -1,6 +1,6 @@
-import { BaseComponent } from 'src/types/baseComponent';
-import { textColor } from 'src/types/colors';
-import { size } from 'src/types/size';
+import { BaseComponent } from "../../types/baseComponent";
+import { textColor } from "../../types/colors";
+import { size } from "../../types/size";
 
 interface SpinnerProps extends BaseComponent {
   color?: textColor;

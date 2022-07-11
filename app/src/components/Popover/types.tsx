@@ -1,5 +1,5 @@
-import { placement } from 'src/types/placement';
-import { ButtonProps } from '../Button/types';
+import { placement } from "../../types/placement";
+import { ButtonProps } from "../Button/types";
 
 interface PopoverProps extends ButtonProps {
   btnChildren?: React.ReactNode;

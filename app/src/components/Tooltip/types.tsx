@@ -1,5 +1,5 @@
-import { BaseComponent } from 'src/types/baseComponent';
-import { placement } from 'src/types/placement';
+import { BaseComponent } from "../../types/baseComponent";
+import { placement } from "../../types/placement";
 
 interface TooltipProps extends BaseComponent {
   disableMouseDown?: boolean;

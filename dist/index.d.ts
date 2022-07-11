@@ -1,74 +1,30 @@
 import * as React$1 from 'react';
 import React__default, { HTMLAttributes, RefObject, ComponentProps } from 'react';
+
 type BaseComponent = Pick<
   React.HTMLAttributes<HTMLElement>,
-  | "className"
-  | "id"
-  | "style"
-  | "onClick"
-  | "onMouseUp"
-  | "onMouseMove"
-  | "onMouseDown"
-  | "onMouseEnter"
-  | "onMouseLeave"
-  | "onMouseOver"
-  | "onMouseOut"
-  | "onKeyDown"
-  | "onKeyUp"
-  | "onTouchStart"
-  | "onTouchMove"
-  | "onTouchEnd"
-  | "onScroll"
-  | "onDrop"
+  | 'className'
+  | 'id'
+  | 'style'
+  | 'onClick'
+  | 'onMouseUp'
+  | 'onMouseMove'
+  | 'onMouseDown'
+  | 'onMouseEnter'
+  | 'onMouseLeave'
+  | 'onMouseOver'
+  | 'onMouseOut'
+  | 'onKeyDown'
+  | 'onKeyUp'
+  | 'onTouchStart'
+  | 'onTouchMove'
+  | 'onTouchEnd'
+  | 'onScroll'
+  | 'onDrop'
+  | 'children'
 > & {
   [rest: string]: any;
 };
-
-type backgroundColor =
-  | "primary"
-  | "secondary"
-  | "success"
-  | "danger"
-  | "warning"
-  | "info"
-  | "light"
-  | "dark"
-  | "white"
-  | "transparent";
-
-type textColor =
-  | "primary"
-  | "secondary"
-  | "success"
-  | "info"
-  | "warning"
-  | "danger"
-  | "light"
-  | "dark"
-  | "body"
-  | "muted"
-  | "white"
-  | "black-50"
-  | "white-50";
-
-type size = "sm" | "lg";
-
-type placement =
-  | "top"
-  | "auto"
-  | "auto-start"
-  | "auto-end"
-  | "bottom"
-  | "right"
-  | "left"
-  | "top-start"
-  | "top-end"
-  | "bottom-start"
-  | "bottom-end"
-  | "right-start"
-  | "right-end"
-  | "left-start"
-  | "left-end";
 
 interface ContainerProps extends BaseComponent {
     breakpoint?: string;
@@ -97,6 +53,33 @@ interface ColumnProps extends BaseComponent {
 }
 
 declare const MDBCol: React$1.FunctionComponent<ColumnProps>;
+
+type backgroundColor =
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'danger'
+  | 'warning'
+  | 'info'
+  | 'light'
+  | 'dark'
+  | 'white'
+  | 'transparent';
+
+type textColor =
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'info'
+  | 'warning'
+  | 'danger'
+  | 'light'
+  | 'dark'
+  | 'body'
+  | 'muted'
+  | 'white'
+  | 'black-50'
+  | 'white-50';
 
 interface BadgeProps extends BaseComponent {
     color?: backgroundColor;
@@ -134,6 +117,8 @@ interface ButtonProps extends Omit<joinedTypes, 'size' | 'color'> {
 }
 
 declare const MDBBtn: React$1.FunctionComponent<ButtonProps>;
+
+type size = 'sm' | 'lg';
 
 interface ButtonGroupProps extends BaseComponent {
     ref?: React.ForwardedRef<HTMLAllCollection>;
@@ -257,6 +242,23 @@ interface ListGroupItemProps extends BaseComponent {
 }
 
 declare const MDBListGroupItem: React$1.FunctionComponent<ListGroupItemProps>;
+
+type placement =
+  | 'top'
+  | 'auto'
+  | 'auto-start'
+  | 'auto-end'
+  | 'bottom'
+  | 'right'
+  | 'left'
+  | 'top-start'
+  | 'top-end'
+  | 'bottom-start'
+  | 'bottom-end'
+  | 'right-start'
+  | 'right-end'
+  | 'left-start'
+  | 'left-end';
 
 interface TooltipProps extends BaseComponent {
     disableMouseDown?: boolean;
@@ -638,6 +640,7 @@ interface ModalProps extends BaseComponent {
     show?: boolean;
     setShow?: React.SetStateAction<any>;
     staticBackdrop?: boolean;
+    nonInvasive?: boolean;
     tag?: React.ComponentProps<any>;
 }
 
@@ -815,7 +818,7 @@ declare const MDBCarousel: React$1.FunctionComponent<{
   className?: string;
   fade?: boolean;
   keyboard?: boolean;
-  onSlide?: ()=>any;
+  onSlide?: () => any;
   pause?: boolean;
   showControls?: boolean;
   showIndicators?: boolean;

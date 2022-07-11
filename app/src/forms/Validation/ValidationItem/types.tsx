@@ -1,5 +1,5 @@
-import React from 'react';
-import { BaseComponent } from 'src/types/baseComponent';
+import React from "react";
+import { BaseComponent } from "../../../types/baseComponent";
 
 interface ValidationItemProps extends BaseComponent {
   tag?: React.ComponentProps<any>;

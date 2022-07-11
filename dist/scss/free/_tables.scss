@@ -14,7 +14,7 @@
   }
 
   tbody {
-    font-weight: 300;
+    font-weight: 400;
   }
 
   > :not(:last-child) > :last-child > * {
@@ -38,7 +38,15 @@
   }
   > tbody > tr:hover {
     --#{$variable-prefix}table-accent-bg: transparent;
-    color: var(--#{$variable-prefix}table-hover-color);
     background-color: var(--#{$variable-prefix}table-hover-bg);
   }
+}
+
+.table-group-divider {
+  border-top: (2 * $table-border-width) solid;
+  border-top-color: inherit;
+}
+
+.table-divider-color {
+  border-top-color: rgba(0, 0, 0, 0.1);
 }

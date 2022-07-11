@@ -1,6 +1,6 @@
-import React from 'react';
-import { BaseComponent } from 'src/types/baseComponent';
-import { backgroundColor } from 'src/types/colors';
+import React from "react";
+import { BaseComponent } from "../../types/baseComponent";
+import { backgroundColor } from "../../types/colors";
 
 interface BadgeProps extends BaseComponent {
   color?: backgroundColor;

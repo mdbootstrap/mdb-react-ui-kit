@@ -1,4 +1,4 @@
-import { BaseComponent } from 'src/types/baseComponent';
+import { BaseComponent } from "../../types/baseComponent";
 
 interface ColumnProps extends BaseComponent {
   center?: boolean;

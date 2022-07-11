@@ -1,5 +1,5 @@
-import { BaseComponent } from 'src/types/baseComponent';
-import { textColor } from 'src/types/colors';
+import { BaseComponent } from "../../types/baseComponent";
+import { textColor } from "../../types/colors";
 
 interface BreadcrumbProps extends BaseComponent {
   bold?: boolean;

@@ -6,19 +6,20 @@ import ReactDOM from 'react-dom';
 const MDBModal: React.FC<ModalProps> = ({
   animationDirection,
   appendToBody,
-  backdrop,
+  backdrop = true,
   children,
   className,
-  closeOnEsc,
+  closeOnEsc = true,
   setShow,
-  leaveHiddenModal,
+  leaveHiddenModal = true,
   modalRef,
   onHide,
   onHidePrevented,
   onShow,
   show,
   staticBackdrop,
-  tag: Tag,
+  nonInvasive = false,
+  tag: Tag = 'div',
   ...props
 }) => {
   const [isOpenBackdrop, setIsOpenBackrop] = useState(show);
@@ -37,6 +38,7 @@ const MDBModal: React.FC<ModalProps> = ({
     animationDirection,
     'fade',
     isOpenModal && 'show',
+    isOpenBackdrop && nonInvasive && 'modal-non-invasive-show',
     className
   );
   const backdropClasses = clsx('modal-backdrop', 'fade', isOpenBackdrop && 'show');
@@ -47,7 +49,7 @@ const MDBModal: React.FC<ModalProps> = ({
 
     setTimeout(() => {
       setIsOpenBackrop(false);
-      setShow && setShow(false);
+      setShow?.(false);
     }, 150);
     setTimeout(() => {
       setInnerShow(false);
@@ -56,7 +58,7 @@ const MDBModal: React.FC<ModalProps> = ({
   }, [onHide, setShow]);
 
   const handleClickOutside = useCallback(
-    (event: any) => {
+    (event: MouseEvent) => {
       if (isOpenModal && event.target === modalReference.current) {
         if (!staticBackdrop) {
           closeModal();
@@ -100,10 +102,10 @@ const MDBModal: React.FC<ModalProps> = ({
   useEffect(() => {
     const focusable = modalReference.current?.querySelectorAll(
       'button, a, input, select, textarea, [tabindex]'
-    ) as any as Array<HTMLElement>;
+    ) as NodeListOf<HTMLElement>;
 
     const filtered = Array.from(focusable)
-      .filter((el: any) => el.tabIndex !== -1)
+      .filter((el) => el.tabIndex !== -1)
       .sort((a, b) => {
         if (a.tabIndex === b.tabIndex) {
           return 0;
@@ -140,7 +142,7 @@ const MDBModal: React.FC<ModalProps> = ({
 
     const hasVScroll = window.innerWidth > document.documentElement.clientWidth && window.innerWidth >= 576;
 
-    if (innerShow && hasVScroll) {
+    if (innerShow && hasVScroll && !nonInvasive) {
       const scrollbarWidth = getScrollbarWidth();
       document.body.classList.add('modal-open');
       document.body.style.overflow = 'hidden';
@@ -156,7 +158,7 @@ const MDBModal: React.FC<ModalProps> = ({
       document.body.style.overflow = '';
       document.body.style.paddingRight = '';
     };
-  }, [innerShow]);
+  }, [innerShow, nonInvasive]);
 
   useEffect(() => {
     if (show) {
@@ -167,7 +169,7 @@ const MDBModal: React.FC<ModalProps> = ({
       }, 0);
       setTimeout(() => {
         setIsOpenModal(true);
-        setShow && setShow(true);
+        setShow?.(true);
       }, 150);
     } else {
       closeModal();
@@ -175,14 +177,16 @@ const MDBModal: React.FC<ModalProps> = ({
   }, [show, closeModal, setShow, onShow]);
 
   useEffect(() => {
-    window.addEventListener('click', handleClickOutside);
-    window.addEventListener('keydown', handleKeydown);
+    if (!nonInvasive) {
+      window.addEventListener('click', handleClickOutside);
+      window.addEventListener('keydown', handleKeydown);
+    }
 
     return () => {
       window.removeEventListener('click', handleClickOutside);
       window.removeEventListener('keydown', handleKeydown);
     };
-  }, [handleKeydown, handleClickOutside]);
+  }, [handleKeydown, handleClickOutside, nonInvasive]);
 
   const appendToBodyTemplate = (
     <>
@@ -192,12 +196,15 @@ const MDBModal: React.FC<ModalProps> = ({
             <Tag
               className={classes}
               ref={modalReference}
-              style={{ display: innerShow || show ? 'block' : 'none' }}
+              style={{ display: innerShow || show ? 'block' : 'none', pointerEvents: nonInvasive ? 'none' : 'initial' }}
               {...props}
             >
               {children}
             </Tag>
-            {ReactDOM.createPortal(backdrop && innerShow && <div className={backdropClasses}></div>, document.body)}
+            {ReactDOM.createPortal(
+              backdrop && innerShow && !nonInvasive && <div className={backdropClasses}></div>,
+              document.body
+            )}
           </>,
           document.body
         )}
@@ -211,12 +218,15 @@ const MDBModal: React.FC<ModalProps> = ({
           <Tag
             className={classes}
             ref={modalReference}
-            style={{ display: innerShow || show ? 'block' : 'none' }}
+            style={{ display: innerShow || show ? 'block' : 'none', pointerEvents: nonInvasive ? 'none' : 'initial' }}
             {...props}
           >
             {children}
           </Tag>
-          {ReactDOM.createPortal(backdrop && innerShow && <div className={backdropClasses}></div>, document.body)}
+          {ReactDOM.createPortal(
+            backdrop && innerShow && !nonInvasive && <div className={backdropClasses}></div>,
+            document.body
+          )}
         </>
       )}
     </>
@@ -224,5 +234,5 @@ const MDBModal: React.FC<ModalProps> = ({
 
   return <>{appendToBody ? appendToBodyTemplate : modalTemplate}</>;
 };
-MDBModal.defaultProps = { tag: 'div', backdrop: true, closeOnEsc: true, leaveHiddenModal: true };
+
 export default MDBModal;

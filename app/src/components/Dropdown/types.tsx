@@ -1,5 +1,5 @@
-import { placement } from 'src/types/placement';
-import { BaseComponent } from 'src/types/baseComponent';
+import { placement } from "../../types/placement";
+import { BaseComponent } from "../../types/baseComponent";
 
 interface DropdownProps extends BaseComponent {
   animation?: boolean;

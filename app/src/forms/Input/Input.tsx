@@ -26,7 +26,7 @@ const MDBInput: React.FC<InputProps> = ({
 }) => {
   const [newValue, setNewValue] = useState(value || defaultValue);
   const [labelWidth, setLabelWidth] = useState(0);
-  const [active, setActive] = useState(value || defaultValue ? true : false);
+  const [active, setActive] = useState(false);
 
   const labelEl = useRef<HTMLLabelElement>(null);
   const inputEl = useRef<HTMLInputElement>(null);
@@ -46,12 +46,12 @@ const MDBInput: React.FC<InputProps> = ({
 
   useEffect(() => {
     if (value === undefined) return;
-    value ? setActive(true) : setActive(false);
+    setActive(true);
   }, [value]);
 
   useEffect(() => {
     if (defaultValue === undefined) return;
-    defaultValue ? setActive(true) : setActive(false);
+    setActive(true);
   }, [defaultValue]);
 
   const setWidth = useCallback(() => {
@@ -70,7 +70,7 @@ const MDBInput: React.FC<InputProps> = ({
   };
 
   const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
-    newValue !== '' ? setActive(true) : setActive(false);
+    newValue !== undefined && newValue !== '' ? setActive(true) : setActive(false);
     onBlur?.(e);
   };
 

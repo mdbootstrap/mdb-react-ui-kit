@@ -1,7 +1,7 @@
-import { BaseComponent } from 'src/types/baseComponent';
+import { BaseComponent } from "../../types/baseComponent";
 
 interface ModalProps extends BaseComponent {
-  animationDirection?: 'top' | 'bottom' | 'right' | 'left';
+  animationDirection?: "top" | "bottom" | "right" | "left";
   appendToBody?: boolean;
   backdrop?: boolean;
   closeOnEsc?: boolean;
@@ -13,6 +13,7 @@ interface ModalProps extends BaseComponent {
   show?: boolean;
   setShow?: React.SetStateAction<any>;
   staticBackdrop?: boolean;
+  nonInvasive?: boolean;
   tag?: React.ComponentProps<any>;
 }
 
