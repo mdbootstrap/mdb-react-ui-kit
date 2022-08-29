@@ -46,12 +46,12 @@ const MDBInput: React.FC<InputProps> = ({
 
   useEffect(() => {
     if (value === undefined) return;
-    setActive(true);
+    value.toString().length > 0 ? setActive(true) : setActive(false);
   }, [value]);
 
   useEffect(() => {
     if (defaultValue === undefined) return;
-    setActive(true);
+    defaultValue.toString().length > 0 ? setActive(true) : setActive(false);
   }, [defaultValue]);
 
   const setWidth = useCallback(() => {
@@ -69,10 +69,20 @@ const MDBInput: React.FC<InputProps> = ({
     onChange?.(e);
   };
 
-  const handleBlur = (e: FocusEvent<HTMLInputElement>) => {
-    newValue !== undefined && newValue !== '' ? setActive(true) : setActive(false);
-    onBlur?.(e);
-  };
+  const handleBlur = useCallback(
+    (e: FocusEvent<HTMLInputElement, Element>) => {
+      if (
+        (newValue !== undefined && newValue.toString().length > 0) ||
+        (value !== undefined && value.toString().length > 0)
+      ) {
+        setActive(true);
+      } else {
+        setActive(false);
+      }
+      onBlur && onBlur(e);
+    },
+    [newValue, value, onBlur]
+  );
 
   return (
     <WrapperTag className={wrapperClasses} style={wrapperStyle}>

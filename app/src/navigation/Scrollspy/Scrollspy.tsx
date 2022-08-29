@@ -3,7 +3,13 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { ScrollspyContext } from './ScrollspyContext';
 import type { ScrollspyProps } from './types';
 
-const MDBScrollspy: React.FC<ScrollspyProps> = ({ container, className, children, offset, ...props }) => {
+const MDBScrollspy: React.FC<ScrollspyProps> = ({
+  container = typeof window !== undefined ? window : null,
+  className,
+  children,
+  offset = 10,
+  ...props
+}) => {
   const classes = clsx('sticky-top', className);
 
   const [activeElement, setActiveElement] = useState(null);
@@ -63,7 +69,5 @@ const MDBScrollspy: React.FC<ScrollspyProps> = ({ container, className, children
     </div>
   );
 };
-
-MDBScrollspy.defaultProps = { offset: 10, container: window };
 
 export default MDBScrollspy;

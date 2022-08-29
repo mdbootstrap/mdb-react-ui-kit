@@ -18,6 +18,7 @@ export type BaseComponent = Pick<
   | 'onTouchEnd'
   | 'onScroll'
   | 'onDrop'
+  | 'children'
 > & {
   [rest: string]: any;
 };

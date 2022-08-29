@@ -1,33 +1,45 @@
-import React, { useContext } from 'react';
+import React, { MouseEvent } from 'react';
+import { useDropdownContext } from '../hooks/useDropdownContext';
+import { ItemChild } from '../ItemChild/ItemChild';
 import type { DropdownItemProps } from './types';
-import { DropdownContext } from '../context';
 import './style.css';
 
-const MDBDropdownItem: React.FC<DropdownItemProps> = ({
+const MDBDropdownItem = ({
   onClick,
-  tag: Tag,
+  tag: Tag = 'li',
+  childTag: ChildTag,
   children,
   style,
+  link,
+  divider,
+  header,
+  disabled,
+  href,
   ...props
-}): JSX.Element => {
-  const { activeIndex, handleClose } = useContext(DropdownContext);
+}: DropdownItemProps) => {
+  const { setIsOpenState, onHide } = useDropdownContext();
 
-  const handleClickItem = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
-    handleClose();
-    onClick && onClick(e);
+  const handleClose = (e: MouseEvent<HTMLElement>) => {
+    if (disabled) return;
+
+    onHide?.();
+    setIsOpenState(false);
+    onClick?.(e);
   };
 
   return (
-    <Tag {...props} style={{ ...style, cursor: 'pointer' }} onClick={handleClickItem}>
-      {React.Children.map(children, (child: any, index) => {
-        return React.cloneElement(child, { 'data-active': activeIndex === index, 'data-index': index });
-      })}
+    <Tag style={style} onClick={handleClose} {...props}>
+      <ItemChild
+        link={link}
+        divider={divider}
+        header={header}
+        disabled={disabled}
+        href={href}
+        childTag={ChildTag}
+        children={children}
+      />
     </Tag>
   );
-};
-
-MDBDropdownItem.defaultProps = {
-  tag: 'li',
 };
 
 export default MDBDropdownItem;

@@ -1,6 +1,6 @@
 .dropdown-menu [data-active='true'] a.dropdown-item,
 .dropdown-menu .dropdown-item:focus,
-.dropdown-menu li:focus .dropdown-item {
+.dropdown-menu li:focus .dropdown-item :not(.disabled) {
   color: #16181b;
   background-color: #eee;
 }

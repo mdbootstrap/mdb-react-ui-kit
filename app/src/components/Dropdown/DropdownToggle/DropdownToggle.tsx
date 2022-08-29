@@ -1,41 +1,41 @@
 import clsx from 'clsx';
-import React, { useContext } from 'react';
-import type { DropdownToggleProps } from './types';
+import React, { MouseEvent } from 'react';
 import MDBBtn from '../../Button/Button';
-import { DropdownContext } from '../context';
+import { useDropdownContext } from '../hooks/useDropdownContext';
+import type { DropdownToggleProps } from './types';
 
-const MDBDropdownToggle: React.FC<DropdownToggleProps> = ({
+const MDBDropdownToggle = ({
   className,
-  tag: Tag,
+  tag: Tag = MDBBtn,
   children,
   onClick,
   split,
   ...props
-}): JSX.Element => {
+}: DropdownToggleProps) => {
+  const { setIsOpenState, setReferenceElement, isOpenState, setActiveIndex, onHide, onShow } = useDropdownContext();
+
   const classes = clsx('dropdown-toggle', split && 'dropdown-toggle-split', className);
-  const { handleOpenClose, setReferenceElement, isOpenState } = useContext(DropdownContext);
 
-  const handleToggleClick = (e: any) => {
-    handleOpenClose();
+  const handleOpenToggle = (e: MouseEvent<HTMLElement>) => {
+    isOpenState ? onHide?.() : onShow?.();
 
-    onClick && onClick(e);
+    setIsOpenState((prev) => !prev);
+    onClick?.(e);
+
+    setTimeout(() => setActiveIndex(-1), 300);
   };
 
   return (
     <Tag
-      onClick={handleToggleClick}
+      onClick={handleOpenToggle}
       ref={setReferenceElement}
       className={classes}
-      {...props}
       aria-expanded={isOpenState ? true : false}
+      {...props}
     >
       {children}
     </Tag>
   );
-};
-
-MDBDropdownToggle.defaultProps = {
-  tag: MDBBtn,
 };
 
 export default MDBDropdownToggle;

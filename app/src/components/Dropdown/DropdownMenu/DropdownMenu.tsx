@@ -1,142 +1,60 @@
 import clsx from 'clsx';
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { Children, cloneElement } from 'react';
+import { createPortal } from 'react-dom';
+import { useDropdownContext } from '../hooks/useDropdownContext';
+import { useKeyboard } from '../hooks/useKeyboard';
+import { useFade } from '../hooks/useFade';
 import type { DropdownMenuProps } from './types';
-import { DropdownContext } from '../context';
 import './style.css';
-import MDBDropdownItem from '../DropdownItem/DropdownItem';
-import ReactDOM from 'react-dom';
 
-const MDBDropdownMenu: React.FC<DropdownMenuProps> = ({
+const MDBDropdownMenu = ({
   className,
-  tag: Tag,
+  tag: Tag = 'ul',
   children,
   style,
   dark,
-  responsive,
+  responsive = '',
+  appendToBody = false,
+  alwaysOpen,
   ...props
-}): JSX.Element => {
-  const {
-    activeIndex,
-    setPopperElement,
-    isOpenState,
-    styles,
-    animatedFadeIn,
-    animatedFadeOut,
-    animation,
-    getCount,
-    handleOpenClose,
-  } = useContext(DropdownContext);
+}: DropdownMenuProps) => {
+  const { activeIndex, setPopperElement, isOpenState, animation, styles } = useDropdownContext();
+
+  const { show, isFadeIn, isFadeOut } = useFade();
+
+  useKeyboard(children);
 
   const classes = clsx(
     'dropdown-menu',
     dark && 'dropdown-menu-dark',
     isOpenState && 'show',
     animation && 'animation',
-    animatedFadeIn && 'fade-in',
-    animatedFadeOut && 'fade-out',
+    isFadeIn && 'fade-in',
+    isFadeOut && 'fade-out',
     responsive && `dropdown-menu-${responsive}`,
     className
   );
-  const [attachELements, setAttachELements] = useState(false);
-  const [count, setCount] = useState(0);
-  const [childrenLength, setChildrenLength] = useState<number>(-1);
 
-  useEffect(() => {
-    let timer: ReturnType<typeof setTimeout>;
-    if (!isOpenState) {
-      timer = setTimeout(() => {
-        setAttachELements(false);
-      }, 300);
-    } else {
-      const child = React.Children.count(children);
+  if (!show && !alwaysOpen) return null;
 
-      setChildrenLength(child);
-      setAttachELements(true);
-    }
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [children, isOpenState]);
-
-  const handleDown = useCallback(
-    (e: any) => {
-      if (attachELements) {
-        if (e.key === 'ArrowUp') {
-          e.preventDefault();
-
-          setCount(count - 1);
-
-          if (count <= 0) {
-            setCount(childrenLength - 1);
-          }
-        }
-        if (e.key === 'ArrowDown') {
-          e.preventDefault();
-
-          setCount(count + 1);
-
-          if (count === childrenLength - 1) {
-            setCount(0);
-          }
-        }
-        if (e.key === 'Escape' || e.key === 'Enter') {
-          setAttachELements(false);
-          handleOpenClose();
-        }
-      }
-    },
-    [attachELements, childrenLength, handleOpenClose, count]
-  );
-
-  useEffect(() => {
-    if (attachELements) {
-      getCount(count);
-    }
-  }, [count, attachELements, getCount]);
-
-  useEffect(() => {
-    if (attachELements) {
-      document.addEventListener('keydown', handleDown);
-    }
-    return () => {
-      document.removeEventListener('keydown', handleDown);
-    };
-  }, [attachELements, handleDown]);
-
-  return attachELements ? (
-    <>
-      {ReactDOM.createPortal(
-        <Tag
-          className={classes}
-          style={{ position: 'absolute', zIndex: 1000, ...styles.popper, ...style }}
-          {...props}
-          ref={setPopperElement}
-          tabIndex={-1}
-        >
-          {React.Children.map(children, (child: any, index) => {
-            if (child?.type === MDBDropdownItem) {
-              return React.cloneElement(child, {
-                tabIndex: 0,
-                'data-active': activeIndex === index && true,
-                'data-index': index,
-                className: activeIndex === index ? 'active' : '',
-              });
-            } else {
-              return child;
-            }
-          })}
-        </Tag>,
-        document.body
+  const menu = (
+    <Tag
+      className={classes}
+      style={{ position: 'absolute', zIndex: 1000, ...styles.popper, ...style }}
+      ref={setPopperElement}
+      {...props}
+    >
+      {Children.map(children, (child, idx) =>
+        cloneElement(child, {
+          tabIndex: 1,
+          'data-active': activeIndex === idx && true,
+          className: clsx(activeIndex === idx ? 'active' : '', child.props.className),
+        })
       )}
-    </>
-  ) : (
-    <></>
+    </Tag>
   );
-};
 
-MDBDropdownMenu.defaultProps = {
-  tag: 'ul',
-  responsive: '',
+  return <>{appendToBody ? createPortal(menu, document.body) : menu}</>;
 };
 
 export default MDBDropdownMenu;

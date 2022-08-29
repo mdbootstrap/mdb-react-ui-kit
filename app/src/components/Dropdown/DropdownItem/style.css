@@ -1,4 +1,4 @@
-.dropdown-menu li[data-active='true'] {
+.dropdown-menu .active {
   color: #16181b;
   background-color: #eee;
 }

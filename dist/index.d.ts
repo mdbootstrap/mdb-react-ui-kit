@@ -1,5 +1,5 @@
 import * as React$1 from 'react';
-import React__default, { HTMLAttributes, RefObject, ComponentProps } from 'react';
+import React__default, { HTMLAttributes, RefObject, ComponentProps, ReactNode, FunctionComponent, ReactElement } from 'react';
 
 type BaseComponent = Pick<
   React.HTMLAttributes<HTMLElement>,
@@ -227,8 +227,10 @@ declare const MDBCardGroup: React$1.FunctionComponent<CardGroupProps>;
 interface ListGroupProps extends BaseComponent {
     horizontal?: boolean;
     horizontalSize?: string;
-    flush?: boolean;
+    light?: boolean;
+    numbered?: boolean;
     ref?: React__default.ForwardedRef<HTMLAllCollection>;
+    small?: boolean;
     tag?: React__default.ComponentProps<any>;
 }
 
@@ -238,6 +240,7 @@ interface ListGroupItemProps extends BaseComponent {
     action?: boolean;
     color?: backgroundColor;
     disabled?: boolean;
+    noBorders?: boolean;
     tag?: React__default.ComponentProps<any>;
 }
 
@@ -549,55 +552,49 @@ interface DropdownProps extends BaseComponent {
     animation?: boolean;
     group?: boolean;
     isOpen?: boolean;
+    options?: Record<string, unknown>;
     dropup?: boolean;
     dropright?: boolean;
     dropleft?: boolean;
-    options?: Record<string, unknown>;
-    placement?: placement;
-    tag?: React.ComponentProps<any>;
+    children?: ReactNode;
+    tag?: ComponentProps<any>;
+    onHide?: () => any;
+    onShow?: () => any;
 }
 
-declare const MDBDropdown: React__default.FC<DropdownProps>;
+declare const MDBDropdown: ({ animation, onHide, onShow, ...props }: DropdownProps) => JSX.Element;
 
-interface DropdownItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
-    tag?: React.ComponentProps<any>;
+interface DropdownItemProps extends BaseComponent {
+    tag?: ComponentProps<any>;
+    childTag?: ComponentProps<any>;
+    children?: ReactNode;
+    divider?: boolean;
+    header?: boolean;
+    link?: boolean;
+    href?: string;
+    disabled?: boolean;
+    className?: string;
 }
 
-declare const MDBDropdownItem: React$1.FunctionComponent<DropdownItemProps>;
+declare const MDBDropdownItem: FunctionComponent<DropdownItemProps>;
 
 interface DropdownMenuProps extends BaseComponent {
+    appendToBody?: boolean;
     dark?: boolean;
     responsive?: '' | 'start' | 'end' | 'sm-start' | 'md-start' | 'lg-start' | 'xl-start' | 'xxl-start' | 'sm-end' | 'md-end' | 'lg-end' | 'xl-end' | 'xxl-end';
-    tag?: React.ComponentProps<any>;
+    tag?: ComponentProps<any>;
+    children: ReactElement[] | ReactElement;
+    alwaysOpen?: boolean;
 }
 
-declare const MDBDropdownMenu: React$1.FunctionComponent<DropdownMenuProps>;
+declare const MDBDropdownMenu: FunctionComponent<DropdownMenuProps>;
 
-interface DropdownToggleProps extends ButtonProps {
+interface DropdownToggleProps extends BaseComponent {
     split?: boolean;
-    tag?: React.ComponentProps<any>;
+    tag?: ComponentProps<any>;
 }
 
-declare const MDBDropdownToggle: React$1.FunctionComponent<DropdownToggleProps>;
-
-interface DropdownLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-    disableClass?: boolean;
-    tag?: React.ComponentProps<any>;
-}
-
-declare const MDBDropdownLink: React$1.FunctionComponent<DropdownLinkProps>;
-
-interface DropdownDividerProps extends BaseComponent {
-    tag?: React.ComponentProps<any>;
-}
-
-declare const MDBDropdownDivider: React$1.FunctionComponent<DropdownDividerProps>;
-
-interface DropdownHeaderProps extends React.AllHTMLAttributes<HTMLHeadingElement> {
-    tag?: React.ComponentProps<any>;
-}
-
-declare const MDBDropdownHeader: React$1.FunctionComponent<DropdownHeaderProps>;
+declare const MDBDropdownToggle: FunctionComponent<DropdownToggleProps>;
 
 interface PopoverProps extends ButtonProps {
     btnChildren?: React.ReactNode;
@@ -827,24 +824,6 @@ declare const MDBCarousel: React$1.FunctionComponent<{
   [rest: string]: any;
 }>;
 
-declare const MDBCarouselInner: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
-
-declare const MDBCarouselElement: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
-
-declare const MDBCarouselCaption: React$1.FunctionComponent<{
-  className?: string;
-  tag?: React$1.ComponentProps<any>;
-  [rest: string]: any;
-}>;
-
 declare const MDBCarouselItem: React$1.FunctionComponent<{
   className?: string;
   interval?: number;
@@ -906,4 +885,4 @@ interface ValidationItemProps extends BaseComponent {
 
 declare const MDBValidationItem: React$1.FunctionComponent<ValidationItemProps>;
 
-export { MDBAccordion, MDBAccordionItem, MDBBadge, MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBBtnGroup, MDBCard, MDBCardBody, MDBCardFooter, MDBCardGroup, MDBCardHeader, MDBCardImage, MDBCardLink, MDBCardOverlay, MDBCardSubTitle, MDBCardText, MDBCardTitle, MDBCarousel, MDBCarouselCaption, MDBCarouselElement, MDBCarouselInner, MDBCarouselItem, MDBCheckbox, MDBCol, MDBCollapse, MDBContainer, MDBDropdown, MDBDropdownDivider, MDBDropdownHeader, MDBDropdownItem, MDBDropdownLink, MDBDropdownMenu, MDBDropdownToggle, MDBFile, MDBFooter, MDBIcon, MDBInput, MDBInputGroup, MDBListGroup, MDBListGroupItem, MDBModal, MDBModalBody, MDBModalContent, MDBModalDialog, MDBModalFooter, MDBModalHeader, MDBModalTitle, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav, MDBNavbarToggler, MDBPagination, MDBPaginationItem, MDBPaginationLink, MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBProgress, MDBProgressBar, MDBRadio, MDBRange, MDBRipple, MDBRow, MDBScrollspy, MDBScrollspyNavLink as MDBScrollspyLink, MDBScrollspySubList, MDBSpinner, MDBSwitch, MDBTable, MDBTableBody, MDBTableHead, MDBTabs, MDBTabsContent, MDBTabsItem, MDBTabsLink, MDBTabsPane, MDBTextArea, MDBTooltip, MDBTypography, MDBValidation, MDBValidationItem };
+export { MDBAccordion, MDBAccordionItem, MDBBadge, MDBBreadcrumb, MDBBreadcrumbItem, MDBBtn, MDBBtnGroup, MDBCard, MDBCardBody, MDBCardFooter, MDBCardGroup, MDBCardHeader, MDBCardImage, MDBCardLink, MDBCardOverlay, MDBCardSubTitle, MDBCardText, MDBCardTitle, MDBCarousel, MDBCarouselItem, MDBCheckbox, MDBCol, MDBCollapse, MDBContainer, MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBFile, MDBFooter, MDBIcon, MDBInput, MDBInputGroup, MDBListGroup, MDBListGroupItem, MDBModal, MDBModalBody, MDBModalContent, MDBModalDialog, MDBModalFooter, MDBModalHeader, MDBModalTitle, MDBNavbar, MDBNavbarBrand, MDBNavbarItem, MDBNavbarLink, MDBNavbarNav, MDBNavbarToggler, MDBPagination, MDBPaginationItem, MDBPaginationLink, MDBPopover, MDBPopoverBody, MDBPopoverHeader, MDBProgress, MDBProgressBar, MDBRadio, MDBRange, MDBRipple, MDBRow, MDBScrollspy, MDBScrollspyNavLink as MDBScrollspyLink, MDBScrollspySubList, MDBSpinner, MDBSwitch, MDBTable, MDBTableBody, MDBTableHead, MDBTabs, MDBTabsContent, MDBTabsItem, MDBTabsLink, MDBTabsPane, MDBTextArea, MDBTooltip, MDBTypography, MDBValidation, MDBValidationItem };

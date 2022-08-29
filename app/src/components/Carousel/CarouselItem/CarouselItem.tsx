@@ -1,20 +1,40 @@
 import clsx from 'clsx';
-import React, { useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
+import { CarouselContext } from '../utils/CarouselContext';
 import type { CarouselItemProps } from './types';
 
-const MDBCarouselItem: React.FC<CarouselItemProps> = ({ carouselRef, className, tag: Tag, children, ...props }) => {
-  const carouselInnerRef = useRef<HTMLElement>(null);
-  const carouselReference = carouselRef ? carouselRef : carouselInnerRef;
+const MDBCarouselItem: React.FC<CarouselItemProps> = ({
+  className,
+  captionClassName,
+  children,
+  src,
+  alt,
+  itemId,
+  ...props
+}) => {
+  const { active } = useContext(CarouselContext);
 
-  const classes = clsx('carousel-item', className);
+  const isFirstRender = useRef(true);
+  const itemRef = useRef<HTMLDivElement>(null);
+
+  const captionClasses = clsx('carousel-caption d-none d-md-block', captionClassName);
+
+  useEffect(() => {
+    if (isFirstRender.current && active === itemId - 1) {
+      const itemElement = itemRef.current;
+
+      itemElement?.classList.add('active');
+    }
+
+    isFirstRender.current = false;
+  }, [active, itemId]);
 
   return (
-    <Tag className={classes} ref={carouselReference} {...props}>
-      {children}
-    </Tag>
+    <div className='carousel-item' ref={itemRef}>
+      <img className={className} src={src} alt={alt} {...props} />
+      <div className={captionClasses}>{children}</div>
+    </div>
   );
 };
-
-MDBCarouselItem.defaultProps = { tag: 'div' };
 
 export default MDBCarouselItem;

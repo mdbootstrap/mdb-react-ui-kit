@@ -46,9 +46,6 @@ import MDBDropdown from './components/Dropdown/Dropdown';
 import MDBDropdownItem from './components/Dropdown/DropdownItem/index';
 import MDBDropdownMenu from './components/Dropdown/DropdownMenu/index';
 import MDBDropdownToggle from './components/Dropdown/DropdownToggle/index';
-import MDBDropdownLink from './components/Dropdown/DropdownLink/index';
-import MDBDropdownDivider from './components/Dropdown/DropdownDivider/index';
-import MDBDropdownHeader from './components/Dropdown/DropdownHeader/index';
 import MDBPopover from './components/Popover/index';
 import MDBPopoverBody from './components/Popover/PopoverBody/index';
 import MDBPopoverHeader from './components/Popover/PopoverHeader/index';
@@ -74,9 +71,6 @@ import MDBTabsLink from './navigation/Tabs/TabsLink/index';
 import MDBTabsContent from './navigation/Tabs/TabsContent/index';
 import MDBTabsPane from './navigation/Tabs/TabsPane/index';
 import MDBCarousel from './components/Carousel/index';
-import MDBCarouselInner from './components/Carousel/CarouselInner/index';
-import MDBCarouselElement from './components/Carousel/CarouselElement/index';
-import MDBCarouselCaption from './components/Carousel/CarouselCaption/index';
 import MDBCarouselItem from './components/Carousel/CarouselItem/index';
 import MDBAccordion from './components/Accordion/index';
 import MDBAccordionItem from './components/Accordion/AccordionItem/index';
@@ -131,9 +125,6 @@ export {
   MDBDropdownItem,
   MDBDropdownToggle,
   MDBDropdownMenu,
-  MDBDropdownLink,
-  MDBDropdownDivider,
-  MDBDropdownHeader,
   MDBPopover,
   MDBPopoverBody,
   MDBPopoverHeader,
@@ -161,9 +152,6 @@ export {
   MDBTabsPane,
   MDBCarousel,
   MDBCarouselItem,
-  MDBCarouselInner,
-  MDBCarouselElement,
-  MDBCarouselCaption,
   MDBAccordion,
   MDBAccordionItem,
   MDBTextArea,

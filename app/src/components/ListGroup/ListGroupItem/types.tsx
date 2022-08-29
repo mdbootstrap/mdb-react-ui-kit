@@ -6,6 +6,7 @@ interface ListGroupItemProps extends BaseComponent {
   action?: boolean;
   color?: backgroundColor;
   disabled?: boolean;
+  noBorders?: boolean;
   tag?: React.ComponentProps<any>;
 }
 

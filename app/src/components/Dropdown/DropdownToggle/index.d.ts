@@ -1,6 +1,6 @@
-import * as React from 'react';
+import { FunctionComponent } from 'react';
 import { DropdownToggleProps } from './types';
 
-declare const MDBDropdownToggle: React.FunctionComponent<DropdownToggleProps>;
+declare const MDBDropdownToggle: FunctionComponent<DropdownToggleProps>;
 
 export default MDBDropdownToggle;
