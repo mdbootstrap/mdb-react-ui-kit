@@ -10,6 +10,7 @@ const MDBCarouselItem: React.FC<CarouselItemProps> = ({
   src,
   alt,
   itemId,
+  video,
   ...props
 }) => {
   const { active } = useContext(CarouselContext);
@@ -31,7 +32,13 @@ const MDBCarouselItem: React.FC<CarouselItemProps> = ({
 
   return (
     <div className='carousel-item' ref={itemRef}>
-      <img className={className} src={src} alt={alt} {...props} />
+      {video ? (
+        <video className={className} autoPlay loop muted {...props}>
+          <source src={src} type='video/mp4' />
+        </video>
+      ) : (
+        <img className={className} src={src} alt={alt} {...props} />
+      )}
       <div className={captionClasses}>{children}</div>
     </div>
   );

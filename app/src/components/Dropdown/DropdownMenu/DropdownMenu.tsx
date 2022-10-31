@@ -6,6 +6,8 @@ import { useKeyboard } from '../hooks/useKeyboard';
 import { useFade } from '../hooks/useFade';
 import type { DropdownMenuProps } from './types';
 import './style.css';
+import { usePopper } from 'react-popper';
+import { flip } from '@popperjs/core';
 
 const MDBDropdownMenu = ({
   className,
@@ -18,11 +20,46 @@ const MDBDropdownMenu = ({
   alwaysOpen,
   ...props
 }: DropdownMenuProps) => {
-  const { activeIndex, setPopperElement, isOpenState, animation, styles } = useDropdownContext();
+  const {
+    activeIndex,
+    setPopperElement,
+    isOpenState,
+    animation,
+    referenceElement,
+    popperElement,
+    options,
+    dropleft,
+    dropup,
+    dropright,
+  } = useDropdownContext();
 
   const { show, isFadeIn, isFadeOut } = useFade();
 
   useKeyboard(children);
+
+  const calculatePlacement = () => {
+    if (dropright) {
+      return 'right-start';
+    }
+
+    if (dropleft) {
+      return 'left-start';
+    }
+
+    const isEnd = popperElement && getComputedStyle(popperElement).getPropertyValue('--bs-position').trim() === 'end';
+
+    if (dropup) {
+      return isEnd ? 'top-end' : 'top-start';
+    }
+
+    return isEnd ? 'bottom-end' : 'bottom-start';
+  };
+
+  const { styles } = usePopper(referenceElement, popperElement, {
+    placement: calculatePlacement(),
+    modifiers: [flip],
+    ...options,
+  });
 
   const classes = clsx(
     'dropdown-menu',

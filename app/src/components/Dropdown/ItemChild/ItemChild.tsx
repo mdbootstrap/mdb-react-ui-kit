@@ -38,5 +38,5 @@ export const ItemChild = ({
     return <h6 className='dropdown-header'>{children}</h6>;
   }
 
-  return null;
+  return <>{children}</>;
 };

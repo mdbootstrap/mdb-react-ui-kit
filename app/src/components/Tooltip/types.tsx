@@ -1,4 +1,5 @@
 import { BaseComponent } from "../../types/baseComponent";
+
 import { placement } from "../../types/placement";
 
 interface TooltipProps extends BaseComponent {

@@ -98,7 +98,7 @@ declare type joinedTypes = btnProps & anchorProps;
 interface ButtonProps extends Omit<joinedTypes, 'size' | 'color'> {
     active?: boolean;
     block?: boolean;
-    color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light' | 'dark' | 'muted' | 'white' | 'info' | 'none' | 'link';
+    color?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'light' | 'dark' | 'muted' | 'white' | 'info' | 'none' | 'link' | 'tertiary';
     floating?: boolean;
     noRipple?: boolean;
     outline?: boolean;
@@ -834,6 +834,7 @@ declare const MDBCarouselItem: React$1.FunctionComponent<{
 
 interface AccordionProps extends BaseComponent {
     alwaysOpen?: boolean;
+    borderless?: boolean;
     flush?: boolean;
     initialActive?: number;
     onChange?: (id: number) => void;

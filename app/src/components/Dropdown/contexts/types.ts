@@ -1,10 +1,9 @@
-import { Dispatch, SetStateAction, CSSProperties, ReactNode } from 'react';
+import { Dispatch, SetStateAction, ReactNode } from 'react';
 
 export interface Dropdown {
   activeIndex: number;
   animation: boolean;
   isOpenState: boolean;
-  styles: { [key: string]: CSSProperties };
   popperElement: HTMLElement | null;
   referenceElement: HTMLElement | null;
   setIsOpenState: Dispatch<SetStateAction<boolean>>;
@@ -13,6 +12,10 @@ export interface Dropdown {
   setReferenceElement: Dispatch<SetStateAction<HTMLElement | null>>;
   onHide?: () => any;
   onShow?: () => any;
+  dropup?: boolean;
+  dropright?: boolean;
+  dropleft?: boolean;
+  options?: Record<string, unknown>;
 }
 
 export interface DropdownProviderProps {
@@ -25,14 +28,4 @@ export interface DropdownProviderProps {
   dropleft?: boolean;
   onHide?: () => any;
   onShow?: () => any;
-}
-
-export interface DropdownProviderProps {
-  children: ReactNode;
-  isOpen?: boolean;
-  options?: Record<string, unknown>;
-  animation?: boolean;
-  dropup?: boolean;
-  dropright?: boolean;
-  dropleft?: boolean;
 }

@@ -1,17 +1,15 @@
-import React from 'react';
+import { BaseComponent } from "../../types/baseComponent";
 
-type CarouselProps = {
-  className?: string;
+interface CarouselProps extends BaseComponent {
+  dark?: boolean;
   fade?: boolean;
   interval?: number;
   keyboard?: boolean;
-  onSlide?: () => any;
+  onSlide?: () => void;
   pause?: boolean;
   showControls?: boolean;
   showIndicators?: boolean;
   touch?: boolean;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
-};
+}
 
 export { CarouselProps };

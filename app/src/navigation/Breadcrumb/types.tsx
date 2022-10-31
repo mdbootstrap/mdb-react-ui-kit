@@ -1,4 +1,5 @@
 import { BaseComponent } from "../../types/baseComponent";
+
 import { textColor } from "../../types/colors";
 
 interface BreadcrumbProps extends BaseComponent {

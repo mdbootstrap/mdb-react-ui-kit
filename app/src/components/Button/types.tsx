@@ -18,8 +18,8 @@ interface ButtonProps extends Omit<joinedTypes, 'size' | 'color'> {
     | 'white'
     | 'info'
     | 'none'
-    | 'link';
-
+    | 'link'
+    | 'tertiary';
   floating?: boolean;
   noRipple?: boolean;
   outline?: boolean;

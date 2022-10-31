@@ -1,5 +1,6 @@
 import React from "react";
 import { BaseComponent } from "../../types/baseComponent";
+
 import { backgroundColor } from "../../types/colors";
 
 interface BadgeProps extends BaseComponent {

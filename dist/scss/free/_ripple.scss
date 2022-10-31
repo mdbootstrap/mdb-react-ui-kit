@@ -18,8 +18,7 @@
   position: absolute;
   touch-action: none;
   transform: scale(0);
-  transition-property: transform, opacity;
-  transition-timing-function: $cubicBezier, $cubicBezier;
+  transition: transform $cubicBezier, opacity $cubicBezier;
   z-index: 999;
   &.active {
     transform: scale(1);
@@ -31,7 +30,11 @@
   @include ripple-variant(white);
 }
 
-@each $color, $value in $theme-colors {
+.input-wrapper .ripple-wave {
+  @include ripple-variant(white);
+}
+
+@each $color, $value in $ripple {
   .ripple-surface-#{$color} {
     .ripple-wave {
       @include ripple-variant($value);

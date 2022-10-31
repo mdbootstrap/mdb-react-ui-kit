@@ -1,39 +1,20 @@
 import React from "react";
-import { MDBBtn, MDBContainer, MDBIcon } from "mdb-react-ui-kit";
-function App() {
+import {
+  MDBDropdown,
+  MDBDropdownMenu,
+  MDBDropdownToggle,
+  MDBDropdownItem,
+} from "mdb-react-ui-kit";
+
+export default function App() {
   return (
-    <MDBContainer fluid>
-      <div
-        className="d-flex justify-content-center align-items-center"
-        style={{ height: "100vh" }}
-      >
-        <div className="text-center">
-          <img
-            className="mb-4"
-            src="https://mdbootstrap.com/img/logo/mdb-transparent-250px.png"
-            style={{ width: 250, height: 90 }}
-          />
-          <h5 className="mb-3">
-            Thank you for using our product. We're glad you're with us.
-          </h5>
-          <p className="mb-3">MDB Team</p>
-          <MDBBtn
-            tag="a"
-            href="https://mdbootstrap.com/docs/standard/getting-started/"
-            target="_blank"
-            role="button"
-          >
-            Start MDB tutorial
-          </MDBBtn>
-          <p className="mt-4">
-            <a href="https://mdbootstrap.com/sale/free/">
-              <MDBIcon far icon="surprise" size="lg" /> Free users buy cheaper
-              ..{" "}
-            </a>
-          </p>
-        </div>
-      </div>
-    </MDBContainer>
+    <MDBDropdown>
+      <MDBDropdownToggle>Dropdown button</MDBDropdownToggle>
+      <MDBDropdownMenu>
+        <MDBDropdownItem>Action</MDBDropdownItem>
+        <MDBDropdownItem>Another action</MDBDropdownItem>
+        <MDBDropdownItem>Something else here</MDBDropdownItem>
+      </MDBDropdownMenu>
+    </MDBDropdown>
   );
 }
-export default App;

@@ -1,4 +1,5 @@
 import { BaseComponent } from "../../types/baseComponent";
+
 import { backgroundColor, textColor } from "../../types/colors";
 
 interface FooterProps extends BaseComponent {

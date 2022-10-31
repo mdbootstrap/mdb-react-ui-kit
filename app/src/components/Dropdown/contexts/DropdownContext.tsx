@@ -1,6 +1,4 @@
 import React, { createContext, useState } from 'react';
-import { usePopper } from 'react-popper';
-import { flip } from '@popperjs/core';
 import { Dropdown, DropdownProviderProps } from './types';
 
 export const DropdownContext = createContext<Dropdown | null>(null);
@@ -21,28 +19,6 @@ export const DropdownProvider = ({
   const [popperElement, setPopperElement] = useState<HTMLElement | null>(null);
   const [activeIndex, setActiveIndex] = useState(-1);
 
-  const calculatePlacement = () => {
-    if (dropup) {
-      return 'top-start';
-    }
-
-    if (dropright) {
-      return 'right-start';
-    }
-
-    if (dropleft) {
-      return 'left-start';
-    }
-
-    return 'bottom-start';
-  };
-
-  const { styles } = usePopper(referenceElement, popperElement, {
-    placement: calculatePlacement(),
-    modifiers: [flip],
-    ...options,
-  });
-
   return (
     <DropdownContext.Provider
       value={{
@@ -53,11 +29,14 @@ export const DropdownProvider = ({
         setPopperElement,
         setActiveIndex,
         popperElement,
-        styles,
         setIsOpenState,
         referenceElement,
         onHide,
         onShow,
+        dropup,
+        options,
+        dropright,
+        dropleft,
       }}
     >
       {children}

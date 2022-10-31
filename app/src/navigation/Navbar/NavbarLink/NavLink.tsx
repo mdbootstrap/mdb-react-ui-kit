@@ -7,7 +7,7 @@ const MDBNavbarLink: React.FC<NavbarLinkProps> = React.forwardRef<HTMLAllCollect
     const classes = clsx('nav-link', disabled ? 'disabled' : active ? 'active' : '', className);
 
     return (
-      <Tag data-test='nav-link' className={classes} ref={ref} {...props}>
+      <Tag data-test='nav-link' className={classes} style={{ cursor: 'pointer' }} ref={ref} {...props}>
         {children}
       </Tag>
     );

@@ -5,7 +5,7 @@
 @import './pro/theme/free/theming';
 
 // DARK SKIN
-$my-theme-primary: #1266f1;
-$my-theme-secondary: #b23cfd;
+$my-theme-primary: #3b71ca;
+$my-theme-secondary: #e3ebf7;
 $my-dark-theme: mdb-dark-theme($my-theme-primary, $my-theme-secondary);
 @include mdb-theme($my-dark-theme);

@@ -1,11 +1,11 @@
-import React from 'react';
+import { ImgHTMLAttributes, VideoHTMLAttributes } from 'react';
 
-type CarouselItemProps = {
-  className?: string;
-  interval?: number;
+type ImgVideo = ImgHTMLAttributes<HTMLImageElement> & VideoHTMLAttributes<HTMLVideoElement>;
+
+type CarouselItemProps = ImgVideo & {
+  captionClassName?: string;
   itemId: number;
-  tag?: React.ComponentProps<any>;
-  [rest: string]: any;
+  video?: boolean;
 };
 
 export { CarouselItemProps };

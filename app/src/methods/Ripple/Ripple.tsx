@@ -241,7 +241,7 @@ const MDBRipple: React.FC<RippleProps> = React.forwardRef<HTMLAllCollection, Rip
     }, [rippleDuration, rippleStyles]);
 
     return (
-      <Tag className={classes} onClick={(e: any) => handleClick(e)} ref={combinedRef} {...props}>
+      <Tag className={classes} onMouseDown={(e: any) => handleClick(e)} ref={combinedRef} {...props}>
         {children}
         {rippleStyles.map((item, i) => (
           <MDBRippleWave key={i} style={item}></MDBRippleWave>

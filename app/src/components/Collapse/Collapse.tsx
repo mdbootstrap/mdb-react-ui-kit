@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import type { CollapseProps } from './types';
 
 const MDBCollapse: React.FC<CollapseProps> = ({
@@ -10,64 +10,68 @@ const MDBCollapse: React.FC<CollapseProps> = ({
   navbar,
   tag: Tag,
   collapseRef,
+  style,
   ...props
 }): JSX.Element => {
-  const classes = clsx('collapse', navbar && 'navbar-collapse', className);
+  const [showCollapse, setShowCollapse] = useState<boolean | undefined>(false);
+  const [collapseHeight, setCollapseHeight] = useState<string | number | undefined>(undefined);
+  const [transition, setTransition] = useState(false);
+
+  const classes = clsx(
+    transition ? 'collapsing' : 'collapse',
+    !transition && showCollapse && 'show',
+    navbar && 'navbar-collapse',
+    className
+  );
   const collapseEl = useRef<HTMLElement>(null);
-
-  const isFirstRender = useRef(show);
-
   const refCollapse = collapseRef ?? collapseEl;
 
-  useEffect(() => {
-    if (isFirstRender.current && show) {
-      isFirstRender.current = false;
-      refCollapse?.current?.classList.add('show');
-
-      return;
+  const handleResize = useCallback(() => {
+    if (showCollapse) {
+      setCollapseHeight(undefined);
     }
-  }, [refCollapse, show]);
+  }, [showCollapse]);
 
   useEffect(() => {
-    const collapseElement = refCollapse.current;
+    if (collapseHeight === undefined && showCollapse) {
+      setCollapseHeight(refCollapse?.current?.scrollHeight);
+    }
+  }, [collapseHeight, showCollapse, refCollapse]);
 
-    if (!collapseElement || isFirstRender.current) {
-      return;
+  useEffect(() => {
+    setShowCollapse(show);
+
+    if (showCollapse) {
+      setTransition(true);
     }
 
-    const toggleCollapse = () => {
-      collapseElement.classList.toggle('collapsing');
-      collapseElement.classList.toggle('collapse');
+    const timer = setTimeout(() => {
+      setTransition(false);
+    }, 350);
+
+    return () => {
+      clearTimeout(timer);
     };
+  }, [show, showCollapse]);
 
-    if (show) {
-      toggleCollapse();
-      collapseElement.style.height = `${collapseElement.scrollHeight}px`;
-
-      setTimeout(() => {
-        toggleCollapse();
-
-        collapseElement.classList.toggle('show');
-        collapseElement.style.height = '';
-      }, 350);
+  useEffect(() => {
+    if (showCollapse) {
+      setCollapseHeight(refCollapse?.current?.scrollHeight);
     } else {
-      collapseElement.style.height = `${collapseElement.scrollHeight}px`;
-
-      setTimeout(() => {
-        toggleCollapse();
-
-        collapseElement.style.height = '';
-        collapseElement.classList.toggle('show');
-      });
-
-      setTimeout(() => {
-        toggleCollapse();
-      }, 350);
+      setCollapseHeight(0);
     }
-  }, [show, refCollapse]);
+  }, [showCollapse, refCollapse]);
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [handleResize]);
 
   return (
-    <Tag id={id} className={classes} {...props} ref={refCollapse}>
+    <Tag style={{ height: collapseHeight, ...style }} id={id} className={classes} {...props} ref={refCollapse}>
       {children}
     </Tag>
   );
