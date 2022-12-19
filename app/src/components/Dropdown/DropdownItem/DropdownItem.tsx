@@ -15,12 +15,13 @@ const MDBDropdownItem = ({
   header,
   disabled,
   href,
+  preventCloseOnClick,
   ...props
 }: DropdownItemProps) => {
   const { setIsOpenState, onHide } = useDropdownContext();
 
   const handleClose = (e: MouseEvent<HTMLElement>) => {
-    if (disabled) return;
+    if (disabled || preventCloseOnClick) return;
 
     onHide?.();
     setIsOpenState(false);

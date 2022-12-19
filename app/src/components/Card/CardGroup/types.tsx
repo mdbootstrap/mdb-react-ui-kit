@@ -1,4 +1,4 @@
-import { BaseComponent } from "../../../types/baseComponent";
+import { BaseComponent } from '../../../types/baseComponent';
 
 interface CardGroupProps extends BaseComponent {
   tag?: React.ComponentProps<any>;

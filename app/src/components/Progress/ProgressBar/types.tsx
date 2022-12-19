@@ -1,5 +1,5 @@
-import { BaseComponent } from "../../../types/baseComponent";
-import { backgroundColor } from "../../../types/colors";
+import { BaseComponent } from '../../../types/baseComponent';
+import { backgroundColor } from '../../../types/colors';
 
 interface ProgressBarProps extends BaseComponent {
   animated?: boolean;

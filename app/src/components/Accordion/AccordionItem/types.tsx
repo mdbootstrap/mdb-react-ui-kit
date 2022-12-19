@@ -1,5 +1,5 @@
-import React from "react";
-import { BaseComponent } from "../../../types/baseComponent";
+import React from 'react';
+import { BaseComponent } from '../../../types/baseComponent';
 
 interface AccordionItemProps extends BaseComponent {
   bodyClassName?: string;
@@ -8,6 +8,7 @@ interface AccordionItemProps extends BaseComponent {
   headerClassName?: string;
   headerStyle?: React.CSSProperties;
   headerTitle?: React.ReactNode;
+  btnClassName?: React.ReactNode;
   ref?: React.ForwardedRef<HTMLAllCollection>;
   tag?: React.ComponentProps<any>;
 }

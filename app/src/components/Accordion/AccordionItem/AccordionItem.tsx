@@ -14,6 +14,7 @@ const MDBAccordionItem: React.FC<AccordionItemProps> = React.forwardRef<HTMLAllC
       collapseId,
       headerTitle,
       headerStyle,
+      btnClassName,
       tag: Tag,
       children,
       ...props
@@ -29,7 +30,8 @@ const MDBAccordionItem: React.FC<AccordionItemProps> = React.forwardRef<HTMLAllC
     const bodyClasses = clsx('accordion-body', bodyClassName);
     const buttonClasses = clsx(
       'accordion-button',
-      alwaysOpen ? collapseId !== openState && 'collapsed' : collapseId !== activeItem && 'collapsed'
+      alwaysOpen ? collapseId !== openState && 'collapsed' : collapseId !== activeItem && 'collapsed',
+      btnClassName
     );
 
     const toggleAccordion = (value: number) => {

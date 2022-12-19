@@ -1,4 +1,4 @@
-import { BaseComponent } from "../../types/baseComponent";
+import { BaseComponent } from '../../types/baseComponent';
 
 interface TabsProps extends BaseComponent {
   fill?: boolean;

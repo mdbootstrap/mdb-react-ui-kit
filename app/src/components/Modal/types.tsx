@@ -1,7 +1,7 @@
-import { BaseComponent } from "../../types/baseComponent";
+import { BaseComponent } from '../../types/baseComponent';
 
 interface ModalProps extends BaseComponent {
-  animationDirection?: "top" | "bottom" | "right" | "left";
+  animationDirection?: 'top' | 'bottom' | 'right' | 'left';
   appendToBody?: boolean;
   backdrop?: boolean;
   closeOnEsc?: boolean;

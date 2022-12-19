@@ -1,5 +1,5 @@
-import { BaseComponent } from "../../types/baseComponent";
-import { size } from "../../types/size";
+import { BaseComponent } from '../../types/baseComponent';
+import { size } from '../../types/size';
 
 interface PaginationProps extends BaseComponent {
   center?: boolean;

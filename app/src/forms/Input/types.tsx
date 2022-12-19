@@ -8,7 +8,7 @@ type InputProps = InputELement & {
   labelStyle?: React.CSSProperties;
   labelClass?: string;
   labelRef?: React.RefObject<HTMLLabelElement>;
-  inputRef?: React.RefObject<HTMLInputElement>;
+  ref?: React.Ref<HTMLInputElement>;
   readonly?: boolean;
   size?: string;
   wrapperTag?: React.ComponentProps<any>;

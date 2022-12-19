@@ -92,9 +92,9 @@ interface BadgeProps extends BaseComponent {
 
 declare const MDBBadge: React$1.FunctionComponent<BadgeProps>;
 
-declare type btnProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
-declare type anchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
-declare type joinedTypes = btnProps & anchorProps;
+type btnProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+type anchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
+type joinedTypes = btnProps & anchorProps;
 interface ButtonProps extends Omit<joinedTypes, 'size' | 'color'> {
     active?: boolean;
     block?: boolean;
@@ -213,7 +213,7 @@ interface CardOverlayProps extends BaseComponent {
 
 declare const MDBCardOverlay: React$1.FunctionComponent<CardOverlayProps>;
 
-declare type CardLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
+type CardLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
 declare const MDBCardLink: React$1.FunctionComponent<CardLinkProps>;
 
@@ -293,7 +293,7 @@ interface RowProps extends BaseComponent {
 
 declare const MDBRow: React$1.FunctionComponent<RowProps>;
 
-declare type IconProps = {
+type IconProps = {
     animate?: 'beat' | 'fade' | 'beat-fade' | 'bounce' | 'shake' | 'flip' | 'spin' | 'pulse';
     className?: string;
     iconType?: string;
@@ -321,7 +321,7 @@ declare type IconProps = {
 
 declare const MDBIcon: React$1.FunctionComponent<IconProps>;
 
-declare type TypographyProps = BaseComponent & {
+type TypographyProps = BaseComponent & {
     blockquote?: boolean;
     color?: textColor;
     listUnStyled?: boolean;
@@ -469,7 +469,7 @@ interface TableHeadProps extends React.HTMLAttributes<HTMLElement> {
 
 declare const MDBTableHead: React$1.FunctionComponent<TableHeadProps>;
 
-declare type TableBodyProps = React.HTMLAttributes<HTMLElement>;
+type TableBodyProps = React.HTMLAttributes<HTMLElement>;
 
 declare const MDBTableBody: React$1.FunctionComponent<TableBodyProps>;
 
@@ -496,14 +496,14 @@ interface ProgressBarProps extends BaseComponent {
 
 declare const MDBProgressBar: React$1.FunctionComponent<ProgressBarProps>;
 
-declare type InputELement = Omit<React__default.InputHTMLAttributes<HTMLInputElement>, 'size'>;
-declare type InputProps = InputELement & {
+type InputELement = Omit<React__default.InputHTMLAttributes<HTMLInputElement>, 'size'>;
+type InputProps = InputELement & {
     contrast?: boolean;
     label?: React__default.ReactNode;
     labelStyle?: React__default.CSSProperties;
     labelClass?: string;
     labelRef?: React__default.RefObject<HTMLLabelElement>;
-    inputRef?: React__default.RefObject<HTMLInputElement>;
+    ref?: React__default.Ref<HTMLInputElement>;
     readonly?: boolean;
     size?: string;
     wrapperTag?: React__default.ComponentProps<any>;
@@ -528,11 +528,11 @@ interface InputTemplateProps extends React__default.InputHTMLAttributes<HTMLInpu
     wrapperStyle?: React__default.CSSProperties;
 }
 
-declare type CheckboxProps = Omit<InputTemplateProps, 'toggleSwitch'>;
+type CheckboxProps = Omit<InputTemplateProps, 'toggleSwitch'>;
 
 declare const MDBCheckbox: React$1.FunctionComponent<CheckboxProps>;
 
-declare type RadioProps = Omit<InputTemplateProps, 'toggleSwitch'>;
+type RadioProps = Omit<InputTemplateProps, 'toggleSwitch'>;
 
 declare const MDBRadio: React.FunctionComponent<RadioProps>;
 
@@ -574,6 +574,7 @@ interface DropdownItemProps extends BaseComponent {
     href?: string;
     disabled?: boolean;
     className?: string;
+    preventCloseOnClick?: boolean;
 }
 
 declare const MDBDropdownItem: FunctionComponent<DropdownItemProps>;
@@ -710,7 +711,7 @@ interface ScrollspySubListProps extends BaseComponent {
 
 declare const MDBScrollspySubList: React$1.FunctionComponent<ScrollspySubListProps>;
 
-declare type SwitchProps = Omit<InputTemplateProps, 'toggleSwitch'>;
+type SwitchProps = Omit<InputTemplateProps, 'toggleSwitch'>;
 
 declare const MDBSwitch: React.FunctionComponent<SwitchProps>;
 
@@ -735,7 +736,7 @@ interface FileProps extends Omit<React__default.InputHTMLAttributes<HTMLInputEle
 
 declare const MDBFile: React$1.FunctionComponent<FileProps>;
 
-declare type InputGroupProps = Omit<React__default.DetailedHTMLProps<React__default.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'ref'> & {
+type InputGroupProps = Omit<React__default.DetailedHTMLProps<React__default.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, 'ref'> & {
     noWrap?: boolean;
     noBorder?: boolean;
     ref?: React__default.ForwardedRef<HTMLAllCollection>;
@@ -762,7 +763,7 @@ interface RippleProps extends React__default.AllHTMLAttributes<HTMLElement> {
 
 declare const MDBRipple: React$1.FunctionComponent<RippleProps>;
 
-declare type ValidationProps = React__default.FormHTMLAttributes<HTMLFormElement> & {
+type ValidationProps = React__default.FormHTMLAttributes<HTMLFormElement> & {
     isValidated?: boolean;
     ref?: React__default.Ref<any>;
 };
@@ -851,14 +852,15 @@ interface AccordionItemProps extends BaseComponent {
     headerClassName?: string;
     headerStyle?: React__default.CSSProperties;
     headerTitle?: React__default.ReactNode;
+    btnClassName?: React__default.ReactNode;
     ref?: React__default.ForwardedRef<HTMLAllCollection>;
     tag?: React__default.ComponentProps<any>;
 }
 
 declare const MDBAccordionItem: React$1.FunctionComponent<AccordionItemProps>;
 
-declare type TextAreaElement = Omit<React__default.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size' | 'value' | 'defaultValue'>;
-declare type TextAreaProps = TextAreaElement & {
+type TextAreaElement = Omit<React__default.TextareaHTMLAttributes<HTMLTextAreaElement>, 'size' | 'value' | 'defaultValue'>;
+type TextAreaProps = TextAreaElement & {
     contrast?: boolean;
     defaultValue?: string;
     label?: React__default.ReactNode;

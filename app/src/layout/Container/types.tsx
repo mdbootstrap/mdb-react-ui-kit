@@ -1,4 +1,4 @@
-import { BaseComponent } from "../../types/baseComponent";
+import { BaseComponent } from '../../types/baseComponent';
 
 interface ContainerProps extends BaseComponent {
   breakpoint?: string;

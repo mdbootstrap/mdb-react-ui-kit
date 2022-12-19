@@ -1,4 +1,4 @@
-import { BaseComponent } from "../../../types/baseComponent";
+import { BaseComponent } from '../../../types/baseComponent';
 
 interface ModalTitleProps extends BaseComponent {
   ref?: React.ForwardedRef<HTMLAllCollection>;

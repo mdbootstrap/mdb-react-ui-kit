@@ -1,5 +1,5 @@
-import { BaseComponent } from "../../../../src/types/baseComponent";
-import { ReactNode, ComponentProps } from "react";
+import { BaseComponent } from '../../../../src/types/baseComponent';
+import { ReactNode, ComponentProps } from 'react';
 
 export interface DropdownItemProps extends BaseComponent {
   tag?: ComponentProps<any>;
@@ -11,4 +11,5 @@ export interface DropdownItemProps extends BaseComponent {
   href?: string;
   disabled?: boolean;
   className?: string;
+  preventCloseOnClick?: boolean;
 }

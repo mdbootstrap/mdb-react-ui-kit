@@ -32,7 +32,7 @@ const MDBRipple: React.FC<RippleProps> = React.forwardRef<HTMLAllCollection, Rip
       rippleRadius,
       rippleColor,
       children,
-      onClick,
+      onMouseDown,
       ...props
     },
     ref
@@ -219,13 +219,13 @@ const MDBRipple: React.FC<RippleProps> = React.forwardRef<HTMLAllCollection, Rip
       }
     };
 
-    const handleClick = (e: any) => {
+    const handleMouseDown = (e: any) => {
       const styles = getStyles(e);
 
       const newStyles = rippleStyles.concat(styles);
       setRippleStyles(newStyles);
 
-      onClick && onClick(e);
+      onMouseDown && onMouseDown(e);
     };
 
     useEffect(() => {
@@ -241,7 +241,7 @@ const MDBRipple: React.FC<RippleProps> = React.forwardRef<HTMLAllCollection, Rip
     }, [rippleDuration, rippleStyles]);
 
     return (
-      <Tag className={classes} onMouseDown={(e: any) => handleClick(e)} ref={combinedRef} {...props}>
+      <Tag className={classes} onMouseDown={(e: any) => handleMouseDown(e)} ref={combinedRef} {...props}>
         {children}
         {rippleStyles.map((item, i) => (
           <MDBRippleWave key={i} style={item}></MDBRippleWave>
