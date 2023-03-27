@@ -1,13 +1,13 @@
 {
   "name": "mdb-react-ui-kit-demo",
-  "version": "5.1.0",
+  "version": "6.0.0",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mdbootstrap/mdb-react-ui-kit.git"
   },
   "scripts": {
-    "start": "webpack-dev-server --config webpack.config.js --hot"
+    "start": "webpack-dev-server --config webpack.config.js --hot --mode=development"
   },
   "dependencies": {
     "@types/react": "^18.0.9",

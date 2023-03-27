@@ -1,9 +1,9 @@
 {
   "name": "mdb-react-ui-kit",
-  "version": "5.1.0",
+  "version": "6.0.0",
   "main": "./dist/mdb-react-ui-kit.js",
   "module": "./dist/mdb-react-ui-kit.esm.js",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/types/index-free.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mdbootstrap/mdb-react-ui-kit.git"
