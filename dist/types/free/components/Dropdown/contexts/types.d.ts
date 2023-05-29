@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, ReactNode } from 'react';
+import { Dispatch, SetStateAction, ReactNode, SyntheticEvent } from 'react';
 export interface Dropdown {
     activeIndex: number;
     animation: boolean;
@@ -9,8 +9,8 @@ export interface Dropdown {
     setActiveIndex: Dispatch<SetStateAction<number>>;
     setPopperElement: Dispatch<SetStateAction<HTMLElement | null>>;
     setReferenceElement: Dispatch<SetStateAction<HTMLElement | null>>;
-    onHide?: () => any;
-    onShow?: () => any;
+    onHide?: (e: MouseEvent | SyntheticEvent | KeyboardEvent) => any;
+    onShow?: (e: MouseEvent | SyntheticEvent | KeyboardEvent) => any;
     dropup?: boolean;
     dropright?: boolean;
     dropleft?: boolean;
@@ -24,6 +24,6 @@ export interface DropdownProviderProps {
     dropup?: boolean;
     dropright?: boolean;
     dropleft?: boolean;
-    onHide?: () => any;
-    onShow?: () => any;
+    onHide?: (e: MouseEvent | SyntheticEvent | KeyboardEvent) => any;
+    onShow?: (e: MouseEvent | SyntheticEvent | KeyboardEvent) => any;
 }

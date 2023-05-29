@@ -54,17 +54,17 @@ const MDBInput: React.FC<InputProps> = React.forwardRef<HTMLInputElement, InputP
 
       const { value } = innerRef.current;
 
-      value.length > 0 ? setActive(true) : setActive(false);
+      value != '' ? setActive(true) : setActive(false);
     }, [innerRef.current?.value]);
 
     useEffect(() => {
       if (value === undefined) return;
-      value.toString().length > 0 ? setActive(true) : setActive(false);
+      value != '' ? setActive(true) : setActive(false);
     }, [value]);
 
     useEffect(() => {
       if (defaultValue === undefined) return;
-      defaultValue.toString().length > 0 ? setActive(true) : setActive(false);
+      defaultValue != '' ? setActive(true) : setActive(false);
     }, [defaultValue]);
 
     const setWidth = useCallback(() => {
@@ -87,9 +87,9 @@ const MDBInput: React.FC<InputProps> = React.forwardRef<HTMLInputElement, InputP
         if (!innerRef.current) return;
 
         if (
-          (newValue !== undefined && newValue.toString().length > 0) ||
-          (value !== undefined && value.toString().length > 0) ||
-          innerRef.current.value.length > 0
+          (newValue !== undefined && newValue != '') ||
+          (value !== undefined && value != '') ||
+          innerRef.current.value != ''
         ) {
           setActive(true);
         } else {

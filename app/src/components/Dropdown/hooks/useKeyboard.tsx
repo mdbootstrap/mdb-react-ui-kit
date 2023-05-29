@@ -50,16 +50,27 @@ export const useKeyboard = (children: ReactElement[] | ReactElement) => {
       if (e.key === 'Enter') {
         const el: HTMLElement | null = document.querySelector('[data-active="true"]');
         const child = el?.firstElementChild as HTMLElement | null | undefined;
-        child?.click();
 
+        if (child) {
+          return child.click();
+        }
+
+        onHide?.(e);
+
+        if (e.defaultPrevented) {
+          return;
+        }
         setIsOpenState(false);
         setTimeout(() => setActiveIndex(-1), 300);
       }
 
       if (e.key === 'Escape') {
-        setIsOpenState(false);
-        onHide?.();
+        onHide?.(e);
+        if (e.defaultPrevented) {
+          return;
+        }
 
+        setIsOpenState(false);
         setTimeout(() => setActiveIndex(-1), 300);
       }
     },

@@ -46,7 +46,7 @@ const MDBDropdownMenu = ({
       return 'left-start';
     }
 
-    const isEnd = popperElement && getComputedStyle(popperElement).getPropertyValue('--bs-position').trim() === 'end';
+    const isEnd = popperElement && getComputedStyle(popperElement).getPropertyValue('--mdb-position').trim() === 'end';
 
     if (dropup) {
       return isEnd ? 'top-end' : 'top-start';

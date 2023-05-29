@@ -1,5 +1,5 @@
 import { BaseComponent } from '../../../types/baseComponent';
-import { ReactNode, ComponentProps } from 'react';
+import { ReactNode, ComponentProps, SyntheticEvent } from 'react';
 export interface DropdownProps extends BaseComponent {
     animation?: boolean;
     group?: boolean;
@@ -10,6 +10,6 @@ export interface DropdownProps extends BaseComponent {
     dropleft?: boolean;
     children?: ReactNode;
     tag?: ComponentProps<any>;
-    onHide?: () => any;
-    onShow?: () => any;
+    onHide?: (e: MouseEvent | SyntheticEvent | KeyboardEvent) => any;
+    onShow?: (e: MouseEvent | SyntheticEvent | KeyboardEvent) => any;
 }

@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { ReactPropTypes, SyntheticEvent, useCallback, useEffect } from 'react';
 import { isNode } from '../helpers/typeguards';
 import { useDropdownContext } from './useDropdownContext';
 
@@ -6,17 +6,19 @@ export const useClickOutside = () => {
   const { isOpenState, setIsOpenState, setActiveIndex, popperElement, referenceElement, onHide } = useDropdownContext();
 
   const handleClickOutside = useCallback(
-    ({ target }: MouseEvent) => {
+    (e: MouseEvent | SyntheticEvent) => {
+      onHide?.(e);
       if (
         !isOpenState ||
-        !isNode(target) ||
-        (popperElement && popperElement.contains(target)) ||
-        (referenceElement && referenceElement.contains(target))
-      )
+        !isNode(e.target) ||
+        (popperElement && popperElement.contains(e.target)) ||
+        (referenceElement && referenceElement.contains(e.target)) ||
+        e.defaultPrevented
+      ) {
         return;
-
+      }
       setIsOpenState(false);
-      onHide?.();
+
       setTimeout(() => setActiveIndex(-1), 300);
     },
     [isOpenState, setIsOpenState, setActiveIndex, popperElement, referenceElement, onHide]

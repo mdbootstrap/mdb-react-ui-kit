@@ -1,3 +1,4 @@
+import { MouseEventHandler, SyntheticEvent } from 'react';
 import { BaseComponent } from '../../types/baseComponent';
 import { placement } from '../../types/placement';
 
@@ -10,8 +11,10 @@ interface TooltipProps extends BaseComponent {
   title?: React.ReactNode;
   wrapperProps?: Record<string, unknown>;
   wrapperClass?: string;
-  onShow?: () => any;
-  onHide?: () => any;
+  onShow?: (e: SyntheticEvent) => any;
+  onHide?: (e: SyntheticEvent) => any;
+  onMouseEnter?: (e: SyntheticEvent) => any;
+  onMouseLeave?: (e: SyntheticEvent) => any;
 }
 
 export { TooltipProps };

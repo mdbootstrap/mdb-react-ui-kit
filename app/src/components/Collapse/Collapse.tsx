@@ -5,12 +5,14 @@ import type { CollapseProps } from './types';
 const MDBCollapse: React.FC<CollapseProps> = ({
   className,
   children,
-  show,
+  show = false,
   id,
   navbar,
   tag: Tag,
   collapseRef,
   style,
+  onShow,
+  onHide,
   ...props
 }): JSX.Element => {
   const [showCollapse, setShowCollapse] = useState<boolean | undefined>(false);
@@ -39,7 +41,10 @@ const MDBCollapse: React.FC<CollapseProps> = ({
   }, [collapseHeight, showCollapse, refCollapse]);
 
   useEffect(() => {
-    setShowCollapse(show);
+    if (showCollapse !== show) {
+      show ? onShow?.() : onHide?.();
+      setShowCollapse(show);
+    }
 
     if (showCollapse) {
       setTransition(true);
@@ -52,7 +57,7 @@ const MDBCollapse: React.FC<CollapseProps> = ({
     return () => {
       clearTimeout(timer);
     };
-  }, [show, showCollapse]);
+  }, [show, showCollapse, onShow, onHide]);
 
   useEffect(() => {
     if (showCollapse) {

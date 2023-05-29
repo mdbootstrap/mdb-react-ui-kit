@@ -17,10 +17,13 @@ const MDBDropdownToggle = ({
   const classes = clsx('dropdown-toggle', split && 'dropdown-toggle-split', className);
 
   const handleOpenToggle = (e: MouseEvent<HTMLElement>) => {
-    isOpenState ? onHide?.() : onShow?.();
-
-    setIsOpenState((prev) => !prev);
     onClick?.(e);
+    isOpenState ? onHide?.(e) : onShow?.(e);
+
+    if (e.defaultPrevented) {
+      return;
+    }
+    setIsOpenState((prev) => !prev);
 
     setTimeout(() => setActiveIndex(-1), 300);
   };

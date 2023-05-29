@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, SyntheticEvent } from 'react';
 import ReactDOM from 'react-dom';
 import clsx from 'clsx';
 import { usePopper } from 'react-popper';
@@ -58,16 +58,16 @@ const MDBTooltip: React.FC<TooltipProps> = ({
     };
   }, [isOpenState, isClicked]);
 
-  const handleOnMouseEnter = (e: any) => {
-    setIsOpenState(true);
-    onShow?.();
-    onMouseEnter && onMouseEnter(e);
+  const handleOnMouseEnter = (e: SyntheticEvent) => {
+    onShow?.(e);
+    !e.defaultPrevented && setIsOpenState(true);
+    onMouseEnter?.(e);
   };
 
-  const handleOnMouseLeave = (e: any) => {
-    setIsOpenState(false);
-    onHide?.();
-    onMouseLeave && onMouseLeave(e);
+  const handleOnMouseLeave = (e: SyntheticEvent) => {
+    onHide?.(e);
+    !e.defaultPrevented && setIsOpenState(false);
+    onMouseLeave?.(e);
   };
 
   const handleClick = useCallback(

@@ -31,7 +31,6 @@ const MDBModal: React.FC<ModalProps> = ({
 
   const modalInnerRef = useRef<HTMLElement>(null);
   const modalReference = modalRef ? modalRef : modalInnerRef;
-
   const classes = clsx(
     'modal',
     staticModal && 'modal-static',
@@ -44,8 +43,10 @@ const MDBModal: React.FC<ModalProps> = ({
   const backdropClasses = clsx('modal-backdrop', 'fade', isOpenBackdrop && 'show');
 
   const closeModal = useCallback(() => {
-    setIsOpenModal(false);
-    isOpenModal && onHide?.();
+    setIsOpenModal((isCurrentlyShown) => {
+      isCurrentlyShown && onHide?.();
+      return false;
+    });
 
     setTimeout(() => {
       setIsOpenBackrop(false);
@@ -59,6 +60,10 @@ const MDBModal: React.FC<ModalProps> = ({
 
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
+      if (nonInvasive) {
+        return;
+      }
+
       if (isOpenModal && event.target === modalReference.current) {
         if (!staticBackdrop) {
           closeModal();
@@ -71,7 +76,7 @@ const MDBModal: React.FC<ModalProps> = ({
         }
       }
     },
-    [isOpenModal, modalReference, staticBackdrop, closeModal, onHidePrevented]
+    [isOpenModal, modalReference, staticBackdrop, closeModal, onHidePrevented, nonInvasive]
   );
 
   const handleKeydown = useCallback(
@@ -177,16 +182,19 @@ const MDBModal: React.FC<ModalProps> = ({
   }, [show, closeModal, setShow, onShow]);
 
   useEffect(() => {
-    if (!nonInvasive) {
-      window.addEventListener('click', handleClickOutside);
-      window.addEventListener('keydown', handleKeydown);
-    }
+    const addMouseUpListener = (e: MouseEvent) => {
+      if (!(e.target as HTMLElement).closest('.modal-dialog')) {
+        window.addEventListener('mouseup', handleClickOutside, { once: true });
+      }
+    };
+    window.addEventListener('mousedown', addMouseUpListener);
+    window.addEventListener('keydown', handleKeydown);
 
     return () => {
-      window.removeEventListener('click', handleClickOutside);
+      window.removeEventListener('mousedown', addMouseUpListener);
       window.removeEventListener('keydown', handleKeydown);
     };
-  }, [handleKeydown, handleClickOutside, nonInvasive]);
+  }, [handleKeydown, handleClickOutside]);
 
   const appendToBodyTemplate = (
     <>
@@ -224,7 +232,7 @@ const MDBModal: React.FC<ModalProps> = ({
             {children}
           </Tag>
           {ReactDOM.createPortal(
-            backdrop && innerShow && !nonInvasive && <div className={backdropClasses}></div>,
+            backdrop && innerShow && !nonInvasive && <div onClick={closeModal} className={backdropClasses}></div>,
             document.body
           )}
         </>
