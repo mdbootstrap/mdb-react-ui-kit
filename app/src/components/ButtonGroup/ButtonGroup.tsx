@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { ButtonGroupProps } from './types';
 
 const MDBBtnGroup: React.FC<ButtonGroupProps> = React.forwardRef<HTMLAllCollection, ButtonGroupProps>(
-  ({ className, children, shadow, toolbar, size, vertical, tag: Tag, ...props }, ref) => {
+  ({ className, children, shadow, toolbar, size, vertical, tag: Tag = 'div', role = 'group', ...props }, ref) => {
     let type;
 
     if (toolbar) {
@@ -16,13 +16,11 @@ const MDBBtnGroup: React.FC<ButtonGroupProps> = React.forwardRef<HTMLAllCollecti
     const classes = clsx(type, shadow && `shadow-${shadow}`, size && `btn-group-${size}`, className);
 
     return (
-      <Tag className={classes} ref={ref} {...props}>
+      <Tag className={classes} ref={ref} role={role} {...props}>
         {children}
       </Tag>
     );
   }
 );
-
-MDBBtnGroup.defaultProps = { tag: 'div', role: 'group' };
 
 export default MDBBtnGroup;

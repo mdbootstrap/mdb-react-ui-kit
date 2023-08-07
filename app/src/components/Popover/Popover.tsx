@@ -10,12 +10,12 @@ const MDBPopover: React.FC<PopoverProps> = ({
   btnClassName,
   btnChildren,
   children,
-  tag: Tag,
+  tag: Tag = MDBBtn,
   onShow,
   onHide,
-  popperTag: PopperTag,
+  popperTag: PopperTag = 'div',
   isOpen,
-  placement,
+  placement = 'bottom',
   dismiss,
   options,
   poperStyle,
@@ -117,12 +117,6 @@ const MDBPopover: React.FC<PopoverProps> = ({
         )}
     </>
   );
-};
-
-MDBPopover.defaultProps = {
-  tag: MDBBtn,
-  popperTag: 'div',
-  placement: 'bottom',
 };
 
 export default MDBPopover;

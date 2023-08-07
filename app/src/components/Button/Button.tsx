@@ -7,7 +7,7 @@ const MDBBtn: React.FC<ButtonProps> = React.forwardRef<HTMLAllCollection, Button
   (
     {
       className,
-      color,
+      color = 'primary',
       outline,
       children,
       rounded,
@@ -19,7 +19,8 @@ const MDBBtn: React.FC<ButtonProps> = React.forwardRef<HTMLAllCollection, Button
       active,
       toggle,
       noRipple,
-      tag: Tag,
+      tag: Tag = 'button',
+      role = 'button',
       ...props
     },
     ref
@@ -74,6 +75,7 @@ const MDBBtn: React.FC<ButtonProps> = React.forwardRef<HTMLAllCollection, Button
         disabled={disabled && Tag === 'button' ? true : undefined}
         href={href}
         ref={ref}
+        role={role}
         {...props}
       >
         {children}
@@ -93,6 +95,7 @@ const MDBBtn: React.FC<ButtonProps> = React.forwardRef<HTMLAllCollection, Button
         disabled={disabled && Tag === 'button' ? true : undefined}
         href={href}
         ref={ref}
+        role={role}
         {...props}
       >
         {children}
@@ -100,7 +103,5 @@ const MDBBtn: React.FC<ButtonProps> = React.forwardRef<HTMLAllCollection, Button
     );
   }
 );
-
-MDBBtn.defaultProps = { tag: 'button', role: 'button', color: 'primary' };
 
 export default MDBBtn;

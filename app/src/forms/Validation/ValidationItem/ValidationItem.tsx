@@ -6,9 +6,9 @@ import clsx from 'clsx';
 const MDBValidationItem: React.FC<ValidationItemProps> = ({
   children,
   invalid,
-  feedback,
+  feedback = 'Looks good!',
   tooltip,
-  tag: Tag,
+  tag: Tag = 'div',
   ...props
 }) => {
   const [portalElement, setPortalElement] = useState<HTMLElement | null>(null);
@@ -30,11 +30,6 @@ const MDBValidationItem: React.FC<ValidationItemProps> = ({
       {children}
     </Tag>
   );
-};
-
-MDBValidationItem.defaultProps = {
-  tag: 'div',
-  feedback: 'Looks good!',
 };
 
 export default MDBValidationItem;

@@ -4,7 +4,19 @@ import type { TypographyProps } from './types';
 
 const MDBTypography: React.FC<TypographyProps> = React.forwardRef<HTMLAllCollection, TypographyProps>(
   (
-    { className, children, tag: Tag, variant, color, blockquote, note, noteColor, listUnStyled, listInLine, ...props },
+    {
+      className,
+      children,
+      tag: Tag = 'p',
+      variant,
+      color,
+      blockquote,
+      note,
+      noteColor,
+      listUnStyled,
+      listInLine,
+      ...props
+    },
     ref
   ) => {
     const classes = clsx(
@@ -33,7 +45,5 @@ const MDBTypography: React.FC<TypographyProps> = React.forwardRef<HTMLAllCollect
     );
   }
 );
-
-MDBTypography.defaultProps = { tag: 'p' };
 
 export default MDBTypography;

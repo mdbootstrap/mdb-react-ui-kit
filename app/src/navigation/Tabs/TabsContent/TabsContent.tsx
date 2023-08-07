@@ -3,7 +3,7 @@ import React from 'react';
 import type { TabsContentProps } from './types';
 
 const MDBTabsContent: React.FC<TabsContentProps> = React.forwardRef<HTMLAllCollection, TabsContentProps>(
-  ({ className, tag: Tag, children, ...props }, ref) => {
+  ({ className, tag: Tag = 'div', children, ...props }, ref) => {
     const classes = clsx('tab-content', className);
 
     return (
@@ -13,7 +13,5 @@ const MDBTabsContent: React.FC<TabsContentProps> = React.forwardRef<HTMLAllColle
     );
   }
 );
-
-MDBTabsContent.defaultProps = { tag: 'div' };
 
 export default MDBTabsContent;

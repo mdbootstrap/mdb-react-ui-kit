@@ -4,7 +4,10 @@ import type { AccordionProps } from './types';
 import { AccordionContext } from './AccordionContext';
 
 const MDBAccordion: React.FC<AccordionProps> = React.forwardRef<HTMLAllCollection, AccordionProps>(
-  ({ alwaysOpen, borderless, className, flush, initialActive, tag: Tag, children, onChange, ...props }, ref) => {
+  (
+    { alwaysOpen, borderless, className, flush, initialActive = 0, tag: Tag = 'div', children, onChange, ...props },
+    ref
+  ) => {
     const classes = clsx('accordion', flush && 'accordion-flush', borderless && 'accordion-borderless', className);
 
     const [activeItem, setActiveItem] = useState(initialActive);
@@ -24,7 +27,5 @@ const MDBAccordion: React.FC<AccordionProps> = React.forwardRef<HTMLAllCollectio
     );
   }
 );
-
-MDBAccordion.defaultProps = { tag: 'div', initialActive: 0 };
 
 export default MDBAccordion;

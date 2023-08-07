@@ -8,7 +8,7 @@ const InputTemplate: React.FC<InputTemplateProps> = ({
   labelClass,
   wrapperClass,
   labelStyle,
-  wrapperTag: WrapperTag,
+  wrapperTag: WrapperTag = 'div',
   wrapperStyle,
   label,
   inline,
@@ -64,7 +64,5 @@ const InputTemplate: React.FC<InputTemplateProps> = ({
     </>
   );
 };
-
-InputTemplate.defaultProps = { wrapperTag: 'div' };
 
 export default InputTemplate;

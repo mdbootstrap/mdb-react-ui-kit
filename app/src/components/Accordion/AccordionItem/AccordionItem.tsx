@@ -15,7 +15,7 @@ const MDBAccordionItem: React.FC<AccordionItemProps> = React.forwardRef<HTMLAllC
       headerTitle,
       headerStyle,
       btnClassName,
-      tag: Tag,
+      tag: Tag = 'div',
       children,
       ...props
     },
@@ -61,7 +61,5 @@ const MDBAccordionItem: React.FC<AccordionItemProps> = React.forwardRef<HTMLAllC
     );
   }
 );
-
-MDBAccordionItem.defaultProps = { tag: 'div' };
 
 export default MDBAccordionItem;

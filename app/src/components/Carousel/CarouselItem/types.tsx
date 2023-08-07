@@ -6,6 +6,7 @@ type CarouselItemProps = ImgVideo & {
   captionClassName?: string;
   itemId: number;
   video?: boolean;
+  interval?: number;
 };
 
 export { CarouselItemProps };

@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { CardProps } from './types';
 
 const MDBCard: React.FC<CardProps> = React.forwardRef<HTMLAllCollection, CardProps>(
-  ({ className, children, border, background, tag: Tag, shadow, alignment, ...props }, ref) => {
+  ({ className, children, border, background, tag: Tag = 'div', shadow, alignment, ...props }, ref) => {
     const classes = clsx(
       'card',
       border && `border border-${border}`,
@@ -20,7 +20,5 @@ const MDBCard: React.FC<CardProps> = React.forwardRef<HTMLAllCollection, CardPro
     );
   }
 );
-
-MDBCard.defaultProps = { tag: 'div' };
 
 export default MDBCard;

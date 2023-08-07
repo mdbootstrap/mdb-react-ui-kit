@@ -43,6 +43,4 @@ const MDBScrollspyLink: React.FC<ScrollspyNavLinkProps> = ({
   );
 };
 
-MDBScrollspyLink.defaultProps = {};
-
 export default MDBScrollspyLink;

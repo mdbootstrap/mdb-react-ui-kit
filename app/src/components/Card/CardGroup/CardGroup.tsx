@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { CardGroupProps } from './types';
 
 const MDBCardGroup: React.FC<CardGroupProps> = React.forwardRef<HTMLAllCollection, CardGroupProps>(
-  ({ className, children, tag: Tag, ...props }, ref) => {
+  ({ className, children, tag: Tag = 'div', ...props }, ref) => {
     const classes = clsx('card-group', className);
 
     return (
@@ -13,7 +13,5 @@ const MDBCardGroup: React.FC<CardGroupProps> = React.forwardRef<HTMLAllCollectio
     );
   }
 );
-
-MDBCardGroup.defaultProps = { tag: 'div' };
 
 export default MDBCardGroup;

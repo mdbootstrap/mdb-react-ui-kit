@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { CardHeaderProps } from './types';
 
 const MDBCardHeader: React.FC<CardHeaderProps> = React.forwardRef<HTMLAllCollection, CardHeaderProps>(
-  ({ className, children, border, background, tag: Tag, ...props }, ref) => {
+  ({ className, children, border, background, tag: Tag = 'div', ...props }, ref) => {
     const classes = clsx('card-header', border && `border-${border}`, background && `bg-${background}`, className);
 
     return (
@@ -13,7 +13,5 @@ const MDBCardHeader: React.FC<CardHeaderProps> = React.forwardRef<HTMLAllCollect
     );
   }
 );
-
-MDBCardHeader.defaultProps = { tag: 'div' };
 
 export default MDBCardHeader;

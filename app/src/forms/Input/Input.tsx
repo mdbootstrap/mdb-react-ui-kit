@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import React, { useState, useEffect, useRef, FocusEvent, ChangeEvent, useCallback, useImperativeHandle } from 'react';
 import type { InputProps } from './types';
+import { useOnScreen } from '../../utils/hooks';
 
 const MDBInput: React.FC<InputProps> = React.forwardRef<HTMLInputElement, InputProps>(
   (
@@ -14,7 +15,7 @@ const MDBInput: React.FC<InputProps> = React.forwardRef<HTMLInputElement, InputP
       labelClass,
       wrapperClass,
       wrapperStyle,
-      wrapperTag: WrapperTag,
+      wrapperTag: WrapperTag = 'div',
       label,
       onChange,
       children,
@@ -22,7 +23,7 @@ const MDBInput: React.FC<InputProps> = React.forwardRef<HTMLInputElement, InputP
       labelStyle,
       type,
       onBlur,
-      readonly,
+      readonly = false,
       ...props
     },
     ref
@@ -32,6 +33,7 @@ const MDBInput: React.FC<InputProps> = React.forwardRef<HTMLInputElement, InputP
     const [active, setActive] = useState(false);
 
     const innerRef = useRef<HTMLInputElement>(null);
+    const isVisible = useOnScreen(innerRef);
 
     useImperativeHandle(ref, () => innerRef.current as HTMLInputElement);
 
@@ -75,7 +77,7 @@ const MDBInput: React.FC<InputProps> = React.forwardRef<HTMLInputElement, InputP
 
     useEffect(() => {
       setWidth();
-    }, [labelReference.current?.clientWidth, setWidth]);
+    }, [labelReference.current?.clientWidth, setWidth, isVisible]);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
       setNewValue(e.target.value);
@@ -130,7 +132,5 @@ const MDBInput: React.FC<InputProps> = React.forwardRef<HTMLInputElement, InputP
     );
   }
 );
-
-MDBInput.defaultProps = { wrapperTag: 'div', readonly: false };
 
 export default MDBInput;

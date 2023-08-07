@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { CardTextProps } from './types';
 
 const MDBCardText: React.FC<CardTextProps> = React.forwardRef<HTMLAllCollection, CardTextProps>(
-  ({ className, children, tag: Tag, ...props }, ref) => {
+  ({ className, children, tag: Tag = 'p', ...props }, ref) => {
     const classes = clsx('card-text', className);
 
     return (
@@ -13,7 +13,5 @@ const MDBCardText: React.FC<CardTextProps> = React.forwardRef<HTMLAllCollection,
     );
   }
 );
-
-MDBCardText.defaultProps = { tag: 'p' };
 
 export default MDBCardText;

@@ -18,7 +18,7 @@ const MDBCol: React.FC<ColumnProps> = React.forwardRef<HTMLAllCollection, Column
       size,
       sm,
       start,
-      tag: Tag,
+      tag: Tag = 'div',
       xl,
       xxl,
       xs,
@@ -52,7 +52,5 @@ const MDBCol: React.FC<ColumnProps> = React.forwardRef<HTMLAllCollection, Column
     );
   }
 );
-
-MDBCol.defaultProps = { tag: 'div' };
 
 export default MDBCol;

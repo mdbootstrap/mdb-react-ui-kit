@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { ModalDialogProps } from './types';
 
 const MDBModalDialog: React.FC<ModalDialogProps> = React.forwardRef<HTMLAllCollection, ModalDialogProps>(
-  ({ className, centered, children, size, scrollable, tag: Tag, ...props }, ref) => {
+  ({ className, centered, children, size, scrollable, tag: Tag = 'div', ...props }, ref) => {
     const classes = clsx(
       'modal-dialog',
       scrollable && 'modal-dialog-scrollable',
@@ -19,7 +19,5 @@ const MDBModalDialog: React.FC<ModalDialogProps> = React.forwardRef<HTMLAllColle
     );
   }
 );
-
-MDBModalDialog.defaultProps = { tag: 'div' };
 
 export default MDBModalDialog;

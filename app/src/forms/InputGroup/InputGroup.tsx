@@ -11,8 +11,8 @@ const MDBInputGroup: React.FC<InputGroupProps> = React.forwardRef<HTMLAllCollect
       textBefore,
       textAfter,
       noWrap,
-      tag: Tag,
-      textTag: TextTag,
+      tag: Tag = 'div',
+      textTag: TextTag = 'span',
       textClass,
       size,
       textProps,
@@ -48,7 +48,5 @@ const MDBInputGroup: React.FC<InputGroupProps> = React.forwardRef<HTMLAllCollect
     );
   }
 );
-
-MDBInputGroup.defaultProps = { tag: 'div', textTag: 'span' };
 
 export default MDBInputGroup;

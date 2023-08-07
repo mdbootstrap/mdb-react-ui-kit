@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { NavbarItemProps } from './types';
 
 const MDBNavbarItem: React.FC<NavbarItemProps> = React.forwardRef<HTMLAllCollection, NavbarItemProps>(
-  ({ children, className, active, text, tag: Tag, ...props }, ref) => {
+  ({ children, className, active, text, tag: Tag = 'li', ...props }, ref) => {
     const classes = clsx('nav-item', active && 'active', text && 'navbar-text', className);
 
     return (
@@ -13,9 +13,5 @@ const MDBNavbarItem: React.FC<NavbarItemProps> = React.forwardRef<HTMLAllCollect
     );
   }
 );
-
-MDBNavbarItem.defaultProps = {
-  tag: 'li',
-};
 
 export default MDBNavbarItem;

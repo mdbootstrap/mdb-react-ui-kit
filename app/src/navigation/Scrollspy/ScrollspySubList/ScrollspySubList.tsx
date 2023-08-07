@@ -44,6 +44,4 @@ const MDBScrollspySubList: React.FC<ScrollspySubListProps> = ({
   );
 };
 
-MDBScrollspySubList.defaultProps = {};
-
 export default MDBScrollspySubList;

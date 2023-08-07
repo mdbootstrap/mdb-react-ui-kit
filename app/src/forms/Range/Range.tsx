@@ -5,7 +5,7 @@ import type { RangeProps } from './types';
 
 const MDBRange: React.FC<RangeProps> = ({
   className,
-  defaultValue,
+  defaultValue = 0,
   disableTooltip,
   labelId,
   max,
@@ -82,7 +82,5 @@ const MDBRange: React.FC<RangeProps> = ({
     </>
   );
 };
-
-MDBRange.defaultProps = { defaultValue: 0 };
 
 export default MDBRange;

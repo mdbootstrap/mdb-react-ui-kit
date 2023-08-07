@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { ModalTitleProps } from './types';
 
 const MDBModalTitle: React.FC<ModalTitleProps> = React.forwardRef<HTMLAllCollection, ModalTitleProps>(
-  ({ className, children, tag: Tag, ...props }, ref) => {
+  ({ className, children, tag: Tag = 'h5', ...props }, ref) => {
     const classes = clsx('modal-title', className);
 
     return (
@@ -13,7 +13,5 @@ const MDBModalTitle: React.FC<ModalTitleProps> = React.forwardRef<HTMLAllCollect
     );
   }
 );
-
-MDBModalTitle.defaultProps = { tag: 'h5' };
 
 export default MDBModalTitle;

@@ -9,10 +9,10 @@ const MDBTooltip: React.FC<TooltipProps> = ({
   className,
   children,
   disableMouseDown,
-  tag: Tag,
-  tooltipTag: TooltipTag,
+  tag: Tag = MDBBtn,
+  tooltipTag: TooltipTag = 'div',
   options,
-  placement,
+  placement = 'top',
   title,
   wrapperProps,
   wrapperClass,
@@ -119,7 +119,5 @@ const MDBTooltip: React.FC<TooltipProps> = ({
     </>
   );
 };
-
-MDBTooltip.defaultProps = { tag: MDBBtn, tooltipTag: 'div', placement: 'top' };
 
 export default MDBTooltip;

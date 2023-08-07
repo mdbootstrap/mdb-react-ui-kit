@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { ModalHeaderProps } from './types';
 
 const MDBModalHeader: React.FC<ModalHeaderProps> = React.forwardRef<HTMLAllCollection, ModalHeaderProps>(
-  ({ className, children, tag: Tag, ...props }, ref) => {
+  ({ className, children, tag: Tag = 'div', ...props }, ref) => {
     const classes = clsx('modal-header', className);
 
     return (
@@ -13,7 +13,5 @@ const MDBModalHeader: React.FC<ModalHeaderProps> = React.forwardRef<HTMLAllColle
     );
   }
 );
-
-MDBModalHeader.defaultProps = { tag: 'div' };
 
 export default MDBModalHeader;

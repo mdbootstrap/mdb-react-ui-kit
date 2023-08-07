@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { ModalFooterProps } from './types';
 
 const MDBModalFooter: React.FC<ModalFooterProps> = React.forwardRef<HTMLAllCollection, ModalFooterProps>(
-  ({ className, children, tag: Tag, ...props }, ref) => {
+  ({ className, children, tag: Tag = 'div', ...props }, ref) => {
     const classes = clsx('modal-footer', className);
 
     return (
@@ -13,7 +13,5 @@ const MDBModalFooter: React.FC<ModalFooterProps> = React.forwardRef<HTMLAllColle
     );
   }
 );
-
-MDBModalFooter.defaultProps = { tag: 'div' };
 
 export default MDBModalFooter;

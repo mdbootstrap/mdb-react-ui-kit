@@ -4,7 +4,21 @@ import { RowProps } from './types';
 
 const MDBRow: React.FC<RowProps> = React.forwardRef<HTMLAllCollection, RowProps>(
   (
-    { around, between, bottom, center, children, className, evenly, end, middle, start, tag: Tag, top, ...props },
+    {
+      around,
+      between,
+      bottom,
+      center,
+      children,
+      className,
+      evenly,
+      end,
+      middle,
+      start,
+      tag: Tag = 'div',
+      top,
+      ...props
+    },
     ref
   ) => {
     const classes = clsx(
@@ -28,7 +42,5 @@ const MDBRow: React.FC<RowProps> = React.forwardRef<HTMLAllCollection, RowProps>
     );
   }
 );
-
-MDBRow.defaultProps = { tag: 'div' };
 
 export default MDBRow;

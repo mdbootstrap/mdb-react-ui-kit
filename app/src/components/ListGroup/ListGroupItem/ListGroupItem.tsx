@@ -3,7 +3,7 @@ import React from 'react';
 import type { ListGroupItemProps } from './types';
 
 const MDBListGroupItem: React.FC<ListGroupItemProps> = React.forwardRef<HTMLAllCollection, ListGroupItemProps>(
-  ({ className, tag: Tag, active, disabled, action, color, children, noBorders, ...props }, ref) => {
+  ({ className, tag: Tag = 'li', active, disabled, action, color, children, noBorders, ...props }, ref) => {
     const isButton = Tag === 'button';
 
     const classes = clsx(
@@ -23,7 +23,5 @@ const MDBListGroupItem: React.FC<ListGroupItemProps> = React.forwardRef<HTMLAllC
     );
   }
 );
-
-MDBListGroupItem.defaultProps = { tag: 'li' };
 
 export default MDBListGroupItem;

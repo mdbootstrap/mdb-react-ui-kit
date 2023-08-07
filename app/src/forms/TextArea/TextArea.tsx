@@ -12,7 +12,7 @@ const MDBTextArea: React.FC<TextAreaProps> = ({
   labelClass,
   wrapperClass,
   wrapperStyle,
-  wrapperTag: WrapperTag,
+  wrapperTag: WrapperTag = 'div',
   label,
   onChange,
   children,
@@ -20,7 +20,7 @@ const MDBTextArea: React.FC<TextAreaProps> = ({
   labelStyle,
   inputRef,
   onBlur,
-  readonly,
+  readonly = false,
   ...props
 }) => {
   const labelEl = useRef<HTMLLabelElement>(null);
@@ -32,7 +32,7 @@ const MDBTextArea: React.FC<TextAreaProps> = ({
   const [oldValue, setNewValue] = useState(value || defaultValue);
   const [labelWidth, setLabelWidth] = useState(0);
   const [active, setActive] = useState(
-    (value !== undefined && value.length > 0) || (defaultValue !== undefined && defaultValue.length) > 0 ? true : false
+    (value !== undefined && value.length > 0) || (defaultValue !== undefined && defaultValue.length > 0) ? true : false
   );
 
   const wrapperClasses = clsx('form-outline', contrast && 'form-white', wrapperClass);
@@ -106,7 +106,5 @@ const MDBTextArea: React.FC<TextAreaProps> = ({
     </WrapperTag>
   );
 };
-
-MDBTextArea.defaultProps = { wrapperTag: 'div', readonly: false };
 
 export default MDBTextArea;

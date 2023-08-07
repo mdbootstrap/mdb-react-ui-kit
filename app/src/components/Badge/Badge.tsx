@@ -3,7 +3,7 @@ import React from 'react';
 import type { BadgeProps } from './types';
 
 const MDBBadge: React.FC<BadgeProps> = React.forwardRef<HTMLAllCollection, BadgeProps>(
-  ({ className, color, pill, light, dot, tag: Tag, children, notification, ...props }, ref) => {
+  ({ className, color = 'primary', pill, light, dot, tag: Tag = 'span', children, notification, ...props }, ref) => {
     const classes = clsx(
       'badge',
       light ? color && `badge-${color}` : color && `bg-${color}`,
@@ -20,7 +20,5 @@ const MDBBadge: React.FC<BadgeProps> = React.forwardRef<HTMLAllCollection, Badge
     );
   }
 );
-
-MDBBadge.defaultProps = { tag: 'span', color: 'primary' };
 
 export default MDBBadge;

@@ -24,7 +24,7 @@ const MDBNavbar: React.FC<NavbarProps> = React.forwardRef<HTMLAllCollection, Nav
       color,
       transparent,
       expand,
-      tag: Tag,
+      tag: Tag = 'nav',
       bgColor,
       ...props
     },
@@ -72,9 +72,5 @@ const MDBNavbar: React.FC<NavbarProps> = React.forwardRef<HTMLAllCollection, Nav
     );
   }
 );
-
-MDBNavbar.defaultProps = {
-  tag: 'nav',
-};
 
 export default MDBNavbar;

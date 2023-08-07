@@ -3,7 +3,7 @@ import React from 'react';
 import type { PaginationLinkProps } from './types';
 
 const MDBPaginationLink: React.FC<PaginationLinkProps> = React.forwardRef<HTMLAnchorElement, PaginationLinkProps>(
-  ({ children, className, tag: Tag, ...props }, ref) => {
+  ({ children, className, tag: Tag = 'a', ...props }, ref) => {
     const classes = clsx('page-link', className);
 
     return (
@@ -13,9 +13,5 @@ const MDBPaginationLink: React.FC<PaginationLinkProps> = React.forwardRef<HTMLAn
     );
   }
 );
-
-MDBPaginationLink.defaultProps = {
-  tag: 'a',
-};
 
 export default MDBPaginationLink;

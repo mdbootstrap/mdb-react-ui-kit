@@ -3,7 +3,7 @@ import React from 'react';
 import type { ListGroupProps } from './types';
 
 const MDBListGroup: React.FC<ListGroupProps> = React.forwardRef<HTMLAllCollection, ListGroupProps>(
-  ({ className, tag: Tag, horizontal, horizontalSize, light, numbered, children, small, ...props }, ref) => {
+  ({ className, tag: Tag = 'ul', horizontal, horizontalSize, light, numbered, children, small, ...props }, ref) => {
     const classes = clsx(
       'list-group',
       horizontal && (horizontalSize ? `list-group-horizontal-${horizontalSize}` : 'list-group-horizontal'),
@@ -20,7 +20,5 @@ const MDBListGroup: React.FC<ListGroupProps> = React.forwardRef<HTMLAllCollectio
     );
   }
 );
-
-MDBListGroup.defaultProps = { tag: 'ul' };
 
 export default MDBListGroup;

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { ReactElement, useCallback, useEffect, useRef, useState } from 'react';
 import type { CarouselProps } from './types';
 
 import CarouselIndicators from './CarouselIndicators/CarouselIndicators';
@@ -8,13 +8,14 @@ import { CarouselContext } from './utils/CarouselContext';
 import { getCarouselItems, isVisible, queueCallback, reflow } from './utils/utils';
 
 const MDBCarousel: React.FC<CarouselProps> = ({
-  fade,
+  fade = false,
   className,
+  carouselInnerClassName,
   dark,
   children,
-  interval,
-  keyboard,
-  touch,
+  interval = 5000,
+  keyboard = false,
+  touch = true,
   showControls,
   showIndicators,
   onSlide,
@@ -34,14 +35,7 @@ const MDBCarousel: React.FC<CarouselProps> = ({
   const carouselRef = useRef<HTMLDivElement>(null);
 
   const classes = clsx('carousel', 'slide', fade && 'carousel-fade', dark && 'carousel-dark', className);
-
-  const pauseInterval = () => {
-    if (carouselInterval.current) {
-      clearInterval(carouselInterval.current);
-
-      carouselInterval.current = null;
-    }
-  };
+  const carouselInnerClasses = clsx('carousel-inner', carouselInnerClassName);
 
   const setElementActive = useCallback(
     (direction: string, newIndex?: number) => {
@@ -59,8 +53,17 @@ const MDBCarousel: React.FC<CarouselProps> = ({
     [active, itemsLength]
   );
 
+  const pauseInterval = useCallback(() => {
+    if (carouselInterval.current) {
+      clearInterval(carouselInterval.current);
+
+      carouselInterval.current = null;
+    }
+  }, []);
+
   const slide = useCallback(
     (direction: string, nextElement: HTMLDivElement, index?: number) => {
+      if (!items.current || items.current.length < 2) return;
       setIsTransitioning(true);
       const carouselElements = items.current as HTMLDivElement[];
       const activeElement = carouselElements[active];
@@ -114,7 +117,7 @@ const MDBCarousel: React.FC<CarouselProps> = ({
       }
     },
 
-    [carouselRef, active, setElementActive]
+    [carouselRef, active, setElementActive, pauseInterval]
   );
 
   const block = (timer: number) => {
@@ -194,14 +197,15 @@ const MDBCarousel: React.FC<CarouselProps> = ({
   }, [carouselRef, changeStep]);
 
   const startInterval = useCallback(() => {
+    const individualInterval = (children as ReactElement[])?.[active]?.props?.interval;
     if (carouselInterval.current) {
       clearInterval(carouselInterval.current);
 
       carouselInterval.current = null;
     }
 
-    carouselInterval.current = setInterval(changeNext, interval);
-  }, [changeNext, interval]);
+    carouselInterval.current = setInterval(changeNext, individualInterval || interval);
+  }, [changeNext, interval, children, active]);
 
   const startTouch = (e: React.TouchEvent<HTMLDivElement>) => {
     if (!touch) return;
@@ -277,12 +281,16 @@ const MDBCarousel: React.FC<CarouselProps> = ({
   }, [carouselRef]);
 
   useEffect(() => {
-    onSlide?.();
+    isTransitioning && onSlide?.();
   }, [isTransitioning, onSlide]);
 
   useEffect(() => {
     startInterval();
-  }, [startInterval]);
+
+    return () => {
+      pauseInterval();
+    };
+  }, [startInterval, pauseInterval]);
 
   return (
     <div
@@ -295,7 +303,7 @@ const MDBCarousel: React.FC<CarouselProps> = ({
       ref={carouselRef}
       {...props}
     >
-      <div className='carousel-inner'>
+      <div className={carouselInnerClasses}>
         <CarouselContext.Provider value={{ active }}>
           {showIndicators && <CarouselIndicators to={changeTo} imagesCount={itemsLength} />}
           {children}
@@ -305,7 +313,5 @@ const MDBCarousel: React.FC<CarouselProps> = ({
     </div>
   );
 };
-
-MDBCarousel.defaultProps = { fade: false, interval: 5000, touch: true, keyboard: false };
 
 export default MDBCarousel;

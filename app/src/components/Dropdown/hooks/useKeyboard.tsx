@@ -8,7 +8,8 @@ export const useKeyboard = (children: ReactElement[] | ReactElement) => {
 
   const handleKeyboard = useCallback(
     (e: KeyboardEvent) => {
-      if (!Array.isArray(children)) return;
+      const controlKeys = ['ArrowUp', 'ArrowDown', 'Tab', 'Enter', 'Escape'];
+      if (!Array.isArray(children) || !controlKeys.includes(e.key)) return;
 
       isHtmlElement(document.activeElement) && document.activeElement.blur();
 

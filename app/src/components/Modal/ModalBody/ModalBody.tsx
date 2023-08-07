@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { ModalBodyProps } from './types';
 
 const MDBModalBody: React.FC<ModalBodyProps> = React.forwardRef<HTMLAllCollection, ModalBodyProps>(
-  ({ className, children, tag: Tag, ...props }, ref) => {
+  ({ className, children, tag: Tag = 'div', ...props }, ref) => {
     const classes = clsx('modal-body', className);
 
     return (
@@ -13,7 +13,5 @@ const MDBModalBody: React.FC<ModalBodyProps> = React.forwardRef<HTMLAllCollectio
     );
   }
 );
-
-MDBModalBody.defaultProps = { tag: 'div' };
 
 export default MDBModalBody;

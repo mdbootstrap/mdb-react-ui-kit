@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import type { TabsPaneProps } from './types';
 
 const MDBTabsPane: React.FC<TabsPaneProps> = React.forwardRef<HTMLAllCollection, TabsPaneProps>(
-  ({ className, tag: Tag, show, children, ...props }, ref) => {
+  ({ className, tag: Tag = 'div', show, children, ...props }, ref) => {
     const [isReadyToHide, setIsReadyToHide] = useState(false);
 
     const classes = clsx('tab-pane', 'fade', isReadyToHide && 'show', show && 'active', className);
@@ -30,7 +30,5 @@ const MDBTabsPane: React.FC<TabsPaneProps> = React.forwardRef<HTMLAllCollection,
     );
   }
 );
-
-MDBTabsPane.defaultProps = { tag: 'div' };
 
 export default MDBTabsPane;

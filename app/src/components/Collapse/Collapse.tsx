@@ -8,7 +8,7 @@ const MDBCollapse: React.FC<CollapseProps> = ({
   show = false,
   id,
   navbar,
-  tag: Tag,
+  tag: Tag = 'div',
   collapseRef,
   style,
   onShow,
@@ -65,7 +65,7 @@ const MDBCollapse: React.FC<CollapseProps> = ({
     } else {
       setCollapseHeight(0);
     }
-  }, [showCollapse, refCollapse]);
+  }, [showCollapse, refCollapse, children]);
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);
@@ -81,7 +81,5 @@ const MDBCollapse: React.FC<CollapseProps> = ({
     </Tag>
   );
 };
-
-MDBCollapse.defaultProps = { tag: 'div' };
 
 export default MDBCollapse;

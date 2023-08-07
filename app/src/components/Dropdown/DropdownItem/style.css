@@ -1,4 +1,4 @@
-.dropdown-menu .active {
+.dropdown-menu .active:not(.form-control) {
   color: #16181b;
   background-color: #eee;
 }

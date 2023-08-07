@@ -9,5 +9,6 @@ interface CarouselProps extends BaseComponent {
     showControls?: boolean;
     showIndicators?: boolean;
     touch?: boolean;
+    carouselInnerClassName?: string;
 }
 export { CarouselProps };

@@ -25,12 +25,12 @@ const MDBRipple: React.FC<RippleProps> = React.forwardRef<HTMLAllCollection, Rip
   (
     {
       className,
-      rippleTag: Tag,
+      rippleTag: Tag = 'div',
       rippleCentered,
-      rippleDuration,
+      rippleDuration = 500,
       rippleUnbound,
-      rippleRadius,
-      rippleColor,
+      rippleRadius = 0,
+      rippleColor = 'dark',
       children,
       onMouseDown,
       ...props
@@ -250,7 +250,5 @@ const MDBRipple: React.FC<RippleProps> = React.forwardRef<HTMLAllCollection, Rip
     );
   }
 );
-
-MDBRipple.defaultProps = { rippleTag: 'div', rippleDuration: 500, rippleRadius: 0, rippleColor: 'dark' };
 
 export default MDBRipple;

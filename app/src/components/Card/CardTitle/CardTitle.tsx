@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { CardTitleProps } from './types';
 
 const MDBCardTitle: React.FC<CardTitleProps> = React.forwardRef<HTMLAllCollection, CardTitleProps>(
-  ({ className, children, tag: Tag, ...props }, ref) => {
+  ({ className, children, tag: Tag = 'h5', ...props }, ref) => {
     const classes = clsx('card-title', className);
 
     return (
@@ -13,7 +13,5 @@ const MDBCardTitle: React.FC<CardTitleProps> = React.forwardRef<HTMLAllCollectio
     );
   }
 );
-
-MDBCardTitle.defaultProps = { tag: 'h5' };
 
 export default MDBCardTitle;

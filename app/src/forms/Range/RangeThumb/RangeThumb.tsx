@@ -8,7 +8,7 @@ type ThumbProps = {
   showThumb: boolean;
 };
 
-const RangeThumb: React.FC<ThumbProps> = ({ value, min, max, showThumb }) => {
+const RangeThumb: React.FC<ThumbProps> = ({ value, min = '0', max = '100', showThumb }) => {
   const numberValue = Number(value);
 
   const [thumbPosition, setThumbPosition] = useState(
@@ -27,7 +27,5 @@ const RangeThumb: React.FC<ThumbProps> = ({ value, min, max, showThumb }) => {
     </span>
   );
 };
-
-RangeThumb.defaultProps = { min: '0', max: '100' };
 
 export default RangeThumb;

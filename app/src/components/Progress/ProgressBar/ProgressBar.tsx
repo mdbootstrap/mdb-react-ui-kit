@@ -4,7 +4,20 @@ import type { ProgressBarProps } from './types';
 
 const MDBProgressBar: React.FC<ProgressBarProps> = React.forwardRef<HTMLAllCollection, ProgressBarProps>(
   (
-    { animated, children, className, style, tag: Tag, valuenow, valuemax, striped, bgColor, valuemin, width, ...props },
+    {
+      animated,
+      children,
+      className,
+      style,
+      tag: Tag = 'div',
+      valuenow,
+      valuemax,
+      striped,
+      bgColor,
+      valuemin,
+      width,
+      ...props
+    },
     ref
   ) => {
     const classes = clsx(
@@ -32,7 +45,5 @@ const MDBProgressBar: React.FC<ProgressBarProps> = React.forwardRef<HTMLAllColle
     );
   }
 );
-
-MDBProgressBar.defaultProps = { tag: 'div' };
 
 export default MDBProgressBar;

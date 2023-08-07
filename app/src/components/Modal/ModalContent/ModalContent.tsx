@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { ModalContentProps } from './types';
 
 const MDBModalContent: React.FC<ModalContentProps> = React.forwardRef<HTMLAllCollection, ModalContentProps>(
-  ({ className, children, tag: Tag, ...props }, ref) => {
+  ({ className, children, tag: Tag = 'div', ...props }, ref) => {
     const classes = clsx('modal-content', className);
 
     return (
@@ -13,7 +13,5 @@ const MDBModalContent: React.FC<ModalContentProps> = React.forwardRef<HTMLAllCol
     );
   }
 );
-
-MDBModalContent.defaultProps = { tag: 'div' };
 
 export default MDBModalContent;

@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import type { SpinnerProps } from './types';
 
 const MDBSpinner: React.FC<SpinnerProps> = React.forwardRef<HTMLAllCollection, SpinnerProps>(
-  ({ className, children, tag: Tag, color, grow, size, ...props }, ref) => {
+  ({ className, children, tag: Tag = 'div', color, grow, size, ...props }, ref) => {
     const classes = clsx(
       `${grow ? 'spinner-grow' : 'spinner-border'}`,
       color && `text-${color}`,
@@ -18,7 +18,5 @@ const MDBSpinner: React.FC<SpinnerProps> = React.forwardRef<HTMLAllCollection, S
     );
   }
 );
-
-MDBSpinner.defaultProps = { tag: 'div' };
 
 export default MDBSpinner;
