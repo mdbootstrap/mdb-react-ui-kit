@@ -1,10 +1,11 @@
 import React from 'react';
 
 interface AccordionProps {
-  activeItem?: number;
+  activeItem?: number | number[];
   setActiveItem: React.SetStateAction<any>;
   alwaysOpen?: boolean;
-  initialActive?: number;
+  initialActive?: number | number[];
+  onChange?: (id: number | number[]) => void;
 }
 
 const AccordionContext = React.createContext<AccordionProps>({

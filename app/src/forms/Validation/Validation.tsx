@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import type { ValidationProps } from './types';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const MDBValidation: React.FC<ValidationProps> = React.forwardRef<HTMLFormElement, ValidationProps>(
-  ({ className, children, isValidated, onReset, onSubmit, noValidate = true, ...props }, ref) => {
+  ({ className, children, isValidated = false, onReset, onSubmit, noValidate = true, ...props }, ref) => {
     const [validated, setValidated] = useState(isValidated);
 
     const classes = clsx('needs-validation', validated && 'was-validated', className);
@@ -21,6 +21,10 @@ const MDBValidation: React.FC<ValidationProps> = React.forwardRef<HTMLFormElemen
 
       onReset && onReset(e);
     };
+
+    useEffect(() => {
+      setValidated(isValidated);
+    }, [isValidated]);
 
     return (
       <form

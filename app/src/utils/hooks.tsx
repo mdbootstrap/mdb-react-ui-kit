@@ -17,4 +17,15 @@ const useOnScreen = (ref: RefObject<HTMLElement>) => {
   return isIntersecting;
 };
 
-export { useOnScreen };
+const useOpenStatus = (openState: boolean, openProp?: boolean) => {
+  const isOpen = useMemo(() => {
+    if (openProp !== undefined) {
+      return openProp;
+    }
+    return openState;
+  }, [openProp, openState]);
+
+  return isOpen;
+};
+
+export { useOnScreen, useOpenStatus };

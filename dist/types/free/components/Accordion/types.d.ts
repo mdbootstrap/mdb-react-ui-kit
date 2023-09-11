@@ -4,8 +4,9 @@ interface AccordionProps extends BaseComponent {
     alwaysOpen?: boolean;
     borderless?: boolean;
     flush?: boolean;
-    initialActive?: number;
-    onChange?: (id: number) => void;
+    active?: number | number[];
+    initialActive?: number | number[];
+    onChange?: (id: number | number[]) => void;
     ref?: React.ForwardedRef<HTMLAllCollection>;
     tag?: React.ComponentProps<any>;
 }
