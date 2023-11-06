@@ -11,4 +11,4 @@ type InputGroupProps = Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLDiv
     textAfter?: React.ReactNode | Array<React.ReactNode>;
     textProps?: Record<string, unknown>;
 };
-export { InputGroupProps };
+export type { InputGroupProps };

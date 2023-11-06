@@ -1,2 +1,2 @@
 type TableBodyProps = React.HTMLAttributes<HTMLElement>;
-export { TableBodyProps };
+export type { TableBodyProps };

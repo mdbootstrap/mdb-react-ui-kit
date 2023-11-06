@@ -6,4 +6,4 @@ interface ScrollspyNavLinkProps extends BaseComponent {
     subsections?: Array<React.MutableRefObject<any>>;
     targetRef: React.MutableRefObject<any>;
 }
-export { ScrollspyNavLinkProps };
+export type { ScrollspyNavLinkProps };

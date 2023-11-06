@@ -3,4 +3,4 @@ interface ModalTitleProps extends BaseComponent {
     ref?: React.ForwardedRef<HTMLAllCollection>;
     tag?: React.ComponentProps<any>;
 }
-export { ModalTitleProps };
+export type { ModalTitleProps };

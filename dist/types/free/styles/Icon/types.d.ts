@@ -24,4 +24,4 @@ type IconProps = {
     style?: React.CSSProperties;
     [rest: string]: any;
 };
-export { IconProps };
+export type { IconProps };

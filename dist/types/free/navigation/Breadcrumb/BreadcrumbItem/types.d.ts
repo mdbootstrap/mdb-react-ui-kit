@@ -4,4 +4,4 @@ interface BreadcrumbItemProp extends BaseComponent {
     current?: 'page' | 'step' | 'location';
     ref?: React.Ref<HTMLLIElement>;
 }
-export { BreadcrumbItemProp };
+export type { BreadcrumbItemProp };

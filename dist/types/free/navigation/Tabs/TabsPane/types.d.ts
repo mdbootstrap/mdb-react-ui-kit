@@ -1,7 +1,7 @@
 import { BaseComponent } from '../../../../types/baseComponent';
 interface TabsPaneProps extends BaseComponent {
-    show?: boolean;
+    open?: boolean;
     tag?: React.ComponentProps<any>;
     ref?: React.Ref<any>;
 }
-export { TabsPaneProps };
+export type { TabsPaneProps };

@@ -10,6 +10,6 @@ export interface DropdownProps extends BaseComponent {
     dropleft?: boolean;
     children?: ReactNode;
     tag?: ComponentProps<any>;
-    onHide?: (e: MouseEvent | SyntheticEvent | KeyboardEvent) => any;
-    onShow?: (e: MouseEvent | SyntheticEvent | KeyboardEvent) => any;
+    onClose?: (e: MouseEvent | SyntheticEvent | KeyboardEvent) => any;
+    onOpen?: (e: MouseEvent | SyntheticEvent | KeyboardEvent) => any;
 }

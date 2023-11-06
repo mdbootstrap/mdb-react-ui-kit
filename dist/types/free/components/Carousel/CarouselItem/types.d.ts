@@ -1,9 +1,6 @@
-import { ImgHTMLAttributes, VideoHTMLAttributes } from 'react';
-type ImgVideo = ImgHTMLAttributes<HTMLImageElement> & VideoHTMLAttributes<HTMLVideoElement>;
-type CarouselItemProps = ImgVideo & {
-    captionClassName?: string;
+import { BaseComponent } from 'src/types/baseComponent';
+type CarouselItemProps = BaseComponent & {
     itemId: number;
-    video?: boolean;
     interval?: number;
 };
-export { CarouselItemProps };
+export type { CarouselItemProps };

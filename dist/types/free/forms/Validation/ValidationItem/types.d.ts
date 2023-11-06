@@ -6,4 +6,4 @@ interface ValidationItemProps extends BaseComponent {
     feedback?: React.ReactNode;
     tooltip?: boolean;
 }
-export { ValidationItemProps };
+export type { ValidationItemProps };

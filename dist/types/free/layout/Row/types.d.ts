@@ -11,4 +11,4 @@ interface RowProps extends BaseComponent {
     tag?: React.ComponentProps<any>;
     top?: boolean;
 }
-export { RowProps };
+export type { RowProps };

@@ -12,4 +12,4 @@ interface NavbarProps extends Omit<React.AllHTMLAttributes<HTMLElement>, 'scroll
     scrolling?: boolean;
     ref?: React.Ref<any>;
 }
-export { NavbarProps };
+export type { NavbarProps };

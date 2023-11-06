@@ -17,6 +17,40 @@
   }
 }
 
+// MDB React
+.toast-top-right {
+  top: 10px;
+  right: 10px;
+}
+
+.toast-top-left {
+  top: 10px;
+  left: 10px;
+}
+
+.toast-bottom-right {
+  bottom: 10px;
+  right: 10px;
+}
+
+.toast-bottom-left {
+  bottom: 10px;
+  left: 10px;
+}
+
+.toast-top-center {
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.toast-bottom-center {
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+// MDB React
+
 .toast-header {
   border-bottom-width: var(--#{$prefix}toast-border-bottom-width);
 

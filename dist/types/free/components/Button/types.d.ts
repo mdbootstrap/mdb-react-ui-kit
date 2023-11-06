@@ -21,4 +21,4 @@ interface ButtonProps extends Omit<joinedTypes, 'size' | 'color'> {
     tag?: React.ComponentProps<any>;
     to?: string;
 }
-export { ButtonProps };
+export type { ButtonProps };

@@ -13,4 +13,4 @@ interface InputTemplateProps extends React.InputHTMLAttributes<HTMLInputElement>
     wrapperClass?: string;
     wrapperStyle?: React.CSSProperties;
 }
-export { InputTemplateProps };
+export type { InputTemplateProps };

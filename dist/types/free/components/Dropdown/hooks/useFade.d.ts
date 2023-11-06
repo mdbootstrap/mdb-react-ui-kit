@@ -1,5 +1,5 @@
 export declare const useFade: () => {
-    show: boolean;
+    open: boolean;
     isFadeIn: boolean;
     isFadeOut: boolean;
 };

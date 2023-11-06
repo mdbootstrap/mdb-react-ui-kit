@@ -3,4 +3,4 @@ interface CardTextProps extends BaseComponent {
     tag?: React.ComponentProps<any>;
     ref?: React.ForwardedRef<HTMLAllCollection>;
 }
-export { CardTextProps };
+export type { CardTextProps };

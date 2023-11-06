@@ -6,4 +6,4 @@ interface FooterProps extends BaseComponent {
     bgColor?: backgroundColor;
     ref?: React.Ref<HTMLDivElement>;
 }
-export { FooterProps };
+export type { FooterProps };

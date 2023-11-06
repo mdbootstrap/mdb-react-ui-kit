@@ -7,4 +7,4 @@ interface RangeProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, '
     step?: string;
     inputRef?: React.MutableRefObject<any>;
 }
-export { RangeProps };
+export type { RangeProps };

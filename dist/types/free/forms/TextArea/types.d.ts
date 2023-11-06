@@ -16,4 +16,4 @@ type TextAreaProps = TextAreaElement & {
     wrapperClass?: string;
     wrapperStyle?: Record<string, unknown>;
 };
-export { TextAreaProps };
+export type { TextAreaProps };

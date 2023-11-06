@@ -16,4 +16,4 @@ interface ColumnProps extends BaseComponent {
     xxl?: string | number;
     xs?: string | number;
 }
-export { ColumnProps };
+export type { ColumnProps };

@@ -11,4 +11,4 @@ type TypographyProps = BaseComponent & {
     tag?: React.ComponentProps<any>;
     variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 };
-export { TypographyProps };
+export type { TypographyProps };

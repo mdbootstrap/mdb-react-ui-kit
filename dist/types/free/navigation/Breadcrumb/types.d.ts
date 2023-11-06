@@ -7,4 +7,4 @@ interface BreadcrumbProps extends BaseComponent {
     uppercase?: boolean;
     ref?: React.Ref<HTMLOListElement>;
 }
-export { BreadcrumbProps };
+export type { BreadcrumbProps };

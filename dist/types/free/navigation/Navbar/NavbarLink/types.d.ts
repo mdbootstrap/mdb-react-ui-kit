@@ -4,4 +4,4 @@ interface NavbarLinkProps extends React.AllHTMLAttributes<HTMLElement> {
     disabled?: boolean;
     ref?: React.Ref<any>;
 }
-export { NavbarLinkProps };
+export type { NavbarLinkProps };

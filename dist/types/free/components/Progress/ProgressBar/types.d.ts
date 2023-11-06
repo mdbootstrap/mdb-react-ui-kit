@@ -12,4 +12,4 @@ interface ProgressBarProps extends BaseComponent {
     width?: string | number;
     [rest: string]: any;
 }
-export { ProgressBarProps };
+export type { ProgressBarProps };

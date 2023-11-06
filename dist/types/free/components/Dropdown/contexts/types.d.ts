@@ -9,8 +9,8 @@ export interface Dropdown {
     setActiveIndex: Dispatch<SetStateAction<number>>;
     setPopperElement: Dispatch<SetStateAction<HTMLElement | null>>;
     setReferenceElement: Dispatch<SetStateAction<HTMLElement | null>>;
-    onHide?: (e: MouseEvent | SyntheticEvent | KeyboardEvent) => any;
-    onShow?: (e: MouseEvent | SyntheticEvent | KeyboardEvent) => any;
+    onClose?: (e: MouseEvent | SyntheticEvent | KeyboardEvent) => any;
+    onOpen?: (e: MouseEvent | SyntheticEvent | KeyboardEvent) => any;
     dropup?: boolean;
     dropright?: boolean;
     dropleft?: boolean;
@@ -24,6 +24,6 @@ export interface DropdownProviderProps {
     dropup?: boolean;
     dropright?: boolean;
     dropleft?: boolean;
-    onHide?: (e: MouseEvent | SyntheticEvent | KeyboardEvent) => any;
-    onShow?: (e: MouseEvent | SyntheticEvent | KeyboardEvent) => any;
+    onClose?: (e: MouseEvent | SyntheticEvent | KeyboardEvent) => any;
+    onOpen?: (e: MouseEvent | SyntheticEvent | KeyboardEvent) => any;
 }

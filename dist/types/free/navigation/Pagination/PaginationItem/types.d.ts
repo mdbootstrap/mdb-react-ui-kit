@@ -4,4 +4,4 @@ interface PaginationItemProps extends BaseComponent {
     disabled?: boolean;
     ref?: React.Ref<HTMLLIElement>;
 }
-export { PaginationItemProps };
+export type { PaginationItemProps };

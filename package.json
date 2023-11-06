@@ -1,7 +1,7 @@
 {
   "name": "mdb-react-ui-kit",
-  "version": "6.3.0",
-  "main": "./dist/mdb-react-ui-kit.js",
+  "version": "7.0.0",
+  "main": "./dist/mdb-react-ui-kit.cjs",
   "module": "./dist/mdb-react-ui-kit.esm.js",
   "types": "./dist/types/index-free.d.ts",
   "type": "module",
@@ -12,7 +12,8 @@
   "dependencies": {
     "clsx": "1.1.1",
     "react-popper": "2.3.0",
-    "@popperjs/core": "2.11.5"
+    "@popperjs/core": "2.11.5",
+    "framer-motion": "^10.16.4"
   },
   "peerDependencies": {
     "react": "^18.1.0",

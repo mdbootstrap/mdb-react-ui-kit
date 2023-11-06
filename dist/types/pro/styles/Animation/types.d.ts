@@ -5,14 +5,13 @@ interface AnimationProps extends BaseComponent {
     animationRef?: React.RefObject<HTMLElement>;
     delay?: number;
     duration?: number;
-    enableTarget?: boolean;
     infinite?: boolean;
     reset?: boolean;
     runOnce?: boolean;
     repeatOnScroll?: boolean;
-    start?: 'onLoad' | 'onHover' | 'onClick' | 'onScroll';
-    setTarget?: React.SetStateAction<any>;
+    start?: 'onLoad' | 'onHover' | 'onClick' | 'onScroll' | 'manually';
     tag?: React.ComponentProps<any>;
-    target?: boolean;
+    animate?: boolean;
+    onEnd?: () => void;
 }
-export { AnimationProps };
+export type { AnimationProps };

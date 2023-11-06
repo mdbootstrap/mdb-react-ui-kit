@@ -3,4 +3,4 @@ interface CardOverlayProps extends BaseComponent {
     tag?: React.ComponentProps<any>;
     ref?: React.ForwardedRef<HTMLAllCollection>;
 }
-export { CardOverlayProps };
+export type { CardOverlayProps };

@@ -1,4 +1,4 @@
 type RippleWaveProps = {
     [rest: string]: any;
 };
-export { RippleWaveProps };
+export type { RippleWaveProps };

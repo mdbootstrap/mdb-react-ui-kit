@@ -10,9 +10,9 @@ interface TooltipProps extends BaseComponent {
     title?: React.ReactNode;
     wrapperProps?: Record<string, unknown>;
     wrapperClass?: string;
-    onShow?: (e: SyntheticEvent) => any;
-    onHide?: (e: SyntheticEvent) => any;
+    onOpen?: (e: SyntheticEvent) => any;
+    onClose?: (e: SyntheticEvent) => any;
     onMouseEnter?: (e: SyntheticEvent) => any;
     onMouseLeave?: (e: SyntheticEvent) => any;
 }
-export { TooltipProps };
+export type { TooltipProps };

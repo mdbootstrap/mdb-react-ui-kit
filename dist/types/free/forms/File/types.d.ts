@@ -6,4 +6,4 @@ interface FileProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 't
     inputRef?: React.MutableRefObject<any>;
     size?: string;
 }
-export { FileProps };
+export type { FileProps };

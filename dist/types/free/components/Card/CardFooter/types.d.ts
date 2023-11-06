@@ -6,4 +6,4 @@ interface CardFooterProps extends BaseComponent {
     ref?: React.ForwardedRef<HTMLAllCollection>;
     tag?: React.ComponentProps<any>;
 }
-export { CardFooterProps };
+export type { CardFooterProps };

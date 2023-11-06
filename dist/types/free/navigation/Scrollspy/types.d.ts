@@ -4,4 +4,4 @@ interface ScrollspyProps extends BaseComponent {
     container?: Window | React.MutableRefObject<any>;
     offset?: number;
 }
-export { ScrollspyProps };
+export type { ScrollspyProps };

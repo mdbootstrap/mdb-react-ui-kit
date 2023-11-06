@@ -11,4 +11,4 @@ interface TableProps extends Omit<React.TableHTMLAttributes<HTMLTableElement>, '
     striped?: boolean;
     responsive?: string | boolean;
 }
-export { TableProps };
+export type { TableProps };

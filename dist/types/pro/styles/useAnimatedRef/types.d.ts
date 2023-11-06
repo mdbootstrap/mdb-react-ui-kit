@@ -10,4 +10,4 @@ interface useAnimatedRefProps {
     externalElement?: RefObject<any>;
 }
 type StartType = 'onLoad' | 'onHover' | 'onClick' | 'onScroll';
-export { useAnimatedRefProps, StartType };
+export type { useAnimatedRefProps, StartType };

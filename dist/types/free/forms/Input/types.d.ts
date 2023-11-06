@@ -12,5 +12,6 @@ type InputProps = InputELement & {
     wrapperTag?: React.ComponentProps<any>;
     wrapperClass?: string;
     wrapperStyle?: React.CSSProperties;
+    showCounter?: boolean;
 };
-export { InputProps };
+export type { InputProps };

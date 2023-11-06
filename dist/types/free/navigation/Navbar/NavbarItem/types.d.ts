@@ -4,4 +4,4 @@ interface NavbarItemProps extends React.AllHTMLAttributes<HTMLElement> {
     tag?: React.ComponentProps<any>;
     ref?: React.Ref<any>;
 }
-export { NavbarItemProps };
+export type { NavbarItemProps };

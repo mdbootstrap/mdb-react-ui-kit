@@ -4,4 +4,4 @@ interface ContainerProps extends BaseComponent {
     fluid?: boolean;
     tag?: React.ComponentProps<any>;
 }
-export { ContainerProps };
+export type { ContainerProps };

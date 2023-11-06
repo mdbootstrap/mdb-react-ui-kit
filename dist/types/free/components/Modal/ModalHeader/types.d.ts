@@ -3,4 +3,4 @@ interface ModalHeaderProps extends BaseComponent {
     ref?: React.ForwardedRef<HTMLAllCollection>;
     tag?: React.ComponentProps<any>;
 }
-export { ModalHeaderProps };
+export type { ModalHeaderProps };

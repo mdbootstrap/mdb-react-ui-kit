@@ -4,4 +4,4 @@ interface ProgressProps extends BaseComponent {
     ref?: React.ForwardedRef<HTMLAllCollection>;
     tag?: React.ComponentProps<any>;
 }
-export { ProgressProps };
+export type { ProgressProps };

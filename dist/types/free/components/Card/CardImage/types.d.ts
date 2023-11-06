@@ -3,4 +3,4 @@ interface CardImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
     overlay?: boolean;
     fluid?: boolean;
 }
-export { CardImageProps };
+export type { CardImageProps };

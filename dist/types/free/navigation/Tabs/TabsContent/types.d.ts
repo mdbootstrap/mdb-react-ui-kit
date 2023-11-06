@@ -3,4 +3,4 @@ interface TabsContentProps extends BaseComponent {
     tag?: React.ComponentProps<any>;
     ref?: React.Ref<any>;
 }
-export { TabsContentProps };
+export type { TabsContentProps };

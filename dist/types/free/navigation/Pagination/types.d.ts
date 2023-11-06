@@ -8,4 +8,4 @@ interface PaginationProps extends BaseComponent {
     circle?: boolean;
     ref?: React.Ref<HTMLUListElement>;
 }
-export { PaginationProps };
+export type { PaginationProps };

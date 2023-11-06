@@ -1,11 +1,11 @@
 import { ComponentProps, HTMLAttributes, RefObject } from 'react';
 interface CollapseProps extends HTMLAttributes<HTMLElement> {
     collapseRef?: RefObject<HTMLElement>;
-    show?: boolean;
+    open?: boolean;
     tag?: ComponentProps<any>;
     navbar?: boolean;
     direction?: 'vertical' | 'horizontal';
-    onShow?: () => any;
-    onHide?: () => any;
+    onOpen?: () => any;
+    onClose?: () => any;
 }
-export { CollapseProps };
+export type { CollapseProps };

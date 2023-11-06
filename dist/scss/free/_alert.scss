@@ -4,6 +4,47 @@
   border: 0;
 }
 
+// MDB React
+.stack {
+  --#{$prefix}alert-fixed-z-index: #{$alert-zindex};
+
+  position: fixed;
+  z-index: var(--#{$prefix}alert-fixed-z-index);
+}
+
+.alert-top-right {
+  top: 10px;
+  right: 10px;
+}
+
+.alert-top-left {
+  top: 10px;
+  left: 10px;
+}
+
+.alert-bottom-right {
+  bottom: 10px;
+  right: 10px;
+}
+
+.alert-bottom-left {
+  bottom: 10px;
+  left: 10px;
+}
+
+.alert-top-center {
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.alert-bottom-center {
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+// MDB React
+
 .alert-absolute {
   position: absolute;
 }

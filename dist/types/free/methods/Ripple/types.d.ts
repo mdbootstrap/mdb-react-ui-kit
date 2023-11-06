@@ -8,4 +8,4 @@ interface RippleProps extends React.AllHTMLAttributes<HTMLElement> {
     ref?: React.ForwardedRef<any>;
     rippleTag?: React.ComponentProps<any>;
 }
-export { RippleProps };
+export type { RippleProps };

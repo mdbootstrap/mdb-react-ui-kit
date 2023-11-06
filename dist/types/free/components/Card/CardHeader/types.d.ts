@@ -6,4 +6,4 @@ interface CardHeaderProps extends BaseComponent {
     ref?: React.ForwardedRef<HTMLAllCollection>;
     tag?: React.ComponentProps<any>;
 }
-export { CardHeaderProps };
+export type { CardHeaderProps };

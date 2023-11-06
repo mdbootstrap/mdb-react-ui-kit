@@ -10,4 +10,4 @@ interface AccordionProps extends BaseComponent {
     ref?: React.ForwardedRef<HTMLAllCollection>;
     tag?: React.ComponentProps<any>;
 }
-export { AccordionProps };
+export type { AccordionProps };

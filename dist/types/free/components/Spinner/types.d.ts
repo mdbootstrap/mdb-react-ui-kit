@@ -8,4 +8,4 @@ interface SpinnerProps extends BaseComponent {
     ref?: React.ForwardedRef<HTMLAllCollection>;
     tag?: React.ComponentProps<any>;
 }
-export { SpinnerProps };
+export type { SpinnerProps };

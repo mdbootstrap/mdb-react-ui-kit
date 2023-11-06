@@ -8,4 +8,4 @@ interface ButtonGroupProps extends BaseComponent {
     vertical?: boolean;
     tag?: React.ComponentProps<any>;
 }
-export { ButtonGroupProps };
+export type { ButtonGroupProps };

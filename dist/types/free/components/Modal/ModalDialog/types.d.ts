@@ -6,4 +6,4 @@ interface ModalDialogProps extends BaseComponent {
     ref?: React.ForwardedRef<HTMLAllCollection>;
     tag?: React.ComponentProps<any>;
 }
-export { ModalDialogProps };
+export type { ModalDialogProps };

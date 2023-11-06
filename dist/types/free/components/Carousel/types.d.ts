@@ -11,4 +11,4 @@ interface CarouselProps extends BaseComponent {
     touch?: boolean;
     carouselInnerClassName?: string;
 }
-export { CarouselProps };
+export type { CarouselProps };

@@ -2,4 +2,4 @@ interface PaginationLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorEleme
     ref?: React.Ref<HTMLAnchorElement>;
     tag?: React.ComponentProps<any>;
 }
-export { PaginationLinkProps };
+export type { PaginationLinkProps };

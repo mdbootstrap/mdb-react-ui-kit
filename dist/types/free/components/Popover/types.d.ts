@@ -4,13 +4,13 @@ interface PopoverProps extends ButtonProps {
     btnChildren?: React.ReactNode;
     btnClassName?: string;
     dismiss?: boolean;
-    isOpen?: boolean;
+    open?: boolean;
     options?: Record<string, unknown>;
     placement?: placement;
     poperStyle?: React.CSSProperties;
     popperTag?: React.ComponentProps<any>;
     tag?: React.ComponentProps<any>;
-    onShow?: () => any;
-    onHide?: () => any;
+    onOpen?: () => void;
+    onClose?: () => void;
 }
-export { PopoverProps };
+export type { PopoverProps };

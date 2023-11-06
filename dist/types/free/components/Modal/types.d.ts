@@ -6,13 +6,13 @@ interface ModalProps extends BaseComponent {
     closeOnEsc?: boolean;
     leaveHiddenModal?: boolean;
     modalRef?: React.RefObject<HTMLElement>;
-    onHide?: () => void;
-    onHidePrevented?: () => any;
-    onShow?: () => void;
-    show?: boolean;
-    setShow?: React.SetStateAction<any>;
+    onClose?: () => void;
+    onClosePrevented?: () => any;
+    onOpen?: () => void;
+    open?: boolean;
+    setOpen?: React.SetStateAction<any>;
     staticBackdrop?: boolean;
     nonInvasive?: boolean;
     tag?: React.ComponentProps<any>;
 }
-export { ModalProps };
+export type { ModalProps };

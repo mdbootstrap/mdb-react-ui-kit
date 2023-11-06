@@ -8,4 +8,4 @@ interface ListGroupItemProps extends BaseComponent {
     noBorders?: boolean;
     tag?: React.ComponentProps<any>;
 }
-export { ListGroupItemProps };
+export type { ListGroupItemProps };

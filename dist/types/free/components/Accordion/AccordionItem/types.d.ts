@@ -11,4 +11,4 @@ interface AccordionItemProps extends BaseComponent {
     ref?: React.ForwardedRef<HTMLAllCollection>;
     tag?: React.ComponentProps<any>;
 }
-export { AccordionItemProps };
+export type { AccordionItemProps };

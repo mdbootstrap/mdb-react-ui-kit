@@ -9,4 +9,4 @@ interface ListGroupProps extends BaseComponent {
     small?: boolean;
     tag?: React.ComponentProps<any>;
 }
-export { ListGroupProps };
+export type { ListGroupProps };

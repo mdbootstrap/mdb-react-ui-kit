@@ -5,4 +5,4 @@ interface TabsProps extends BaseComponent {
     pills?: boolean;
     ref?: React.Ref<any>;
 }
-export { TabsProps };
+export type { TabsProps };

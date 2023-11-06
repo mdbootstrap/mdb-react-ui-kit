@@ -5,4 +5,4 @@ interface NavbarNavProps extends React.AllHTMLAttributes<HTMLElement> {
     left?: boolean;
     ref?: React.Ref<any>;
 }
-export { NavbarNavProps };
+export type { NavbarNavProps };

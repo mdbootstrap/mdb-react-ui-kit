@@ -3,4 +3,4 @@ import { BaseComponent } from '../../../../types/baseComponent';
 interface ScrollspySubListProps extends BaseComponent {
     collapsible?: Array<React.MutableRefObject<any>>;
 }
-export { ScrollspySubListProps };
+export type { ScrollspySubListProps };
