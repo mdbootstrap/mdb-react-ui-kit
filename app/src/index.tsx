@@ -77,6 +77,7 @@ import MDBAccordion from './free/components/Accordion/Accordion';
 import MDBAccordionItem from './free/components/Accordion/AccordionItem/AccordionItem';
 import MDBTextArea from './free/forms/TextArea/TextArea';
 import MDBValidationItem from './free/forms/Validation/ValidationItem/ValidationItem';
+import MDBClientOnly from './utils/ClientOnly';
 
 export {
   MDBContainer,
@@ -158,4 +159,5 @@ export {
   MDBAccordionItem,
   MDBTextArea,
   MDBValidationItem,
+  MDBClientOnly,
 };

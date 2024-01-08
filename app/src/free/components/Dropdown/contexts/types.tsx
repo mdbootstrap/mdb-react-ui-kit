@@ -19,7 +19,7 @@ export interface Dropdown {
 }
 
 export interface DropdownProviderProps {
-  children: ReactNode;
+  children?: ReactNode;
   isOpen?: boolean;
   options?: Record<string, unknown>;
   animation?: boolean;

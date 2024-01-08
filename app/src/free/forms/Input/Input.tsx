@@ -1,7 +1,16 @@
 'use client';
 
 import clsx from 'clsx';
-import React, { useState, useEffect, useRef, FocusEvent, ChangeEvent, useCallback, useImperativeHandle } from 'react';
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  FocusEvent,
+  ChangeEvent,
+  useCallback,
+  useImperativeHandle,
+  useMemo,
+} from 'react';
 import type { InputProps } from './types';
 import { useOnScreen } from '../../../utils/hooks';
 
@@ -11,7 +20,7 @@ const MDBInput: React.FC<InputProps> = React.forwardRef<HTMLInputElement, InputP
       className,
       size,
       contrast,
-      value,
+      value: valueProp,
       defaultValue,
       id,
       labelClass,
@@ -31,19 +40,23 @@ const MDBInput: React.FC<InputProps> = React.forwardRef<HTMLInputElement, InputP
     },
     ref
   ) => {
-    const [newValue, setNewValue] = useState(value || defaultValue);
+    const [valueState, setValueState] = useState(defaultValue);
+    const value = useMemo(() => {
+      if (valueProp !== undefined) {
+        return valueProp;
+      }
+      return valueState;
+    }, [valueProp, valueState]);
+
     const [labelWidth, setLabelWidth] = useState(0);
     const [active, setActive] = useState(false);
     const [counter, setCounter] = useState(0);
-
     const innerRef = useRef<HTMLInputElement>(null);
     const isVisible = useOnScreen(innerRef);
+    const labelEl = useRef<HTMLLabelElement>(null);
+    const labelReference = labelRef ? labelRef : labelEl;
 
     useImperativeHandle(ref, () => innerRef.current as HTMLInputElement);
-
-    const labelEl = useRef<HTMLLabelElement>(null);
-
-    const labelReference = labelRef ? labelRef : labelEl;
 
     const wrapperClasses = clsx('form-outline', contrast && 'form-white', wrapperClass);
     const inputClasses = clsx(
@@ -55,36 +68,14 @@ const MDBInput: React.FC<InputProps> = React.forwardRef<HTMLInputElement, InputP
     );
     const labelClasses = clsx('form-label', labelClass);
 
-    useEffect(() => {
-      if (!innerRef.current) return;
-
-      const { value } = innerRef.current;
-
-      value != '' ? setActive(true) : setActive(false);
-    }, [innerRef.current?.value]);
-
-    useEffect(() => {
-      if (value === undefined) return;
-      value != '' ? setActive(true) : setActive(false);
-    }, [value]);
-
-    useEffect(() => {
-      if (defaultValue === undefined) return;
-      defaultValue != '' ? setActive(true) : setActive(false);
-    }, [defaultValue]);
-
     const setWidth = useCallback(() => {
       if (labelReference.current?.clientWidth) {
         setLabelWidth(labelReference.current.clientWidth * 0.8 + 8);
       }
     }, [labelReference]);
 
-    useEffect(() => {
-      setWidth();
-    }, [labelReference.current?.clientWidth, setWidth, isVisible]);
-
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-      setNewValue(e.target.value);
+      setValueState(e.target.value);
       showCounter && setCounter(e.target.value.length);
       onChange?.(e);
     };
@@ -92,20 +83,26 @@ const MDBInput: React.FC<InputProps> = React.forwardRef<HTMLInputElement, InputP
     const handleBlur = useCallback(
       (e: FocusEvent<HTMLInputElement, Element>) => {
         if (!innerRef.current) return;
-
-        if (
-          (newValue !== undefined && newValue != '') ||
-          (value !== undefined && value != '') ||
-          innerRef.current.value != ''
-        ) {
+        if (value) {
           setActive(true);
         } else {
           setActive(false);
         }
         onBlur && onBlur(e);
       },
-      [newValue, value, onBlur]
+      [value, onBlur]
     );
+
+    useEffect(() => {
+      setWidth();
+    }, [labelReference.current?.clientWidth, setWidth, isVisible]);
+
+    useEffect(() => {
+      if (value) {
+        return setActive(true);
+      }
+      setActive(false);
+    }, [value]);
 
     return (
       <WrapperTag className={wrapperClasses} style={wrapperStyle}>
@@ -116,7 +113,7 @@ const MDBInput: React.FC<InputProps> = React.forwardRef<HTMLInputElement, InputP
           onBlur={handleBlur}
           onChange={handleChange}
           onFocus={setWidth}
-          value={value}
+          value={valueProp}
           defaultValue={defaultValue}
           id={id}
           ref={innerRef}

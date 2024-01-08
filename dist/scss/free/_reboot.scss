@@ -63,4 +63,7 @@ hr.vr {
 
 a {
   text-decoration: none;
+  --#{$prefix}link-decoration: #{$link-decoration};
+
+  text-decoration: var(--#{$prefix}link-decoration);
 }

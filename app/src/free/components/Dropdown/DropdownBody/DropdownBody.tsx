@@ -13,6 +13,7 @@ export const DropdownBody = ({
   dropup,
   dropright,
   dropleft,
+  wrapper,
   ...props
 }: DropdownProps) => {
   useClickOutside();
@@ -25,9 +26,11 @@ export const DropdownBody = ({
     className
   );
 
-  return (
+  return wrapper ? (
     <Tag className={classes} {...props}>
       {children}
     </Tag>
+  ) : (
+    <>{children}</>
   );
 };

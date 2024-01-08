@@ -85,7 +85,7 @@ const MDBDropdownMenu = ({
     >
       {Children.map(children, (child, idx) =>
         cloneElement(child, {
-          tabIndex: 1,
+          tabIndex: 0,
           'data-active': activeIndex === idx && true,
           className: clsx(activeIndex === idx ? 'active' : '', child.props.className),
         })

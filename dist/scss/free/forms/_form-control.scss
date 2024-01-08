@@ -129,14 +129,18 @@
       box-shadow: none !important;
     }
     &:focus ~ .form-label,
-    &.active ~ .form-label {
+    &.active ~ .form-label,
+    &:-webkit-autofill ~ .form-label,
+    &:autofill ~ .form-label {
       transform: $input-focus-active-label-transform;
     }
     &:focus ~ .form-label {
       color: $input-focus-label-color;
     }
     &:focus ~ .form-notch .form-notch-middle,
-    &.active ~ .form-notch .form-notch-middle {
+    &.active ~ .form-notch .form-notch-middle,
+    &:-webkit-autofill ~ .form-notch .form-notch-middle,
+    &:autofill ~ .form-notch .form-notch-middle {
       border-right: none;
       border-left: none;
       border-top: 1px solid transparent;
@@ -178,7 +182,9 @@
         padding-top: $form-label-padding-top-lg;
       }
       &:focus ~ .form-label,
-      &.active ~ .form-label {
+      &.active ~ .form-label,
+      &:-webkit-autofill ~ .form-label,
+      &:autofill ~ .form-label {
         transform: $input-focus-active-label-transform-lg;
       }
     }
@@ -194,7 +200,9 @@
         font-size: $form-label-font-size-sm;
       }
       &:focus ~ .form-label,
-      &.active ~ .form-label {
+      &.active ~ .form-label,
+      &:-webkit-autofill ~ .form-label,
+      &:autofill ~ .form-label {
         transform: $input-focus-active-label-transform-sm;
       }
     }
