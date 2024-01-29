@@ -1,6 +1,6 @@
 {
   "name": "mdb-react-ui-kit",
-  "version": "7.1.0",
+  "version": "7.2.0",
   "main": "./dist/mdb-react-ui-kit.cjs",
   "module": "./dist/mdb-react-ui-kit.esm.js",
   "types": "./dist/types/index-free.d.ts",

@@ -1,11 +1,11 @@
 'use client';
 
 import React, { useState, useEffect, useCallback, SyntheticEvent } from 'react';
-import ReactDOM from 'react-dom';
 import clsx from 'clsx';
 import { usePopper } from 'react-popper';
 import type { TooltipProps } from './types';
 import MDBBtn from '../Button/Button';
+import Portal from '../../../utils/Portal';
 
 const MDBTooltip: React.FC<TooltipProps> = ({
   className,
@@ -22,6 +22,7 @@ const MDBTooltip: React.FC<TooltipProps> = ({
   onClose,
   onMouseEnter,
   onMouseLeave,
+  type,
   ...props
 }) => {
   const [referenceElement, setReferenceElement] = useState(null);
@@ -91,7 +92,6 @@ const MDBTooltip: React.FC<TooltipProps> = ({
       };
     }
   }, [handleClick, disableMouseDown]);
-
   return (
     <>
       <Tag
@@ -100,12 +100,13 @@ const MDBTooltip: React.FC<TooltipProps> = ({
         onMouseLeave={handleOnMouseLeave}
         ref={setReferenceElement}
         {...wrapperProps}
+        type={type}
       >
         {children}
       </Tag>
 
-      {isReadyToHide &&
-        ReactDOM.createPortal(
+      {isReadyToHide && (
+        <Portal>
           <TooltipTag
             ref={setPopperElement}
             className={classes}
@@ -115,9 +116,9 @@ const MDBTooltip: React.FC<TooltipProps> = ({
             {...props}
           >
             <div className='tooltip-inner'>{title}</div>
-          </TooltipTag>,
-          document.body
-        )}
+          </TooltipTag>
+        </Portal>
+      )}
     </>
   );
 };

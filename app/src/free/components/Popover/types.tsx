@@ -11,6 +11,7 @@ interface PopoverProps extends ButtonProps {
   poperStyle?: React.CSSProperties;
   popperTag?: React.ComponentProps<any>;
   tag?: React.ComponentProps<any>;
+  disablePortal?: boolean;
   onOpen?: () => void;
   onClose?: () => void;
 }

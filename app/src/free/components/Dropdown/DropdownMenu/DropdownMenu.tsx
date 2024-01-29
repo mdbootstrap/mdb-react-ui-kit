@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 import React, { Children, cloneElement } from 'react';
-import { createPortal } from 'react-dom';
+import Portal from '../../../../utils/Portal';
 import { useDropdownContext } from '../hooks/useDropdownContext';
 import { useKeyboard } from '../hooks/useKeyboard';
 import { useFade } from '../hooks/useFade';
@@ -93,7 +93,7 @@ const MDBDropdownMenu = ({
     </Tag>
   );
 
-  return <>{appendToBody ? createPortal(menu, document.body) : menu}</>;
+  return <Portal disablePortal={!appendToBody}>{menu}</Portal>;
 };
 
 export default MDBDropdownMenu;

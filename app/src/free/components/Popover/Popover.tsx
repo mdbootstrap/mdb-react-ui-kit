@@ -4,9 +4,9 @@ import clsx from 'clsx';
 import React, { useCallback, useEffect, useState } from 'react';
 import MDBBtn from '../Button/Button';
 import type { PopoverProps } from './types';
-import ReactDOM from 'react-dom';
 import { usePopper } from 'react-popper';
 import { useOpenStatus } from '../../../utils/hooks';
+import Portal from '../../../../src/utils/Portal';
 
 const MDBPopover: React.FC<PopoverProps> = ({
   className,
@@ -23,6 +23,7 @@ const MDBPopover: React.FC<PopoverProps> = ({
   options,
   poperStyle,
   onClick,
+  disablePortal = false,
   ...props
 }): JSX.Element => {
   const [referenceElement, setReferenceElement] = useState<HTMLElement>();
@@ -92,8 +93,8 @@ const MDBPopover: React.FC<PopoverProps> = ({
         {btnChildren}
       </Tag>
 
-      {(attachELements || isOpen) &&
-        ReactDOM.createPortal(
+      {(attachELements || isOpen) && (
+        <Portal disablePortal={disablePortal}>
           <PopperTag
             className={classes}
             ref={setPopperElement}
@@ -101,9 +102,9 @@ const MDBPopover: React.FC<PopoverProps> = ({
             {...attributes.popper}
           >
             {children}
-          </PopperTag>,
-          document.body
-        )}
+          </PopperTag>
+        </Portal>
+      )}
     </>
   );
 };
