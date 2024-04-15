@@ -4,7 +4,6 @@ import React, { MouseEvent } from 'react';
 import { useDropdownContext } from '../hooks/useDropdownContext';
 import { ItemChild } from '../ItemChild/ItemChild';
 import type { DropdownItemProps } from './types';
-import './style.css';
 
 const MDBDropdownItem = ({
   onClick,

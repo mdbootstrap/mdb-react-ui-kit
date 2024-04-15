@@ -1,3 +1,4 @@
+/// <reference types="react" />
 interface CarouselContextProps {
     active: number;
 }

@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { BaseComponent } from '../../../../types/baseComponent';
 import { backgroundColor } from '../../../../types/colors';
 interface CardFooterProps extends BaseComponent {

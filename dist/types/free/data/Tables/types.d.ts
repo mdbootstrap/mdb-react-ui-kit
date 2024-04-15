@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { backgroundColor, textColor } from '../../../types/colors';
 interface TableProps extends Omit<React.TableHTMLAttributes<HTMLTableElement>, 'align'> {
     align?: 'top' | 'middle' | 'bottom';

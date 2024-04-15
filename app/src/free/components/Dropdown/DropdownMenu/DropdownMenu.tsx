@@ -7,7 +7,6 @@ import { useDropdownContext } from '../hooks/useDropdownContext';
 import { useKeyboard } from '../hooks/useKeyboard';
 import { useFade } from '../hooks/useFade';
 import type { DropdownMenuProps } from './types';
-import './style.css';
 import { usePopper } from 'react-popper';
 import { flip } from '@popperjs/core';
 

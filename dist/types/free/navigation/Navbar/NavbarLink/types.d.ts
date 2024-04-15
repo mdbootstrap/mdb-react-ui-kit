@@ -1,3 +1,4 @@
+/// <reference types="react" />
 interface NavbarLinkProps extends React.AllHTMLAttributes<HTMLElement> {
     tag?: React.ComponentProps<any>;
     active?: boolean;

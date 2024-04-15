@@ -16,6 +16,13 @@
   left: 0;
   margin-top: var(--#{$prefix}dropdown-spacer);
 
+  // Custom MDBReact style
+  .active:not(.form-control) {
+    color: #16181b;
+    background-color: #eee;
+  }
+  // Custom MDBReact style
+
   > li {
     border-radius: 0;
     &:first-child {

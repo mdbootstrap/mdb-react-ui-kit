@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { BaseComponent } from '../../../types/baseComponent';
 interface ContainerProps extends BaseComponent {
     breakpoint?: string;

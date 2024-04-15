@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { textColor } from '../../../types/colors';
 type IconProps = {
     animate?: 'beat' | 'fade' | 'beat-fade' | 'bounce' | 'shake' | 'flip' | 'spin' | 'pulse';

@@ -1,3 +1,4 @@
+/// <reference types="react" />
 interface NavbarNavProps extends React.AllHTMLAttributes<HTMLElement> {
     tag?: React.ComponentProps<any>;
     right?: boolean;

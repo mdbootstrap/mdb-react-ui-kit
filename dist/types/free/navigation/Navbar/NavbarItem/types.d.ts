@@ -1,3 +1,4 @@
+/// <reference types="react" />
 interface NavbarItemProps extends React.AllHTMLAttributes<HTMLElement> {
     active?: boolean;
     text?: boolean;

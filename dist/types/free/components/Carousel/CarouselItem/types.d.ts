@@ -1,4 +1,4 @@
-import { BaseComponent } from 'src/types/baseComponent';
+import { BaseComponent } from '../../../../types/baseComponent';
 type CarouselItemProps = BaseComponent & {
     itemId: number;
     interval?: number;

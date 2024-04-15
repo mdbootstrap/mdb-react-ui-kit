@@ -1,3 +1,4 @@
+/// <reference types="react" />
 interface NavbarProps extends Omit<React.AllHTMLAttributes<HTMLElement>, 'scrolling'> {
     tag?: React.ComponentProps<any>;
     light?: boolean;

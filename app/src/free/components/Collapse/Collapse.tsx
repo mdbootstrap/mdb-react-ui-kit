@@ -3,6 +3,7 @@
 import clsx from 'clsx';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import type { CollapseProps } from './types';
+import useHeight from './hooks/useHeight';
 
 const MDBCollapse: React.FC<CollapseProps> = ({
   className,
@@ -18,7 +19,7 @@ const MDBCollapse: React.FC<CollapseProps> = ({
   ...props
 }): JSX.Element => {
   const [showCollapse, setShowCollapse] = useState<boolean | undefined>(false);
-  const [collapseHeight, setCollapseHeight] = useState<string | number | undefined>(undefined);
+  const [collapseHeight, setCollapseHeight] = useState<string | undefined>(undefined);
   const [transition, setTransition] = useState(false);
 
   const classes = clsx(
@@ -29,6 +30,7 @@ const MDBCollapse: React.FC<CollapseProps> = ({
   );
   const collapseEl = useRef<HTMLElement>(null);
   const refCollapse = collapseRef ?? collapseEl;
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const handleResize = useCallback(() => {
     if (showCollapse) {
@@ -37,10 +39,14 @@ const MDBCollapse: React.FC<CollapseProps> = ({
   }, [showCollapse]);
 
   useEffect(() => {
-    if (collapseHeight === undefined && showCollapse) {
-      setCollapseHeight(refCollapse?.current?.scrollHeight);
-    }
-  }, [collapseHeight, showCollapse, refCollapse]);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [handleResize]);
+
+  useHeight({ showCollapse, setCollapseHeight, refCollapse, contentRef });
 
   useEffect(() => {
     if (showCollapse !== open) {
@@ -61,25 +67,11 @@ const MDBCollapse: React.FC<CollapseProps> = ({
     };
   }, [open, showCollapse, onOpen, onClose]);
 
-  useEffect(() => {
-    if (showCollapse) {
-      setCollapseHeight(refCollapse?.current?.scrollHeight);
-    } else {
-      setCollapseHeight(0);
-    }
-  }, [showCollapse, refCollapse, children]);
-
-  useEffect(() => {
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [handleResize]);
-
   return (
     <Tag style={{ height: collapseHeight, ...style }} id={id} className={classes} {...props} ref={refCollapse}>
-      {children}
+      <div ref={contentRef} className='collapse-content'>
+        {children}
+      </div>
     </Tag>
   );
 };

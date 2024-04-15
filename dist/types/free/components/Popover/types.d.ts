@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { placement } from '../../../types/placement';
 import { ButtonProps } from '../Button/types';
 interface PopoverProps extends ButtonProps {

@@ -1,3 +1,4 @@
+/// <reference types="react" />
 type btnProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 type anchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
 type joinedTypes = btnProps & anchorProps;

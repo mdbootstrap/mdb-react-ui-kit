@@ -1,145 +1,151 @@
-'use client';
-
-import React, { useEffect, useState, useCallback, useRef } from 'react';
+import React, { useEffect, useState, useCallback, useRef, RefObject, useMemo } from 'react';
 import clsx from 'clsx';
-import type { ModalProps } from './types';
+import type { FocusableElement, ModalProps } from './types';
 import ReactDOM from 'react-dom';
+import { AnimatePresence, motion } from 'framer-motion';
+import useAnimationPositionValues from './hooks/useAnimationPositionValues';
+import { useOpenStatus } from '../../../utils/hooks';
+import { getFocusableElements, getFocusedItemIndex } from './utils/utils';
+import type { ComponentType } from 'react';
+import Portal from '../../../utils/Portal';
 
-const MDBModal: React.FC<ModalProps> = ({
-  animationDirection,
+const defaultAnimationAnimate = {
+  opacity: 1,
+  top: 0,
+  left: 0,
+};
+
+const MDBModal = ({
+  animationDirection = 'top',
   appendToBody,
   backdrop = true,
   children,
   className,
   closeOnEsc = true,
-  setOpen,
-  leaveHiddenModal = true,
+  leaveHiddenModal = false,
   modalRef,
   onClose,
   onClosePrevented,
   onOpen,
   open,
+  defaultOpen = false,
   staticBackdrop,
   nonInvasive = false,
   tag: Tag = 'div',
+  animationVariants = {},
   ...props
-}) => {
-  const [isOpenBackdrop, setIsOpenBackrop] = useState(open);
-  const [isOpenModal, setIsOpenModal] = useState(open);
-  const [innerShow, setInnerShow] = useState(open);
-  const [staticModal, setStaticModal] = useState(false);
-  const [focusedElement, setFocusedElement] = useState(0);
-  const [focusableElements, setFocusableElements] = useState<any>([]);
+}: ModalProps) => {
+  const [isOpenState, setIsOpenState] = useState(defaultOpen);
+  const isOpen = useOpenStatus(isOpenState, open);
+  const [staticModalAnimation, setStaticModalAnimation] = useState(false);
 
-  const modalInnerRef = useRef<HTMLElement>(null);
-  const modalReference = modalRef ? modalRef : modalInnerRef;
+  const [focusableElements, setFocusableElements] = useState<FocusableElement[]>([]);
+
+  const MotionComponent = useMemo(() => {
+    return motion(Tag as ComponentType<ModalProps>);
+  }, [Tag]);
+
+  const modalInnerRef = useRef<HTMLDivElement>(null);
+  const modalReference: RefObject<HTMLDivElement> = modalRef ? modalRef : modalInnerRef;
+
+  const animationInitial = {
+    opacity: 0,
+    ...useAnimationPositionValues(animationDirection),
+    ...(animationVariants.initial ? animationVariants.initial : {}),
+  };
+
+  const animationAnimate = {
+    ...defaultAnimationAnimate,
+    ...(animationVariants.animate ? animationVariants.animate : {}),
+  };
+
+  const animationExit = {
+    ...animationInitial,
+    ...(animationVariants.exit ? animationVariants.exit : {}),
+  };
+
   const classes = clsx(
     'modal',
-    staticModal && 'modal-static',
+    staticModalAnimation && 'modal-static',
     animationDirection,
     'fade',
-    isOpenModal && 'show',
-    isOpenBackdrop && nonInvasive && 'modal-non-invasive-show',
+    isOpen && 'show',
+    isOpen && nonInvasive && 'modal-non-invasive-show',
     className
   );
-  const backdropClasses = clsx('modal-backdrop', 'fade', isOpenBackdrop && 'show');
+  const backdropClasses = clsx('modal-backdrop', 'fade', isOpen && 'show');
 
   const closeModal = useCallback(() => {
-    setIsOpenModal((isCurrentlyShown) => {
-      isCurrentlyShown && onClose?.();
-      return false;
-    });
+    setIsOpenState(false);
+    onClose?.();
+  }, [onClose]);
 
+  const handleStaticBackdropClick = useCallback(() => {
+    setStaticModalAnimation(true);
+    onClosePrevented?.();
     setTimeout(() => {
-      setIsOpenBackrop(false);
-      setOpen?.(false);
-    }, 150);
-    setTimeout(() => {
-      setInnerShow(false);
-    }, 350);
-    //eslint-disable-next-line
-  }, [onClose, setOpen]);
+      setStaticModalAnimation(false);
+    }, 300);
+  }, [onClosePrevented]);
 
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
-      if (nonInvasive) {
+      if (nonInvasive && !isOpen) {
         return;
       }
-
-      if (isOpenModal && event.target === modalReference.current) {
+      if (isOpen && event.target === modalReference.current) {
         if (!staticBackdrop) {
           closeModal();
         } else {
-          setStaticModal(true);
-          onClosePrevented?.();
-          setTimeout(() => {
-            setStaticModal(false);
-          }, 300);
+          handleStaticBackdropClick();
         }
       }
     },
-    [isOpenModal, modalReference, staticBackdrop, closeModal, onClosePrevented, nonInvasive]
+    [isOpen, modalReference, staticBackdrop, closeModal, nonInvasive, handleStaticBackdropClick]
   );
 
   const handleKeydown = useCallback(
     (event: KeyboardEvent) => {
-      if (isOpenModal && event.key === 'Tab') {
+      if (isOpen && event.key === 'Tab') {
         event.preventDefault();
 
-        setFocusedElement(focusedElement + 1);
+        const isShiftTab = event.shiftKey;
+        const focusedElementIndex = focusableElements.findIndex((item) => {
+          return item.focused;
+        });
+
+        const newIndex = getFocusedItemIndex(focusedElementIndex, isShiftTab, focusableElements.length);
+
+        setFocusableElements((prev) => {
+          return prev?.map((item, index) => {
+            return {
+              ...item,
+              focused: index === newIndex,
+            };
+          });
+        });
+
+        focusableElements[newIndex].element.focus();
       }
 
-      if (closeOnEsc) {
-        if (isOpenModal && event.key === 'Escape') {
-          if (!staticBackdrop) {
-            closeModal();
-          } else {
-            setStaticModal(true);
-            onClosePrevented?.();
-            setTimeout(() => {
-              setStaticModal(false);
-            }, 300);
-          }
-        }
+      if (closeOnEsc && isOpen && event.key === 'Escape') {
+        event.preventDefault();
+        staticBackdrop ? handleStaticBackdropClick() : closeModal();
       }
     },
-    [isOpenModal, closeOnEsc, focusedElement, staticBackdrop, closeModal, onClosePrevented]
+    [isOpen, closeOnEsc, staticBackdrop, closeModal, handleStaticBackdropClick, focusableElements]
   );
 
   useEffect(() => {
-    const focusable = modalReference.current?.querySelectorAll(
-      'button, a, input, select, textarea, [tabindex]'
-    ) as NodeListOf<HTMLElement>;
-
-    const filtered = Array.from(focusable)
-      .filter((el) => el.tabIndex !== -1)
-      .sort((a, b) => {
-        if (a.tabIndex === b.tabIndex) {
-          return 0;
-        }
-        if (b.tabIndex === null) {
-          return -1;
-        }
-        if (a.tabIndex === null) {
-          return 1;
-        }
-        return a.tabIndex - b.tabIndex;
-      });
-
-    setFocusableElements(filtered);
-    setFocusedElement(filtered.length - 1);
-  }, [modalReference]);
-
-  useEffect(() => {
-    if (focusableElements && focusableElements.length > 0) {
-      if (focusedElement === focusableElements.length) {
-        (focusableElements[0] as HTMLElement).focus();
-        setFocusedElement(0);
-      } else {
-        (focusableElements[focusedElement] as HTMLElement).focus();
-      }
+    if (!modalReference || !isOpen) {
+      setFocusableElements([]);
+      return;
     }
-  }, [focusedElement, focusableElements]);
+
+    setFocusableElements(() => {
+      return getFocusableElements(modalReference);
+    });
+  }, [modalReference, isOpen, children]);
 
   useEffect(() => {
     const getScrollbarWidth = () => {
@@ -149,7 +155,7 @@ const MDBModal: React.FC<ModalProps> = ({
 
     const hasVScroll = window.innerWidth > document.documentElement.clientWidth && window.innerWidth >= 576;
 
-    if (innerShow && hasVScroll && !nonInvasive) {
+    if (isOpen && hasVScroll && !nonInvasive) {
       const scrollbarWidth = getScrollbarWidth();
       document.body.classList.add('modal-open');
       document.body.style.overflow = 'hidden';
@@ -165,23 +171,7 @@ const MDBModal: React.FC<ModalProps> = ({
       document.body.style.overflow = '';
       document.body.style.paddingRight = '';
     };
-  }, [innerShow, nonInvasive]);
-
-  useEffect(() => {
-    if (open) {
-      onOpen?.();
-      setInnerShow(true);
-      setTimeout(() => {
-        setIsOpenBackrop(true);
-      }, 0);
-      setTimeout(() => {
-        setIsOpenModal(true);
-        setOpen?.(true);
-      }, 150);
-    } else {
-      closeModal();
-    }
-  }, [open, closeModal, setOpen, onOpen]);
+  }, [isOpen, nonInvasive]);
 
   useEffect(() => {
     const addMouseUpListener = (e: MouseEvent) => {
@@ -198,51 +188,39 @@ const MDBModal: React.FC<ModalProps> = ({
     };
   }, [handleKeydown, handleClickOutside]);
 
-  const appendToBodyTemplate = (
-    <>
-      {(leaveHiddenModal || open || innerShow) &&
-        ReactDOM.createPortal(
+  return (
+    <Portal disablePortal={!appendToBody}>
+      <AnimatePresence>
+        {(isOpen || leaveHiddenModal) && (
           <>
-            <Tag
+            <MotionComponent
+              initial={animationInitial}
+              animate={animationAnimate}
+              exit={animationExit}
               className={classes}
               ref={modalReference}
-              style={{ display: innerShow || open ? 'block' : 'none', pointerEvents: nonInvasive ? 'none' : 'initial' }}
+              style={{ display: isOpen ? 'block' : 'none', pointerEvents: nonInvasive ? 'none' : 'initial' }}
               {...props}
             >
               {children}
-            </Tag>
-            {ReactDOM.createPortal(
-              backdrop && innerShow && !nonInvasive && <div className={backdropClasses}></div>,
-              document.body
+            </MotionComponent>
+            {backdrop && isOpen && !nonInvasive && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.5 }}
+                exit={{ opacity: 0 }}
+                onClick={() => {
+                  staticBackdrop ? onClosePrevented?.() : closeModal();
+                }}
+                className={backdropClasses}
+              ></motion.div>
             )}
-          </>,
-          document.body
+          </>
         )}
-    </>
+        ),
+      </AnimatePresence>
+    </Portal>
   );
-
-  const modalTemplate = (
-    <>
-      {(leaveHiddenModal || open || innerShow) && (
-        <>
-          <Tag
-            className={classes}
-            ref={modalReference}
-            style={{ display: innerShow || open ? 'block' : 'none', pointerEvents: nonInvasive ? 'none' : 'initial' }}
-            {...props}
-          >
-            {children}
-          </Tag>
-          {ReactDOM.createPortal(
-            backdrop && innerShow && !nonInvasive && <div onClick={closeModal} className={backdropClasses}></div>,
-            document.body
-          )}
-        </>
-      )}
-    </>
-  );
-
-  return <>{appendToBody ? appendToBodyTemplate : modalTemplate}</>;
 };
 
 export default MDBModal;

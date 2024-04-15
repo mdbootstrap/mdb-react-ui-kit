@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { BaseComponent } from '../../../types/baseComponent';
 import { size } from '../../../types/size';
 interface ButtonGroupProps extends BaseComponent {

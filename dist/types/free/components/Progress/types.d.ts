@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import { BaseComponent } from '../../../types/baseComponent';
 interface ProgressProps extends BaseComponent {
     height?: number | string;
