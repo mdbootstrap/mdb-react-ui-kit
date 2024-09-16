@@ -59,10 +59,13 @@ const MDBInput: React.FC<InputProps> = React.forwardRef<HTMLInputElement, InputP
     useImperativeHandle(ref, () => innerRef.current as HTMLInputElement);
 
     const wrapperClasses = clsx('form-outline', contrast && 'form-white', wrapperClass);
+    const typesWithPlaceholder = ['date', 'time', 'datetime-local', 'month', 'week'];
+    const isTypeWithPlaceholder = typesWithPlaceholder.includes(type as string);
+
     const inputClasses = clsx(
       'form-control',
       active && 'active',
-      type === 'date' && 'active',
+      isTypeWithPlaceholder && 'active',
       size && `form-control-${size}`,
       className
     );

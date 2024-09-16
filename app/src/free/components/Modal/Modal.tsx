@@ -68,12 +68,10 @@ const MDBModal = ({
     'modal',
     staticModalAnimation && 'modal-static',
     animationDirection,
-    'fade',
-    isOpen && 'show',
     isOpen && nonInvasive && 'modal-non-invasive-show',
     className
   );
-  const backdropClasses = clsx('modal-backdrop', 'fade', isOpen && 'show');
+  const backdropClasses = clsx('modal-backdrop');
 
   const closeModal = useCallback(() => {
     setIsOpenState(false);
