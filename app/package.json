@@ -1,6 +1,6 @@
 {
   "name": "mdb-react-ui-kit-demo",
-  "version": "9.0.0",
+  "version": "10.0.0",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -10,11 +10,11 @@
     "start": "webpack-dev-server --config webpack.config.js --hot --mode=development"
   },
   "dependencies": {
-    "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.3",
+    "@types/react": ">=17.0.0 <20.0.0",
+    "@types/react-dom": ">=17.0.0 <20.0.0",
     "clsx": "1.1.1",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": ">=17.0.0 <20.0.0",
+    "react-dom": ">=17.0.0 <20.0.0",
     "react-popper": "2.3.0",
     "@popperjs/core": "2.11.5",
     "framer-motion": "^10.16.4"

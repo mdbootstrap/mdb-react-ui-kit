@@ -1,6 +1,6 @@
 {
   "name": "mdb-react-ui-kit",
-  "version": "9.0.0",
+  "version": "10.0.0",
   "main": "./dist/mdb-react-ui-kit.cjs",
   "module": "./dist/mdb-react-ui-kit.esm.js",
   "types": "./dist/types/index-free.d.ts",
@@ -16,10 +16,10 @@
     "framer-motion": "^10.16.4"
   },
   "peerDependencies": {
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.3"
+    "react": ">=17.0.0 <20.0.0",
+    "react-dom": ">=17.0.0 <20.0.0",
+    "@types/react": ">=17.0.0 <20.0.0",
+    "@types/react-dom": ">=17.0.0 <20.0.0"
   },
   "keywords": [
     "bootstrap",
